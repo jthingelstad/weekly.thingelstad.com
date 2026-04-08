@@ -804,7 +804,9 @@ th {
 .feeling-word-2 { font-size: 1.1rem; }
 .feeling-word-3 { font-size: 1.3rem; opacity: 0.75; }
 .feeling-word-4 { font-size: 1.5rem; opacity: 0.8; }
+.feeling-word-5 { font-size: 1.65rem; opacity: 0.83; }
 .feeling-word-6 { font-size: 1.8rem; opacity: 0.85; }
+.feeling-word-7 { font-size: 1.95rem; opacity: 0.88; }
 .feeling-word-8 { font-size: 2.1rem; opacity: 0.9; }
 .feeling-word-9 { font-size: 2.3rem; opacity: 0.95; }
 
@@ -1186,6 +1188,28 @@ th {
   color: var(--color-accent);
 }
 
+.issue-share {
+  margin-top: var(--space-sm);
+}
+
+.share-button {
+  font-family: var(--font-ui);
+  font-size: var(--size-sm);
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.share-button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
 .issue-nav {
   display: flex;
   justify-content: space-between;
@@ -1558,6 +1582,57 @@ th {
 }
 
 /* ===================================================================
+   404 Error Page
+   =================================================================== */
+
+.error-page {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--space-lg);
+  text-align: center;
+}
+
+.error-page h1 {
+  font-family: var(--font-mono);
+  font-size: clamp(4rem, 12vw, 8rem);
+  color: var(--color-border);
+  line-height: 1;
+  margin: 0 0 var(--space-md);
+}
+
+.error-message {
+  font-size: var(--size-lg);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2xl);
+}
+
+.error-nav {
+  text-align: left;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+
+.error-nav p {
+  font-family: var(--font-ui);
+  font-size: var(--size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.error-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.error-nav li {
+  margin-bottom: var(--space-sm);
+}
+
+.error-nav a {
+  font-size: var(--size-base);
+}
+
+/* ===================================================================
    FAQ Page
    =================================================================== */
 
@@ -1892,5 +1967,306 @@ th {
 
   .month-label {
     font-size: 0.625rem;
+  }
+}
+
+/* ===================================================================
+   Graph Explorer Page
+   =================================================================== */
+
+.graph-page {
+  padding: var(--space-lg) 0 0;
+}
+
+.graph-header {
+  text-align: center;
+  padding: 0 var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.graph-header h1 {
+  font-size: var(--size-3xl);
+  margin-bottom: var(--space-sm);
+}
+
+.graph-header p {
+  color: var(--color-text-muted);
+  font-size: var(--size-sm);
+}
+
+.graph-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: 0 var(--space-lg);
+  margin-bottom: var(--space-md);
+  max-width: var(--container-wide);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.graph-search input {
+  font-family: var(--font-ui);
+  font-size: var(--size-sm);
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  width: 200px;
+}
+
+.graph-search input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.graph-search input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.graph-slider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--size-sm);
+  color: var(--color-text-muted);
+}
+
+.graph-slider input[type="range"] {
+  width: 120px;
+  accent-color: var(--color-accent);
+}
+
+.graph-stats {
+  font-size: var(--size-sm);
+  color: var(--color-text-muted);
+  margin-left: auto;
+}
+
+.graph-container {
+  position: relative;
+  overflow: hidden;
+}
+
+#graph-canvas {
+  width: 100%;
+  height: 70vh;
+  background: var(--color-bg);
+  cursor: grab;
+  position: relative;
+}
+
+#graph-canvas:active {
+  cursor: grabbing;
+}
+
+#graph-canvas svg {
+  display: block;
+}
+
+/* Graph elements */
+.graph-edge {
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+}
+
+.graph-node {
+  stroke: var(--color-bg);
+  stroke-width: 1.5;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.graph-node:hover {
+  stroke: var(--color-accent);
+  stroke-width: 2;
+}
+
+.graph-node.selected {
+  stroke: var(--color-accent);
+  stroke-width: 3;
+}
+
+.graph-label {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  fill: var(--color-text);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Tooltip */
+.graph-tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+  font-family: var(--font-ui);
+  font-size: var(--size-xs);
+  color: var(--color-text);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  white-space: nowrap;
+  transition: opacity 0.1s;
+}
+
+/* Detail panel */
+.detail-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100%;
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  overflow-y: auto;
+  padding: var(--space-lg);
+  z-index: 20;
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.08);
+}
+
+.detail-close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: none;
+  border: none;
+  font-size: var(--size-xl);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.25rem;
+}
+
+.detail-close:hover {
+  color: var(--color-text);
+}
+
+.detail-domain {
+  font-size: var(--size-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  padding-right: var(--space-xl);
+  word-break: break-all;
+}
+
+.detail-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  font-size: var(--size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.detail-section {
+  margin-bottom: var(--space-lg);
+}
+
+.detail-section h3 {
+  font-size: var(--size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.detail-neighbors,
+.detail-issues {
+  list-style: none;
+  padding: 0;
+}
+
+.detail-neighbors li,
+.detail-issues li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--space-xs) 0;
+  font-size: var(--size-sm);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.detail-neighbors a,
+.detail-issues a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.detail-neighbors a:hover,
+.detail-issues a:hover {
+  color: var(--color-accent-hover);
+}
+
+.neighbor-weight,
+.issue-date {
+  font-size: var(--size-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  margin-left: var(--space-sm);
+}
+
+/* Dark mode graph adjustments */
+@media (prefers-color-scheme: dark) {
+  .graph-node {
+    stroke: var(--color-bg);
+  }
+
+  .graph-tooltip {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  .detail-panel {
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .graph-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-sm);
+  }
+
+  .graph-search input {
+    width: 100%;
+  }
+
+  .graph-stats {
+    margin-left: 0;
+  }
+
+  #graph-canvas {
+    height: 55vh;
+  }
+
+  .detail-panel {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (max-width: 480px) {
+  .graph-label {
+    display: none;
+  }
+
+  .graph-node {
+    stroke-width: 1;
   }
 }

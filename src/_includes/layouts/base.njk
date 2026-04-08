@@ -11,8 +11,17 @@
   <meta property="og:description" content="{{ description or site.description }}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:site_name" content="{{ site.title }}">
   {% if image %}
   <meta property="og:image" content="{{ image }}">
+  <meta name="twitter:image" content="{{ image }}">
+  {% endif %}
+  <meta name="twitter:card" content="{{ 'summary_large_image' if image else 'summary' }}">
+  <meta name="twitter:title" content="{{ subject or pageTitle or title or site.title }}">
+  <meta name="twitter:description" content="{{ description or site.description }}">
+  {% if publish_date %}
+  <meta property="article:published_time" content="{{ publish_date | dateFormat('iso') }}">
+  <meta property="article:author" content="{{ site.author }}">
   {% endif %}
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">

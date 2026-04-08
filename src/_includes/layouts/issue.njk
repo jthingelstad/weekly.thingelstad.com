@@ -59,6 +59,10 @@ ogType: article
       <div class="issue-kudos">
         <button class="tinylytics_kudos" data-path="/archive/{{ number }}/">Like this issue</button>
       </div>
+
+      <div class="issue-share">
+        <button class="share-button" data-url="{{ site.url }}/archive/{{ number }}/" data-title="{{ subject }}">Share this issue</button>
+      </div>
     </aside>
     {% endif %}
 
@@ -90,3 +94,19 @@ ogType: article
     {% include "partials/subscribe-form.njk" %}
   </footer>
 </article>
+<script>
+document.querySelector('.share-button').addEventListener('click', function() {
+  var url = this.dataset.url;
+  var title = this.dataset.title;
+  if (navigator.share) {
+    navigator.share({ title: title, url: url });
+  } else {
+    navigator.clipboard.writeText(url).then(function() {
+      var btn = document.querySelector('.share-button');
+      var orig = btn.textContent;
+      btn.textContent = 'Link copied!';
+      setTimeout(function() { btn.textContent = orig; }, 2000);
+    });
+  }
+});
+</script>

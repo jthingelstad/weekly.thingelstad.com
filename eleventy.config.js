@@ -6,6 +6,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/CNAME");
   eleventyConfig.addPassthroughCopy("src/favicon.svg");
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
   // Prevent GitHub Pages from running Jekyll
   eleventyConfig.addPassthroughCopy({ "src/_nojekyll": ".nojekyll" });
 
@@ -98,6 +99,9 @@ module.exports = function (eleventyConfig) {
     const m = String(num).match(/^(\d+)/);
     return m ? parseInt(m[1], 10) : 0;
   });
+
+  // JSON stringify for embedding data in templates
+  eleventyConfig.addFilter("jsonify", (obj) => JSON.stringify(obj));
 
   // XML-escape text for Atom/RSS feeds
   eleventyConfig.addFilter("xmlEscape", (str) => {
