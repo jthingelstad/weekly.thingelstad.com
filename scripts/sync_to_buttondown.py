@@ -93,6 +93,11 @@ def find_changes(issue_number=None):
             diff["subject"] = fm["subject"]
         if fm.get("description") != original.get("description"):
             diff["description"] = fm["description"]
+        # Sync image field (allows clearing the profile headshot from legacy issues)
+        local_image = fm.get("image") or ""
+        original_image = original.get("image") or ""
+        if local_image != original_image:
+            diff["image"] = local_image
 
         if diff:
             changes.append(
