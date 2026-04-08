@@ -44,6 +44,11 @@ EXCLUDED_DOMAINS = {
     "open.spotify.com",
     "player.vimeo.com",
 
+    # Reference / encyclopedic (inline references, not curated links)
+    "en.wikipedia.org",
+    "wikipedia.org",
+    "en.m.wikipedia.org",
+
     # Social media (too generic to be interesting in domain lists)
     "twitter.com",
     "x.com",
