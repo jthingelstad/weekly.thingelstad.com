@@ -65,6 +65,12 @@ module.exports = function (eleventyConfig) {
   // Current year (for copyright notices, etc.)
   eleventyConfig.addFilter("currentYear", () => new Date().getFullYear());
 
+  // Format number with commas (e.g., 19253 → "19,253")
+  eleventyConfig.addFilter("numberFormat", (num) => {
+    if (num == null) return "0";
+    return Number(num).toLocaleString("en-US");
+  });
+
   // Year from date
   eleventyConfig.addFilter("year", (dateStr) => {
     if (!dateStr) return "";

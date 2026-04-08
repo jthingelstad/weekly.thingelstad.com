@@ -1,0 +1,175 @@
+---
+layout: layouts/base.njk
+pageTitle: Stats
+description: Numbers and charts from 8+ years of The Weekly Thing newsletter.
+permalink: /stats/
+---
+<article class="page stats-page">
+  <header class="page-header">
+    <h1>Stats</h1>
+    <p class="page-subtitle">{{ archiveStats.yearsActive }} years of curating the internet, by the numbers.</p>
+  </header>
+
+  <div class="page-content">
+
+    {# ── Big Numbers ── #}
+    <section class="stats-hero-grid">
+      <div class="stat-card stat-card-accent">
+        <span class="stat-number">{{ archiveStats.totalIssues }}</span>
+        <span class="stat-label">Issues Published</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">{{ archiveStats.totalLinks | numberFormat }}</span>
+        <span class="stat-label">Links Shared</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">{{ archiveStats.uniqueDomainsTotal | numberFormat }}</span>
+        <span class="stat-label">Unique Domains</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">{{ archiveStats.longestStreak }}</span>
+        <span class="stat-label">Longest Weekly Streak</span>
+      </div>
+    </section>
+
+    {# ── Year by Year ── #}
+    <section class="stats-section">
+      <h2>Year by Year</h2>
+      <div class="stats-table-wrap">
+        <table class="stats-table">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th class="num">Issues</th>
+              <th class="num">Links</th>
+              <th class="num">Unique Domains</th>
+              <th class="num">Avg Links/Issue</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%- for yr in archiveStats.yearlyStats %}
+            <tr>
+              <td><strong>{{ yr.year }}</strong></td>
+              <td class="num">{{ yr.issues }}</td>
+              <td class="num">{{ yr.links | numberFormat }}</td>
+              <td class="num">{{ yr.uniqueDomains | numberFormat }}</td>
+              <td class="num">{{ yr.avgLinksPerIssue }}</td>
+            </tr>
+            {%- endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    {# ── Links per Year bar chart ── #}
+    <section class="stats-section">
+      <h2>Links per Year</h2>
+      <div class="bar-chart" aria-label="Links shared per year">
+        {%- set maxLinks = 0 -%}
+        {%- for yr in archiveStats.yearlyStats -%}
+          {%- if yr.links > maxLinks -%}{%- set maxLinks = yr.links -%}{%- endif -%}
+        {%- endfor -%}
+        {%- for yr in archiveStats.yearlyStats %}
+        <div class="bar-row">
+          <span class="bar-label">{{ yr.year }}</span>
+          <div class="bar-track">
+            <div class="bar-fill" style="width: {{ (yr.links / maxLinks * 100) | round }}%"></div>
+          </div>
+          <span class="bar-value">{{ yr.links | numberFormat }}</span>
+        </div>
+        {%- endfor %}
+      </div>
+    </section>
+
+    {# ── Issues per Year bar chart ── #}
+    <section class="stats-section">
+      <h2>Issues per Year</h2>
+      <div class="bar-chart" aria-label="Issues published per year">
+        {%- set maxIssues = 0 -%}
+        {%- for yr in archiveStats.yearlyStats -%}
+          {%- if yr.issues > maxIssues -%}{%- set maxIssues = yr.issues -%}{%- endif -%}
+        {%- endfor -%}
+        {%- for yr in archiveStats.yearlyStats %}
+        <div class="bar-row">
+          <span class="bar-label">{{ yr.year }}</span>
+          <div class="bar-track">
+            <div class="bar-fill bar-fill-alt" style="width: {{ (yr.issues / maxIssues * 100) | round }}%"></div>
+          </div>
+          <span class="bar-value">{{ yr.issues }}</span>
+        </div>
+        {%- endfor %}
+      </div>
+    </section>
+
+    {# ── Top Domains ── #}
+    <section class="stats-section">
+      <h2>Most Linked Domains</h2>
+      <p class="stats-note">The sites that show up again and again.</p>
+      <div class="bar-chart" aria-label="Most linked domains">
+        {%- set maxDomain = archiveStats.topDomains[0].count -%}
+        {%- for d in archiveStats.topDomains | slice(0, 20) %}
+        <div class="bar-row">
+          <span class="bar-label bar-label-domain">{{ d.domain }}</span>
+          <div class="bar-track">
+            <div class="bar-fill bar-fill-domain" style="width: {{ (d.count / maxDomain * 100) | round }}%"></div>
+          </div>
+          <span class="bar-value">{{ d.count }}</span>
+        </div>
+        {%- endfor %}
+      </div>
+    </section>
+
+    {# ── Records & Superlatives ── #}
+    <section class="stats-section">
+      <h2>Records & Superlatives</h2>
+      <div class="records-grid">
+        <div class="record-card">
+          <span class="record-icon">&#x1F517;</span>
+          <span class="record-title">Most Links in One Issue</span>
+          <span class="record-value">{{ archiveStats.records.maxLinks.count }} links</span>
+          <a href="/archive/{{ archiveStats.records.maxLinks.number }}/" class="record-issue">#{{ archiveStats.records.maxLinks.number }}</a>
+        </div>
+        <div class="record-card">
+          <span class="record-icon">&#x1F310;</span>
+          <span class="record-title">Most Domains in One Issue</span>
+          <span class="record-value">{{ archiveStats.records.maxDomains.count }} domains</span>
+          <a href="/archive/{{ archiveStats.records.maxDomains.number }}/" class="record-issue">#{{ archiveStats.records.maxDomains.number }}</a>
+        </div>
+        <div class="record-card">
+          <span class="record-icon">&#x1F3C3;</span>
+          <span class="record-title">Longest Weekly Streak</span>
+          <span class="record-value">{{ archiveStats.longestStreak }} weeks</span>
+          <span class="record-issue">consecutive</span>
+        </div>
+        <div class="record-card">
+          <span class="record-icon">&#x1F4C5;</span>
+          <span class="record-title">Average Output</span>
+          <span class="record-value">{{ archiveStats.issuesPerMonth }} issues/month</span>
+          <span class="record-issue">since {{ archiveStats.firstDate | dateFormat }}</span>
+        </div>
+      </div>
+    </section>
+
+    {# ── Month Distribution ── #}
+    <section class="stats-section">
+      <h2>Issues by Month</h2>
+      <p class="stats-note">Some months are more productive than others.</p>
+      <div class="month-grid">
+        {%- set maxMonth = 0 -%}
+        {%- for m in archiveStats.publishMonths -%}
+          {%- if m.count > maxMonth -%}{%- set maxMonth = m.count -%}{%- endif -%}
+        {%- endfor -%}
+        {%- for m in archiveStats.publishMonths %}
+        <div class="month-cell">
+          <div class="month-bar-wrap">
+            <div class="month-bar" style="height: {{ (m.count / maxMonth * 100) | round }}%"></div>
+          </div>
+          <span class="month-label">{{ m.month }}</span>
+          <span class="month-count">{{ m.count }}</span>
+        </div>
+        {%- endfor %}
+      </div>
+    </section>
+
+  </div>
+</article>

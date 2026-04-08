@@ -1080,3 +1080,341 @@ th {
 .pagefind-ui .pagefind-ui__result-link {
   color: var(--color-accent);
 }
+
+/* ===================================================================
+   FAQ Page
+   =================================================================== */
+
+.faq-list {
+  max-width: var(--container-width);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border-light);
+  padding: var(--space-lg) 0;
+}
+
+.faq-item:first-child {
+  padding-top: 0;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-item dt {
+  font-family: var(--font-heading);
+  font-size: var(--size-lg);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+}
+
+.faq-item dd {
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+.faq-item dd code {
+  background: var(--color-code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  font-size: var(--size-sm);
+}
+
+/* ===================================================================
+   Stats Page
+   =================================================================== */
+
+.stats-page .page-subtitle {
+  color: var(--color-text-muted);
+  font-size: var(--size-lg);
+  margin-top: var(--space-sm);
+}
+
+/* Hero stat cards */
+.stats-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin: var(--space-2xl) 0 var(--space-3xl);
+}
+
+@media (min-width: 640px) {
+  .stats-hero-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  padding: var(--space-lg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.stat-card-accent {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.stat-card-accent .stat-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.stat-number {
+  font-family: var(--font-mono);
+  font-size: var(--size-2xl);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-family: var(--font-ui);
+  font-size: var(--size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+/* Sections */
+.stats-section {
+  margin-bottom: var(--space-3xl);
+}
+
+.stats-section h2 {
+  font-size: var(--size-xl);
+  margin-bottom: var(--space-sm);
+}
+
+.stats-note {
+  color: var(--color-text-muted);
+  font-size: var(--size-sm);
+  margin-bottom: var(--space-lg);
+}
+
+/* Data table */
+.stats-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-ui);
+  font-size: var(--size-sm);
+}
+
+.stats-table th,
+.stats-table td {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border-light);
+  text-align: left;
+}
+
+.stats-table th {
+  font-weight: 600;
+  color: var(--color-text-muted);
+  font-size: var(--size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom-color: var(--color-border);
+}
+
+.stats-table .num {
+  text-align: right;
+  font-family: var(--font-mono);
+}
+
+.stats-table tbody tr:hover {
+  background: var(--color-border-light);
+}
+
+/* Bar charts */
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.bar-label {
+  font-family: var(--font-mono);
+  font-size: var(--size-sm);
+  width: 3rem;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.bar-label-wide {
+  width: 6rem;
+  font-family: var(--font-ui);
+}
+
+.bar-label-domain {
+  width: 12rem;
+  font-family: var(--font-mono);
+  font-size: var(--size-xs);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bar-track {
+  flex: 1;
+  background: var(--color-border-light);
+  border-radius: 4px;
+  height: 1.5rem;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: 4px;
+  min-width: 2px;
+  transition: width 0.3s ease;
+}
+
+.bar-fill-alt {
+  background: #6b8f71;
+}
+
+.bar-fill-muted {
+  background: var(--color-text-muted);
+}
+
+.bar-fill-domain {
+  background: #4a7c94;
+}
+
+.bar-value {
+  font-family: var(--font-mono);
+  font-size: var(--size-xs);
+  color: var(--color-text-muted);
+  width: 3.5rem;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.bar-chart-compact .bar-track {
+  height: 1.25rem;
+}
+
+/* Month vertical bar chart */
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-xs);
+  align-items: end;
+  height: 10rem;
+  margin-top: var(--space-md);
+}
+
+.month-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.month-bar-wrap {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.month-bar {
+  width: 70%;
+  background: var(--color-accent);
+  border-radius: 3px 3px 0 0;
+  min-height: 2px;
+  transition: height 0.3s ease;
+}
+
+.month-label {
+  font-family: var(--font-mono);
+  font-size: var(--size-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+}
+
+.month-count {
+  font-family: var(--font-mono);
+  font-size: var(--size-xs);
+  color: var(--color-text-muted);
+}
+
+/* Records grid */
+.records-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+@media (max-width: 640px) {
+  .records-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.record-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.record-icon {
+  font-size: var(--size-xl);
+  line-height: 1;
+}
+
+.record-title {
+  font-family: var(--font-ui);
+  font-size: var(--size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.record-value {
+  font-family: var(--font-mono);
+  font-size: var(--size-lg);
+  font-weight: 700;
+}
+
+.record-issue {
+  font-family: var(--font-mono);
+  font-size: var(--size-sm);
+  color: var(--color-accent);
+}
+
+@media (max-width: 640px) {
+  .bar-label-domain {
+    width: 8rem;
+  }
+
+  .month-grid {
+    height: 7rem;
+  }
+
+  .month-label {
+    font-size: 0.625rem;
+  }
+}
