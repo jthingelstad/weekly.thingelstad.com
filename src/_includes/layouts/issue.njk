@@ -1,0 +1,92 @@
+---
+layout: layouts/base.njk
+ogType: article
+---
+{%- set pageTitle = subject -%}
+{%- set allIssues = collections.issuesByNumber -%}
+{%- set currentIndex = -1 -%}
+{%- for item in allIssues -%}
+  {%- if item.data.number == number -%}
+    {%- set currentIndex = loop.index0 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- set prevIssue = allIssues[currentIndex - 1] if currentIndex > 0 else null -%}
+{%- set nextIssue = allIssues[currentIndex + 1] if currentIndex < allIssues.length - 1 else null -%}
+{%- set toc = content | extractToc -%}
+
+{% block head %}
+  <link rel="alternate" type="application/atom+xml" title="Links from Issue #{{ number }}" href="/archive/{{ number }}/links.xml">
+{% endblock %}
+
+<article class="issue" data-pagefind-body>
+  <header class="issue-header">
+    <div class="issue-meta">
+      <span class="issue-number" data-pagefind-meta="number">#{{ number }}</span>
+      <time datetime="{{ publish_date | dateFormat('iso') }}" data-pagefind-meta="date">{{ publish_date | dateFormat }}</time>
+      <span data-pagefind-filter="year">{{ publish_date | year }}</span>
+    </div>
+    <h1 data-pagefind-meta="title">{{ subject }}</h1>
+    {% if description %}
+    <p class="issue-description">{{ description }}</p>
+    {% endif %}
+  </header>
+
+  <div class="issue-body-wrap">
+    {% if toc.length > 0 %}
+    <aside class="issue-sidebar">
+      <nav class="toc" aria-label="Table of Contents">
+        <h2 class="toc-title">Contents</h2>
+        <ol class="toc-list">
+          {% for heading in toc %}
+          <li class="toc-item toc-level-{{ heading.level }}">
+            <a href="#{{ heading.id }}">{{ heading.text }}</a>
+          </li>
+          {% endfor %}
+        </ol>
+      </nav>
+
+      {% if domains.length > 0 %}
+      <div class="linked-domains">
+        <h2 class="domains-title">Linked Domains</h2>
+        <ul class="domain-list">
+          {% for domain in domains %}
+          <li><span data-pagefind-filter="domain">{{ domain }}</span></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </aside>
+    {% endif %}
+
+    <div class="issue-content">
+      {{ content | safe }}
+    </div>
+  </div>
+
+  <footer class="issue-footer">
+    <div class="issue-kudos">
+      <button class="tinylytics_kudos" data-path="/archive/{{ number }}/">Like this issue</button>
+    </div>
+
+    <nav class="issue-nav" aria-label="Issue navigation">
+      {% if prevIssue %}
+      <a href="/archive/{{ prevIssue.data.number }}/" class="issue-nav-link issue-nav-prev">
+        <span class="issue-nav-label">Previous</span>
+        <span class="issue-nav-title">{{ prevIssue.data.subject | truncate(50) }}</span>
+      </a>
+      {% else %}
+      <span></span>
+      {% endif %}
+
+      {% if nextIssue %}
+      <a href="/archive/{{ nextIssue.data.number }}/" class="issue-nav-link issue-nav-next">
+        <span class="issue-nav-label">Next</span>
+        <span class="issue-nav-title">{{ nextIssue.data.subject | truncate(50) }}</span>
+      </a>
+      {% endif %}
+    </nav>
+
+    {% set subscribeId = "issue" %}
+    {% include "partials/subscribe-form.njk" %}
+  </footer>
+</article>

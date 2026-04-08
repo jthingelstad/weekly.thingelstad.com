@@ -1,0 +1,32 @@
+---
+pagination:
+  data: collections.issuesByNumber
+  size: 1
+  alias: issue
+permalink: /archive/{{ issue.data.number }}/links.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Links from {{ issue.data.subject | xmlEscape }}</title>
+  <subtitle>Links featured in issue #{{ issue.data.number }} of The Weekly Thing</subtitle>
+  <link href="{{ site.url }}/archive/{{ issue.data.number }}/links.xml" rel="self" type="application/atom+xml"/>
+  <link href="{{ site.url }}/archive/{{ issue.data.number }}/" rel="alternate" type="text/html"/>
+  <id>{{ site.url }}/archive/{{ issue.data.number }}/links/</id>
+  <author>
+    <name>{{ site.author }}</name>
+  </author>
+  <updated>{{ issue.data.publish_date | dateFormat('iso') }}</updated>
+  {% for link in issue.data.links %}
+  <entry>
+    <title>{{ (link.text or link.url) | xmlEscape }}</title>
+    <link href="{{ link.url | xmlEscape }}"/>
+    <id>{{ site.url }}/archive/{{ issue.data.number }}/links/{{ loop.index }}</id>
+    <published>{{ issue.data.publish_date | dateFormat('iso') }}</published>
+    <updated>{{ issue.data.publish_date | dateFormat('iso') }}</updated>
+    {% if link.heading_context %}
+    <summary type="text">From "{{ link.heading_context | xmlEscape }}" in {{ issue.data.subject | xmlEscape }}</summary>
+    {% endif %}
+  </entry>
+  {% endfor %}
+</feed>

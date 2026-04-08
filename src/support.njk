@@ -1,0 +1,68 @@
+---
+layout: layouts/page.njk
+pageTitle: Supporting Membership
+description: Support The Weekly Thing and help fund a nonprofit each year.
+permalink: /support/
+---
+<div class="support-page">
+  <p class="support-intro">The Weekly Thing is free for everyone, always. Supporting Members contribute to a community giving program where <strong>100% of membership fees go directly to a nonprofit</strong> selected each year.</p>
+
+  {% if support.current %}
+  <section class="support-current">
+    <h2>{{ support.current.year }} &mdash; {{ support.current.nonprofit }}</h2>
+    <p>{{ support.current.description }}</p>
+    <p><a href="{{ support.current.url }}">Visit {{ support.current.short_name or support.current.nonprofit }} &rarr;</a></p>
+
+    <div class="support-stats">
+      {% if stats.amount_raised > 0 %}
+      <div class="support-stat">
+        <span class="stat-value">${{ stats.amount_raised | round }}</span>
+        <span class="stat-label">raised for {{ support.current.short_name or support.current.nonprofit }} this year</span>
+      </div>
+      {% endif %}
+      {% if stats.premium_subscriber_count > 0 %}
+      <div class="support-stat">
+        <span class="stat-value">{{ stats.premium_subscriber_count }}</span>
+        <span class="stat-label">supporting members</span>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="support-how">
+    <h2>Become a Supporting Member</h2>
+    <p>Supporting Members get a gold star recognition in each issue of The Weekly Thing. More importantly, your contribution goes directly to supporting organizations doing meaningful work.</p>
+    <p><a href="https://buttondown.com/weekly-thing/membership" class="btn btn-primary">Become a Supporting Member</a></p>
+
+    {% if support.current.stripe_donate_url %}
+    <h3>One-Time Gift</h3>
+    <p>Prefer to make a one-time contribution instead of a recurring membership? You can give directly.</p>
+    <p><a href="{{ support.current.stripe_donate_url }}" class="btn btn-secondary">Make a One-Time Gift</a></p>
+    {% endif %}
+  </section>
+
+  {% if support.past.length > 0 %}
+  <section class="support-history">
+    <h2>Past Nonprofits Supported</h2>
+    <table class="support-table">
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Nonprofit</th>
+          <th>Raised</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for org in support.past %}
+        <tr>
+          <td>{{ org.year }}</td>
+          <td><a href="{{ org.url }}">{{ org.nonprofit }}</a></td>
+          <td>{% if org.amount_raised %}${{ org.amount_raised | round }}{% else %}&mdash;{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  {% endif %}
+</div>

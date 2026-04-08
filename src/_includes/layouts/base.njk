@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ subject or pageTitle or title }}{% if subject or pageTitle %} — {{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ description or site.description }}">
+
+  {# Open Graph #}
+  <meta property="og:title" content="{{ subject or pageTitle or title or site.title }}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  {% if image %}
+  <meta property="og:image" content="{{ image }}">
+  {% endif %}
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  {# RSS feed discovery #}
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="/feed.xml">
+  {% block head %}{% endblock %}
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  {% include "partials/header.njk" %}
+
+  <main id="main-content">
+    {% block content %}
+      {{ content | safe }}
+    {% endblock %}
+  </main>
+
+  {% include "partials/footer.njk" %}
+
+  <script defer src="https://tinylytics.app/embed/{{ site.tinylyticsId }}.js?kudos&hits"></script>
+</body>
+</html>

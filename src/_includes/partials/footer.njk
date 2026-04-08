@@ -1,0 +1,24 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <p class="footer-title">The Weekly Thing</p>
+        <p>A weekly newsletter by <a href="{{ site.authorUrl }}">Jamie Thingelstad</a>. Published since 2017.</p>
+      </div>
+      <div class="footer-links">
+        <nav aria-label="Footer navigation">
+          <a href="/archive/">Archive</a>
+          <a href="/search/">Search</a>
+          <a href="/about/">About</a>
+          <a href="/support/">Support</a>
+          <a href="/feed.xml">RSS</a>
+        </nav>
+      </div>
+      <div class="footer-subscribe">
+        {% set subscribeId = "footer-global" %}
+        {% include "partials/subscribe-form.njk" %}
+      </div>
+    </div>
+    <p class="footer-copyright">&copy; {{ "" | currentYear }} Jamie Thingelstad</p>
+  </div>
+</footer>

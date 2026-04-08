@@ -1,0 +1,46 @@
+---
+layout: layouts/base.njk
+pageTitle: Search
+description: Search the full archive of The Weekly Thing newsletter.
+permalink: /search/
+---
+<section class="search-page">
+  <div class="container">
+    <h1>Search the Archive</h1>
+    <div id="search"></div>
+  </div>
+</section>
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const pf = new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      showImages: false,
+    });
+
+    // Sync search query with URL
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('q');
+    if (q) {
+      pf.triggerSearch(q);
+    }
+
+    // Update URL on search
+    const input = document.querySelector('#search input[type="text"]');
+    if (input) {
+      input.addEventListener('input', () => {
+        const val = input.value;
+        const url = new URL(window.location);
+        if (val) {
+          url.searchParams.set('q', val);
+        } else {
+          url.searchParams.delete('q');
+        }
+        history.replaceState(null, '', url);
+      });
+    }
+  });
+</script>

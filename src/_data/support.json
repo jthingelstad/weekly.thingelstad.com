@@ -1,0 +1,20 @@
+{
+  "current": {
+    "nonprofit": "Electronic Frontier Foundation",
+    "short_name": "EFF",
+    "url": "https://www.eff.org",
+    "description": "The Electronic Frontier Foundation is the leading nonprofit organization defending civil liberties in the digital world. Founded in 1990, EFF champions user privacy, free expression, and innovation through impact litigation, policy analysis, grassroots activism, and technology development.",
+    "logo": "/img/eff-logo.png",
+    "year": 2025,
+    "stripe_donate_url": ""
+  },
+  "past": [
+    {
+      "nonprofit": "Creative Commons",
+      "short_name": "CC",
+      "url": "https://creativecommons.org",
+      "year": 2024,
+      "amount_raised": null
+    }
+  ]
+}

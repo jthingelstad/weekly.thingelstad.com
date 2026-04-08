@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build output
+_site/
+
+# Local cache
+cache/
+
+# Environment variables
+.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+
+# Playwright MCP
+.playwright-mcp/
+
+# Pagefind
+_site/pagefind/

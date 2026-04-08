@@ -1,0 +1,14 @@
+{
+  "title": "The Weekly Thing",
+  "description": "A weekly collection of interesting links, ideas, and observations from across the internet, curated by Jamie Thingelstad.",
+  "url": "https://weekly.thingelstad.com",
+  "author": "Jamie Thingelstad",
+  "authorUrl": "https://www.thingelstad.com",
+  "tinylyticsId": "MVJU_jZJ-3RC6Q14sDky",
+  "buttondownUsername": "weekly-thing",
+  "social": {
+    "mastodon": "",
+    "bluesky": "",
+    "reddit": "https://www.reddit.com/r/weeklything/"
+  }
+}
