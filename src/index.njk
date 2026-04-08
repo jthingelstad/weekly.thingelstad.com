@@ -8,38 +8,65 @@ permalink: /
 {% set latest = latestIssues[0] %}
 {% set recentIssues = latestIssues | slice(1, 6) %}
 
-{# Hero #}
+{# ── Hero ── #}
 <section class="hero">
   <div class="container">
+    <p class="hero-eyebrow">A newsletter by Jamie Thingelstad</p>
     <h1 class="hero-title">The Weekly Thing</h1>
-    <p class="hero-tagline">A curated collection of interesting links, ideas, and observations from across the internet.</p>
+    <p class="hero-tagline">Every weekend, one curious person sifts through the internet and sends you the things worth your time. Technology, culture, the indie web, and whatever else refuses to be ignored.</p>
     <div class="hero-subscribe">
       {% set subscribeId = "hero" %}
       {% include "partials/subscribe-form.njk" %}
     </div>
-    <p class="hero-proof">Published weekly for {{ (stats.subscriber_count / 100) | round * 100 }}+ readers since 2017</p>
+    <p class="hero-proof">Free, every weekend. {{ archiveStats.totalIssues }} issues and counting since 2017.</p>
   </div>
 </section>
 
-{# About the Author #}
-<section class="section about-author">
+{# ── The Vibe: scrolling subject lines ── #}
+<section class="section subject-ticker">
   <div class="container">
-    <div class="about-grid">
-      <img src="/img/jamie-thingelstad.jpg" alt="Jamie Thingelstad" class="about-photo" loading="lazy" width="200" height="200">
-      <div class="about-text">
-        <h2>Curated by Jamie Thingelstad</h2>
-        <p>Jamie Thingelstad is an experienced technology executive serving as Senior Vice President and Chief Technology Officer of SPS Commerce. He lives in Minneapolis, Minnesota with his wife, two children, and their dog.</p>
-        <p><a href="/about/">More about Jamie &rarr;</a></p>
+    <p class="ticker-intro">Recent issues have covered:</p>
+    <div class="ticker-list" aria-label="Recent issue topics">
+      {%- for issue in latestIssues | slice(0, 18) %}
+      <a href="/archive/{{ issue.data.number }}/" class="ticker-item">{{ issue.data.subject | replace("Weekly Thing " + issue.data.number + " / ", "") | replace("Weekly Thing #" + issue.data.number + " / ", "") }}</a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{# ── What this actually is ── #}
+<section class="section value-prop">
+  <div class="container">
+    <div class="value-grid">
+      <div class="value-main">
+        <h2>Not an algorithm. Not a feed.<br>Just one person paying attention.</h2>
+        <p>Every week, Jamie reads widely and deeply across the internet — from Ars Technica to personal blogs you've never heard of, from the New York Times to someone's weekend project on GitHub. The result is a newsletter that connects dots nobody else is connecting.</p>
+        <p>Each link comes with context: why it matters, what's interesting about it, and how it fits into the bigger picture. It's commentary, not just aggregation.</p>
+        <p>And you can read it knowing your privacy is preserved. No tracking pixels, no click tracking, no data harvesting. Just words in your inbox.</p>
+      </div>
+      <div class="value-stats">
+        <div class="value-stat">
+          <span class="value-stat-number">{{ archiveStats.totalLinks | numberFormat }}</span>
+          <span class="value-stat-label">links shared across {{ archiveStats.totalIssues }} issues</span>
+        </div>
+        <div class="value-stat">
+          <span class="value-stat-number">{{ archiveStats.uniqueDomainsTotal | numberFormat }}</span>
+          <span class="value-stat-label">unique sources — 77% appear only once</span>
+        </div>
+        <div class="value-stat">
+          <span class="value-stat-number">{{ archiveStats.yearsActive }}</span>
+          <span class="value-stat-label">years running, every weekend since May 2017</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-{# Latest Issue #}
+{# ── Latest Issue ── #}
 {% if latest %}
 <section class="section latest-issue">
   <div class="container">
-    <h2 class="section-title">Latest Issue</h2>
+    <h2 class="section-title">This Week</h2>
     <article class="latest-issue-card">
       <div class="latest-issue-meta">
         <span class="issue-number">#{{ latest.data.number }}</span>
@@ -53,54 +80,70 @@ permalink: /
       {% endif %}
       {% set toc = latest.content | extractToc %}
       {% if toc.length > 0 %}
-      <details class="latest-issue-toc">
-        <summary>In this issue ({{ toc.length }} sections)</summary>
+      <div class="latest-issue-toc-inline">
         <ol>
-          {% for heading in toc %}
+          {% for heading in toc | slice(0, 8) %}
           <li>{{ heading.text }}</li>
           {% endfor %}
+          {% if toc.length > 8 %}
+          <li class="toc-more">+ {{ toc.length - 8 }} more sections</li>
+          {% endif %}
         </ol>
-      </details>
+      </div>
       {% endif %}
       {% if latest.data.domains.length > 0 %}
       <div class="latest-issue-domains">
-        <span class="domains-label">Links to:</span>
-        {% for domain in latest.data.domains | slice(0, 10) %}
+        {% for domain in latest.data.domains | slice(0, 12) %}
         <span class="domain-tag">{{ domain }}</span>
         {% endfor %}
-        {% if latest.data.domains.length > 10 %}
-        <span class="domain-tag domain-more">+{{ latest.data.domains.length - 10 }} more</span>
+        {% if latest.data.domains.length > 12 %}
+        <span class="domain-tag domain-more">+{{ latest.data.domains.length - 12 }} more</span>
         {% endif %}
       </div>
       {% endif %}
-      <a href="/archive/{{ latest.data.number }}/" class="latest-issue-cta">Read this issue &rarr;</a>
+      <a href="/archive/{{ latest.data.number }}/" class="btn btn-primary">Read this issue &rarr;</a>
     </article>
   </div>
 </section>
 {% endif %}
 
-{# What to Expect #}
-<section class="section what-to-expect">
+{# ── Who writes this ── #}
+<section class="section about-author">
   <div class="container">
-    <h2 class="section-title">What to Expect</h2>
-    <div class="expect-grid">
-      <div class="expect-item">
-        <h3>Curated Links</h3>
-        <p>Each issue features interesting articles, tools, and resources from across the web &mdash; tech, culture, the indie web, and unexpected finds.</p>
-      </div>
-      <div class="expect-item">
-        <h3>Commentary</h3>
-        <p>Not just links &mdash; each one comes with context and perspective on why it matters.</p>
-      </div>
-      <div class="expect-item">
-        <h3>Weekly Delivery</h3>
-        <p>Arrives on weekends. Always free, no spam. Unsubscribe anytime.</p>
+    <div class="about-grid">
+      <img src="/img/jamie-thingelstad.jpg" alt="Jamie Thingelstad" class="about-photo" loading="lazy" width="200" height="200">
+      <div class="about-text">
+        <h2>Who's behind this?</h2>
+        <p>Jamie Thingelstad is CTO of <a href="https://www.spscommerce.com">SPS Commerce</a> by day, but The Weekly Thing isn't about his day job. It's the output of a restless curiosity that ranges from AI and the indie web to escape rooms, vinyl records, and whatever Wikipedia rabbit hole he fell into this week.</p>
+        <p>A single issue might cover agentic engineering, a cheeseburger review, an Ethereum deep dive, and photos from a family trip to Duluth. That range is the point — and it's what keeps readers coming back.</p>
+        <p><a href="/about/">More about Jamie &rarr;</a></p>
       </div>
     </div>
   </div>
 </section>
 
-{# Reader Quotes #}
+{# ── Voice: actual quotes from the newsletter ── #}
+<section class="section voice-section">
+  <div class="container">
+    <h2 class="section-title">How It Sounds</h2>
+    <div class="voice-grid">
+      <blockquote class="voice-card">
+        <p>"At our cabin we have a record player and more often than makes sense I think to myself when playing a record how novel it is that no company, no algorithm, no system knows that we are listening to the Foo Fighters right now. It fills me with joy actually."</p>
+        <footer><a href="/archive/320/">#320 &mdash; Octopus, Agentic, Voyager</a></footer>
+      </blockquote>
+      <blockquote class="voice-card">
+        <p>"Number one life hack? Ditch social media entirely; learn how to use an RSS reader."</p>
+        <footer><a href="/archive/343/">#343 &mdash; Commune, Chaos, Renaissance</a></footer>
+      </blockquote>
+      <blockquote class="voice-card">
+        <p>"We have entered a time where the cost of content creation will trend to zero. I believe that the provenance and identity of content creation will be increasingly important."</p>
+        <footer><a href="/archive/250/">#250 &mdash; LLM, Shanghai, Wing</a></footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+{# ── Reader quotes (if populated) ── #}
 {% if quotes.length > 0 %}
 <section class="section reader-quotes">
   <div class="container">
@@ -117,7 +160,7 @@ permalink: /
 </section>
 {% endif %}
 
-{# Recent Issues #}
+{# ── Recent Issues ── #}
 {% if recentIssues.length > 0 %}
 <section class="section recent-issues">
   <div class="container">
@@ -132,11 +175,25 @@ permalink: /
 </section>
 {% endif %}
 
-{# Supporting Membership #}
+{# ── Top domains — show breadth ── #}
+<section class="section sources-section">
+  <div class="container">
+    <h2 class="section-title">Where the Links Come From</h2>
+    <p class="sources-intro">{{ archiveStats.uniqueDomainsTotal | numberFormat }} unique domains and counting. Here are some of the most frequent sources:</p>
+    <div class="sources-grid">
+      {%- for d in archiveStats.topDomains | slice(0, 18) %}
+      <span class="source-tag">{{ d.domain }}<sup>{{ d.count }}</sup></span>
+      {%- endfor %}
+    </div>
+    <p class="section-cta"><a href="/stats/">See all the stats &rarr;</a></p>
+  </div>
+</section>
+
+{# ── Supporting Membership ── #}
 <section class="section supporting-section">
   <div class="container">
     <h2 class="section-title">Supporting Membership</h2>
-    <p>The Weekly Thing is free for everyone. Supporting Members contribute to a nonprofit selected each year &mdash; 100% of membership fees are donated.</p>
+    <p>The Weekly Thing is free for everyone, always. Supporting Members contribute to a nonprofit selected each year — <strong>100% of fees are donated</strong>.</p>
     {% if support.current %}
     <p>This year, we're supporting <strong><a href="{{ support.current.url }}">{{ support.current.nonprofit }}</a></strong>.
     {% if stats.amount_raised > 0 %} ${{ stats.amount_raised | round }} raised so far.{% endif %}
@@ -147,11 +204,11 @@ permalink: /
   </div>
 </section>
 
-{# Footer CTA #}
+{# ── Final CTA ── #}
 <section class="section footer-cta">
   <div class="container">
-    <h2>Join The Weekly Thing</h2>
-    <p>Get a curated collection of interesting links delivered to your inbox every week.</p>
+    <h2>Start reading this weekend</h2>
+    <p>Join {{ (stats.subscriber_count / 100) | round * 100 }}+ readers who get The Weekly Thing every weekend. No spam, no tracking, unsubscribe anytime.</p>
     {% set subscribeId = "footer" %}
     {% include "partials/subscribe-form.njk" %}
   </div>
