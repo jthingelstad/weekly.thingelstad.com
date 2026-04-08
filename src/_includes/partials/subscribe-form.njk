@@ -4,15 +4,51 @@
   class="subscribe-form"
 >
   <label for="email-{{ subscribeId or 'default' }}" class="sr-only">Email address</label>
-  <input
-    type="email"
-    name="email"
-    id="email-{{ subscribeId or 'default' }}"
-    placeholder="you@example.com"
-    aria-label="Email address"
-    required
-    class="subscribe-input"
-  />
+  <div class="subscribe-field">
+    <input
+      type="email"
+      name="email"
+      id="email-{{ subscribeId or 'default' }}"
+      placeholder="you@example.com"
+      aria-label="Email address"
+      required
+      class="subscribe-input"
+    />
+    <span class="subscribe-error" aria-live="polite"></span>
+  </div>
   <input type="hidden" value="1" name="embed" />
   <button type="submit" class="subscribe-button">Subscribe</button>
 </form>
+<script>
+(function() {
+  var form = document.currentScript.previousElementSibling;
+  var input = form.querySelector('.subscribe-input');
+  var error = form.querySelector('.subscribe-error');
+  var btn = form.querySelector('.subscribe-button');
+  var emailRe = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+
+  function validate() {
+    var val = input.value.trim();
+    if (!val) {
+      error.textContent = '';
+      btn.disabled = false;
+      return;
+    }
+    if (emailRe.test(val)) {
+      error.textContent = '';
+      input.classList.remove('invalid');
+      btn.disabled = false;
+    } else {
+      error.textContent = 'Please enter a valid email address';
+      input.classList.add('invalid');
+      btn.disabled = true;
+    }
+  }
+
+  input.addEventListener('input', validate);
+  form.addEventListener('submit', function(e) {
+    validate();
+    if (btn.disabled) e.preventDefault();
+  });
+})();
+</script>

@@ -1,12 +1,13 @@
 ---
 layout: layouts/base.njk
 pageTitle: Search
-description: Search the full archive of The Weekly Thing newsletter.
+description: Search the full archive of the Weekly Thing newsletter.
 permalink: /search/
 ---
 <section class="search-page">
   <div class="container">
     <h1>Search the Archive</h1>
+    <p class="search-browse"><a href="/search/?q=weekly" id="search-all">Browse all issues</a></p>
     <div id="search"></div>
   </div>
 </section>
@@ -21,12 +22,38 @@ permalink: /search/
       showImages: false,
     });
 
+    // Auto-open year filter and reverse sort (newest first)
+    new MutationObserver((_, obs) => {
+      const yearGroup = document.querySelector('.pagefind-ui__filter-group');
+      if (!yearGroup) return;
+      // Open the filter panel
+      const details = yearGroup.closest('details') || yearGroup.querySelector('details');
+      if (details) details.open = true;
+      // Reverse year order
+      const panel = yearGroup.querySelector('.pagefind-ui__filter-panel');
+      if (!panel || panel.dataset.reversed) return;
+      const items = Array.from(panel.children);
+      if (items.length > 1) {
+        items.reverse().forEach(el => panel.appendChild(el));
+        panel.dataset.reversed = 'true';
+      }
+    }).observe(document.getElementById('search'), { childList: true, subtree: true });
+
     // Sync search query with URL
     const params = new URLSearchParams(window.location.search);
     const q = params.get('q');
     if (q) {
       pf.triggerSearch(q);
     }
+
+    // "Browse all" link triggers a search for all issues
+    document.getElementById('search-all').addEventListener('click', (e) => {
+      e.preventDefault();
+      pf.triggerSearch('weekly');
+      const url = new URL(window.location);
+      url.searchParams.set('q', 'weekly');
+      history.replaceState(null, '', url);
+    });
 
     // Update URL on search
     const input = document.querySelector('#search input[type="text"]');

@@ -9,7 +9,7 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Links from {{ issue.data.subject | xmlEscape }}</title>
-  <subtitle>Links featured in issue #{{ issue.data.number }} of The Weekly Thing</subtitle>
+  <subtitle>Links featured in issue #{{ issue.data.number }} of the Weekly Thing</subtitle>
   <link href="{{ site.url }}/archive/{{ issue.data.number }}/links.xml" rel="self" type="application/atom+xml"/>
   <link href="{{ site.url }}/archive/{{ issue.data.number }}/" rel="alternate" type="text/html"/>
   <id>{{ site.url }}/archive/{{ issue.data.number }}/links/</id>

@@ -55,6 +55,10 @@ ogType: article
         </ul>
       </div>
       {% endif %}
+
+      <div class="issue-kudos">
+        <button class="tinylytics_kudos" data-path="/archive/{{ number }}/">Like this issue</button>
+      </div>
     </aside>
     {% endif %}
 
@@ -64,10 +68,6 @@ ogType: article
   </div>
 
   <footer class="issue-footer">
-    <div class="issue-kudos">
-      <button class="tinylytics_kudos" data-path="/archive/{{ number }}/">Like this issue</button>
-    </div>
-
     <nav class="issue-nav" aria-label="Issue navigation">
       {% if prevIssue %}
       <a href="/archive/{{ prevIssue.data.number }}/" class="issue-nav-link issue-nav-prev">

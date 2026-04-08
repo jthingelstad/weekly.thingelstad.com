@@ -3,6 +3,8 @@ name: Build and Deploy
 on:
   push:
     branches: [main]
+  repository_dispatch:
+    types: [new_issue]
   workflow_dispatch:
   schedule:
     - cron: '0 6 * * 0'  # Every Sunday at 6am UTC (midnight CST)
@@ -36,11 +38,23 @@ jobs:
 
       - run: npm ci
 
-      - name: Run data pipeline
-        run: python scripts/build_data.py
+      # Full rebuild: workflow_dispatch (manual) and schedule (weekly cron)
+      - name: Full data rebuild
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+        run: python scripts/build_data.py --no-cache
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
           STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
+
+      # New issue: repository_dispatch from Buttondown webhook
+      - name: Fetch latest issue
+        if: github.event_name == 'repository_dispatch'
+        run: python scripts/fetch_latest.py
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
+
+      # push: no data pipeline, build from committed files
 
       - name: Build site
         run: npx @11ty/eleventy
@@ -49,6 +63,7 @@ jobs:
         run: npx pagefind --site _site --glob "**/*.html"
 
       - name: Commit new issues
+        if: github.event_name != 'push'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
