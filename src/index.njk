@@ -47,15 +47,15 @@ permalink: /
       <div class="value-stats">
         <div class="value-stat">
           <span class="value-stat-number">{{ archiveStats.totalLinks | numberFormat }}</span>
-          <span class="value-stat-label">links shared across {{ archiveStats.totalIssues }} issues</span>
+          <span class="value-stat-label">curated links across {{ archiveStats.totalIssues }} issues</span>
+        </div>
+        <div class="value-stat">
+          <span class="value-stat-number">{{ archiveStats.totalWords | numberFormat }}</span>
+          <span class="value-stat-label">words of commentary and context</span>
         </div>
         <div class="value-stat">
           <span class="value-stat-number">{{ archiveStats.uniqueDomainsTotal | numberFormat }}</span>
-          <span class="value-stat-label">unique sources — 77% appear only once</span>
-        </div>
-        <div class="value-stat">
-          <span class="value-stat-number">{{ archiveStats.yearsActive }}</span>
-          <span class="value-stat-label">years running, every weekend since May 2017</span>
+          <span class="value-stat-label">unique sources linked</span>
         </div>
       </div>
     </div>

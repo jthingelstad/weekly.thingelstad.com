@@ -1,18 +1,19 @@
 // Compute stats from emails.json for the /stats/ page.
+// Link/domain analysis uses only curated links (Notable + Briefly sections).
 const emails = require("./emails.json");
 
 module.exports = (() => {
-  const now = new Date();
   const years = {};
   const domainCounts = {};
   let totalLinks = 0;
-  let totalDomains = 0;
+  let totalNotable = 0;
+  let totalBriefly = 0;
+  let totalWords = 0;
   let longestStreak = 0;
   let currentStreak = 0;
   let maxLinksIssue = { count: 0 };
   let maxDomainsIssue = { count: 0 };
-  let shortestSubject = { length: Infinity };
-  let longestSubject = { length: 0 };
+  let maxWordsIssue = { count: 0 };
 
   // Sort by number ascending for streak calculation
   const sorted = [...emails]
@@ -32,7 +33,6 @@ module.exports = (() => {
     if (prevDate) {
       const gap = (d - prevDate) / (1000 * 60 * 60 * 24);
       if (gap <= 10) {
-        // Roughly weekly (allowing some slack)
         currentStreak++;
       } else {
         longestStreak = Math.max(longestStreak, currentStreak);
@@ -51,15 +51,33 @@ module.exports = (() => {
     if (!yr) continue;
 
     if (!years[yr]) {
-      years[yr] = { issues: 0, links: 0, domains: new Set(), uniqueDomains: 0 };
+      years[yr] = {
+        issues: 0,
+        notable: 0,
+        briefly: 0,
+        links: 0,
+        words: 0,
+        domains: new Set(),
+      };
     }
     years[yr].issues++;
 
-    const linkCount = (email.links || []).length;
+    const notableCount = (email.notable_links || []).length;
+    const brieflyCount = (email.briefly_links || []).length;
+    const linkCount = notableCount + brieflyCount;
     const domainCount = (email.domains || []).length;
-    totalLinks += linkCount;
+    const wordCount = email.word_count || 0;
 
+    totalLinks += linkCount;
+    totalNotable += notableCount;
+    totalBriefly += brieflyCount;
+    totalWords += wordCount;
+
+    years[yr].notable += notableCount;
+    years[yr].briefly += brieflyCount;
     years[yr].links += linkCount;
+    years[yr].words += wordCount;
+
     for (const d of email.domains || []) {
       years[yr].domains.add(d);
       domainCounts[d] = (domainCounts[d] || 0) + 1;
@@ -79,18 +97,9 @@ module.exports = (() => {
         subject: email.subject,
       };
     }
-
-    const subjLen = (email.subject || "").length;
-    if (subjLen < shortestSubject.length && subjLen > 0) {
-      shortestSubject = {
-        length: subjLen,
-        number: email.number,
-        subject: email.subject,
-      };
-    }
-    if (subjLen > longestSubject.length) {
-      longestSubject = {
-        length: subjLen,
+    if (wordCount > maxWordsIssue.count) {
+      maxWordsIssue = {
+        count: wordCount,
         number: email.number,
         subject: email.subject,
       };
@@ -102,14 +111,15 @@ module.exports = (() => {
     .map(([year, data]) => ({
       year: parseInt(year),
       issues: data.issues,
+      notable: data.notable,
+      briefly: data.briefly,
       links: data.links,
+      words: data.words,
       uniqueDomains: data.domains.size,
-      avgLinksPerIssue:
-        data.issues > 0 ? Math.round(data.links / data.issues) : 0,
     }))
     .sort((a, b) => a.year - b.year);
 
-  // Top domains
+  // Top domains (from curated links only)
   const topDomains = Object.entries(domainCounts)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 30)
@@ -118,21 +128,11 @@ module.exports = (() => {
   // Unique domains total
   const uniqueDomainsTotal = Object.keys(domainCounts).length;
 
-  // Day of week distribution
-  const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const dayOfWeek = [0, 0, 0, 0, 0, 0, 0];
-  for (const email of sorted) {
-    const d = new Date(email.publish_date);
-    dayOfWeek[d.getUTCDay()]++;
-  }
-  const publishDays = dayNames.map((name, i) => ({
-    day: name,
-    count: dayOfWeek[i],
-    pct: Math.round((dayOfWeek[i] / sorted.length) * 100),
-  }));
-
   // Month distribution
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const monthNames = [
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+  ];
   const monthCounts = new Array(12).fill(0);
   for (const email of sorted) {
     const d = new Date(email.publish_date);
@@ -146,8 +146,7 @@ module.exports = (() => {
   // Years active
   const yearsActive = latestYear - firstYear + 1;
 
-  // Words estimate (rough — count words in all subjects as proxy)
-  // Actually let's count issues per month on average
+  // Issues per month average
   const totalMonths =
     (new Date(latestDate) - new Date(firstDate)) / (1000 * 60 * 60 * 24 * 30.44);
   const issuesPerMonth =
@@ -157,23 +156,22 @@ module.exports = (() => {
     totalIssues: emails.length,
     regularIssues: sorted.length,
     totalLinks,
+    totalNotable,
+    totalBriefly,
+    totalWords,
     uniqueDomainsTotal,
     yearsActive,
     firstDate,
     latestDate,
     longestStreak,
     issuesPerMonth: parseFloat(issuesPerMonth),
-    avgLinksPerIssue:
-      sorted.length > 0 ? Math.round(totalLinks / sorted.length) : 0,
     yearlyStats,
     topDomains,
-    publishDays,
     publishMonths,
     records: {
       maxLinks: maxLinksIssue,
       maxDomains: maxDomainsIssue,
-      shortestSubject,
-      longestSubject,
+      maxWords: maxWordsIssue,
     },
   };
 })();
