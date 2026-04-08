@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+pageTitle: Archive
+description: Browse all issues of The Weekly Thing newsletter.
+permalink: /archive/
+---
+<section class="archive-page">
+  <div class="container">
+    <header class="archive-header">
+      <h1>Archive</h1>
+      <p>{{ collections.issuesByNumber.length }} issues published since 2017.</p>
+      <div id="search" class="archive-search">
+        <a href="/search/">Search the archive &rarr;</a>
+      </div>
+    </header>
+
+    {% set grouped = collections.issuesByDate | groupByYear %}
+    {% for group in grouped %}
+    <section class="archive-year">
+      <h2 class="archive-year-heading" id="year-{{ group.year }}">{{ group.year }}</h2>
+      <div class="archive-list">
+        {% for issue in group.issues %}
+        <article class="archive-entry">
+          <a href="/archive/{{ issue.data.number }}/" class="archive-entry-link">
+            <span class="archive-entry-number">#{{ issue.data.number }}</span>
+            <span class="archive-entry-title">{{ issue.data.subject }}</span>
+            <time class="archive-entry-date" datetime="{{ issue.data.publish_date | dateFormat('iso') }}">{{ issue.data.publish_date | dateShort }}</time>
+          </a>
+          {% if issue.data.description %}
+          <p class="archive-entry-description">{{ issue.data.description | truncate(120) }}</p>
+          {% endif %}
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  </div>
+</section>

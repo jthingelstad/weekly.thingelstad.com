@@ -1,0 +1,10 @@
+<article class="issue-card">
+  <a href="/archive/{{ issue.data.number }}/" class="issue-card-link">
+    <span class="issue-card-number">#{{ issue.data.number }}</span>
+    <h3 class="issue-card-title">{{ issue.data.subject }}</h3>
+    <time class="issue-card-date" datetime="{{ issue.data.publish_date | dateFormat('iso') }}">{{ issue.data.publish_date | dateShort }}</time>
+    {% if issue.data.description %}
+    <p class="issue-card-description">{{ issue.data.description | truncate(150) }}</p>
+    {% endif %}
+  </a>
+</article>

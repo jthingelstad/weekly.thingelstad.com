@@ -1,0 +1,20 @@
+---
+pagination:
+  data: redirects
+  size: 1
+  alias: email
+permalink: /archive/{{ email.slug }}/
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="0; url=/archive/{{ email.number }}/">
+  <link rel="canonical" href="{{ site.url }}/archive/{{ email.number }}/">
+  <title>Redirecting to Issue #{{ email.number }}</title>
+</head>
+<body>
+  <p>Redirecting to <a href="/archive/{{ email.number }}/">Issue #{{ email.number }}</a>...</p>
+</body>
+</html>

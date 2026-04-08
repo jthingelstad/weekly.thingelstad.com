@@ -1,0 +1,18 @@
+<form
+  action="https://buttondown.com/api/emails/embed-subscribe/{{ site.buttondownUsername }}"
+  method="post"
+  class="subscribe-form"
+>
+  <label for="email-{{ subscribeId or 'default' }}" class="sr-only">Email address</label>
+  <input
+    type="email"
+    name="email"
+    id="email-{{ subscribeId or 'default' }}"
+    placeholder="you@example.com"
+    aria-label="Email address"
+    required
+    class="subscribe-input"
+  />
+  <input type="hidden" value="1" name="embed" />
+  <button type="submit" class="subscribe-button">Subscribe</button>
+</form>

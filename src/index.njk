@@ -1,0 +1,158 @@
+---
+layout: layouts/base.njk
+title: The Weekly Thing
+description: A weekly collection of interesting links, ideas, and observations from across the internet, curated by Jamie Thingelstad.
+permalink: /
+---
+{% set latestIssues = collections.issuesByDate %}
+{% set latest = latestIssues[0] %}
+{% set recentIssues = latestIssues | slice(1, 6) %}
+
+{# Hero #}
+<section class="hero">
+  <div class="container">
+    <h1 class="hero-title">The Weekly Thing</h1>
+    <p class="hero-tagline">A curated collection of interesting links, ideas, and observations from across the internet.</p>
+    <div class="hero-subscribe">
+      {% set subscribeId = "hero" %}
+      {% include "partials/subscribe-form.njk" %}
+    </div>
+    <p class="hero-proof">Published weekly for {{ (stats.subscriber_count / 100) | round * 100 }}+ readers since 2017</p>
+  </div>
+</section>
+
+{# About the Author #}
+<section class="section about-author">
+  <div class="container">
+    <div class="about-grid">
+      <img src="/img/jamie-thingelstad.jpg" alt="Jamie Thingelstad" class="about-photo" loading="lazy" width="200" height="200">
+      <div class="about-text">
+        <h2>Curated by Jamie Thingelstad</h2>
+        <p>Jamie Thingelstad is an experienced technology executive serving as Senior Vice President and Chief Technology Officer of SPS Commerce. He lives in Minneapolis, Minnesota with his wife, two children, and their dog.</p>
+        <p><a href="/about/">More about Jamie &rarr;</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# Latest Issue #}
+{% if latest %}
+<section class="section latest-issue">
+  <div class="container">
+    <h2 class="section-title">Latest Issue</h2>
+    <article class="latest-issue-card">
+      <div class="latest-issue-meta">
+        <span class="issue-number">#{{ latest.data.number }}</span>
+        <time datetime="{{ latest.data.publish_date | dateFormat('iso') }}">{{ latest.data.publish_date | dateFormat }}</time>
+      </div>
+      <h3 class="latest-issue-title">
+        <a href="/archive/{{ latest.data.number }}/">{{ latest.data.subject }}</a>
+      </h3>
+      {% if latest.data.description %}
+      <p class="latest-issue-description">{{ latest.data.description }}</p>
+      {% endif %}
+      {% set toc = latest.content | extractToc %}
+      {% if toc.length > 0 %}
+      <details class="latest-issue-toc">
+        <summary>In this issue ({{ toc.length }} sections)</summary>
+        <ol>
+          {% for heading in toc %}
+          <li>{{ heading.text }}</li>
+          {% endfor %}
+        </ol>
+      </details>
+      {% endif %}
+      {% if latest.data.domains.length > 0 %}
+      <div class="latest-issue-domains">
+        <span class="domains-label">Links to:</span>
+        {% for domain in latest.data.domains | slice(0, 10) %}
+        <span class="domain-tag">{{ domain }}</span>
+        {% endfor %}
+        {% if latest.data.domains.length > 10 %}
+        <span class="domain-tag domain-more">+{{ latest.data.domains.length - 10 }} more</span>
+        {% endif %}
+      </div>
+      {% endif %}
+      <a href="/archive/{{ latest.data.number }}/" class="latest-issue-cta">Read this issue &rarr;</a>
+    </article>
+  </div>
+</section>
+{% endif %}
+
+{# What to Expect #}
+<section class="section what-to-expect">
+  <div class="container">
+    <h2 class="section-title">What to Expect</h2>
+    <div class="expect-grid">
+      <div class="expect-item">
+        <h3>Curated Links</h3>
+        <p>Each issue features interesting articles, tools, and resources from across the web &mdash; tech, culture, the indie web, and unexpected finds.</p>
+      </div>
+      <div class="expect-item">
+        <h3>Commentary</h3>
+        <p>Not just links &mdash; each one comes with context and perspective on why it matters.</p>
+      </div>
+      <div class="expect-item">
+        <h3>Weekly Delivery</h3>
+        <p>Arrives on weekends. Always free, no spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# Reader Quotes #}
+{% if quotes.length > 0 %}
+<section class="section reader-quotes">
+  <div class="container">
+    <h2 class="section-title">What Readers Say</h2>
+    <div class="quotes-grid">
+      {% for quote in quotes %}
+      <blockquote class="quote-card">
+        <p>{{ quote.text }}</p>
+        <footer>&mdash; {{ quote.author }}</footer>
+      </blockquote>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# Recent Issues #}
+{% if recentIssues.length > 0 %}
+<section class="section recent-issues">
+  <div class="container">
+    <h2 class="section-title">Recent Issues</h2>
+    <div class="issues-grid">
+      {% for issue in recentIssues %}
+        {% include "partials/issue-card.njk" %}
+      {% endfor %}
+    </div>
+    <p class="section-cta"><a href="/archive/">Browse the full archive ({{ collections.issuesByNumber.length }} issues) &rarr;</a></p>
+  </div>
+</section>
+{% endif %}
+
+{# Supporting Membership #}
+<section class="section supporting-section">
+  <div class="container">
+    <h2 class="section-title">Supporting Membership</h2>
+    <p>The Weekly Thing is free for everyone. Supporting Members contribute to a nonprofit selected each year &mdash; 100% of membership fees are donated.</p>
+    {% if support.current %}
+    <p>This year, we're supporting <strong><a href="{{ support.current.url }}">{{ support.current.nonprofit }}</a></strong>.
+    {% if stats.amount_raised > 0 %} ${{ stats.amount_raised | round }} raised so far.{% endif %}
+    {% if stats.premium_subscriber_count > 0 %} {{ stats.premium_subscriber_count }} supporting members.{% endif %}
+    </p>
+    {% endif %}
+    <p><a href="/support/" class="btn btn-secondary">Learn more &rarr;</a></p>
+  </div>
+</section>
+
+{# Footer CTA #}
+<section class="section footer-cta">
+  <div class="container">
+    <h2>Join The Weekly Thing</h2>
+    <p>Get a curated collection of interesting links delivered to your inbox every week.</p>
+    {% set subscribeId = "footer" %}
+    {% include "partials/subscribe-form.njk" %}
+  </div>
+</section>
