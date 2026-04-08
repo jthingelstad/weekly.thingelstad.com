@@ -1,0 +1,42 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ site.url }}/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>{{ site.url }}/archive/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>{{ site.url }}/about/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>{{ site.url }}/support/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>{{ site.url }}/search/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>{{ site.url }}/stats/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>{{ site.url }}/faq/</loc>
+    <priority>0.5</priority>
+  </url>
+  {% for issue in collections.issuesByDate %}
+  <url>
+    <loc>{{ site.url }}/archive/{{ issue.data.number }}/</loc>
+    <lastmod>{{ issue.data.publish_date | dateFormat('iso') }}</lastmod>
+    <priority>0.7</priority>
+  </url>
+  {% endfor %}
+</urlset>
