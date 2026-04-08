@@ -56,22 +56,88 @@ def _add_link(links, text, url, heading_context, section):
         )
 
 
-def _extract_links_from_text(text, section_name):
-    """Extract links from a block of markdown/HTML text.
+def _extract_notable_links(text, section_name):
+    """Extract only the primary curated links from Notable-style sections.
 
-    Returns list of link dicts.
+    In Notable, each curated link is an H3 heading: ### [Title](url)
+    Only these heading links are editorial picks. Inline links in the
+    commentary below each heading are incidental references, not curated content.
     """
+    links = []
+    seen_urls = set()
+
+    for line in text.split("\n"):
+        # Only extract links from H3 headings (the editorial picks)
+        heading_match = re.match(r"^###\s+(.+)", line)
+        if not heading_match:
+            continue
+
+        heading_text = heading_match.group(1).strip()
+        # Extract the first markdown link from the heading
+        link_match = re.search(r"\[([^\]]*)\]\(([^)]+)\)", heading_text)
+        if link_match:
+            link_text = link_match.group(1).strip()
+            url = link_match.group(2).strip()
+            if url not in seen_urls:
+                seen_urls.add(url)
+                _add_link(links, link_text, url, heading_text, section_name)
+
+    return links
+
+
+def _extract_briefly_links(text, section_name):
+    """Extract only the primary curated link from each Briefly item.
+
+    In Briefly, each item is a paragraph with one bolded link:
+      Commentary text → **[Title](url)**
+    Only the bolded link is the editorial pick.
+    Falls back to extracting the first link per paragraph if no bold links found.
+    """
+    links = []
+    seen_urls = set()
+
+    for line in text.split("\n"):
+        if not line.strip():
+            continue
+
+        # Look for bolded markdown links: **[text](url)**
+        bold_match = re.search(r"\*\*\[([^\]]*)\]\(([^)]+)\)\*\*", line)
+        if bold_match:
+            link_text = bold_match.group(1).strip()
+            url = bold_match.group(2).strip()
+            if url not in seen_urls:
+                seen_urls.add(url)
+                _add_link(links, link_text, url, None, section_name)
+            continue
+
+        # Fallback: H3 heading link (older format)
+        heading_match = re.match(r"^###\s+(.+)", line)
+        if heading_match:
+            link_match = re.search(
+                r"\[([^\]]*)\]\(([^)]+)\)", heading_match.group(1)
+            )
+            if link_match:
+                link_text = link_match.group(1).strip()
+                url = link_match.group(2).strip()
+                if url not in seen_urls:
+                    seen_urls.add(url)
+                    _add_link(links, link_text, url, None, section_name)
+
+    return links
+
+
+def _extract_all_links(text, section_name):
+    """Extract all links from text. Used only for very early issues
+    that have no H2 section structure at all."""
     links = []
     current_heading = None
     seen_urls = set()
 
     for line in text.split("\n"):
-        # Track current heading for context
         heading_match = re.match(r"^#{1,6}\s+(.+)", line)
         if heading_match:
             current_heading = heading_match.group(1).strip()
 
-        # 1. Markdown links: [text](url)
         for match in re.finditer(r"\[([^\]]*)\]\(([^)]+)\)", line):
             link_text = match.group(1).strip()
             url = match.group(2).strip()
@@ -79,7 +145,6 @@ def _extract_links_from_text(text, section_name):
                 seen_urls.add(url)
                 _add_link(links, link_text, url, current_heading, section_name)
 
-        # 2. HTML links: <a href="url">text</a>
         for match in re.finditer(
             r'<a\s+[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',
             line,
@@ -91,26 +156,18 @@ def _extract_links_from_text(text, section_name):
                 seen_urls.add(url)
                 _add_link(links, link_text, url, current_heading, section_name)
 
-        # 3. Bare URLs in parentheses: Title (https://example.com)
-        for match in re.finditer(r"\(\s*(https?://[^\s)]+)\s*\)", line):
-            url = match.group(1).strip()
-            if url not in seen_urls:
-                seen_urls.add(url)
-                _add_link(links, "", url, current_heading, section_name)
-
     return links
 
 
 def extract_links(markdown_body):
     """Extract curated links from Notable and Briefly sections only.
 
+    Notable: only H3 heading links (the editorial picks).
+    Briefly: only bolded links (the primary link per item).
+    Inline/incidental links in commentary are excluded.
+
     For issues that predate the Notable/Briefly format, the equivalent
     sections (Must Read, Featured, Recommended Links, FYI) are included.
-
-    Returns a dict with:
-        - notable: links from Notable/Must Read/Featured sections
-        - briefly: links from Briefly/Recommended Links/FYI sections
-        - all_curated: combined list (notable + briefly)
     """
     sections = _parse_sections(markdown_body)
 
@@ -120,18 +177,18 @@ def extract_links(markdown_body):
     for section_name, section_text in sections:
         if section_name in NOTABLE_SECTIONS:
             notable_links.extend(
-                _extract_links_from_text(section_text, section_name)
+                _extract_notable_links(section_text, section_name)
             )
         elif section_name in BRIEFLY_SECTIONS:
             briefly_links.extend(
-                _extract_links_from_text(section_text, section_name)
+                _extract_briefly_links(section_text, section_name)
             )
 
     # For issues with no H2 sections at all (very early issues),
     # treat the entire body as curated content
     has_h2 = any(name is not None for name, _ in sections)
     if not has_h2:
-        notable_links = _extract_links_from_text(markdown_body, None)
+        notable_links = _extract_all_links(markdown_body, None)
 
     return {
         "notable": notable_links,
