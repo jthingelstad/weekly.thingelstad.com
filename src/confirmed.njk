@@ -1,0 +1,35 @@
+---
+layout: layouts/page.njk
+pageTitle: You're in!
+description: Your subscription to the Weekly Thing is confirmed.
+permalink: /confirmed/
+eleventyExcludeFromCollections: true
+---
+<div class="confirmed-page">
+  <p class="confirmed-lead">Your subscription is confirmed. Welcome to the Weekly Thing!</p>
+
+  <div class="confirmed-step">
+    <h2>What happens next</h2>
+    <p>Your first issue will arrive this weekend, typically Saturday. Each issue is a curated collection of links, commentary, and observations spanning technology, culture, the indie web, and whatever else refuses to be ignored.</p>
+  </div>
+
+  <div class="confirmed-step">
+    <h2>In the meantime</h2>
+    <ul>
+      <li><a href="/archive/">Browse the archive</a> — {{ collections.issuesByNumber.length }}+ issues going back to 2017</li>
+      <li><a href="/search/">Search the archive</a> — find something specific</li>
+      <li><a href="/support/">Become a Supporting Member</a> — 100% of fees go to a nonprofit each year</li>
+    </ul>
+  </div>
+
+  <p class="confirmed-cta">Glad to have you. See you this weekend.</p>
+</div>
+<script>
+if (window.tinylytics && window.tinylytics.goal) {
+  window.tinylytics.goal('confirm');
+} else {
+  window.addEventListener('load', function() {
+    if (window.tinylytics && window.tinylytics.goal) window.tinylytics.goal('confirm');
+  });
+}
+</script>

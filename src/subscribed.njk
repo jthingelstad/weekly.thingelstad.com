@@ -1,0 +1,31 @@
+---
+layout: layouts/page.njk
+pageTitle: You're almost in!
+description: Confirm your subscription to the Weekly Thing newsletter.
+permalink: /subscribed/
+eleventyExcludeFromCollections: true
+---
+<div class="subscribed-page">
+  <p class="subscribed-lead">Thanks for subscribing to the Weekly Thing! There's just one more step.</p>
+
+  <div class="subscribed-step">
+    <h2>Check your inbox</h2>
+    <p>We just sent you a confirmation email. Click the link inside to activate your subscription. If you don't see it in the next few minutes, check your spam or promotions folder.</p>
+  </div>
+
+  <div class="subscribed-step">
+    <h2>What to expect</h2>
+    <p>The Weekly Thing arrives most weekends, typically Saturday. Each issue is a curated collection of links, commentary, and observations — one person's lens on what's interesting across the internet.</p>
+  </div>
+
+  <p class="subscribed-cta">While you wait, <a href="/archive/">browse the archive</a> to see what you're in for.</p>
+</div>
+<script>
+if (window.tinylytics && window.tinylytics.goal) {
+  window.tinylytics.goal('subscribe');
+} else {
+  window.addEventListener('load', function() {
+    if (window.tinylytics && window.tinylytics.goal) window.tinylytics.goal('subscribe');
+  });
+}
+</script>

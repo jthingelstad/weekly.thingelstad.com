@@ -1,12 +1,13 @@
 ---
-permalink: /feed.xml
+permalink: /rss
 eleventyExcludeFromCollections: true
+eleventyAllowMissingExtension: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ site.title }}</title>
   <subtitle>{{ site.description }}</subtitle>
-  <link href="{{ site.url }}/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="{{ site.url }}/rss" rel="self" type="application/atom+xml"/>
   <link href="{{ site.url }}/" rel="alternate" type="text/html"/>
   <id>{{ site.url }}/</id>
   <author>
@@ -16,7 +17,7 @@ eleventyExcludeFromCollections: true
   {% if latestIssue %}
   <updated>{{ latestIssue.data.publish_date | dateFormat('iso') }}</updated>
   {% endif %}
-  {% for issue in collections.issuesByDate %}
+  {% for issue in collections.issuesByDate | slice(0, 5) %}
   <entry>
     <title>{{ issue.data.subject | xmlEscape }}</title>
     <link href="{{ site.url }}/archive/{{ issue.data.number }}/"/>
@@ -26,6 +27,7 @@ eleventyExcludeFromCollections: true
     {% if issue.data.description %}
     <summary type="text">{{ issue.data.description | xmlEscape }}</summary>
     {% endif %}
+    <content type="html">{{ issue.templateContent | xmlEscape }}</content>
   </entry>
   {% endfor %}
 </feed>
