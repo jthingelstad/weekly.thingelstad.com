@@ -5,8 +5,36 @@ from urllib.parse import urlparse
 
 from domain_exclusions import is_excluded
 
+# Sections that contain curated links (the editorial content).
+# Earlier issues used different names for similar sections.
+# "Featured" is merged with Notable per editorial intent.
+NOTABLE_SECTIONS = {"Notable", "Must Read", "Featured"}
+BRIEFLY_SECTIONS = {"Briefly", "Recommended Links", "FYI"}
 
-def _add_link(links, text, url, heading_context):
+
+def _parse_sections(markdown_body):
+    """Split markdown body into named sections based on H2 headings.
+
+    Returns list of (section_name, section_text) tuples.
+    Content before the first H2 is returned with section_name=None.
+    """
+    parts = re.split(r"^(## .+)$", markdown_body, flags=re.MULTILINE)
+    sections = []
+    current_name = None
+
+    for part in parts:
+        h2_match = re.match(r"^## (.+)$", part.strip())
+        if h2_match:
+            raw = h2_match.group(1).strip()
+            # Strip markdown links from heading (e.g., ## [Notable](url) → Notable)
+            current_name = re.sub(r"\[([^\]]*)\]\([^)]+\)", r"\1", raw).strip()
+        else:
+            sections.append((current_name, part))
+
+    return sections
+
+
+def _add_link(links, text, url, heading_context, section):
     """Helper to validate and add a link to the list."""
     if not url or url.startswith("#") or url.startswith("mailto:"):
         return
@@ -23,25 +51,21 @@ def _add_link(links, text, url, heading_context):
                 "url": url,
                 "domain": domain,
                 "heading_context": heading_context,
+                "section": section,
             }
         )
 
 
-def extract_links(markdown_body):
-    """Extract links from markdown content.
+def _extract_links_from_text(text, section_name):
+    """Extract links from a block of markdown/HTML text.
 
-    Handles three link formats found across the archive:
-    - Markdown links: [text](url)
-    - HTML links: <a href="url">text</a>
-    - Bare URLs in parentheses: Title (https://example.com) — used in early TinyLetter-era issues
-
-    Returns list of dicts: {text, url, domain, heading_context}
+    Returns list of link dicts.
     """
     links = []
     current_heading = None
     seen_urls = set()
 
-    for line in markdown_body.split("\n"):
+    for line in text.split("\n"):
         # Track current heading for context
         heading_match = re.match(r"^#{1,6}\s+(.+)", line)
         if heading_match:
@@ -49,28 +73,71 @@ def extract_links(markdown_body):
 
         # 1. Markdown links: [text](url)
         for match in re.finditer(r"\[([^\]]*)\]\(([^)]+)\)", line):
-            text = match.group(1).strip()
+            link_text = match.group(1).strip()
             url = match.group(2).strip()
             if url not in seen_urls:
                 seen_urls.add(url)
-                _add_link(links, text, url, current_heading)
+                _add_link(links, link_text, url, current_heading, section_name)
 
         # 2. HTML links: <a href="url">text</a>
-        for match in re.finditer(r'<a\s+[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>', line, re.IGNORECASE):
+        for match in re.finditer(
+            r'<a\s+[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',
+            line,
+            re.IGNORECASE,
+        ):
             url = match.group(1).strip()
-            text = re.sub(r"<[^>]+>", "", match.group(2)).strip()
+            link_text = re.sub(r"<[^>]+>", "", match.group(2)).strip()
             if url not in seen_urls:
                 seen_urls.add(url)
-                _add_link(links, text, url, current_heading)
+                _add_link(links, link_text, url, current_heading, section_name)
 
         # 3. Bare URLs in parentheses: Title (https://example.com)
         for match in re.finditer(r"\(\s*(https?://[^\s)]+)\s*\)", line):
             url = match.group(1).strip()
             if url not in seen_urls:
                 seen_urls.add(url)
-                _add_link(links, "", url, current_heading)
+                _add_link(links, "", url, current_heading, section_name)
 
     return links
+
+
+def extract_links(markdown_body):
+    """Extract curated links from Notable and Briefly sections only.
+
+    For issues that predate the Notable/Briefly format, the equivalent
+    sections (Must Read, Featured, Recommended Links, FYI) are included.
+
+    Returns a dict with:
+        - notable: links from Notable/Must Read/Featured sections
+        - briefly: links from Briefly/Recommended Links/FYI sections
+        - all_curated: combined list (notable + briefly)
+    """
+    sections = _parse_sections(markdown_body)
+
+    notable_links = []
+    briefly_links = []
+
+    for section_name, section_text in sections:
+        if section_name in NOTABLE_SECTIONS:
+            notable_links.extend(
+                _extract_links_from_text(section_text, section_name)
+            )
+        elif section_name in BRIEFLY_SECTIONS:
+            briefly_links.extend(
+                _extract_links_from_text(section_text, section_name)
+            )
+
+    # For issues with no H2 sections at all (very early issues),
+    # treat the entire body as curated content
+    has_h2 = any(name is not None for name, _ in sections)
+    if not has_h2:
+        notable_links = _extract_links_from_text(markdown_body, None)
+
+    return {
+        "notable": notable_links,
+        "briefly": briefly_links,
+        "all_curated": notable_links + briefly_links,
+    }
 
 
 def extract_domains(links):
@@ -81,6 +148,24 @@ def extract_domains(links):
         if domain and not is_excluded(domain):
             domains.add(domain)
     return sorted(domains)
+
+
+def count_words(markdown_body):
+    """Count words in the markdown body, excluding YAML front matter and HTML tags."""
+    # Strip HTML tags
+    text = re.sub(r"<[^>]+>", " ", markdown_body)
+    # Strip markdown image syntax
+    text = re.sub(r"!\[[^\]]*\]\([^)]+\)", " ", text)
+    # Strip URLs
+    text = re.sub(r"https?://\S+", " ", text)
+    # Strip Buttondown template tags
+    text = re.sub(r"\{\{[^}]*\}\}", " ", text)
+    text = re.sub(r"\{%[^%]*%\}", " ", text)
+    # Strip the editor mode comment
+    text = re.sub(r"<!--.*?-->", " ", text)
+    # Count words
+    words = text.split()
+    return len(words)
 
 
 def extract_subject_number(subject):
@@ -159,8 +244,10 @@ def process(emails):
 
     for number, email in numbered_emails:
         body = email.get("body", "")
-        links = extract_links(body)
-        domains = extract_domains(links)
+        link_data = extract_links(body)
+        all_curated = link_data["all_curated"]
+        domains = extract_domains(all_curated)
+        words = count_words(body)
 
         issue = {
             "id": email.get("id", ""),
@@ -173,7 +260,10 @@ def process(emails):
             "absolute_url": email.get("absolute_url", ""),
             "body": body,
             "domains": domains,
-            "links": links,
+            "links": all_curated,
+            "notable_links": link_data["notable"],
+            "briefly_links": link_data["briefly"],
+            "word_count": words,
         }
         issues.append(issue)
 

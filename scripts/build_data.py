@@ -34,6 +34,9 @@ def write_emails_json(issues):
             "absolute_url": issue["absolute_url"],
             "domains": issue["domains"],
             "links": issue["links"],
+            "notable_links": issue.get("notable_links", []),
+            "briefly_links": issue.get("briefly_links", []),
+            "word_count": issue.get("word_count", 0),
         }
         index.append(entry)
 
@@ -68,6 +71,7 @@ def write_archive_md(issues):
             "absolute_url": issue["absolute_url"],
             "domains": issue["domains"],
             "links": issue["links"],
+            "word_count": issue.get("word_count", 0),
             "permalink": f"/archive/{issue['number']}/",
             "tags": "issue",
         }

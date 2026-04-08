@@ -20,15 +20,15 @@ permalink: /stats/
       </div>
       <div class="stat-card">
         <span class="stat-number">{{ archiveStats.totalLinks | numberFormat }}</span>
-        <span class="stat-label">Links Shared</span>
+        <span class="stat-label">Curated Links</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">{{ archiveStats.totalWords | numberFormat }}</span>
+        <span class="stat-label">Words Written</span>
       </div>
       <div class="stat-card">
         <span class="stat-number">{{ archiveStats.uniqueDomainsTotal | numberFormat }}</span>
         <span class="stat-label">Unique Domains</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">{{ archiveStats.longestStreak }}</span>
-        <span class="stat-label">Longest Weekly Streak</span>
       </div>
     </section>
 
@@ -41,9 +41,10 @@ permalink: /stats/
             <tr>
               <th>Year</th>
               <th class="num">Issues</th>
-              <th class="num">Links</th>
-              <th class="num">Unique Domains</th>
-              <th class="num">Avg Links/Issue</th>
+              <th class="num">Words</th>
+              <th class="num">Notable</th>
+              <th class="num">Briefly</th>
+              <th class="num">Domains</th>
             </tr>
           </thead>
           <tbody>
@@ -51,9 +52,10 @@ permalink: /stats/
             <tr>
               <td><strong>{{ yr.year }}</strong></td>
               <td class="num">{{ yr.issues }}</td>
-              <td class="num">{{ yr.links | numberFormat }}</td>
+              <td class="num">{{ yr.words | numberFormat }}</td>
+              <td class="num">{{ yr.notable | numberFormat }}</td>
+              <td class="num">{{ yr.briefly | numberFormat }}</td>
               <td class="num">{{ yr.uniqueDomains | numberFormat }}</td>
-              <td class="num">{{ yr.avgLinksPerIssue }}</td>
             </tr>
             {%- endfor %}
           </tbody>
@@ -61,41 +63,42 @@ permalink: /stats/
       </div>
     </section>
 
-    {# ── Links per Year bar chart ── #}
+    {# ── Words per Year bar chart ── #}
     <section class="stats-section">
-      <h2>Links per Year</h2>
-      <div class="bar-chart" aria-label="Links shared per year">
-        {%- set maxLinks = 0 -%}
+      <h2>Words per Year</h2>
+      <div class="bar-chart" aria-label="Words written per year">
+        {%- set maxWords = 0 -%}
         {%- for yr in archiveStats.yearlyStats -%}
-          {%- if yr.links > maxLinks -%}{%- set maxLinks = yr.links -%}{%- endif -%}
+          {%- if yr.words > maxWords -%}{%- set maxWords = yr.words -%}{%- endif -%}
         {%- endfor -%}
         {%- for yr in archiveStats.yearlyStats %}
         <div class="bar-row">
           <span class="bar-label">{{ yr.year }}</span>
           <div class="bar-track">
-            <div class="bar-fill" style="width: {{ (yr.links / maxLinks * 100) | round }}%"></div>
+            <div class="bar-fill" style="width: {{ (yr.words / maxWords * 100) | round }}%"></div>
           </div>
-          <span class="bar-value">{{ yr.links | numberFormat }}</span>
+          <span class="bar-value">{{ yr.words | numberFormat }}</span>
         </div>
         {%- endfor %}
       </div>
     </section>
 
-    {# ── Issues per Year bar chart ── #}
+    {# ── Notable Links per Year bar chart ── #}
     <section class="stats-section">
-      <h2>Issues per Year</h2>
-      <div class="bar-chart" aria-label="Issues published per year">
-        {%- set maxIssues = 0 -%}
+      <h2>Notable Links per Year</h2>
+      <p class="stats-note">Links from the Notable section — the deep dives with commentary.</p>
+      <div class="bar-chart" aria-label="Notable links per year">
+        {%- set maxNotable = 0 -%}
         {%- for yr in archiveStats.yearlyStats -%}
-          {%- if yr.issues > maxIssues -%}{%- set maxIssues = yr.issues -%}{%- endif -%}
+          {%- if yr.notable > maxNotable -%}{%- set maxNotable = yr.notable -%}{%- endif -%}
         {%- endfor -%}
         {%- for yr in archiveStats.yearlyStats %}
         <div class="bar-row">
           <span class="bar-label">{{ yr.year }}</span>
           <div class="bar-track">
-            <div class="bar-fill bar-fill-alt" style="width: {{ (yr.issues / maxIssues * 100) | round }}%"></div>
+            <div class="bar-fill bar-fill-alt" style="width: {{ (yr.notable / maxNotable * 100) | round }}%"></div>
           </div>
-          <span class="bar-value">{{ yr.issues }}</span>
+          <span class="bar-value">{{ yr.notable | numberFormat }}</span>
         </div>
         {%- endfor %}
       </div>
@@ -104,7 +107,7 @@ permalink: /stats/
     {# ── Top Domains ── #}
     <section class="stats-section">
       <h2>Most Linked Domains</h2>
-      <p class="stats-note">The sites that show up again and again.</p>
+      <p class="stats-note">The sites that show up again and again in Notable and Briefly.</p>
       <div class="bar-chart" aria-label="Most linked domains">
         {%- set maxDomain = archiveStats.topDomains[0].count -%}
         {%- for d in archiveStats.topDomains | slice(0, 20) %}
@@ -125,7 +128,7 @@ permalink: /stats/
       <div class="records-grid">
         <div class="record-card">
           <span class="record-icon">&#x1F517;</span>
-          <span class="record-title">Most Links in One Issue</span>
+          <span class="record-title">Most Curated Links</span>
           <span class="record-value">{{ archiveStats.records.maxLinks.count }} links</span>
           <a href="/archive/{{ archiveStats.records.maxLinks.number }}/" class="record-issue">#{{ archiveStats.records.maxLinks.number }}</a>
         </div>
@@ -136,16 +139,16 @@ permalink: /stats/
           <a href="/archive/{{ archiveStats.records.maxDomains.number }}/" class="record-issue">#{{ archiveStats.records.maxDomains.number }}</a>
         </div>
         <div class="record-card">
+          <span class="record-icon">&#x1F4DD;</span>
+          <span class="record-title">Longest Issue</span>
+          <span class="record-value">{{ archiveStats.records.maxWords.count | numberFormat }} words</span>
+          <a href="/archive/{{ archiveStats.records.maxWords.number }}/" class="record-issue">#{{ archiveStats.records.maxWords.number }}</a>
+        </div>
+        <div class="record-card">
           <span class="record-icon">&#x1F3C3;</span>
           <span class="record-title">Longest Weekly Streak</span>
           <span class="record-value">{{ archiveStats.longestStreak }} weeks</span>
           <span class="record-issue">consecutive</span>
-        </div>
-        <div class="record-card">
-          <span class="record-icon">&#x1F4C5;</span>
-          <span class="record-title">Average Output</span>
-          <span class="record-value">{{ archiveStats.issuesPerMonth }} issues/month</span>
-          <span class="record-issue">since {{ archiveStats.firstDate | dateFormat }}</span>
         </div>
       </div>
     </section>
@@ -153,7 +156,7 @@ permalink: /stats/
     {# ── Month Distribution ── #}
     <section class="stats-section">
       <h2>Issues by Month</h2>
-      <p class="stats-note">Some months are more productive than others.</p>
+      <p class="stats-note">Summer and winter breaks are visible in July/August and December.</p>
       <div class="month-grid">
         {%- set maxMonth = 0 -%}
         {%- for m in archiveStats.publishMonths -%}

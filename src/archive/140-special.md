@@ -15,26 +15,18 @@ links:
   url: https://buttondown.email/jthingelstad/archive/weekly-thing-140-conversations-leadership-remote/
   domain: buttondown.email
   heading_context: null
+  section: null
 - text: Make a donation to Second Harvest now!
   url: https://www.2harvest.org
   domain: www.2harvest.org
   heading_context: null
-- text: Make a donation now
-  url: https://www.2harvest.org
-  domain: www.2harvest.org
-  heading_context: null
-- text: Another link to donate to Second Harvest now!
-  url: https://www.2harvest.org
-  domain: www.2harvest.org
-  heading_context: null
+  section: null
 - text: Lucky the Dog
   url: https://micro.thingelstad.com/uploads/2020/273055aabe.jpg
   domain: micro.thingelstad.com
   heading_context: null
-- text: Thank you for donating to Second Harvest!
-  url: https://www.2harvest.org
-  domain: www.2harvest.org
-  heading_context: null
+  section: null
+word_count: 333
 permalink: /archive/140-special/
 tags: issue
 ---
