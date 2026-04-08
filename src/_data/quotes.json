@@ -1,10 +1,140 @@
 [
   {
-    "text": "The best newsletter I look forward to every week.",
-    "author": "A Reader"
+    "text": "Reading the Weekly Thing almost makes me feel like I'm cheating — like I have this secret weapon for all things technical that I don't need to do the work to find.",
+    "source": 2025,
+    "tags": ["curation", "value", "enthusiasm"],
+    "featured": true
   },
   {
-    "text": "I always find something interesting I wouldn't have discovered on my own.",
-    "author": "Another Reader"
+    "text": "My husband and I read it every week while drinking our coffee and then spend the morning discussing it together.",
+    "source": 2021,
+    "tags": ["habit", "community", "enthusiasm"],
+    "featured": true
+  },
+  {
+    "text": "It's become something I really look forward to reading. You're a trusted editor that helps keep me focused when there are too many distractions.",
+    "source": 2025,
+    "tags": ["trust", "curation", "enthusiasm"],
+    "featured": true
+  },
+  {
+    "text": "I really enjoy the insights you add to each of the main articles — it gives me an idea of whether it's something I'd like to spend more time learning, and adds to the article in some way.",
+    "source": 2025,
+    "tags": ["commentary", "curation", "value"],
+    "featured": true
+  },
+  {
+    "text": "It's a highlight of my morning. I read it on my home email — I checked and I forwarded 22 items in the last year to my work email for use there.",
+    "source": 2021,
+    "tags": ["value", "sharing", "enthusiasm"],
+    "featured": true
+  },
+  {
+    "text": "I like reading it to feel like I'm having coffee with someone who is curious — 'hey, did you see this?' — and then getting a short commentary.",
+    "source": 2021,
+    "tags": ["voice", "personal", "style"],
+    "featured": true
+  },
+  {
+    "text": "It's one of the few newsletters I really look forward to. I like the combination of personal and professional — your style is inviting and makes me feel like an informed insider.",
+    "source": 2021,
+    "tags": ["enthusiasm", "personal", "professional"]
+  },
+  {
+    "text": "I appreciate the chance to learn from someone who's an expert who also has good judgment and is thoughtful.",
+    "source": 2025,
+    "tags": ["expertise", "trust"]
+  },
+  {
+    "text": "It presents tech in a thoughtful way — with critical thinking, analysis, and a trustworthy perspective.",
+    "source": 2025,
+    "tags": ["trust", "tech", "analysis"]
+  },
+  {
+    "text": "I enjoy how personal it is. Family photos, food photos, stories of sports games you've been to — those things make it appealing.",
+    "source": 2021,
+    "tags": ["personal", "family"]
+  },
+  {
+    "text": "I've been reading it long enough to grow accustomed to the sections and find something useful — practical, entertaining, interesting — every time.",
+    "source": 2025,
+    "tags": ["consistency", "value", "long-term"]
+  },
+  {
+    "text": "I started following the newsletter because I see you as a bit of a role model — I want to better understand how to effectively manage strong teams and work/life balance at a higher level.",
+    "source": 2025,
+    "tags": ["leadership", "role-model"]
+  },
+  {
+    "text": "I know/trust that if you're reading it or thinking about it, it's probably something I should at least consider.",
+    "source": 2025,
+    "tags": ["trust", "curation"]
+  },
+  {
+    "text": "I like reading it to see how you approach new tech, how you travel to coordinate teams, or keep network connections going. Thanks for sharing.",
+    "source": 2025,
+    "tags": ["leadership", "tech", "personal"]
+  },
+  {
+    "text": "As an early subscriber, I always share the newsletter on LinkedIn. Hopefully my network finds it worthwhile.",
+    "source": 2025,
+    "tags": ["sharing", "advocacy"]
+  },
+  {
+    "text": "It has something for everyone.",
+    "source": 2021,
+    "short": true,
+    "tags": ["breadth"]
+  },
+  {
+    "text": "Best newsletter — don't go changing.",
+    "source": 2025,
+    "short": true,
+    "tags": ["enthusiasm"]
+  },
+  {
+    "text": "It's a perfect mix of tech and Jamie.",
+    "source": 2025,
+    "short": true,
+    "tags": ["personal", "tech"]
+  },
+  {
+    "text": "You usually find things first.",
+    "source": 2025,
+    "short": true,
+    "tags": ["curation", "trust"]
+  },
+  {
+    "text": "I feel like I have a weekly OmniFocus action to read the Weekly Thing.",
+    "source": 2025,
+    "tags": ["habit", "enthusiasm"]
+  },
+  {
+    "text": "My reading for the weekend.",
+    "source": 2021,
+    "short": true,
+    "tags": ["habit", "ritual"]
+  },
+  {
+    "text": "Curated list of links I know are worth my time. I also appreciate the commentary.",
+    "source": 2025,
+    "tags": ["curation", "value"]
+  },
+  {
+    "text": "I love the brief summaries and personal takes you include for each link.",
+    "source": 2021,
+    "tags": ["commentary", "style"]
+  },
+  {
+    "text": "I appreciate your work. Keep it coming.",
+    "source": 2025,
+    "short": true,
+    "tags": ["enthusiasm"]
+  },
+  {
+    "text": "See you at issue 5,000 in the metaverse.",
+    "source": 2025,
+    "short": true,
+    "tags": ["enthusiasm", "fun"]
   }
 ]

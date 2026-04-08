@@ -107,6 +107,15 @@ permalink: /
 </section>
 {% endif %}
 
+{# ── Mid-page subscribe CTA ── #}
+<section class="section inline-cta">
+  <div class="container">
+    <p class="inline-cta-text">Curious? Get it in your inbox every weekend.</p>
+    {% set subscribeId = "mid1" %}
+    {% include "partials/subscribe-form.njk" %}
+  </div>
+</section>
+
 {# ── Who writes this ── #}
 <section class="section about-author">
   <div class="container">
@@ -143,22 +152,57 @@ permalink: /
   </div>
 </section>
 
-{# ── Reader quotes (if populated) ── #}
-{% if quotes.length > 0 %}
+{# ── Reader survey results ── #}
 <section class="section reader-quotes">
   <div class="container">
     <h2 class="section-title">What Readers Say</h2>
+    <p class="section-subtitle">From reader surveys in 2021 and 2025</p>
+
+    <div class="survey-stats-row">
+      <div class="survey-stat">
+        <span class="survey-stat-number">{{ survey.stats.recommendationScore.value }}%</span>
+        <span class="survey-stat-label">{{ survey.stats.recommendationScore.label }}</span>
+      </div>
+      <div class="survey-stat">
+        <span class="survey-stat-number">{{ survey.stats.readWholeIssue.value }}%</span>
+        <span class="survey-stat-label">{{ survey.stats.readWholeIssue.label }}</span>
+      </div>
+      <div class="survey-stat">
+        <span class="survey-stat-number">{{ survey.stats.longTimeReaders.value }}%</span>
+        <span class="survey-stat-label">{{ survey.stats.longTimeReaders.label }}</span>
+      </div>
+    </div>
+
+    <div class="feeling-words">
+      <p class="feeling-words-intro">Readers say the newsletter makes them feel:</p>
+      <div class="feeling-words-cloud">
+        {%- for word in survey.feelingWords %}
+        <span class="feeling-word feeling-word-{{ word.frequency }}">{{ word.word }}</span>
+        {%- endfor %}
+      </div>
+    </div>
+
     <div class="quotes-grid">
       {% for quote in quotes %}
+      {% if quote.featured %}
       <blockquote class="quote-card">
         <p>{{ quote.text }}</p>
-        <footer>&mdash; {{ quote.author }}</footer>
+        <footer>&mdash; reader survey, {{ quote.source }}</footer>
       </blockquote>
+      {% endif %}
       {% endfor %}
     </div>
   </div>
 </section>
-{% endif %}
+
+{# ── Mid-page subscribe CTA ── #}
+<section class="section inline-cta">
+  <div class="container">
+    <p class="inline-cta-text">Join them. Free, every weekend.</p>
+    {% set subscribeId = "mid2" %}
+    {% include "partials/subscribe-form.njk" %}
+  </div>
+</section>
 
 {# ── Recent Issues ── #}
 {% if recentIssues.length > 0 %}
