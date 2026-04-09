@@ -61,7 +61,7 @@ weekly.thingelstad.com/
 ├── src/
 │   ├── _data/
 │   │   ├── emails.json             # Metadata index (generated, committed)
-│   │   ├── archiveStats.js         # Computed stats from emails.json
+│   │   ├── archiveStats.js         # Computed stats for landing page and FAQ
 │   │   ├── stats.json              # Subscriber count, premium count, Stripe balance
 │   │   ├── site.json               # Site metadata, Tinylytics ID, social links
 │   │   ├── support.json            # Supporting Membership nonprofit info
@@ -83,9 +83,8 @@ weekly.thingelstad.com/
 │   │   └── (plus special issues)
 │   ├── index.njk                   # Landing page (/)
 │   ├── about.njk                   # About page (/about/)
-│   ├── support.njk                 # Supporting Membership (/support/)
+│   ├── support.njk                 # Supporting Membership (/members/)
 │   ├── search.njk                  # Pagefind search (/search/)
-│   ├── stats.njk                   # Archive statistics (/stats/)
 │   ├── faq.njk                     # FAQ (/faq/)
 │   ├── feed.njk                    # Atom feed (/feed.xml)
 │   ├── issue-links-feed.njk        # Per-issue links feed (/archive/N/links.xml)
@@ -161,9 +160,8 @@ Subscribe forms appear 4 times on the page (hero, two mid-page, footer).
 | `/archive/` | `archive/archive.njk` | Browsable index, grouped by year |
 | `/archive/N/` | Individual `.md` files | Issue pages with TOC, domains, prev/next nav |
 | `/about/` | `about.njk` | Full bio, story, photo |
-| `/support/` | `support.njk` | Supporting Membership, current nonprofit (EFF 2025), past (CC 2024) |
+| `/members/` | `support.njk` | Supporting Membership, current nonprofit (EFF 2025), past (CC 2024) |
 | `/search/` | `search.njk` | Pagefind search with bookmarkable URLs |
-| `/stats/` | `stats.njk` | Archive statistics and records |
 | `/faq/` | `faq.njk` | FAQ |
 | `/feed.xml` | `feed.njk` | Atom feed (all issues) |
 | `/archive/N/links.xml` | `issue-links-feed.njk` | Per-issue links feed |
@@ -224,7 +222,7 @@ Compares local body against cached API data, PATCHes changed fields to Buttondow
 
 1. **GitHub Actions secrets** — `BUTTONDOWN_API_KEY` and `STRIPE_API_KEY` must be set in repo settings
 2. **HTTPS enforcement** — enable in GitHub Pages settings after first successful deploy
-3. **Stripe donate URL** — Payment Link for one-time donations on `/support/`
+3. **Stripe donate URL** — Payment Link for one-time donations on `/members/`
 
 ## Future Enhancements
 

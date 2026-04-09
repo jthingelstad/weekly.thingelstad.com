@@ -17,7 +17,7 @@ permalink: /
       {% set subscribeId = "hero" %}
       {% include "partials/subscribe-form.njk" %}
     </div>
-    <p class="hero-proof">Free, every weekend. {{ archiveStats.totalIssues }} issues and counting since 2017.</p>
+    <p class="hero-proof">Free, every weekend. {{ latest.data.number }} issues and counting since 2017.</p>
   </div>
 </section>
 
@@ -34,7 +34,7 @@ permalink: /
       <div class="value-stats">
         <div class="value-stat">
           <span class="value-stat-number">{{ archiveStats.totalLinks | numberFormat }}</span>
-          <span class="value-stat-label">curated links across {{ archiveStats.totalIssues }} issues</span>
+          <span class="value-stat-label">curated links across {{ latest.data.number }} issues</span>
         </div>
         <div class="value-stat">
           <span class="value-stat-number">{{ archiveStats.totalWords | numberFormat }}</span>
@@ -166,7 +166,7 @@ permalink: /
       {% endif %}
       <a href="/archive/{{ latest.data.number }}/" class="btn btn-primary">Read this issue &rarr;</a>
     </article>
-    <p class="section-cta"><a href="/archive/">Browse the full archive ({{ collections.issuesByNumber.length }} issues) &rarr;</a></p>
+    <p class="section-cta"><a href="/archive/">Browse the full archive ({{ latest.data.number }} issues) &rarr;</a></p>
   </div>
 </section>
 {% endif %}
@@ -184,14 +184,14 @@ permalink: /
 <section class="section supporting-section">
   <div class="container">
     <h2 class="section-title">Membership</h2>
-    <p>the Weekly Thing is free for everyone, always. Members contribute to a nonprofit selected each year — <strong>100% of fees are donated</strong>.</p>
+    <p>The Weekly Thing is free for everyone, always. Members contribute to a nonprofit selected each year — <strong>100% of fees are donated</strong>.</p>
     {% if support.current %}
     <p>This year, we're supporting <strong><a href="{{ support.current.url }}">{{ support.current.nonprofit }}</a></strong>.
     {% if stats.amount_raised > 0 %} ${{ stats.amount_raised | round }} raised so far.{% endif %}
     {% if stats.premium_subscriber_count > 0 %} {{ stats.premium_subscriber_count }} members.{% endif %}
     </p>
     {% endif %}
-    <p><a href="/support/" class="btn btn-secondary">Learn more &rarr;</a></p>
+    <p><a href="/members/" class="btn btn-secondary">Learn more &rarr;</a></p>
   </div>
 </section>
 
@@ -199,7 +199,7 @@ permalink: /
 <section class="section footer-cta">
   <div class="container">
     <h2>Start reading this weekend</h2>
-    <p>Join {{ (stats.subscriber_count / 100) | round * 100 }}+ readers who get the Weekly Thing every weekend. No spam, no tracking, unsubscribe anytime.</p>
+    <p>Join {{ ((stats.subscriber_count / 100) | round * 100) | numberFormat }}+ readers who get the Weekly Thing every weekend. No spam, no tracking, unsubscribe anytime.</p>
     {% set subscribeId = "footer" %}
     {% include "partials/subscribe-form.njk" %}
   </div>

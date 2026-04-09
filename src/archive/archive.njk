@@ -8,15 +8,22 @@ permalink: /archive/
   <div class="container">
     <header class="archive-header">
       <h1>Archive</h1>
-      <p>{{ collections.issuesByNumber.length }} issues published since 2017.</p>
+      <p>{{ collections.issuesByDate[0].data.number }} issues published since 2017.</p>
       <div id="search" class="archive-search">
         <a href="/search/">Search the archive &rarr;</a>
       </div>
     </header>
 
     {% set grouped = collections.issuesByDate | groupByYear %}
+    <nav class="archive-years" aria-label="Filter by year">
+      <button class="archive-year-tab" data-year="all" data-tinylytics-event="archive.filter" data-tinylytics-event-value="all">All</button>
+      {% for group in grouped %}
+      <button class="archive-year-tab" data-year="{{ group.year }}" data-tinylytics-event="archive.filter" data-tinylytics-event-value="{{ group.year }}">{{ group.year }}</button>
+      {% endfor %}
+    </nav>
+
     {% for group in grouped %}
-    <section class="archive-year">
+    <section class="archive-year" data-year="{{ group.year }}">
       <h2 class="archive-year-heading" id="year-{{ group.year }}">{{ group.year }}</h2>
       <div class="archive-list">
         {% for issue in group.issues %}
@@ -36,3 +43,28 @@ permalink: /archive/
     {% endfor %}
   </div>
 </section>
+<script>
+function selectYear(year, pushState) {
+  document.querySelectorAll('.archive-year-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelector('.archive-year-tab[data-year="' + year + '"]').classList.add('active');
+  document.querySelectorAll('.archive-year[data-year]').forEach(function(section) {
+    section.style.display = (year === 'all' || section.dataset.year === year) ? '' : 'none';
+  });
+  if (pushState) {
+    var url = new URL(window.location);
+    if (year === 'all') { url.searchParams.delete('year'); } else { url.searchParams.set('year', year); }
+    history.pushState(null, '', url);
+  }
+}
+document.querySelector('.archive-years').addEventListener('click', function(e) {
+  var tab = e.target.closest('.archive-year-tab');
+  if (!tab) return;
+  selectYear(tab.dataset.year, true);
+});
+window.addEventListener('popstate', function() {
+  var year = new URLSearchParams(window.location.search).get('year') || String(new Date().getFullYear());
+  selectYear(year, false);
+});
+var initialYear = new URLSearchParams(window.location.search).get('year') || String(new Date().getFullYear());
+selectYear(initialYear, false);
+</script>

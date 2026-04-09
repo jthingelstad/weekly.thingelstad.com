@@ -2,9 +2,11 @@
 layout: layouts/base.njk
 ---
 <article class="page">
+  {% if not hidePageTitle %}
   <header class="page-header">
     <h1>{{ pageTitle or title }}</h1>
   </header>
+  {% endif %}
   <div class="page-content">
     {{ content | safe }}
   </div>

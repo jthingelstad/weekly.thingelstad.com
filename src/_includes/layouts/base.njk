@@ -26,6 +26,7 @@
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+  <link rel="webmention" href="https://tinylytics.app/webmention/{{ site.tinylyticsId }}">
 
   {# RSS feed discovery #}
   <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="/feed.xml">
@@ -45,6 +46,6 @@
 
   {% include "partials/footer.njk" %}
 
-  <script defer src="https://tinylytics.app/embed/{{ site.tinylyticsId }}.js?kudos&hits&countries"></script>
+  <script defer src="https://tinylytics.app/embed/{{ site.tinylyticsId }}.js?kudos=custom&hits&countries&events"></script>
 </body>
 </html>
