@@ -2,10 +2,10 @@
 layout: layouts/page.njk
 pageTitle: Supporting Membership
 description: Support the Weekly Thing and help fund a nonprofit each year.
-permalink: /support/
+permalink: /members/
 ---
 <div class="support-page">
-  <p class="support-intro">the Weekly Thing is free for everyone, always. Supporting Members contribute to a community giving program where <strong>100% of membership fees go directly to a nonprofit</strong> selected each year.</p>
+  <p class="support-intro">The Weekly Thing is free for everyone, always. Supporting Members contribute to a community giving program where <strong>100% of membership fees go directly to a nonprofit</strong> selected each year.</p>
 
   {% if support.current %}
   <section class="support-current">
@@ -33,12 +33,12 @@ permalink: /support/
   <section class="support-how">
     <h2>Become a Supporting Member</h2>
     <p>Supporting Members get a gold star recognition in each issue of the Weekly Thing. More importantly, your contribution goes directly to supporting organizations doing meaningful work.</p>
-    <p><a href="https://buttondown.com/weekly-thing/membership" class="btn btn-primary">Become a Supporting Member</a></p>
+    <p><a href="https://buttondown.com/weekly-thing/membership" class="btn btn-primary" data-tinylytics-event="support.membership">Become a Supporting Member</a></p>
 
     {% if support.current.stripe_donate_url %}
     <h3>One-Time Gift</h3>
     <p>Prefer to make a one-time contribution instead of a recurring membership? You can give directly.</p>
-    <p><a href="{{ support.current.stripe_donate_url }}" class="btn btn-secondary">Make a One-Time Gift</a></p>
+    <p><a href="{{ support.current.stripe_donate_url }}" class="btn btn-secondary" data-tinylytics-event="support.donate">Make a One-Time Gift</a></p>
     {% endif %}
   </section>
 

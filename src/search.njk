@@ -7,8 +7,32 @@ permalink: /search/
 <section class="search-page">
   <div class="container">
     <h1>Search the Archive</h1>
-    <p class="search-browse"><a href="/search/?q=weekly" id="search-all">Browse all issues</a></p>
     <div id="search"></div>
+    <div id="search-suggestions" class="search-suggestions">
+      <div class="search-suggestions-group">
+        <h2>Try searching for</h2>
+        <div class="search-suggestion-tags">
+          <button class="search-suggestion" data-query="AI">AI</button>
+          <button class="search-suggestion" data-query="open web">open web</button>
+          <button class="search-suggestion" data-query="Apple">Apple</button>
+          <button class="search-suggestion" data-query="privacy">privacy</button>
+          <button class="search-suggestion" data-query="software engineering">software engineering</button>
+          <button class="search-suggestion" data-query="data visualization">data visualization</button>
+          <button class="search-suggestion" data-query="journalism">journalism</button>
+          <button class="search-suggestion" data-query="design">design</button>
+          <button class="search-suggestion" data-query="productivity">productivity</button>
+        </div>
+      </div>
+      <div class="search-suggestions-group">
+        <h2>Tips</h2>
+        <ul class="search-tips">
+          <li>Use <strong>quotes</strong> for exact phrases: <button class="search-suggestion" data-query="&quot;link rot&quot;">"link rot"</button></li>
+          <li>Filter by year using the sidebar checkboxes</li>
+          <li>Bookmark searches with <code>?q=your+query</code> in the URL</li>
+          <li><button class="search-suggestion search-suggestion-link" data-query="weekly">Browse all issues</button></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -22,14 +46,17 @@ permalink: /search/
       showImages: false,
     });
 
+    const suggestions = document.getElementById('search-suggestions');
+
+    function hideSuggestions() { suggestions.style.display = 'none'; }
+    function showSuggestions() { suggestions.style.display = ''; }
+
     // Auto-open year filter and reverse sort (newest first)
     new MutationObserver((_, obs) => {
       const yearGroup = document.querySelector('.pagefind-ui__filter-group');
       if (!yearGroup) return;
-      // Open the filter panel
       const details = yearGroup.closest('details') || yearGroup.querySelector('details');
       if (details) details.open = true;
-      // Reverse year order
       const panel = yearGroup.querySelector('.pagefind-ui__filter-panel');
       if (!panel || panel.dataset.reversed) return;
       const items = Array.from(panel.children);
@@ -39,23 +66,29 @@ permalink: /search/
       }
     }).observe(document.getElementById('search'), { childList: true, subtree: true });
 
+    // Suggestion tag clicks
+    document.querySelectorAll('.search-suggestion').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const q = btn.dataset.query;
+        pf.triggerSearch(q);
+        const input = document.querySelector('#search input[type="text"]');
+        if (input) input.value = q;
+        const url = new URL(window.location);
+        url.searchParams.set('q', q);
+        history.replaceState(null, '', url);
+        hideSuggestions();
+      });
+    });
+
     // Sync search query with URL
     const params = new URLSearchParams(window.location.search);
     const q = params.get('q');
     if (q) {
       pf.triggerSearch(q);
+      hideSuggestions();
     }
 
-    // "Browse all" link triggers a search for all issues
-    document.getElementById('search-all').addEventListener('click', (e) => {
-      e.preventDefault();
-      pf.triggerSearch('weekly');
-      const url = new URL(window.location);
-      url.searchParams.set('q', 'weekly');
-      history.replaceState(null, '', url);
-    });
-
-    // Update URL on search
+    // Update URL on search and toggle suggestions
     const input = document.querySelector('#search input[type="text"]');
     if (input) {
       input.addEventListener('input', () => {
@@ -63,8 +96,10 @@ permalink: /search/
         const url = new URL(window.location);
         if (val) {
           url.searchParams.set('q', val);
+          hideSuggestions();
         } else {
           url.searchParams.delete('q');
+          showSuggestions();
         }
         history.replaceState(null, '', url);
       });

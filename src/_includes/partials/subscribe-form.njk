@@ -17,7 +17,7 @@
     <span class="subscribe-error" aria-live="polite"></span>
   </div>
   <input type="hidden" value="1" name="embed" />
-  <button type="submit" class="subscribe-button">Subscribe</button>
+  <button type="submit" class="subscribe-button" data-tinylytics-event="subscribe.submit" data-tinylytics-event-value="{{ subscribeId or 'default' }}">Subscribe</button>
 </form>
 <script>
 (function() {

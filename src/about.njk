@@ -1,10 +1,18 @@
 ---
 layout: layouts/page.njk
 pageTitle: About
+hidePageTitle: true
 description: About Jamie Thingelstad and the Weekly Thing newsletter.
 permalink: /about/
 ---
 <div class="about-page">
+  <h2>About the Weekly Thing</h2>
+  <p>The Weekly Thing started in May 2017 as a simple experiment: share the most interesting things found on the internet each week with friends and colleagues. Eight years and {{ collections.issuesByDate[0].data.number }}+ issues later, it's still going.</p>
+  <p>Each issue is a curated collection of links, commentary, and observations spanning technology, culture, the indie web, and the occasional unexpected rabbit hole. It's one person's lens on what's interesting &mdash; not an algorithm, not a feed, just considered curation.</p>
+  <p>The newsletter is and always will be free. <a href="/members/">Supporting Members</a> contribute to a nonprofit selected each year, with 100% of fees donated.</p>
+
+  <hr>
+
   <div class="about-intro">
     <img src="/img/jamie-thingelstad.jpg" alt="Jamie Thingelstad" class="about-page-photo" loading="lazy" width="300" height="300">
     <div class="about-bio">
@@ -15,22 +23,6 @@ permalink: /about/
       <p>He lives in Minneapolis, Minnesota with his wife, two children, and their dog.</p>
     </div>
   </div>
-
-  <hr>
-
-  <h2>About the Weekly Thing</h2>
-  <p>the Weekly Thing started in May 2017 as a simple experiment: share the most interesting things found on the internet each week with friends and colleagues. Eight years and {{ collections.issuesByNumber.length }}+ issues later, it's still going.</p>
-  <p>Each issue is a curated collection of links, commentary, and observations spanning technology, culture, the indie web, and the occasional unexpected rabbit hole. It's one person's lens on what's interesting &mdash; not an algorithm, not a feed, just considered curation.</p>
-  <p>The newsletter is and always will be free. <a href="/support/">Supporting Members</a> contribute to a nonprofit selected each year, with 100% of fees donated.</p>
-
-  <h2>Connect</h2>
-  <ul class="connect-links">
-    <li><a href="{{ site.authorUrl }}">thingelstad.com</a> &mdash; Jamie's blog</li>
-    {% if site.social.mastodon %}<li><a href="{{ site.social.mastodon }}" rel="me">Mastodon</a></li>{% endif %}
-    {% if site.social.bluesky %}<li><a href="{{ site.social.bluesky }}">Bluesky</a></li>{% endif %}
-    {% if site.social.reddit %}<li><a href="{{ site.social.reddit }}">r/weeklything</a> &mdash; Reddit community</li>{% endif %}
-    <li><a href="/feed.xml">RSS Feed</a></li>
-  </ul>
 
   <hr>
 

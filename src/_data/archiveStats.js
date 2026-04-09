@@ -1,4 +1,4 @@
-// Compute stats from emails.json for the /stats/ page.
+// Compute stats from emails.json for the landing page and FAQ.
 // Link/domain analysis uses only curated links (Notable + Briefly sections).
 const emails = require("./emails.json");
 
