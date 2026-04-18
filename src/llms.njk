@@ -1,0 +1,62 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# The Weekly Thing
+
+> A weekly newsletter by Jamie Thingelstad. Since May 2017, one curious person sifts through the internet and sends the things worth your time. Not an algorithm. Not a feed. Just considered curation.
+
+## About
+
+The Weekly Thing is written and curated by {{ site.author }} ({{ site.authorUrl }}). It has been published almost every weekend since May 13, 2017, with two scheduled breaks each year: roughly July through August, and mid-December through mid-January.
+
+Each issue includes several recurring sections:
+
+- **Notable** — a small number of editorially selected links, each with commentary.
+- **Briefly** — shorter items, usually a bolded link plus a sentence of context.
+- **Microposts / Microblog updates** — short notes, photos, and personal updates from the week.
+- **Featured** — occasional longer features or essays.
+
+Only links inside dedicated editorial sections (Notable, Briefly, Featured, etc.) are counted in the archive's link and domain stats. Inline links in commentary and microposts are intentionally excluded.
+
+## Stats
+
+- Total issues: {{ archiveStats.totalIssues | numberFormat }}
+- Total curated links: {{ archiveStats.totalLinks | numberFormat }}
+- Unique domains: {{ archiveStats.uniqueDomainsTotal | numberFormat }}
+- Total words: {{ archiveStats.totalWords | numberFormat }}
+- First issue: {{ archiveStats.firstDate | dateFormat }}
+- Latest issue: {{ archiveStats.latestDate | dateFormat }}
+- Years active: {{ archiveStats.yearsActive }}
+
+## How to read this archive
+
+- Human-readable archive index: {{ site.url }}/archive/
+- This file (LLM-friendly site index): {{ site.url }}/llms.txt
+- Programmatic archive index (JSON): {{ site.url }}/archive.json
+- Per-issue HTML: {{ site.url }}/archive/N/
+- Per-issue markdown (clean, no chrome): {{ site.url }}/archive/N.txt
+- Atom feed (all issues): {{ site.url }}/feed.xml
+- Per-issue Atom feed of curated links: {{ site.url }}/archive/N/links.xml
+- Full-text search: {{ site.url }}/search/
+
+Replace `N` with an issue number between 1 and {{ archiveStats.totalIssues }}.
+
+## Other pages
+
+- [About the author]({{ site.url }}/about/) — bio and background on Jamie Thingelstad
+- [Supporting Membership]({{ site.url }}/members/) — annual nonprofit donation drive
+- [FAQ]({{ site.url }}/faq/) — frequently asked questions about the newsletter
+- [Subscribe]({{ site.url }}/) — free email signup via Buttondown
+
+## All issues
+
+Every issue, newest first. Each link points to a clean markdown version.
+
+{% for group in collections.issuesByDate | groupByYear -%}
+### {{ group.year }}
+
+{% for issue in group.issues -%}
+- [#{{ issue.data.number }} — {{ issue.data.subject }}]({{ site.url }}/archive/{{ issue.data.number }}.txt) ({{ issue.data.publish_date | dateShort }})
+{% endfor %}
+{% endfor %}
