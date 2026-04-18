@@ -1,3 +1,4 @@
+const fs = require("fs");
 const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = function (eleventyConfig) {
@@ -9,6 +10,25 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   // Prevent GitHub Pages from running Jekyll
   eleventyConfig.addPassthroughCopy({ "src/_nojekyll": ".nojekyll" });
+
+  // Ensure dev server sends UTF-8 charset for .txt files (GitHub Pages does
+  // this automatically in production, but the local dev server does not).
+  eleventyConfig.setServerOptions({
+    middleware: [
+      (req, res, next) => {
+        if (req.url && /\.txt(\?|$)/.test(req.url)) {
+          const origSetHeader = res.setHeader.bind(res);
+          res.setHeader = (name, value) => {
+            if (String(name).toLowerCase() === "content-type") {
+              value = "text/plain; charset=utf-8";
+            }
+            return origSetHeader(name, value);
+          };
+        }
+        next();
+      },
+    ],
+  });
 
   // --- Markdown configuration ---
   const md = require("markdown-it")({
@@ -139,6 +159,59 @@ module.exports = function (eleventyConfig) {
     return headings;
   });
 
+  // Read the raw markdown body of an issue file, stripping YAML front matter
+  // and the outer {% raw %}...{% endraw %} wrapper used to preserve Buttondown
+  // template syntax in source. Returns the body as a markdown string.
+  eleventyConfig.addFilter("readIssueMarkdownBody", (inputPath) => {
+    if (!inputPath) return "";
+    const raw = fs.readFileSync(inputPath, "utf8");
+    // Strip leading YAML front matter
+    let body = raw.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, "");
+    // Strip {% raw %} / {% endraw %} wrappers (line-anchored and inline)
+    body = body.replace(/\{%\s*raw\s*%\}/g, "");
+    body = body.replace(/\{%\s*endraw\s*%\}/g, "");
+    return body.trim();
+  });
+
+  // Strip Buttondown/Mailchimp template tags from a markdown string.
+  // Mirrors the stripButtondownTags HTML transform but operates on markdown.
+  eleventyConfig.addFilter("stripButtondownMd", (str) => {
+    if (!str) return "";
+    return (
+      String(str)
+        // Remove entire {% if %}...{% endif %} and {% for %}...{% endfor %}
+        // blocks (including contents). All such blocks in Buttondown issues are
+        // email-only conditionals (subscriber type, medium == 'email', etc.)
+        // that don't belong in the archive.
+        .replace(/\{%\s*if\b[\s\S]*?\{%\s*endif\s*%\}/g, "")
+        .replace(/\{%\s*for\b[\s\S]*?\{%\s*endfor\s*%\}/g, "")
+        // Remove {{ subscriber.* }} references
+        .replace(/\{\{[^}]*subscriber[^}]*\}\}/g, "")
+        // Remove {{ email.* }} and {{email_link}}-style references
+        .replace(/\{\{[^}]*email[._]?\w*[^}]*\}\}/g, "")
+        // Remove {{ survey.* }} references
+        .replace(/\{\{[^}]*survey\.[^}]*\}\}/g, "")
+        // Remove {{ subscribe_form }} and {{ subscribe_url }}
+        .replace(/\{\{\s*subscribe_(?:form|url)\s*\}\}/g, "")
+        // Replace common Buttondown URLs with "#"
+        .replace(/\{\{\s*unsubscribe_url\s*\}\}/g, "#")
+        .replace(/\{\{\s*manage_subscription_url\s*\}\}/g, "#")
+        .replace(/\{\{\s*upgrade_url\s*\}\}/g, "#")
+        .replace(/\{\{\s*email_url\s*\}\}/g, "#")
+        // Remove remaining stray {% %} tags
+        .replace(/\{%[\s\S]*?%\}/g, "")
+        // Remove remaining stray {{ ... }} simple template variables
+        .replace(/\{\{\s*[a-zA-Z_][a-zA-Z_0-9.]*\s*\}\}/g, "")
+        // Remove Buttondown editor-mode HTML comment
+        .replace(/<!--\s*buttondown-editor-mode:[^>]*-->\s*/gi, "")
+        // Remove Mailchimp merge tags
+        .replace(/\*\|[A-Z_:]+\|\*/g, "")
+        // Collapse runs of 3+ blank lines left behind
+        .replace(/\n{3,}/g, "\n\n")
+        .trim()
+    );
+  });
+
   // Strip Buttondown template tags from rendered HTML
   eleventyConfig.addTransform("stripButtondownTags", (content, outputPath) => {
     if (!outputPath || !outputPath.endsWith(".html")) return content;
@@ -158,11 +231,11 @@ module.exports = function (eleventyConfig) {
         .replace(/\{\{\s*manage_subscription_url\s*\}\}/g, "#")
         .replace(/\{\{\s*upgrade_url\s*\}\}/g, "#")
         .replace(/\{\{\s*email_url\s*\}\}/g, "#")
-        // Remove {% if/for/endif/endfor %} blocks referencing subscriber data
-        .replace(
-          /\{%\s*(if|elif).*?subscriber.*?%\}[\s\S]*?\{%\s*end(?:if|for)\s*%\}/gi,
-          ""
-        )
+        // Remove entire {% if %}...{% endif %} and {% for %}...{% endfor %}
+        // blocks (including contents). All such blocks in Buttondown issues
+        // are email-only conditionals that shouldn't appear in the web archive.
+        .replace(/\{%\s*if\b[\s\S]*?\{%\s*endif\s*%\}/g, "")
+        .replace(/\{%\s*for\b[\s\S]*?\{%\s*endfor\s*%\}/g, "")
         // Remove remaining stray {% %} tags
         .replace(/\{%.*?%\}/g, "")
         // Remove Mailchimp/TinyLetter merge tags (*|ARCHIVE|*, *|LIST:DESCRIPTION|*, etc.)

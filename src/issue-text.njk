@@ -1,0 +1,26 @@
+---
+pagination:
+  data: collections.issuesByNumber
+  size: 1
+  alias: issue
+permalink: "/archive/{{ issue.data.number }}.txt"
+eleventyExcludeFromCollections: true
+---
+# {{ issue.data.subject }}
+
+- Issue: {{ issue.data.number }}
+- Published: {{ issue.data.publish_date | dateFormat }}
+- URL: {{ site.url }}/archive/{{ issue.data.number }}/
+{%- if issue.data.description %}
+- Summary: {{ issue.data.description }}
+{%- endif %}
+{%- if issue.data.word_count %}
+- Word count: {{ issue.data.word_count }}
+{%- endif %}
+{%- if issue.data.domains and issue.data.domains.length %}
+- Domains: {{ issue.data.domains | join(", ") }}
+{%- endif %}
+
+---
+
+{{ issue.page.inputPath | readIssueMarkdownBody | stripButtondownMd | safe }}

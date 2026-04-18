@@ -30,6 +30,12 @@
 
   {# RSS feed discovery #}
   <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="/feed.xml">
+  {# Machine-readable discovery #}
+  <link rel="alternate" type="text/markdown" title="LLM-friendly site index" href="/llms.txt">
+  <link rel="alternate" type="application/json" title="Archive index (JSON)" href="/archive.json">
+  {% if number %}
+  <link rel="alternate" type="text/markdown" title="Markdown version" href="/archive/{{ number }}.txt">
+  {% endif %}
   {% block head %}{% endblock %}
 
   <link rel="stylesheet" href="/css/style.css">

@@ -1,0 +1,37 @@
+---
+permalink: /archive.json
+eleventyExcludeFromCollections: true
+---
+{% set base = site.url %}
+{
+  "title": {{ site.title | dump | safe }},
+  "description": {{ site.description | dump | safe }},
+  "url": {{ site.url | dump | safe }},
+  "author": {{ site.author | dump | safe }},
+  "author_url": {{ site.authorUrl | dump | safe }},
+  "generated": {{ page.date | dateFormat("iso") | dump | safe }},
+  "total_issues": {{ collections.issuesByNumber.length }},
+  "first_issue_date": {{ archiveStats.firstDate | dump | safe }},
+  "latest_issue_date": {{ archiveStats.latestDate | dump | safe }},
+  "llms_txt": {{ (base + "/llms.txt") | dump | safe }},
+  "feed": {{ (base + "/feed.xml") | dump | safe }},
+  "search": {{ (base + "/search/") | dump | safe }},
+  "issues": [
+    {%- for issue in collections.issuesByDate %}
+    {
+      "number": {{ issue.data.number | dump | safe }},
+      "subject": {{ issue.data.subject | dump | safe }},
+      "publish_date": {{ issue.data.publish_date | dump | safe }},
+      "slug": {{ (issue.data.slug or "") | dump | safe }},
+      "description": {{ (issue.data.description or "") | dump | safe }},
+      "image": {{ (issue.data.image or "") | dump | safe }},
+      "url": {{ (base + "/archive/" + (issue.data.number | string) + "/") | dump | safe }},
+      "markdown_url": {{ (base + "/archive/" + (issue.data.number | string) + ".txt") | dump | safe }},
+      "links_feed": {{ (base + "/archive/" + (issue.data.number | string) + "/links.xml") | dump | safe }},
+      "word_count": {{ issue.data.word_count | default(0) }},
+      "domains": {{ (issue.data.domains or []) | dump | safe }},
+      "link_count": {{ (issue.data.links or []) | length }}
+    }{%- if not loop.last %},{% endif %}
+    {%- endfor %}
+  ]
+}
