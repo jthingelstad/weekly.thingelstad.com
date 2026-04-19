@@ -50,6 +50,17 @@ module.exports = function (eleventyConfig) {
         .replace(/-+/g, "-"),
   });
 
+  // Buttondown stores issues with a `<!-- buttondown-editor-mode: plaintext -->`
+  // comment prepended to the body, with no newline separator. Markdown-it
+  // treats the HTML comment as a block, which disables inline-markdown
+  // parsing for the rest of that line — so bold/italic on the first line
+  // ("**Welcome to #200**") renders as literal asterisks. We keep the
+  // comment in the source files for sync-back fidelity, but strip it
+  // before markdown parsing so the first line renders correctly.
+  const origRender = md.render.bind(md);
+  md.render = (src, env) =>
+    origRender(String(src).replace(/<!--\s*buttondown-editor-mode:[^>]*-->\s*/gi, ""), env);
+
   eleventyConfig.setLibrary("md", md);
 
   // --- Filters ---

@@ -19,6 +19,18 @@ Custom landing page and full archive site for **The Weekly Thing**, a weekly new
 - **11ty** runs second: reads `.md` files as a collection and JSON data files, renders all pages with Nunjucks templates. Handles markdown rendering, heading anchors, TOC generation, and Buttondown template tag stripping.
 - **Pagefind** runs third: indexes the built HTML for full-text search.
 
+### Newsletter Publishing History
+
+The Weekly Thing has been published continuously since May 13, 2017 across three different email platforms. Each platform left its own stylistic fingerprint in the archive bodies, which matters when writing scripts that process older issues.
+
+| Issues | Era | Platform | Body traits |
+|---|---|---|---|
+| #1–#41 | May 2017 – Feb 2018 | **Tinyletter** | Plain markdown, inline links, no structured sections, no template cruft, date stamps like "Jun 3, 2017" at the top of early issues |
+| #42–#~130 | Mar 2018 – late 2019 | **MailChimp** | Templated headers (`Weekly Newsletter from Jamie Thingelstad`, `#42 \| Feb 24, 2018 \| Permalink (*\|ARCHIVE\|*)`); inline links; emoji-suffixed section headings appear in this era (`## Featured Links 🏅`, `## Notable Links 📌`, `## Yet More Links 🍞`); some issues (e.g., #106) are plain-text with bare URLs and no markdown link syntax |
+| #~131 onward | 2020 – present | **Buttondown** | Canonical section names (`## Notable`, `## Featured`, `## Briefly`, `## Must Read`); structured H3-under-H2 link format: `### [Title](url)`; Buttondown template tags like `{{ email_url }}`; `<!-- buttondown-editor-mode: plaintext -->` preamble |
+
+All archive bodies today live in Buttondown (the Tinyletter and MailChimp issues were migrated in). The editor-mode comment is present on every issue as a consequence. Processing scripts should handle all three eras — in particular, link extraction must accept the emoji-suffixed MailChimp-era section names (`scripts/process_emails.py`'s `NOTABLE_SECTIONS` / `BRIEFLY_SECTIONS` sets include these variants).
+
 ## Build & Run
 
 ```bash
