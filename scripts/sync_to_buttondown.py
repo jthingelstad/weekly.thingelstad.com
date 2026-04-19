@@ -84,7 +84,7 @@ def find_changes(issue_number=None):
             continue
 
         original = cached[buttondown_id]
-        original_body = original.get("body", "").strip()
+        original_body = original.get("body", "")
 
         diff = {}
         if body != original_body:
