@@ -4,7 +4,7 @@
     <h3 class="issue-card-title">{{ issue.data.subject }}</h3>
     <time class="issue-card-date" datetime="{{ issue.data.publish_date | dateFormat('iso') }}">{{ issue.data.publish_date | dateShort }}</time>
     {% if issue.data.description %}
-    <p class="issue-card-description">{{ issue.data.description | truncate(150) }}</p>
+    <p class="issue-card-description">{{ issue.data.description }}</p>
     {% endif %}
   </a>
 </article>
