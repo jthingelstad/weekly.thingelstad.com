@@ -72,11 +72,12 @@ def find_changes(issue_number=None):
         files = sorted(ARCHIVE_DIR.glob("*.md"))
 
     for file_path in files:
-        if file_path.name == "archive.njk":
+        if not file_path.exists():
+            print(f"Warning: {file_path.name} not found, skipping.")
             continue
 
         fm, body = parse_md_file(file_path)
-        if not fm or not body:
+        if fm is None:
             continue
 
         buttondown_id = fm.get("buttondown_id")
@@ -142,10 +143,25 @@ def push_changes(changes, dry_run=False):
         url = f"{API_BASE}/emails/{bid}"
         resp = requests.patch(url, headers=headers, json=fields)
 
-        if resp.ok:
-            print(f"    Updated successfully")
-        else:
+        if not resp.ok:
             print(f"    ERROR: {resp.status_code} — {resp.text[:200]}")
+            continue
+
+        # Verify the response reflects what we sent
+        returned = resp.json()
+        mismatches = []
+        for key, sent_val in fields.items():
+            got_val = returned.get(key)
+            if (sent_val or "") != (got_val or ""):
+                mismatches.append(
+                    f"{key}: sent {sent_val!r:.60} got {got_val!r:.60}"
+                )
+        if mismatches:
+            print("    WARNING: API response did not reflect sent values:")
+            for m in mismatches:
+                print(f"      {m}")
+        else:
+            print(f"    Updated successfully ({field_names})")
 
 
 def main():
