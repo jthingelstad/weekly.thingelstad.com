@@ -5,6 +5,7 @@ import json
 import os
 import re
 import sys
+import time
 from pathlib import Path
 
 import requests
@@ -117,6 +118,23 @@ def find_changes(issue_number=None):
     return changes
 
 
+def _patch_with_retry(url, headers, fields, max_attempts=5):
+    """PATCH with Retry-After-aware backoff on 429. Returns the final response,
+    or None if all attempts were rate-limited."""
+    for attempt in range(max_attempts):
+        resp = requests.patch(url, headers=headers, json=fields)
+        if resp.status_code != 429:
+            return resp
+        retry_after = resp.headers.get("Retry-After", "5")
+        try:
+            wait = max(1, int(retry_after))
+        except ValueError:
+            wait = 5
+        print(f"    429 rate-limited; sleeping {wait}s (attempt {attempt + 1}/{max_attempts})")
+        time.sleep(wait)
+    return None
+
+
 def push_changes(changes, dry_run=False):
     """Push changes to the Buttondown API."""
     headers = get_headers()
@@ -144,11 +162,20 @@ def push_changes(changes, dry_run=False):
             continue
 
         url = f"{API_BASE}/emails/{bid}"
-        resp = requests.patch(url, headers=headers, json=fields)
+        resp = _patch_with_retry(url, headers, fields)
 
+        if resp is None:
+            print("    ERROR: giving up after repeated rate-limit retries.")
+            continue
         if not resp.ok:
             print(f"    ERROR: {resp.status_code} — {resp.text[:200]}")
             continue
+
+        # Surface a warning when we're approaching the rate limit
+        remaining = resp.headers.get("X-RateLimit-Remaining")
+        if remaining and remaining.isdigit() and int(remaining) < 50:
+            reset = resp.headers.get("X-RateLimit-Reset", "?")
+            print(f"    (rate limit remaining={remaining}, resets at {reset})")
 
         # Verify the response reflects what we sent
         returned = resp.json()
