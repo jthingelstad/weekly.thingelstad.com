@@ -4,6 +4,8 @@ import json
 import sys
 from pathlib import Path
 
+sys.stdout.reconfigure(line_buffering=True)
+
 # Add scripts dir to path so we can import siblings
 sys.path.insert(0, str(Path(__file__).parent))
 

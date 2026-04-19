@@ -11,6 +11,9 @@ import requests
 import yaml
 from dotenv import load_dotenv
 
+# Stream progress in real time when piped through tee, logged to CI, etc.
+sys.stdout.reconfigure(line_buffering=True)
+
 load_dotenv()
 
 SRC_DIR = Path(__file__).parent.parent / "src"

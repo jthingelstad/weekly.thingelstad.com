@@ -21,5 +21,8 @@ __pycache__/
 # Playwright MCP
 .playwright-mcp/
 
+# Local Claude settings
+.claude/
+
 # Pagefind
 _site/pagefind/
