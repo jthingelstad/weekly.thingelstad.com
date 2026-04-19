@@ -6,10 +6,23 @@ from urllib.parse import urlparse
 from domain_exclusions import is_excluded
 
 # Sections that contain curated links (the editorial content).
-# Earlier issues used different names for similar sections.
+# Earlier issues used different names for similar sections — including
+# emoji-suffixed variants from the 2019–2020 era (~#100–#130).
 # "Featured" is merged with Notable per editorial intent.
-NOTABLE_SECTIONS = {"Notable", "Must Read", "Featured"}
-BRIEFLY_SECTIONS = {"Briefly", "Recommended Links", "FYI"}
+NOTABLE_SECTIONS = {
+    "Notable",
+    "Must Read",
+    "Featured",
+    "Notable Links 📌",
+    "Featured Links 🏅",
+    "Links 📌",
+}
+BRIEFLY_SECTIONS = {
+    "Briefly",
+    "Recommended Links",
+    "FYI",
+    "Yet More Links 🍞",
+}
 
 
 def _parse_sections(markdown_body):
