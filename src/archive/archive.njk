@@ -29,13 +29,20 @@ permalink: /archive/
         {% for issue in group.issues %}
         <article class="archive-entry">
           <a href="/archive/{{ issue.data.number }}/" class="archive-entry-link">
-            <span class="archive-entry-number">#{{ issue.data.number }}</span>
-            <span class="archive-entry-title">{{ issue.data.subject }}</span>
-            <time class="archive-entry-date" datetime="{{ issue.data.publish_date | dateFormat('iso') }}">{{ issue.data.publish_date | dateShort }}</time>
+            <div class="archive-entry-meta">
+              <span class="archive-entry-number">#{{ issue.data.number }}</span>
+              <time class="archive-entry-date" datetime="{{ issue.data.publish_date | dateFormat('iso') }}">{{ issue.data.publish_date | dateShort }}</time>
+            </div>
+            <div class="archive-entry-body">
+              <span class="archive-entry-title">{{ issue.data.subject }}</span>
+              {% if issue.data.description %}
+              <p class="archive-entry-description">{{ issue.data.description }}</p>
+              {% endif %}
+            </div>
+            {% if issue.data.image %}
+            <img class="archive-entry-thumb" src="{{ issue.data.image }}" alt="" loading="lazy" />
+            {% endif %}
           </a>
-          {% if issue.data.description %}
-          <p class="archive-entry-description">{{ issue.data.description }}</p>
-          {% endif %}
         </article>
         {% endfor %}
       </div>
