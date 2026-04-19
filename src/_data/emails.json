@@ -21935,7 +21935,7 @@
     "publish_date": "2019-05-04T12:00:00Z",
     "slug": "weekly-thing-104-may-4-2019",
     "description": "Minnebar14 recap, Amazon doorbell crime news, Zuckerberg future is private, Anki robotics shutting down, Cardbox, autism from the inside, refuse to rule.",
-    "image": "https://micro.thingelstad.com/uploads/2019/1e926365cb.jpg",
+    "image": "https://www.thingelstad.com/uploads/2019/1e926365cb.jpg",
     "absolute_url": "https://weekly.thingelstad.com/archive/weekly-thing-104-may-4-2019/",
     "domains": [
       "boz.com",
@@ -22227,11 +22227,194 @@
     "description": "Privacy rights, data collection, Maciej Ceg\u0142owski, Senate testimony, Paul Ford, love of tech, blank canvas, strong opinions loosely held.",
     "image": "https://gallery.mailchimp.com/9819a09d90bc4bae56285dd82/images/ea3631af-c04d-4568-89e2-85bbd5df22eb.jpg",
     "absolute_url": "https://weekly.thingelstad.com/archive/weekly-thing-106-may-18-2019/",
-    "domains": [],
-    "links": [],
-    "notable_links": [],
+    "domains": [
+      "alexdanco.com",
+      "blog.glowforge.com",
+      "brettterpstra.com",
+      "cloud.google.com",
+      "idlewords.com",
+      "medium.com",
+      "nest.com",
+      "stitcher.io",
+      "www.nbcnews.com",
+      "www.shrm.org",
+      "www.theregister.co.uk",
+      "www.wired.com"
+    ],
+    "links": [
+      {
+        "text": "Idle Words - Talks - Privacy Rights and Data Collection in a Digital Economy (Senate hearing)",
+        "url": "https://idlewords.com/talks/senate_testimony.2019.5.htm",
+        "domain": "idlewords.com",
+        "heading_context": "[Idle Words - Talks - Privacy Rights and Data Collection in a Digital Economy (Senate hearing)](https://idlewords.com/talks/senate_testimony.2019.5.htm)",
+        "section": "Featured Links \ud83c\udfc5"
+      },
+      {
+        "text": "Why I (Still) Love Tech: In Defense of a Difficult Industry | WIRED",
+        "url": "https://www.wired.com/story/why-we-love-tech-defense-difficult-industry/",
+        "domain": "www.wired.com",
+        "heading_context": "[Why I (Still) Love Tech: In Defense of a Difficult Industry | WIRED](https://www.wired.com/story/why-we-love-tech-defense-difficult-industry/)",
+        "section": "Featured Links \ud83c\udfc5"
+      },
+      {
+        "text": "Strong Opinions Loosely Held Might be the Worst Idea in Tech - The Glowforge Blog",
+        "url": "https://blog.glowforge.com/strong-opinions-loosely-held-might-be-the-worst-idea-in-tech/",
+        "domain": "blog.glowforge.com",
+        "heading_context": "[Strong Opinions Loosely Held Might be the Worst Idea in Tech - The Glowforge Blog](https://blog.glowforge.com/strong-opinions-loosely-held-might-be-the-worst-idea-in-tech/)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "Amazon\u2019s Away Teams laid bare: How AWS's hivemind of engineers develop and maintain their internal tech \u2022 The Register",
+        "url": "https://www.theregister.co.uk/2019/05/14/amazons_away_teams/?page=2",
+        "domain": "www.theregister.co.uk",
+        "heading_context": "[Amazon\u2019s Away Teams laid bare: How AWS's hivemind of engineers develop and maintain their internal tech \u2022 The Register](https://www.theregister.co.uk/2019/05/14/amazons_away_teams/?page=2)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "Bunch, a batch app launcher for your Dock - BrettTerpstra.com",
+        "url": "https://brettterpstra.com/2019/05/14/bunch-a-batch-app-launcher-for-your-dock/",
+        "domain": "brettterpstra.com",
+        "heading_context": "[Bunch, a batch app launcher for your Dock - BrettTerpstra.com](https://brettterpstra.com/2019/05/14/bunch-a-batch-app-launcher-for-your-dock/)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "Millions of people uploaded photos to the Ever app. Then the company used them to develop facial recognition tools.",
+        "url": "https://www.nbcnews.com/tech/security/millions-people-uploaded-photos-ever-app-then-company-used-them-n1003371",
+        "domain": "www.nbcnews.com",
+        "heading_context": "[Millions of people uploaded photos to the Ever app. Then the company used them to develop facial recognition tools.](https://www.nbcnews.com/tech/security/millions-people-uploaded-photos-ever-app-then-company-used-them-n1003371)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "PHP in 2019 - stitcher.io",
+        "url": "https://stitcher.io/blog/php-in-2019",
+        "domain": "stitcher.io",
+        "heading_context": "[PHP in 2019 - stitcher.io](https://stitcher.io/blog/php-in-2019)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "Cooking As A Service \u2013 danco.blog",
+        "url": "https://alexdanco.com/2019/05/09/cooking-as-a-service/",
+        "domain": "alexdanco.com",
+        "heading_context": "[Cooking As A Service \u2013 danco.blog](https://alexdanco.com/2019/05/09/cooking-as-a-service/)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "API design: Why you should use links, not keys, to represent relationships in APIs | Google Cloud Blog",
+        "url": "https://cloud.google.com/blog/products/application-development/api-design-why-you-should-use-links-not-keys-to-represent-relationships-in-apis",
+        "domain": "cloud.google.com",
+        "heading_context": "[API design: Why you should use links, not keys, to represent relationships in APIs | Google Cloud Blog](https://cloud.google.com/blog/products/application-development/api-design-why-you-should-use-links-not-keys-to-represent-relationships-in-apis)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "Disrupting the Tech Profession\u2019s Gender Gap",
+        "url": "https://www.shrm.org/hr-today/news/all-things-work/pages/disrupting-the-tech-profession-gender-gap.aspx",
+        "domain": "www.shrm.org",
+        "heading_context": "[Disrupting the Tech Profession\u2019s Gender Gap](https://www.shrm.org/hr-today/news/all-things-work/pages/disrupting-the-tech-profession-gender-gap.aspx)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "The Time of Day Has a Significant Effect on Your Productivity",
+        "url": "https://medium.com/@alltopstartups/the-time-of-day-has-a-significant-effect-on-your-productivity-c45b199410d5",
+        "domain": "medium.com",
+        "heading_context": "[The Time of Day Has a Significant Effect on Your Productivity](https://medium.com/@alltopstartups/the-time-of-day-has-a-significant-effect-on-your-productivity-c45b199410d5)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "What\u2019s happening at Nest? | Nest",
+        "url": "https://nest.com/whats-happening/",
+        "domain": "nest.com",
+        "heading_context": "[What\u2019s happening at Nest? | Nest](https://nest.com/whats-happening/)",
+        "section": "Notable Links \ud83d\udccc"
+      }
+    ],
+    "notable_links": [
+      {
+        "text": "Idle Words - Talks - Privacy Rights and Data Collection in a Digital Economy (Senate hearing)",
+        "url": "https://idlewords.com/talks/senate_testimony.2019.5.htm",
+        "domain": "idlewords.com",
+        "heading_context": "[Idle Words - Talks - Privacy Rights and Data Collection in a Digital Economy (Senate hearing)](https://idlewords.com/talks/senate_testimony.2019.5.htm)",
+        "section": "Featured Links \ud83c\udfc5"
+      },
+      {
+        "text": "Why I (Still) Love Tech: In Defense of a Difficult Industry | WIRED",
+        "url": "https://www.wired.com/story/why-we-love-tech-defense-difficult-industry/",
+        "domain": "www.wired.com",
+        "heading_context": "[Why I (Still) Love Tech: In Defense of a Difficult Industry | WIRED](https://www.wired.com/story/why-we-love-tech-defense-difficult-industry/)",
+        "section": "Featured Links \ud83c\udfc5"
+      },
+      {
+        "text": "Strong Opinions Loosely Held Might be the Worst Idea in Tech - The Glowforge Blog",
+        "url": "https://blog.glowforge.com/strong-opinions-loosely-held-might-be-the-worst-idea-in-tech/",
+        "domain": "blog.glowforge.com",
+        "heading_context": "[Strong Opinions Loosely Held Might be the Worst Idea in Tech - The Glowforge Blog](https://blog.glowforge.com/strong-opinions-loosely-held-might-be-the-worst-idea-in-tech/)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "Amazon\u2019s Away Teams laid bare: How AWS's hivemind of engineers develop and maintain their internal tech \u2022 The Register",
+        "url": "https://www.theregister.co.uk/2019/05/14/amazons_away_teams/?page=2",
+        "domain": "www.theregister.co.uk",
+        "heading_context": "[Amazon\u2019s Away Teams laid bare: How AWS's hivemind of engineers develop and maintain their internal tech \u2022 The Register](https://www.theregister.co.uk/2019/05/14/amazons_away_teams/?page=2)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "Bunch, a batch app launcher for your Dock - BrettTerpstra.com",
+        "url": "https://brettterpstra.com/2019/05/14/bunch-a-batch-app-launcher-for-your-dock/",
+        "domain": "brettterpstra.com",
+        "heading_context": "[Bunch, a batch app launcher for your Dock - BrettTerpstra.com](https://brettterpstra.com/2019/05/14/bunch-a-batch-app-launcher-for-your-dock/)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "Millions of people uploaded photos to the Ever app. Then the company used them to develop facial recognition tools.",
+        "url": "https://www.nbcnews.com/tech/security/millions-people-uploaded-photos-ever-app-then-company-used-them-n1003371",
+        "domain": "www.nbcnews.com",
+        "heading_context": "[Millions of people uploaded photos to the Ever app. Then the company used them to develop facial recognition tools.](https://www.nbcnews.com/tech/security/millions-people-uploaded-photos-ever-app-then-company-used-them-n1003371)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "PHP in 2019 - stitcher.io",
+        "url": "https://stitcher.io/blog/php-in-2019",
+        "domain": "stitcher.io",
+        "heading_context": "[PHP in 2019 - stitcher.io](https://stitcher.io/blog/php-in-2019)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "Cooking As A Service \u2013 danco.blog",
+        "url": "https://alexdanco.com/2019/05/09/cooking-as-a-service/",
+        "domain": "alexdanco.com",
+        "heading_context": "[Cooking As A Service \u2013 danco.blog](https://alexdanco.com/2019/05/09/cooking-as-a-service/)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "API design: Why you should use links, not keys, to represent relationships in APIs | Google Cloud Blog",
+        "url": "https://cloud.google.com/blog/products/application-development/api-design-why-you-should-use-links-not-keys-to-represent-relationships-in-apis",
+        "domain": "cloud.google.com",
+        "heading_context": "[API design: Why you should use links, not keys, to represent relationships in APIs | Google Cloud Blog](https://cloud.google.com/blog/products/application-development/api-design-why-you-should-use-links-not-keys-to-represent-relationships-in-apis)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "Disrupting the Tech Profession\u2019s Gender Gap",
+        "url": "https://www.shrm.org/hr-today/news/all-things-work/pages/disrupting-the-tech-profession-gender-gap.aspx",
+        "domain": "www.shrm.org",
+        "heading_context": "[Disrupting the Tech Profession\u2019s Gender Gap](https://www.shrm.org/hr-today/news/all-things-work/pages/disrupting-the-tech-profession-gender-gap.aspx)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "The Time of Day Has a Significant Effect on Your Productivity",
+        "url": "https://medium.com/@alltopstartups/the-time-of-day-has-a-significant-effect-on-your-productivity-c45b199410d5",
+        "domain": "medium.com",
+        "heading_context": "[The Time of Day Has a Significant Effect on Your Productivity](https://medium.com/@alltopstartups/the-time-of-day-has-a-significant-effect-on-your-productivity-c45b199410d5)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "What\u2019s happening at Nest? | Nest",
+        "url": "https://nest.com/whats-happening/",
+        "domain": "nest.com",
+        "heading_context": "[What\u2019s happening at Nest? | Nest](https://nest.com/whats-happening/)",
+        "section": "Notable Links \ud83d\udccc"
+      }
+    ],
     "briefly_links": [],
-    "word_count": 2012
+    "word_count": 2004
   },
   {
     "id": "em_3dm84b6esy81y90hfr45yrg1h2",
@@ -29331,7 +29514,7 @@
     "publish_date": "2020-03-23T23:00:00Z",
     "slug": "special-thing-140-matching-donations-to-second",
     "description": "",
-    "image": "",
+    "image": "https://www.thingelstad.com/uploads/2020/273055aabe.jpg",
     "absolute_url": "https://weekly.thingelstad.com/archive/special-thing-140-matching-donations-to-second/",
     "domains": [
       "www.2harvest.org"
@@ -29353,8 +29536,8 @@
       },
       {
         "text": "Lucky the Dog",
-        "url": "https://micro.thingelstad.com/uploads/2020/273055aabe.jpg",
-        "domain": "micro.thingelstad.com",
+        "url": "https://www.thingelstad.com/uploads/2020/273055aabe.jpg",
+        "domain": "www.thingelstad.com",
         "heading_context": null,
         "section": null
       }
@@ -29376,8 +29559,8 @@
       },
       {
         "text": "Lucky the Dog",
-        "url": "https://micro.thingelstad.com/uploads/2020/273055aabe.jpg",
-        "domain": "micro.thingelstad.com",
+        "url": "https://www.thingelstad.com/uploads/2020/273055aabe.jpg",
+        "domain": "www.thingelstad.com",
         "heading_context": null,
         "section": null
       }
