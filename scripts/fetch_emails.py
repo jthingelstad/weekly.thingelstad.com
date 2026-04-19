@@ -2,12 +2,15 @@
 
 import json
 import os
+import sys
 import time
 from pathlib import Path
 
 import requests
 import stripe
 from dotenv import load_dotenv
+
+sys.stdout.reconfigure(line_buffering=True)
 
 load_dotenv()
 
