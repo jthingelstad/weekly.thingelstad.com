@@ -6,7 +6,7 @@ subject: 'Special Thing #140 / Matching Donations to Second Harvest!'
 publish_date: '2020-03-23T23:00:00Z'
 slug: special-thing-140-matching-donations-to-second
 description: ''
-image: ''
+image: https://www.thingelstad.com/uploads/2020/273055aabe.jpg
 absolute_url: https://weekly.thingelstad.com/archive/special-thing-140-matching-donations-to-second/
 domains:
 - www.2harvest.org
@@ -22,8 +22,8 @@ links:
   heading_context: null
   section: null
 - text: Lucky the Dog
-  url: https://micro.thingelstad.com/uploads/2020/273055aabe.jpg
-  domain: micro.thingelstad.com
+  url: https://www.thingelstad.com/uploads/2020/273055aabe.jpg
+  domain: www.thingelstad.com
   heading_context: null
   section: null
 word_count: 333
@@ -55,7 +55,7 @@ But, we can do much more. We can provide **another 85,140 meals for people in ne
 
 As a treat for all of you great folks, here is a picture of our new family dog. His name is Lucky. We just got him this weekend. He is also making a donation to Second Harvest for the match!
 
-![Lucky the Dog](https://micro.thingelstad.com/uploads/2020/273055aabe.jpg)
+![Lucky the Dog](https://www.thingelstad.com/uploads/2020/273055aabe.jpg)
 
 **[Thank you for donating to Second Harvest!](https://www.2harvest.org)**
 
