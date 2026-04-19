@@ -17,7 +17,9 @@ sys.stdout.reconfigure(line_buffering=True)
 ARCHIVE_DIR = Path(__file__).parent.parent / "src" / "archive"
 
 DATE_RE = re.compile(
-    r"^(?P<date>(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*"
+    r"^(?P<date>"
+    r"(?:#\d+\s*/\s*)?"  # optional "#N / " prefix (used in #60–#69)
+    r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*"
     r"\s+\d{1,2},?\s+\d{4})\s*\n+",
 )
 
