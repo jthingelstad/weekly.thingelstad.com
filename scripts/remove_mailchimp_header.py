@@ -34,10 +34,11 @@ sys.stdout.reconfigure(line_buffering=True)
 ARCHIVE_DIR = Path(__file__).parent.parent / "src" / "archive"
 
 HEADER_A = re.compile(
-    r"^Weekly Newsletter from\n"
+    r"^(?:##\s+Weekly Thing\s*\n+)?"  # optional "## Weekly Thing" heading (#53–#58)
+    r"Weekly Newsletter from\n"
     r"Jamie Thingelstad\n"
     r"\n"
-    r"#\d+\s*\|\s*[^|\n]+\|\s*Permalink\s*\(\*\|ARCHIVE\|\*\)\n"
+    r"#\d+\s*[|•]\s*[^|•\n]+[|•]\s*Permalink\s*\(\*\|ARCHIVE\|\*\)\n"
     r"\n+"
 )
 
