@@ -161,8 +161,13 @@ def extract_body_text(fp, limit_chars=4000):
     return inner[:limit_chars]
 
 
-def pick_titles(main, allx, min_main=3):
-    """Choose which title set to feed the model. Returns (titles, source_tag)."""
+def pick_titles(main, allx, min_main=3, force_all=False):
+    """Choose which title set to feed the model. Returns (titles, source_tag).
+    If force_all is set, always prefer the broader all-editorial set when it
+    has more titles than main — useful for re-running issues whose main-only
+    set was too small to produce a 110+ char description."""
+    if force_all and len(allx) > len(main):
+        return allx, "all-editorial"
     if len(main) >= min_main:
         return main, "main"
     if len(allx) >= min_main:
@@ -231,6 +236,8 @@ def main():
                     help="For issues with no editorial-section links, extract inline markdown links from the body instead")
     ap.add_argument("--body-fallback", action="store_true",
                     help="For themed-essay issues, generate from body text instead of link titles")
+    ap.add_argument("--force-all", action="store_true",
+                    help="Prefer all-editorial titles over main-only when all has more entries (for re-running short outputs)")
     args = ap.parse_args()
 
     client = Anthropic()
@@ -247,7 +254,7 @@ def main():
         if not fp.exists() or not fp.stem.isdigit():
             continue
         subject, main, allx = load_links(fp)
-        titles, source = pick_titles(main, allx)
+        titles, source = pick_titles(main, allx, force_all=args.force_all)
         if not titles and args.inline_fallback:
             inline = extract_inline_link_titles(fp)
             if len(inline) >= 3:
