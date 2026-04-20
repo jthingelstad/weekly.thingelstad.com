@@ -10,14 +10,14 @@ permalink: /
 {# ── Hero ── #}
 <section class="hero">
   <div class="container">
-    <p class="hero-eyebrow">A newsletter by Jamie Thingelstad</p>
+    <p class="hero-eyebrow">{{ copy.hero.eyebrow or "A newsletter by Jamie Thingelstad" }}</p>
     <h1 class="hero-title">Weekly Thing</h1>
-    <p class="hero-tagline">Every weekend, one curious person sifts through the internet and sends you the things worth your time. Technology, culture, the indie web, and whatever else refuses to be ignored.</p>
+    <p class="hero-tagline">{{ copy.hero.tagline or "Every weekend, one curious person sifts through the internet and sends you the things worth your time. Technology, culture, the indie web, and whatever else refuses to be ignored." }}</p>
     <div class="hero-subscribe">
       {% set subscribeId = "hero" %}
       {% include "partials/subscribe-form.njk" %}
     </div>
-    <p class="hero-proof">Free, every weekend. {{ latest.data.number }} issues and counting since 2017.</p>
+    <p class="hero-proof">{{ copy.ctas.hero.proof or "Free, every weekend." }} {{ latest.data.number }} issues and counting since 2017.</p>
   </div>
 </section>
 
@@ -26,10 +26,10 @@ permalink: /
   <div class="container">
     <div class="value-grid">
       <div class="value-main">
-        <h2>Not an algorithm. Not a feed.<br>Just one person paying attention.</h2>
-        <p>Every week, Jamie reads widely and deeply across the internet — from Ars Technica to personal blogs you've never heard of, from the New York Times to someone's weekend project on GitHub. The result is a newsletter that connects dots nobody else is connecting.</p>
-        <p>Each link comes with context: why it matters, what's interesting about it, and how it fits into the bigger picture. It's commentary, not just aggregation.</p>
-        <p>And you can read it knowing your privacy is preserved. No tracking pixels, no click tracking, no data harvesting. Just words in your inbox.</p>
+        <h2>{{ (copy.valueProp.headline or "Not an algorithm. Not a feed.<br>Just one person paying attention.") | safe }}</h2>
+        {% for para in copy.valueProp.paragraphs %}
+        <p>{{ para }}</p>
+        {% endfor %}
       </div>
       <div class="value-stats">
         <div class="value-stat">
@@ -52,7 +52,7 @@ permalink: /
 {# ── What Readers Say ── #}
 <section class="section reader-quotes">
   <div class="container">
-    <h2 class="section-title">What Readers Say</h2>
+    <h2 class="section-title">{{ copy.sections.readersSay or "What Readers Say" }}</h2>
 
     <div class="survey-stats-row">
       <div class="survey-stat">
@@ -93,7 +93,7 @@ permalink: /
 {# ── Mid-page subscribe CTA ── #}
 <section class="section inline-cta">
   <div class="container">
-    <p class="inline-cta-text">Join them. Free, every weekend.</p>
+    <p class="inline-cta-text">{{ copy.ctas.mid1.headline or "Join them. Free, every weekend." }}</p>
     {% set subscribeId = "mid1" %}
     {% include "partials/subscribe-form.njk" %}
   </div>
@@ -115,25 +115,44 @@ permalink: /
 </section>
 
 {# ── Voice: actual quotes from the newsletter ── #}
+{% if voiceSamples and voiceSamples.length > 0 %}
 <section class="section voice-section">
   <div class="container">
-    <h2 class="section-title">How It Sounds</h2>
+    <h2 class="section-title">{{ copy.sections.voiceTitle or "How It Sounds" }}</h2>
     <div class="voice-grid">
+      {% for sample in voiceSamples | slice(0, 3) %}
       <blockquote class="voice-card">
-        <p>"At our cabin we have a record player and more often than makes sense I think to myself when playing a record how novel it is that no company, no algorithm, no system knows that we are listening to the Foo Fighters right now. It fills me with joy actually."</p>
-        <footer><a href="/archive/320/">#320 &mdash; Octopus, Agentic, Voyager</a></footer>
+        <p>&ldquo;{{ sample.text }}&rdquo;</p>
+        <footer><a href="/archive/{{ sample.issueNumber }}/">{{ sample.issueTitle }}</a></footer>
       </blockquote>
-      <blockquote class="voice-card">
-        <p>"Number one life hack? Ditch social media entirely; learn how to use an RSS reader."</p>
-        <footer><a href="/archive/343/">#343 &mdash; Commune, Chaos, Renaissance</a></footer>
-      </blockquote>
-      <blockquote class="voice-card">
-        <p>"We have entered a time where the cost of content creation will trend to zero. I believe that the provenance and identity of content creation will be increasingly important."</p>
-        <footer><a href="/archive/250/">#250 &mdash; LLM, Shanghai, Wing</a></footer>
-      </blockquote>
+      {% endfor %}
     </div>
   </div>
 </section>
+{% endif %}
+
+{# ── What you'll actually get ── #}
+{% if copy.whatYouGet and copy.whatYouGet.themes and copy.whatYouGet.themes.length > 0 %}
+<section class="section what-you-get">
+  <div class="container">
+    <h2 class="section-title">{{ copy.whatYouGet.headline or "What you'll actually get" }}</h2>
+    {% if copy.whatYouGet.lede %}
+    <p class="section-lede">{{ copy.whatYouGet.lede }}</p>
+    {% endif %}
+    <div class="theme-grid">
+      {% for theme in copy.whatYouGet.themes %}
+      <article class="theme-card">
+        <h3 class="theme-label">{{ theme.label }}</h3>
+        <p class="theme-description">{{ theme.description }}</p>
+        {% if theme.exampleIssue %}
+        <p class="theme-example"><a href="/archive/{{ theme.exampleIssue }}/">See issue #{{ theme.exampleIssue }} &rarr;</a></p>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
 
 {# ── Latest Issue ── #}
 {% if latest %}
@@ -174,7 +193,7 @@ permalink: /
 {# ── Mid-page subscribe CTA ── #}
 <section class="section inline-cta">
   <div class="container">
-    <p class="inline-cta-text">Curious? Get it in your inbox every weekend.</p>
+    <p class="inline-cta-text">{{ copy.ctas.mid2.headline or "Curious? Get it in your inbox every weekend." }}</p>
     {% set subscribeId = "mid2" %}
     {% include "partials/subscribe-form.njk" %}
   </div>
@@ -183,7 +202,7 @@ permalink: /
 {# ── Membership ── #}
 <section class="section supporting-section">
   <div class="container">
-    <h2 class="section-title">Membership</h2>
+    <h2 class="section-title">{{ copy.sections.membership or "Membership" }}</h2>
     <p>The Weekly Thing is free for everyone, always. Members contribute to a nonprofit selected each year — <strong>100% of fees are donated</strong>.</p>
     {% if support.current %}
     <p>This year, we're supporting <strong><a href="{{ support.current.url }}">{{ support.current.nonprofit }}</a></strong>.
@@ -198,8 +217,8 @@ permalink: /
 {# ── Final CTA ── #}
 <section class="section footer-cta">
   <div class="container">
-    <h2>Start reading this weekend</h2>
-    <p>Join {{ ((stats.subscriber_count / 100) | round * 100) | numberFormat }}+ readers who get the Weekly Thing every weekend. No spam, no tracking, unsubscribe anytime.</p>
+    <h2>{{ copy.ctas.footer.headline or "Start reading this weekend" }}</h2>
+    <p>Join {{ ((stats.subscriber_count / 100) | round * 100) | numberFormat }}+ readers. {{ copy.ctas.footer.body or "Get the Weekly Thing every weekend. No spam, no tracking, unsubscribe anytime." }}</p>
     {% set subscribeId = "footer" %}
     {% include "partials/subscribe-form.njk" %}
   </div>
