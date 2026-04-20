@@ -26,3 +26,6 @@ __pycache__/
 
 # Pagefind
 _site/pagefind/
+
+# Local audit/working files
+tmp/

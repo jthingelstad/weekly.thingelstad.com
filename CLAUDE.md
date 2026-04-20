@@ -69,7 +69,20 @@ weekly.thingelstad.com/
 │   ├── process_emails.py           # Link extraction, issue numbering, word counts
 │   ├── domain_exclusions.py        # Domains excluded from link/domain lists
 │   ├── sync_to_buttondown.py       # Push local .md edits back to Buttondown API
-│   └── convert_legacy.py           # One-time: HTML/MailChimp → markdown conversion
+│   ├── audit_archive.py            # Static regex/DOM audit of rendered HTML
+│   ├── llm_audit_archive.py        # LLM semantic audit (Claude Opus 4.7)
+│   ├── audit_missing_micropost_photos.py  # Find silently-lost micropost photos
+│   ├── build_missing_posts_report.py      # Enrich 404 report with Wayback + context
+│   ├── fix_micropost_photos.py            # Restore photos from mp-photo-alt[]= markers
+│   ├── restore_missing_micropost_photos.py # Restore silently-lost single-photo microposts
+│   ├── migrate_images_to_s3.py            # Download, resize, upload images to files.thingelstad.com
+│   ├── fetch_latest.py                    # Fetch single most recent email
+│   ├── generate_descriptions.py           # Generate issue descriptions
+│   └── one-shot/                          # Archived scripts that applied a one-time cleanup
+│                                          # See scripts/one-shot/README.md for history
+├── docs/
+│   └── audits/                     # Snapshot of archive audits — see docs/audits/README.md
+│                                   # (archive-audit, llm-audit, missing-photos, missing-microblog-posts)
 ├── src/
 │   ├── _data/
 │   │   ├── emails.json             # Metadata index (generated, committed)
@@ -206,11 +219,35 @@ Archive `.md` files can be edited locally and synced back to Buttondown:
 
 ```bash
 python scripts/sync_to_buttondown.py --dry-run          # preview changes
-python scripts/sync_to_buttondown.py                      # push all changes
-python scripts/sync_to_buttondown.py --issue 42           # push single issue
+python scripts/sync_to_buttondown.py --yes              # push all changes
+python scripts/sync_to_buttondown.py --issue 42 --yes   # push single issue
 ```
 
 Compares local body against cached API data, PATCHes changed fields to Buttondown API.
+
+**Important:** `build_data.py` regenerates `src/archive/*.md` unconditionally from the Buttondown API cache. Any local `.md` edit that hasn't been synced back to Buttondown will be overwritten on the next data-pipeline run. The durability flow is:
+
+1. Edit `.md` locally
+2. `python scripts/sync_to_buttondown.py --dry-run` to preview
+3. `python scripts/sync_to_buttondown.py --yes` to push
+4. `python scripts/build_data.py --no-cache` to refresh the local cache from Buttondown
+5. `python scripts/sync_to_buttondown.py --dry-run` should now show "No changes detected"
+
+Step 4 is critical — until the local cache is refreshed, subsequent `make build` / `make serve` runs will still show stale data in the cache and re-clobber your `.md` on next pipeline run.
+
+## Archive Audits
+
+Audit outputs are snapshotted in `docs/audits/` and checked in so future sessions can pick up context. See `docs/audits/README.md` for the full inventory. Open cleanup work is tracked in GitHub issues — filter by labels `quick-win`, `editorial-review`, `s3-migration`, `exploration`, `low-priority`, `blocked-external` plus size labels `size-small` / `size-medium` / `size-large`.
+
+Re-run audits:
+
+```bash
+python scripts/audit_archive.py             # static regex/DOM audit
+python scripts/llm_audit_archive.py --full  # LLM audit (~$20 on Opus 4.7)
+python scripts/audit_missing_micropost_photos.py  # find silently-lost photos
+```
+
+Each writes to `tmp/` (gitignored). Copy outputs to `docs/audits/` to snapshot.
 
 ## Data Files
 
