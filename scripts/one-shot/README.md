@@ -17,6 +17,7 @@ Do not re-run these against the current archive unless you explicitly intend to 
 | `modernize_hr.py` | `9b9c2f4` | Modernized MailChimp-era section dividers to markdown `---`. |
 | `populate_missing_images.py` | `6c2ad3d` | Recovered 103 hero images for MailChimp-era issues from campaign HTML. |
 | `remove_about_section.py` | `bba2c4d` | Removed trailing "About" section from 137 archive issues. |
+| `remove_forward_to_friends_block.py` | (this cleanup session) | Removed 13 MailChimp/early-Buttondown-era "forward this to friends" share-CTA blocks from 9 issues (#131, #142, #146, #156, #163, #164, #165, #167, #168). Applied + synced. |
 | `remove_intro_template.py` | `2f7224b` | Removed boilerplate intro template that repeated across issues. |
 | `remove_leading_date.py` | `9a1d246` | Stripped Tinyletter-era leading date and location datelines from #3–#22. |
 | `remove_mailchimp_footer.py` | `b2909fb` | Removed MailChimp-era footer cruft + remaining header variants. |
