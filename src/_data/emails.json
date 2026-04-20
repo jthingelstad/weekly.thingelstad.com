@@ -8,9 +8,265 @@
     "description": "Layne Kennedy, Minnesota Original, Wintergreen Dog Sledding, Amazon ECS, Macron honeypot accounts, Field Nation Minneapolis, James Comey fired.",
     "image": "",
     "absolute_url": "https://weekly.thingelstad.com/archive/weekly-thing-for-may-13-2017/",
-    "domains": [],
-    "links": [],
-    "notable_links": [],
+    "domains": [
+      "anniemueller.com",
+      "arstechnica.com",
+      "blog.alicegoldfuss.com",
+      "colterreed.com",
+      "hackernoon.com",
+      "mobile.nytimes.com",
+      "tech.mn",
+      "www.appleworld.today",
+      "www.cnbc.com",
+      "www.dark-clouds.com",
+      "www.macsparky.com",
+      "www.macstories.net",
+      "www.mapbox.com",
+      "www.tbray.org",
+      "www.theatlantic.com"
+    ],
+    "links": [
+      {
+        "text": "We switched to Amazon ECS and you won't believe what happened next | Mapbox",
+        "url": "https://www.mapbox.com/blog/switch-to-ecs/",
+        "domain": "www.mapbox.com",
+        "heading_context": "[We switched to Amazon ECS and you won't believe what happened next | Mapbox](https://www.mapbox.com/blog/switch-to-ecs/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "ongoing by Tim Bray \u00b7 2017 Camera News",
+        "url": "https://www.tbray.org/ongoing/When/201x/2017/04/15/Camera-News",
+        "domain": "www.tbray.org",
+        "heading_context": "[ongoing by Tim Bray \u00b7 2017 Camera News](https://www.tbray.org/ongoing/When/201x/2017/04/15/Camera-News)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Taking inventory (inputs and outputs) \u2013 a n n i e m u e l l e r",
+        "url": "http://anniemueller.com/2017/03/13/taking-inventory-inputs-and-outputs/",
+        "domain": "anniemueller.com",
+        "heading_context": "[Taking inventory (inputs and outputs) \u2013 a n n i e m u e l l e r](http://anniemueller.com/2017/03/13/taking-inventory-inputs-and-outputs/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "iPad Diaries: DEVONthink\u2019s New Advanced Automation \u2013 MacStories",
+        "url": "https://www.macstories.net/ios/ipad-diaries-devonthinks-new-advanced-automation/",
+        "domain": "www.macstories.net",
+        "heading_context": "[iPad Diaries: DEVONthink\u2019s New Advanced Automation \u2013 MacStories](https://www.macstories.net/ios/ipad-diaries-devonthinks-new-advanced-automation/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "'Ladies' Is Gender Neutral \u2013 Alice Goldfuss",
+        "url": "http://blog.alicegoldfuss.com/ladies-is-gender-neutral/",
+        "domain": "blog.alicegoldfuss.com",
+        "heading_context": "['Ladies' Is Gender Neutral \u2013 Alice Goldfuss](http://blog.alicegoldfuss.com/ladies-is-gender-neutral/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Macron campaign team used honeypot accounts to fake out Fancy Bear | Ars Technica",
+        "url": "https://arstechnica.com/security/2017/05/macron-campaign-team-used-honeypot-accounts-to-fake-out-fancy-bear/",
+        "domain": "arstechnica.com",
+        "heading_context": "[Macron campaign team used honeypot accounts to fake out Fancy Bear | Ars Technica](https://arstechnica.com/security/2017/05/macron-campaign-team-used-honeypot-accounts-to-fake-out-fancy-bear/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "TECHdotMN Field Nation Plans To Double The Size Of Minneapolis HQ - TECHdotMN",
+        "url": "http://tech.mn/news/2017/05/11/field-nation-plans-to-double-minneapolis-hq-at-baker-center/",
+        "domain": "tech.mn",
+        "heading_context": "[TECHdotMN Field Nation Plans To Double The Size Of Minneapolis HQ - TECHdotMN](http://tech.mn/news/2017/05/11/field-nation-plans-to-double-minneapolis-hq-at-baker-center/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "News Corp earnings Q3 2017",
+        "url": "http://www.cnbc.com/2017/05/09/news-corp-earnings-q3-2017.html",
+        "domain": "www.cnbc.com",
+        "heading_context": "[News Corp earnings Q3 2017](http://www.cnbc.com/2017/05/09/news-corp-earnings-q3-2017.html)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "A More Powerful Way to Schedule Tasks in OmniFocus",
+        "url": "https://colterreed.com/a-more-powerful-way-to-schedule-tasks-in-omnifocus/",
+        "domain": "colterreed.com",
+        "heading_context": "[A More Powerful Way to Schedule Tasks in OmniFocus](https://colterreed.com/a-more-powerful-way-to-schedule-tasks-in-omnifocus/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Analyzing a counter intelligence cyber operation: How Macron just changed cyber security forever",
+        "url": "https://hackernoon.com/analyzing-a-counter-intelligence-cyber-operation-how-macron-just-changed-cyber-security-forever-22553abb038b",
+        "domain": "hackernoon.com",
+        "heading_context": "[Analyzing a counter intelligence cyber operation: How Macron just changed cyber security forever](https://hackernoon.com/analyzing-a-counter-intelligence-cyber-operation-how-macron-just-changed-cyber-security-forever-22553abb038b)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Microsoft launches Visual Studio 2017 for macOS \u2014 Apple World Today",
+        "url": "https://www.appleworld.today/blog/2017/5/10/microsoft-launches-visual-studio-2017-for-macos",
+        "domain": "www.appleworld.today",
+        "heading_context": "[Microsoft launches Visual Studio 2017 for macOS \u2014 Apple World Today](https://www.appleworld.today/blog/2017/5/10/microsoft-launches-visual-studio-2017-for-macos)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "F.B.I. Director James Comey Is Fired by Trump - NYTimes.com",
+        "url": "https://mobile.nytimes.com/2017/05/09/us/politics/james-comey-fired-fbi.html?smprod=nytcore-iphone",
+        "domain": "mobile.nytimes.com",
+        "heading_context": "[F.B.I. Director James Comey Is Fired by Trump - NYTimes.com](https://mobile.nytimes.com/2017/05/09/us/politics/james-comey-fired-fbi.html?smprod=nytcore-iphone)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Timing 2 for Mac \u2014 MacSparky",
+        "url": "https://www.macsparky.com/blog/2017/5/timing-2-for-mac",
+        "domain": "www.macsparky.com",
+        "heading_context": "[Timing 2 for Mac \u2014 MacSparky](https://www.macsparky.com/blog/2017/5/timing-2-for-mac)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Google\u2019s \u201cFuchsia\u201d smartphone OS dumps Linux, has a wild new UI | Ars Technica",
+        "url": "https://arstechnica.com/gadgets/2017/05/googles-fuchsia-smartphone-os-dumps-linux-has-a-wild-new-ui/",
+        "domain": "arstechnica.com",
+        "heading_context": "[Google\u2019s \u201cFuchsia\u201d smartphone OS dumps Linux, has a wild new UI | Ars Technica](https://arstechnica.com/gadgets/2017/05/googles-fuchsia-smartphone-os-dumps-linux-has-a-wild-new-ui/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Tradition Tuesday: Wonderwall - DARK CLOUDS",
+        "url": "https://www.dark-clouds.com/2017/03/93535/",
+        "domain": "www.dark-clouds.com",
+        "heading_context": "[Tradition Tuesday: Wonderwall - DARK CLOUDS](https://www.dark-clouds.com/2017/03/93535/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Why Do Americans Smile So Much? - The Atlantic",
+        "url": "https://www.theatlantic.com/science/archive/2017/05/why-americans-smile-so-much/524967/",
+        "domain": "www.theatlantic.com",
+        "heading_context": "[Why Do Americans Smile So Much? - The Atlantic](https://www.theatlantic.com/science/archive/2017/05/why-americans-smile-so-much/524967/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "How Brandi Carlile Got Adele and Obama for a Benefit Album - NYTimes.com",
+        "url": "https://mobile.nytimes.com/2017/05/03/arts/music/brandi-carlile-cover-stories-adele-obama.html",
+        "domain": "mobile.nytimes.com",
+        "heading_context": "[How Brandi Carlile Got Adele and Obama for a Benefit Album - NYTimes.com](https://mobile.nytimes.com/2017/05/03/arts/music/brandi-carlile-cover-stories-adele-obama.html)",
+        "section": "Links \ud83d\udccc"
+      }
+    ],
+    "notable_links": [
+      {
+        "text": "We switched to Amazon ECS and you won't believe what happened next | Mapbox",
+        "url": "https://www.mapbox.com/blog/switch-to-ecs/",
+        "domain": "www.mapbox.com",
+        "heading_context": "[We switched to Amazon ECS and you won't believe what happened next | Mapbox](https://www.mapbox.com/blog/switch-to-ecs/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "ongoing by Tim Bray \u00b7 2017 Camera News",
+        "url": "https://www.tbray.org/ongoing/When/201x/2017/04/15/Camera-News",
+        "domain": "www.tbray.org",
+        "heading_context": "[ongoing by Tim Bray \u00b7 2017 Camera News](https://www.tbray.org/ongoing/When/201x/2017/04/15/Camera-News)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Taking inventory (inputs and outputs) \u2013 a n n i e m u e l l e r",
+        "url": "http://anniemueller.com/2017/03/13/taking-inventory-inputs-and-outputs/",
+        "domain": "anniemueller.com",
+        "heading_context": "[Taking inventory (inputs and outputs) \u2013 a n n i e m u e l l e r](http://anniemueller.com/2017/03/13/taking-inventory-inputs-and-outputs/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "iPad Diaries: DEVONthink\u2019s New Advanced Automation \u2013 MacStories",
+        "url": "https://www.macstories.net/ios/ipad-diaries-devonthinks-new-advanced-automation/",
+        "domain": "www.macstories.net",
+        "heading_context": "[iPad Diaries: DEVONthink\u2019s New Advanced Automation \u2013 MacStories](https://www.macstories.net/ios/ipad-diaries-devonthinks-new-advanced-automation/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "'Ladies' Is Gender Neutral \u2013 Alice Goldfuss",
+        "url": "http://blog.alicegoldfuss.com/ladies-is-gender-neutral/",
+        "domain": "blog.alicegoldfuss.com",
+        "heading_context": "['Ladies' Is Gender Neutral \u2013 Alice Goldfuss](http://blog.alicegoldfuss.com/ladies-is-gender-neutral/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Macron campaign team used honeypot accounts to fake out Fancy Bear | Ars Technica",
+        "url": "https://arstechnica.com/security/2017/05/macron-campaign-team-used-honeypot-accounts-to-fake-out-fancy-bear/",
+        "domain": "arstechnica.com",
+        "heading_context": "[Macron campaign team used honeypot accounts to fake out Fancy Bear | Ars Technica](https://arstechnica.com/security/2017/05/macron-campaign-team-used-honeypot-accounts-to-fake-out-fancy-bear/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "TECHdotMN Field Nation Plans To Double The Size Of Minneapolis HQ - TECHdotMN",
+        "url": "http://tech.mn/news/2017/05/11/field-nation-plans-to-double-minneapolis-hq-at-baker-center/",
+        "domain": "tech.mn",
+        "heading_context": "[TECHdotMN Field Nation Plans To Double The Size Of Minneapolis HQ - TECHdotMN](http://tech.mn/news/2017/05/11/field-nation-plans-to-double-minneapolis-hq-at-baker-center/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "News Corp earnings Q3 2017",
+        "url": "http://www.cnbc.com/2017/05/09/news-corp-earnings-q3-2017.html",
+        "domain": "www.cnbc.com",
+        "heading_context": "[News Corp earnings Q3 2017](http://www.cnbc.com/2017/05/09/news-corp-earnings-q3-2017.html)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "A More Powerful Way to Schedule Tasks in OmniFocus",
+        "url": "https://colterreed.com/a-more-powerful-way-to-schedule-tasks-in-omnifocus/",
+        "domain": "colterreed.com",
+        "heading_context": "[A More Powerful Way to Schedule Tasks in OmniFocus](https://colterreed.com/a-more-powerful-way-to-schedule-tasks-in-omnifocus/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Analyzing a counter intelligence cyber operation: How Macron just changed cyber security forever",
+        "url": "https://hackernoon.com/analyzing-a-counter-intelligence-cyber-operation-how-macron-just-changed-cyber-security-forever-22553abb038b",
+        "domain": "hackernoon.com",
+        "heading_context": "[Analyzing a counter intelligence cyber operation: How Macron just changed cyber security forever](https://hackernoon.com/analyzing-a-counter-intelligence-cyber-operation-how-macron-just-changed-cyber-security-forever-22553abb038b)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Microsoft launches Visual Studio 2017 for macOS \u2014 Apple World Today",
+        "url": "https://www.appleworld.today/blog/2017/5/10/microsoft-launches-visual-studio-2017-for-macos",
+        "domain": "www.appleworld.today",
+        "heading_context": "[Microsoft launches Visual Studio 2017 for macOS \u2014 Apple World Today](https://www.appleworld.today/blog/2017/5/10/microsoft-launches-visual-studio-2017-for-macos)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "F.B.I. Director James Comey Is Fired by Trump - NYTimes.com",
+        "url": "https://mobile.nytimes.com/2017/05/09/us/politics/james-comey-fired-fbi.html?smprod=nytcore-iphone",
+        "domain": "mobile.nytimes.com",
+        "heading_context": "[F.B.I. Director James Comey Is Fired by Trump - NYTimes.com](https://mobile.nytimes.com/2017/05/09/us/politics/james-comey-fired-fbi.html?smprod=nytcore-iphone)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Timing 2 for Mac \u2014 MacSparky",
+        "url": "https://www.macsparky.com/blog/2017/5/timing-2-for-mac",
+        "domain": "www.macsparky.com",
+        "heading_context": "[Timing 2 for Mac \u2014 MacSparky](https://www.macsparky.com/blog/2017/5/timing-2-for-mac)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Google\u2019s \u201cFuchsia\u201d smartphone OS dumps Linux, has a wild new UI | Ars Technica",
+        "url": "https://arstechnica.com/gadgets/2017/05/googles-fuchsia-smartphone-os-dumps-linux-has-a-wild-new-ui/",
+        "domain": "arstechnica.com",
+        "heading_context": "[Google\u2019s \u201cFuchsia\u201d smartphone OS dumps Linux, has a wild new UI | Ars Technica](https://arstechnica.com/gadgets/2017/05/googles-fuchsia-smartphone-os-dumps-linux-has-a-wild-new-ui/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Tradition Tuesday: Wonderwall - DARK CLOUDS",
+        "url": "https://www.dark-clouds.com/2017/03/93535/",
+        "domain": "www.dark-clouds.com",
+        "heading_context": "[Tradition Tuesday: Wonderwall - DARK CLOUDS](https://www.dark-clouds.com/2017/03/93535/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Why Do Americans Smile So Much? - The Atlantic",
+        "url": "https://www.theatlantic.com/science/archive/2017/05/why-americans-smile-so-much/524967/",
+        "domain": "www.theatlantic.com",
+        "heading_context": "[Why Do Americans Smile So Much? - The Atlantic](https://www.theatlantic.com/science/archive/2017/05/why-americans-smile-so-much/524967/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "How Brandi Carlile Got Adele and Obama for a Benefit Album - NYTimes.com",
+        "url": "https://mobile.nytimes.com/2017/05/03/arts/music/brandi-carlile-cover-stories-adele-obama.html",
+        "domain": "mobile.nytimes.com",
+        "heading_context": "[How Brandi Carlile Got Adele and Obama for a Benefit Album - NYTimes.com](https://mobile.nytimes.com/2017/05/03/arts/music/brandi-carlile-cover-stories-adele-obama.html)",
+        "section": "Links \ud83d\udccc"
+      }
+    ],
     "briefly_links": [],
     "word_count": 1447
   },
@@ -18151,7 +18407,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2173
+    "word_count": 2171
   },
   {
     "id": "em_49efshavk19csscxpfyb6exwqf",
@@ -18440,7 +18696,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1459
+    "word_count": 1457
   },
   {
     "id": "em_3gs83av9gf8ge9gq2gctavbaw8",
@@ -19531,7 +19787,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1730
+    "word_count": 1723
   },
   {
     "id": "em_0x11eyza7j9v4afm5khmxc947v",
@@ -19698,7 +19954,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1568
+    "word_count": 1562
   },
   {
     "id": "em_2jdyta2se6876bkqcsg0qcesyh",
@@ -20108,7 +20364,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1469
+    "word_count": 1468
   },
   {
     "id": "em_0avrzvb93p8bj9xretejw3q84k",
@@ -20335,7 +20591,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1565
+    "word_count": 1563
   },
   {
     "id": "em_05nbabq1x08bsr0vrpsng0c6yn",
@@ -20577,7 +20833,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1824
+    "word_count": 1820
   },
   {
     "id": "em_0xvnmpe5178k8bht7trr0y46n7",
@@ -20715,7 +20971,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1165
+    "word_count": 1162
   },
   {
     "id": "em_2bwktkf05k8cxrj0j89t377x9s",
@@ -20912,7 +21168,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1978
+    "word_count": 1974
   },
   {
     "id": "em_0abxmjya029azb0na5sdqn7ywg",
@@ -21049,7 +21305,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1180
+    "word_count": 1179
   },
   {
     "id": "em_7nctaet4y0834ssbnfmvgfdx1x",
@@ -21216,7 +21472,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1619
+    "word_count": 1607
   },
   {
     "id": "em_2zw5xekzde9zfsb9m6wt88ykhd",
@@ -21444,7 +21700,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1959
+    "word_count": 1955
   },
   {
     "id": "em_2vcjcmwp9j9hkvn0q3ktafx7af",
@@ -21684,7 +21940,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2071
+    "word_count": 2070
   },
   {
     "id": "em_19mcwfbtcs9d39c13exjv1tbh2",
@@ -22216,7 +22472,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1132
+    "word_count": 1130
   },
   {
     "id": "em_2q32ayprkx8mbt487n3yzfsysr",
@@ -22567,7 +22823,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1622
+    "word_count": 1621
   },
   {
     "id": "em_5zkrbde7418r1sxd7epy08r5kw",
@@ -22780,7 +23036,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1866
+    "word_count": 1864
   },
   {
     "id": "em_3wkfw5akh090st1eqfy2bdc4w1",
@@ -23469,7 +23725,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2921
+    "word_count": 2920
   },
   {
     "id": "em_29pfmvhaeb837bm27sbdnzmyz9",
@@ -24060,7 +24316,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1335
+    "word_count": 1334
   },
   {
     "id": "em_4d48747hnc96fsxfcqajd5k9g9",
@@ -24257,7 +24513,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1475
+    "word_count": 1474
   },
   {
     "id": "em_2v1g8q9bjc9vqshfypx42dvs03",
@@ -24425,7 +24681,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1435
+    "word_count": 1433
   },
   {
     "id": "em_4cx5m4z2bx8g5agtsypp81q1ds",
@@ -25012,7 +25268,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2393
+    "word_count": 2391
   },
   {
     "id": "em_1d840h8gmp85fvwhgr0gyh1gja",
@@ -26800,7 +27056,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1653
+    "word_count": 1650
   },
   {
     "id": "em_7kwae08rs79sf9s4gv362vp7w8",
@@ -28187,11 +28443,253 @@
     "description": "Backdoors and golden keys, Phil Zimmerman, Clipper chip, brewing better espresso, technical debt Tetris, GraphQL vs REST, MindNode 7.0.",
     "image": "https://buttondown-attachments.s3.us-west-2.amazonaws.com/images/62d5886d-e19e-4a3b-85e9-25223e639e9b.jpg",
     "absolute_url": "https://weekly.thingelstad.com/archive/weekly-thing-132-backdoors-espresso-technical/",
-    "domains": [],
-    "links": [],
-    "notable_links": [],
-    "briefly_links": [],
-    "word_count": 2100
+    "domains": [
+      "arstechnica.com",
+      "blog.armory.io",
+      "blog.codingmonkeys.de",
+      "blog.miguelgrinberg.com",
+      "lookbusy.app",
+      "media.netflix.com",
+      "medium.com",
+      "mondaynote.com",
+      "stitcher.io",
+      "svpg.com",
+      "tedium.co",
+      "www.fluentcpp.com",
+      "www.macstories.net",
+      "www.spacex.com"
+    ],
+    "links": [
+      {
+        "text": "Backdoors, Golden Keys: Here We Go Again - Monday Note",
+        "url": "https://mondaynote.com/backdoors-golden-keys-here-we-go-again-1840e101c4f6",
+        "domain": "mondaynote.com",
+        "heading_context": "[Backdoors, Golden Keys: Here We Go Again - Monday Note](https://mondaynote.com/backdoors-golden-keys-here-we-go-again-1840e101c4f6)",
+        "section": "Must Read"
+      },
+      {
+        "text": "My Must-Have Apps, 2019 Edition - MacStories",
+        "url": "https://www.macstories.net/stories/my-must-have-apps-2019-edition/",
+        "domain": "www.macstories.net",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "The math of brewing a better espresso | Ars Technica",
+        "url": "https://arstechnica.com/science/2020/01/the-math-of-brewing-a-better-espresso/",
+        "domain": "arstechnica.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "This Is True History: One of the Internet\u2019s Oldest Newsletters",
+        "url": "https://tedium.co/2020/01/02/this-is-true-randy-cassingham-interview",
+        "domain": "tedium.co",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Technical Debt Is like a Tetris Game - Fluent C++",
+        "url": "https://www.fluentcpp.com/2020/01/17/technical-debt-is-like-a-tetris-game/",
+        "domain": "www.fluentcpp.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Introducing Deepnews Distills - Monday Note",
+        "url": "https://mondaynote.com/introducing-deepnews-distills-8ef7147674f8",
+        "domain": "mondaynote.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "GraphQL: the REST is history? - Stav Barak - Medium",
+        "url": "https://medium.com/@stavbarak/graphql-the-rest-is-history-464d0ce3d704",
+        "domain": "medium.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Coaching - Happiness | Silicon Valley Product Group",
+        "url": "https://svpg.com/coaching-happiness/",
+        "domain": "svpg.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Nothing Changes Until You Do",
+        "url": "https://blog.armory.io/nothing-changes-until-you-do/",
+        "domain": "blog.armory.io",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Look Busy",
+        "url": "https://lookbusy.app//",
+        "domain": "lookbusy.app",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Netflix Releases 21 Studio Ghibli Masterpieces Around The World",
+        "url": "https://media.netflix.com/en/press-releases/netflix-releases-21-studio-ghibli-masterpieces-around-the-world",
+        "domain": "media.netflix.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "PHP in 2020 - stitcher.io",
+        "url": "https://stitcher.io/blog/php-in-2020",
+        "domain": "stitcher.io",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Crew Dragon Launch Escape Demonstration | SpaceX",
+        "url": "https://www.spacex.com/news/2020/01/19/crew-dragon-launch-escape-demonstration",
+        "domain": "www.spacex.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "TheCodingMonkeys News: Farewell, Carcassonne!",
+        "url": "https://blog.codingmonkeys.de/posts/2020/01/18/farewell-carcassonne",
+        "domain": "blog.codingmonkeys.de",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "The Flask Mega-Tutorial Part I: Hello, World! - miguelgrinberg.com",
+        "url": "https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world",
+        "domain": "blog.miguelgrinberg.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "LaunchCuts Review: A Better Way to Organize Your Shortcuts with Folders, Advanced Search, and Custom Views - MacStories",
+        "url": "https://www.macstories.net/reviews/launchcuts-review-a-better-way-to-organize-your-shortcuts-with-folders-advanced-search-and-custom-views/",
+        "domain": "www.macstories.net",
+        "heading_context": null,
+        "section": "FYI"
+      }
+    ],
+    "notable_links": [
+      {
+        "text": "Backdoors, Golden Keys: Here We Go Again - Monday Note",
+        "url": "https://mondaynote.com/backdoors-golden-keys-here-we-go-again-1840e101c4f6",
+        "domain": "mondaynote.com",
+        "heading_context": "[Backdoors, Golden Keys: Here We Go Again - Monday Note](https://mondaynote.com/backdoors-golden-keys-here-we-go-again-1840e101c4f6)",
+        "section": "Must Read"
+      }
+    ],
+    "briefly_links": [
+      {
+        "text": "My Must-Have Apps, 2019 Edition - MacStories",
+        "url": "https://www.macstories.net/stories/my-must-have-apps-2019-edition/",
+        "domain": "www.macstories.net",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "The math of brewing a better espresso | Ars Technica",
+        "url": "https://arstechnica.com/science/2020/01/the-math-of-brewing-a-better-espresso/",
+        "domain": "arstechnica.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "This Is True History: One of the Internet\u2019s Oldest Newsletters",
+        "url": "https://tedium.co/2020/01/02/this-is-true-randy-cassingham-interview",
+        "domain": "tedium.co",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Technical Debt Is like a Tetris Game - Fluent C++",
+        "url": "https://www.fluentcpp.com/2020/01/17/technical-debt-is-like-a-tetris-game/",
+        "domain": "www.fluentcpp.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Introducing Deepnews Distills - Monday Note",
+        "url": "https://mondaynote.com/introducing-deepnews-distills-8ef7147674f8",
+        "domain": "mondaynote.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "GraphQL: the REST is history? - Stav Barak - Medium",
+        "url": "https://medium.com/@stavbarak/graphql-the-rest-is-history-464d0ce3d704",
+        "domain": "medium.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Coaching - Happiness | Silicon Valley Product Group",
+        "url": "https://svpg.com/coaching-happiness/",
+        "domain": "svpg.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Nothing Changes Until You Do",
+        "url": "https://blog.armory.io/nothing-changes-until-you-do/",
+        "domain": "blog.armory.io",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Look Busy",
+        "url": "https://lookbusy.app//",
+        "domain": "lookbusy.app",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Netflix Releases 21 Studio Ghibli Masterpieces Around The World",
+        "url": "https://media.netflix.com/en/press-releases/netflix-releases-21-studio-ghibli-masterpieces-around-the-world",
+        "domain": "media.netflix.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "PHP in 2020 - stitcher.io",
+        "url": "https://stitcher.io/blog/php-in-2020",
+        "domain": "stitcher.io",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Crew Dragon Launch Escape Demonstration | SpaceX",
+        "url": "https://www.spacex.com/news/2020/01/19/crew-dragon-launch-escape-demonstration",
+        "domain": "www.spacex.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "TheCodingMonkeys News: Farewell, Carcassonne!",
+        "url": "https://blog.codingmonkeys.de/posts/2020/01/18/farewell-carcassonne",
+        "domain": "blog.codingmonkeys.de",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "The Flask Mega-Tutorial Part I: Hello, World! - miguelgrinberg.com",
+        "url": "https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world",
+        "domain": "blog.miguelgrinberg.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "LaunchCuts Review: A Better Way to Organize Your Shortcuts with Folders, Advanced Search, and Custom Views - MacStories",
+        "url": "https://www.macstories.net/reviews/launchcuts-review-a-better-way-to-organize-your-shortcuts-with-folders-advanced-search-and-custom-views/",
+        "domain": "www.macstories.net",
+        "heading_context": null,
+        "section": "FYI"
+      }
+    ],
+    "word_count": 2099
   },
   {
     "id": "em_3qxq5x0gv9957a1fxsw7kzevjy",
@@ -28202,10 +28700,343 @@
     "description": "Developer coefficient, global GDP impact, women in tech, Nintendo Switch sales, Apple Maps expansion, Tetris 99, sign stealing scandal.",
     "image": "https://blotcdn.com/blog_9b22fef1ce9945619fd5d5ec617b3deb/_image_cache/d96f4887-7edb-4901-86b8-a149309998de.jpeg",
     "absolute_url": "https://weekly.thingelstad.com/archive/weekly-thing-133-clayton-christensen-ipad-at-10/",
-    "domains": [],
-    "links": [],
-    "notable_links": [],
-    "briefly_links": [],
+    "domains": [
+      "ai.googleblog.com",
+      "blog.cloudflare.com",
+      "daringfireball.net",
+      "edition.cnn.com",
+      "hbr.org",
+      "matthiasott.com",
+      "observablehq.com",
+      "om.co",
+      "ryanholiday.net",
+      "signstealingscandal.com",
+      "snortoutloud.com",
+      "steveblank.com",
+      "stripe.com",
+      "thesweetsetup.com",
+      "www.cloudatomiclab.com",
+      "www.eff.org",
+      "www.justinobeirne.com",
+      "www.kyivpost.com",
+      "www.manton.org",
+      "www.mckinsey.com",
+      "www.theverge.com"
+    ],
+    "links": [
+      {
+        "text": "How Will You Measure Your Life?",
+        "url": "https://hbr.org/2010/07/how-will-you-measure-your-life",
+        "domain": "hbr.org",
+        "heading_context": "[How Will You Measure Your Life?](https://hbr.org/2010/07/how-will-you-measure-your-life)",
+        "section": "Must Read"
+      },
+      {
+        "text": "Stripe \u2014 The Developer Coefficient: Software engineering efficiency and its $3 trillion impact on global GDP",
+        "url": "https://stripe.com/files/reports/the-developer-coefficient.pdf",
+        "domain": "stripe.com",
+        "heading_context": "[Stripe \u2014 The Developer Coefficient: Software engineering efficiency and its $3 trillion impact on global GDP](https://stripe.com/files/reports/the-developer-coefficient.pdf)",
+        "section": "Must Read"
+      },
+      {
+        "text": "Sexism: Just Another Day as a Woman In Tech - Snort Out Loud",
+        "url": "https://snortoutloud.com/sexism-tech-industry/",
+        "domain": "snortoutloud.com",
+        "heading_context": "[Sexism: Just Another Day as a Woman In Tech - Snort Out Loud](https://snortoutloud.com/sexism-tech-industry/)",
+        "section": "Must Read"
+      },
+      {
+        "text": "Sign Stealing Scandal",
+        "url": "http://signstealingscandal.com/",
+        "domain": "signstealingscandal.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Nintendo Switch overtakes SNES with more than 52 million sold - The Verge",
+        "url": "https://www.theverge.com/2020/1/30/21114839/nintendo-earnings-q3-2019-switch-lifetime-sales",
+        "domain": "www.theverge.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Apple\u2019s New Map, Expansion #7: Final Parts of the Continental U.S.",
+        "url": "https://www.justinobeirne.com/new-apple-maps-continental-united-states",
+        "domain": "www.justinobeirne.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "The CIO challenge: Modern business needs a new kind of tech leader | McKinsey",
+        "url": "https://www.mckinsey.com/business-functions/mckinsey-digital/our-insights/the-cio-challenge-modern-business-needs-a-new-kind-of-tech-leader",
+        "domain": "www.mckinsey.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Into the Personal-Website-Verse \u00b7 Matthias Ott \u2013 User Experience Designer",
+        "url": "https://matthiasott.com/articles/into-the-personal-website-verse",
+        "domain": "matthiasott.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Ring Doorbell App Packed with Third-Party Trackers | Electronic Frontier Foundation",
+        "url": "https://www.eff.org/deeplinks/2020/01/ring-doorbell-app-packed-third-party-trackers",
+        "domain": "www.eff.org",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "WTFosdem \u00b7 Cloud Atomic Laboratory",
+        "url": "https://www.cloudatomiclab.com/wtfosdem/",
+        "domain": "www.cloudatomiclab.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Steve Blank: Clayton Christensen",
+        "url": "https://steveblank.com/2020/01/28/what-clayton-christensen-taught-me/",
+        "domain": "steveblank.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "A Radical Guide to Spending Less Time on Your Phone \u2013 RyanHoliday.net",
+        "url": "https://ryanholiday.net/a-radical-guide-to-spending-less-time-on-your-phone/",
+        "domain": "ryanholiday.net",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Daring Fireball: The iPad Awkwardly Turns 10",
+        "url": "https://daringfireball.net/2020/01/the_ipad_awkwardly_turns_10",
+        "domain": "daringfireball.net",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Can you point to Ukraine on a map? / Chris Zubak-Skees / Observable",
+        "url": "https://observablehq.com/@chriszs/point-to-ukraine-on-a-map",
+        "domain": "observablehq.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Ted Stein on Twitter: \"Unintended Tesla app purchases, explored.\"",
+        "url": "https://twitter.com/tedstein/status/1219406746868953088",
+        "domain": "twitter.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "A bird\u2019s-eye view of Kyiv | KyivPost - Ukraine's Global Voice",
+        "url": "https://www.kyivpost.com/multimedia/video/a-birds-eye-view-of-kyiv-video",
+        "domain": "www.kyivpost.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "iOS Calendar Automation with Shortcuts and Fantastical 3 \u2013 The Sweet Setup",
+        "url": "https://thesweetsetup.com/ios-calendar-automation-with-shortcuts-and-fantastical-3/",
+        "domain": "thesweetsetup.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Google AI Blog: Towards a Conversational Agent that Can Chat About\u2026Anything",
+        "url": "https://ai.googleblog.com/2020/01/towards-conversational-agent-that-can.html?m=1",
+        "domain": "ai.googleblog.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Manton Reece - Replies hosted at your own blog",
+        "url": "https://www.manton.org/2020/01/27/replies-hosted-at.html",
+        "domain": "www.manton.org",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Finland is winning the war on fake news. Other nations want the blueprint",
+        "url": "https://edition.cnn.com/interactive/2019/05/europe/finland-fake-news-intl/",
+        "domain": "edition.cnn.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "JavaScript Libraries Are Almost Never Updated Once Installed",
+        "url": "https://blog.cloudflare.com/javascript-libraries-are-almost-never-updated/",
+        "domain": "blog.cloudflare.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "iPad at 10. An affair forever \u2013 On my Om",
+        "url": "https://om.co/2020/01/27/ipad-at-10-an-affair-forever/",
+        "domain": "om.co",
+        "heading_context": null,
+        "section": "FYI"
+      }
+    ],
+    "notable_links": [
+      {
+        "text": "How Will You Measure Your Life?",
+        "url": "https://hbr.org/2010/07/how-will-you-measure-your-life",
+        "domain": "hbr.org",
+        "heading_context": "[How Will You Measure Your Life?](https://hbr.org/2010/07/how-will-you-measure-your-life)",
+        "section": "Must Read"
+      },
+      {
+        "text": "Stripe \u2014 The Developer Coefficient: Software engineering efficiency and its $3 trillion impact on global GDP",
+        "url": "https://stripe.com/files/reports/the-developer-coefficient.pdf",
+        "domain": "stripe.com",
+        "heading_context": "[Stripe \u2014 The Developer Coefficient: Software engineering efficiency and its $3 trillion impact on global GDP](https://stripe.com/files/reports/the-developer-coefficient.pdf)",
+        "section": "Must Read"
+      },
+      {
+        "text": "Sexism: Just Another Day as a Woman In Tech - Snort Out Loud",
+        "url": "https://snortoutloud.com/sexism-tech-industry/",
+        "domain": "snortoutloud.com",
+        "heading_context": "[Sexism: Just Another Day as a Woman In Tech - Snort Out Loud](https://snortoutloud.com/sexism-tech-industry/)",
+        "section": "Must Read"
+      }
+    ],
+    "briefly_links": [
+      {
+        "text": "Sign Stealing Scandal",
+        "url": "http://signstealingscandal.com/",
+        "domain": "signstealingscandal.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Nintendo Switch overtakes SNES with more than 52 million sold - The Verge",
+        "url": "https://www.theverge.com/2020/1/30/21114839/nintendo-earnings-q3-2019-switch-lifetime-sales",
+        "domain": "www.theverge.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Apple\u2019s New Map, Expansion #7: Final Parts of the Continental U.S.",
+        "url": "https://www.justinobeirne.com/new-apple-maps-continental-united-states",
+        "domain": "www.justinobeirne.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "The CIO challenge: Modern business needs a new kind of tech leader | McKinsey",
+        "url": "https://www.mckinsey.com/business-functions/mckinsey-digital/our-insights/the-cio-challenge-modern-business-needs-a-new-kind-of-tech-leader",
+        "domain": "www.mckinsey.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Into the Personal-Website-Verse \u00b7 Matthias Ott \u2013 User Experience Designer",
+        "url": "https://matthiasott.com/articles/into-the-personal-website-verse",
+        "domain": "matthiasott.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Ring Doorbell App Packed with Third-Party Trackers | Electronic Frontier Foundation",
+        "url": "https://www.eff.org/deeplinks/2020/01/ring-doorbell-app-packed-third-party-trackers",
+        "domain": "www.eff.org",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "WTFosdem \u00b7 Cloud Atomic Laboratory",
+        "url": "https://www.cloudatomiclab.com/wtfosdem/",
+        "domain": "www.cloudatomiclab.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Steve Blank: Clayton Christensen",
+        "url": "https://steveblank.com/2020/01/28/what-clayton-christensen-taught-me/",
+        "domain": "steveblank.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "A Radical Guide to Spending Less Time on Your Phone \u2013 RyanHoliday.net",
+        "url": "https://ryanholiday.net/a-radical-guide-to-spending-less-time-on-your-phone/",
+        "domain": "ryanholiday.net",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Daring Fireball: The iPad Awkwardly Turns 10",
+        "url": "https://daringfireball.net/2020/01/the_ipad_awkwardly_turns_10",
+        "domain": "daringfireball.net",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Can you point to Ukraine on a map? / Chris Zubak-Skees / Observable",
+        "url": "https://observablehq.com/@chriszs/point-to-ukraine-on-a-map",
+        "domain": "observablehq.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Ted Stein on Twitter: \"Unintended Tesla app purchases, explored.\"",
+        "url": "https://twitter.com/tedstein/status/1219406746868953088",
+        "domain": "twitter.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "A bird\u2019s-eye view of Kyiv | KyivPost - Ukraine's Global Voice",
+        "url": "https://www.kyivpost.com/multimedia/video/a-birds-eye-view-of-kyiv-video",
+        "domain": "www.kyivpost.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "iOS Calendar Automation with Shortcuts and Fantastical 3 \u2013 The Sweet Setup",
+        "url": "https://thesweetsetup.com/ios-calendar-automation-with-shortcuts-and-fantastical-3/",
+        "domain": "thesweetsetup.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Google AI Blog: Towards a Conversational Agent that Can Chat About\u2026Anything",
+        "url": "https://ai.googleblog.com/2020/01/towards-conversational-agent-that-can.html?m=1",
+        "domain": "ai.googleblog.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Manton Reece - Replies hosted at your own blog",
+        "url": "https://www.manton.org/2020/01/27/replies-hosted-at.html",
+        "domain": "www.manton.org",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Finland is winning the war on fake news. Other nations want the blueprint",
+        "url": "https://edition.cnn.com/interactive/2019/05/europe/finland-fake-news-intl/",
+        "domain": "edition.cnn.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "JavaScript Libraries Are Almost Never Updated Once Installed",
+        "url": "https://blog.cloudflare.com/javascript-libraries-are-almost-never-updated/",
+        "domain": "blog.cloudflare.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "iPad at 10. An affair forever \u2013 On my Om",
+        "url": "https://om.co/2020/01/27/ipad-at-10-an-affair-forever/",
+        "domain": "om.co",
+        "heading_context": null,
+        "section": "FYI"
+      }
+    ],
     "word_count": 2542
   },
   {
@@ -28217,10 +29048,253 @@
     "description": "Platform-product fit, corporate athlete, full engagement, Amazon Dating, smart notes, paid membership, iOS 13.4, LEGO Masters, Luminary Loppet, mindfulness.",
     "image": "https://buttondown-attachments.s3.us-west-2.amazonaws.com/images/aeb245e9-099b-4a7e-8615-f71db03040fe.jpg",
     "absolute_url": "https://weekly.thingelstad.com/archive/weekly-thing-134-platform-product-corporate/",
-    "domains": [],
-    "links": [],
-    "notable_links": [],
-    "briefly_links": [],
+    "domains": [
+      "amazondating.co",
+      "craigmod.com",
+      "fastcomments.com",
+      "feedbin.com",
+      "gisanddata.maps.arcgis.com",
+      "hbr.org",
+      "ihateregex.io",
+      "lethain.com",
+      "planetary.social",
+      "praxis.fortelabs.co",
+      "realpython.com",
+      "www.areaware.com",
+      "www.climate-lab-book.ac.uk",
+      "www.macrumors.com",
+      "zenhabits.net"
+    ],
+    "links": [
+      {
+        "text": "Maintaining platform-product fit.",
+        "url": "https://lethain.com/platform-product-fit/",
+        "domain": "lethain.com",
+        "heading_context": "[Maintaining platform-product fit.](https://lethain.com/platform-product-fit/)",
+        "section": "Must Read"
+      },
+      {
+        "text": "The Making of a Corporate Athlete",
+        "url": "https://hbr.org/2001/01/the-making-of-a-corporate-athlete",
+        "domain": "hbr.org",
+        "heading_context": "[The Making of a Corporate Athlete](https://hbr.org/2001/01/the-making-of-a-corporate-athlete)",
+        "section": "Must Read"
+      },
+      {
+        "text": "Share stories, not advice.",
+        "url": "https://lethain.com/share-stories-not-advice/",
+        "domain": "lethain.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Amazon Dating: The Future of Dating",
+        "url": "https://amazondating.co/",
+        "domain": "amazondating.co",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "The Honest Guide to Mindfulness : zen habits",
+        "url": "https://zenhabits.net/honest-mindfulness/",
+        "domain": "zenhabits.net",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Running a Paid Membership Program \u2014 by Craig Mod",
+        "url": "https://craigmod.com/essays/membership_programs/",
+        "domain": "craigmod.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Planetary",
+        "url": "https://planetary.social/",
+        "domain": "planetary.social",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Python Command Line Arguments \u2013 Real Python",
+        "url": "https://realpython.com/python-command-line-arguments/",
+        "domain": "realpython.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Newsletter News: Full Formatting and Sender Management",
+        "url": "https://feedbin.com/blog/2020/02/06/newsletter-news/",
+        "domain": "feedbin.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "How To Take Smart Notes: 10 Principles to Revolutionize Your Note-Taking and Writing | Praxis",
+        "url": "https://praxis.fortelabs.co/how-to-take-smart-notes/",
+        "domain": "praxis.fortelabs.co",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Everything New in iOS and iPadOS 13.4: iCloud Folder Sharing, Updated Mail Toolbar, New Memoji Stickers, and More - MacRumors",
+        "url": "https://www.macrumors.com/2020/02/05/everything-new-in-ios-13-4/",
+        "domain": "www.macrumors.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Cairo Throw \u2013 Areaware",
+        "url": "https://www.areaware.com/products/cairo-throw?variant=31624038481992",
+        "domain": "www.areaware.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "FastComments - Commenting Done Right",
+        "url": "https://fastcomments.com/",
+        "domain": "fastcomments.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Coronavirus 2019-nCoV Global Cases by Johns Hopkins CSSE",
+        "url": "https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6",
+        "domain": "gisanddata.maps.arcgis.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "2019 years | Climate Lab Book",
+        "url": "https://www.climate-lab-book.ac.uk/2020/2019-years/",
+        "domain": "www.climate-lab-book.ac.uk",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "iHateRegex - regex cheatsheet for haters",
+        "url": "https://ihateregex.io/",
+        "domain": "ihateregex.io",
+        "heading_context": null,
+        "section": "FYI"
+      }
+    ],
+    "notable_links": [
+      {
+        "text": "Maintaining platform-product fit.",
+        "url": "https://lethain.com/platform-product-fit/",
+        "domain": "lethain.com",
+        "heading_context": "[Maintaining platform-product fit.](https://lethain.com/platform-product-fit/)",
+        "section": "Must Read"
+      },
+      {
+        "text": "The Making of a Corporate Athlete",
+        "url": "https://hbr.org/2001/01/the-making-of-a-corporate-athlete",
+        "domain": "hbr.org",
+        "heading_context": "[The Making of a Corporate Athlete](https://hbr.org/2001/01/the-making-of-a-corporate-athlete)",
+        "section": "Must Read"
+      }
+    ],
+    "briefly_links": [
+      {
+        "text": "Share stories, not advice.",
+        "url": "https://lethain.com/share-stories-not-advice/",
+        "domain": "lethain.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Amazon Dating: The Future of Dating",
+        "url": "https://amazondating.co/",
+        "domain": "amazondating.co",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "The Honest Guide to Mindfulness : zen habits",
+        "url": "https://zenhabits.net/honest-mindfulness/",
+        "domain": "zenhabits.net",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Running a Paid Membership Program \u2014 by Craig Mod",
+        "url": "https://craigmod.com/essays/membership_programs/",
+        "domain": "craigmod.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Planetary",
+        "url": "https://planetary.social/",
+        "domain": "planetary.social",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Python Command Line Arguments \u2013 Real Python",
+        "url": "https://realpython.com/python-command-line-arguments/",
+        "domain": "realpython.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Newsletter News: Full Formatting and Sender Management",
+        "url": "https://feedbin.com/blog/2020/02/06/newsletter-news/",
+        "domain": "feedbin.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "How To Take Smart Notes: 10 Principles to Revolutionize Your Note-Taking and Writing | Praxis",
+        "url": "https://praxis.fortelabs.co/how-to-take-smart-notes/",
+        "domain": "praxis.fortelabs.co",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Everything New in iOS and iPadOS 13.4: iCloud Folder Sharing, Updated Mail Toolbar, New Memoji Stickers, and More - MacRumors",
+        "url": "https://www.macrumors.com/2020/02/05/everything-new-in-ios-13-4/",
+        "domain": "www.macrumors.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Cairo Throw \u2013 Areaware",
+        "url": "https://www.areaware.com/products/cairo-throw?variant=31624038481992",
+        "domain": "www.areaware.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "FastComments - Commenting Done Right",
+        "url": "https://fastcomments.com/",
+        "domain": "fastcomments.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "Coronavirus 2019-nCoV Global Cases by Johns Hopkins CSSE",
+        "url": "https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6",
+        "domain": "gisanddata.maps.arcgis.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "2019 years | Climate Lab Book",
+        "url": "https://www.climate-lab-book.ac.uk/2020/2019-years/",
+        "domain": "www.climate-lab-book.ac.uk",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "iHateRegex - regex cheatsheet for haters",
+        "url": "https://ihateregex.io/",
+        "domain": "ihateregex.io",
+        "heading_context": null,
+        "section": "FYI"
+      }
+    ],
     "word_count": 1872
   },
   {
@@ -28232,10 +29306,163 @@
     "description": "Hundred-Year Marathon, engineering strategy, mailing list spying, single .txt file, 100 True Fans, Voyager 2 online, Brandi Carlile.",
     "image": "https://buttondown-attachments.s3.us-west-2.amazonaws.com/images/ac4f2970-379a-46e1-ac20-7f9c1148e67a.png",
     "absolute_url": "https://weekly.thingelstad.com/archive/weekly-thing-135-spy-emails-engineering-strategy/",
-    "domains": [],
-    "links": [],
+    "domains": [
+      "a16z.com",
+      "feld.com",
+      "jeffhuang.com",
+      "jennstrater.blogspot.com",
+      "m.signalvnoise.com",
+      "www.danj.ca",
+      "www.inverse.com",
+      "www.paperplanes.de",
+      "www.patrickrhone.net",
+      "www.vice.com"
+    ],
+    "links": [
+      {
+        "text": "How Big Companies Spy on Your Emails - VICE",
+        "url": "https://www.vice.com/en_us/article/pkekmb/free-email-apps-spying-on-you-edison-slice-cleanfox",
+        "domain": "www.vice.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "paperplanes. On Drafting an Engineering Strategy",
+        "url": "https://www.paperplanes.de/2020/1/31/on-drafting-an-engineering-strategy.html",
+        "domain": "www.paperplanes.de",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "You All Instead of You Guys - Feld Thoughts",
+        "url": "https://feld.com/archives/2020/02/you-all-instead-of-you-guys.html",
+        "domain": "feld.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Mailing list software should stop spying on subscribers - Signal v. Noise",
+        "url": "https://m.signalvnoise.com/mailing-list-software-should-stop-spying-on-subscribers/",
+        "domain": "m.signalvnoise.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Never been promoted? You\u2019re not alone.",
+        "url": "https://jennstrater.blogspot.com/2020/02/never-been-promoted-youre-not-alone.html?m=1",
+        "domain": "jennstrater.blogspot.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "My productivity app is a single .txt file",
+        "url": "https://jeffhuang.com/productivity_text_file/",
+        "domain": "jeffhuang.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "1,000 True Fans? Try 100",
+        "url": "https://a16z.com/2020/02/06/100-true-fans/",
+        "domain": "a16z.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "What We Link to When We Link to Books | Dan J\u2019s IndieWeb Headquarters",
+        "url": "https://www.danj.ca/what-we-link-to-when-we-link-to-books/",
+        "domain": "www.danj.ca",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "NASA brings Voyager 2 fully back online, 11.5 billion miles from Earth",
+        "url": "https://www.inverse.com/science/nasa-brings-voyager-2-fully-back-online-11.5-billion-miles-from-earth",
+        "domain": "www.inverse.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "I love email\u2026 \u2013 Rhoneisms",
+        "url": "https://www.patrickrhone.net/i-love-email/",
+        "domain": "www.patrickrhone.net",
+        "heading_context": null,
+        "section": "FYI"
+      }
+    ],
     "notable_links": [],
-    "briefly_links": [],
+    "briefly_links": [
+      {
+        "text": "How Big Companies Spy on Your Emails - VICE",
+        "url": "https://www.vice.com/en_us/article/pkekmb/free-email-apps-spying-on-you-edison-slice-cleanfox",
+        "domain": "www.vice.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "paperplanes. On Drafting an Engineering Strategy",
+        "url": "https://www.paperplanes.de/2020/1/31/on-drafting-an-engineering-strategy.html",
+        "domain": "www.paperplanes.de",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "You All Instead of You Guys - Feld Thoughts",
+        "url": "https://feld.com/archives/2020/02/you-all-instead-of-you-guys.html",
+        "domain": "feld.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Mailing list software should stop spying on subscribers - Signal v. Noise",
+        "url": "https://m.signalvnoise.com/mailing-list-software-should-stop-spying-on-subscribers/",
+        "domain": "m.signalvnoise.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Never been promoted? You\u2019re not alone.",
+        "url": "https://jennstrater.blogspot.com/2020/02/never-been-promoted-youre-not-alone.html?m=1",
+        "domain": "jennstrater.blogspot.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "My productivity app is a single .txt file",
+        "url": "https://jeffhuang.com/productivity_text_file/",
+        "domain": "jeffhuang.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "1,000 True Fans? Try 100",
+        "url": "https://a16z.com/2020/02/06/100-true-fans/",
+        "domain": "a16z.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "What We Link to When We Link to Books | Dan J\u2019s IndieWeb Headquarters",
+        "url": "https://www.danj.ca/what-we-link-to-when-we-link-to-books/",
+        "domain": "www.danj.ca",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "NASA brings Voyager 2 fully back online, 11.5 billion miles from Earth",
+        "url": "https://www.inverse.com/science/nasa-brings-voyager-2-fully-back-online-11.5-billion-miles-from-earth",
+        "domain": "www.inverse.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "I love email\u2026 \u2013 Rhoneisms",
+        "url": "https://www.patrickrhone.net/i-love-email/",
+        "domain": "www.patrickrhone.net",
+        "heading_context": null,
+        "section": "FYI"
+      }
+    ],
     "word_count": 1159
   },
   {
@@ -28247,10 +29474,177 @@
     "description": "Wikipedia, Wikimedia, DJI Mavic Mini, Susan Fowler and Uber, intermittent fasting, Signal secure messaging, YETI V Series cooler.",
     "image": "https://buttondown-attachments.s3.us-west-2.amazonaws.com/images/f354eee3-77bd-4785-a5a6-1ade3da7e217.jpg",
     "absolute_url": "https://weekly.thingelstad.com/archive/weekly-thing-136-wikipedia-side-quest-latency/",
-    "domains": [],
-    "links": [],
-    "notable_links": [],
-    "briefly_links": [],
+    "domains": [
+      "github.com",
+      "howonlee.github.io",
+      "medium.com",
+      "noidea.dog",
+      "time.com",
+      "toolsandtoys.net",
+      "www.bitlog.com",
+      "www.nytimes.com",
+      "www.wired.com"
+    ],
+    "links": [
+      {
+        "text": "Wikipedia Is the Last Best Place on the Internet | WIRED",
+        "url": "https://www.wired.com/story/wikipedia-online-encyclopedia-best-place-internet/",
+        "domain": "www.wired.com",
+        "heading_context": "[Wikipedia Is the Last Best Place on the Internet | WIRED](https://www.wired.com/story/wikipedia-online-encyclopedia-best-place-internet/)",
+        "section": "Must Read"
+      },
+      {
+        "text": "Susan Fowler on the Aftermath of Speaking Out Against Uber | Time",
+        "url": "https://time.com/5784464/susan-fowler-book-uber-sexual-harassment/",
+        "domain": "time.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "The Benefits of Intermittent Fasting - The New York Times",
+        "url": "https://www.nytimes.com/2020/02/17/well/eat/the-benefits-of-intermittent-fasting.html",
+        "domain": "www.nytimes.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Surviving the Organisational Side Quest \u2014 No Idea Blog",
+        "url": "https://noidea.dog/blog/surviving-the-organisational-side-quest",
+        "domain": "noidea.dog",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Why are we so bad at software engineering? | www.bitlog.com",
+        "url": "https://www.bitlog.com/2020/02/12/why-are-we-so-bad-at-software-engineering/",
+        "domain": "www.bitlog.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "I Add 3-25 Seconds of Latency to Every Page I Visit",
+        "url": "https://howonlee.github.io/2020/02/12/I-20Add-2020-20Seconds-20of-20Latency-20to-20Every-20Website-20I-20Visit.html",
+        "domain": "howonlee.github.io",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Investing in our Women Leaders in Technology | LinkedIn",
+        "url": "https://www.linkedin.com/pulse/investing-our-women-leaders-technology-marc-kermisch/",
+        "domain": "www.linkedin.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Signal Is Finally Bringing Its Secure Messaging to the Masses | WIRED",
+        "url": "https://www.wired.com/story/signal-encrypted-messaging-features-mainstream/",
+        "domain": "www.wired.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "YETI \"V Series\" Vacuum-Insulated Cooler \u2014 Tools and Toys",
+        "url": "http://toolsandtoys.net/yeti-v-series-vacuum-insulated-cooler/",
+        "domain": "toolsandtoys.net",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "1on1-questions: Mega list of 1 on 1 meeting questions compiled from a variety to sources",
+        "url": "https://github.com/VGraupera/1on1-questions",
+        "domain": "github.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "How I Stopped Checking My Phone So Much - For The Interested - Medium",
+        "url": "https://medium.com/an-idea-for-you/how-i-stopped-checking-my-phone-and-started-using-it-with-intention-ec2f38c0b536",
+        "domain": "medium.com",
+        "heading_context": null,
+        "section": "FYI"
+      }
+    ],
+    "notable_links": [
+      {
+        "text": "Wikipedia Is the Last Best Place on the Internet | WIRED",
+        "url": "https://www.wired.com/story/wikipedia-online-encyclopedia-best-place-internet/",
+        "domain": "www.wired.com",
+        "heading_context": "[Wikipedia Is the Last Best Place on the Internet | WIRED](https://www.wired.com/story/wikipedia-online-encyclopedia-best-place-internet/)",
+        "section": "Must Read"
+      }
+    ],
+    "briefly_links": [
+      {
+        "text": "Susan Fowler on the Aftermath of Speaking Out Against Uber | Time",
+        "url": "https://time.com/5784464/susan-fowler-book-uber-sexual-harassment/",
+        "domain": "time.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "The Benefits of Intermittent Fasting - The New York Times",
+        "url": "https://www.nytimes.com/2020/02/17/well/eat/the-benefits-of-intermittent-fasting.html",
+        "domain": "www.nytimes.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Surviving the Organisational Side Quest \u2014 No Idea Blog",
+        "url": "https://noidea.dog/blog/surviving-the-organisational-side-quest",
+        "domain": "noidea.dog",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Why are we so bad at software engineering? | www.bitlog.com",
+        "url": "https://www.bitlog.com/2020/02/12/why-are-we-so-bad-at-software-engineering/",
+        "domain": "www.bitlog.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "I Add 3-25 Seconds of Latency to Every Page I Visit",
+        "url": "https://howonlee.github.io/2020/02/12/I-20Add-2020-20Seconds-20of-20Latency-20to-20Every-20Website-20I-20Visit.html",
+        "domain": "howonlee.github.io",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Investing in our Women Leaders in Technology | LinkedIn",
+        "url": "https://www.linkedin.com/pulse/investing-our-women-leaders-technology-marc-kermisch/",
+        "domain": "www.linkedin.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "Signal Is Finally Bringing Its Secure Messaging to the Masses | WIRED",
+        "url": "https://www.wired.com/story/signal-encrypted-messaging-features-mainstream/",
+        "domain": "www.wired.com",
+        "heading_context": null,
+        "section": "Recommended Links"
+      },
+      {
+        "text": "YETI \"V Series\" Vacuum-Insulated Cooler \u2014 Tools and Toys",
+        "url": "http://toolsandtoys.net/yeti-v-series-vacuum-insulated-cooler/",
+        "domain": "toolsandtoys.net",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "1on1-questions: Mega list of 1 on 1 meeting questions compiled from a variety to sources",
+        "url": "https://github.com/VGraupera/1on1-questions",
+        "domain": "github.com",
+        "heading_context": null,
+        "section": "FYI"
+      },
+      {
+        "text": "How I Stopped Checking My Phone So Much - For The Interested - Medium",
+        "url": "https://medium.com/an-idea-for-you/how-i-stopped-checking-my-phone-and-started-using-it-with-intention-ec2f38c0b536",
+        "domain": "medium.com",
+        "heading_context": null,
+        "section": "FYI"
+      }
+    ],
     "word_count": 1504
   },
   {
@@ -37113,7 +38507,7 @@
         "section": "FYI"
       }
     ],
-    "word_count": 3777
+    "word_count": 3776
   },
   {
     "id": "em_22b5yjnyc781hsk8zqvfpagc4g",
@@ -81064,7 +82458,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2392
+    "word_count": 2391
   },
   {
     "id": "em_6f30ddx5d28gm9a72bae6tzmmv",
