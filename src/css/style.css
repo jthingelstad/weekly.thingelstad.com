@@ -587,6 +587,56 @@ th {
   font-size: var(--size-xs);
 }
 
+/* --- What you'll actually get (landing page) --- */
+.what-you-get .section-lede {
+  margin-top: calc(var(--space-xl) * -1 + var(--space-sm));
+  margin-bottom: var(--space-xl);
+  color: var(--color-text-muted);
+  font-size: var(--size-lg);
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .theme-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .theme-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.theme-card {
+  padding: var(--space-lg);
+  background: var(--color-surface);
+  border-radius: 6px;
+  border: 1px solid var(--color-border-light);
+}
+
+.theme-card .theme-label {
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+  font-size: var(--size-lg);
+}
+
+.theme-card .theme-description {
+  margin-bottom: var(--space-md);
+  line-height: 1.6;
+}
+
+.theme-card .theme-example {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--size-xs);
+}
+
 .voice-card footer a {
   color: var(--color-accent);
   text-decoration: none;
