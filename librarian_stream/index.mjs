@@ -88,6 +88,7 @@ async function postTinylyticsEvent(event, name, { visitorId = '', value = '', pa
   const body = { event: name, path, source: 'librarian-api' };
   if (value) body.value = value;
   if (visitorId) body.visitor_id = visitorId;
+  if (clientSourceIp(event)) body.ip_address = clientSourceIp(event);
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 2000);

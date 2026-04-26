@@ -301,6 +301,8 @@ def post_tinylytics_event(
         body["value"] = value
     if visitor_id:
         body["visitor_id"] = visitor_id
+    if source_ip := client_source_ip(event):
+        body["ip_address"] = source_ip
     try:
         response = httpx.post(
             f"{TINYLYTICS_BASE}/sites/{site_id}/events",
