@@ -1,0 +1,16 @@
+{
+  "id": "em_64a2w92rab8dm9ct5d49xn4t4z",
+  "number": 328,
+  "subject": "Weekly Thing 328 / Agents, Pulse, Vision",
+  "description": "MCP in Practice, Locally AI, Cloudflare Founders Letter, WiFi and students, AWS S3 one petabyte per second, Claude Code, ChatGPT Pulse.",
+  "image": "https://files.thingelstad.com/weekly-thing/328/cover.jpg",
+  "slug": "328",
+  "publish_date": "2025-09-27T14:14:06.316093Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/328/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 328,
+  "body_path": "data/buttondown/bodies/328.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "c457015435e53307548559273412f43e9a4c8808bf722d49f83c70f6f3c8a649"
+}

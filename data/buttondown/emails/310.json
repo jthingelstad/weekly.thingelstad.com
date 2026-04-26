@@ -1,0 +1,16 @@
+{
+  "id": "em_4djnkrppbe8n2vczrvydqqep5p",
+  "number": 310,
+  "subject": "Weekly Thing 310 / Signals, Research, Playlist",
+  "description": "L1 gas limits, TAG Grading, LLMs on macOS via MLX, WikiTimeline, Deep Research problem, LLM codegen workflow, 25 years of Interconnected.",
+  "image": "https://files.thingelstad.com/weekly-thing/310/cover.jpg",
+  "slug": "310",
+  "publish_date": "2025-02-23T12:00:00Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/310/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 310,
+  "body_path": "data/buttondown/bodies/310.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "e9b47c9cce15bdb242bb8f7c980316f8e4cc91fb7a9083e271fd65e99e0f6a29"
+}

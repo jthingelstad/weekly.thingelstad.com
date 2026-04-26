@@ -1,0 +1,16 @@
+{
+  "id": "em_5bvtt9zb6j94xrry0dm6764z8b",
+  "number": 331,
+  "subject": "Weekly Thing 331 / RFC, Security, Tokens",
+  "description": "Claude Skills, ChatGPT Atlas, Agents 2.0, Token-Oriented Object Notation, DynamoDB disruption, RFCs blueprints, social circles fuel polarization.",
+  "image": "https://files.thingelstad.com/weekly-thing/331/cover.jpg",
+  "slug": "331",
+  "publish_date": "2025-11-02T12:00:00Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/331/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 331,
+  "body_path": "data/buttondown/bodies/331.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "fb0a0f951516e336993c89772cae66c4d650ad688935f983c7db126d0368b150"
+}

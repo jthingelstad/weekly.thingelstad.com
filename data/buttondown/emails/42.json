@@ -1,0 +1,16 @@
+{
+  "id": "em_77hqzz4fhv82narvsdfyjmcjwn",
+  "number": 42,
+  "subject": "Weekly Thing #42 / Feb 24, 2018",
+  "description": "Quitting Twitter, AWS network diagrams, serverless open source cloud, Steven Pinker interview, Hyper-Scheduling Experiment, SaaS as a business.",
+  "image": "https://files.thingelstad.com/weekly-thing/42/cover.jpg",
+  "slug": "weekly-thing-42-feb-24-2018",
+  "publish_date": "2018-02-24T13:00:00Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/weekly-thing-42-feb-24-2018/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 40,
+  "body_path": "data/buttondown/bodies/42.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "0300728d219dee24430e30dfe092010496f98adaf1f5a464b267a39cc25a4848"
+}

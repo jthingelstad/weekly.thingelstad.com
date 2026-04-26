@@ -1,0 +1,16 @@
+{
+  "id": "em_1rczetpn3t8wpbsgcck2amk9pb",
+  "number": 332,
+  "subject": "Weekly Thing 332 / Compute, Avatar, Cryptography",
+  "description": "Pagefind static search, URL as state, writing agents, Micro.blog Studio video, Apple Steve Jobs red line, Git AI 1.0, GPT-5.1.",
+  "image": "https://files.thingelstad.com/weekly-thing/332/cover.jpg",
+  "slug": "332",
+  "publish_date": "2025-11-16T12:00:00Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/332/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 332,
+  "body_path": "data/buttondown/bodies/332.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "dedfbf61afb38119c80d02e475fecdb800306a540bb511ba7150f632ead525f9"
+}

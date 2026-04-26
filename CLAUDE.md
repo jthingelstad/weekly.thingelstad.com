@@ -13,11 +13,13 @@ Custom landing page and full archive site for **The Weekly Thing**, a weekly new
 **Search:** Pagefind (static, runs post-build)
 **Analytics:** Tinylytics (privacy-focused, cookie-free)
 
-### Architecture Pattern: 11ty + Python Data Pipeline
+### Architecture Pattern: Tracked Raw Data + 11ty
 
-- **Python scripts** run first: fetch emails from Buttondown API, extract editorial links and domains, assign issue numbers, write individual `.md` files into `src/archive/` and a JSON index into `src/_data/`.
-- **11ty** runs second: reads `.md` files as a collection and JSON data files, renders all pages with Nunjucks templates. Handles markdown rendering, heading anchors, TOC generation, and Buttondown template tag stripping.
+- **Python content pipeline** runs first: fetches Buttondown emails into tracked raw data under `data/buttondown/`, transforms the raw Buttondown body into public archive markdown, extracts editorial links and domains, assigns issue numbers, and writes generated files into `src/archive/` and `src/_data/`.
+- **11ty** runs second: reads generated `.md` files as a collection and JSON data files, renders all pages with Nunjucks templates, and handles markdown rendering, heading anchors, and TOC generation.
 - **Pagefind** runs third: indexes the built HTML for full-text search.
+
+The raw Buttondown body files are the editable source of truth for newsletter content in this repository. Generated archive markdown files are committed for fast static builds and reviewable diffs, but should not be edited directly.
 
 ### Newsletter Publishing History
 
@@ -38,19 +40,18 @@ All archive bodies today live in Buttondown (the Tinyletter and MailChimp issues
 python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt && npm install
 
-# Dev (uses cached API data if <1 hour old)
+# Dev (uses tracked raw Buttondown data)
 make serve
 
 # Full production build
 make build
 
-# Force fresh API fetch
-make fresh
+# Fetch content from Buttondown, then rebuild generated data
+make content-pull
 
-# Sync local edits back to Buttondown
-make sync          # dry-run
-make sync-push     # actually push
-make sync-issue    # single issue (interactive)
+# Sync raw body/metadata edits back to Buttondown
+make content-diff  # preview changed Buttondown fields
+make content-push  # PATCH changed fields
 ```
 
 ### Environment Variables
@@ -64,11 +65,11 @@ make sync-issue    # single issue (interactive)
 weekly.thingelstad.com/
 ├── .github/workflows/deploy.yml    # Build & deploy to GitHub Pages
 ├── scripts/
-│   ├── build_data.py               # Orchestrator: fetch → process → write
-│   ├── fetch_emails.py             # Buttondown API fetch + Stripe balance + caching
-│   ├── process_emails.py           # Link extraction, issue numbering, word counts
+│   ├── content.py                  # Canonical pull/build/diff/push content pipeline
+│   ├── build_data.py               # Compatibility wrapper for content.py build
+│   ├── fetch_latest.py             # Compatibility wrapper for content.py pull --latest
+│   ├── sync_to_buttondown.py       # Compatibility wrapper for content.py push
 │   ├── domain_exclusions.py        # Domains excluded from link/domain lists
-│   ├── sync_to_buttondown.py       # Push local .md edits back to Buttondown API
 │   ├── audit_archive.py            # Static regex/DOM audit of rendered HTML
 │   ├── llm_audit_archive.py        # LLM semantic audit (Claude Opus 4.7)
 │   ├── audit_missing_micropost_photos.py  # Find silently-lost micropost photos
@@ -80,6 +81,11 @@ weekly.thingelstad.com/
 │   ├── generate_descriptions.py           # Generate issue descriptions
 │   └── one-shot/                          # Archived scripts that applied a one-time cleanup
 │                                          # See scripts/one-shot/README.md for history
+├── data/
+│   └── buttondown/
+│       ├── manifest.json           # Raw data manifest
+│       ├── emails/                 # Buttondown email metadata JSON snapshots, tracked
+│       └── bodies/                 # Raw Buttondown body markdown, tracked and editable
 ├── docs/
 │   └── audits/                     # Snapshot of archive audits — see docs/audits/README.md
 │                                   # (archive-audit, llm-audit, missing-photos, missing-microblog-posts)
@@ -104,7 +110,7 @@ weekly.thingelstad.com/
 │   │       ├── subscribe-form.njk
 │   │       └── issue-card.njk
 │   ├── archive/
-│   │   ├── 1.md … 343.md          # One .md file per issue (generated, committed)
+│   │   ├── 1.md … 345.md          # One .md file per issue (generated, committed)
 │   │   └── (plus special issues)
 │   ├── index.njk                   # Landing page (/)
 │   ├── about.njk                   # About page (/about/)
@@ -144,11 +150,21 @@ The Python pipeline extracts only editorially curated links, not incidental inli
 
 ## Archive Files (`src/archive/*.md`)
 
-Each issue is a standalone markdown file with YAML front matter. The body is the **original markdown from Buttondown, unmodified** — Buttondown template tags (`{{ }}`, `{% %}`) are preserved for sync-back fidelity and stripped at render time by 11ty.
+Each issue is a standalone generated markdown file with YAML front matter. The body is the public archive rendering of the raw Buttondown body, produced by `scripts/content.py`.
+
+Do not edit these files directly. They include this generated-file notice immediately after front matter:
+
+```md
+<!-- Generated by scripts/content.py from data/buttondown; do not edit directly. -->
+```
+
+Body corrections, archive cleanup, and broad editorial fixes belong in `data/buttondown/bodies/*.md`, then `python scripts/content.py build` regenerates the archive files. Metadata corrections such as subject, description, image, and slug belong in `data/buttondown/emails/*.json`.
 
 Front matter includes: `layout`, `buttondown_id`, `number`, `subject`, `publish_date`, `slug`, `description`, `image`, `absolute_url`, `domains` (list), `links` (list of editorial link objects), `word_count`, `permalink`, `tags`.
 
 The `number` field determines the URL (`/archive/247/`). Assigned by the pipeline from subject line parsing; early issues without numbers are auto-numbered by date.
+
+Buttondown Liquid/template cleanup also happens in `scripts/content.py`, not in 11ty. The archive transform removes email-only or subscriber-personalized blocks and renders known public variables such as `{{ email_url }}` before link extraction, feeds, search indexing, and page rendering.
 
 ## 11ty Configuration (`eleventy.config.js`)
 
@@ -157,7 +173,6 @@ The `number` field determines the URL (`/archive/247/`). Assigned by the pipelin
 - **Markdown:** `markdown-it` with `markdown-it-anchor` for heading IDs
 - **Collections:** `issuesByNumber` (ascending), `issuesByDate` (newest first)
 - **Filters:** `dateFormat`, `dateShort`, `currentYear`, `numberFormat`, `year`, `slice`, `truncate`, `issueNumberBase`, `xmlEscape`, `markdownify`, `extractToc`, `groupByYear`
-- **Transform:** `stripButtondownTags` — removes Buttondown/Mailchimp template variables from rendered HTML
 - **Passthrough copy:** `img/`, `css/`, `CNAME`, `favicon.svg`, `_nojekyll`
 
 ## Landing Page (`/`)
@@ -200,40 +215,42 @@ Subscribe forms appear 4 times on the page (hero, two mid-page, footer).
 
 ## GitHub Actions (`.github/workflows/deploy.yml`)
 
-**Triggers:** push to main, manual `workflow_dispatch`, weekly cron (Sunday 6am UTC / midnight CST)
+**Triggers:** push to main, manual `workflow_dispatch`, weekly cron for latest-issue fetch
 
 **Pipeline:**
 1. Setup Python 3.13 + Node 22
 2. `pip install` + `npm ci`
-3. `python scripts/build_data.py` (with `BUTTONDOWN_API_KEY` and `STRIPE_API_KEY` secrets)
-4. `npx @11ty/eleventy`
-5. `npx pagefind --site _site --glob "**/*.html"`
-6. Auto-commit new issues to git if data pipeline produced changes
-7. Upload and deploy to GitHub Pages
+3. Build content from tracked raw data by default
+4. Pull latest Buttondown issue only for the scheduled/manual fetch path
+5. `npx @11ty/eleventy`
+6. `npx pagefind --site _site --glob "**/*.html"`
+7. Auto-commit new raw data and generated files if the fetch path produced changes
+8. Upload and deploy to GitHub Pages
 
 **Action versions:** checkout@v5, setup-python@v5, setup-node@v5, upload-pages-artifact@v4, deploy-pages@v5
 
 ## Bidirectional Sync
 
-Archive `.md` files can be edited locally and synced back to Buttondown:
+Raw Buttondown body markdown files and metadata JSON files can be edited locally and synced back to Buttondown:
 
 ```bash
-python scripts/sync_to_buttondown.py --dry-run          # preview changes
-python scripts/sync_to_buttondown.py --yes              # push all changes
-python scripts/sync_to_buttondown.py --issue 42 --yes   # push single issue
+python scripts/content.py diff                  # preview changes
+python scripts/content.py push --yes            # push all changes
+python scripts/content.py push --issue 42 --yes # push single issue
 ```
 
-Compares local body against cached API data, PATCHes changed fields to Buttondown API.
+Compares `data/buttondown/bodies/*.md` and `data/buttondown/emails/*.json` against the committed baseline in `HEAD`, confirms the live Buttondown value has not diverged unexpectedly, then PATCHes changed fields to the Buttondown API.
 
-**Important:** `build_data.py` regenerates `src/archive/*.md` unconditionally from the Buttondown API cache. Any local `.md` edit that hasn't been synced back to Buttondown will be overwritten on the next data-pipeline run. The durability flow is:
+**Important:** `scripts/content.py build` regenerates `src/archive/*.md` unconditionally from raw Buttondown data. Any local archive `.md` edit will be overwritten. The durability flow is:
 
-1. Edit `.md` locally
-2. `python scripts/sync_to_buttondown.py --dry-run` to preview
-3. `python scripts/sync_to_buttondown.py --yes` to push
-4. `python scripts/build_data.py --no-cache` to refresh the local cache from Buttondown
-5. `python scripts/sync_to_buttondown.py --dry-run` should now show "No changes detected"
+1. Edit the raw body in `data/buttondown/bodies/<number>.md` or metadata in `data/buttondown/emails/<number>.json`
+2. `python scripts/content.py build` to regenerate archive files and metadata
+3. `python scripts/content.py diff` to preview Buttondown API changes
+4. `python scripts/content.py push --yes` to push
+5. `python scripts/content.py pull --latest` or `python scripts/content.py pull --all` to refresh tracked raw data from Buttondown
+6. `python scripts/content.py diff` should now show "No local changes detected"
 
-Step 4 is critical — until the local cache is refreshed, subsequent `make build` / `make serve` runs will still show stale data in the cache and re-clobber your `.md` on next pipeline run.
+Step 5 is critical: it verifies Buttondown accepted the update and brings the tracked raw data back in line with the remote source.
 
 ## Home Page Copy Refresh ("the creative team")
 

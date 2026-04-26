@@ -1,0 +1,16 @@
+{
+  "id": "em_3xcgsavwhd96rvzjxk4kc7s8cz",
+  "number": 324,
+  "subject": "Weekly Thing 324 / Agents, Shortcuts, Joy",
+  "description": "Good writing, CTO and CPO in generative AI, Shortcuts app iOS 26, multi-agent research systems, AI agent success rates, conversational SDLC.",
+  "image": "https://files.thingelstad.com/weekly-thing/324/cover.jpg",
+  "slug": "324",
+  "publish_date": "2025-06-21T11:00:00Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/324/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 324,
+  "body_path": "data/buttondown/bodies/324.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "26b8cfe8f2b5c117ada8a471aeb1e7d3c14e73054f80ba17f061142216e85301"
+}

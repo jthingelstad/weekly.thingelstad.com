@@ -1,0 +1,16 @@
+{
+  "id": "em_6v3yvd31yd9e6841tg8fjqgcxt",
+  "number": 178,
+  "subject": "Weekly Thing #178 / Reverse Meetings, OODA Loop, Hockey Goalies",
+  "description": "New engineering managers, reverse meetings, S3 Object Lambda, OODA Loop, REST vs GraphQL vs gRPC, Beeple NFT, emoji domain names, Project Gemini.",
+  "image": "https://files.thingelstad.com/weekly-thing/2021/20210320.jpg",
+  "slug": "weekly-thing-178-reverse-meetings-ooda-loop",
+  "publish_date": "2021-03-21T12:00:00Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/weekly-thing-178-reverse-meetings-ooda-loop/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 180,
+  "body_path": "data/buttondown/bodies/178.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "e7dfdc1e853d1e7634f67cb175b0340604eb75739374075068bea13eab2c3e5a"
+}

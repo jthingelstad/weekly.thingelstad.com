@@ -1,0 +1,16 @@
+{
+  "id": "em_1rkwskkag18bwtdsvqq6d9b0g1",
+  "number": 302,
+  "subject": "Weekly Thing 302 / Recipe, Poetry, OnAir",
+  "description": "Target & Home Depot hacker, US internet slowing, recipe formats, alternatives to PGP, AI-generated poetry, bandwidth, good software habits, World's Radio.",
+  "image": "https://files.thingelstad.com/weekly-thing/302/cover.jpg",
+  "slug": "302",
+  "publish_date": "2024-11-24T12:00:00Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/302/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 302,
+  "body_path": "data/buttondown/bodies/302.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "fed678d2b90f99f419eea2b81eb4e9281f52ec9c4aeb833f99fedeba8628cc92"
+}

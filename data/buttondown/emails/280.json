@@ -1,0 +1,16 @@
+{
+  "id": "em_4enrr5q97889xa1kpqrsspn0xz",
+  "number": 280,
+  "subject": "Weekly Thing 280 / Canvas, Undersea, Documents",
+  "description": "S3 not a filesystem, autogenerating book from iMessages, district heating data centers, Web's 35th birthday, 40 years of programming, better documents.",
+  "image": "https://files.thingelstad.com/weekly-thing/280/cover.jpg",
+  "slug": "280",
+  "publish_date": "2024-03-16T12:29:21.202294Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/280/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 281,
+  "body_path": "data/buttondown/bodies/280.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "9e58392671f236609bf208281e5795634289ee752361464f489bab7a34761b85"
+}

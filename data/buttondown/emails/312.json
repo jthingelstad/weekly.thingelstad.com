@@ -1,0 +1,16 @@
+{
+  "id": "em_4rgcw7ehw68kdbxfhpvqc7kxpr",
+  "number": 312,
+  "subject": "Weekly Thing 312 / Tangled, Graphing, Starlink",
+  "description": "LLM hallucinations in code, troubleshooting skills, real-time Starlink tracker, graphing calculator story, managers who code.",
+  "image": "https://files.thingelstad.com/weekly-thing/312/cover.jpg",
+  "slug": "312",
+  "publish_date": "2025-03-08T12:00:00Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/312/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 312,
+  "body_path": "data/buttondown/bodies/312.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "1a4c2791b3c6a0b4d673d8b137ebb39a5195c29204ece19f7cf06f56aac15b74"
+}

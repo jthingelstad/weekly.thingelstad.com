@@ -35,7 +35,7 @@ Do not re-run these against the current archive unless you explicitly intend to 
 
 The parent `scripts/` folder contains the current, re-runnable tools:
 
-- **Pipeline:** `build_data.py`, `fetch_emails.py`, `process_emails.py`, `sync_to_buttondown.py`, `domain_exclusions.py`
+- **Pipeline:** `content.py`, `fetch_emails.py`, `process_emails.py`, `domain_exclusions.py` (`build_data.py`, `fetch_latest.py`, and `sync_to_buttondown.py` are compatibility wrappers)
 - **Audit:** `audit_archive.py`, `llm_audit_archive.py`, `audit_missing_micropost_photos.py`, `build_missing_posts_report.py`
 - **Reusable fixes:** `fix_micropost_photos.py`, `restore_missing_micropost_photos.py`, `migrate_images_to_s3.py`
-- **Utilities:** `fetch_latest.py`, `generate_descriptions.py`
+- **Utilities:** `generate_descriptions.py`

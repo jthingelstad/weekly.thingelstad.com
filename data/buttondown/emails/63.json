@@ -1,0 +1,16 @@
+{
+  "id": "em_7061gm27z192n8pgqse12e29e4",
+  "number": 63,
+  "subject": "Weekly Thing #63 / Jul 21, 2018",
+  "description": "Metrics-based onboarding, ACM computing professionals, event-driven architecture, GraphQL on Postgres, CAP theorem proof, Google Cloud Platform.",
+  "image": "https://files.thingelstad.com/weekly-thing/63/cover.jpg",
+  "slug": "weekly-thing-63-jul-21-2018",
+  "publish_date": "2018-07-21T12:00:00Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/weekly-thing-63-jul-21-2018/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 98,
+  "body_path": "data/buttondown/bodies/63.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "85b409a61e69b813e29d52d960b8926273cf610b89783e1de240bbd2da1352b0"
+}

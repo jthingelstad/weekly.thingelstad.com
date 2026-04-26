@@ -1,0 +1,16 @@
+{
+  "id": "em_4j7cfjez0488h8cfr5909rnhq2",
+  "number": 281,
+  "subject": "Weekly Thing 281 / Fediverse, Odyssey, Echo Chess",
+  "description": "ActivityPub at SFO Museum, Starbucks Odyssey NFT shutdown, AlphaGo reflections, NVIDIA Blackwell chip, DOJ antitrust complaint against Apple.",
+  "image": "https://files.thingelstad.com/weekly-thing/281/cover.jpg",
+  "slug": "281",
+  "publish_date": "2024-03-31T12:00:00Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/281/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 282,
+  "body_path": "data/buttondown/bodies/281.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "ce83c26a937f1befe4f126f1ae08e4a409715d18851bf6a104a3832f3af87124"
+}

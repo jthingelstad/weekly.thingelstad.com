@@ -1,0 +1,16 @@
+{
+  "id": "em_6dmraaen8e99nbk7p1cck3b4zj",
+  "number": 316,
+  "subject": "Weekly Thing 316 / Blogroll, CaMeL, Insider",
+  "description": "Ye Olde Blogroll, CaMeL prompt injection, ChatGPT memory, MCP problems, Circle IPO, CVE program funding, OpenAI o3 o4-mini, GPT-4.1 coding.",
+  "image": "https://files.thingelstad.com/weekly-thing/316/cover.jpg",
+  "slug": "316",
+  "publish_date": "2025-04-20T11:00:00Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/316/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 316,
+  "body_path": "data/buttondown/bodies/316.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "7075f92f48c97709765c5becd5154c8242e47c70e3f718e0c0f976f48ad1cd33"
+}

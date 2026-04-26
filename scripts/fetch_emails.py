@@ -1,9 +1,8 @@
-"""Fetch published emails from the Buttondown API with local caching."""
+"""Fetch published emails and stats from the Buttondown API."""
 
 import json
 import os
 import sys
-import time
 from pathlib import Path
 
 import requests
@@ -15,10 +14,6 @@ sys.stdout.reconfigure(line_buffering=True)
 load_dotenv()
 
 API_BASE = "https://api.buttondown.com/v1"
-CACHE_DIR = Path(__file__).parent.parent / "cache"
-CACHE_FILE = CACHE_DIR / "emails.json"
-STATS_CACHE_FILE = CACHE_DIR / "stats.json"
-CACHE_MAX_AGE = 3600  # 1 hour
 
 
 def get_headers():
@@ -87,42 +82,16 @@ def fetch_stripe_balance():
     return total_cents / 100  # Convert cents to dollars
 
 
-def is_cache_fresh():
-    """Check if the cache file exists and is less than CACHE_MAX_AGE seconds old."""
-    if not CACHE_FILE.exists():
-        return False
-    age = time.time() - CACHE_FILE.stat().st_mtime
-    return age < CACHE_MAX_AGE
-
-
-def load_cache():
-    """Load cached email data."""
-    with open(CACHE_FILE) as f:
-        return json.load(f)
-
-
-def save_cache(emails):
-    """Save email data to cache."""
-    CACHE_DIR.mkdir(exist_ok=True)
-    with open(CACHE_FILE, "w") as f:
-        json.dump(emails, f, indent=2)
-
-
 def fetch(no_cache=False):
     """Main fetch function. Returns list of email objects.
 
-    Also fetches subscriber stats and writes to stats cache.
+    Also fetches subscriber stats and writes src/_data/stats.json.
+    The no_cache argument is accepted for compatibility with older callers.
     """
-    # Fetch emails (with caching)
-    if not no_cache and is_cache_fresh():
-        print("Using cached email data")
-        emails = load_cache()
-    else:
-        print("Fetching emails from Buttondown API...")
-        headers = get_headers()
-        emails = fetch_all_emails(headers)
-        save_cache(emails)
-        print(f"Fetched and cached {len(emails)} emails")
+    print("Fetching emails from Buttondown API...")
+    headers = get_headers()
+    emails = fetch_all_emails(headers)
+    print(f"Fetched {len(emails)} emails")
 
     # Fetch live stats — preserve existing stats.json if API calls fail
     stats_output = Path(__file__).parent.parent / "src" / "_data" / "stats.json"

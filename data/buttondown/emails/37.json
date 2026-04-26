@@ -1,0 +1,16 @@
+{
+  "id": "em_3a0m16wyax9cs97pc83nhs6vmc",
+  "number": 37,
+  "subject": "Weekly Thing for January 20, 2018",
+  "description": "Nintendo Labo, Raspberry Pi Kubernetes cluster, Argo workflow engine, Datasette Publish, Micro.blog, Feedbin, Bruce Schneier IoT, Internet Archive.",
+  "image": "https://files.thingelstad.com/weekly-thing/37/cover.jpg",
+  "slug": "weekly-thing-for-january-20-2018",
+  "publish_date": "2018-01-20T13:00:00Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/weekly-thing-for-january-20-2018/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 74,
+  "body_path": "data/buttondown/bodies/37.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "65fed7a0a42cc15f5b109adf8b2e6176d181c5ea65bc23602678c0f1d76c68bf"
+}

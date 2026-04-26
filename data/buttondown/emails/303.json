@@ -1,0 +1,16 @@
+{
+  "id": "em_17cf9mjm3x88sr2qzkj69p74k3",
+  "number": 303,
+  "subject": "Weekly Thing 303 / Petnames, Synapse, jless",
+  "description": "Grain of salt camera, Model Context Protocol, fine-tuning NLP transformers, petnames decentralized naming, Delicious Library.",
+  "image": "https://files.thingelstad.com/weekly-thing/303/cover.jpg",
+  "slug": "303",
+  "publish_date": "2024-12-01T12:00:00Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/303/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 303,
+  "body_path": "data/buttondown/bodies/303.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "04f9f4e79951e33273c72bac2c8102b90680e129cd274f047a5bb04f9c55277b"
+}

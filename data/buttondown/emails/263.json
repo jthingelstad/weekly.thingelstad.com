@@ -1,0 +1,16 @@
+{
+  "id": "em_54d2yy7ww989ca0zd2fz4dpg6b",
+  "number": 263,
+  "subject": "Weekly Thing 263 / Copilot, Del.icio.us, Pancake",
+  "description": "Selling Del.icio.us to Yahoo, Microsoft Copilot, Scaling Kafka at PayPal, Philips Hue ecosystem, macOS Sonoma review, Mastercard transaction data.",
+  "image": "https://files.thingelstad.com/weekly-thing/263/cover.jpg",
+  "slug": "263",
+  "publish_date": "2023-09-30T12:00:00Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/263/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 264,
+  "body_path": "data/buttondown/bodies/263.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "fcd728ec248b3f8c460f8a5300f16cbc7da0259e581cf30c274bbbc8cda20eba"
+}

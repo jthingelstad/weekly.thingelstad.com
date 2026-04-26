@@ -1,0 +1,16 @@
+{
+  "id": "em_3sxzh9t7278art64ehstcb76a2",
+  "number": 344,
+  "subject": "Weekly Thing 344 / Mythos, Artemis, Signals",
+  "description": "Working with agents, economics of software teams, evals as new PRD, OpenAI Codex superapp, saying goodbye to Agile, cybersecurity proof of work.",
+  "image": "https://files.thingelstad.com/weekly-thing/344/cover.jpg",
+  "slug": "344",
+  "publish_date": "2026-04-19T12:39:11.789242Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/344/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 345,
+  "body_path": "data/buttondown/bodies/344.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "60ca4682f09fff0a946a41d801b7f8ab97c306ca5bef6c859366fd46d3310219"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "em_6rcezepp9a9s8btd9fy95k0yk7",
+  "number": 345,
+  "subject": "Weekly Thing 345 / Codex, Headless, Wikiwise",
+  "description": "OpenAI Codex App, Cloudflare Email Service, Headless everything for personal AI, Claude Design, Dad brains, ChatGPT Images 2.0, GPT-5.5.",
+  "image": "https://files.thingelstad.com/weekly-thing/345/cover.jpg",
+  "slug": "345",
+  "publish_date": "2026-04-26T12:00:00Z",
+  "absolute_url": "https://weekly.thingelstad.com/archive/345/",
+  "email_type": "public",
+  "status": "sent",
+  "secondary_id": 346,
+  "body_path": "data/buttondown/bodies/345.md",
+  "fetched_at": "2026-04-26T13:28:50Z",
+  "source_hash": "8cbc0916675286383f529cc2b660ea15541a31d3d774d4fc52d7ba7c33e46900"
+}
