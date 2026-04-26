@@ -34,15 +34,17 @@ ogType: article
   <div class="issue-body-wrap">
     {% if toc.length > 0 %}
     <aside class="issue-sidebar">
-      <div class="issue-kudos">
+      <div class="issue-actions" aria-label="Issue actions">
         <button class="tinylytics_kudos" data-path="/archive/{{ number }}/">
-          <span class="kudos-label">Like this issue</span>
+          <span class="kudos-icon" aria-hidden="true">♡</span>
+          <span class="kudos-label">Kudos</span>
           <span class="kudos-count tinylytics_kudos_count"></span>
         </button>
-      </div>
 
-      <div class="issue-share">
-        <button class="share-button" data-url="{{ site.url }}/archive/{{ number }}/" data-title="{{ subject }}" data-tinylytics-event="issue.share" data-tinylytics-event-value="{{ number }}">Share this issue</button>
+        <button class="share-button" data-url="{{ site.url }}/archive/{{ number }}/" data-title="{{ subject }}" data-tinylytics-event="issue.share" data-tinylytics-event-value="{{ number }}">
+          <span class="share-icon" aria-hidden="true">↗</span>
+          <span class="share-label">Share</span>
+        </button>
       </div>
 
       <nav class="toc" aria-label="Table of Contents">
@@ -98,18 +100,24 @@ ogType: article
   </footer>
 </article>
 <script>
-document.querySelector('.share-button').addEventListener('click', function() {
-  var url = this.dataset.url;
-  var title = this.dataset.title;
-  if (navigator.share) {
-    navigator.share({ title: title, url: url });
-  } else {
-    navigator.clipboard.writeText(url).then(function() {
-      var btn = document.querySelector('.share-button');
-      var orig = btn.textContent;
-      btn.textContent = 'Link copied!';
-      setTimeout(function() { btn.textContent = orig; }, 2000);
-    });
-  }
-});
+var shareButton = document.querySelector('.share-button');
+if (shareButton) {
+  shareButton.addEventListener('click', function() {
+    var btn = this;
+    var url = btn.dataset.url;
+    var title = btn.dataset.title;
+    var label = btn.querySelector('.share-label');
+    var originalLabel = label ? label.textContent : btn.textContent;
+    if (navigator.share) {
+      navigator.share({ title: title, url: url });
+    } else {
+      navigator.clipboard.writeText(url).then(function() {
+        if (label) {
+          label.textContent = 'Copied';
+          setTimeout(function() { label.textContent = originalLabel; }, 2000);
+        }
+      });
+    }
+  });
+}
 </script>

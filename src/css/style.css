@@ -24,6 +24,8 @@
   --color-border-light: #f0f1f3;
   --color-highlight: #dbeafe;
   --color-code-bg: #f1f3f5;
+  --color-accent-soft: rgba(37, 99, 171, 0.08);
+  --shadow-subtle: 0 1px 2px rgba(26, 26, 26, 0.04);
 
   /* Typography */
   --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -68,6 +70,8 @@
     --color-border-light: #2a2a2a;
     --color-highlight: #1e3a5f;
     --color-code-bg: #2a2a2a;
+    --color-accent-soft: rgba(91, 155, 213, 0.16);
+    --shadow-subtle: none;
   }
 }
 
@@ -1165,6 +1169,7 @@ th {
 /* Sidebar (TOC + Domains) */
 .issue-sidebar {
   font-size: var(--size-sm);
+  font-family: var(--font-ui);
 }
 
 @media (min-width: 960px) {
@@ -1175,6 +1180,84 @@ th {
     max-height: calc(100vh - var(--space-2xl));
     overflow-y: auto;
   }
+}
+
+.issue-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xs);
+  padding: var(--space-xs);
+  margin-bottom: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-subtle);
+}
+
+.tinylytics_kudos,
+.share-button {
+  min-height: 2.25rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-ui);
+  font-size: var(--size-xs);
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.tinylytics_kudos:hover,
+.share-button:hover {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.tinylytics_kudos:focus-visible,
+.share-button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.kudos-icon,
+.share-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.kudos-count {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.kudos-count:not(:empty) {
+  padding-left: 0.15rem;
+}
+
+.tinylytics_kudos.did_select {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+.tinylytics_kudos.did_select .kudos-icon {
+  color: #fff;
+}
+
+.tinylytics_kudos.did_select .kudos-count {
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .toc-title,
@@ -1192,13 +1275,17 @@ th {
   list-style: none;
   padding: 0;
   margin: 0;
+  border-left: 1px solid var(--color-border-light);
 }
 
 .toc-item {
-  margin-bottom: var(--space-xs);
+  margin: 0;
 }
 
 .toc-item a {
+  display: block;
+  padding: 0.28rem 0 0.28rem var(--space-sm);
+  border-left: 2px solid transparent;
   color: var(--color-text-muted);
   text-decoration: none;
   font-size: var(--size-sm);
@@ -1207,10 +1294,12 @@ th {
 
 .toc-item a:hover {
   color: var(--color-accent);
+  border-left-color: var(--color-accent);
+  background: var(--color-accent-soft);
 }
 
 .toc-level-3 {
-  padding-left: var(--space-md);
+  padding-left: var(--space-sm);
 }
 
 .linked-domains {
@@ -1232,8 +1321,9 @@ th {
   font-size: var(--size-xs);
   color: var(--color-text-muted);
   background: var(--color-code-bg);
-  padding: 0.15em 0.5em;
-  border-radius: 3px;
+  padding: 0.22rem 0.5rem;
+  border: 1px solid var(--color-border-light);
+  border-radius: 4px;
 }
 
 /* Issue content area */
@@ -1278,84 +1368,30 @@ th {
   padding-right: var(--space-lg);
 }
 
-.issue-kudos {
-  margin-bottom: var(--space-sm);
-}
-
-.tinylytics_kudos {
-  font-family: var(--font-ui);
-  font-size: var(--size-sm);
-  width: 100%;
-  padding: 0.6rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  background: var(--color-surface);
-  color: var(--color-text);
-  cursor: pointer;
-  transition: all 0.15s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.tinylytics_kudos:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-
-.tinylytics_kudos.did_select {
-  border-color: var(--color-accent);
-  background: var(--color-accent);
-  color: #fff;
-  cursor: default;
-}
-
-.tinylytics_kudos.did_select .kudos-label::before {
-  content: "\2764\fe0e  ";
-}
-
-.kudos-count:not(:empty)::before {
-  content: "\b7";
-}
-
-.issue-share {
-  margin-top: var(--space-sm);
-}
-
-.share-button {
-  font-family: var(--font-ui);
-  font-size: var(--size-sm);
-  width: 100%;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  background: var(--color-surface);
-  color: var(--color-text);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.share-button:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-
 .issue-nav {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-lg);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
   margin-bottom: var(--space-2xl);
 }
 
 .issue-nav-link {
+  display: block;
+  min-height: 5rem;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
   text-decoration: none;
-  max-width: 45%;
+  box-shadow: var(--shadow-subtle);
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease;
 }
 
 .issue-nav-next {
   text-align: right;
-  margin-left: auto;
 }
 
 .issue-nav-label {
@@ -1371,7 +1407,14 @@ th {
 .issue-nav-title {
   display: block;
   font-size: var(--size-sm);
+  line-height: 1.45;
   color: var(--color-text);
+}
+
+.issue-nav-link:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+  transform: translateY(-1px);
 }
 
 .issue-nav-link:hover .issue-nav-title {
@@ -1611,7 +1654,7 @@ th {
   }
 
   .issue-nav {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
   .issue-nav-link {
@@ -1858,4 +1901,3 @@ th {
   border-radius: 3px;
   font-size: var(--size-sm);
 }
-
