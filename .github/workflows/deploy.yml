@@ -6,13 +6,24 @@ on:
   repository_dispatch:
     types: [new_issue]
   workflow_dispatch:
+    inputs:
+      content_update:
+        description: "Content pipeline to run before deploying"
+        required: true
+        default: "none"
+        type: choice
+        options:
+          - none
+          - latest
+          - latest-force
+          - full
   schedule:
-    - cron: '0 6 * * 0'  # Every Sunday at 6am UTC (midnight CST)
+    # Weekend morning polling window for new issues.
+    # Covers roughly 6am-10am America/Chicago across CST/CDT.
+    - cron: '0 11-16 * * 6,0'
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: read
 
 concurrency:
   group: "pages"
@@ -21,15 +32,19 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      should_deploy: ${{ steps.deploy-check.outputs.should_deploy }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.13'
           cache: 'pip'
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: '22'
           cache: 'npm'
@@ -38,48 +53,80 @@ jobs:
 
       - run: npm ci
 
-      # Full rebuild: workflow_dispatch (manual) and schedule (weekly cron)
+      # Full rebuild only when explicitly requested.
       - name: Full data rebuild
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+        if: github.event_name == 'workflow_dispatch' && inputs.content_update == 'full'
         run: python scripts/build_data.py --no-cache
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
           STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
 
-      # New issue: repository_dispatch from Buttondown webhook
-      - name: Fetch latest issue
-        if: github.event_name == 'repository_dispatch'
+      # New issue: repository_dispatch from an authenticated relay, or manual latest update.
+      - name: Fetch latest issue and update if present
+        if: github.event_name == 'repository_dispatch' || (github.event_name == 'workflow_dispatch' && inputs.content_update == 'latest-force')
         run: python scripts/fetch_latest.py
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
           STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
 
+      # Scheduled/manual polling should be cheap and no-op when the latest issue is already committed.
+      - name: Poll latest issue
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.content_update == 'latest')
+        run: python scripts/fetch_latest.py --skip-existing
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
+
       # push: no data pipeline, build from committed files
+      # workflow_dispatch with content_update=none: no data pipeline, build from committed files
+
+      - name: Decide whether to build and deploy
+        id: deploy-check
+        run: |
+          if [[ "${{ github.event_name }}" == "schedule" || ( "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.content_update }}" == "latest" ) ]]; then
+            if git diff --quiet -- src/archive/ src/_data/emails.json src/_data/stats.json; then
+              echo "should_deploy=false" >> "$GITHUB_OUTPUT"
+              echo "No content changes found; skipping build and deploy."
+            else
+              echo "should_deploy=true" >> "$GITHUB_OUTPUT"
+              echo "Content changes found; building and deploying."
+            fi
+          else
+            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
+            echo "Build and deploy required for this event."
+          fi
 
       - name: Build site
-        run: npx @11ty/eleventy
+        if: steps.deploy-check.outputs.should_deploy == 'true'
+        run: npm run build
 
       - name: Build search index
-        run: npx pagefind --site _site --glob "**/*.html"
+        if: steps.deploy-check.outputs.should_deploy == 'true'
+        run: npm run build:search
 
       - name: Commit new issues
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' && steps.deploy-check.outputs.should_deploy == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add src/archive/ src/_data/emails.json src/_data/stats.json
           git diff --staged --quiet || (git commit -m "Add new newsletter issue(s)" && git push)
 
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
+        if: steps.deploy-check.outputs.should_deploy == 'true'
         with:
           path: _site
 
   deploy:
     needs: build
+    if: needs.build.outputs.should_deploy == 'true'
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@v4

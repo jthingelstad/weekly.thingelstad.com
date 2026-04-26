@@ -4,8 +4,17 @@
   "description": "The Weekly Thing — newsletter landing page and archive",
   "scripts": {
     "build": "eleventy",
+    "build:search": "pagefind --site _site --glob '**/*.html'",
+    "build:all": "npm run build && npm run build:search",
     "serve": "eleventy --serve",
-    "pagefind": "pagefind --site _site --glob '**/*.html'"
+    "data": "python scripts/build_data.py",
+    "data:fresh": "python scripts/build_data.py --no-cache",
+    "fetch:latest": "python scripts/fetch_latest.py",
+    "fetch:latest:skip-existing": "python scripts/fetch_latest.py --skip-existing",
+    "sync": "python scripts/sync_to_buttondown.py --dry-run",
+    "sync:push": "python scripts/sync_to_buttondown.py",
+    "refresh-copy": "python scripts/refresh_marketing_copy.py",
+    "refresh-copy:dry": "python scripts/refresh_marketing_copy.py --dry-run"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",

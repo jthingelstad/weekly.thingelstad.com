@@ -20,6 +20,15 @@ DATA_DIR = SRC_DIR / "_data"
 ARCHIVE_DIR = SRC_DIR / "archive"
 
 
+def load_existing_stats():
+    """Load committed stats so transient API failures do not zero them out."""
+    stats_path = DATA_DIR / "stats.json"
+    if not stats_path.exists():
+        return {}
+    with open(stats_path) as f:
+        return json.load(f)
+
+
 def fetch_latest_email():
     """Fetch just the most recent sent, public email from Buttondown."""
     headers = fetch_emails.get_headers()
@@ -37,6 +46,8 @@ def fetch_latest_email():
 
 
 def main():
+    skip_existing = "--skip-existing" in sys.argv
+
     print("=" * 60)
     print("The Weekly Thing — Fetch Latest Issue")
     print("=" * 60)
@@ -57,6 +68,9 @@ def main():
     # Check if this issue already exists
     md_path = ARCHIVE_DIR / f"{issue['number']}.md"
     if md_path.exists():
+        if skip_existing:
+            print(f"Issue #{issue['number']} already exists at {md_path}; nothing to do.")
+            sys.exit(0)
         print(f"Issue #{issue['number']} already exists at {md_path}, updating.")
 
     # Write the archive .md file
@@ -133,6 +147,8 @@ def main():
     print(f"Updated {emails_path} ({len(index)} entries)")
 
     # Update stats
+    existing_stats = load_existing_stats()
+
     print("Fetching subscriber stats...")
     try:
         headers = fetch_emails.get_headers()
@@ -140,15 +156,15 @@ def main():
         premium_count = fetch_emails.fetch_premium_subscriber_count(headers)
     except Exception as e:
         print(f"  Warning: Could not fetch subscriber stats: {e}")
-        subscriber_count = 0
-        premium_count = 0
+        subscriber_count = existing_stats.get("subscriber_count", 0)
+        premium_count = existing_stats.get("premium_subscriber_count", 0)
 
     print("Fetching Stripe balance...")
     try:
         amount_raised = fetch_emails.fetch_stripe_balance()
     except Exception as e:
         print(f"  Warning: Could not fetch Stripe balance: {e}")
-        amount_raised = 0
+        amount_raised = existing_stats.get("amount_raised", 0)
 
     stats_path = DATA_DIR / "stats.json"
     stats = {
