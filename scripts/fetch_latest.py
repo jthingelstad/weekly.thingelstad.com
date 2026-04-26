@@ -35,7 +35,12 @@ def fetch_latest_email():
     resp = requests.get(
         f"{fetch_emails.API_BASE}/emails",
         headers=headers,
-        params={"status": "sent", "email_type": "public", "page_size": 1},
+        params={
+            "status": "sent",
+            "email_type": "public",
+            "ordering": "-publish_date",
+            "page_size": 1,
+        },
     )
     resp.raise_for_status()
     results = resp.json().get("results", [])

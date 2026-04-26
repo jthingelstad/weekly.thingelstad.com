@@ -6,8 +6,6 @@ eleventyExcludeFromCollections: true
 
 > A weekly newsletter by Jamie Thingelstad. Since May 2017, one curious person sifts through the internet and sends the things worth your time. Not an algorithm. Not a feed. Just considered curation.
 
-## About
-
 The Weekly Thing is written and curated by {{ site.author }} ({{ site.authorUrl }}). It has been published almost every weekend since May 13, 2017, with two scheduled breaks each year: roughly July through August, and mid-December through mid-January.
 
 Each issue includes several recurring sections:
@@ -19,7 +17,7 @@ Each issue includes several recurring sections:
 
 Only links inside dedicated editorial sections (Notable, Briefly, Featured, etc.) are counted in the archive's link and domain stats. Inline links in commentary and microposts are intentionally excluded.
 
-## Stats
+Archive stats:
 
 - Total issues: {{ archiveStats.totalIssues | numberFormat }}
 - Total curated links: {{ archiveStats.totalLinks | numberFormat }}
@@ -29,34 +27,41 @@ Only links inside dedicated editorial sections (Notable, Briefly, Featured, etc.
 - Latest issue: {{ archiveStats.latestDate | dateFormat }}
 - Years active: {{ archiveStats.yearsActive }}
 
-## How to read this archive
+{% set latestIssue = collections.issuesByDate[0] %}
 
-- Human-readable archive index: {{ site.url }}/archive/
-- This file (LLM-friendly site index): {{ site.url }}/llms.txt
-- Programmatic archive index (JSON): {{ site.url }}/archive.json
-- Per-issue HTML: {{ site.url }}/archive/N/
-- Per-issue markdown (clean, no chrome): {{ site.url }}/archive/N.txt
-- Atom feed (all issues): {{ site.url }}/feed.xml
-- Per-issue Atom feed of curated links: {{ site.url }}/archive/N/links.xml
-- Full-text search: {{ site.url }}/search/
+## Core Files
 
-Replace `N` with an issue number between 1 and {{ archiveStats.totalIssues }}.
+- [LLM-friendly site index]({{ site.url }}/llms.txt): This file; a concise map of the archive and machine-readable entry points.
+- [Programmatic archive index]({{ site.url }}/archive.json): JSON metadata for every issue, including issue numbers, dates, descriptions, markdown URLs, domains, and curated-link counts.
+- [Human archive index]({{ site.url }}/archive/): Browser-facing archive grouped by year.
+- [Latest issue markdown]({{ site.url }}/archive/{{ latestIssue.data.number }}.txt): Clean markdown for the most recent issue, without site chrome.
+- [Latest issue HTML]({{ site.url }}/archive/{{ latestIssue.data.number }}/): Browser-facing version of the most recent issue.
+- [Atom feed]({{ site.url }}/feed.xml): Feed of all issues.
+- [Full-text search]({{ site.url }}/search/): Browser-facing search powered by Pagefind.
 
-## Other pages
+Use `/archive/N/` for per-issue HTML, `/archive/N.txt` for clean per-issue markdown, and `/archive/N/links.xml` for the Atom feed of curated links from one issue. Replace `N` with an issue number such as `{{ latestIssue.data.number }}`. Some special issues use suffixed identifiers such as `140-special`.
 
-- [About the author]({{ site.url }}/about/) — bio and background on Jamie Thingelstad
-- [Supporting Membership]({{ site.url }}/members/) — annual nonprofit donation drive
-- [FAQ]({{ site.url }}/faq/) — frequently asked questions about the newsletter
-- [Subscribe]({{ site.url }}/) — free email signup via Buttondown
+## Recent Issues
 
-## All issues
+Newest issues, with clean markdown links.
+
+{% for issue in collections.issuesByDate | slice(0, 12) -%}
+- [#{{ issue.data.number }} — {{ issue.data.subject | safe }}]({{ site.url }}/archive/{{ issue.data.number }}.txt): {{ issue.data.publish_date | dateShort }}{% if issue.data.description %}; {{ issue.data.description | safe }}{% endif %}
+{% endfor %}
+
+## Site Pages
+
+- [Subscribe]({{ site.url }}/): Free email signup via Buttondown.
+- [About the author]({{ site.url }}/about/): Bio and background on Jamie Thingelstad.
+- [Supporting Membership]({{ site.url }}/members/): Annual nonprofit donation drive.
+- [FAQ]({{ site.url }}/faq/): Frequently asked questions about the newsletter.
+
+## Optional
 
 Every issue, newest first. Each link points to a clean markdown version.
 
 {% for group in collections.issuesByDate | groupByYear -%}
-### {{ group.year }}
-
 {% for issue in group.issues -%}
-- [#{{ issue.data.number }} — {{ issue.data.subject }}]({{ site.url }}/archive/{{ issue.data.number }}.txt) ({{ issue.data.publish_date | dateShort }})
+- [#{{ issue.data.number }} — {{ issue.data.subject | safe }}]({{ site.url }}/archive/{{ issue.data.number }}.txt): {{ issue.data.publish_date | dateShort }}
 {% endfor %}
 {% endfor %}
