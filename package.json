@@ -7,7 +7,10 @@
     "build:search": "pagefind --site _site --glob '**/*.html'",
     "build:all": "npm run build && npm run build:search",
     "serve": "eleventy --serve",
-    "data": "python scripts/content.py build",
+    "data": "python scripts/content.py build && python scripts/build_librarian_corpus.py",
+    "librarian:corpus": "python scripts/build_librarian_corpus.py",
+    "librarian:corpus:upload": "python scripts/upload_librarian_corpus.py",
+    "librarian:deploy": "python scripts/deploy_librarian_aws.py",
     "data:fresh": "python scripts/content.py pull --all",
     "content:pull": "python scripts/content.py pull --all",
     "content:pull:latest": "python scripts/content.py pull --latest",
@@ -27,5 +30,8 @@
     "@11ty/eleventy": "^3.0.0",
     "markdown-it-anchor": "^9.2.0",
     "pagefind": "^1.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1"
   }
 }

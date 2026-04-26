@@ -1,0 +1,116 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Weekly Thing Archive Librarian API
+
+Parameters:
+  AllowedOrigin:
+    Type: String
+    Default: https://weekly.thingelstad.com
+  CorpusBucket:
+    Type: String
+    Description: S3 bucket containing the librarian corpus JSON.
+  CorpusKey:
+    Type: String
+    Default: librarian/corpus.json
+  ButtondownApiKey:
+    Type: String
+    NoEcho: true
+  OpenAIApiKey:
+    Type: String
+    NoEcho: true
+  TinylyticsApiKey:
+    Type: String
+    NoEcho: true
+  TinylyticsSiteId:
+    Type: String
+    Default: "3063"
+  SessionSecret:
+    Type: String
+    NoEcho: true
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 35
+    MemorySize: 1024
+    Architectures:
+      - arm64
+    Environment:
+      Variables:
+        ALLOWED_ORIGIN: !Ref AllowedOrigin
+        TABLE_NAME: !Ref LibrarianTable
+        CORPUS_BUCKET: !Ref CorpusBucket
+        CORPUS_KEY: !Ref CorpusKey
+        BUTTONDOWN_API_KEY: !Ref ButtondownApiKey
+        OPENAI_API_KEY: !Ref OpenAIApiKey
+        TINYLYTICS_API_KEY: !Ref TinylyticsApiKey
+        TINYLYTICS_SITE_ID: !Ref TinylyticsSiteId
+        TINYLYTICS_ENABLED: "1"
+        SESSION_SECRET: !Ref SessionSecret
+
+Resources:
+  LibrarianHttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      CorsConfiguration:
+        AllowOrigins:
+          - !Ref AllowedOrigin
+        AllowMethods:
+          - OPTIONS
+          - POST
+        AllowHeaders:
+          - content-type
+          - authorization
+
+  LibrarianTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+
+  LibrarianFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../librarian_api/
+      Handler: app.handler
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref LibrarianTable
+        - S3ReadPolicy:
+            BucketName: !Ref CorpusBucket
+      Events:
+        Auth:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref LibrarianHttpApi
+            Path: /auth
+            Method: POST
+        Chat:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref LibrarianHttpApi
+            Path: /chat
+            Method: POST
+        Prompts:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref LibrarianHttpApi
+            Path: /prompts
+            Method: POST
+
+Outputs:
+  LibrarianApiUrl:
+    Description: Base URL for the Archive Librarian API.
+    Value: !Sub "https://${LibrarianHttpApi}.execute-api.${AWS::Region}.amazonaws.com"
