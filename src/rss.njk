@@ -27,7 +27,7 @@ eleventyAllowMissingExtension: true
     {% if issue.data.description %}
     <summary type="text">{{ issue.data.description | xmlEscape }}</summary>
     {% endif %}
-    <content type="html">{{ issue.templateContent | xmlEscape }}</content>
+    <content type="html">{{ issue.page.inputPath | readIssueMarkdownBody | markdownify | xmlEscape }}</content>
   </entry>
   {% endfor %}
 </feed>

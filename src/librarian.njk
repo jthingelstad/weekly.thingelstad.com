@@ -49,6 +49,16 @@ permalink: /librarian/
       </form>
     </div>
   </div>
+
+  <div class="librarian-beta-overlay" id="librarian-beta-overlay" hidden>
+    <div class="librarian-beta-modal" role="dialog" aria-modal="true" aria-labelledby="librarian-beta-title" aria-describedby="librarian-beta-description">
+      <p class="eyebrow">Private Beta</p>
+      <h2 id="librarian-beta-title">Thingy is experimental</h2>
+      <p id="librarian-beta-description">Thingy can search and synthesize the Weekly Thing archive, but it may miss things, read the archive too narrowly, or cite an imperfect set of issues. It only uses archive sources and should show issue references when it can.</p>
+      <p>Beta conversations may be logged and reviewed to improve Thingy. Please treat this as an early preview and send along answers that feel especially useful, vague, weird, or wrong.</p>
+      <button type="button" id="librarian-beta-close">I understand</button>
+    </div>
+  </div>
 </section>
 
 <script>
@@ -71,8 +81,11 @@ permalink: /librarian/
     const questionButton = questionForm.querySelector('button[type="submit"]');
     const messages = document.getElementById('librarian-messages');
     const prompts = document.getElementById('librarian-prompts');
+    const betaOverlay = document.getElementById('librarian-beta-overlay');
+    const betaCloseButton = document.getElementById('librarian-beta-close');
     const storageKey = 'weeklyThingLibrarianToken';
     const promptsStorageKey = 'weeklyThingLibrarianPrompts';
+    const betaNoticeStorageKey = 'weeklyThingLibrarianBetaNotice';
     const maxHistoryMessages = 8;
     const maxHistoryChars = 4000;
     const eventSink = document.createElement('button');
@@ -93,6 +106,24 @@ permalink: /librarian/
       return window.localStorage.getItem(storageKey);
     }
 
+    function showBetaNotice() {
+      if (window.sessionStorage.getItem(betaNoticeStorageKey) === 'dismissed') return;
+      betaOverlay.hidden = false;
+      document.body.classList.add('librarian-beta-open');
+      betaCloseButton.focus();
+      trackTinylyticsEvent('librarian.beta_notice_shown');
+    }
+
+    function hideBetaNotice(options = {}) {
+      const remember = options.remember !== false;
+      const focusQuestion = options.focusQuestion !== false;
+      betaOverlay.hidden = true;
+      document.body.classList.remove('librarian-beta-open');
+      if (remember) window.sessionStorage.setItem(betaNoticeStorageKey, 'dismissed');
+      if (focusQuestion) questionInput.focus();
+      if (remember) trackTinylyticsEvent('librarian.beta_notice_dismissed');
+    }
+
     function setToken(value, message) {
       window.localStorage.setItem(storageKey, value);
       authPanel.hidden = true;
@@ -100,12 +131,14 @@ permalink: /librarian/
       hideAuthActions();
       if (message) addMessage('system', `<p>${escapeHtml(message)}</p>`);
       loadPrompts();
-      questionInput.focus();
+      showBetaNotice();
+      if (betaOverlay.hidden) questionInput.focus();
     }
 
     function clearToken() {
       window.localStorage.removeItem(storageKey);
       window.sessionStorage.removeItem(promptsStorageKey);
+      hideBetaNotice({ remember: false, focusQuestion: false });
       conversationHistory = [];
       chatPanel.hidden = true;
       authPanel.hidden = false;
@@ -385,9 +418,9 @@ permalink: /librarian/
     function renderPrompts(promptItems) {
       if (!promptItems || !promptItems.length || answerInFlight) return;
       prompts.innerHTML = promptItems.map((item, index) => {
-        const label = escapeHtml(item.label || item.question || `Question ${index + 1}`);
         const question = escapeHtml(item.question || item.label || '');
-        return `<button type="button" data-question="${question}" data-tinylytics-event="librarian.prompt_select" data-tinylytics-event-value="${index + 1}">${label}</button>`;
+        const label = escapeHtml(item.label || `Question ${index + 1}`);
+        return `<button type="button" data-question="${question}" title="${question}" data-tinylytics-event="librarian.prompt_select" data-tinylytics-event-value="${index + 1}">${label}</button>`;
       }).join('');
       prompts.hidden = false;
     }
@@ -396,7 +429,7 @@ permalink: /librarian/
       if (!token() || answerInFlight) return;
       try {
         const cached = JSON.parse(window.sessionStorage.getItem(promptsStorageKey) || 'null');
-        if (cached && Array.isArray(cached.prompts)) {
+        if (cached && cached.source === 'generated' && Array.isArray(cached.prompts)) {
           renderPrompts(cached.prompts);
           return;
         }
@@ -408,7 +441,11 @@ permalink: /librarian/
       try {
         const data = await postJson('/prompts', {}, { authorization: `Bearer ${token()}` });
         if (Array.isArray(data.prompts) && data.prompts.length) {
-          window.sessionStorage.setItem(promptsStorageKey, JSON.stringify({ prompts: data.prompts }));
+          if (data.source === 'generated') {
+            window.sessionStorage.setItem(promptsStorageKey, JSON.stringify({ prompts: data.prompts, source: data.source }));
+          } else {
+            window.sessionStorage.removeItem(promptsStorageKey);
+          }
           renderPrompts(data.prompts);
           trackTinylyticsEvent('librarian.prompts_loaded', data.source || 'generated');
         } else {
@@ -569,6 +606,16 @@ permalink: /librarian/
     logoutButton.addEventListener('click', () => {
       clearToken();
       trackTinylyticsEvent('librarian.logout');
+    });
+
+    betaCloseButton.addEventListener('click', hideBetaNotice);
+
+    betaOverlay.addEventListener('click', (event) => {
+      if (event.target === betaOverlay) hideBetaNotice();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !betaOverlay.hidden) hideBetaNotice();
     });
 
     questionForm.addEventListener('submit', async (event) => {

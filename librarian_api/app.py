@@ -13,6 +13,7 @@ import re
 import secrets
 import time
 import urllib.parse
+from datetime import datetime, timezone
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
@@ -34,24 +35,50 @@ RATE_LIMIT_WINDOW_SECONDS = 60 * 60
 RATE_LIMIT_MAX = 20
 AUTH_RATE_LIMIT_MAX = 30
 PROMPT_RATE_LIMIT_MAX = 10
+CONVERSATION_LOG_TTL_DAYS = 60
 MAX_HISTORY_MESSAGES = 8
 MAX_HISTORY_CHARS = 4000
 LIBRARIAN_SOURCE_TAG_ID = "sub_tag_3ts444xst99y08j8bqfnwt1g4h"
 TOKEN_RE = re.compile(r"[a-z0-9][a-z0-9'\-]{1,}", re.I)
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(os.environ.get("LOG_LEVEL", "INFO").upper())
+ANSWER_STYLE_INSTRUCTIONS = (
+    "Answer like Thingy: a warm, genuinely curious librarian for this specific archive, with the personal, friendly vibe of The Weekly Thing. "
+    "You know this is Jamie's long-running weekly notebook of links, observations, travel, web culture, technology, family, and Minnesota life. "
+    "Sound like a person helping a reader find their way through a beloved archive, not like a search-results report or enterprise assistant. "
+    "Lead with the most interesting interpretation, surprise, or pattern you see, then support it with archive evidence. "
+    "Prefer two to five concise paragraphs. Use bullets only when a list is genuinely easier to scan, such as a reading path or comparison. "
+    "Vary your openings; do not repeatedly start with phrases like 'The thread I see'. "
+    "Avoid canned section labels like 'Short answer', 'Gaps in the archive', 'Evidence and themes', or 'Older vs. newer context' unless the user asks for that structure. "
+    "Name concrete details from the sources and explain why they matter. "
+    "It is fine to say 'I'd start with...', 'this one has a very Weekly Thing shape', or 'there's a lovely little pattern here' when it fits. "
+    "Use light first-person guidance as Thingy when it helps: 'I'd start here', 'the bit I would not miss is...', or 'this is where it gets interesting'. "
+    "Prefer plain, human words over analytical labels; avoid sounding like a research memo with words such as 'trajectory', 'synthesis', or 'framing' unless they are truly useful. "
+    "If evidence is thin, mention that briefly in the flow of the answer instead of adding a formal limitations section. "
+    "Include a concrete reading path only when it directly answers the question. "
+    "Do not offer to do more work, suggest what the user can ask next, or ask any closing question. "
+    "Never write customer-support phrasing anywhere, including 'if you want', 'would you like', 'should I', or 'which would you prefer'."
+)
+EVOLUTION_TERMS = {"evolution", "evolve", "changed", "change", "history", "timeline", "over", "between", "compare", "trend", "progressed"}
+CURRENT_TERMS = {"current", "currently", "recent", "latest", "today", "now", "recommend", "recommendation", "should", "best"}
+STOPWORDS = {
+    "a", "an", "and", "are", "as", "about", "across", "between", "can", "did", "do", "does",
+    "for", "from", "has", "have", "how", "in", "is", "it", "jamie", "me", "of", "on", "or",
+    "over", "said", "say", "show", "the", "their", "thing", "thingy", "to", "up", "what",
+    "where", "with", "weekly", "years",
+}
 
 FALLBACK_PROMPTS = [
     {
-        "label": "RSS and the open web",
+        "label": "What changed about RSS?",
         "question": "What has the archive said about RSS and the open web?",
     },
     {
-        "label": "AI in the archive",
+        "label": "Where did AI get weird?",
         "question": "Find issues where Jamie wrote about AI.",
     },
     {
-        "label": "Productivity themes",
+        "label": "What should I revisit?",
         "question": "What themes show up around productivity and personal systems?",
     },
 ]
@@ -418,6 +445,49 @@ def subscriber_status(subscriber: dict[str, Any] | None) -> str:
     return "active"
 
 
+def generate_premium_thank_you() -> str:
+    start = time.perf_counter()
+    model = os.environ.get("OPENAI_MODEL", DEFAULT_MODEL)
+    payload = {
+        "model": model,
+        "instructions": (
+            "You are Thingy, the Weekly Thing archive librarian. "
+            "Write one warm, concise thank-you for a premium subscriber who just unlocked the archive librarian. "
+            "Mention that they are a Weekly Thing Supporting Member. "
+            "Return plain text only. No greeting, markdown, emoji, or signoff."
+        ),
+        "reasoning": {"effort": "low"},
+        "text": {"verbosity": "low"},
+        "input": "Generate a fresh thank-you under 28 words.",
+        "max_output_tokens": 300,
+    }
+    response = httpx.post(
+        OPENAI_RESPONSES_URL,
+        headers={
+            "Authorization": f"Bearer {openai_api_key()}",
+            "content-type": "application/json",
+        },
+        json=payload,
+        timeout=8,
+    )
+    response.raise_for_status()
+    data = response.json()
+    if data.get("status") == "incomplete":
+        raise ValueError(f"OpenAI incomplete premium thank-you: {data.get('incomplete_details')}")
+    text = extract_openai_text(data).strip()
+    text = re.sub(r"\s+", " ", text)
+    if not text or len(text) > 220:
+        raise ValueError("OpenAI returned invalid premium thank-you")
+    log_event(
+        "info",
+        "premium_thank_you_generated",
+        model=model,
+        duration_ms=round((time.perf_counter() - start) * 1000),
+        message_chars=len(text),
+    )
+    return text
+
+
 def auth_success_response(email: str, subscriber: dict[str, Any], table: Any, event: dict[str, Any], start: float) -> dict[str, Any]:
     session_id = secrets.token_urlsafe(18)
     expires_at = int(time.time()) + SESSION_TTL_SECONDS
@@ -439,7 +509,11 @@ def auth_success_response(email: str, subscriber: dict[str, Any], table: Any, ev
     )
     payload: dict[str, Any] = {"status": status, "token": token, "expires_at": expires_at}
     if status == "premium":
-        payload["message"] = "Thanks for being a Weekly Thing Supporting Member!"
+        try:
+            payload["message"] = generate_premium_thank_you()
+        except (httpx.HTTPError, RuntimeError, ValueError) as exc:
+            log_event("warning", "premium_thank_you_generation_failed", email_hash=email_hash(email), error_type=type(exc).__name__)
+            payload["message"] = "Thanks for being a Weekly Thing Supporting Member!"
     return json_response(200, payload, event=event)
 
 
@@ -495,6 +569,73 @@ def check_rate_limit(table: Any, identity: str, max_requests: int | None = None)
         allowed=count <= max_allowed,
     )
     return count <= max_allowed
+
+
+def conversation_logging_enabled() -> bool:
+    return os.environ.get("LIBRARIAN_CONVERSATION_LOGGING", "1").lower() not in {"0", "false", "no"}
+
+
+def citation_issues(citations: list[dict[str, Any]]) -> list[str]:
+    issues = []
+    seen = set()
+    for citation in citations:
+        issue = str(citation.get("issue_number") or "").strip()
+        if issue and issue not in seen:
+            seen.add(issue)
+            issues.append(issue)
+    return issues
+
+
+def record_conversation(
+    table: Any,
+    *,
+    event: dict[str, Any],
+    subscriber_hash: str,
+    question: str,
+    answer: str,
+    history_count: int,
+    citations: list[dict[str, Any]],
+    route: str,
+) -> None:
+    if not table or not conversation_logging_enabled():
+        return
+    started = time.perf_counter()
+    now = datetime.now(timezone.utc)
+    ttl = int(time.time()) + int(os.environ.get("LIBRARIAN_CONVERSATION_LOG_TTL_DAYS", CONVERSATION_LOG_TTL_DAYS)) * 86400
+    req_id = request_id(event) or secrets.token_urlsafe(8)
+    issues = citation_issues(citations)
+    try:
+        table.put_item(
+            Item={
+                "pk": f"conversation#{now.isoformat()}#{req_id}",
+                "sk": "chat",
+                "created_at": now.isoformat().replace("+00:00", "Z"),
+                "ttl": ttl,
+                "request_id": req_id,
+                "subscriber_hash": subscriber_hash,
+                "route": route,
+                "question": question[:4000],
+                "answer": answer[:12000],
+                "question_chars": len(question),
+                "answer_chars": len(answer),
+                "history_count": history_count,
+                "citation_count": len(citations),
+                "source_issues": issues,
+                "citations": citations[:12],
+            }
+        )
+        log_event(
+            "info",
+            "conversation_recorded",
+            subscriber_hash=subscriber_hash,
+            request_id=req_id,
+            question_chars=len(question),
+            answer_chars=len(answer),
+            citation_count=len(citations),
+            duration_ms=round((time.perf_counter() - started) * 1000),
+        )
+    except Exception as exc:
+        log_event("warning", "conversation_record_failed", request_id=req_id, error_type=type(exc).__name__)
 
 
 def auth_handler(event: dict[str, Any]) -> dict[str, Any]:
@@ -597,6 +738,61 @@ def extract_bearer(event: dict[str, Any], body: dict[str, Any]) -> str:
 
 def tokenize(text: str) -> list[str]:
     return [m.group(0).lower() for m in TOKEN_RE.finditer(text)]
+
+
+def content_terms(text: str) -> set[str]:
+    return {term for term in tokenize(text) if term not in STOPWORDS and len(term) > 2}
+
+
+def parse_datetime(value: Any) -> datetime | None:
+    if not value:
+        return None
+    try:
+        parsed = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        return parsed if parsed.tzinfo else parsed.replace(tzinfo=timezone.utc)
+    except ValueError:
+        return None
+
+
+def source_age_days(source: dict[str, Any]) -> int | None:
+    published = parse_datetime(source.get("publish_date"))
+    if not published:
+        return None
+    return max((datetime.now(timezone.utc) - published).days, 0)
+
+
+def source_age_label(source: dict[str, Any]) -> str:
+    days = source_age_days(source)
+    if days is None:
+        return "unknown age"
+    if days < 45:
+        return "recent"
+    if days < 365:
+        return f"about {max(round(days / 30), 1)} months old"
+    return f"about {max(round(days / 365), 1)} years old"
+
+
+def recency_score(source: dict[str, Any]) -> float:
+    days = source_age_days(source)
+    if days is None:
+        return 0.0
+    return 1.0 / (1.0 + days / 365.0)
+
+
+def query_intent(query: str) -> str:
+    terms = set(tokenize(query))
+    if terms & EVOLUTION_TERMS:
+        return "evolution"
+    if terms & CURRENT_TERMS:
+        return "current"
+    return "general"
+
+
+def normalize_scores(items: list[tuple[float, dict[str, Any], str]]) -> list[tuple[float, dict[str, Any], str]]:
+    if not items:
+        return []
+    maximum = max(score for score, _, _ in items) or 1.0
+    return [(score / maximum, source, mode) for score, source, mode in items if score > 0]
 
 
 @lru_cache(maxsize=1)
@@ -702,19 +898,8 @@ def embed_query(query: str, model: str, dimensions: int) -> list[float]:
 
 def retrieve_semantic(query: str, limit: int = 8) -> list[dict[str, Any]]:
     start = time.perf_counter()
-    corpus = load_corpus()
-    chunks = [chunk for chunk in corpus.get("chunks", []) if chunk.get("embedding")]
-    if not chunks:
-        return []
-    model = corpus.get("embedding_model") or os.environ.get("OPENAI_EMBEDDING_MODEL", DEFAULT_EMBEDDING_MODEL)
-    dimensions = int(corpus.get("embedding_dimensions") or os.environ.get("OPENAI_EMBEDDING_DIMENSIONS", DEFAULT_EMBEDDING_DIMENSIONS))
-    query_embedding = embed_query(query, model, dimensions)
-    scored = [(cosine(query_embedding, chunk["embedding"]), chunk) for chunk in chunks]
-    scored = [item for item in scored if item[0] > 0]
-    scored.sort(key=lambda item: item[0], reverse=True)
-    result = []
-    for _, chunk in scored[:limit]:
-        result.append({k: v for k, v in chunk.items() if k != "embedding"})
+    scored = score_semantic(query)
+    result = [item for _, item, _ in scored[:limit]]
     log_event(
         "info",
         "retrieval_completed",
@@ -725,8 +910,38 @@ def retrieve_semantic(query: str, limit: int = 8) -> list[dict[str, Any]]:
     return result
 
 
+def score_semantic(query: str) -> list[tuple[float, dict[str, Any], str]]:
+    corpus = load_corpus()
+    chunks = [chunk for chunk in corpus.get("chunks", []) if chunk.get("embedding")]
+    if not chunks:
+        return []
+    model = corpus.get("embedding_model") or os.environ.get("OPENAI_EMBEDDING_MODEL", DEFAULT_EMBEDDING_MODEL)
+    dimensions = int(corpus.get("embedding_dimensions") or os.environ.get("OPENAI_EMBEDDING_DIMENSIONS", DEFAULT_EMBEDDING_DIMENSIONS))
+    query_embedding = embed_query(query, model, dimensions)
+    scored = []
+    for chunk in chunks:
+        score = cosine(query_embedding, chunk["embedding"])
+        if score > 0:
+            scored.append((score, {k: v for k, v in chunk.items() if k != "embedding"}, "semantic"))
+    scored.sort(key=lambda item: item[0], reverse=True)
+    return normalize_scores(scored)
+
+
 def retrieve_lexical(query: str, limit: int = 8) -> list[dict[str, Any]]:
     start = time.perf_counter()
+    scored = score_lexical(query)
+    result = [item for _, item, _ in scored[:limit]]
+    log_event(
+        "info",
+        "retrieval_completed",
+        mode="lexical",
+        result_count=len(result),
+        duration_ms=round((time.perf_counter() - start) * 1000),
+    )
+    return result
+
+
+def score_lexical(query: str) -> list[tuple[float, dict[str, Any], str]]:
     query_terms: dict[str, int] = {}
     for term in tokenize(query):
         query_terms[term] = query_terms.get(term, 0) + 1
@@ -739,26 +954,140 @@ def retrieve_lexical(query: str, limit: int = 8) -> list[dict[str, Any]]:
         for term, count in query_terms.items():
             score += chunk["_vector"].get(term, 0.0) * count
         if score > 0:
-            scored.append((score / chunk["_norm"], chunk))
+            scored.append((score / chunk["_norm"], {k: v for k, v in chunk.items() if not k.startswith("_")}, "lexical"))
     scored.sort(key=lambda item: item[0], reverse=True)
-    result = [{k: v for k, v in chunk.items() if not k.startswith("_")} for _, chunk in scored[:limit]]
-    log_event(
-        "info",
-        "retrieval_completed",
-        mode="lexical",
-        result_count=len(result),
-        duration_ms=round((time.perf_counter() - start) * 1000),
-    )
-    return result
+    return normalize_scores(scored)
+
+
+def issue_summary_source(issue: dict[str, Any], score: float, reason: str) -> tuple[float, dict[str, Any], str]:
+    summary = issue.get("summary") or {}
+    text_parts = [str(summary.get("abstract") or "")]
+    text_parts.extend(str(point) for point in summary.get("key_points", [])[:4])
+    source = {
+        "id": f"issue-summary:{issue.get('number')}",
+        "issue_number": issue.get("number"),
+        "subject": issue.get("subject"),
+        "publish_date": issue.get("publish_date"),
+        "issue_year": issue.get("issue_year"),
+        "url": issue.get("url"),
+        "section": "Issue summary",
+        "text": "\n".join(part for part in text_parts if part),
+        "topics": issue.get("topics", []),
+        "source_kind": "issue_summary",
+        "retrieval_reason": reason,
+    }
+    return score, source, "graph"
+
+
+def score_graph(query: str) -> list[tuple[float, dict[str, Any], str]]:
+    corpus = load_corpus()
+    query_terms = content_terms(query)
+    if not query_terms:
+        return []
+    topic_matches = []
+    for topic in corpus.get("topics", []):
+        topic_terms = content_terms(topic.get("name", ""))
+        overlap = len(query_terms & topic_terms)
+        if overlap:
+            topic_matches.append((overlap, topic))
+    matched_topics = {topic["name"]: overlap for overlap, topic in topic_matches}
+    scored = []
+    for issue in corpus.get("issues", []):
+        issue_topics = set(issue.get("topics", []))
+        topic_score = sum(matched_topics.get(topic, 0) for topic in issue_topics)
+        summary_text = " ".join(
+            [
+                str(issue.get("subject", "")),
+                str((issue.get("summary") or {}).get("abstract", "")),
+                " ".join(issue.get("topics", [])),
+            ]
+        )
+        lexical_overlap = len(query_terms & content_terms(summary_text))
+        score = topic_score * 2.0 + lexical_overlap
+        if score > 0:
+            scored.append(issue_summary_source(issue, score, "topic/summary match"))
+    scored.sort(key=lambda item: (item[0], recency_score(item[1])), reverse=True)
+    return normalize_scores(scored)
+
+
+def source_key(source: dict[str, Any]) -> str:
+    return str(source.get("id") or f"{source.get('source_kind', 'chunk')}:{source.get('issue_number')}:{source.get('section')}")
+
+
+def blended_score(base_score: float, source: dict[str, Any], intent: str) -> float:
+    recency_weight = 0.36 if intent == "current" else 0.12 if intent == "general" else 0.0
+    graph_weight = 0.04 if source.get("source_kind") == "issue_summary" else 0.0
+    return base_score + recency_weight * recency_score(source) + graph_weight
+
+
+def diversify_sources(scored: list[tuple[float, dict[str, Any]]], limit: int, intent: str) -> list[dict[str, Any]]:
+    selected = []
+    issue_counts: dict[str, int] = {}
+    kind_counts: dict[str, int] = {}
+    for score, source in scored:
+        issue = str(source.get("issue_number"))
+        kind = str(source.get("source_kind") or "chunk")
+        max_per_issue = 3 if intent == "evolution" else 2
+        max_per_kind = 4 if intent == "evolution" else 3
+        if issue_counts.get(issue, 0) >= max_per_issue:
+            continue
+        if kind == "issue_summary" and kind_counts.get(kind, 0) >= max_per_kind:
+            continue
+        source["_retrieval_score"] = round(score, 4)
+        source["age_label"] = source_age_label(source)
+        selected.append(source)
+        issue_counts[issue] = issue_counts.get(issue, 0) + 1
+        kind_counts[kind] = kind_counts.get(kind, 0) + 1
+        if len(selected) >= limit:
+            break
+    return selected
 
 
 def retrieve(query: str, limit: int = 8) -> list[dict[str, Any]]:
+    start = time.perf_counter()
+    intent = query_intent(query)
+    candidates: dict[str, tuple[float, dict[str, Any], set[str]]] = {}
+    semantic_error = None
     try:
-        semantic = retrieve_semantic(query, limit=limit)
+        semantic = score_semantic(query)[: max(limit * 4, 24)]
     except (httpx.HTTPError, RuntimeError, MemoryError) as exc:
-        log_event("error", "semantic_retrieval_failed", error_type=type(exc).__name__)
+        semantic_error = type(exc).__name__
+        log_event("error", "semantic_retrieval_failed", error_type=semantic_error)
         semantic = []
-    return semantic or retrieve_lexical(query, limit=limit)
+    lexical = score_lexical(query)[: max(limit * 4, 24)]
+    graph = score_graph(query)[: max(limit * 6, 48)]
+    weights = {"semantic": 0.58, "lexical": 0.32, "graph": 0.22}
+    for score, source, mode in [*semantic, *lexical, *graph]:
+        key = source_key(source)
+        weighted = score * weights.get(mode, 0.25)
+        if key not in candidates:
+            source = dict(source)
+            candidates[key] = (0.0, source, set())
+        current, candidate, modes = candidates[key]
+        modes.add(mode)
+        candidate["retrieval_modes"] = sorted(modes)
+        candidate["retrieval_reason"] = candidate.get("retrieval_reason") or "+".join(sorted(modes))
+        candidates[key] = (current + weighted, candidate, modes)
+    scored = [
+        (blended_score(score, source, intent), source)
+        for score, source, _ in candidates.values()
+    ]
+    scored.sort(key=lambda item: item[0], reverse=True)
+    result = diversify_sources(scored, limit, intent)
+    log_event(
+        "info",
+        "retrieval_completed",
+        mode="hybrid",
+        intent=intent,
+        result_count=len(result),
+        semantic_candidates=len(semantic),
+        lexical_candidates=len(lexical),
+        graph_candidates=len(graph),
+        semantic_error=semantic_error,
+        source_years=",".join(str(item.get("issue_year") or "") for item in result[:12]),
+        duration_ms=round((time.perf_counter() - start) * 1000),
+    )
+    return result
 
 
 def sanitize_history(history: Any) -> list[dict[str, str]]:
@@ -806,6 +1135,10 @@ def build_prompt(question: str, chunks: list[dict[str, Any]], history: list[dict
                 [
                     f"Source {index}: Weekly Thing #{chunk['issue_number']} - {chunk['subject']}",
                     f"Date: {chunk.get('publish_date', '')}",
+                    f"Age: {chunk.get('age_label') or source_age_label(chunk)}",
+                    f"Source kind: {chunk.get('source_kind', 'chunk')}",
+                    f"Retrieval reason: {chunk.get('retrieval_reason') or ', '.join(chunk.get('retrieval_modes', []))}",
+                    f"Topics: {', '.join(chunk.get('topics', []))}",
                     f"Section: {chunk.get('section', '')}",
                     f"URL: {chunk.get('url', '')}",
                     chunk.get("text", ""),
@@ -814,20 +1147,36 @@ def build_prompt(question: str, chunks: list[dict[str, Any]], history: list[dict
         )
     return (
         "You are Thingy, the archive librarian for The Weekly Thing. You are not Jamie. "
+        "When referring to Jamie Thingelstad, use he/him pronouns. "
         "Use only the archive sources below unless you explicitly say something is outside the archive. "
         "Use the conversation context to resolve follow-up questions, pronouns, and requests like 'tell me more'. "
+        "Prefer newer sources for current recommendations or present-day guidance. "
+        "Use older sources as historical context unless the user asks for history or evolution. "
+        "When sources span years, explicitly distinguish older context from more recent writing. "
         "Be direct, specific, and helpful. Do not use a greeting or signoff. "
+        f"{ANSWER_STYLE_INSTRUCTIONS} "
         "Keep answers under 500 words unless the user asks for more detail. "
         "Cite issue numbers inline for substantive claims, using references like #295 or (#295, #297). "
         "Do not include URLs in prose. "
         "If the archive sources are not enough, say so. "
-        "End with one concise, specific next-step offer describing what Thingy can do from here.\n\n"
+        "Do not end by asking whether the user wants more. If a next step is useful, provide it directly.\n\n"
         "Conversation so far:\n\n"
         f"{conversation_context(history)}\n\n"
         f"Question: {question}\n\n"
         "Archive sources:\n\n"
         + "\n\n---\n\n".join(sources)
     )
+
+
+def extract_openai_text(data: dict[str, Any]) -> str:
+    if data.get("output_text"):
+        return str(data["output_text"])
+    parts = []
+    for item in data.get("output", []):
+        for content in item.get("content", []):
+            if content.get("type") in {"output_text", "text"}:
+                parts.append(content.get("text", ""))
+    return "\n".join(part for part in parts if part)
 
 
 def call_openai(question: str, chunks: list[dict[str, Any]], history: list[dict[str, str]] | None = None) -> str:
@@ -838,11 +1187,15 @@ def call_openai(question: str, chunks: list[dict[str, Any]], history: list[dict[
         "model": model,
         "instructions": (
             "You are Thingy, the archive librarian for The Weekly Thing. You are not Jamie. "
+            "When referring to Jamie Thingelstad, use he/him pronouns. "
             "Be direct, specific, and helpful. Do not use a greeting or signoff. "
+            f"{ANSWER_STYLE_INSTRUCTIONS} "
             "Keep answers under 500 words unless the user asks for more detail. "
             "Use conversation context for follow-ups. "
+            "Prefer newer sources for current guidance, but deliberately use older sources for history and evolution questions. "
+            "When sources span years, distinguish older context from newer writing. "
             "Cite issue numbers inline for substantive claims using #295 or (#295, #297), do not include URLs in prose, "
-            "say when the archive does not contain enough evidence, and end with one concise, specific next-step offer."
+            "say when the archive does not contain enough evidence, and do not end by asking whether the user wants more."
         ),
         "input": build_prompt(question, chunks, history),
         "max_output_tokens": int(os.environ.get("OPENAI_MAX_OUTPUT_TOKENS", "2500")),
@@ -857,19 +1210,55 @@ def call_openai(question: str, chunks: list[dict[str, Any]], history: list[dict[
         timeout=30,
     )
     response.raise_for_status()
-    data = response.json()
-    if data.get("output_text"):
-        answer = str(data["output_text"]).strip()
-        log_event("info", "answer_generated", model=model, duration_ms=round((time.perf_counter() - start) * 1000), answer_chars=len(answer))
-        return answer
-    parts = []
-    for item in data.get("output", []):
-        for content in item.get("content", []):
-            if content.get("type") in {"output_text", "text"}:
-                parts.append(content.get("text", ""))
-    answer = "\n".join(part for part in parts if part).strip()
+    answer = polish_answer(extract_openai_text(response.json()).strip())
     log_event("info", "answer_generated", model=model, duration_ms=round((time.perf_counter() - start) * 1000), answer_chars=len(answer))
     return answer
+
+
+def polish_answer(answer: str) -> str:
+    answer = answer.strip()
+    if not answer:
+        return answer
+    banned_starts = (
+        "if you want",
+        "if you'd like",
+        "if you would like",
+        "would you like",
+        "should i",
+        "which would you prefer",
+    )
+    paragraphs = re.split(r"\n\s*\n", answer)
+    cleaned_paragraphs = []
+    for paragraph in paragraphs:
+        stripped = paragraph.strip()
+        lower = stripped.lower()
+        if lower.startswith(banned_starts):
+            if re.match(r"^if you want\s*,?\s*i can\b", stripped, flags=re.I):
+                continue
+            stripped = re.sub(
+                r"^If you want(?: to)?\s*,?\s*",
+                "To ",
+                stripped,
+                flags=re.I,
+            )
+            stripped = re.sub(
+                r"^If you'd like(?: to)?\s*|^If you would like(?: to)?\s*",
+                "To ",
+                stripped,
+                flags=re.I,
+            )
+            stripped = re.sub(r"^To a\s+", "A ", stripped)
+        cleaned_paragraphs.append(stripped)
+    paragraphs = cleaned_paragraphs
+    while paragraphs and paragraphs[-1].strip().lower().startswith(banned_starts):
+        paragraphs.pop()
+    answer = "\n\n".join(paragraphs).strip()
+    return re.sub(
+        r"\s+(?:If you want|If you'd like|If you would like|Would you like|Should I|Which would you prefer)[^.?!]*(?:[.?!])?\s*$",
+        "",
+        answer,
+        flags=re.I,
+    ).strip()
 
 
 def prompt_context() -> str:
@@ -901,7 +1290,7 @@ def sanitize_prompts(value: Any) -> list[dict[str, str]]:
         question = str(item.get("question") or "").strip()
         if not label or not question:
             continue
-        prompts.append({"label": label[:64], "question": question[:240]})
+        prompts.append({"label": label[:72], "question": question[:220]})
         if len(prompts) == 3:
             break
     return prompts if len(prompts) == 3 else []
@@ -924,16 +1313,27 @@ def generate_prompts() -> list[dict[str, str]]:
         "model": model,
         "instructions": (
             "You are Thingy, the archive librarian for The Weekly Thing. "
-            "Generate exactly three short, interesting suggested questions a subscriber could ask about the archive. "
+            "Generate exactly three personal, genuine, friendly conversation starters a subscriber could ask about the archive. "
+            "They should feel like The Weekly Thing: curious, specific, warm, and a little playful without being cute, poetic, or clever. "
+            "Use plain-spoken questions that a real reader would naturally click. "
+            "Avoid topic-only labels like 'Theme evolution', 'Privacy & Security', or 'Travel & Place'. "
+            "Avoid sterile labels like an enterprise search product. "
+            "Each visible label must be a natural, friendly question under 8 words. "
+            "The full question can be a little more specific, but keep it under 18 words. "
             "Return only JSON with this shape: {\"prompts\":[{\"label\":\"...\",\"question\":\"...\"}]}."
         ),
-        "text": {"format": PROMPTS_RESPONSE_FORMAT},
+        "reasoning": {"effort": "low"},
+        "text": {"format": PROMPTS_RESPONSE_FORMAT, "verbosity": "low"},
         "input": (
             "Recent archive context:\n"
             f"{prompt_context()}\n\n"
-            "The label should be 2 to 5 words. The question should be specific enough to send directly to the chat."
+            "Make the prompts feel like easy ways to start talking with Thingy, not research tasks. "
+            "Good label examples: \"What got Jamie thinking?\", \"Where did AI get weird?\", "
+            "\"What should I revisit?\", \"Any open web gems?\", \"What feels hopeful here?\", "
+            "\"What changed about RSS?\", \"What did Jamie notice?\" "
+            "Avoid long multi-part questions, issue ranges, subtitles, academic wording, and generic topic categories."
         ),
-        "max_output_tokens": 600,
+        "max_output_tokens": 1400,
     }
     response = httpx.post(
         OPENAI_RESPONSES_URL,
@@ -946,14 +1346,9 @@ def generate_prompts() -> list[dict[str, str]]:
     )
     response.raise_for_status()
     data = response.json()
-    text = str(data.get("output_text") or "")
-    if not text:
-        parts = []
-        for item in data.get("output", []):
-            for content in item.get("content", []):
-                if content.get("type") in {"output_text", "text"}:
-                    parts.append(content.get("text", ""))
-        text = "\n".join(part for part in parts if part)
+    if data.get("status") == "incomplete":
+        raise ValueError(f"OpenAI incomplete prompts: {data.get('incomplete_details')}")
+    text = extract_openai_text(data)
     prompts = sanitize_prompts(extract_json_object(text))
     if not prompts:
         raise ValueError("OpenAI returned invalid prompts")
@@ -974,14 +1369,20 @@ def prompts_handler(event: dict[str, Any]) -> dict[str, Any]:
 
     table = dynamodb_table()
     prompt_limit = int(os.environ.get("PROMPT_RATE_LIMIT_MAX", PROMPT_RATE_LIMIT_MAX))
-    if not check_rate_limit(table, f"prompts#{payload['sub']}", prompt_limit):
+    if not check_rate_limit(table, f"prompts#{payload.get('sid') or payload['sub']}", prompt_limit):
         return json_response(429, {"error": "The librarian is at the hourly prompt limit for this session."}, event=event)
 
     try:
         prompts = generate_prompts()
         source = "generated"
     except (httpx.HTTPError, RuntimeError, ValueError, json.JSONDecodeError) as exc:
-        log_event("error", "prompt_generation_failed", subscriber_hash=payload.get("sub"), error_type=type(exc).__name__)
+        log_event(
+            "error",
+            "prompt_generation_failed",
+            subscriber_hash=payload.get("sub"),
+            error_type=type(exc).__name__,
+            error_detail=str(exc)[:160],
+        )
         prompts = FALLBACK_PROMPTS
         source = "fallback"
     post_tinylytics_event(
@@ -1008,6 +1409,9 @@ def citations_for(chunks: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "publish_date": chunk.get("publish_date"),
                 "section": chunk.get("section"),
                 "url": chunk.get("url"),
+                "age_label": chunk.get("age_label") or source_age_label(chunk),
+                "source_kind": chunk.get("source_kind", "chunk"),
+                "topic": ", ".join(chunk.get("topics", [])[:3]),
             }
         )
     return citations
@@ -1068,6 +1472,16 @@ def chat_handler(event: dict[str, Any]) -> dict[str, Any]:
         return json_response(502, {"error": "The librarian could not generate an answer right now."}, event=event)
 
     citations = citations_for(chunks)
+    record_conversation(
+        table,
+        event=event,
+        subscriber_hash=str(payload.get("sub") or ""),
+        question=question,
+        answer=answer,
+        history_count=len(history),
+        citations=citations,
+        route="chat",
+    )
     post_tinylytics_event(
         event,
         "librarian.chat_success",

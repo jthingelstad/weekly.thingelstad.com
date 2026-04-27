@@ -257,6 +257,8 @@ th {
 
 .site-nav {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: var(--space-lg);
   font-family: var(--font-ui);
   font-size: var(--size-sm);
@@ -1348,8 +1350,21 @@ th {
 }
 
 .issue-content a.header-anchor {
-  color: inherit;
+  display: inline-block;
+  margin-left: 0.4rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-ui);
+  font-size: 0.78em;
+  line-height: 1;
   text-decoration: none;
+  opacity: 0;
+}
+
+.issue-content h2:hover a.header-anchor,
+.issue-content h3:hover a.header-anchor,
+.issue-content h4:hover a.header-anchor,
+.issue-content a.header-anchor:focus {
+  opacity: 1;
 }
 
 .issue-content a.header-anchor:hover {
@@ -1634,7 +1649,8 @@ th {
   }
 
   .site-nav {
-    gap: var(--space-md);
+    justify-content: center;
+    gap: var(--space-xs) var(--space-md);
   }
 
   .about-grid,
@@ -1910,10 +1926,6 @@ th {
   padding: var(--space-3xl) 0;
 }
 
-.librarian-shell {
-  max-width: var(--container-wide);
-}
-
 .librarian-header {
   max-width: 42rem;
   margin-bottom: var(--space-2xl);
@@ -2120,6 +2132,60 @@ th {
 
 .librarian-prompts button:hover {
   color: #fff;
+}
+
+.librarian-beta-open {
+  overflow: hidden;
+}
+
+.librarian-beta-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: var(--space-lg);
+  background: rgba(31, 38, 32, 0.48);
+}
+
+.librarian-beta-overlay[hidden] {
+  display: none;
+}
+
+.librarian-beta-modal {
+  width: min(100%, 32rem);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--space-xl);
+  background: var(--color-background);
+  box-shadow: 0 1.4rem 4rem rgba(31, 38, 32, 0.22);
+}
+
+.librarian-beta-modal h2 {
+  margin: 0 0 var(--space-sm);
+  font-family: var(--font-sans);
+  font-size: var(--size-2xl);
+  line-height: 1.2;
+}
+
+.librarian-beta-modal p {
+  color: var(--color-text-muted);
+}
+
+.librarian-beta-modal button {
+  margin-top: var(--space-sm);
+  border: 1px solid var(--color-accent);
+  border-radius: 6px;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.8rem 1rem;
+  font: 700 var(--size-sm) / 1 var(--font-ui);
+  cursor: pointer;
+}
+
+.librarian-beta-modal button:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
 }
 
 .librarian-question-form {

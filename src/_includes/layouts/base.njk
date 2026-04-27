@@ -52,6 +52,14 @@
 
   {% include "partials/footer.njk" %}
 
-  <script defer src="https://tinylytics.app/embed/{{ site.tinylyticsId }}.js?kudos=custom&hits&countries&events&beacon"></script>
+  <script>
+    (function() {
+      if (['localhost', '127.0.0.1', '::1'].includes(window.location.hostname)) return;
+      var script = document.createElement('script');
+      script.defer = true;
+      script.src = 'https://tinylytics.app/embed/{{ site.tinylyticsId }}.js?kudos=custom&hits&countries&events&beacon';
+      document.body.appendChild(script);
+    })();
+  </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 import crypto from 'node:crypto';
-import { DynamoDBClient, UpdateItemCommand } from '@aws-sdk/client-dynamodb';
+import { DynamoDBClient, PutItemCommand, UpdateItemCommand } from '@aws-sdk/client-dynamodb';
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 
 const OPENAI_RESPONSES_URL = 'https://api.openai.com/v1/responses';
@@ -11,9 +11,27 @@ const DEFAULT_EMBEDDING_MODEL = 'text-embedding-3-small';
 const DEFAULT_EMBEDDING_DIMENSIONS = 256;
 const RATE_LIMIT_WINDOW_SECONDS = 60 * 60;
 const RATE_LIMIT_MAX = 20;
+const CONVERSATION_LOG_TTL_DAYS = 60;
 const TOKEN_RE = /[a-z0-9][a-z0-9'-]{1,}/gi;
 const MAX_HISTORY_MESSAGES = 8;
 const MAX_HISTORY_CHARS = 4000;
+const ANSWER_STYLE_INSTRUCTIONS = [
+  'Answer like Thingy: a warm, genuinely curious librarian for this specific archive, with the personal, friendly vibe of The Weekly Thing.',
+  "You know this is Jamie's long-running weekly notebook of links, observations, travel, web culture, technology, family, and Minnesota life.",
+  'Sound like a person helping a reader find their way through a beloved archive, not like a search-results report or enterprise assistant.',
+  'Lead with the most interesting interpretation, surprise, or pattern you see, then support it with archive evidence.',
+  'Prefer two to five concise paragraphs. Use bullets only when a list is genuinely easier to scan, such as a reading path or comparison.',
+  "Vary your openings; do not repeatedly start with phrases like 'The thread I see'.",
+  "Avoid canned section labels like 'Short answer', 'Gaps in the archive', 'Evidence and themes', or 'Older vs. newer context' unless the user asks for that structure.",
+  'Name concrete details from the sources and explain why they matter.',
+  "It is fine to say 'I'd start with...', 'this one has a very Weekly Thing shape', or 'there is a lovely little pattern here' when it fits.",
+  "Use light first-person guidance as Thingy when it helps: 'I'd start here', 'the bit I would not miss is...', or 'this is where it gets interesting'.",
+  "Prefer plain, human words over analytical labels; avoid sounding like a research memo with words such as 'trajectory', 'synthesis', or 'framing' unless they are truly useful.",
+  'If evidence is thin, mention that briefly in the flow of the answer instead of adding a formal limitations section.',
+  'Include a concrete reading path only when it directly answers the question.',
+  'Do not offer to do more work, suggest what the user can ask next, or ask any closing question.',
+  "Never write customer-support phrasing anywhere, including 'if you want', 'would you like', 'should I', or 'which would you prefer'."
+].join(' ');
 
 const s3 = new S3Client({});
 const dynamodb = new DynamoDBClient({});
@@ -181,6 +199,96 @@ async function checkRateLimit(identity, maxRequests = Number(process.env.RATE_LI
   const count = Number(response.Attributes?.count?.N || '0');
   logEvent('info', 'rate_limit_checked', { identity_hash: identity, count, limit: maxRequests, allowed: count <= maxRequests });
   return count <= maxRequests;
+}
+
+function conversationLoggingEnabled() {
+  return !['0', 'false', 'no'].includes(String(process.env.LIBRARIAN_CONVERSATION_LOGGING || '1').toLowerCase());
+}
+
+function citationIssues(citations) {
+  const seen = new Set();
+  const issues = [];
+  for (const citation of citations || []) {
+    const issue = String(citation.issue_number || '').trim();
+    if (issue && !seen.has(issue)) {
+      seen.add(issue);
+      issues.push(issue);
+    }
+  }
+  return issues;
+}
+
+function dynamoString(value) {
+  return { S: String(value || '') };
+}
+
+function dynamoNumber(value) {
+  return { N: String(Number(value || 0)) };
+}
+
+function citationItem(citation) {
+  return {
+    M: {
+      issue_number: dynamoString(citation.issue_number),
+      subject: dynamoString(citation.subject),
+      publish_date: dynamoString(citation.publish_date),
+      section: dynamoString(citation.section),
+      url: dynamoString(citation.url)
+    }
+  };
+}
+
+async function recordConversation({
+  event,
+  subscriberHash,
+  question,
+  answer,
+  historyCount,
+  citations,
+  route,
+  requestId
+}) {
+  const tableName = process.env.TABLE_NAME;
+  if (!tableName || !conversationLoggingEnabled()) return;
+  const start = performance.now();
+  const now = new Date();
+  const createdAt = now.toISOString();
+  const ttlDays = Number(process.env.LIBRARIAN_CONVERSATION_LOG_TTL_DAYS || CONVERSATION_LOG_TTL_DAYS);
+  const ttl = Math.floor(Date.now() / 1000) + ttlDays * 86400;
+  const issues = citationIssues(citations);
+  try {
+    await dynamodb.send(new PutItemCommand({
+      TableName: tableName,
+      Item: {
+        pk: dynamoString(`conversation#${createdAt}#${requestId || crypto.randomUUID()}`),
+        sk: dynamoString('chat'),
+        created_at: dynamoString(createdAt),
+        ttl: dynamoNumber(ttl),
+        request_id: dynamoString(requestId),
+        subscriber_hash: dynamoString(subscriberHash),
+        route: dynamoString(route),
+        question: dynamoString(String(question || '').slice(0, 4000)),
+        answer: dynamoString(String(answer || '').slice(0, 12000)),
+        question_chars: dynamoNumber(String(question || '').length),
+        answer_chars: dynamoNumber(String(answer || '').length),
+        history_count: dynamoNumber(historyCount),
+        citation_count: dynamoNumber((citations || []).length),
+        source_issues: { L: issues.map(dynamoString) },
+        citations: { L: (citations || []).slice(0, 12).map(citationItem) },
+        user_agent: dynamoString(userAgent(event).slice(0, 300))
+      }
+    }));
+    logEvent('info', 'conversation_recorded', {
+      subscriber_hash: subscriberHash,
+      request_id: requestId,
+      question_chars: String(question || '').length,
+      answer_chars: String(answer || '').length,
+      citation_count: (citations || []).length,
+      duration_ms: Math.round(performance.now() - start)
+    });
+  } catch (error) {
+    logEvent('warning', 'conversation_record_failed', { request_id: requestId, error_type: error.constructor?.name || 'Error' });
+  }
 }
 
 async function loadCorpus() {
@@ -366,7 +474,7 @@ function buildPrompt(question, chunks, history = []) {
     chunk.text || ''
   ].join('\n'));
   return [
-    'You are Thingy, the archive librarian for The Weekly Thing. You are not Jamie. Use only the archive sources below unless you explicitly say something is outside the archive. Use the conversation context to resolve follow-up questions, pronouns, and requests like "tell me more". Be direct, specific, and helpful. Do not use a greeting or signoff. Keep answers under 500 words unless the user asks for more detail. Cite issue numbers inline for substantive claims, using references like #295 or (#295, #297). Do not include URLs in prose. If the archive sources are not enough, say so. End with one concise, specific next-step offer describing what Thingy can do from here.',
+    `You are Thingy, the archive librarian for The Weekly Thing. You are not Jamie. When referring to Jamie Thingelstad, use he/him pronouns. Use only the archive sources below unless you explicitly say something is outside the archive. Use the conversation context to resolve follow-up questions, pronouns, and requests like "tell me more". Prefer newer sources for current recommendations or present-day guidance. Use older sources as historical context unless the user asks for history or evolution. When sources span years, explicitly distinguish older context from more recent writing. Be direct, specific, and helpful. Do not use a greeting or signoff. ${ANSWER_STYLE_INSTRUCTIONS} Keep answers under 500 words unless the user asks for more detail. Cite issue numbers inline for substantive claims, using references like #295 or (#295, #297). Do not include URLs in prose. If the archive sources are not enough, say so. Do not end by asking whether the user wants more. If a next step is useful, provide it directly.`,
     '',
     'Conversation so far:',
     '',
@@ -422,7 +530,7 @@ async function streamOpenAiAnswer(question, chunks, history, responseStream) {
     headers: { authorization: `Bearer ${openAiApiKey()}`, 'content-type': 'application/json' },
     body: JSON.stringify({
       model,
-      instructions: 'You are Thingy, the archive librarian for The Weekly Thing. You are not Jamie. Be direct, specific, and helpful. Do not use a greeting or signoff. Keep answers under 500 words unless the user asks for more detail. Use conversation context for follow-ups. Cite issue numbers inline for substantive claims using #295 or (#295, #297), do not include URLs in prose, say when the archive does not contain enough evidence, and end with one concise, specific next-step offer.',
+      instructions: `You are Thingy, the archive librarian for The Weekly Thing. You are not Jamie. When referring to Jamie Thingelstad, use he/him pronouns. Be direct, specific, and helpful. Do not use a greeting or signoff. ${ANSWER_STYLE_INSTRUCTIONS} Keep answers under 500 words unless the user asks for more detail. Use conversation context for follow-ups. Prefer newer sources for current guidance, but deliberately use older sources for history and evolution questions. When sources span years, distinguish older context from newer writing. Cite issue numbers inline for substantive claims using #295 or (#295, #297), do not include URLs in prose, say when the archive does not contain enough evidence, and do not end by asking whether the user wants more.`,
       input: buildPrompt(question, chunks, history),
       max_output_tokens: Number(process.env.OPENAI_MAX_OUTPUT_TOKENS || '2500'),
       stream: true
@@ -551,8 +659,18 @@ export const handler = awslambda.streamifyResponse(async (event, responseStream,
     writeSse(stream, 'status', { message: 'Writing answer...' });
     const citations = citationsFor(chunks);
     writeSse(stream, 'citations', { citations });
-    await streamOpenAiAnswer(question, chunks, history, stream);
+    const answer = await streamOpenAiAnswer(question, chunks, history, stream);
     writeSse(stream, 'done', { request_id: requestId });
+    await recordConversation({
+      event,
+      subscriberHash,
+      question,
+      answer,
+      historyCount: history.length,
+      citations,
+      route: 'stream',
+      requestId
+    });
     await postTinylyticsEvent(event, 'librarian.chat_success', {
       visitorId: subscriberHash,
       value: tinylyticsValue({ member: subscriberHash, citations: citations.length, history: history.length, chars: question.length })
