@@ -2,7 +2,7 @@
   {
     "toolSpec": {
       "name": "search_archive",
-      "description": "Hybrid search over Weekly Thing chunks. Use iteratively for topics, themes, and evidence gathering.",
+      "description": "Hybrid search over Weekly Thing chunks. Default first stop for broad topics, themes, and evidence gathering. Use iteratively — refine the query and year_range based on what comes back. year_range accepts a [start, end] array, a single \"YYYY\" string, or {\"start\": YYYY, \"end\": YYYY}.",
       "inputSchema": {
         "json": {
           "type": "object",
@@ -20,7 +20,7 @@
   {
     "toolSpec": {
       "name": "get_issue",
-      "description": "Return one full Weekly Thing issue with section structure preserved.",
+      "description": "Return one full Weekly Thing issue with section structure preserved. Use when you need full context for a specific issue number you already have.",
       "inputSchema": {
         "json": {
           "type": "object",
@@ -35,7 +35,7 @@
   {
     "toolSpec": {
       "name": "get_section",
-      "description": "Return a named section from one issue.",
+      "description": "Return a named section from one issue (e.g., \"Notable\", \"Briefly\", \"Featured\"). Cheaper than get_issue when you only need one section.",
       "inputSchema": {
         "json": {
           "type": "object",
@@ -51,7 +51,7 @@
   {
     "toolSpec": {
       "name": "find_links",
-      "description": "Query the editorial link graph by domain, topic/entity, and year range. Does not fetch linked pages.",
+      "description": "Query the editorial link graph by domain, topic/entity, and year range. Does not fetch linked pages. Call without filters to retrieve top-cited domains across the archive. year_range accepts a [start, end] array, a \"YYYY\" string, or {\"start\": YYYY, \"end\": YYYY}.",
       "inputSchema": {
         "json": {
           "type": "object",
@@ -68,7 +68,7 @@
   {
     "toolSpec": {
       "name": "domain_history",
-      "description": "List every issue that cited a domain with date and surrounding link context.",
+      "description": "List every issue that cited a domain with date and surrounding link context. Use for \"how often / when / in what context did Jamie link to X\" questions.",
       "inputSchema": {
         "json": {
           "type": "object",
@@ -84,7 +84,7 @@
   {
     "toolSpec": {
       "name": "quote_search",
-      "description": "Exact substring search across issue bodies.",
+      "description": "Exact substring search across issue bodies. Use to verify whether a specific phrase, name, or product actually appears in the archive — do not infer coverage from related search_archive hits.",
       "inputSchema": {
         "json": {
           "type": "object",
@@ -100,7 +100,7 @@
   {
     "toolSpec": {
       "name": "list_issues",
-      "description": "Metadata-only issue listing filtered by year, topic, or entity.",
+      "description": "Metadata-only issue listing filtered by year, topic, or entity. Use for counts and aggregate pattern questions where body chunks are not needed (e.g., \"how many issues mention X\").",
       "inputSchema": {
         "json": {
           "type": "object",
@@ -117,7 +117,7 @@
   {
     "toolSpec": {
       "name": "compare_eras",
-      "description": "Search the same topic in two year windows and return both result sets.",
+      "description": "Search the same topic in two year windows and return both result sets. Use for two-window before/after contrasts. For three or more windows (early/middle/recent), call search_archive separately with year_range for each. year_a and year_b accept a [start, end] array, a \"YYYY\" string, or {\"start\": YYYY, \"end\": YYYY}.",
       "inputSchema": {
         "json": {
           "type": "object",
