@@ -6,6 +6,7 @@ import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import {
   FALLBACK_PROMPTS,
   agentSystemPrompt,
+  agentUserPrompt,
   baselineSystemPrompt,
   baselineUserPrompt,
   extractJsonObject,
@@ -865,7 +866,15 @@ function prioritizeCitationsForAnswer(citations, answer) {
 
 async function streamBedrockAgentAnswer(question, history, responseStream) {
   const start = performance.now();
-  const messages = [{ role: 'user', content: [{ text: `Conversation so far:\n\n${conversationContext(history)}\n\nUser question: ${question}\n\nInvestigate with tools as needed, then answer as Thingy.` }] }];
+  const messages = [{
+    role: 'user',
+    content: [{
+      text: agentUserPrompt({
+        conversation_context: conversationContext(history),
+        question
+      })
+    }]
+  }];
   const toolResults = [];
   let answer = '';
   const maxTurns = Number(process.env.MAX_TOOL_TURNS || DEFAULT_MAX_TOOL_TURNS);

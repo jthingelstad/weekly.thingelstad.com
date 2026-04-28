@@ -39,6 +39,13 @@ export function agentSystemPrompt() {
   return renderTemplate(loadPrompt('agent-system.md'), { answer_style: answerStyle() });
 }
 
+export function agentUserPrompt({ conversation_context, question } = {}) {
+  return renderTemplate(loadPrompt('agent-user.md'), {
+    conversation_context,
+    question
+  });
+}
+
 export function baselineSystemPrompt() {
   return renderTemplate(loadPrompt('baseline-system.md'), { answer_style: answerStyle() });
 }
