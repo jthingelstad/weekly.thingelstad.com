@@ -15,7 +15,7 @@ Custom landing page and full archive site for **The Weekly Thing**, a weekly new
 
 ### Architecture Pattern: Tracked Raw Data + 11ty
 
-- **Python content pipeline** runs first: fetches Buttondown emails into tracked raw data under `data/buttondown/`, transforms the raw Buttondown body into public archive markdown, extracts editorial links and domains, assigns issue numbers, and writes generated files into `src/archive/` and `src/_data/`.
+- **Python content pipeline** runs first: fetches Buttondown emails into tracked raw data under `data/buttondown/`, transforms the raw Buttondown body into public archive markdown, extracts editorial links and domains, assigns issue numbers, and writes generated files into `site/archive/` and `site/_data/`.
 - **11ty** runs second: reads generated `.md` files as a collection and JSON data files, renders all pages with Nunjucks templates, and handles markdown rendering, heading anchors, and TOC generation.
 - **Pagefind** runs third: indexes the built HTML for full-text search.
 
@@ -31,7 +31,7 @@ The Weekly Thing has been published continuously since May 13, 2017 across three
 | #42–#~130 | Mar 2018 – late 2019 | **MailChimp** | Templated headers (`Weekly Newsletter from Jamie Thingelstad`, `#42 \| Feb 24, 2018 \| Permalink (*\|ARCHIVE\|*)`); inline links; emoji-suffixed section headings appear in this era (`## Featured Links 🏅`, `## Notable Links 📌`, `## Yet More Links 🍞`); some issues (e.g., #106) are plain-text with bare URLs and no markdown link syntax |
 | #~131 onward | 2020 – present | **Buttondown** | Canonical section names (`## Notable`, `## Featured`, `## Briefly`, `## Must Read`); structured H3-under-H2 link format: `### [Title](url)`; Buttondown template tags like `{{ email_url }}`; `<!-- buttondown-editor-mode: plaintext -->` preamble |
 
-All archive bodies today live in Buttondown (the Tinyletter and MailChimp issues were migrated in). The editor-mode comment is present on every issue as a consequence. Processing scripts should handle all three eras — in particular, link extraction must accept the emoji-suffixed MailChimp-era section names (`scripts/process_emails.py`'s `NOTABLE_SECTIONS` / `BRIEFLY_SECTIONS` sets include these variants).
+All archive bodies today live in Buttondown (the Tinyletter and MailChimp issues were migrated in). The editor-mode comment is present on every issue as a consequence. Processing scripts should handle all three eras — in particular, link extraction must accept the emoji-suffixed MailChimp-era section names (`pipeline/content/process_emails.py`'s `NOTABLE_SECTIONS` / `BRIEFLY_SECTIONS` sets include these variants).
 
 ## Build & Run
 
@@ -64,32 +64,29 @@ make content-push  # PATCH changed fields
 ```
 weekly.thingelstad.com/
 ├── .github/workflows/deploy.yml    # Build & deploy to GitHub Pages
-├── scripts/
-│   ├── content.py                  # Canonical pull/build/diff/push content pipeline
-│   ├── build_data.py               # Compatibility wrapper for content.py build
-│   ├── fetch_latest.py             # Compatibility wrapper for content.py pull --latest
-│   ├── sync_to_buttondown.py       # Compatibility wrapper for content.py push
-│   ├── domain_exclusions.py        # Domains excluded from link/domain lists
-│   ├── audit_archive.py            # Static regex/DOM audit of rendered HTML
-│   ├── llm_audit_archive.py        # LLM semantic audit (Claude Opus 4.7)
-│   ├── audit_missing_micropost_photos.py  # Find silently-lost micropost photos
-│   ├── build_missing_posts_report.py      # Enrich 404 report with Wayback + context
-│   ├── fix_micropost_photos.py            # Restore photos from mp-photo-alt[]= markers
-│   ├── restore_missing_micropost_photos.py # Restore silently-lost single-photo microposts
-│   ├── migrate_images_to_s3.py            # Download, resize, upload images to files.thingelstad.com
-│   ├── fetch_latest.py                    # Fetch single most recent email
-│   ├── generate_descriptions.py           # Generate issue descriptions
-│   └── one-shot/                          # Archived scripts that applied a one-time cleanup
-│                                          # See scripts/one-shot/README.md for history
+├── pipeline/
+│   ├── content/                   # Buttondown pull/build/diff/push and marketing copy refresh
+│   ├── librarian/                 # corpus, graph, eval, conversation review, AWS deploy
+│   ├── audits/                    # repeatable archive audit and repair tooling
+│   ├── links/                     # planned linked-URL retrieval and aggregation step
+│   └── one-shot/                  # archived scripts that applied one-time cleanup
+├── services/
+│   └── librarian/
+│       ├── api/                   # Python API Gateway Lambda
+│       └── stream/                # Node Lambda Function URL stream handler
+├── infra/
+│   └── librarian/                 # CloudFormation/SAM templates
 ├── data/
-│   └── buttondown/
-│       ├── manifest.json           # Raw data manifest
-│       ├── emails/                 # Buttondown email metadata JSON snapshots, tracked
-│       └── bodies/                 # Raw Buttondown body markdown, tracked and editable
+│   ├── buttondown/
+│   │   ├── manifest.json           # Raw data manifest
+│   │   ├── emails/                 # Buttondown email metadata JSON snapshots, tracked
+│   │   └── bodies/                 # Raw Buttondown body markdown, tracked and editable
+│   ├── librarian/                  # tracked corpus and graph artifacts
+│   └── links/                      # tracked linked-URL aggregation artifacts
 ├── docs/
 │   └── audits/                     # Snapshot of archive audits — see docs/audits/README.md
 │                                   # (archive-audit, llm-audit, missing-photos, missing-microblog-posts)
-├── src/
+├── site/
 │   ├── _data/
 │   │   ├── emails.json             # Metadata index (generated, committed)
 │   │   ├── archiveStats.js         # Computed stats for landing page and FAQ
@@ -146,25 +143,25 @@ The Python pipeline extracts only editorially curated links, not incidental inli
 
 **Early issues** (no H2 section structure): all links extracted as fallback.
 
-**Domain exclusion list** (`scripts/domain_exclusions.py`): Excludes newsletter's own domains, Buttondown, image CDNs, URL shorteners, social media, Wikipedia, YouTube, and other utility domains from domain lists and stats.
+**Domain exclusion list** (`pipeline/content/domain_exclusions.py`): Excludes newsletter's own domains, Buttondown, image CDNs, URL shorteners, social media, Wikipedia, YouTube, and other utility domains from domain lists and stats.
 
-## Archive Files (`src/archive/*.md`)
+## Archive Files (`site/archive/*.md`)
 
-Each issue is a standalone generated markdown file with YAML front matter. The body is the public archive rendering of the raw Buttondown body, produced by `scripts/content.py`.
+Each issue is a standalone generated markdown file with YAML front matter. The body is the public archive rendering of the raw Buttondown body, produced by `pipeline/content/content.py`.
 
 Do not edit these files directly. They include this generated-file notice immediately after front matter:
 
 ```md
-<!-- Generated by scripts/content.py from data/buttondown; do not edit directly. -->
+<!-- Generated by pipeline/content/content.py from data/buttondown; do not edit directly. -->
 ```
 
-Body corrections, archive cleanup, and broad editorial fixes belong in `data/buttondown/bodies/*.md`, then `python scripts/content.py build` regenerates the archive files. Metadata corrections such as subject, description, image, and slug belong in `data/buttondown/emails/*.json`.
+Body corrections, archive cleanup, and broad editorial fixes belong in `data/buttondown/bodies/*.md`, then `python pipeline/content/content.py build` regenerates the archive files. Metadata corrections such as subject, description, image, and slug belong in `data/buttondown/emails/*.json`.
 
 Front matter includes: `layout`, `buttondown_id`, `number`, `subject`, `publish_date`, `slug`, `description`, `image`, `absolute_url`, `domains` (list), `links` (list of editorial link objects), `word_count`, `permalink`, `tags`.
 
 The `number` field determines the URL (`/archive/247/`). Assigned by the pipeline from subject line parsing; early issues without numbers are auto-numbered by date.
 
-Buttondown Liquid/template cleanup also happens in `scripts/content.py`, not in 11ty. The archive transform removes email-only or subscriber-personalized blocks and renders known public variables such as `{{ email_url }}` before link extraction, feeds, search indexing, and page rendering.
+Buttondown Liquid/template cleanup also happens in `pipeline/content/content.py`, not in 11ty. The archive transform removes email-only or subscriber-personalized blocks and renders known public variables such as `{{ email_url }}` before link extraction, feeds, search indexing, and page rendering.
 
 ## 11ty Configuration (`eleventy.config.js`)
 
@@ -234,21 +231,21 @@ Subscribe forms appear 4 times on the page (hero, two mid-page, footer).
 Raw Buttondown body markdown files and metadata JSON files can be edited locally and synced back to Buttondown:
 
 ```bash
-python scripts/content.py diff                  # preview changes
-python scripts/content.py push --yes            # push all changes
-python scripts/content.py push --issue 42 --yes # push single issue
+python pipeline/content/content.py diff                  # preview changes
+python pipeline/content/content.py push --yes            # push all changes
+python pipeline/content/content.py push --issue 42 --yes # push single issue
 ```
 
 Compares `data/buttondown/bodies/*.md` and `data/buttondown/emails/*.json` against the committed baseline in `HEAD`, confirms the live Buttondown value has not diverged unexpectedly, then PATCHes changed fields to the Buttondown API.
 
-**Important:** `scripts/content.py build` regenerates `src/archive/*.md` unconditionally from raw Buttondown data. Any local archive `.md` edit will be overwritten. The durability flow is:
+**Important:** `pipeline/content/content.py build` regenerates `site/archive/*.md` unconditionally from raw Buttondown data. Any local archive `.md` edit will be overwritten. The durability flow is:
 
 1. Edit the raw body in `data/buttondown/bodies/<number>.md` or metadata in `data/buttondown/emails/<number>.json`
-2. `python scripts/content.py build` to regenerate archive files and metadata
-3. `python scripts/content.py diff` to preview Buttondown API changes
-4. `python scripts/content.py push --yes` to push
-5. `python scripts/content.py pull --latest` or `python scripts/content.py pull --all` to refresh tracked raw data from Buttondown
-6. `python scripts/content.py diff` should now show "No local changes detected"
+2. `python pipeline/content/content.py build` to regenerate archive files and metadata
+3. `python pipeline/content/content.py diff` to preview Buttondown API changes
+4. `python pipeline/content/content.py push --yes` to push
+5. `python pipeline/content/content.py pull --latest` or `python pipeline/content/content.py pull --all` to refresh tracked raw data from Buttondown
+6. `python pipeline/content/content.py diff` should now show "No local changes detected"
 
 Step 5 is critical: it verifies Buttondown accepted the update and brings the tracked raw data back in line with the remote source.
 
@@ -257,10 +254,10 @@ Step 5 is critical: it verifies Buttondown accepted the update and brings the tr
 The home page marketing copy is regenerated on demand by an LLM pipeline rather than hand-written. Three files drive it:
 
 - `docs/creative/brief.md` — persistent creative brief (voice, themes, guardrails, running observations). Read at the start of each run and rewritten at the end so observations accumulate. **Hand-editable** — whatever is here is treated as ground truth on the next run.
-- `src/_data/copy.json` — generated marketing copy (hero, value prop, "what you'll actually get" themes, section titles, 4 CTAs). Templates in `src/index.njk` read from this with inline fallbacks.
-- `src/_data/voiceSamples.json` — generated pull-quotes for the "How It Sounds" section, pulled verbatim from real issues with verification.
+- `site/_data/copy.json` — generated marketing copy (hero, value prop, "what you'll actually get" themes, section titles, 4 CTAs). Templates in `site/index.njk` read from this with inline fallbacks.
+- `site/_data/voiceSamples.json` — generated pull-quotes for the "How It Sounds" section, pulled verbatim from real issues with verification.
 
-Pipeline: `scripts/refresh_marketing_copy.py` stratified-samples ~48 issues over the last 2 years (8 most-recent anchor + 5 per quarter bucket, seeded). Sonnet 4.6 extracts themes, voice markers, and candidate pull-quotes. Opus 4.7 writes the final copy with hard anti-hype guardrails. Voice samples are verified verbatim against issue bodies before being written.
+Pipeline: `pipeline/content/refresh_marketing_copy.py` stratified-samples ~48 issues over the last 2 years (8 most-recent anchor + 5 per quarter bucket, seeded). Sonnet 4.6 extracts themes, voice markers, and candidate pull-quotes. Opus 4.7 writes the final copy with hard anti-hype guardrails. Voice samples are verified verbatim against issue bodies before being written.
 
 ```bash
 make refresh-copy-dry   # full run, prints proposed changes, writes nothing
@@ -278,9 +275,9 @@ Audit outputs are snapshotted in `docs/audits/` and checked in so future session
 Re-run audits:
 
 ```bash
-python scripts/audit_archive.py             # static regex/DOM audit
-python scripts/llm_audit_archive.py --full  # LLM audit (~$20 on Opus 4.7)
-python scripts/audit_missing_micropost_photos.py  # find silently-lost photos
+python pipeline/audits/audit_archive.py             # static regex/DOM audit
+python pipeline/audits/llm_audit_archive.py --full  # LLM audit (~$20 on Opus 4.7)
+python pipeline/audits/audit_missing_micropost_photos.py  # find silently-lost photos
 ```
 
 Each writes to `tmp/` (gitignored). Copy outputs to `docs/audits/` to snapshot.

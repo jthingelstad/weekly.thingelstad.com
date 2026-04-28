@@ -56,7 +56,7 @@ jobs:
       # Full rebuild only when explicitly requested.
       - name: Full data rebuild
         if: github.event_name == 'workflow_dispatch' && inputs.content_update == 'full'
-        run: python scripts/content.py pull --all
+        run: python pipeline/content/content.py pull --all
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
           STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
@@ -64,7 +64,7 @@ jobs:
       # New issue: repository_dispatch from an authenticated relay, or manual latest update.
       - name: Fetch latest issue and update if present
         if: github.event_name == 'repository_dispatch' || (github.event_name == 'workflow_dispatch' && inputs.content_update == 'latest-force')
-        run: python scripts/content.py pull --latest
+        run: python pipeline/content/content.py pull --latest
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
           STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
@@ -72,7 +72,7 @@ jobs:
       # Scheduled/manual polling should be cheap and no-op when the latest issue is already committed.
       - name: Poll latest issue
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.content_update == 'latest')
-        run: python scripts/content.py pull --latest --skip-existing
+        run: python pipeline/content/content.py pull --latest --skip-existing
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
           STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
@@ -82,13 +82,13 @@ jobs:
 
       - name: Build librarian corpus
         if: github.event_name != 'push'
-        run: python scripts/build_librarian_corpus.py
+        run: python pipeline/librarian/build_librarian_corpus.py
 
       - name: Decide whether to build and deploy
         id: deploy-check
         run: |
           if [[ "${{ github.event_name }}" == "schedule" || ( "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.content_update }}" == "latest" ) ]]; then
-            if git diff --quiet -- data/buttondown/ data/librarian/ src/archive/ src/_data/emails.json src/_data/stats.json; then
+            if git diff --quiet -- data/buttondown/ data/librarian/ data/links/ site/archive/ site/_data/emails.json site/_data/stats.json; then
               echo "should_deploy=false" >> "$GITHUB_OUTPUT"
               echo "No content changes found; skipping build and deploy."
             else
@@ -113,7 +113,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/buttondown/ data/librarian/ src/archive/ src/_data/emails.json src/_data/stats.json
+          git add data/buttondown/ data/librarian/ data/links/ site/archive/ site/_data/emails.json site/_data/stats.json
           git diff --staged --quiet || (git commit -m "Add new newsletter issue(s)" && git push)
 
       - uses: actions/upload-pages-artifact@v5

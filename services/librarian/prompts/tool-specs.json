@@ -1,0 +1,136 @@
+[
+  {
+    "toolSpec": {
+      "name": "search_archive",
+      "description": "Hybrid search over Weekly Thing chunks. Use iteratively for topics, themes, and evidence gathering.",
+      "inputSchema": {
+        "json": {
+          "type": "object",
+          "properties": {
+            "query": { "type": "string" },
+            "year_range": { "type": ["array", "string", "object"] },
+            "section": { "type": "string" },
+            "limit": { "type": "integer" }
+          },
+          "required": ["query"]
+        }
+      }
+    }
+  },
+  {
+    "toolSpec": {
+      "name": "get_issue",
+      "description": "Return one full Weekly Thing issue with section structure preserved.",
+      "inputSchema": {
+        "json": {
+          "type": "object",
+          "properties": {
+            "number": { "type": ["string", "integer"] }
+          },
+          "required": ["number"]
+        }
+      }
+    }
+  },
+  {
+    "toolSpec": {
+      "name": "get_section",
+      "description": "Return a named section from one issue.",
+      "inputSchema": {
+        "json": {
+          "type": "object",
+          "properties": {
+            "number": { "type": ["string", "integer"] },
+            "section": { "type": "string" }
+          },
+          "required": ["number", "section"]
+        }
+      }
+    }
+  },
+  {
+    "toolSpec": {
+      "name": "find_links",
+      "description": "Query the editorial link graph by domain, topic/entity, and year range. Does not fetch linked pages.",
+      "inputSchema": {
+        "json": {
+          "type": "object",
+          "properties": {
+            "domain": { "type": "string" },
+            "topic": { "type": "string" },
+            "year_range": { "type": ["array", "string", "object"] },
+            "limit": { "type": "integer" }
+          }
+        }
+      }
+    }
+  },
+  {
+    "toolSpec": {
+      "name": "domain_history",
+      "description": "List every issue that cited a domain with date and surrounding link context.",
+      "inputSchema": {
+        "json": {
+          "type": "object",
+          "properties": {
+            "domain": { "type": "string" },
+            "limit": { "type": "integer" }
+          },
+          "required": ["domain"]
+        }
+      }
+    }
+  },
+  {
+    "toolSpec": {
+      "name": "quote_search",
+      "description": "Exact substring search across issue bodies.",
+      "inputSchema": {
+        "json": {
+          "type": "object",
+          "properties": {
+            "phrase": { "type": "string" },
+            "limit": { "type": "integer" }
+          },
+          "required": ["phrase"]
+        }
+      }
+    }
+  },
+  {
+    "toolSpec": {
+      "name": "list_issues",
+      "description": "Metadata-only issue listing filtered by year, topic, or entity.",
+      "inputSchema": {
+        "json": {
+          "type": "object",
+          "properties": {
+            "year": { "type": ["integer", "string"] },
+            "topic": { "type": "string" },
+            "entity": { "type": "string" },
+            "limit": { "type": "integer" }
+          }
+        }
+      }
+    }
+  },
+  {
+    "toolSpec": {
+      "name": "compare_eras",
+      "description": "Search the same topic in two year windows and return both result sets.",
+      "inputSchema": {
+        "json": {
+          "type": "object",
+          "properties": {
+            "topic": { "type": "string" },
+            "year_a": { "type": ["integer", "string", "array", "object"] },
+            "year_b": { "type": ["integer", "string", "array", "object"] },
+            "limit": { "type": "integer" }
+          },
+          "required": ["topic", "year_a", "year_b"]
+        }
+      }
+    }
+  },
+  { "cachePoint": { "type": "default" } }
+]

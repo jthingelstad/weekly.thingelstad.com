@@ -1,0 +1,122 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Weekly Thing Archive Librarian API
+
+Parameters:
+  AllowedOrigin:
+    Type: String
+    Default: https://weekly.thingelstad.com
+  CorpusBucket:
+    Type: String
+    Description: S3 bucket containing the librarian corpus JSON.
+  CorpusKey:
+    Type: String
+    Default: librarian/corpus.json
+  GraphKey:
+    Type: String
+    Default: librarian/graph.json
+  ButtondownApiKey:
+    Type: String
+    NoEcho: true
+  SessionSecret:
+    Type: String
+    NoEcho: true
+
+Globals:
+  Function:
+    Runtime: nodejs20.x
+    Timeout: 35
+    MemorySize: 1024
+    Architectures:
+      - arm64
+    Environment:
+      Variables:
+        ALLOWED_ORIGIN: !Ref AllowedOrigin
+        TABLE_NAME: !Ref LibrarianTable
+        CORPUS_BUCKET: !Ref CorpusBucket
+        CORPUS_KEY: !Ref CorpusKey
+        GRAPH_KEY: !Ref GraphKey
+        BUTTONDOWN_API_KEY: !Ref ButtondownApiKey
+        SESSION_SECRET: !Ref SessionSecret
+        BEDROCK_AGENT_MODEL: us.anthropic.claude-sonnet-4-6
+
+Resources:
+  LibrarianHttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      CorsConfiguration:
+        AllowOrigins:
+          - !Ref AllowedOrigin
+        AllowMethods:
+          - GET
+          - OPTIONS
+          - POST
+        AllowHeaders:
+          - content-type
+          - authorization
+
+  LibrarianTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+
+  LibrarianFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../../services/librarian/
+      Handler: auth/handler.handler
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref LibrarianTable
+        - S3ReadPolicy:
+            BucketName: !Ref CorpusBucket
+        - Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:InvokeModel
+                - bedrock:InvokeModelWithResponseStream
+              Resource:
+                - !Sub arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:inference-profile/us.anthropic.claude-sonnet-4-6
+                - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/anthropic.claude-sonnet-4-6
+                - arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-6
+                - arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-sonnet-4-6
+                - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/cohere.embed-english-v3
+                - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/cohere.rerank-v3-5:0
+                - arn:aws:bedrock:us-west-2::foundation-model/cohere.rerank-v3-5:0
+                - arn:aws:bedrock:ca-central-1::foundation-model/cohere.rerank-v3-5:0
+                - arn:aws:bedrock:eu-central-1::foundation-model/cohere.rerank-v3-5:0
+                - arn:aws:bedrock:ap-northeast-1::foundation-model/cohere.rerank-v3-5:0
+            - Effect: Allow
+              Action: bedrock:Rerank
+              Resource: "*"
+      Events:
+        Auth:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref LibrarianHttpApi
+            Path: /auth
+            Method: POST
+        Health:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref LibrarianHttpApi
+            Path: /health
+            Method: GET
+
+Outputs:
+  LibrarianApiUrl:
+    Description: Base URL for the Archive Librarian API.
+    Value: !Sub "https://${LibrarianHttpApi}.execute-api.${AWS::Region}.amazonaws.com"
