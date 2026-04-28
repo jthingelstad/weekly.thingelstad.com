@@ -27,8 +27,8 @@ module.exports = {
   authorUrl: 'https://www.thingelstad.com',
   tinylyticsId: envValue('TINYLYTICS_SITE_UID') || (/^\d+$/.test(envValue('TINYLYTICS_SITE_ID')) ? '' : envValue('TINYLYTICS_SITE_ID')) || 'a2YQr3ZMqkySNYSwz4uF',
   buttondownUsername: 'weekly-thing',
-  librarianApiUrl: 'https://k0yklt9vg3.execute-api.us-east-1.amazonaws.com',
-  librarianStreamUrl: 'https://jcvud66qqpq53frvno5stoqntm0zqntw.lambda-url.us-east-1.on.aws/',
+  librarianApiUrl: envValue('LIBRARIAN_API_URL') || 'https://k0yklt9vg3.execute-api.us-east-1.amazonaws.com',
+  librarianStreamUrl: envValue('LIBRARIAN_STREAM_URL') || 'https://jcvud66qqpq53frvno5stoqntm0zqntw.lambda-url.us-east-1.on.aws/',
   social: {
     mastodon: 'https://mastodon.social/@weeklything',
     bluesky: 'https://bsky.app/profile/weekly.thingelstad.com',

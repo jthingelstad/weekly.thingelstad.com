@@ -173,7 +173,6 @@ Resources:
           - authorization
         AllowMethods:
           - GET
-          - OPTIONS
           - POST
         AllowOrigins: !Ref AllowedOrigin
       InvokeMode: RESPONSE_STREAM

@@ -568,13 +568,23 @@ permalink: /librarian/
       let answer = '';
       let citations = [];
       let requestId = '';
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 60000);
       const response = await fetch(`${streamBase}/chat`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
           authorization: `Bearer ${token()}`
         },
-        body: JSON.stringify({ message, history })
+        body: JSON.stringify({ message, history }),
+        signal: controller.signal
+      }).catch((error) => {
+        if (error.name === 'AbortError') {
+          throw new Error('Thingy took too long to respond. Please try again.');
+        }
+        throw error;
+      }).finally(() => {
+        window.clearTimeout(timeout);
       });
       if (!response.ok || !response.body) {
         throw new Error('Thingy is unavailable.');
