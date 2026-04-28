@@ -98,12 +98,119 @@ permalink: /thingy/
     const betaOverlay = document.getElementById('librarian-beta-overlay');
     const betaCloseButton = document.getElementById('librarian-beta-close');
     const storageKey = 'weeklyThingLibrarianToken';
-    const promptsStorageKey = 'weeklyThingLibrarianPrompts';
     const betaNoticeStorageKey = 'weeklyThingLibrarianBetaNotice';
     const maxHistoryMessages = 8;
     const maxHistoryChars = 4000;
     const maxQuestionChars = Number(questionInput.getAttribute('maxlength') || '1200');
     const starterMessageHtml = '<div class="librarian-message librarian-message-system"><p>Ask about a topic, person, project, or theme from the archive. Thingy will cite the issues it uses.</p></div>';
+    const starterQuestions = {
+      discovery: [
+        "What's the most recent issue about?",
+        'Show me the very first issue.',
+        'Pick a random issue for me.',
+        'What was Jamie writing about a year ago?',
+        'Find an issue from summer 2020.',
+        "What's a good issue to start with?",
+        'Show me a fan-favorite issue.',
+        'What did the 100th issue cover?',
+        'Surprise me with something from the archive.',
+        "What's the longest issue ever?",
+        'How do I subscribe?',
+        'How does the membership work?',
+        'When is the next issue coming?',
+        'How do I find a link I half-remember?',
+        'How can I share an issue?',
+        'Is there a way to follow without email?',
+        'How do I suggest a link to Jamie?',
+        "Where's the discussion community?",
+        'Can I read everything offline?',
+        'How do I unsubscribe?'
+      ],
+      topical: [
+        'What does Jamie write about most?',
+        'Find issues about the IndieWeb.',
+        'Show me everything about RSS.',
+        'What has Jamie said about AI?',
+        'Find issues mentioning POAPs.',
+        "What's been written about Minneapolis?",
+        'Show me issues about EDI or retail.',
+        'Find anything about ENS or Web3.',
+        "What's been said about newsletters?",
+        'Show me posts about owning your content.',
+        'Who does Jamie quote most often?',
+        'Find issues featuring Manton Reece.',
+        'What writers show up repeatedly?',
+        "Who's been linked from Daring Fireball?",
+        'Find references to Cory Doctorow.',
+        'Which podcasters get mentioned most?',
+        "Whose blogs does Jamie read?",
+        'Find indie developers featured here.',
+        "Who are Jamie's favorite thinkers?",
+        'Which CEOs come up most?',
+        'What tools has Jamie recommended?',
+        'Find issues about OmniFocus.',
+        "What's been said about Fastmail?",
+        'Show me posts about static site generators.',
+        'Find references to 11ty or Hugo.',
+        'What apps does Jamie use daily?',
+        'Show me anything about 3D printing.',
+        'Find posts about home automation.',
+        "What's Jamie said about password managers?",
+        'Show me issues about terminal tools.',
+        'Find the most thought-provoking issue.',
+        "What's a great essay Jamie linked to?",
+        'Show me a piece about long-term thinking.',
+        'Find writing about craft and quality.',
+        "What's been linked about leadership?",
+        'Show me essays on remote work.',
+        'Find posts about parenting and tech.',
+        "What's been said about attention?",
+        'Show me anything on systems thinking.',
+        'Find a piece worth re-reading.',
+        'What books has Jamie recommended?',
+        'Find book reviews in the archive.',
+        "What's the most-mentioned book?",
+        'Show me reading lists from the newsletter.',
+        'Find issues about libraries or reading.',
+        'What sci-fi has Jamie written about?',
+        'Show me business books worth reading.',
+        'Find recommendations for non-fiction.',
+        'What did Jamie read in 2023?',
+        'Surprise me with a book pick.',
+        'Find the weirdest link in the archive.',
+        'Show me a great rabbit hole.',
+        'What food or cooking links are here?',
+        'Find anything about music.',
+        'Show me posts about photography.',
+        "What's been said about Minnesota?",
+        'Find travel-related issues.',
+        'Show me posts about typography or design.',
+        "What's the strangest thing ever featured?",
+        'Find a delightful issue to lift my mood.',
+        'What has Jamie written about family?',
+        'Find posts about milestones or anniversaries.',
+        "Show me Jamie's year-in-review issues.",
+        'What does Jamie say about his blog?',
+        'Find issues about the Olson Family Vacation.',
+        'Show me posts about escape rooms.',
+        "What's been written about Things 4 Good?",
+        'Find personal projects Jamie has shared.',
+        'What does Jamie celebrate each year?',
+        'Show me a heartfelt issue.'
+      ],
+      playful: [
+        'What would Jamie say about my week?',
+        'Quote me something from the archive.',
+        "What's a hot take from Jamie?",
+        'Give me three links worth my time.',
+        "What's been linked twice?",
+        "Find something I've probably missed.",
+        "What's the most-clicked link ever?",
+        'Build me a reading list for tonight.',
+        'What would Jamie put in a "best of" issue?',
+        "Tell me something I'd find interesting."
+      ]
+    };
     const eventSink = document.createElement('button');
     eventSink.type = 'button';
     eventSink.hidden = true;
@@ -175,7 +282,6 @@ permalink: /thingy/
 
     function clearToken() {
       window.localStorage.removeItem(storageKey);
-      window.sessionStorage.removeItem(promptsStorageKey);
       hideBetaNotice({ remember: false, focusQuestion: false });
       conversationHistory = [];
       chatPanel.hidden = true;
@@ -564,6 +670,18 @@ permalink: /thingy/
       prompts.innerHTML = '';
     }
 
+    function randomItem(items) {
+      return items[Math.floor(Math.random() * items.length)];
+    }
+
+    function starterPromptSet() {
+      return [
+        randomItem(starterQuestions.discovery),
+        randomItem(starterQuestions.topical),
+        randomItem(starterQuestions.playful)
+      ].map((question) => ({ label: question, question }));
+    }
+
     function renderPrompts(promptItems) {
       if (!promptItems || !promptItems.length || answerInFlight) return;
       prompts.classList.remove('librarian-prompts-loading');
@@ -575,37 +693,10 @@ permalink: /thingy/
       prompts.hidden = false;
     }
 
-    async function loadPrompts() {
+    function loadPrompts() {
       if (!token() || answerInFlight) return;
-      try {
-        const cached = JSON.parse(window.sessionStorage.getItem(promptsStorageKey) || 'null');
-        if (cached && cached.source === 'generated' && Array.isArray(cached.prompts)) {
-          renderPrompts(cached.prompts);
-          return;
-        }
-      } catch {
-        window.sessionStorage.removeItem(promptsStorageKey);
-      }
-      prompts.hidden = false;
-      prompts.classList.add('librarian-prompts-loading');
-      prompts.innerHTML = '<span>Finding a few good questions...</span>';
-      try {
-        const data = await postStreamJson('/prompts', {}, { authorization: `Bearer ${token()}` });
-        if (Array.isArray(data.prompts) && data.prompts.length) {
-          if (data.source === 'generated') {
-            window.sessionStorage.setItem(promptsStorageKey, JSON.stringify({ prompts: data.prompts, source: data.source }));
-          } else {
-            window.sessionStorage.removeItem(promptsStorageKey);
-          }
-          renderPrompts(data.prompts);
-          trackTinylyticsEvent('librarian.prompts_loaded', data.source || 'generated');
-        } else {
-          hidePrompts();
-        }
-      } catch (error) {
-        hidePrompts();
-        trackTinylyticsEvent('librarian.prompts_error', error.requestId ? 'server' : 'client');
-      }
+      renderPrompts(starterPromptSet());
+      trackTinylyticsEvent('librarian.prompts_loaded', 'static');
     }
 
     function handleAuthResponse(data) {

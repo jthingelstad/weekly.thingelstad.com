@@ -1,20 +1,16 @@
 import crypto from 'node:crypto';
-import { BedrockRuntimeClient, ConverseCommand, ConverseStreamCommand, InvokeModelCommand } from '@aws-sdk/client-bedrock-runtime';
+import { BedrockRuntimeClient, ConverseStreamCommand, InvokeModelCommand } from '@aws-sdk/client-bedrock-runtime';
 import { BedrockAgentRuntimeClient, RerankCommand } from '@aws-sdk/client-bedrock-agent-runtime';
 import { DynamoDBClient, PutItemCommand, UpdateItemCommand } from '@aws-sdk/client-dynamodb';
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { readConverseStream } from '../shared/bedrock-stream.mjs';
 import { normalizeFeedbackReaction, validFeedbackRequestId } from '../shared/feedback.mjs';
+import { searchFaq } from '../shared/faq.mjs';
 import { truthyEnv } from '../shared/logging.mjs';
 import {
-  FALLBACK_PROMPTS,
   agentSystemPrompt,
   agentUserPrompt,
-  extractJsonObject,
-  loadToolSpecs,
-  sanitizePrompts,
-  suggestedQuestionsSystemPrompt,
-  suggestedQuestionsUserPrompt
+  loadToolSpecs
 } from '../shared/prompts.mjs';
 
 const DEFAULT_AGENT_MODEL = 'us.anthropic.claude-sonnet-4-6';
@@ -28,7 +24,6 @@ const CONVERSATION_LOG_TTL_DAYS = 60;
 const TOKEN_RE = /[a-z0-9][a-z0-9'-]{1,}/gi;
 const MAX_HISTORY_MESSAGES = 8;
 const MAX_HISTORY_CHARS = 4000;
-const PROMPT_RATE_LIMIT_MAX = 10;
 
 const s3 = new S3Client({});
 const dynamodb = new DynamoDBClient({});
@@ -570,68 +565,6 @@ function bedrockMessageText(message) {
   return parts.join('\n').trim();
 }
 
-async function bedrockTextResponse(systemText, userText, { maxTokens = 700, temperature = 0.4 } = {}) {
-  const response = await bedrock.send(new ConverseCommand({
-    modelId: agentModel(),
-    system: [{ text: systemText }, { cachePoint: { type: 'default' } }],
-    messages: [{ role: 'user', content: [{ text: userText }] }],
-    inferenceConfig: { maxTokens, temperature }
-  }));
-  const text = bedrockMessageText(response.output?.message || '').trim();
-  if (!text) throw new Error('Bedrock returned an empty response');
-  logEvent('info', 'bedrock_text_generated', {
-    model: agentModel(),
-    stop_reason: response.stopReason,
-    output_tokens: response.usage?.outputTokens
-  });
-  return text;
-}
-
-function promptContext() {
-  if (!corpusCache?.issues?.length) return '';
-  const issues = corpusCache.issues;
-  const recent = issues.slice(-24);
-  const selected = recent.length > 12 ? recent.filter((_, index) => index % 3 === 0) : recent;
-  const prompts = selected.length ? selected : issues.slice(-8);
-  return prompts.slice(-8).map((issue) => `#${issue.number}: ${issue.subject || ''} (${String(issue.publish_date || '').slice(0, 10)})`).join('\n');
-}
-
-async function generatePrompts() {
-  const start = performance.now();
-  await loadCorpus();
-  const text = await bedrockTextResponse(
-    suggestedQuestionsSystemPrompt(),
-    suggestedQuestionsUserPrompt(promptContext()),
-    { maxTokens: 700, temperature: 0.7 }
-  );
-  const prompts = sanitizePrompts(extractJsonObject(text));
-  if (!prompts.length) throw new Error('Bedrock returned invalid prompts');
-  logEvent('info', 'prompts_generated', {
-    model: agentModel(),
-    duration_ms: Math.round(performance.now() - start)
-  });
-  return prompts;
-}
-
-async function promptsPayload(event, body, requestId) {
-  const payload = verifyToken(extractBearer(event, body));
-  if (!payload) return { statusCode: 401, payload: { error: 'Please validate your subscriber email to use the librarian.', request_id: requestId } };
-  const promptLimit = Number(process.env.PROMPT_RATE_LIMIT_MAX || PROMPT_RATE_LIMIT_MAX);
-  if (!(await checkRateLimit(`prompts#${payload.sid || payload.sub}`, promptLimit))) {
-    return { statusCode: 429, payload: { error: 'The librarian is at the hourly prompt limit for this session.', request_id: requestId } };
-  }
-  try {
-    return { statusCode: 200, payload: { prompts: await generatePrompts(), source: 'generated' } };
-  } catch (error) {
-    logEvent('error', 'prompt_generation_failed', {
-      subscriber_hash: payload.sub,
-      error_type: error.constructor?.name || 'Error',
-      error_detail: String(error.message || '').slice(0, 160)
-    });
-    return { statusCode: 200, payload: { prompts: FALLBACK_PROMPTS, source: 'fallback' } };
-  }
-}
-
 function writeSse(stream, event, data) {
   stream.write(`event: ${event}\n`);
   stream.write(`data: ${JSON.stringify(data)}\n\n`);
@@ -678,6 +611,33 @@ async function linkRecords() {
     for (const link of issue.links || []) links.push({ ...link, issue_number: issue.number, subject: issue.subject, publish_date: issue.publish_date, issue_year: issue.issue_year, issue_url: issue.url });
   }
   return links;
+}
+
+async function faqReplacements() {
+  const corpus = await loadCorpus();
+  const issues = (corpus.issues || []).filter((issue) => issue.publish_date);
+  const years = issues
+    .map((issue) => Number(String(issue.publish_date || '').slice(0, 4)))
+    .filter((year) => year > 0);
+  const firstYear = years.length ? Math.min(...years) : 2017;
+  const latestYear = years.length ? Math.max(...years) : new Date().getUTCFullYear();
+  return {
+    yearsActive: latestYear - firstYear + 1,
+    issueCount: corpus.issue_count || issues.length
+  };
+}
+
+async function toolSearchFaq(input = {}) {
+  const query = String(input.query || '').trim();
+  if (!query) return { results: [] };
+  const limit = Math.min(Math.max(Number(input.limit || 5), 1), 10);
+  return {
+    query,
+    results: searchFaq(query, {
+      limit,
+      replacements: await faqReplacements()
+    })
+  };
 }
 
 async function toolSearchArchive(input = {}) {
@@ -816,6 +776,7 @@ async function toolCompareEras(input = {}) {
 }
 
 const ARCHIVE_TOOLS = {
+  search_faq: toolSearchFaq,
   search_archive: toolSearchArchive,
   get_issue: toolGetIssue,
   get_section: toolGetSection,
@@ -979,16 +940,6 @@ export const handler = awslambda.streamifyResponse(async (event, responseStream,
     }));
     stream.end();
     logEvent('info', 'request_completed', { ...summary, duration_ms: Math.round(performance.now() - start) });
-    return;
-  }
-
-  if (method === 'POST' && path.endsWith('/prompts')) {
-    const body = parseBody(event);
-    const result = await promptsPayload(event, body, requestId);
-    const stream = jsonResponseStream(responseStream, result.statusCode);
-    stream.write(JSON.stringify(result.payload));
-    stream.end();
-    logEvent('info', 'request_completed', { ...summary, status_code: result.statusCode, duration_ms: Math.round(performance.now() - start) });
     return;
   }
 

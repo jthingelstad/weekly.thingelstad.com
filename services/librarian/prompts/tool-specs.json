@@ -1,6 +1,22 @@
 [
   {
     "toolSpec": {
+      "name": "search_faq",
+      "description": "Search authoritative Weekly Thing FAQ entries. Use first for questions about subscribing, unsubscribing, cost, membership, RSS, schedule, breaks, archive access, search, Thingy, privacy, community, sharing, contact, site tooling, and how the newsletter works.",
+      "inputSchema": {
+        "json": {
+          "type": "object",
+          "properties": {
+            "query": { "type": "string" },
+            "limit": { "type": "integer" }
+          },
+          "required": ["query"]
+        }
+      }
+    }
+  },
+  {
+    "toolSpec": {
       "name": "search_archive",
       "description": "Hybrid search over Weekly Thing chunks. Default first stop for broad topics, themes, and evidence gathering. Use iteratively — refine the query and year_range based on what comes back. year_range accepts a [start, end] array, a single \"YYYY\" string, or {\"start\": YYYY, \"end\": YYYY}.",
       "inputSchema": {

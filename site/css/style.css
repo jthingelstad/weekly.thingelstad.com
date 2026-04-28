@@ -1917,6 +1917,18 @@ th {
   max-width: var(--container-width);
 }
 
+.faq-section {
+  margin-bottom: var(--space-2xl);
+}
+
+.faq-section:last-child {
+  margin-bottom: 0;
+}
+
+.faq-section h2 {
+  margin-bottom: var(--space-md);
+}
+
 .faq-item {
   border-bottom: 1px solid var(--color-border-light);
   padding: var(--space-lg) 0;
@@ -1940,6 +1952,10 @@ th {
 .faq-item dd {
   color: var(--color-text);
   line-height: 1.7;
+}
+
+.faq-item dd > :last-child {
+  margin-bottom: 0;
 }
 
 .faq-item dd code {

@@ -151,6 +151,12 @@ module.exports = function (eleventyConfig) {
     return md.render(str);
   });
 
+  // Resolve shared FAQ placeholders before markdown rendering.
+  eleventyConfig.addFilter("faqAnswer", (str, values = {}) => {
+    if (!str) return "";
+    return String(str).replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (_, key) => String(values[key] ?? ""));
+  });
+
   // Extract headings from rendered HTML for TOC
   eleventyConfig.addFilter("extractToc", (content) => {
     if (!content) return [];

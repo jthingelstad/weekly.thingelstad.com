@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { renderFaqAnswer, searchFaq } from '../shared/faq.mjs';
 import { createSessionToken, emailHash, normalizeEmail, verifyToken } from '../shared/session.mjs';
-import { sanitizePrompts, renderTemplate, agentUserPrompt } from '../shared/prompts.mjs';
+import { renderTemplate, agentUserPrompt } from '../shared/prompts.mjs';
 import { subscriberStatus } from '../shared/buttondown.mjs';
 import { normalizeFeedbackReaction, validFeedbackRequestId } from '../shared/feedback.mjs';
 import { readConverseStream } from '../shared/bedrock-stream.mjs';
@@ -30,23 +31,6 @@ test('buttondown subscriber status maps active and inactive states', () => {
   assert.equal(subscriberStatus({ type: 'disabled' }), 'inactive');
 });
 
-test('prompt sanitizer requires three clipped prompts', () => {
-  const longLabel = 'How do Banff and Sunrise portray landscape, vision, and sense of place?';
-  const longQuestion = "What can Thingy show me about privacy, security, tokens, and how the archive's framing changes across multiple issues without truncating the actual question text?";
-  const prompts = sanitizePrompts({
-    prompts: [
-      { label: longLabel, question: longQuestion },
-      { label: 'Two', question: 'Question two?' },
-      { label: 'Three', question: 'Question three?' }
-    ]
-  });
-
-  assert.equal(prompts.length, 3);
-  assert.equal(prompts[0].label, longLabel.slice(0, 72));
-  assert.equal(prompts[0].question, longQuestion.slice(0, 220));
-  assert.deepEqual(sanitizePrompts({ prompts: [{ label: 'One', question: 'One?' }] }), []);
-});
-
 test('prompt template renderer substitutes named placeholders', () => {
   assert.equal(renderTemplate('Hello {{ name }} from {{ place }}.', { name: 'Thingy', place: 'the archive' }), 'Hello Thingy from the archive.');
 });
@@ -60,6 +44,15 @@ test('agent user prompt renders dynamic conversation context', () => {
   assert.match(prompt, /User: Tell me more\./);
   assert.match(prompt, /What did the archive say about RSS\?/);
   assert.match(prompt, /Investigate with tools as needed/);
+});
+
+test('FAQ search returns authoritative shared FAQ entries', () => {
+  const results = searchFaq('How do I unsubscribe?', { replacements: { yearsActive: 10, issueCount: 345 } });
+
+  assert.equal(results[0].question, 'How do I unsubscribe?');
+  assert.equal(results[0].url, '/faq/');
+  assert.match(results[0].answer_text, /unsubscribe link/);
+  assert.equal(renderFaqAnswer('over {{yearsActive}} years and {{issueCount}} issues', { yearsActive: 10, issueCount: 345 }), 'over 10 years and 345 issues');
 });
 
 test('feedback helpers accept only expected reactions and request ids', () => {
