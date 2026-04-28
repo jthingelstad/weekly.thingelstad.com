@@ -16,13 +16,14 @@ permalink: /librarian/
       <form class="librarian-form" id="librarian-auth-form">
         <label for="librarian-email">Subscriber email</label>
         <div class="librarian-auth-row">
-          <input id="librarian-email" name="email" type="email" autocomplete="email" required>
-          <button type="submit" data-tinylytics-event="librarian.auth_submit">Enter</button>
+          <input id="librarian-email" name="email" type="email" autocomplete="email" required class="subscribe-input">
+          <button type="submit" id="librarian-auth-submit" data-tinylytics-event="librarian.auth_submit">Enter</button>
         </div>
+        <span class="subscribe-error librarian-email-error" id="librarian-email-error" aria-live="polite"></span>
         <p class="form-message" id="librarian-auth-message" aria-live="polite"></p>
         <div class="librarian-auth-actions" id="librarian-auth-actions" hidden>
-          <button type="button" id="librarian-add-subscriber">Add me</button>
-          <button type="button" id="librarian-resend-confirmation">Resend confirmation email</button>
+          <button type="button" id="librarian-add-subscriber" hidden>Add me</button>
+          <button type="button" id="librarian-resend-confirmation" hidden>Resend confirmation email</button>
         </div>
         <p class="form-note">Access is available to Weekly Thing subscribers. Newsletter links may prefill this field.</p>
       </form>
@@ -72,6 +73,8 @@ permalink: /librarian/
     const authForm = document.getElementById('librarian-auth-form');
     const questionForm = document.getElementById('librarian-question-form');
     const emailInput = document.getElementById('librarian-email');
+    const emailError = document.getElementById('librarian-email-error');
+    const authButton = document.getElementById('librarian-auth-submit');
     const authMessage = document.getElementById('librarian-auth-message');
     const authActions = document.getElementById('librarian-auth-actions');
     const addSubscriberButton = document.getElementById('librarian-add-subscriber');
@@ -97,10 +100,31 @@ permalink: /librarian/
     let tinylyticsReady = document.readyState === 'complete';
     let answerInFlight = false;
     let conversationHistory = [];
+    const emailRe = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
 
     const params = new URLSearchParams(window.location.search);
     const email = params.get('email');
     if (email) emailInput.value = email;
+
+    function validateEmail() {
+      const value = emailInput.value.trim();
+      if (!value) {
+        emailError.textContent = '';
+        emailInput.classList.remove('invalid');
+        authButton.disabled = false;
+        return true;
+      }
+      if (emailRe.test(value)) {
+        emailError.textContent = '';
+        emailInput.classList.remove('invalid');
+        authButton.disabled = false;
+        return true;
+      }
+      emailError.textContent = 'Please enter a valid email address';
+      emailInput.classList.add('invalid');
+      authButton.disabled = true;
+      return false;
+    }
 
     function token() {
       return window.localStorage.getItem(storageKey);
@@ -241,7 +265,7 @@ permalink: /librarian/
       if (!citationsByIssue || citationsByIssue.size === 0) return html;
       return html.split(/(<[^>]+>)/g).map((part) => {
         if (part.startsWith('<')) return part;
-        return part.replace(/(^|[^\w])#(\d{1,4})\b/g, (match, prefix, issue) => {
+        return part.replace(/(^|[^\w&])#(\d{1,4})\b/g, (match, prefix, issue) => {
           const citation = citationsByIssue.get(issue);
           if (!citation) return match;
           return `${prefix}<a href="${safeMarkdownUrl(citation.url)}" title="${escapeHtml(citationTitle(citation))}" data-tinylytics-event="librarian.source_click" data-tinylytics-event-value="${escapeHtml(issue)}">#${escapeHtml(issue)}</a>`;
@@ -494,6 +518,7 @@ permalink: /librarian/
     }
 
     async function submitAuthAction(action, button) {
+      if (!validateEmail()) return;
       button.disabled = true;
       hideAuthActions();
       setAuthMessage(action === 'subscribe' ? 'Adding you to the Weekly Thing...' : 'Sending the confirmation email...');
@@ -580,8 +605,8 @@ permalink: /librarian/
 
     authForm.addEventListener('submit', async (event) => {
       event.preventDefault();
-      const button = authForm.querySelector('button');
-      button.disabled = true;
+      if (!validateEmail()) return;
+      authButton.disabled = true;
       hideAuthActions();
       setAuthMessage('Checking subscriber access...');
       try {
@@ -591,8 +616,14 @@ permalink: /librarian/
         setAuthMessage(error.message);
         trackTinylyticsEvent('librarian.auth_error', error.requestId ? 'server' : 'client');
       } finally {
-        button.disabled = false;
+        authButton.disabled = false;
+        validateEmail();
       }
+    });
+
+    emailInput.addEventListener('input', () => {
+      validateEmail();
+      hideAuthActions();
     });
 
     addSubscriberButton.addEventListener('click', () => {

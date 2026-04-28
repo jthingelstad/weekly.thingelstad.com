@@ -1975,6 +1975,10 @@ th {
   font: inherit;
 }
 
+.librarian-form input.invalid {
+  border-color: #c44d2b;
+}
+
 .librarian-form textarea {
   min-height: 7rem;
   resize: vertical;
@@ -2014,6 +2018,15 @@ th {
   flex-wrap: wrap;
   gap: var(--space-sm);
   margin-top: var(--space-sm);
+}
+
+.librarian-auth-actions[hidden],
+.librarian-auth-actions button[hidden] {
+  display: none;
+}
+
+.librarian-email-error {
+  display: block;
 }
 
 .librarian-chat-tools {
@@ -2157,7 +2170,7 @@ th {
   border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: var(--space-xl);
-  background: var(--color-background);
+  background: var(--color-surface);
   box-shadow: 0 1.4rem 4rem rgba(31, 38, 32, 0.22);
 }
 

@@ -20,10 +20,10 @@ Parameters:
   CorpusKey:
     Type: String
     Default: librarian/corpus.json
-  ButtondownApiKey:
+  GraphKey:
     Type: String
-    NoEcho: true
-  OpenAIApiKey:
+    Default: librarian/graph.json
+  ButtondownApiKey:
     Type: String
     NoEcho: true
   TinylyticsApiKey:
@@ -93,7 +93,27 @@ Resources:
                 Resource: !GetAtt LibrarianTable.Arn
               - Effect: Allow
                 Action: s3:GetObject
-                Resource: !Sub arn:aws:s3:::${CorpusBucket}/${CorpusKey}
+                Resource:
+                  - !Sub arn:aws:s3:::${CorpusBucket}/${CorpusKey}
+                  - !Sub arn:aws:s3:::${CorpusBucket}/${GraphKey}
+              - Effect: Allow
+                Action:
+                  - bedrock:InvokeModel
+                  - bedrock:InvokeModelWithResponseStream
+                Resource:
+                  - !Sub arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:inference-profile/us.anthropic.claude-sonnet-4-6
+                  - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/anthropic.claude-sonnet-4-6
+                  - arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-6
+                  - arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-sonnet-4-6
+                  - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/cohere.embed-english-v3
+                  - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/cohere.rerank-v3-5:0
+                  - arn:aws:bedrock:us-west-2::foundation-model/cohere.rerank-v3-5:0
+                  - arn:aws:bedrock:ca-central-1::foundation-model/cohere.rerank-v3-5:0
+                  - arn:aws:bedrock:eu-central-1::foundation-model/cohere.rerank-v3-5:0
+                  - arn:aws:bedrock:ap-northeast-1::foundation-model/cohere.rerank-v3-5:0
+              - Effect: Allow
+                Action: bedrock:Rerank
+                Resource: "*"
 
   LibrarianFunction:
     Type: AWS::Lambda::Function
@@ -109,14 +129,19 @@ Resources:
           TABLE_NAME: !Ref LibrarianTable
           CORPUS_BUCKET: !Ref CorpusBucket
           CORPUS_KEY: !Ref CorpusKey
+          GRAPH_KEY: !Ref GraphKey
           BUTTONDOWN_API_KEY: !Ref ButtondownApiKey
-          OPENAI_API_KEY: !Ref OpenAIApiKey
           TINYLYTICS_API_KEY: !Ref TinylyticsApiKey
           TINYLYTICS_SITE_ID: !Ref TinylyticsSiteId
           TINYLYTICS_ENABLED: "1"
           SESSION_SECRET: !Ref SessionSecret
           LOG_LEVEL: !Ref LogLevel
           AUTH_RATE_LIMIT_MAX: !Ref AuthRateLimitMax
+          LIBRARIAN_AGENT_ENABLED: "1"
+          BEDROCK_AGENT_MODEL: us.anthropic.claude-sonnet-4-6
+          BEDROCK_EMBEDDING_MODEL: cohere.embed-english-v3
+          BEDROCK_RERANK_MODEL: cohere.rerank-v3-5:0
+          BEDROCK_RERANK_REGION: us-west-2
       Handler: app.handler
       MemorySize: 1024
       Role: !GetAtt LibrarianFunctionRole.Arn
@@ -137,12 +162,17 @@ Resources:
           TABLE_NAME: !Ref LibrarianTable
           CORPUS_BUCKET: !Ref CorpusBucket
           CORPUS_KEY: !Ref CorpusKey
-          OPENAI_API_KEY: !Ref OpenAIApiKey
+          GRAPH_KEY: !Ref GraphKey
           TINYLYTICS_API_KEY: !Ref TinylyticsApiKey
           TINYLYTICS_SITE_ID: !Ref TinylyticsSiteId
           TINYLYTICS_ENABLED: "1"
           SESSION_SECRET: !Ref SessionSecret
           LOG_LEVEL: !Ref LogLevel
+          LIBRARIAN_AGENT_ENABLED: "1"
+          BEDROCK_AGENT_MODEL: us.anthropic.claude-sonnet-4-6
+          BEDROCK_EMBEDDING_MODEL: cohere.embed-english-v3
+          BEDROCK_RERANK_MODEL: cohere.rerank-v3-5:0
+          BEDROCK_RERANK_REGION: us-west-2
       Handler: index.handler
       MemorySize: 1536
       Role: !GetAtt LibrarianFunctionRole.Arn

@@ -1,14 +1,16 @@
 import crypto from 'node:crypto';
+import { BedrockRuntimeClient, ConverseCommand, InvokeModelCommand } from '@aws-sdk/client-bedrock-runtime';
+import { BedrockAgentRuntimeClient, RerankCommand } from '@aws-sdk/client-bedrock-agent-runtime';
 import { DynamoDBClient, PutItemCommand, UpdateItemCommand } from '@aws-sdk/client-dynamodb';
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 
-const OPENAI_RESPONSES_URL = 'https://api.openai.com/v1/responses';
-const OPENAI_EMBEDDINGS_URL = 'https://api.openai.com/v1/embeddings';
 const TINYLYTICS_BASE = 'https://tinylytics.app/api/v1';
 const DEFAULT_TINYLYTICS_SITE_ID = '3063';
-const DEFAULT_MODEL = 'gpt-5-mini';
-const DEFAULT_EMBEDDING_MODEL = 'text-embedding-3-small';
-const DEFAULT_EMBEDDING_DIMENSIONS = 256;
+const DEFAULT_AGENT_MODEL = 'us.anthropic.claude-sonnet-4-6';
+const DEFAULT_EMBEDDING_MODEL = 'cohere.embed-english-v3';
+const DEFAULT_RERANK_MODEL = 'cohere.rerank-v3-5:0';
+const DEFAULT_EMBEDDING_DIMENSIONS = 1024;
+const DEFAULT_MAX_TOOL_TURNS = 8;
 const RATE_LIMIT_WINDOW_SECONDS = 60 * 60;
 const RATE_LIMIT_MAX = 20;
 const CONVERSATION_LOG_TTL_DAYS = 60;
@@ -30,12 +32,16 @@ const ANSWER_STYLE_INSTRUCTIONS = [
   'If evidence is thin, mention that briefly in the flow of the answer instead of adding a formal limitations section.',
   'Include a concrete reading path only when it directly answers the question.',
   'Do not offer to do more work, suggest what the user can ask next, or ask any closing question.',
+  'Do not narrate your tool process or say that you have enough information; start directly with the answer.',
   "Never write customer-support phrasing anywhere, including 'if you want', 'would you like', 'should I', or 'which would you prefer'."
 ].join(' ');
 
 const s3 = new S3Client({});
 const dynamodb = new DynamoDBClient({});
+const bedrock = new BedrockRuntimeClient({});
+const bedrockAgentRuntime = new BedrockAgentRuntimeClient({ region: process.env.BEDROCK_RERANK_REGION || 'us-west-2' });
 let corpusCache;
+let graphCache;
 let indexedCache;
 let tinylyticsResolvedSiteId;
 
@@ -47,6 +53,36 @@ function logEvent(level, message, fields = {}) {
     timestamp: Math.floor(Date.now() / 1000),
     ...Object.fromEntries(Object.entries(fields).filter(([, value]) => value !== undefined && value !== null))
   }));
+}
+
+function truthyEnv(name, defaultValue = '0') {
+  const value = String(process.env[name] ?? defaultValue).trim().toLowerCase();
+  return !['', '0', 'false', 'no', 'off'].includes(value);
+}
+
+function agentModel() {
+  return process.env.BEDROCK_AGENT_MODEL || DEFAULT_AGENT_MODEL;
+}
+
+function embeddingModel() {
+  return process.env.BEDROCK_EMBEDDING_MODEL || DEFAULT_EMBEDDING_MODEL;
+}
+
+function rerankModel() {
+  return process.env.BEDROCK_RERANK_MODEL || DEFAULT_RERANK_MODEL;
+}
+
+function rerankModelArn() {
+  const model = rerankModel();
+  if (model.startsWith('arn:')) return model;
+  const region = process.env.BEDROCK_RERANK_REGION || 'us-west-2';
+  return `arn:aws:bedrock:${region}::foundation-model/${model}`;
+}
+
+function privacyGuardAnswer(question) {
+  const text = String(question || '').toLowerCase();
+  if (!['home address', 'street address', 'phone number', 'cell number', 'mobile number', 'personal address'].some((term) => text.includes(term))) return '';
+  return "I cannot help find or share Jamie's private home address or phone number. For public contact, use the contact links Jamie publishes on thingelstad.com or reply through the newsletter's normal public channels.";
 }
 
 function normalizeHeaders(headers) {
@@ -310,6 +346,25 @@ async function loadCorpus() {
   return corpusCache;
 }
 
+async function loadGraph() {
+  if (graphCache) return graphCache;
+  const bucket = process.env.CORPUS_BUCKET;
+  const key = process.env.GRAPH_KEY || 'librarian/graph.json';
+  if (!bucket) {
+    graphCache = {};
+    return graphCache;
+  }
+  try {
+    const response = await s3.send(new GetObjectCommand({ Bucket: bucket, Key: key }));
+    graphCache = JSON.parse(await response.Body.transformToString());
+    logEvent('info', 'graph_loaded', { source: 's3', bucket, key, issue_count: Object.keys(graphCache.issues || {}).length });
+  } catch (error) {
+    graphCache = {};
+    logEvent('warning', 'graph_load_failed', { key, error_type: error.constructor?.name || 'Error' });
+  }
+  return graphCache;
+}
+
 function tokenize(text) {
   return Array.from(String(text || '').matchAll(TOKEN_RE), (match) => match[0].toLowerCase());
 }
@@ -354,42 +409,96 @@ function cosine(left, right) {
   return leftNorm && rightNorm ? dot / (Math.sqrt(leftNorm) * Math.sqrt(rightNorm)) : 0;
 }
 
-function openAiApiKey() {
-  if (!process.env.OPENAI_API_KEY) throw new Error('OPENAI_API_KEY is required');
-  return process.env.OPENAI_API_KEY;
-}
-
-async function openAiJson(url, payload, timeoutMs = 30000) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), timeoutMs);
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { authorization: `Bearer ${openAiApiKey()}`, 'content-type': 'application/json' },
-      body: JSON.stringify(payload),
-      signal: controller.signal
-    });
-    if (!response.ok) throw new Error(`OpenAI request failed with ${response.status}`);
-    return await response.json();
-  } finally {
-    clearTimeout(timeout);
-  }
-}
-
 async function embedQuery(query, model, dimensions) {
   const start = performance.now();
-  const data = await openAiJson(OPENAI_EMBEDDINGS_URL, {
-    model,
-    input: query,
-    encoding_format: 'float',
-    dimensions
-  }, 20000);
+  const response = await bedrock.send(new InvokeModelCommand({
+    modelId: model,
+    accept: 'application/json',
+    contentType: 'application/json',
+    body: JSON.stringify({ texts: [query], input_type: 'search_query', truncate: 'END' })
+  }));
+  const data = JSON.parse(new TextDecoder().decode(response.body));
+  if (!data.embeddings?.length) throw new Error('Bedrock embedding response did not include embeddings');
   logEvent('info', 'query_embedded', { model, dimensions, duration_ms: Math.round(performance.now() - start) });
-  return data.data[0].embedding;
+  return data.embeddings[0];
 }
 
 function publicChunk(chunk) {
   return Object.fromEntries(Object.entries(chunk).filter(([key]) => key !== 'embedding' && !key.startsWith('_')));
+}
+
+function sourceAgeLabel(source) {
+  const value = source.publish_date || '';
+  const published = value ? new Date(value) : null;
+  if (!published || Number.isNaN(published.getTime())) return 'unknown age';
+  const days = Math.max(0, (Date.now() - published.getTime()) / 86400000);
+  if (days < 45) return 'recent';
+  if (days < 365) return `about ${Math.max(Math.round(days / 30), 1)} months old`;
+  return `about ${Math.max(Math.round(days / 365), 1)} years old`;
+}
+
+function compactSource(source, textLimit = 900) {
+  return {
+    issue_number: source.issue_number,
+    subject: source.subject,
+    publish_date: source.publish_date,
+    issue_year: source.issue_year,
+    section: source.section,
+    age: source.age_label || sourceAgeLabel(source),
+    score: source._rerank_score || source._retrieval_score,
+    reason: source.retrieval_reason || (source.retrieval_modes || []).join(', '),
+    url: source.url,
+    topics: source.topics || [],
+    text: String(source.text || '').slice(0, textLimit)
+  };
+}
+
+async function rerankSources(query, sources, limit = 8) {
+  if (!sources.length || !truthyEnv('LIBRARIAN_RERANK_ENABLED', '1')) return sources.slice(0, limit);
+  const start = performance.now();
+  const top = sources.slice(0, Math.max(limit * 5, 40));
+  const rerankInputs = top.map((source) => ({
+    type: 'INLINE',
+    inlineDocumentSource: {
+      type: 'TEXT',
+      textDocument: {
+        text: [
+          `Weekly Thing #${source.issue_number}: ${source.subject || ''}`,
+          `Date: ${source.publish_date || ''}`,
+          `Section: ${source.section || ''}`,
+          `Topics: ${(source.topics || []).join(', ')}`,
+          String(source.text || '').replace(/\s+/g, ' ').slice(0, 1800)
+        ].join('\n')
+      }
+    }
+  }));
+  try {
+    const data = await bedrockAgentRuntime.send(new RerankCommand({
+      queries: [{ type: 'TEXT', textQuery: { text: query } }],
+      sources: rerankInputs,
+      rerankingConfiguration: {
+        type: 'BEDROCK_RERANKING_MODEL',
+        bedrockRerankingConfiguration: {
+          numberOfResults: Math.min(rerankInputs.length, Math.max(limit, 8)),
+          modelConfiguration: { modelArn: rerankModelArn() }
+        }
+      }
+    }));
+    const ordered = [];
+    for (const item of data.results || []) {
+      const index = Number(item.index);
+      if (index >= 0 && index < top.length) {
+        ordered.push({ ...top[index], _rerank_score: Number(item.relevanceScore ?? 0) });
+      }
+    }
+    if (ordered.length) {
+      logEvent('info', 'rerank_completed', { model: rerankModel(), candidate_count: top.length, result_count: ordered.length, duration_ms: Math.round(performance.now() - start) });
+      return ordered;
+    }
+  } catch (error) {
+    logEvent('warning', 'rerank_failed', { model: rerankModel(), error_type: error.constructor?.name || 'Error' });
+  }
+  return sources.slice(0, limit);
 }
 
 async function retrieveSemantic(query, limit = 8) {
@@ -397,8 +506,8 @@ async function retrieveSemantic(query, limit = 8) {
   const corpus = await loadCorpus();
   const chunks = (corpus.chunks || []).filter((chunk) => chunk.embedding);
   if (!chunks.length) return [];
-  const model = corpus.embedding_model || process.env.OPENAI_EMBEDDING_MODEL || DEFAULT_EMBEDDING_MODEL;
-  const dimensions = Number(corpus.embedding_dimensions || process.env.OPENAI_EMBEDDING_DIMENSIONS || DEFAULT_EMBEDDING_DIMENSIONS);
+  const model = corpus.embedding_model || embeddingModel();
+  const dimensions = Number(corpus.embedding_dimensions || DEFAULT_EMBEDDING_DIMENSIONS);
   const queryEmbedding = await embedQuery(query, model, dimensions);
   const result = chunks
     .map((chunk) => [cosine(queryEmbedding, chunk.embedding), chunk])
@@ -426,14 +535,34 @@ async function retrieveLexical(query, limit = 8) {
   return result;
 }
 
-async function retrieve(query, limit = 8) {
+function parseYearRange(value) {
+  if (!value) return [null, null];
+  if (Array.isArray(value) && value.length >= 2) return [Number(value[0]) || null, Number(value[1]) || null];
+  if (typeof value === 'object') return [Number(value.start || value.from) || null, Number(value.end || value.to) || null];
+  const years = String(value).match(/\b(?:19|20)\d{2}\b/g)?.map(Number) || [];
+  if (years.length > 1) return [Math.min(...years), Math.max(...years)];
+  if (years.length === 1) return [years[0], years[0]];
+  return [null, null];
+}
+
+function matchesFilters(source, { yearRange, section } = {}) {
+  const [startYear, endYear] = parseYearRange(yearRange);
+  const year = Number(source.issue_year || 0);
+  if (startYear && (!year || year < startYear)) return false;
+  if (endYear && (!year || year > endYear)) return false;
+  if (section && !String(source.section || '').toLowerCase().includes(String(section).toLowerCase())) return false;
+  return true;
+}
+
+async function retrieve(query, limit = 8, filters = {}) {
   try {
-    const semantic = await retrieveSemantic(query, limit);
-    if (semantic.length) return semantic;
+    const semantic = (await retrieveSemantic(query, Math.max(limit * 5, 40))).filter((source) => matchesFilters(source, filters));
+    if (semantic.length) return (await rerankSources(query, semantic, limit)).slice(0, limit).map((source) => ({ ...source, age_label: source.age_label || sourceAgeLabel(source) }));
   } catch (error) {
     logEvent('error', 'semantic_retrieval_failed', { error_type: error.constructor?.name || 'Error' });
   }
-  return retrieveLexical(query, limit);
+  const lexical = (await retrieveLexical(query, Math.max(limit * 5, 40))).filter((source) => matchesFilters(source, filters));
+  return (await rerankSources(query, lexical, limit)).slice(0, limit).map((source) => ({ ...source, age_label: source.age_label || sourceAgeLabel(source) }));
 }
 
 function sanitizeHistory(history) {
@@ -506,13 +635,10 @@ function citationsFor(chunks) {
   return citations;
 }
 
-function extractOutputText(response) {
-  if (response?.output_text) return String(response.output_text);
+function bedrockMessageText(message) {
   const parts = [];
-  for (const item of response?.output || []) {
-    for (const content of item.content || []) {
-      if (content.type === 'output_text' || content.type === 'text') parts.push(content.text || '');
-    }
+  for (const content of message?.content || []) {
+    if (content.text) parts.push(content.text);
   }
   return parts.join('\n').trim();
 }
@@ -522,63 +648,300 @@ function writeSse(stream, event, data) {
   stream.write(`data: ${JSON.stringify(data)}\n\n`);
 }
 
-async function streamOpenAiAnswer(question, chunks, history, responseStream) {
+async function streamBedrockAnswer(question, chunks, history, responseStream) {
   const start = performance.now();
-  const model = process.env.OPENAI_MODEL || DEFAULT_MODEL;
-  const openAiResponse = await fetch(OPENAI_RESPONSES_URL, {
-    method: 'POST',
-    headers: { authorization: `Bearer ${openAiApiKey()}`, 'content-type': 'application/json' },
-    body: JSON.stringify({
-      model,
-      instructions: `You are Thingy, the archive librarian for The Weekly Thing. You are not Jamie. When referring to Jamie Thingelstad, use he/him pronouns. Be direct, specific, and helpful. Do not use a greeting or signoff. ${ANSWER_STYLE_INSTRUCTIONS} Keep answers under 500 words unless the user asks for more detail. Use conversation context for follow-ups. Prefer newer sources for current guidance, but deliberately use older sources for history and evolution questions. When sources span years, distinguish older context from newer writing. Cite issue numbers inline for substantive claims using #295 or (#295, #297), do not include URLs in prose, say when the archive does not contain enough evidence, and do not end by asking whether the user wants more.`,
-      input: buildPrompt(question, chunks, history),
-      max_output_tokens: Number(process.env.OPENAI_MAX_OUTPUT_TOKENS || '2500'),
-      stream: true
-    })
-  });
-  if (!openAiResponse.ok || !openAiResponse.body) throw new Error(`OpenAI stream failed with ${openAiResponse.status}`);
+  const response = await bedrock.send(new ConverseCommand({
+    modelId: agentModel(),
+    system: [{
+      text: `You are Thingy, the archive librarian for The Weekly Thing. You are not Jamie. When referring to Jamie Thingelstad, use he/him pronouns. Be direct, specific, and helpful. Do not use a greeting or signoff. ${ANSWER_STYLE_INSTRUCTIONS} Keep answers under 500 words unless the user asks for more detail. Use conversation context for follow-ups. Prefer newer sources for current guidance, but deliberately use older sources for history and evolution questions. When sources span years, distinguish older context from newer writing. Cite issue numbers inline for substantive claims using #295 or (#295, #297), do not include URLs in prose, say when the archive does not contain enough evidence, and do not end by asking whether the user wants more.`
+    }, { cachePoint: { type: 'default' } }],
+    messages: [{ role: 'user', content: [{ text: buildPrompt(question, chunks, history) }] }],
+    inferenceConfig: {
+      maxTokens: Number(process.env.BEDROCK_MAX_OUTPUT_TOKENS || '2500'),
+      temperature: Number(process.env.BEDROCK_TEMPERATURE || '0.45')
+    }
+  }));
+  const answer = bedrockMessageText(response.output?.message || '').trim();
+  if (answer) writeSse(responseStream, 'answer_delta', { delta: answer });
+  logEvent('info', 'answer_streamed', { model: agentModel(), duration_ms: Math.round(performance.now() - start), answer_chars: answer.length });
+  return answer;
+}
 
-  const reader = openAiResponse.body.getReader();
-  const decoder = new TextDecoder();
-  let buffer = '';
-  let answer = '';
+function issueKey(value) {
+  return String(value || '').replace(/^#/, '').trim();
+}
 
-  async function handleEvent(rawEvent) {
-    const dataLines = rawEvent.split('\n').filter((line) => line.startsWith('data:')).map((line) => line.slice(5).trimStart());
-    if (!dataLines.length) return;
-    const data = dataLines.join('\n');
-    if (data === '[DONE]') return;
-    const event = JSON.parse(data);
-    if (event.type === 'response.output_text.delta') {
-      const delta = event.delta || '';
-      if (delta) {
-        answer += delta;
-        writeSse(responseStream, 'answer_delta', { delta });
-      }
-    } else if (event.type === 'response.completed') {
-      const completedText = extractOutputText(event.response);
-      if (!answer && completedText) {
-        answer = completedText;
-        writeSse(responseStream, 'answer_delta', { delta: completedText });
-      }
-    } else if (event.type === 'response.failed' || event.type === 'error') {
-      throw new Error(event.error?.message || 'OpenAI stream failed');
+async function issueByNumber(number) {
+  const wanted = issueKey(number);
+  const corpus = await loadCorpus();
+  return (corpus.issues || []).find((issue) => issueKey(issue.number) === wanted);
+}
+
+async function issueSections(issue) {
+  if (Array.isArray(issue.sections) && issue.sections.length) return issue.sections;
+  const corpus = await loadCorpus();
+  const grouped = new Map();
+  for (const chunk of corpus.chunks || []) {
+    if (issueKey(chunk.issue_number) !== issueKey(issue.number)) continue;
+    const name = chunk.section || 'Issue';
+    grouped.set(name, [...(grouped.get(name) || []), chunk.text || '']);
+  }
+  return Array.from(grouped.entries(), ([name, parts]) => ({ name, text: parts.join('\n\n') }));
+}
+
+function normalizedDomain(value) {
+  return String(value || '').toLowerCase().replace(/^https?:\/\//, '').split('/')[0].replace(/^www\./, '');
+}
+
+async function linkRecords() {
+  const corpus = await loadCorpus();
+  if (Array.isArray(corpus.links)) return corpus.links;
+  const links = [];
+  for (const issue of corpus.issues || []) {
+    for (const link of issue.links || []) links.push({ ...link, issue_number: issue.number, subject: issue.subject, publish_date: issue.publish_date, issue_year: issue.issue_year, issue_url: issue.url });
+  }
+  return links;
+}
+
+async function toolSearchArchive(input = {}) {
+  const query = String(input.query || '').trim();
+  if (!query) return { results: [] };
+  const limit = Math.min(Math.max(Number(input.limit || 8), 1), 12);
+  const results = await retrieve(query, limit, { yearRange: input.year_range, section: input.section });
+  return { query, results: results.map((source) => compactSource(source)) };
+}
+
+async function toolGetIssue(input = {}) {
+  const issue = await issueByNumber(input.number);
+  if (!issue) return { error: 'Issue not found.' };
+  const sections = await issueSections(issue);
+  return {
+    issue: {
+      number: issue.number,
+      subject: issue.subject,
+      publish_date: issue.publish_date,
+      url: issue.url,
+      topics: issue.topics || [],
+      sections: sections.map((section) => ({ name: section.name, word_count: tokenize(section.text || '').length })),
+      body: String(issue.body || sections.map((section) => `## ${section.name}\n${section.text || ''}`).join('\n\n')).slice(0, 16000)
+    }
+  };
+}
+
+async function toolGetSection(input = {}) {
+  const issue = await issueByNumber(input.number);
+  const wanted = String(input.section || '').toLowerCase();
+  if (!issue || !wanted) return { error: 'Issue or section not found.' };
+  const sections = await issueSections(issue);
+  const section = sections.find((item) => String(item.name || '').toLowerCase() === wanted || String(item.name || '').toLowerCase().includes(wanted));
+  if (!section) return { error: 'Section not found.', available_sections: sections.map((item) => item.name) };
+  return { issue_number: issue.number, subject: issue.subject, publish_date: issue.publish_date, section: section.name, url: issue.url, text: String(section.text || '').slice(0, 12000) };
+}
+
+async function toolFindLinks(input = {}) {
+  const domain = normalizedDomain(input.domain || '');
+  const topic = String(input.topic || '').toLowerCase().trim();
+  const [startYear, endYear] = parseYearRange(input.year_range);
+  const limit = Math.min(Math.max(Number(input.limit || 20), 1), 50);
+  const graph = await loadGraph();
+  const issueMatches = topic ? new Set(graph.entity_index?.[topic] || []) : new Set();
+  const results = [];
+  const filteredLinks = [];
+  for (const link of await linkRecords()) {
+    const linkDomain = normalizedDomain(link.domain || link.url || '');
+    const year = Number(link.issue_year || 0);
+    if (domain && !linkDomain.includes(domain)) continue;
+    if (startYear && (!year || year < startYear)) continue;
+    if (endYear && (!year || year > endYear)) continue;
+    const haystack = [link.text, link.title, link.section, link.heading_context, link.context, link.domain].join(' ').toLowerCase();
+    if (topic && !haystack.includes(topic) && !issueMatches.has(issueKey(link.issue_number))) continue;
+    filteredLinks.push(link);
+    if (results.length < limit) {
+      results.push({ issue_number: link.issue_number, subject: link.subject, publish_date: link.publish_date, section: link.section, domain: link.domain, link_text: link.text || link.title || link.heading_context, context: link.context || link.heading_context, url: link.url });
     }
   }
-
-  while (true) {
-    const { value, done } = await reader.read();
-    if (done) break;
-    buffer += decoder.decode(value, { stream: true });
-    const events = buffer.split(/\n\n/);
-    buffer = events.pop() || '';
-    for (const event of events) await handleEvent(event);
+  const counts = new Map();
+  for (const link of filteredLinks) {
+    const linkDomain = normalizedDomain(link.domain || link.url || '');
+    if (linkDomain) counts.set(linkDomain, (counts.get(linkDomain) || 0) + 1);
   }
-  buffer += decoder.decode();
-  if (buffer.trim()) await handleEvent(buffer);
+  const top_domains = Array.from(counts.entries()).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 20).map(([domainName, count]) => ({ domain: domainName, count }));
+  return { results, top_domains };
+}
 
-  logEvent('info', 'answer_streamed', { model, duration_ms: Math.round(performance.now() - start), answer_chars: answer.length });
-  return answer;
+async function toolDomainHistory(input = {}) {
+  if (!input.domain) return { error: 'domain is required', results: [] };
+  return toolFindLinks({ domain: input.domain, limit: input.limit || 80 });
+}
+
+function contextAround(text, phrase, radius = 240) {
+  const index = text.toLowerCase().indexOf(String(phrase).toLowerCase());
+  if (index < 0) return '';
+  return text.slice(Math.max(0, index - radius), Math.min(text.length, index + String(phrase).length + radius)).trim();
+}
+
+async function toolQuoteSearch(input = {}) {
+  const phrase = String(input.phrase || '').trim();
+  if (phrase.length < 3) return { results: [] };
+  const limit = Math.min(Math.max(Number(input.limit || 20), 1), 50);
+  const corpus = await loadCorpus();
+  const results = [];
+  for (const issue of corpus.issues || []) {
+    let body = String(issue.body || '');
+    if (!body) body = (await issueSections(issue)).map((section) => section.text || '').join('\n\n');
+    if (body.toLowerCase().includes(phrase.toLowerCase())) {
+      results.push({ issue_number: issue.number, subject: issue.subject, publish_date: issue.publish_date, url: issue.url, context: contextAround(body, phrase) });
+      if (results.length >= limit) break;
+    }
+  }
+  return { phrase, results };
+}
+
+async function toolListIssues(input = {}) {
+  const corpus = await loadCorpus();
+  const graph = await loadGraph();
+  const topic = String(input.topic || input.entity || '').toLowerCase().trim();
+  const issueMatches = topic ? new Set(graph.entity_index?.[topic] || []) : new Set();
+  const limit = Math.min(Math.max(Number(input.limit || 60), 1), 120);
+  const results = [];
+  const topicCounts = new Map();
+  const entityCounts = new Map();
+  const tropeCounts = new Map();
+  for (const issue of corpus.issues || []) {
+    const graphIssue = graph.issues?.[issueKey(issue.number)] || {};
+    for (const issueTopic of issue.topics || []) topicCounts.set(issueTopic, (topicCounts.get(issueTopic) || 0) + 1);
+    for (const entity of (graphIssue.entities || []).slice(0, 20)) {
+      const key = String(entity).toLowerCase();
+      entityCounts.set(key, (entityCounts.get(key) || 0) + 1);
+    }
+    for (const trope of (graphIssue.tropes || []).slice(0, 12)) {
+      const key = String(trope).toLowerCase();
+      tropeCounts.set(key, (tropeCounts.get(key) || 0) + 1);
+    }
+    if (input.year && Number(issue.issue_year || 0) !== Number(input.year)) continue;
+    const haystack = [issue.subject, ...(issue.topics || [])].join(' ').toLowerCase();
+    if (topic && !haystack.includes(topic) && !issueMatches.has(issueKey(issue.number))) continue;
+    if (results.length < limit) {
+      results.push({ number: issue.number, issue_number: issue.number, subject: issue.subject, publish_date: issue.publish_date, url: issue.url, topics: issue.topics || [], entities: (graphIssue.entities || []).slice(0, 12), tropes: (graphIssue.tropes || []).slice(0, 6) });
+    }
+  }
+  const formatCounts = (map, key) => Array.from(map.entries()).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 20).map(([name, count]) => ({ [key]: name, count }));
+  return { results, topic_counts: formatCounts(topicCounts, 'topic'), entity_counts: formatCounts(entityCounts, 'entity'), trope_counts: formatCounts(tropeCounts, 'trope') };
+}
+
+async function toolCompareEras(input = {}) {
+  const topic = String(input.topic || '').trim();
+  if (!topic) return { error: 'topic is required' };
+  const limit = Math.min(Math.max(Number(input.limit || 6), 1), 10);
+  const first = await retrieve(topic, limit, { yearRange: input.year_a });
+  const second = await retrieve(topic, limit, { yearRange: input.year_b });
+  return { topic, year_a: input.year_a, year_b: input.year_b, results_a: first.map((item) => compactSource(item, 700)), results_b: second.map((item) => compactSource(item, 700)) };
+}
+
+const ARCHIVE_TOOLS = {
+  search_archive: toolSearchArchive,
+  get_issue: toolGetIssue,
+  get_section: toolGetSection,
+  find_links: toolFindLinks,
+  domain_history: toolDomainHistory,
+  quote_search: toolQuoteSearch,
+  list_issues: toolListIssues,
+  compare_eras: toolCompareEras
+};
+
+function toolSpecs() {
+  return [
+    { toolSpec: { name: 'search_archive', description: 'Hybrid search over Weekly Thing chunks. Use iteratively for topics, themes, and evidence gathering.', inputSchema: { json: { type: 'object', properties: { query: { type: 'string' }, year_range: { type: ['array', 'string', 'object'] }, section: { type: 'string' }, limit: { type: 'integer' } }, required: ['query'] } } } },
+    { toolSpec: { name: 'get_issue', description: 'Return one full Weekly Thing issue with section structure preserved.', inputSchema: { json: { type: 'object', properties: { number: { type: ['string', 'integer'] } }, required: ['number'] } } } },
+    { toolSpec: { name: 'get_section', description: 'Return a named section from one issue.', inputSchema: { json: { type: 'object', properties: { number: { type: ['string', 'integer'] }, section: { type: 'string' } }, required: ['number', 'section'] } } } },
+    { toolSpec: { name: 'find_links', description: 'Query the editorial link graph by domain, topic/entity, and year range. Does not fetch linked pages.', inputSchema: { json: { type: 'object', properties: { domain: { type: 'string' }, topic: { type: 'string' }, year_range: { type: ['array', 'string', 'object'] }, limit: { type: 'integer' } } } } } },
+    { toolSpec: { name: 'domain_history', description: 'List every issue that cited a domain with date and surrounding link context.', inputSchema: { json: { type: 'object', properties: { domain: { type: 'string' }, limit: { type: 'integer' } }, required: ['domain'] } } } },
+    { toolSpec: { name: 'quote_search', description: 'Exact substring search across issue bodies.', inputSchema: { json: { type: 'object', properties: { phrase: { type: 'string' }, limit: { type: 'integer' } }, required: ['phrase'] } } } },
+    { toolSpec: { name: 'list_issues', description: 'Metadata-only issue listing filtered by year, topic, or entity.', inputSchema: { json: { type: 'object', properties: { year: { type: ['integer', 'string'] }, topic: { type: 'string' }, entity: { type: 'string' }, limit: { type: 'integer' } } } } } },
+    { toolSpec: { name: 'compare_eras', description: 'Search the same topic in two year windows and return both result sets.', inputSchema: { json: { type: 'object', properties: { topic: { type: 'string' }, year_a: { type: ['integer', 'string', 'array', 'object'] }, year_b: { type: ['integer', 'string', 'array', 'object'] }, limit: { type: 'integer' } }, required: ['topic', 'year_a', 'year_b'] } } } },
+    { cachePoint: { type: 'default' } }
+  ];
+}
+
+const AGENT_SYSTEM_PROMPT = `You are Thingy, the archive librarian for The Weekly Thing. You are not Jamie. Use the supplied archive tools to investigate before answering. Do not rely on memory or outside web content. Use search_archive first for broad thematic questions, quote_search for exact wording, domain_history/find_links for link-domain questions, get_issue/get_section when you need full context, and compare_eras for before/after questions. For named products, unusual phrases, remembered snippets, and likely-not-covered questions, use quote_search before synthesizing; do not infer exact coverage from related search hits. For aggregate pattern questions, use list_issues for topic/entity/trope counts and find_links without filters for top domains. For evolution questions, inspect early, middle, and recent windows before answering. Never provide private personal data such as a home address or phone number; redirect to public contact methods. Do not imitate Jamie's exact living-person voice; if asked to write in his style, write a clearly archive-inspired Weekly Thing-style entry instead. For reading paths, choose a small sequence of issues or sections and explain why each belongs. For changed-his-mind or theme-summary questions, gather evidence from multiple years before synthesizing. Cite issue numbers inline for substantive claims using #295 or (#295, #297), and do not include URLs in prose. ${ANSWER_STYLE_INSTRUCTIONS} Keep answers under 500 words unless the user asks for more detail. If the archive tools do not provide enough evidence, say so directly in the answer.`;
+
+function collectToolCitations(toolResults) {
+  const sources = [];
+  for (const result of toolResults) {
+    const candidates = [];
+    if (Array.isArray(result.results)) candidates.push(...result.results);
+    if (Array.isArray(result.results_a)) candidates.push(...result.results_a);
+    if (Array.isArray(result.results_b)) candidates.push(...result.results_b);
+    if (result.issue) candidates.push({ issue_number: result.issue.number, ...result.issue });
+    for (const item of candidates) {
+      if (item?.issue_number) sources.push({ issue_number: item.issue_number, subject: item.subject, publish_date: item.publish_date, section: item.section || 'Issue', url: item.url || `/archive/${item.issue_number}/` });
+    }
+  }
+  return citationsFor(sources);
+}
+
+function prioritizeCitationsForAnswer(citations, answer) {
+  const mentioned = [...String(answer || '').matchAll(/#(\d+)/g)].map((match) => Number(match[1]));
+  if (!mentioned.length) return citations;
+  const firstSeen = new Map();
+  mentioned.forEach((issueNumber, index) => {
+    if (!firstSeen.has(issueNumber)) firstSeen.set(issueNumber, index);
+  });
+  return citations
+    .map((citation, index) => ({ citation, index }))
+    .sort((a, b) => {
+      const rankA = firstSeen.get(Number(a.citation.issue_number)) ?? 10000;
+      const rankB = firstSeen.get(Number(b.citation.issue_number)) ?? 10000;
+      return rankA - rankB || a.index - b.index;
+    })
+    .map(({ citation }) => citation);
+}
+
+async function streamBedrockAgentAnswer(question, history, responseStream) {
+  const start = performance.now();
+  const messages = [{ role: 'user', content: [{ text: `Conversation so far:\n\n${conversationContext(history)}\n\nUser question: ${question}\n\nInvestigate with tools as needed, then answer as Thingy.` }] }];
+  const toolResults = [];
+  let answer = '';
+  const maxTurns = Number(process.env.MAX_TOOL_TURNS || DEFAULT_MAX_TOOL_TURNS);
+  for (let turn = 0; turn <= maxTurns; turn += 1) {
+    const response = await bedrock.send(new ConverseCommand({
+      modelId: agentModel(),
+      system: [{ text: AGENT_SYSTEM_PROMPT }, { cachePoint: { type: 'default' } }],
+      messages,
+      toolConfig: { tools: toolSpecs() },
+      inferenceConfig: { maxTokens: Number(process.env.BEDROCK_MAX_OUTPUT_TOKENS || '2500'), temperature: Number(process.env.BEDROCK_TEMPERATURE || '0.45') }
+    }));
+    const message = response.output?.message || {};
+    messages.push(message);
+    const toolUses = (message.content || []).filter((block) => block.toolUse).map((block) => block.toolUse);
+    if (!toolUses.length) {
+      answer = bedrockMessageText(message);
+      if (answer) writeSse(responseStream, 'answer_delta', { delta: answer });
+      break;
+    }
+    const resultBlocks = [];
+    for (const toolUse of toolUses) {
+      writeSse(responseStream, 'status', { message: `Checking ${toolUse.name.replaceAll('_', ' ')}...` });
+      const handler = ARCHIVE_TOOLS[toolUse.name];
+      let result;
+      try {
+        result = handler ? await handler(toolUse.input || {}) : { error: `Unknown tool: ${toolUse.name}` };
+      } catch (error) {
+        logEvent('error', 'tool_call_failed', { tool_name: toolUse.name, error_type: error.constructor?.name || 'Error' });
+        result = { error: `${toolUse.name} failed: ${error.constructor?.name || 'Error'}` };
+      }
+      toolResults.push(result);
+      resultBlocks.push({ toolResult: { toolUseId: toolUse.toolUseId, content: [{ json: result }] } });
+    }
+    messages.push({ role: 'user', content: resultBlocks });
+  }
+  if (!answer) {
+    answer = 'I could not produce a reliable answer from the archive tools for that question.';
+    writeSse(responseStream, 'answer_delta', { delta: answer });
+  }
+  const citations = prioritizeCitationsForAnswer(collectToolCitations(toolResults), answer);
+  logEvent('info', 'agent_streamed', { model: agentModel(), tool_turns: toolResults.length, citation_count: citations.length, duration_ms: Math.round(performance.now() - start), answer_chars: answer.length });
+  return { answer, citations };
 }
 
 function streamFromResponse(responseStream, event, statusCode) {
@@ -588,6 +951,16 @@ function streamFromResponse(responseStream, event, statusCode) {
       'content-type': 'text/event-stream; charset=utf-8',
       'cache-control': 'no-cache, no-transform',
       'x-accel-buffering': 'no'
+    }
+  });
+}
+
+function jsonResponseStream(responseStream, statusCode) {
+  return awslambda.HttpResponseStream.from(responseStream, {
+    statusCode,
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      'cache-control': 'no-store'
     }
   });
 }
@@ -603,6 +976,21 @@ export const handler = awslambda.streamifyResponse(async (event, responseStream,
   if (method === 'OPTIONS') {
     const stream = streamFromResponse(responseStream, event, 204);
     stream.end();
+    return;
+  }
+
+  if (method === 'GET' && path.endsWith('/health')) {
+    const stream = jsonResponseStream(responseStream, 200);
+    stream.write(JSON.stringify({
+      ok: true,
+      service: 'weekly-thing-librarian-stream',
+      model: agentModel(),
+      embedding_model: embeddingModel(),
+      rerank_model: rerankModel(),
+      agent_enabled: truthyEnv('LIBRARIAN_AGENT_ENABLED', '0')
+    }));
+    stream.end();
+    logEvent('info', 'request_completed', { ...summary, duration_ms: Math.round(performance.now() - start) });
     return;
   }
 
@@ -637,29 +1025,51 @@ export const handler = awslambda.streamifyResponse(async (event, responseStream,
     }
 
     writeSse(stream, 'meta', { request_id: requestId });
-    writeSse(stream, 'status', { message: 'Searching the archive...' });
-    const chunks = await retrieve(retrievalQuery(question, history));
-    if (!chunks.length) {
-      writeSse(stream, 'answer_delta', { delta: 'I could not find enough in the archive to answer that from Weekly Thing sources. I can try a broader search term, look for a specific issue, or compare this topic with another archive theme.' });
-      writeSse(stream, 'citations', { citations: [] });
+    const guardedAnswer = privacyGuardAnswer(question);
+    if (guardedAnswer) {
+      const citations = [];
+      writeSse(stream, 'answer_delta', { delta: guardedAnswer });
+      writeSse(stream, 'citations', { citations });
       writeSse(stream, 'done', { request_id: requestId });
-      await postTinylyticsEvent(event, 'librarian.chat_no_sources', {
+      await recordConversation({ event, subscriberHash, question, answer: guardedAnswer, historyCount: history.length, citations, route: 'stream', requestId });
+      await postTinylyticsEvent(event, 'librarian.chat_success', {
         visitorId: subscriberHash,
-        value: tinylyticsValue({ member: subscriberHash, history: history.length, chars: question.length })
-      });
-      logEvent('info', 'chat_completed_no_sources', {
-        subscriber_hash: subscriberHash,
-        question_chars: question.length,
-        history_count: history.length,
-        duration_ms: Math.round(performance.now() - start)
+        value: tinylyticsValue({ member: subscriberHash, citations: 0, history: history.length, chars: question.length })
       });
       return;
     }
 
-    writeSse(stream, 'status', { message: 'Writing answer...' });
-    const citations = citationsFor(chunks);
+    let answer;
+    let citations;
+    if (truthyEnv('LIBRARIAN_AGENT_ENABLED', '0')) {
+      writeSse(stream, 'status', { message: 'Investigating the archive...' });
+      const result = await streamBedrockAgentAnswer(question, history, stream);
+      answer = result.answer;
+      citations = result.citations;
+    } else {
+      writeSse(stream, 'status', { message: 'Searching the archive...' });
+      const chunks = await retrieve(retrievalQuery(question, history));
+      if (!chunks.length) {
+        writeSse(stream, 'answer_delta', { delta: 'I could not find enough in the archive to answer that from Weekly Thing sources. I can try a broader search term, look for a specific issue, or compare this topic with another archive theme.' });
+        writeSse(stream, 'citations', { citations: [] });
+        writeSse(stream, 'done', { request_id: requestId });
+        await postTinylyticsEvent(event, 'librarian.chat_no_sources', {
+          visitorId: subscriberHash,
+          value: tinylyticsValue({ member: subscriberHash, history: history.length, chars: question.length })
+        });
+        logEvent('info', 'chat_completed_no_sources', {
+          subscriber_hash: subscriberHash,
+          question_chars: question.length,
+          history_count: history.length,
+          duration_ms: Math.round(performance.now() - start)
+        });
+        return;
+      }
+      writeSse(stream, 'status', { message: 'Writing answer...' });
+      citations = citationsFor(chunks);
+      answer = await streamBedrockAnswer(question, chunks, history, stream);
+    }
     writeSse(stream, 'citations', { citations });
-    const answer = await streamOpenAiAnswer(question, chunks, history, stream);
     writeSse(stream, 'done', { request_id: requestId });
     await recordConversation({
       event,

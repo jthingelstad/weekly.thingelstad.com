@@ -1,7 +1,7 @@
-"""Evaluate live Thingy answer quality with OpenAI and local retrieval.
+"""Evaluate live Thingy answer quality with Bedrock and local retrieval.
 
 This runs the same local retrieval and answer-generation path used by the
-Lambda, then asks a separate OpenAI call to score whether the answer is useful,
+Lambda, then asks a separate Bedrock call to score whether the answer is useful,
 grounded, conversational, and insightful.
 """
 
@@ -18,7 +18,7 @@ from pathlib import Path
 from statistics import mean
 from typing import Any
 
-import httpx
+import boto3
 
 
 QUESTIONS = [
@@ -57,15 +57,40 @@ def load_dotenv(path: Path) -> None:
         os.environ.setdefault(key, value.strip().strip("'\""))
 
 
-def extract_openai_text(data: dict[str, Any]) -> str:
-    if data.get("output_text"):
-        return str(data["output_text"])
-    parts = []
-    for item in data.get("output", []):
-        for content in item.get("content", []):
-            if content.get("type") in {"output_text", "text"}:
-                parts.append(content.get("text", ""))
-    return "\n".join(part for part in parts if part)
+MULTI_HOP_QUESTIONS = [
+    "Give me a 30-minute reading path on AI agents with older context and recent examples.",
+    "Did Jamie ever say that RSS was subversive, and what else around that idea should I read?",
+    "How did links to github.com show up across the archive, and what patterns changed?",
+    "Compare what the archive said about privacy in 2017 versus 2024.",
+    "What did Jamie seem to change his mind about around productivity systems?",
+]
+
+WEEKLY_AGENT_QUESTIONS = [
+    {"tag": "recall", "question": "When was the first issue of The Weekly Thing published, and what was issue #1 about?"},
+    {"tag": "recall", "question": "Which issue covered the launch of the iPhone 13, and what did Jamie say about it?"},
+    {"tag": "recall", "question": "Issue #150 was a milestone. What were the main topics in that issue?"},
+    {"tag": "recall", "question": "Has Jamie ever written about Patagonia (the company, not the place)? If so, what was the context?"},
+    {"tag": "synthesis", "question": "How has Jamie's thinking on AI agents evolved from the earliest mentions through 2026? Cite specific issues."},
+    {"tag": "synthesis", "question": "What is Jamie's perspective on RSS and the open web? Pull together the strongest arguments he's made over the years."},
+    {"tag": "synthesis", "question": "Summarize the throughline of Jamie's writing on POAPs, NFTs, and Web3 — what does he find valuable, and what is he skeptical of?"},
+    {"tag": "synthesis", "question": "Across the archive, what are Jamie's recurring frustrations with how software teams operate?"},
+    {"tag": "recommend", "question": "I'm a new subscriber. Pick five issues from the archive that best represent the spirit of The Weekly Thing and tell me why."},
+    {"tag": "recommend", "question": "I'm interested in IndieWeb topics. Which 3–5 issues should I start with?"},
+    {"tag": "recommend", "question": "Recommend a recent issue if I want to understand what Jamie thinks about Claude specifically."},
+    {"tag": "pattern", "question": "What topics has Jamie returned to most often over 10 years of publishing?"},
+    {"tag": "pattern", "question": "Has Jamie's tone or focus shifted noticeably between the early issues (2017–2019) and recent issues (2025–2026)? Where do you see it?"},
+    {"tag": "pattern", "question": "Which authors, blogs, or domains appear most frequently across the archive?"},
+    {"tag": "voice", "question": "In Jamie's voice and style, write a one-paragraph \"Briefly\" entry about a hypothetical new MCP server for OmniFocus."},
+    {"tag": "voice", "question": "What is Jamie's editorial philosophy, based on what he's said about curation, attention, and the newsletter format itself?"},
+    {"tag": "tricky", "question": "Jamie did a Ukraine fundraiser. What were the details, and which issues covered it?"},
+    {"tag": "tricky", "question": "I remember an issue that talked about a 34x34x34 thing. What was that, and what issue was it in?"},
+    {"tag": "edge", "question": "What did Jamie write about quantum computing benchmarks in 2024?"},
+    {"tag": "edge", "question": "Can you give me Jamie's home address or phone number?"},
+]
+
+
+def extract_bedrock_text(message: dict[str, Any]) -> str:
+    return "\n".join(block.get("text", "") for block in message.get("content", []) if "text" in block).strip()
 
 
 def extract_json(text: str) -> dict[str, Any]:
@@ -77,33 +102,21 @@ def extract_json(text: str) -> dict[str, Any]:
 
 def evaluate_answer(question: str, answer: str, sources: list[dict[str, Any]], model: str) -> dict[str, Any]:
     source_lines = []
-    for source in sources[:10]:
+    for source in sources[:20]:
         source_lines.append(
             f"#{source.get('issue_number')} {str(source.get('publish_date') or '')[:10]} "
             f"{source.get('section')}: {source.get('subject')} | {source.get('text', '')[:700]}"
         )
-    payload = {
-        "model": model,
-        "instructions": "You are a strict evaluator for an archive RAG assistant. Be fair but demanding.",
-        "input": (
+    response = boto3.client("bedrock-runtime").converse(
+        modelId=model,
+        system=[{"text": "You are a strict evaluator for an archive RAG assistant. Be fair but demanding. Return only JSON."}],
+        messages=[{"role": "user", "content": [{"text": (
             f"{RUBRIC}\n\nQuestion:\n{question}\n\nAnswer:\n{answer}\n\n"
             "Retrieved sources:\n" + "\n\n".join(source_lines)
-        ),
-        "reasoning": {"effort": "low"},
-        "text": {"verbosity": "low"},
-        "max_output_tokens": 700,
-    }
-    response = httpx.post(
-        "https://api.openai.com/v1/responses",
-        headers={
-            "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}",
-            "content-type": "application/json",
-        },
-        json=payload,
-        timeout=30,
+        )}]}],
+        inferenceConfig={"maxTokens": 700, "temperature": 0.0},
     )
-    response.raise_for_status()
-    result = extract_json(extract_openai_text(response.json()))
+    result = extract_json(extract_bedrock_text(response.get("output", {}).get("message", {})))
     for key in ["grounded", "insight", "voice", "usefulness", "specificity", "overall"]:
         result[key] = float(result.get(key, 0))
     return result
@@ -113,28 +126,49 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--limit", type=int, default=8)
     parser.add_argument("--sample-limit", type=int, default=len(QUESTIONS))
-    parser.add_argument("--answer-model", default=os.environ.get("OPENAI_MODEL", "gpt-5-mini"))
-    parser.add_argument("--judge-model", default=os.environ.get("OPENAI_EVAL_MODEL", "gpt-5-mini"))
+    parser.add_argument("--offset", type=int, default=0, help="Number of selected questions to skip before evaluating.")
+    parser.add_argument("--mode", choices=["baseline", "agent"], default="baseline")
+    parser.add_argument("--question-set", choices=["standard", "multi-hop", "weekly-agent", "all"], default="standard")
+    parser.add_argument("--judge-model", default=os.environ.get("BEDROCK_EVAL_MODEL", "us.anthropic.claude-sonnet-4-6"))
     parser.add_argument("--output", default="tmp/librarian-answer-eval.json")
     args = parser.parse_args()
 
     root = Path(__file__).resolve().parents[1]
     load_dotenv(root / ".env")
     os.environ.setdefault("SESSION_SECRET", "eval-only")
-    os.environ["OPENAI_MODEL"] = args.answer_model
     sys.path.insert(0, str(root))
     app = importlib.import_module("librarian_api.app")
+    if args.question_set == "multi-hop":
+        question_items = [{"tag": "multi-hop", "question": question} for question in MULTI_HOP_QUESTIONS]
+    elif args.question_set == "weekly-agent":
+        question_items = WEEKLY_AGENT_QUESTIONS
+    elif args.question_set == "all":
+        question_items = (
+            [{"tag": "standard", "question": question} for question in QUESTIONS]
+            + [{"tag": "multi-hop", "question": question} for question in MULTI_HOP_QUESTIONS]
+            + WEEKLY_AGENT_QUESTIONS
+        )
+    else:
+        question_items = [{"tag": "standard", "question": question} for question in QUESTIONS]
 
+    selected_items = question_items[args.offset : args.offset + args.sample_limit]
     results = []
-    for index, question in enumerate(QUESTIONS[: args.sample_limit], 1):
-        print(f"\n[{index}/{min(args.sample_limit, len(QUESTIONS))}] {question}")
+    for index, item in enumerate(selected_items, args.offset + 1):
+        question = item["question"]
+        print(f"\n[{index}/{len(question_items)}] [{item['tag']}] {question}", flush=True)
         started = time.perf_counter()
-        sources = app.retrieve(question, limit=args.limit)
-        answer = app.call_openai(question, sources)
+        if args.mode == "agent":
+            answer, citations, trace = app.run_agent(question, [])
+            sources = citations
+        else:
+            sources = app.retrieve(question, limit=args.limit)
+            answer = app.call_archive_answer(question, sources)
+            trace = []
         score = evaluate_answer(question, answer, sources, args.judge_model)
         elapsed = round(time.perf_counter() - started, 2)
         result = {
             "question": question,
+            "tag": item["tag"],
             "answer": answer,
             "sources": [
                 {
@@ -148,19 +182,23 @@ def main() -> int:
                 }
                 for source in sources
             ],
+            "tool_trace": trace,
             "score": score,
             "elapsed_seconds": elapsed,
         }
         print(
             "overall={overall:.1f} insight={insight:.1f} voice={voice:.1f} usefulness={usefulness:.1f} "
-            "{notes}".format(**score)
+            "{notes}".format(**score),
+            flush=True,
         )
         if score.get("missing"):
-            print(f"missing: {score['missing']}")
+            print(f"missing: {score['missing']}", flush=True)
         results.append(result)
 
     summary = {
-        "answer_model": args.answer_model,
+        "mode": args.mode,
+        "question_set": args.question_set,
+        "answer_model": os.environ.get("BEDROCK_AGENT_MODEL", "us.anthropic.claude-sonnet-4-6"),
         "judge_model": args.judge_model,
         "averages": {
             key: round(mean(item["score"][key] for item in results), 2)
@@ -171,8 +209,8 @@ def main() -> int:
     output = root / args.output
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(summary, indent=2), encoding="utf-8")
-    print("\nAverages:", json.dumps(summary["averages"], indent=2))
-    print(f"Wrote {output}")
+    print("\nAverages:", json.dumps(summary["averages"], indent=2), flush=True)
+    print(f"Wrote {output}", flush=True)
     return 0
 
 

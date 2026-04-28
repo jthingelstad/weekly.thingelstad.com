@@ -29,6 +29,7 @@ STREAM_ZIP_PATH = REPO / "tmp" / "librarian_stream_lambda.zip"
 CODE_PREFIX = "librarian/lambda"
 STREAM_CODE_PREFIX = "librarian/stream-lambda"
 CORPUS_KEY = "librarian/corpus.json"
+GRAPH_KEY = "librarian/graph.json"
 DEFAULT_ALLOWED_ORIGINS = "https://weekly.thingelstad.com,http://localhost:8080,http://127.0.0.1:8080"
 DEFAULT_TINYLYTICS_API_SITE_ID = "3063"
 
@@ -115,9 +116,9 @@ def deploy_stack(
     code_key: str,
     stream_code_key: str,
     corpus_key: str,
+    graph_key: str,
     allowed_origin: str,
     buttondown_api_key: str,
-    openai_api_key: str,
     tinylytics_api_key: str,
     tinylytics_site_id: str,
     session_secret: str | None,
@@ -151,8 +152,8 @@ def deploy_stack(
         {"ParameterKey": "StreamCodeKey", "ParameterValue": stream_code_key},
         {"ParameterKey": "CorpusBucket", "ParameterValue": bucket},
         {"ParameterKey": "CorpusKey", "ParameterValue": corpus_key},
+        {"ParameterKey": "GraphKey", "ParameterValue": graph_key},
         {"ParameterKey": "ButtondownApiKey", "ParameterValue": buttondown_api_key},
-        {"ParameterKey": "OpenAIApiKey", "ParameterValue": openai_api_key},
         {"ParameterKey": "TinylyticsApiKey", "ParameterValue": tinylytics_api_key},
         {"ParameterKey": "TinylyticsSiteId", "ParameterValue": tinylytics_site_id},
         session_parameter,
@@ -210,6 +211,7 @@ def main() -> int:
     parser.add_argument("--bucket", default=os.environ.get("AWS_S3_BUCKET"))
     parser.add_argument("--allowed-origin", default=os.environ.get("LIBRARIAN_ALLOWED_ORIGIN", DEFAULT_ALLOWED_ORIGINS))
     parser.add_argument("--corpus-key", default=os.environ.get("LIBRARIAN_CORPUS_KEY", CORPUS_KEY))
+    parser.add_argument("--graph-key", default=os.environ.get("LIBRARIAN_GRAPH_KEY", GRAPH_KEY))
     parser.add_argument("--cloudformation-role-arn", default=os.environ.get("LIBRARIAN_CLOUDFORMATION_ROLE_ARN"))
     parser.add_argument("--log-level", default=os.environ.get("LIBRARIAN_LOG_LEVEL", "INFO"))
     parser.add_argument("--auth-rate-limit-max", default=os.environ.get("LIBRARIAN_AUTH_RATE_LIMIT_MAX", "30"))
@@ -231,7 +233,8 @@ def main() -> int:
     print(f"Uploaded streaming Lambda package to s3://{bucket}/{stream_code_key}")
 
     if not args.skip_corpus_upload:
-        run([sys.executable, "scripts/upload_librarian_corpus.py", "--bucket", bucket, "--key", args.corpus_key])
+        embedded_corpus = REPO / "tmp" / "librarian_embedded_corpus.json"
+        run([sys.executable, "scripts/upload_librarian_corpus.py", "--bucket", bucket, "--key", args.corpus_key, "--graph-key", args.graph_key, "--keep-output", str(embedded_corpus)])
 
     session_secret = os.environ.get("LIBRARIAN_SESSION_SECRET")
     outputs, generated_session_secret = deploy_stack(
@@ -240,9 +243,9 @@ def main() -> int:
         code_key=code_key,
         stream_code_key=stream_code_key,
         corpus_key=args.corpus_key,
+        graph_key=args.graph_key,
         allowed_origin=args.allowed_origin,
         buttondown_api_key=require_env("BUTTONDOWN_API_KEY"),
-        openai_api_key=require_env("OPENAI_API_KEY"),
         tinylytics_api_key=require_env("TINYLYTICS_API_KEY"),
         tinylytics_site_id=args.tinylytics_site_id,
         session_secret=session_secret,
