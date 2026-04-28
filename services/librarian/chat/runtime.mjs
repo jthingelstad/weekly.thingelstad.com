@@ -6,8 +6,8 @@ import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import {
   FALLBACK_PROMPTS,
   agentSystemPrompt,
-  answerStyle,
   baselineSystemPrompt,
+  baselineUserPrompt,
   extractJsonObject,
   loadToolSpecs,
   sanitizePrompts,
@@ -27,7 +27,6 @@ const TOKEN_RE = /[a-z0-9][a-z0-9'-]{1,}/gi;
 const MAX_HISTORY_MESSAGES = 8;
 const MAX_HISTORY_CHARS = 4000;
 const PROMPT_RATE_LIMIT_MAX = 10;
-const ANSWER_STYLE_INSTRUCTIONS = answerStyle();
 
 const s3 = new S3Client({});
 const dynamodb = new DynamoDBClient({});
@@ -525,19 +524,11 @@ function buildPrompt(question, chunks, history = []) {
     `URL: ${chunk.url || ''}`,
     chunk.text || ''
   ].join('\n'));
-  return [
-    `You are Thingy, the archive librarian for The Weekly Thing. You are not Jamie. When referring to Jamie Thingelstad, use he/him pronouns. Use only the archive sources below unless you explicitly say something is outside the archive. Use the conversation context to resolve follow-up questions, pronouns, and requests like "tell me more". Prefer newer sources for current recommendations or present-day guidance. Use older sources as historical context unless the user asks for history or evolution. When sources span years, explicitly distinguish older context from more recent writing. Be direct, specific, and helpful. Do not use a greeting or signoff. ${ANSWER_STYLE_INSTRUCTIONS} If the archive sources are not enough, say so.`,
-    '',
-    'Conversation so far:',
-    '',
-    conversationContext(history),
-    '',
-    `Question: ${question}`,
-    '',
-    'Archive sources:',
-    '',
-    sources.join('\n\n---\n\n')
-  ].join('\n');
+  return baselineUserPrompt({
+    conversation_context: conversationContext(history),
+    question,
+    archive_sources: sources.join('\n\n---\n\n')
+  });
 }
 
 function citationsFor(chunks) {

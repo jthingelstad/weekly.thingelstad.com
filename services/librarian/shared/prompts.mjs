@@ -43,6 +43,14 @@ export function baselineSystemPrompt() {
   return renderTemplate(loadPrompt('baseline-system.md'), { answer_style: answerStyle() });
 }
 
+export function baselineUserPrompt({ conversation_context, question, archive_sources } = {}) {
+  return renderTemplate(loadPrompt('baseline-user.md'), {
+    conversation_context,
+    question,
+    archive_sources
+  });
+}
+
 export function suggestedQuestionsSystemPrompt() {
   return loadPrompt('suggested-questions-system.md');
 }

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createSessionToken, emailHash, normalizeEmail, verifyToken } from '../shared/session.mjs';
-import { sanitizePrompts, renderTemplate } from '../shared/prompts.mjs';
+import { sanitizePrompts, renderTemplate, baselineUserPrompt } from '../shared/prompts.mjs';
 import { subscriberStatus } from '../shared/buttondown.mjs';
 
 test('session token round trips and rejects tampering', () => {
@@ -47,4 +47,16 @@ test('prompt sanitizer requires three clipped prompts', () => {
 
 test('prompt template renderer substitutes named placeholders', () => {
   assert.equal(renderTemplate('Hello {{ name }} from {{ place }}.', { name: 'Thingy', place: 'the archive' }), 'Hello Thingy from the archive.');
+});
+
+test('baseline user prompt renders dynamic archive context', () => {
+  const prompt = baselineUserPrompt({
+    conversation_context: 'User: Tell me more.',
+    question: 'What did the archive say about RSS?',
+    archive_sources: 'Source 1: Weekly Thing #1 - RSS\nRSS text'
+  });
+
+  assert.match(prompt, /User: Tell me more\./);
+  assert.match(prompt, /What did the archive say about RSS\?/);
+  assert.match(prompt, /Source 1: Weekly Thing #1 - RSS/);
 });
