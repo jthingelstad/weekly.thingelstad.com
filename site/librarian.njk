@@ -386,6 +386,58 @@ permalink: /librarian/
       return renderMarkdown(answer, citations);
     }
 
+    function setFeedbackState(container, reaction) {
+      container.querySelectorAll('button[data-reaction]').forEach((button) => {
+        const selected = button.dataset.reaction === reaction;
+        button.classList.toggle('selected', selected);
+        button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+      });
+    }
+
+    async function submitFeedback(requestId, reaction, container) {
+      const status = container.querySelector('.librarian-feedback-status');
+      container.querySelectorAll('button[data-reaction]').forEach((button) => {
+        button.disabled = true;
+      });
+      if (status) status.textContent = 'Saving...';
+      try {
+        const data = await postStreamJson('/feedback', {
+          request_id: requestId,
+          reaction
+        }, { authorization: `Bearer ${token()}` });
+        setFeedbackState(container, data.reaction || reaction);
+        if (status) status.textContent = 'Saved';
+        trackTinylyticsEvent('librarian.feedback_submit', data.reaction || reaction);
+      } catch (error) {
+        if (status) status.textContent = 'Could not save';
+        trackTinylyticsEvent('librarian.feedback_error', error.requestId ? 'server' : 'client');
+      } finally {
+        container.querySelectorAll('button[data-reaction]').forEach((button) => {
+          button.disabled = false;
+        });
+      }
+    }
+
+    function addFeedbackControls(messageElement, requestId) {
+      if (!requestId) return;
+      const controls = document.createElement('div');
+      controls.className = 'librarian-feedback';
+      controls.innerHTML = `
+        <span class="sr-only">Was this Thingy response useful?</span>
+        <button type="button" data-reaction="up" aria-label="Thumbs up" aria-pressed="false" title="Thumbs up">&#128077;</button>
+        <button type="button" data-reaction="down" aria-label="Thumbs down" aria-pressed="false" title="Thumbs down">&#128078;</button>
+        <span class="librarian-feedback-status" aria-live="polite"></span>
+      `;
+      controls.addEventListener('click', (event) => {
+        const target = event.target instanceof Element ? event.target : event.target.parentElement;
+        const button = target ? target.closest('button[data-reaction]') : null;
+        if (!button || !controls.contains(button)) return;
+        if (button.classList.contains('selected')) return;
+        submitFeedback(requestId, button.dataset.reaction, controls);
+      });
+      messageElement.appendChild(controls);
+    }
+
     async function postJson(path, payload, headers = {}) {
       if (!apiBase) throw new Error('Thingy has not been connected to the archive API yet.');
       const controller = new AbortController();
@@ -701,6 +753,7 @@ permalink: /librarian/
       try {
         const data = await postStreamingChat(message, pending, history);
         rememberTurn(message, data.answer || '');
+        addFeedbackControls(pending, data.request_id);
         trackTinylyticsEvent('librarian.answer_success', `${questionSize}.${(data.citations || []).length}`);
       } catch (error) {
         pending.innerHTML = `<p>${escapeHtml(error.message)}</p>`;

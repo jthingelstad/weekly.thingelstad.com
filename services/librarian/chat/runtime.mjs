@@ -3,6 +3,7 @@ import { BedrockRuntimeClient, ConverseCommand, InvokeModelCommand } from '@aws-
 import { BedrockAgentRuntimeClient, RerankCommand } from '@aws-sdk/client-bedrock-agent-runtime';
 import { DynamoDBClient, PutItemCommand, UpdateItemCommand } from '@aws-sdk/client-dynamodb';
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import { normalizeFeedbackReaction, validFeedbackRequestId } from '../shared/feedback.mjs';
 import {
   FALLBACK_PROMPTS,
   agentSystemPrompt,
@@ -215,15 +216,16 @@ async function recordConversation({
   const ttlDays = Number(process.env.LIBRARIAN_CONVERSATION_LOG_TTL_DAYS || CONVERSATION_LOG_TTL_DAYS);
   const ttl = Math.floor(Date.now() / 1000) + ttlDays * 86400;
   const issues = citationIssues(citations);
+  const conversationRequestId = requestId || crypto.randomUUID();
   try {
     await dynamodb.send(new PutItemCommand({
       TableName: tableName,
       Item: {
-        pk: dynamoString(`conversation#${createdAt}#${requestId || crypto.randomUUID()}`),
+        pk: dynamoString(`conversation#${conversationRequestId}`),
         sk: dynamoString('chat'),
         created_at: dynamoString(createdAt),
         ttl: dynamoNumber(ttl),
-        request_id: dynamoString(requestId),
+        request_id: dynamoString(conversationRequestId),
         subscriber_hash: dynamoString(subscriberHash),
         route: dynamoString(route),
         question: dynamoString(String(question || '').slice(0, 4000)),
@@ -239,7 +241,7 @@ async function recordConversation({
     }));
     logEvent('info', 'conversation_recorded', {
       subscriber_hash: subscriberHash,
-      request_id: requestId,
+      request_id: conversationRequestId,
       question_chars: String(question || '').length,
       answer_chars: String(answer || '').length,
       citation_count: (citations || []).length,
@@ -247,6 +249,44 @@ async function recordConversation({
     });
   } catch (error) {
     logEvent('warning', 'conversation_record_failed', { request_id: requestId, error_type: error.constructor?.name || 'Error' });
+  }
+}
+
+async function recordFeedback({ subscriberHash, requestId, reaction }) {
+  const tableName = process.env.TABLE_NAME;
+  const validRequestId = validFeedbackRequestId(requestId);
+  const validReaction = normalizeFeedbackReaction(reaction);
+  if (!tableName) return { statusCode: 500, payload: { error: 'Thingy feedback is unavailable right now.' } };
+  if (!validRequestId || !validReaction) {
+    return { statusCode: 400, payload: { error: 'Feedback requires a valid request_id and reaction.' } };
+  }
+
+  const feedbackAt = new Date().toISOString();
+  try {
+    await dynamodb.send(new UpdateItemCommand({
+      TableName: tableName,
+      Key: { pk: dynamoString(`conversation#${validRequestId}`), sk: dynamoString('chat') },
+      UpdateExpression: 'SET feedback_reaction = :reaction, feedback_at = :feedback_at ADD feedback_revision :one',
+      ConditionExpression: 'attribute_exists(pk) AND subscriber_hash = :subscriber_hash',
+      ExpressionAttributeValues: {
+        ':reaction': dynamoString(validReaction),
+        ':feedback_at': dynamoString(feedbackAt),
+        ':one': dynamoNumber(1),
+        ':subscriber_hash': dynamoString(subscriberHash)
+      }
+    }));
+    logEvent('info', 'feedback_recorded', {
+      subscriber_hash: subscriberHash,
+      request_id: validRequestId,
+      reaction: validReaction
+    });
+    return { statusCode: 200, payload: { ok: true, request_id: validRequestId, reaction: validReaction } };
+  } catch (error) {
+    if (error.name === 'ConditionalCheckFailedException') {
+      return { statusCode: 404, payload: { error: 'Conversation not found for feedback.', request_id: validRequestId } };
+    }
+    logEvent('warning', 'feedback_record_failed', { request_id: validRequestId, error_type: error.constructor?.name || 'Error' });
+    return { statusCode: 500, payload: { error: 'Thingy could not save feedback right now.', request_id: validRequestId } };
   }
 }
 
@@ -942,7 +982,7 @@ function jsonResponseStream(responseStream, statusCode) {
 
 export const handler = awslambda.streamifyResponse(async (event, responseStream, context) => {
   const start = performance.now();
-  const requestId = context?.awsRequestId || event.requestContext?.requestId || '';
+  const requestId = context?.awsRequestId || event.requestContext?.requestId || crypto.randomUUID();
   const { method, path } = methodAndPath(event);
   const summary = { request_id: requestId, method, path, origin: normalizeHeaders(event.headers || {}).origin };
   let subscriberHash = '';
@@ -972,6 +1012,23 @@ export const handler = awslambda.streamifyResponse(async (event, responseStream,
   if (method === 'POST' && path.endsWith('/prompts')) {
     const body = parseBody(event);
     const result = await promptsPayload(event, body, requestId);
+    const stream = jsonResponseStream(responseStream, result.statusCode);
+    stream.write(JSON.stringify(result.payload));
+    stream.end();
+    logEvent('info', 'request_completed', { ...summary, status_code: result.statusCode, duration_ms: Math.round(performance.now() - start) });
+    return;
+  }
+
+  if (method === 'POST' && path.endsWith('/feedback')) {
+    const body = parseBody(event);
+    const payload = verifyToken(extractBearer(event, body));
+    const result = payload
+      ? await recordFeedback({
+        subscriberHash: String(payload.sub || ''),
+        requestId: body.request_id,
+        reaction: body.reaction
+      })
+      : { statusCode: 401, payload: { error: 'Please validate your subscriber email to use the librarian.', request_id: requestId } };
     const stream = jsonResponseStream(responseStream, result.statusCode);
     stream.write(JSON.stringify(result.payload));
     stream.end();
@@ -1031,9 +1088,20 @@ export const handler = awslambda.streamifyResponse(async (event, responseStream,
       writeSse(stream, 'status', { message: 'Searching the archive...' });
       const chunks = await retrieve(retrievalQuery(question, history));
       if (!chunks.length) {
-        writeSse(stream, 'answer_delta', { delta: 'I could not find enough in the archive to answer that from Weekly Thing sources. I can try a broader search term, look for a specific issue, or compare this topic with another archive theme.' });
+        const noSourcesAnswer = 'I could not find enough in the archive to answer that from Weekly Thing sources. I can try a broader search term, look for a specific issue, or compare this topic with another archive theme.';
+        writeSse(stream, 'answer_delta', { delta: noSourcesAnswer });
         writeSse(stream, 'citations', { citations: [] });
         writeSse(stream, 'done', { request_id: requestId });
+        await recordConversation({
+          event,
+          subscriberHash,
+          question,
+          answer: noSourcesAnswer,
+          historyCount: history.length,
+          citations: [],
+          route: 'stream',
+          requestId
+        });
         logEvent('info', 'chat_completed_no_sources', {
           subscriber_hash: subscriberHash,
           question_chars: question.length,

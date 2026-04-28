@@ -3,6 +3,7 @@ import test from 'node:test';
 import { createSessionToken, emailHash, normalizeEmail, verifyToken } from '../shared/session.mjs';
 import { sanitizePrompts, renderTemplate, baselineUserPrompt } from '../shared/prompts.mjs';
 import { subscriberStatus } from '../shared/buttondown.mjs';
+import { normalizeFeedbackReaction, validFeedbackRequestId } from '../shared/feedback.mjs';
 
 test('session token round trips and rejects tampering', () => {
   process.env.SESSION_SECRET = 'test-secret';
@@ -59,4 +60,15 @@ test('baseline user prompt renders dynamic archive context', () => {
   assert.match(prompt, /User: Tell me more\./);
   assert.match(prompt, /What did the archive say about RSS\?/);
   assert.match(prompt, /Source 1: Weekly Thing #1 - RSS/);
+});
+
+test('feedback helpers accept only expected reactions and request ids', () => {
+  assert.equal(normalizeFeedbackReaction('up'), 'up');
+  assert.equal(normalizeFeedbackReaction(' DOWN '), 'down');
+  assert.equal(normalizeFeedbackReaction('helpful'), '');
+
+  assert.equal(validFeedbackRequestId('63026f16-ef49-456f-b26f-bc76d7d83481'), '63026f16-ef49-456f-b26f-bc76d7d83481');
+  assert.equal(validFeedbackRequestId('request:local.test_1'), 'request:local.test_1');
+  assert.equal(validFeedbackRequestId('conversation#bad'), '');
+  assert.equal(validFeedbackRequestId(''), '');
 });
