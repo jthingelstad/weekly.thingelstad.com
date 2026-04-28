@@ -2,12 +2,18 @@
   <div class="container">
     <a href="/" class="site-logo">Weekly Thing</a>
     <nav class="site-nav" aria-label="Main navigation">
-      <a href="/archive/">Archive</a>
-      <a href="/librarian/">Librarian</a>
-      <a href="/search/">Search</a>
-      <a href="/about/">About</a>
-      <a href="/members/">Members</a>
-      <a href="/faq/">FAQ</a>
+      {% set navItems = [
+        { href: "/archive/", label: "Archive" },
+        { href: "/thingy/", label: "Thingy" },
+        { href: "/search/", label: "Search" },
+        { href: "/about/", label: "About" },
+        { href: "/members/", label: "Members" },
+        { href: "/faq/", label: "FAQ" }
+      ] %}
+      {% for item in navItems %}
+      {% set isActive = page.url | isActiveNav(item.href) %}
+      <a href="{{ item.href }}"{% if isActive %} class="is-active" aria-current="page"{% endif %}>{{ item.label }}</a>
+      {% endfor %}
     </nav>
   </div>
 </header>

@@ -152,7 +152,6 @@ Resources:
           GRAPH_KEY: !Ref GraphKey
           SESSION_SECRET: !Ref SessionSecret
           LOG_LEVEL: !Ref LogLevel
-          LIBRARIAN_AGENT_ENABLED: "1"
           BEDROCK_AGENT_MODEL: us.anthropic.claude-sonnet-4-6
           BEDROCK_EMBEDDING_MODEL: cohere.embed-english-v3
           BEDROCK_RERANK_MODEL: cohere.rerank-v3-5:0

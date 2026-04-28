@@ -127,6 +127,12 @@ module.exports = function (eleventyConfig) {
   // JSON stringify for embedding data in templates
   eleventyConfig.addFilter("jsonify", (obj) => JSON.stringify(obj));
 
+  // Mark top-level navigation items active for their page or section.
+  eleventyConfig.addFilter("isActiveNav", (pageUrl, navUrl) => {
+    if (!pageUrl || !navUrl || navUrl === "/") return pageUrl === navUrl;
+    return pageUrl === navUrl || pageUrl.startsWith(navUrl);
+  });
+
   // XML-escape text for Atom/RSS feeds
   eleventyConfig.addFilter("xmlEscape", (str) => {
     if (!str) return new nunjucksRuntime.SafeString("");

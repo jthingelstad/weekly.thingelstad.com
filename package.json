@@ -7,6 +7,8 @@
     "build:search": "pagefind --site _site --glob '**/*.html'",
     "build:all": "npm run build && npm run build:search",
     "serve": "eleventy --serve",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
     "data": "python pipeline/content/content.py build && python pipeline/librarian/build_librarian_corpus.py",
     "librarian:corpus": "python pipeline/librarian/build_librarian_corpus.py",
     "librarian:corpus:upload": "python pipeline/librarian/upload_librarian_corpus.py",

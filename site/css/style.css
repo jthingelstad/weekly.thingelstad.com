@@ -268,10 +268,19 @@ th {
   color: var(--color-text);
   text-decoration: none;
   font-weight: 500;
+  border-radius: 999px;
+  padding: 0.25rem 0.45rem;
+  transition: background-color 160ms ease, color 160ms ease;
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.site-nav a.is-active {
   color: var(--color-accent);
+}
+
+.site-nav a.is-active {
+  background: var(--color-accent-soft);
+  font-weight: 700;
 }
 
 /* --- Hero --- */
@@ -1653,8 +1662,8 @@ th {
 
   .site-nav {
     flex-wrap: nowrap;
-    justify-content: flex-start;
-    gap: var(--space-xs);
+    justify-content: center;
+    gap: 0.3rem;
     font-size: 0.8125rem;
     width: 100%;
     max-width: 100%;
@@ -1672,6 +1681,7 @@ th {
 
   .site-nav a {
     flex: 0 0 auto;
+    padding: 0.2rem;
   }
 
   .about-grid,
@@ -1948,8 +1958,15 @@ th {
 }
 
 .librarian-header {
-  max-width: 42rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(11rem, 18rem);
+  align-items: center;
+  gap: var(--space-2xl);
   margin-bottom: var(--space-2xl);
+}
+
+.librarian-header-copy {
+  max-width: 44rem;
 }
 
 .librarian-header h1 {
@@ -1960,6 +1977,12 @@ th {
 .librarian-header p:last-child {
   color: var(--color-text-muted);
   font-size: var(--size-lg);
+}
+
+.librarian-persona {
+  justify-self: end;
+  width: min(100%, 18rem);
+  height: auto;
 }
 
 .librarian-auth,
@@ -2031,7 +2054,7 @@ th {
 
 .librarian-form button:disabled {
   opacity: 0.6;
-  cursor: wait;
+  cursor: not-allowed;
 }
 
 .librarian-auth-actions {
@@ -2098,6 +2121,11 @@ th {
   padding: var(--space-md);
   background: var(--color-surface);
   box-shadow: var(--shadow-subtle);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.librarian-message-pending {
+  border-color: var(--color-highlight);
 }
 
 .librarian-message p:last-child {
@@ -2147,6 +2175,37 @@ th {
   color: var(--color-text-muted);
 }
 
+.librarian-status-line {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-muted);
+}
+
+.librarian-thinking-dot {
+  width: 0.58rem;
+  height: 0.58rem;
+  border-radius: 999px;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 0 rgba(42, 103, 180, 0.35);
+  animation: librarian-pulse 1.35s ease-in-out infinite;
+}
+
+@keyframes librarian-pulse {
+  0% {
+    transform: scale(0.86);
+    box-shadow: 0 0 0 0 rgba(42, 103, 180, 0.32);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0.55rem rgba(42, 103, 180, 0);
+  }
+  100% {
+    transform: scale(0.86);
+    box-shadow: 0 0 0 0 rgba(42, 103, 180, 0);
+  }
+}
+
 .librarian-feedback {
   display: flex;
   align-items: center;
@@ -2167,6 +2226,7 @@ th {
   font-size: 1rem;
   line-height: 1;
   cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
 }
 
 .librarian-feedback button:hover,
@@ -2174,6 +2234,10 @@ th {
   color: var(--color-accent);
   border-color: var(--color-accent);
   background: var(--color-accent-soft);
+}
+
+.librarian-feedback button:hover {
+  transform: translateY(-1px);
 }
 
 .librarian-feedback button:disabled {
@@ -2192,6 +2256,11 @@ th {
   flex-wrap: wrap;
   gap: var(--space-sm);
   margin-bottom: var(--space-lg);
+  min-height: 2.75rem;
+}
+
+.librarian-prompts[hidden] {
+  display: none;
 }
 
 .librarian-prompts span {
@@ -2202,10 +2271,35 @@ th {
 .librarian-prompts button {
   background: transparent;
   color: var(--color-accent);
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease, transform 140ms ease;
 }
 
 .librarian-prompts button:hover {
   color: #fff;
+  transform: translateY(-1px);
+}
+
+.librarian-prompts-loading span::after {
+  display: inline-block;
+  width: 1.4em;
+  content: "";
+  animation: librarian-loading-dots 1.2s steps(4, end) infinite;
+}
+
+@keyframes librarian-loading-dots {
+  0% {
+    content: "";
+  }
+  25% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  75%,
+  100% {
+    content: "...";
+  }
 }
 
 .librarian-beta-open {
@@ -2269,6 +2363,50 @@ th {
   align-items: end;
 }
 
+.librarian-question-form textarea {
+  grid-column: 1;
+  grid-row: 1;
+  overflow-y: auto;
+}
+
+.librarian-question-actions {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.librarian-question-actions button {
+  min-width: 4.25rem;
+}
+
+.librarian-question-form .librarian-clear-button {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.librarian-question-form .librarian-clear-button:hover {
+  color: #fff;
+}
+
+.librarian-question-form.is-busy button:disabled {
+  cursor: wait;
+}
+
+.librarian-question-meta {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: flex;
+  justify-content: flex-end;
+  min-height: 1.2rem;
+  color: var(--color-text-muted);
+  font: 700 var(--size-xs) / 1 var(--font-ui);
+}
+
+.librarian-question-meta .warning {
+  color: #a84f2a;
+}
+
 .librarian-citations {
   margin-top: var(--space-md);
   padding-top: var(--space-md);
@@ -2295,6 +2433,21 @@ th {
 }
 
 @media (max-width: 640px) {
+  .librarian-header {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    text-align: center;
+  }
+
+  .librarian-header-copy {
+    max-width: none;
+  }
+
+  .librarian-persona {
+    justify-self: center;
+    width: min(15rem, 72vw);
+  }
+
   .librarian-auth-row,
   .librarian-question-form {
     grid-template-columns: 1fr;
@@ -2302,5 +2455,20 @@ th {
 
   .librarian-message {
     max-width: 100%;
+  }
+
+  .librarian-question-form textarea,
+  .librarian-question-actions,
+  .librarian-question-meta {
+    grid-column: 1;
+  }
+
+  .librarian-question-actions {
+    grid-row: 3;
+    width: 100%;
+  }
+
+  .librarian-question-actions button {
+    flex: 1 1 0;
   }
 }

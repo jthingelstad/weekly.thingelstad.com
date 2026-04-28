@@ -2,14 +2,17 @@
 layout: layouts/base.njk
 pageTitle: Thingy
 description: Ask Thingy, the archive librarian, to find and synthesize writing from the Weekly Thing archive.
-permalink: /librarian/
+permalink: /thingy/
 ---
 <section class="librarian-page">
   <div class="container librarian-shell">
     <header class="librarian-header">
-      <p class="eyebrow">Archive Librarian</p>
-      <h1>Talk to Thingy</h1>
-      <p>Thingy can find issues, connect themes, and point you back to the original Weekly Thing archive sources.</p>
+      <div class="librarian-header-copy">
+        <p class="eyebrow">Archive Librarian</p>
+        <h1>Talk to Thingy</h1>
+        <p>Thingy is your guide to the entire Weekly Thing archive&mdash;every idea, link, and rabbit hole I&rsquo;ve ever shared. Ask about past issues, get recommendations, or chase down a half-remembered thought. It&rsquo;s playful, a little weird, and very good at connecting dots. Start anywhere.</p>
+      </div>
+      <img src="/img/thingy.png" alt="Thingy" class="librarian-persona" width="1022" height="1022" loading="eager">
     </header>
 
     <div class="librarian-auth" id="librarian-auth">
@@ -45,8 +48,14 @@ permalink: /librarian/
 
       <form class="librarian-form librarian-question-form" id="librarian-question-form">
         <label for="librarian-question" class="sr-only">Ask Thingy</label>
-        <textarea id="librarian-question" name="message" rows="3" required placeholder="Ask Thingy..."></textarea>
-        <button type="submit" data-tinylytics-event="librarian.question_submit">Ask</button>
+        <textarea id="librarian-question" name="message" rows="3" required maxlength="1200" placeholder="Ask Thingy..." aria-describedby="librarian-question-count"></textarea>
+        <div class="librarian-question-meta">
+          <span id="librarian-question-count">0 / 1200</span>
+        </div>
+        <div class="librarian-question-actions">
+          <button type="submit" data-tinylytics-event="librarian.question_submit">Ask</button>
+          <button type="button" id="librarian-clear-chat" class="librarian-clear-button" data-tinylytics-event="librarian.clear">Start over</button>
+        </div>
       </form>
     </div>
   </div>
@@ -80,8 +89,10 @@ permalink: /librarian/
     const addSubscriberButton = document.getElementById('librarian-add-subscriber');
     const resendConfirmationButton = document.getElementById('librarian-resend-confirmation');
     const logoutButton = document.getElementById('librarian-logout');
+    const clearChatButton = document.getElementById('librarian-clear-chat');
     const questionInput = document.getElementById('librarian-question');
     const questionButton = questionForm.querySelector('button[type="submit"]');
+    const questionCount = document.getElementById('librarian-question-count');
     const messages = document.getElementById('librarian-messages');
     const prompts = document.getElementById('librarian-prompts');
     const betaOverlay = document.getElementById('librarian-beta-overlay');
@@ -91,6 +102,8 @@ permalink: /librarian/
     const betaNoticeStorageKey = 'weeklyThingLibrarianBetaNotice';
     const maxHistoryMessages = 8;
     const maxHistoryChars = 4000;
+    const maxQuestionChars = Number(questionInput.getAttribute('maxlength') || '1200');
+    const starterMessageHtml = '<div class="librarian-message librarian-message-system"><p>Ask about a topic, person, project, or theme from the archive. Thingy will cite the issues it uses.</p></div>';
     const eventSink = document.createElement('button');
     eventSink.type = 'button';
     eventSink.hidden = true;
@@ -100,6 +113,7 @@ permalink: /librarian/
     let tinylyticsReady = document.readyState === 'complete';
     let answerInFlight = false;
     let conversationHistory = [];
+    let feedbackStatusTimer = 0;
     const emailRe = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
 
     const params = new URLSearchParams(window.location.search);
@@ -180,6 +194,22 @@ permalink: /librarian/
       messages.appendChild(item);
       item.scrollIntoView({ block: 'end', behavior: 'smooth' });
       return item;
+    }
+
+    function autoSizeQuestionInput() {
+      questionInput.style.height = 'auto';
+      questionInput.style.height = `${Math.min(questionInput.scrollHeight, 240)}px`;
+    }
+
+    function updateQuestionState() {
+      const length = questionInput.value.length;
+      questionCount.textContent = `${length} / ${maxQuestionChars}`;
+      questionCount.classList.toggle('warning', length > maxQuestionChars * 0.9);
+      questionForm.classList.toggle('is-busy', answerInFlight);
+      questionButton.disabled = answerInFlight || !questionInput.value.trim() || length > maxQuestionChars;
+      questionButton.textContent = answerInFlight ? 'Asking...' : 'Ask';
+      clearChatButton.disabled = answerInFlight;
+      autoSizeQuestionInput();
     }
 
     function setAuthMessage(message) {
@@ -407,6 +437,10 @@ permalink: /librarian/
         }, { authorization: `Bearer ${token()}` });
         setFeedbackState(container, data.reaction || reaction);
         if (status) status.textContent = 'Saved';
+        window.clearTimeout(feedbackStatusTimer);
+        feedbackStatusTimer = window.setTimeout(() => {
+          if (status && status.textContent === 'Saved') status.textContent = '';
+        }, 1800);
         trackTinylyticsEvent('librarian.feedback_submit', data.reaction || reaction);
       } catch (error) {
         if (status) status.textContent = 'Could not save';
@@ -513,13 +547,26 @@ permalink: /librarian/
       conversationHistory = compactHistory(conversationHistory);
     }
 
+    function clearConversation() {
+      if (answerInFlight) return;
+      conversationHistory = [];
+      questionInput.value = '';
+      messages.innerHTML = starterMessageHtml;
+      updateQuestionState();
+      loadPrompts();
+      questionInput.focus();
+      trackTinylyticsEvent('librarian.clear');
+    }
+
     function hidePrompts() {
+      prompts.classList.remove('librarian-prompts-loading');
       prompts.hidden = true;
       prompts.innerHTML = '';
     }
 
     function renderPrompts(promptItems) {
       if (!promptItems || !promptItems.length || answerInFlight) return;
+      prompts.classList.remove('librarian-prompts-loading');
       prompts.innerHTML = promptItems.map((item, index) => {
         const question = escapeHtml(item.question || item.label || '');
         const label = escapeHtml(item.label || `Question ${index + 1}`);
@@ -540,6 +587,7 @@ permalink: /librarian/
         window.sessionStorage.removeItem(promptsStorageKey);
       }
       prompts.hidden = false;
+      prompts.classList.add('librarian-prompts-loading');
       prompts.innerHTML = '<span>Finding a few good questions...</span>';
       try {
         const data = await postStreamJson('/prompts', {}, { authorization: `Bearer ${token()}` });
@@ -650,9 +698,10 @@ permalink: /librarian/
         if (eventName === 'meta') {
           requestId = data.request_id || requestId;
         } else if (eventName === 'status' && !answer) {
-          pending.innerHTML = `<p>${escapeHtml(data.message || 'Thingy is working...')}</p>`;
+          pending.innerHTML = `<p class="librarian-status-line"><span class="librarian-thinking-dot"></span>${escapeHtml(data.message || 'Thingy is working...')}</p>`;
         } else if (eventName === 'answer_delta') {
           answer += data.delta || '';
+          pending.classList.remove('librarian-message-pending');
           pending.innerHTML = renderAnswer(answer, citations);
           pending.scrollIntoView({ block: 'end', behavior: 'smooth' });
         } else if (eventName === 'citations') {
@@ -726,6 +775,8 @@ permalink: /librarian/
       trackTinylyticsEvent('librarian.logout');
     });
 
+    clearChatButton.addEventListener('click', clearConversation);
+
     betaCloseButton.addEventListener('click', hideBetaNotice);
 
     betaOverlay.addEventListener('click', (event) => {
@@ -741,17 +792,21 @@ permalink: /librarian/
       if (answerInFlight) return;
       const message = questionInput.value.trim();
       if (!message) return;
+      if (message.length > maxQuestionChars) return;
       answerInFlight = true;
-      questionButton.disabled = true;
+      updateQuestionState();
       hidePrompts();
       const questionWordCount = message.split(/\s+/).filter(Boolean).length;
       const questionSize = questionWordCount < 6 ? 'short' : questionWordCount < 18 ? 'medium' : 'long';
       const history = compactHistory(conversationHistory);
       addMessage('user', `<p>${escapeHtml(message)}</p>`);
       questionInput.value = '';
-      const pending = addMessage('assistant', '<p>Thingy is looking through the archive...</p>');
+      updateQuestionState();
+      const pending = addMessage('assistant', '<p class="librarian-status-line"><span class="librarian-thinking-dot"></span>Thingy is looking through the archive...</p>');
+      pending.classList.add('librarian-message-pending');
       try {
         const data = await postStreamingChat(message, pending, history);
+        pending.classList.remove('librarian-message-pending');
         rememberTurn(message, data.answer || '');
         addFeedbackControls(pending, data.request_id);
         trackTinylyticsEvent('librarian.answer_success', `${questionSize}.${(data.citations || []).length}`);
@@ -763,7 +818,7 @@ permalink: /librarian/
         }
       } finally {
         answerInFlight = false;
-        questionButton.disabled = false;
+        updateQuestionState();
       }
     });
 
@@ -773,13 +828,19 @@ permalink: /librarian/
       questionForm.requestSubmit();
     });
 
+    questionInput.addEventListener('input', updateQuestionState);
+
     prompts.addEventListener('click', (event) => {
-      const button = event.target.closest('button[data-question]');
+      const target = event.target instanceof Element ? event.target : event.target.parentElement;
+      const button = target ? target.closest('button[data-question]') : null;
       if (button) {
         questionInput.value = button.dataset.question;
+        updateQuestionState();
         questionForm.requestSubmit();
       }
     });
+
+    updateQuestionState();
 
     if (token()) {
       authPanel.hidden = true;

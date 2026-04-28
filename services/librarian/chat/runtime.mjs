@@ -1,15 +1,15 @@
 import crypto from 'node:crypto';
-import { BedrockRuntimeClient, ConverseCommand, InvokeModelCommand } from '@aws-sdk/client-bedrock-runtime';
+import { BedrockRuntimeClient, ConverseCommand, ConverseStreamCommand, InvokeModelCommand } from '@aws-sdk/client-bedrock-runtime';
 import { BedrockAgentRuntimeClient, RerankCommand } from '@aws-sdk/client-bedrock-agent-runtime';
 import { DynamoDBClient, PutItemCommand, UpdateItemCommand } from '@aws-sdk/client-dynamodb';
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import { readConverseStream } from '../shared/bedrock-stream.mjs';
 import { normalizeFeedbackReaction, validFeedbackRequestId } from '../shared/feedback.mjs';
+import { truthyEnv } from '../shared/logging.mjs';
 import {
   FALLBACK_PROMPTS,
   agentSystemPrompt,
   agentUserPrompt,
-  baselineSystemPrompt,
-  baselineUserPrompt,
   extractJsonObject,
   loadToolSpecs,
   sanitizePrompts,
@@ -46,11 +46,6 @@ function logEvent(level, message, fields = {}) {
     timestamp: Math.floor(Date.now() / 1000),
     ...Object.fromEntries(Object.entries(fields).filter(([, value]) => value !== undefined && value !== null))
   }));
-}
-
-function truthyEnv(name, defaultValue = '0') {
-  const value = String(process.env[name] ?? defaultValue).trim().toLowerCase();
-  return !['', '0', 'false', 'no', 'off'].includes(value);
 }
 
 function agentModel() {
@@ -544,32 +539,9 @@ function sanitizeHistory(history) {
   return cleaned;
 }
 
-function retrievalQuery(question, history) {
-  const context = history
-    .slice(-4)
-    .map((item) => `${item.role}: ${item.content}`)
-    .join('\n');
-  return [context, `user: ${question}`].filter(Boolean).join('\n\n').slice(-MAX_HISTORY_CHARS);
-}
-
 function conversationContext(history) {
   if (!history.length) return 'No earlier conversation in this session.';
   return history.map((item) => `${item.role === 'user' ? 'User' : 'Thingy'}: ${item.content}`).join('\n');
-}
-
-function buildPrompt(question, chunks, history = []) {
-  const sources = chunks.map((chunk, index) => [
-    `Source ${index + 1}: Weekly Thing #${chunk.issue_number} - ${chunk.subject}`,
-    `Date: ${chunk.publish_date || ''}`,
-    `Section: ${chunk.section || ''}`,
-    `URL: ${chunk.url || ''}`,
-    chunk.text || ''
-  ].join('\n'));
-  return baselineUserPrompt({
-    conversation_context: conversationContext(history),
-    question,
-    archive_sources: sources.join('\n\n---\n\n')
-  });
 }
 
 function citationsFor(chunks) {
@@ -665,23 +637,11 @@ function writeSse(stream, event, data) {
   stream.write(`data: ${JSON.stringify(data)}\n\n`);
 }
 
-async function streamBedrockAnswer(question, chunks, history, responseStream) {
-  const start = performance.now();
-  const response = await bedrock.send(new ConverseCommand({
-    modelId: agentModel(),
-    system: [{
-      text: baselineSystemPrompt()
-    }, { cachePoint: { type: 'default' } }],
-    messages: [{ role: 'user', content: [{ text: buildPrompt(question, chunks, history) }] }],
-    inferenceConfig: {
-      maxTokens: Number(process.env.BEDROCK_MAX_OUTPUT_TOKENS || '2500'),
-      temperature: Number(process.env.BEDROCK_TEMPERATURE || '0.45')
-    }
-  }));
-  const answer = bedrockMessageText(response.output?.message || '').trim();
-  if (answer) writeSse(responseStream, 'answer_delta', { delta: answer });
-  logEvent('info', 'answer_streamed', { model: agentModel(), duration_ms: Math.round(performance.now() - start), answer_chars: answer.length });
-  return answer;
+function commandInferenceConfig() {
+  return {
+    maxTokens: Number(process.env.BEDROCK_MAX_OUTPUT_TOKENS || '2500'),
+    temperature: Number(process.env.BEDROCK_TEMPERATURE || '0.45')
+  };
 }
 
 function issueKey(value) {
@@ -917,21 +877,27 @@ async function streamBedrockAgentAnswer(question, history, responseStream) {
   }];
   const toolResults = [];
   let answer = '';
+  let usage = {};
+  let stopReason = '';
   const maxTurns = Number(process.env.MAX_TOOL_TURNS || DEFAULT_MAX_TOOL_TURNS);
   for (let turn = 0; turn <= maxTurns; turn += 1) {
-    const response = await bedrock.send(new ConverseCommand({
+    const response = await bedrock.send(new ConverseStreamCommand({
       modelId: agentModel(),
       system: [{ text: AGENT_SYSTEM_PROMPT }, { cachePoint: { type: 'default' } }],
       messages,
       toolConfig: { tools: toolSpecs() },
-      inferenceConfig: { maxTokens: Number(process.env.BEDROCK_MAX_OUTPUT_TOKENS || '2500'), temperature: Number(process.env.BEDROCK_TEMPERATURE || '0.45') }
+      inferenceConfig: commandInferenceConfig()
     }));
-    const message = response.output?.message || {};
+    const result = await readConverseStream(response, {
+      onTextDelta: (delta) => writeSse(responseStream, 'answer_delta', { delta })
+    });
+    const message = result.message;
+    usage = result.usage || usage;
+    stopReason = result.stopReason || stopReason;
     messages.push(message);
     const toolUses = (message.content || []).filter((block) => block.toolUse).map((block) => block.toolUse);
     if (!toolUses.length) {
-      answer = bedrockMessageText(message);
-      if (answer) writeSse(responseStream, 'answer_delta', { delta: answer });
+      answer = bedrockMessageText(message) || result.text;
       break;
     }
     const resultBlocks = [];
@@ -955,7 +921,15 @@ async function streamBedrockAgentAnswer(question, history, responseStream) {
     writeSse(responseStream, 'answer_delta', { delta: answer });
   }
   const citations = prioritizeCitationsForAnswer(collectToolCitations(toolResults), answer);
-  logEvent('info', 'agent_streamed', { model: agentModel(), tool_turns: toolResults.length, citation_count: citations.length, duration_ms: Math.round(performance.now() - start), answer_chars: answer.length });
+  logEvent('info', 'agent_streamed', {
+    model: agentModel(),
+    tool_turns: toolResults.length,
+    citation_count: citations.length,
+    duration_ms: Math.round(performance.now() - start),
+    answer_chars: answer.length,
+    output_tokens: usage?.outputTokens,
+    stop_reason: stopReason
+  });
   return { answer, citations };
 }
 
@@ -1001,8 +975,7 @@ export const handler = awslambda.streamifyResponse(async (event, responseStream,
       service: 'weekly-thing-librarian-stream',
       model: agentModel(),
       embedding_model: embeddingModel(),
-      rerank_model: rerankModel(),
-      agent_enabled: truthyEnv('LIBRARIAN_AGENT_ENABLED', '0')
+      rerank_model: rerankModel()
     }));
     stream.end();
     logEvent('info', 'request_completed', { ...summary, duration_ms: Math.round(performance.now() - start) });
@@ -1077,43 +1050,10 @@ export const handler = awslambda.streamifyResponse(async (event, responseStream,
       return;
     }
 
-    let answer;
-    let citations;
-    if (truthyEnv('LIBRARIAN_AGENT_ENABLED', '0')) {
-      writeSse(stream, 'status', { message: 'Investigating the archive...' });
-      const result = await streamBedrockAgentAnswer(question, history, stream);
-      answer = result.answer;
-      citations = result.citations;
-    } else {
-      writeSse(stream, 'status', { message: 'Searching the archive...' });
-      const chunks = await retrieve(retrievalQuery(question, history));
-      if (!chunks.length) {
-        const noSourcesAnswer = 'I could not find enough in the archive to answer that from Weekly Thing sources. I can try a broader search term, look for a specific issue, or compare this topic with another archive theme.';
-        writeSse(stream, 'answer_delta', { delta: noSourcesAnswer });
-        writeSse(stream, 'citations', { citations: [] });
-        writeSse(stream, 'done', { request_id: requestId });
-        await recordConversation({
-          event,
-          subscriberHash,
-          question,
-          answer: noSourcesAnswer,
-          historyCount: history.length,
-          citations: [],
-          route: 'stream',
-          requestId
-        });
-        logEvent('info', 'chat_completed_no_sources', {
-          subscriber_hash: subscriberHash,
-          question_chars: question.length,
-          history_count: history.length,
-          duration_ms: Math.round(performance.now() - start)
-        });
-        return;
-      }
-      writeSse(stream, 'status', { message: 'Writing answer...' });
-      citations = citationsFor(chunks);
-      answer = await streamBedrockAnswer(question, chunks, history, stream);
-    }
+    writeSse(stream, 'status', { message: 'Investigating the archive...' });
+    const result = await streamBedrockAgentAnswer(question, history, stream);
+    const answer = result.answer;
+    const citations = result.citations;
     writeSse(stream, 'citations', { citations });
     writeSse(stream, 'done', { request_id: requestId });
     await recordConversation({
