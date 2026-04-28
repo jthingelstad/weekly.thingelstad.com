@@ -1645,12 +1645,33 @@ th {
 
   .site-header .container {
     flex-direction: column;
-    gap: var(--space-sm);
+    align-items: center;
+    gap: var(--space-xs);
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
   }
 
   .site-nav {
-    justify-content: center;
-    gap: var(--space-xs) var(--space-md);
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: var(--space-xs);
+    font-size: 0.8125rem;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-nav a {
+    flex: 0 0 auto;
   }
 
   .about-grid,
