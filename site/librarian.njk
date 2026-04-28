@@ -225,7 +225,13 @@ permalink: /thingy/
 
     const params = new URLSearchParams(window.location.search);
     const email = params.get('email');
+    const initialPrompt = normalizeInitialPrompt(params.get('prompt'));
+    let initialPromptSubmitted = false;
     if (email) emailInput.value = email;
+
+    function normalizeInitialPrompt(value) {
+      return String(value || '').trim().slice(0, maxQuestionChars);
+    }
 
     function validateEmail() {
       const value = emailInput.value.trim();
@@ -267,6 +273,7 @@ permalink: /thingy/
       if (remember) window.sessionStorage.setItem(betaNoticeStorageKey, 'dismissed');
       if (focusQuestion) questionInput.focus();
       if (remember) trackTinylyticsEvent('librarian.beta_notice_dismissed');
+      maybeSubmitInitialPrompt();
     }
 
     function setToken(value, message) {
@@ -278,6 +285,7 @@ permalink: /thingy/
       loadPrompts();
       showBetaNotice();
       if (betaOverlay.hidden) questionInput.focus();
+      maybeSubmitInitialPrompt();
     }
 
     function clearToken() {
@@ -694,9 +702,18 @@ permalink: /thingy/
     }
 
     function loadPrompts() {
-      if (!token() || answerInFlight) return;
+      if (!token() || answerInFlight || (initialPrompt && !initialPromptSubmitted)) return;
       renderPrompts(starterPromptSet());
       trackTinylyticsEvent('librarian.prompts_loaded', 'static');
+    }
+
+    function maybeSubmitInitialPrompt() {
+      if (!initialPrompt || initialPromptSubmitted || answerInFlight || !token()) return;
+      if (!betaOverlay.hidden) return;
+      initialPromptSubmitted = true;
+      questionInput.value = initialPrompt;
+      updateQuestionState();
+      questionForm.requestSubmit();
     }
 
     function handleAuthResponse(data) {
@@ -878,8 +895,7 @@ permalink: /thingy/
       if (event.key === 'Escape' && !betaOverlay.hidden) hideBetaNotice();
     });
 
-    questionForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
+    async function submitQuestion() {
       if (answerInFlight) return;
       const message = questionInput.value.trim();
       if (!message) return;
@@ -911,6 +927,11 @@ permalink: /thingy/
         answerInFlight = false;
         updateQuestionState();
       }
+    }
+
+    questionForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      await submitQuestion();
     });
 
     questionInput.addEventListener('keydown', (event) => {
@@ -938,6 +959,7 @@ permalink: /thingy/
       chatPanel.hidden = false;
       loadPrompts();
       trackTinylyticsEvent('librarian.session_resume');
+      maybeSubmitInitialPrompt();
     }
   })();
 </script>
