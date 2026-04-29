@@ -28,11 +28,11 @@ ogType: article
       <div class="issue-bar-inner">
         <a href="/archive/" class="issue-back">&larr; Archive</a>
         <div class="issue-pager">
-          {% if prev2 %}<a href="/archive/{{ prev2.data.number }}/" class="issue-pager-btn" title="Issue {{ prev2.data.number }}: {{ prev2.data.subject }}">&lsaquo; #{{ prev2.data.number }}</a>{% endif %}
+          {% if prev2 %}<a href="/archive/{{ prev2.data.number }}/" class="issue-pager-btn issue-pager-far" title="Issue {{ prev2.data.number }}: {{ prev2.data.subject }}">&lsaquo; #{{ prev2.data.number }}</a>{% endif %}
           {% if prev1 %}<a href="/archive/{{ prev1.data.number }}/" class="issue-pager-btn" title="Issue {{ prev1.data.number }}: {{ prev1.data.subject }}">&lsaquo; #{{ prev1.data.number }}</a>{% endif %}
           <span class="issue-pager-here" aria-current="page">#{{ number }}</span>
           {% if next1 %}<a href="/archive/{{ next1.data.number }}/" class="issue-pager-btn" title="Issue {{ next1.data.number }}: {{ next1.data.subject }}">#{{ next1.data.number }} &rsaquo;</a>{% endif %}
-          {% if next2 %}<a href="/archive/{{ next2.data.number }}/" class="issue-pager-btn" title="Issue {{ next2.data.number }}: {{ next2.data.subject }}">#{{ next2.data.number }} &rsaquo;</a>{% endif %}
+          {% if next2 %}<a href="/archive/{{ next2.data.number }}/" class="issue-pager-btn issue-pager-far" title="Issue {{ next2.data.number }}: {{ next2.data.subject }}">#{{ next2.data.number }} &rsaquo;</a>{% endif %}
         </div>
       </div>
     </div>
