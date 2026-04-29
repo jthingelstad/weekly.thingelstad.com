@@ -6,7 +6,6 @@ import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { readConverseStream } from '../shared/bedrock-stream.mjs';
 import { normalizeFeedbackReaction, validFeedbackRequestId } from '../shared/feedback.mjs';
 import { searchFaq } from '../shared/faq.mjs';
-import { guardrailStreamConfig, summarizeGuardrailTrace } from '../shared/guardrails.mjs';
 import { truthyEnv } from '../shared/logging.mjs';
 import {
   agentSystemPrompt,
@@ -65,7 +64,15 @@ function rerankModelArn() {
 
 function privacyGuardAnswer(question) {
   const text = String(question || '').toLowerCase();
-  if (!['home address', 'street address', 'phone number', 'cell number', 'mobile number', 'personal address'].some((term) => text.includes(term))) return '';
+  const blockedPatterns = [
+    /\b(home|street|personal)\s+address\b/,
+    /\b(phone|cell|mobile)\s+(number|#)\b/,
+    /\bwhere\s+does\s+jamie\s+live\b/,
+    /\bwhat\s+city\s+does\s+jamie\s+live\s+in\b/,
+    /\bwhere\s+is\s+jamie'?s\s+(home|house|residence)\b/,
+    /\bjamie'?s\s+(home|house|residence)\s+(address|location)\b/
+  ];
+  if (!blockedPatterns.some((pattern) => pattern.test(text))) return '';
   return "I cannot help find or share Jamie's private home address or phone number. For public contact, use the contact links Jamie publishes on thingelstad.com or reply through the newsletter's normal public channels.";
 }
 
@@ -578,60 +585,6 @@ function commandInferenceConfig() {
   };
 }
 
-function groundingSourceText(toolResults) {
-  const parts = [];
-  for (const result of toolResults || []) {
-    const candidates = [];
-    if (Array.isArray(result.results)) candidates.push(...result.results);
-    if (Array.isArray(result.results_a)) candidates.push(...result.results_a);
-    if (Array.isArray(result.results_b)) candidates.push(...result.results_b);
-    if (result.issue?.body) {
-      candidates.push({
-        issue_number: result.issue.number,
-        subject: result.issue.subject,
-        publish_date: result.issue.publish_date,
-        section: 'Issue',
-        text: result.issue.body
-      });
-    }
-    if (result.text) candidates.push(result);
-    for (const item of candidates) {
-      const text = String(item.text || item.context || '').replace(/\s+/g, ' ').trim();
-      if (!text) continue;
-      parts.push([
-        `Weekly Thing #${item.issue_number || ''}: ${item.subject || ''}`,
-        `Date: ${item.publish_date || ''}`,
-        `Section: ${item.section || ''}`,
-        text
-      ].join('\n'));
-    }
-  }
-  return parts.join('\n\n').slice(0, 100000);
-}
-
-function guardrailGroundingBlocks(question, toolResults) {
-  const source = groundingSourceText(toolResults);
-  if (!source) return [];
-  return [
-    {
-      guardContent: {
-        text: {
-          text: source,
-          qualifiers: ['grounding_source']
-        }
-      }
-    },
-    {
-      guardContent: {
-        text: {
-          text: String(question || '').slice(0, 1000),
-          qualifiers: ['query']
-        }
-      }
-    }
-  ];
-}
-
 function issueKey(value) {
   return String(value || '').replace(/^#/, '').trim();
 }
@@ -896,26 +849,17 @@ async function streamBedrockAgentAnswer(question, history, responseStream) {
   let usage = {};
   let stopReason = '';
   const maxTurns = Number(process.env.MAX_TOOL_TURNS || DEFAULT_MAX_TOOL_TURNS);
-  const bedrockGuardrailConfig = guardrailStreamConfig();
   for (let turn = 0; turn <= maxTurns; turn += 1) {
     const response = await bedrock.send(new ConverseStreamCommand({
       modelId: agentModel(),
       system: [{ text: AGENT_SYSTEM_PROMPT }, { cachePoint: { type: 'default' } }],
       messages,
       toolConfig: { tools: toolSpecs() },
-      inferenceConfig: commandInferenceConfig(),
-      ...(bedrockGuardrailConfig ? { guardrailConfig: bedrockGuardrailConfig } : {})
+      inferenceConfig: commandInferenceConfig()
     }));
     const result = await readConverseStream(response, {
       onTextDelta: (delta) => writeSse(responseStream, 'answer_delta', { delta })
     });
-    const guardrailSummary = summarizeGuardrailTrace(result.trace);
-    if (guardrailSummary?.action || guardrailSummary?.blocked) {
-      writeSse(responseStream, 'status', {
-        message: guardrailSummary.blocked ? 'The guardrail blocked part of the response.' : 'The guardrail reviewed the response.',
-        guardrail: guardrailSummary
-      });
-    }
     const message = result.message;
     usage = result.usage || usage;
     stopReason = result.stopReason || stopReason;
@@ -941,10 +885,7 @@ async function streamBedrockAgentAnswer(question, history, responseStream) {
     }
     messages.push({
       role: 'user',
-      content: [
-        ...resultBlocks,
-        ...(bedrockGuardrailConfig ? guardrailGroundingBlocks(question, toolResults) : [])
-      ]
+      content: resultBlocks
     });
   }
   if (!answer) {
@@ -1061,16 +1002,14 @@ export const handler = awslambda.streamifyResponse(async (event, responseStream,
     }
 
     writeSse(stream, 'meta', { request_id: requestId });
-    if (!guardrailStreamConfig()) {
-      const guardedAnswer = privacyGuardAnswer(question);
-      if (guardedAnswer) {
-        const citations = [];
-        writeSse(stream, 'answer_delta', { delta: guardedAnswer });
-        writeSse(stream, 'citations', { citations });
-        writeSse(stream, 'done', { request_id: requestId });
-        await recordConversation({ event, subscriberHash, question, answer: guardedAnswer, historyCount: history.length, citations, route: 'stream', requestId });
-        return;
-      }
+    const guardedAnswer = privacyGuardAnswer(question);
+    if (guardedAnswer) {
+      const citations = [];
+      writeSse(stream, 'answer_delta', { delta: guardedAnswer });
+      writeSse(stream, 'citations', { citations });
+      writeSse(stream, 'done', { request_id: requestId });
+      await recordConversation({ event, subscriberHash, question, answer: guardedAnswer, historyCount: history.length, citations, route: 'stream', requestId });
+      return;
     }
 
     writeSse(stream, 'status', { message: 'Investigating the archive...' });

@@ -17,6 +17,7 @@
     "librarian:eval": "python pipeline/librarian/eval_librarian_rag.py",
     "librarian:eval:answers": "python pipeline/librarian/eval_librarian_answers.py",
     "librarian:eval:bedrock": "python pipeline/librarian/run_eval_job.py",
+    "librarian:guardrail:check": "python pipeline/librarian/check_guardrail_regression.py",
     "librarian:bedrock:logging": "python pipeline/librarian/configure_bedrock_logging.py",
     "librarian:conversations": "python pipeline/librarian/review_librarian_conversations.py",
     "librarian:deploy": "python pipeline/librarian/deploy_librarian_aws.py",
