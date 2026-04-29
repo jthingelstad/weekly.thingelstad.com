@@ -87,6 +87,14 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  eleventyConfig.addFilter("itunesDuration", (seconds) => {
+    const total = Math.max(0, Number(seconds) || 0);
+    const hours = Math.floor(total / 3600);
+    const minutes = Math.floor((total % 3600) / 60);
+    const secs = total % 60;
+    return [hours, minutes, secs].map((part) => String(part).padStart(2, "0")).join(":");
+  });
+
   // Current year (for copyright notices, etc.)
   eleventyConfig.addFilter("currentYear", () => new Date().getFullYear());
 

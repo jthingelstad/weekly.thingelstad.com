@@ -58,6 +58,7 @@ make content-push  # PATCH changed fields
 
 - `BUTTONDOWN_API_KEY` — required for API fetch. Local: `.env` file. CI: GitHub Actions secret.
 - `STRIPE_API_KEY` — required for Stripe balance fetch. Same pattern.
+- `OPENAI_API_KEY` — required for local audio generation with OpenAI TTS.
 
 ## Project Structure
 

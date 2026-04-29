@@ -43,6 +43,9 @@ permalink: /archive/
             <img class="archive-entry-thumb" src="{{ issue.data.image }}" alt="" loading="lazy" />
             {% endif %}
           </a>
+          {% if issue.data.audio_url %}
+          <a class="archive-listen-link" href="/archive/{{ issue.data.number }}/#listen">Listen</a>
+          {% endif %}
         </article>
         {% endfor %}
       </div>

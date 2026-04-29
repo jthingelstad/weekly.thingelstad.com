@@ -29,6 +29,14 @@ ogType: article
     {% if description %}
     <p class="issue-description">{{ description }}</p>
     {% endif %}
+    {% if audio_url %}
+    <div class="issue-audio" id="listen">
+      <div class="issue-audio-label">Listen</div>
+      <audio controls preload="none" src="{{ audio_url }}">
+        <a href="{{ audio_url }}">Download the MP3</a>
+      </audio>
+    </div>
+    {% endif %}
   </header>
 
   <div class="issue-body-wrap">
