@@ -231,6 +231,18 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  // Podcast episodes: issues with an audio_url, newest first.
+  eleventyConfig.addCollection("podcastEpisodes", (collectionApi) => {
+    return collectionApi
+      .getFilteredByTag("issue")
+      .filter((item) => Boolean(item.data.audio_url))
+      .sort((a, b) => {
+        return (
+          new Date(b.data.publish_date) - new Date(a.data.publish_date)
+        );
+      });
+  });
+
   // Group issues by year for archive
   eleventyConfig.addFilter("groupByYear", (issues) => {
     const years = {};

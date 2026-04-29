@@ -3,40 +3,59 @@ permalink: /podcast.xml
 eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:podcast="https://podcastindex.org/namespace/1.0">
   <channel>
-    <title>{{ site.title }}</title>
-    <description>{{ site.description | xmlEscape }}</description>
-    <link>{{ site.url }}/</link>
+    <title>{{- site.title | xmlEscape -}}</title>
+    <description>{{- site.description | xmlEscape -}}</description>
+    <link>{{- site.url -}}/</link>
     <atom:link href="{{ site.url }}/podcast.xml" rel="self" type="application/rss+xml"/>
     <language>en-us</language>
-    <itunes:author>{{ site.author | xmlEscape }}</itunes:author>
+    <copyright>© {{ "" | currentYear }} Jamie Thingelstad</copyright>
+    {%- if collections.podcastEpisodes and collections.podcastEpisodes.length > 0 %}
+    <lastBuildDate>{{- collections.podcastEpisodes[0].data.publish_date | dateFormat('rfc822') -}}</lastBuildDate>
+    {%- endif %}
+    <generator>Eleventy</generator>
+    <itunes:author>{{- site.author | xmlEscape -}}</itunes:author>
+    <itunes:summary>A weekly collection of interesting links, ideas, and observations from across the internet, curated by Jamie Thingelstad.</itunes:summary>
+    <itunes:type>episodic</itunes:type>
+    <itunes:owner>
+      <itunes:name>Jamie Thingelstad</itunes:name>
+      <itunes:email>jamie@thingelstad.com</itunes:email>
+    </itunes:owner>
     <itunes:explicit>false</itunes:explicit>
     <itunes:category text="Technology"/>
+    <itunes:category text="News">
+      <itunes:category text="Tech News"/>
+    </itunes:category>
     <itunes:image href="{{ site.url }}/img/podcast-cover.png"/>
-    {% for issue in collections.issuesByDate %}
-    {% if issue.data.audio_url %}
-      {%- set subjectParts = issue.data.subject | split(" / ") -%}
+    <!-- Permanent podcast GUID — must NEVER be regenerated. -->
+    <podcast:guid>7E18C1A2-0A50-459E-A683-D8050F31470B</podcast:guid>
+    <podcast:locked owner="jamie@thingelstad.com">no</podcast:locked>
+    {%- for issue in collections.podcastEpisodes %}
+    <item>
+      {% set subjectParts = issue.data.subject | split(" / ") -%}
       {%- set subjectTail = subjectParts | last if subjectParts.length > 1 else issue.data.subject -%}
       {%- set episodeTitle = "#" + (issue.data.number | string) + " — " + subjectTail -%}
-    <item>
-      <title>{{ episodeTitle | xmlEscape }}</title>
-      <link>{{ site.url }}/archive/{{ issue.data.number }}/</link>
-      <guid isPermaLink="false">weekly-thing-{{ issue.data.number }}-audio</guid>
-      <pubDate>{{ issue.data.publish_date | dateFormat('rfc822') }}</pubDate>
       {%- set issueUrl = site.url + '/archive/' + (issue.data.number | string) + '/' -%}
-      {%- set descBody -%}
-{%- if issue.data.description -%}{{ issue.data.description }}
-
-{% endif -%}
-Read this issue: {{ issueUrl }}
-      {%- endset -%}
-      <description>{{ descBody | xmlEscape }}</description>
-      <itunes:summary>{{ descBody | xmlEscape }}</itunes:summary>
-      <itunes:duration>{{ issue.data.audio_duration_seconds | itunesDuration }}</itunes:duration>
+      <title>{{- episodeTitle | xmlEscape -}}</title>
+      <link>{{- issueUrl -}}</link>
+      <guid isPermaLink="false">weekly-thing-{{ issue.data.number }}-audio</guid>
+      <pubDate>{{- issue.data.publish_date | dateFormat('rfc822') -}}</pubDate>
+      <description>{{- (issue.data.description or "") | xmlEscape -}}</description>
+      <itunes:summary>{{- (issue.data.description or "") | xmlEscape -}}</itunes:summary>
+      <content:encoded><![CDATA[{%- if issue.data.description %}<p>{{ issue.data.description | xmlEscape }}</p>{% endif %}<p><a href="{{ issueUrl }}">Read this issue on the web →</a></p>]]></content:encoded>
+      <itunes:author>Jamie Thingelstad</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:episode>{{- issue.data.number -}}</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:image href="{{ site.url }}/img/podcast-cover.png"/>
+      <itunes:duration>{{- issue.data.audio_duration_seconds | itunesDuration -}}</itunes:duration>
       <enclosure url="{{ issue.data.audio_url }}" length="{{ issue.data.audio_byte_size or 0 }}" type="audio/mpeg"/>
     </item>
-    {% endif %}
-    {% endfor %}
+    {%- endfor %}
   </channel>
 </rss>
