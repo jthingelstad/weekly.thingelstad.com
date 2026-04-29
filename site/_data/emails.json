@@ -99473,9 +99473,9 @@
     ],
     "word_count": 3037,
     "audio_url": "https://files.thingelstad.com/weekly-thing/340/weekly-thing-340.mp3",
-    "audio_duration_seconds": 1080,
+    "audio_duration_seconds": 1090,
     "audio_voice": "openai-tts-1-hd:echo",
-    "audio_byte_size": 21602925
+    "audio_byte_size": 21808365
   },
   {
     "id": "em_2pfnz6sy5r9s9s2rk2e64nkk9j",
@@ -99793,9 +99793,9 @@
     ],
     "word_count": 2136,
     "audio_url": "https://files.thingelstad.com/weekly-thing/341/weekly-thing-341.mp3",
-    "audio_duration_seconds": 804,
+    "audio_duration_seconds": 822,
     "audio_voice": "openai-tts-1-hd:echo",
-    "audio_byte_size": 16084365
+    "audio_byte_size": 16436685
   },
   {
     "id": "em_64zmmdvfe581n86fc5d1rx3cxe",
@@ -99861,9 +99861,9 @@
     ],
     "word_count": 5145,
     "audio_url": "https://files.thingelstad.com/weekly-thing/342/weekly-thing-342.mp3",
-    "audio_duration_seconds": 1752,
+    "audio_duration_seconds": 1741,
     "audio_voice": "openai-tts-1-hd:echo",
-    "audio_byte_size": 35047725
+    "audio_byte_size": 34820685
   },
   {
     "id": "em_4a6peg88tg8xct3t58ww4fk748",
@@ -100196,9 +100196,9 @@
     ],
     "word_count": 1964,
     "audio_url": "https://files.thingelstad.com/weekly-thing/343/weekly-thing-343.mp3",
-    "audio_duration_seconds": 639,
+    "audio_duration_seconds": 721,
     "audio_voice": "openai-tts-1-hd:echo",
-    "audio_byte_size": 12787245
+    "audio_byte_size": 14421645
   },
   {
     "id": "em_3sxzh9t7278art64ehstcb76a2",
@@ -100606,9 +100606,9 @@
     ],
     "word_count": 2598,
     "audio_url": "https://files.thingelstad.com/weekly-thing/344/weekly-thing-344.mp3",
-    "audio_duration_seconds": 831,
+    "audio_duration_seconds": 957,
     "audio_voice": "openai-tts-1-hd:echo",
-    "audio_byte_size": 16615245
+    "audio_byte_size": 19131405
   },
   {
     "id": "em_6rcezepp9a9s8btd9fy95k0yk7",
@@ -100911,8 +100911,8 @@
     ],
     "word_count": 3746,
     "audio_url": "https://files.thingelstad.com/weekly-thing/345/weekly-thing-345.mp3",
-    "audio_duration_seconds": 1282,
+    "audio_duration_seconds": 1303,
     "audio_voice": "openai-tts-1-hd:echo",
-    "audio_byte_size": 25642605
+    "audio_byte_size": 26053005
   }
 ]
