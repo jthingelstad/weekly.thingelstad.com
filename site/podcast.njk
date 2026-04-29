@@ -16,8 +16,11 @@ eleventyExcludeFromCollections: true
     <itunes:image href="{{ site.url }}/img/podcast-cover.png"/>
     {% for issue in collections.issuesByDate %}
     {% if issue.data.audio_url %}
+      {%- set subjectParts = issue.data.subject | split(" / ") -%}
+      {%- set subjectTail = subjectParts | last if subjectParts.length > 1 else issue.data.subject -%}
+      {%- set episodeTitle = "#" + (issue.data.number | string) + " — " + subjectTail -%}
     <item>
-      <title>{{ issue.data.subject | xmlEscape }}</title>
+      <title>{{ episodeTitle | xmlEscape }}</title>
       <link>{{ site.url }}/archive/{{ issue.data.number }}/</link>
       <guid isPermaLink="false">weekly-thing-{{ issue.data.number }}-audio</guid>
       <pubDate>{{ issue.data.publish_date | dateFormat('rfc822') }}</pubDate>
