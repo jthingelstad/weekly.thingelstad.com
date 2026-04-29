@@ -1,14 +1,17 @@
 <header class="site-header">
-  <div class="container">
-    <a href="/" class="site-logo">Weekly Thing</a>
+  <div class="container-wide">
+    <a href="/" class="site-logo">
+      <span class="site-logo-mark" aria-hidden="true">W</span>
+      <span>Weekly Thing</span>
+    </a>
     <nav class="site-nav" aria-label="Main navigation">
       {% set navItems = [
+        { href: "/", label: "Home" },
         { href: "/archive/", label: "Archive" },
-        { href: "/thingy/", label: "Thingy" },
         { href: "/search/", label: "Search" },
+        { href: "/thingy/", label: "Thingy" },
         { href: "/about/", label: "About" },
-        { href: "/members/", label: "Members" },
-        { href: "/faq/", label: "FAQ" }
+        { href: "/members/", label: "Members" }
       ] %}
       {% for item in navItems %}
       {% set isActive = page.url | isActiveNav(item.href) %}

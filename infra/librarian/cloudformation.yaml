@@ -19,10 +19,10 @@ Parameters:
     Description: S3 bucket containing the embedded librarian corpus JSON.
   CorpusKey:
     Type: String
-    Default: librarian/corpus.json
+    Default: artifacts/corpus.json
   GraphKey:
     Type: String
-    Default: librarian/graph.json
+    Default: artifacts/graph.json
   ButtondownApiKey:
     Type: String
     NoEcho: true
@@ -42,10 +42,43 @@ Parameters:
     Default: 30
     MinValue: 1
     Description: Maximum auth attempts per client identity per hour.
+  GuardrailEnabled:
+    Type: String
+    Default: "false"
+    AllowedValues:
+      - "true"
+      - "false"
+    Description: Enable the Bedrock Guardrail for Thingy model calls.
+  GuardrailTrace:
+    Type: String
+    Default: enabled
+    AllowedValues:
+      - enabled
+      - enabled_full
+      - disabled
+  GuardrailStreamProcessingMode:
+    Type: String
+    Default: sync
+    AllowedValues:
+      - sync
+      - async
+  GuardrailIdentifier:
+    Type: String
+    Default: ""
+    Description: Existing Bedrock Guardrail ID or ARN managed by the deploy script.
+  GuardrailVersion:
+    Type: String
+    Default: ""
+    Description: Existing Bedrock Guardrail version managed by the deploy script.
+
+Conditions:
+  UseBedrockGuardrail: !Equals [!Ref GuardrailEnabled, "true"]
 
 Resources:
   LibrarianTable:
     Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
     Properties:
       BillingMode: PAY_PER_REQUEST
       AttributeDefinitions:
@@ -61,10 +94,18 @@ Resources:
       TimeToLiveSpecification:
         AttributeName: ttl
         Enabled: true
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      Tags:
+        - Key: project
+          Value: Thingy
 
   LibrarianFunctionRole:
     Type: AWS::IAM::Role
     Properties:
+      Tags:
+        - Key: project
+          Value: Thingy
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
@@ -96,6 +137,7 @@ Resources:
                   - bedrock:InvokeModelWithResponseStream
                 Resource:
                   - !Sub arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:inference-profile/us.anthropic.claude-sonnet-4-6
+                  - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/amazon.nova-pro-v1:0
                   - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/anthropic.claude-sonnet-4-6
                   - arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-6
                   - arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-sonnet-4-6
@@ -105,6 +147,9 @@ Resources:
                   - arn:aws:bedrock:ca-central-1::foundation-model/cohere.rerank-v3-5:0
                   - arn:aws:bedrock:eu-central-1::foundation-model/cohere.rerank-v3-5:0
                   - arn:aws:bedrock:ap-northeast-1::foundation-model/cohere.rerank-v3-5:0
+              - Effect: Allow
+                Action: bedrock:ApplyGuardrail
+                Resource: "*"
               - Effect: Allow
                 Action: bedrock:Rerank
                 Resource: "*"
@@ -129,11 +174,19 @@ Resources:
           LOG_LEVEL: !Ref LogLevel
           AUTH_RATE_LIMIT_MAX: !Ref AuthRateLimitMax
           BEDROCK_AGENT_MODEL: us.anthropic.claude-sonnet-4-6
+          BEDROCK_GUARDRAIL_ENABLED: !Ref GuardrailEnabled
+          BEDROCK_GUARDRAIL_ID: !If [UseBedrockGuardrail, !Ref GuardrailIdentifier, ""]
+          BEDROCK_GUARDRAIL_VERSION: !If [UseBedrockGuardrail, !Ref GuardrailVersion, ""]
+          BEDROCK_GUARDRAIL_TRACE: !Ref GuardrailTrace
+          BEDROCK_GUARDRAIL_STREAM_PROCESSING_MODE: !Ref GuardrailStreamProcessingMode
       Handler: auth/handler.handler
       MemorySize: 1024
       Role: !GetAtt LibrarianFunctionRole.Arn
       Runtime: nodejs20.x
       Timeout: 35
+      Tags:
+        - Key: project
+          Value: Thingy
 
   LibrarianStreamFunction:
     Type: AWS::Lambda::Function
@@ -156,11 +209,19 @@ Resources:
           BEDROCK_EMBEDDING_MODEL: cohere.embed-english-v3
           BEDROCK_RERANK_MODEL: cohere.rerank-v3-5:0
           BEDROCK_RERANK_REGION: us-west-2
+          BEDROCK_GUARDRAIL_ENABLED: !Ref GuardrailEnabled
+          BEDROCK_GUARDRAIL_ID: !If [UseBedrockGuardrail, !Ref GuardrailIdentifier, ""]
+          BEDROCK_GUARDRAIL_VERSION: !If [UseBedrockGuardrail, !Ref GuardrailVersion, ""]
+          BEDROCK_GUARDRAIL_TRACE: !Ref GuardrailTrace
+          BEDROCK_GUARDRAIL_STREAM_PROCESSING_MODE: !Ref GuardrailStreamProcessingMode
       Handler: chat/handler.handler
       MemorySize: 1536
       Role: !GetAtt LibrarianFunctionRole.Arn
       Runtime: nodejs20.x
       Timeout: 60
+      Tags:
+        - Key: project
+          Value: Thingy
 
   LibrarianStreamFunctionUrl:
     Type: AWS::Lambda::Url
@@ -198,6 +259,8 @@ Resources:
     Properties:
       Name: weekly-thing-librarian
       ProtocolType: HTTP
+      Tags:
+        project: Thingy
       CorsConfiguration:
         AllowHeaders:
           - content-type
@@ -236,6 +299,8 @@ Resources:
       ApiId: !Ref LibrarianApi
       StageName: $default
       AutoDeploy: true
+      Tags:
+        project: Thingy
 
   LibrarianInvokePermission:
     Type: AWS::Lambda::Permission
@@ -245,6 +310,161 @@ Resources:
       Principal: apigateway.amazonaws.com
       SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${LibrarianApi}/*/*/*
 
+  LibrarianAuthErrorsAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: Thingy auth Lambda has errors.
+      Namespace: AWS/Lambda
+      MetricName: Errors
+      Dimensions:
+        - Name: FunctionName
+          Value: !Ref LibrarianFunction
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      DatapointsToAlarm: 1
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+      Tags:
+        - Key: project
+          Value: Thingy
+
+  LibrarianStreamErrorsAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: Thingy stream Lambda has errors.
+      Namespace: AWS/Lambda
+      MetricName: Errors
+      Dimensions:
+        - Name: FunctionName
+          Value: !Ref LibrarianStreamFunction
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      DatapointsToAlarm: 1
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+      Tags:
+        - Key: project
+          Value: Thingy
+
+  LibrarianStreamThrottlesAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: Thingy stream Lambda is throttling.
+      Namespace: AWS/Lambda
+      MetricName: Throttles
+      Dimensions:
+        - Name: FunctionName
+          Value: !Ref LibrarianStreamFunction
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      DatapointsToAlarm: 1
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+      Tags:
+        - Key: project
+          Value: Thingy
+
+  BedrockEvaluationRole:
+    Type: AWS::IAM::Role
+    Properties:
+      Tags:
+        - Key: project
+          Value: Thingy
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: bedrock.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: ThingyBedrockEvaluationAccess
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                Resource:
+                  - !Sub arn:aws:s3:::${CorpusBucket}/eval/datasets/*
+              - Effect: Allow
+                Action:
+                  - s3:PutObject
+                  - s3:GetObject
+                Resource:
+                  - !Sub arn:aws:s3:::${CorpusBucket}/eval/runs/*
+              - Effect: Allow
+                Action:
+                  - s3:ListBucket
+                Resource:
+                  - !Sub arn:aws:s3:::${CorpusBucket}
+                Condition:
+                  StringLike:
+                    s3:prefix:
+                      - eval/datasets/*
+                      - eval/runs/*
+              - Effect: Allow
+                Action:
+                  - bedrock:InvokeModel
+                Resource:
+                  - !Sub arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:inference-profile/us.anthropic.claude-sonnet-4-6
+                  - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/amazon.nova-pro-v1:0
+                  - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/anthropic.claude-sonnet-4-6
+                  - arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-6
+                  - arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-sonnet-4-6
+
+  LibrarianDashboard:
+    Type: AWS::CloudWatch::Dashboard
+    Properties:
+      DashboardName: weekly-thing-librarian
+      DashboardBody: !Sub |
+        {
+          "widgets": [
+            {
+              "type": "metric",
+              "x": 0,
+              "y": 0,
+              "width": 12,
+              "height": 6,
+              "properties": {
+                "region": "${AWS::Region}",
+                "title": "Thingy Lambda invocations and errors",
+                "metrics": [
+                  [ "AWS/Lambda", "Invocations", "FunctionName", "${LibrarianFunction}" ],
+                  [ ".", "Errors", ".", "." ],
+                  [ ".", "Invocations", "FunctionName", "${LibrarianStreamFunction}" ],
+                  [ ".", "Errors", ".", "." ]
+                ],
+                "stat": "Sum",
+                "period": 300
+              }
+            },
+            {
+              "type": "metric",
+              "x": 12,
+              "y": 0,
+              "width": 12,
+              "height": 6,
+              "properties": {
+                "region": "${AWS::Region}",
+                "title": "Thingy Lambda duration",
+                "metrics": [
+                  [ "AWS/Lambda", "Duration", "FunctionName", "${LibrarianFunction}" ],
+                  [ ".", ".", ".", "${LibrarianStreamFunction}" ]
+                ],
+                "stat": "Average",
+                "period": 300
+              }
+            }
+          ]
+        }
+
 Outputs:
   LibrarianApiUrl:
     Description: Base URL for the Archive Librarian API.
@@ -252,3 +472,6 @@ Outputs:
   LibrarianStreamUrl:
     Description: Streaming URL for the Archive Librarian chat API.
     Value: !GetAtt LibrarianStreamFunctionUrl.FunctionUrl
+  BedrockEvalRoleArn:
+    Description: IAM role ARN used by on-demand Bedrock Model Evaluation jobs.
+    Value: !GetAtt BedrockEvaluationRole.Arn

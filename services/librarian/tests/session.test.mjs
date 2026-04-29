@@ -6,6 +6,7 @@ import { renderTemplate, agentUserPrompt } from '../shared/prompts.mjs';
 import { subscriberStatus } from '../shared/buttondown.mjs';
 import { normalizeFeedbackReaction, validFeedbackRequestId } from '../shared/feedback.mjs';
 import { readConverseStream } from '../shared/bedrock-stream.mjs';
+import { summarizeGuardrailTrace } from '../shared/guardrails.mjs';
 
 test('session token round trips and rejects tampering', () => {
   process.env.SESSION_SECRET = 'test-secret';
@@ -105,4 +106,16 @@ test('Bedrock converse stream reader reconstructs streamed tool use input', asyn
     toolUse: { toolUseId: 'tool-1', name: 'search_archive', input: { query: 'RSS' } }
   }]);
   assert.equal(result.stopReason, 'tool_use');
+});
+
+test('guardrail trace summary treats intervention action text as blocked', () => {
+  assert.deepEqual(summarizeGuardrailTrace({ guardrail: { action: 'Guardrail blocked.' } }), {
+    action: 'Guardrail blocked.',
+    blocked: true
+  });
+
+  assert.deepEqual(summarizeGuardrailTrace({ guardrail: { action: 'Guardrail reviewed.' } }), {
+    action: 'Guardrail reviewed.',
+    blocked: false
+  });
 });

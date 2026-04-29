@@ -15,6 +15,7 @@ export async function readConverseStream(response, { onTextDelta } = {}) {
   let text = '';
   let stopReason = '';
   let usage = {};
+  let trace = {};
 
   const blockFor = (index) => {
     if (!blocks.has(index)) blocks.set(index, { text: '' });
@@ -60,6 +61,7 @@ export async function readConverseStream(response, { onTextDelta } = {}) {
     }
 
     if (event.metadata?.usage) usage = event.metadata.usage;
+    if (event.metadata?.trace) trace = event.metadata.trace;
   }
 
   message.content = Array.from(blocks.entries())
@@ -77,5 +79,5 @@ export async function readConverseStream(response, { onTextDelta } = {}) {
     })
     .filter((block) => block.toolUse || block.text);
 
-  return { message, text: text.trim(), stopReason, usage };
+  return { message, text: text.trim(), stopReason, usage, trace };
 }

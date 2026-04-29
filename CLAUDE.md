@@ -59,6 +59,10 @@ make content-push  # PATCH changed fields
 - `BUTTONDOWN_API_KEY` — required for API fetch. Local: `.env` file. CI: GitHub Actions secret.
 - `STRIPE_API_KEY` — required for Stripe balance fetch. Same pattern.
 - `OPENAI_API_KEY` — required for local audio generation with OpenAI TTS.
+- `WEEKLY_THING_ASSETS_BUCKET` — public archive asset bucket; defaults conceptually to `files.thingelstad.com`.
+- `LIBRARIAN_BUCKET` — private Thingy code/corpus/eval/log bucket; deploy tooling defaults to `weekly-thing-librarian`.
+- `BEDROCK_GUARDRAIL_ENABLED` — optional Thingy Bedrock Guardrail switch; defaults off until explicitly deployed.
+- `BEDROCK_EVAL_ROLE_ARN` — required only when starting Bedrock Model Evaluation jobs.
 
 ## Project Structure
 
@@ -295,11 +299,15 @@ Each writes to `tmp/` (gitignored). Copy outputs to `docs/audits/` to snapshot.
 
 ## Design
 
-- **Aesthetic:** Clean, editorial, warm. Typography-forward (Charter serif for body/headings, system sans for UI). Generous whitespace.
-- **Colors:** `#faf9f7` bg, `#c44d2b` accent, dark mode via `prefers-color-scheme`
-- **No JS required** for core reading. JS only for subscribe form, Pagefind search, and Tinylytics.
-- **Accessible:** proper heading hierarchy, alt text, color contrast, keyboard nav
-- **Mobile-first** responsive design
+- **Aesthetic:** Editorial, magazine-like. Source Serif 4 for display + italic accents, Source Sans 3 for body/UI, JetBrains Mono for eyebrows and meta. Generous whitespace.
+- **Colors:** `#fcfcfa` bg, `#1f6fd6` accent (deep `#134d99`, soft `#e1edff`), dark mode via `prefers-color-scheme`.
+- **No JS required** for core reading. JS only for subscribe form, Pagefind search, archive year filter, librarian chat, and Tinylytics.
+- **Accessible:** proper heading hierarchy, alt text, color contrast, keyboard nav.
+- **Mobile-first** responsive design.
+
+## Email styling
+
+`docs/email/buttondown-email.css` is the production email stylesheet. Paste its contents into Buttondown's **Custom CSS** field so issues delivered to inboxes match the archive site (Source Serif 4 headings, Source Sans 3 body, blue accent, mono section markers). The file uses system-font fallbacks (Charter, Iowan Old Style, SF Mono) since most email clients don't load remote fonts.
 
 ## Still Needed
 

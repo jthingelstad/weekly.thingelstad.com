@@ -6,6 +6,7 @@ import { eventSummary, jsonResponse, methodAndPath, parseBody, clientSourceIp, u
 import { checkRateLimit } from '../shared/rate-limit.mjs';
 import { createSessionToken, emailHash, normalizeEmail, stableHash } from '../shared/session.mjs';
 import { logEvent } from '../shared/logging.mjs';
+import { guardrailConfig } from '../shared/guardrails.mjs';
 import { premiumThankYouSystemPrompt } from '../shared/prompts.mjs';
 
 const AUTH_RATE_LIMIT_MAX = 30;
@@ -49,11 +50,13 @@ function bedrockMessageText(message) {
 
 async function generatePremiumThankYou() {
   const start = performance.now();
+  const bedrockGuardrailConfig = guardrailConfig();
   const response = await bedrock.send(new ConverseCommand({
     modelId: agentModel(),
     system: [{ text: premiumThankYouSystemPrompt() }, { cachePoint: { type: 'default' } }],
     messages: [{ role: 'user', content: [{ text: 'Generate a fresh thank-you under 28 words.' }] }],
-    inferenceConfig: { maxTokens: 120, temperature: 0.7 }
+    inferenceConfig: { maxTokens: 120, temperature: 0.7 },
+    ...(bedrockGuardrailConfig ? { guardrailConfig: bedrockGuardrailConfig } : {})
   }));
   const text = bedrockMessageText(response.output?.message || {}).replace(/\s+/g, ' ').trim();
   if (!text || text.length > 220) throw new Error('Bedrock returned invalid premium thank-you');
