@@ -1203,6 +1203,21 @@ th {
   border-radius: 2px;
   pointer-events: none;
 }
+.home-stamp-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px;
+}
+.home-stamp-ident { min-width: 0; }
+.home-stamp-cover {
+  width: 96px;
+  height: 96px;
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 1px 2px rgba(20, 24, 31, 0.08), 0 6px 16px rgba(20, 24, 31, 0.06);
+}
 .home-stamp-issue {
   display: block;
   font-family: var(--serif);
@@ -1221,6 +1236,34 @@ th {
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
+.home-stamp-subject a,
+.home-stamp-subject a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.home-stamp-stretched::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.home-stamp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 4px 0 0;
+  font-size: 14px;
+}
+.home-stamp-action {
+  position: relative;
+  z-index: 2;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+.home-stamp-action:hover { text-decoration: underline; color: var(--accent-deep); }
+.home-stamp-action-listen { color: var(--color-audio-accent); }
+.home-stamp-action-listen.is-playing { color: var(--accent-deep); }
 .home-stamp hr {
   border: none;
   border-top: 1px solid var(--line);
@@ -1259,13 +1302,6 @@ th {
   background: transparent;
   color: var(--muted);
 }
-.home-stamp-cta {
-  display: inline-block;
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--accent);
-}
-.home-stamp:hover .home-stamp-cta { color: var(--accent-deep); }
 
 /* Numbers */
 .home-numbers {
@@ -1704,6 +1740,7 @@ th {
 .archive-year-tab.is-active .archive-year-tab-count { color: rgba(255,255,255,0.75); }
 
 .archive-list-wrap { padding: 48px 0; }
+.archive-container { max-width: 56rem; }
 
 .archive-year-head {
   display: grid;
@@ -1746,26 +1783,34 @@ th {
 .archive-entry:first-child { border-top: 1px solid var(--line-soft); }
 .archive-entry-link {
   display: grid;
-  grid-template-columns: 96px 100px 1fr 110px;
-  gap: 24px;
+  grid-template-columns: 88px 1fr;
+  gap: 20px;
   padding: 20px 0;
-  text-decoration: none;
   color: var(--ink);
   align-items: start;
   transition: background 140ms ease;
 }
-.archive-entry-link:hover {
+.archive-entry:hover .archive-entry-link {
   background: linear-gradient(90deg, transparent, var(--surface-2), transparent);
-  color: var(--ink);
 }
-.archive-entry-link:hover .archive-entry-title { color: var(--accent); }
+.archive-entry:hover .archive-entry-title a { color: var(--accent); }
+.archive-entry-stretched {
+  text-decoration: none;
+  color: inherit;
+}
+.archive-entry-stretched::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
 .archive-entry-cover {
-  width: 96px;
-  height: 128px;
+  width: 88px;
+  height: 88px;
   border-radius: 4px;
   display: grid;
   place-items: end start;
-  padding: 10px;
+  padding: 8px;
   box-shadow: 0 1px 3px rgba(20, 24, 31, 0.08), 0 4px 12px rgba(20, 24, 31, 0.04);
   position: relative;
   overflow: hidden;
@@ -1774,7 +1819,7 @@ th {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.25) 100%);
+  background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.25) 100%);
   pointer-events: none;
 }
 .archive-entry-cover-num {
@@ -1782,26 +1827,9 @@ th {
   font-family: var(--serif);
   font-style: italic;
   font-weight: 500;
-  font-size: 22px;
+  font-size: 20px;
   color: rgba(255,255,255,0.95);
   letter-spacing: -0.01em;
-}
-.archive-entry-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding-top: 4px;
-}
-.archive-entry-number {
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--accent);
-}
-.archive-entry-date {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--muted);
 }
 .archive-entry-body {
   min-width: 0;
@@ -1823,37 +1851,27 @@ th {
   max-width: 64ch;
   margin: 0 0 10px;
 }
-.archive-entry-tags {
+.archive-entry-foot {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-}
-.archive-entry-tag {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--muted);
-  background: var(--surface-2);
-  padding: 3px 7px;
-  border-radius: 3px;
-}
-.archive-entry-tag-more { color: var(--accent); background: var(--accent-soft); }
-.archive-entry-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: baseline;
+  gap: 14px;
+  margin: 0;
   font-family: var(--mono);
   font-size: 12px;
   color: var(--muted);
-  text-align: right;
-  padding-top: 4px;
 }
-.archive-entry-stats strong { font-weight: 600; color: var(--ink); }
-.archive-entry-listen {
-  color: var(--color-audio-accent) !important;
+.archive-entry-foot strong { font-weight: 600; color: var(--ink); }
+.archive-entry-foot time { color: var(--ink-soft); font-weight: 600; }
+.archive-entry-action {
+  text-decoration: none;
   font-weight: 600;
+  position: relative;
+  z-index: 2;
 }
-
-.archive-entry-inline-meta { display: none; }
+.archive-entry-action:hover { text-decoration: underline; }
+.archive-entry-listen { color: var(--color-audio-accent); }
+.archive-entry-chat { color: var(--accent); }
 
 /* Mobile */
 @media (max-width: 720px) {
@@ -1861,28 +1879,9 @@ th {
     grid-template-columns: 64px 1fr;
     gap: 14px;
   }
-  .archive-entry-cover { width: 64px; height: 84px; padding: 6px; }
+  .archive-entry-cover { width: 64px; height: 64px; padding: 6px; }
   .archive-entry-cover-num { font-size: 14px; }
-  .archive-entry-meta,
-  .archive-entry-stats { display: none; }
-  .archive-entry-inline-meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 10px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    margin: 0 0 6px;
-  }
-  .archive-entry-inline-num {
-    color: var(--accent);
-    font-weight: 600;
-  }
-  .archive-entry-inline-listen {
-    color: var(--color-audio-accent);
-    font-weight: 600;
-  }
+  .archive-entry-foot { gap: 10px; font-size: 11px; }
 }
 
 /* ===================================================================
@@ -2004,6 +2003,13 @@ th {
   border-color: var(--accent);
   color: var(--accent);
   text-decoration: none;
+}
+.issue-action-kudos::before {
+  content: "\2661\00a0 Kudos";
+  font-family: var(--sans);
+}
+.issue-action-kudos {
+  font-variant-numeric: tabular-nums;
 }
 .issue-action.tinylytics_kudos.did_select {
   background: var(--accent);
@@ -2944,10 +2950,25 @@ th {
   color: var(--color-text-muted);
 }
 
+/* Pagefind ships .pagefind-ui--reset mark { all: revert } which reverts to the
+   UA yellow; we use !important to override that without re-implementing every
+   reset property. */
 .pagefind-ui mark {
-  color: var(--color-text);
-  background: var(--color-highlight, rgba(37, 99, 171, 0.2));
+  color: var(--accent-deep) !important;
+  background: var(--accent-soft) !important;
+  padding: 0 2px;
+  border-radius: 2px;
 }
+@media (prefers-color-scheme: dark) {
+  .pagefind-ui mark {
+    color: #fff !important;
+    background: rgba(95, 160, 236, 0.32) !important;
+  }
+}
+/* Hide the (now-unused) year filter UI in case Pagefind still renders it. */
+.pagefind-ui .pagefind-ui__filter-panel,
+.pagefind-ui .pagefind-ui__filter-block,
+.pagefind-ui .pagefind-ui__filter-bottom { display: none !important; }
 
 .pagefind-ui .pagefind-ui__message {
   color: var(--color-text-muted);
@@ -2966,6 +2987,29 @@ th {
   background: var(--color-accent);
   color: #fff;
 }
+
+.search-thingy-nudge,
+.pagefind-ui .search-thingy-nudge {
+  margin: 18px 0 0 !important;
+  padding: 12px 16px !important;
+  background: var(--accent-soft) !important;
+  border-left: 3px solid var(--accent) !important;
+  border-radius: 4px !important;
+  font-family: var(--sans) !important;
+  font-size: 14px !important;
+  color: var(--ink-soft) !important;
+  display: block !important;
+}
+.search-thingy-nudge[hidden],
+.pagefind-ui .search-thingy-nudge[hidden] { display: none !important; }
+.search-thingy-nudge a,
+.pagefind-ui .search-thingy-nudge a {
+  color: var(--accent-deep) !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+.search-thingy-nudge a:hover,
+.pagefind-ui .search-thingy-nudge a:hover { text-decoration: underline !important; }
 
 /* ===================================================================
    Subscribed Page

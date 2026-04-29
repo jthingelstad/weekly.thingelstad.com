@@ -8,7 +8,7 @@ permalink: /archive/
 {% set latestNumber = collections.issuesByDate[0].data.number %}
 
 <section class="archive-hero">
-  <div class="container-wide">
+  <div class="container-wide archive-container">
     <p class="eyebrow">The Archive</p>
     <h1 class="archive-hero-title">{{ archiveStats.yearsActive }} years of <em>weekend letters</em>.</h1>
     <p class="archive-hero-lede">Every issue I&rsquo;ve sent, going back to May 2017. {{ latestNumber }} letters, {{ archiveStats.totalLinks | numberFormat }} links, {{ archiveStats.totalWords | numberFormat }} words. Browse by year, by topic, or just dip in &mdash; it&rsquo;s all searchable.</p>
@@ -20,7 +20,7 @@ permalink: /archive/
 </section>
 
 <section class="archive-years-wrap">
-  <div class="container-wide">
+  <div class="container-wide archive-container">
     <div class="archive-years-head">
       <p class="eyebrow">Browse by year</p>
       <span class="archive-years-current" data-archive-current>All years</span>
@@ -41,7 +41,7 @@ permalink: /archive/
 </section>
 
 <section class="archive-list-wrap">
-  <div class="container-wide">
+  <div class="container-wide archive-container">
     {% for group in grouped %}
     {% set yearStat = (archiveStats.yearlyStats | slice(0, 99)) %}
     {% set yearLinks = 0 %}
@@ -63,39 +63,25 @@ permalink: /archive/
       <ol class="archive-list">
         {% for issue in group.issues %}
         <li class="archive-entry">
-          <a href="/archive/{{ issue.data.number }}/" class="archive-entry-link">
+          <div class="archive-entry-link">
             {% set hasCover = issue.data.image and ("files.thingelstad.com" in issue.data.image) %}
-            <div class="archive-entry-cover" aria-hidden="true"{% if hasCover %} style="background-image: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.45)), url('{{ issue.data.image }}'); background-size: cover; background-position: center;"{% else %} data-fallback="{{ issue.data.number }}"{% endif %}>
+            <div class="archive-entry-cover" aria-hidden="true"{% if hasCover %} style="background-image: linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.45)), url('{{ issue.data.image }}'); background-size: cover; background-position: center;"{% else %} data-fallback="{{ issue.data.number }}"{% endif %}>
               <span class="archive-entry-cover-num">{{ issue.data.number }}</span>
             </div>
-            <div class="archive-entry-meta">
-              <span class="archive-entry-number">#{{ issue.data.number }}</span>
-              <time class="archive-entry-date" datetime="{{ issue.data.publish_date | dateFormat('iso') }}">{{ issue.data.publish_date | dateShort }}</time>
-            </div>
             <div class="archive-entry-body">
-              <p class="archive-entry-inline-meta">
-                <span class="archive-entry-inline-num">#{{ issue.data.number }}</span>
-                <time datetime="{{ issue.data.publish_date | dateFormat('iso') }}">{{ issue.data.publish_date | dateShort }}</time>
-                {% if issue.data.audio_url %}<span class="archive-entry-inline-listen">&#9656; Listen</span>{% endif %}
-              </p>
-              <h3 class="archive-entry-title">{{ issue.data.subject }}</h3>
+              <h3 class="archive-entry-title"><a href="/archive/{{ issue.data.number }}/" class="archive-entry-stretched">{{ issue.data.subject }}</a></h3>
               {% if issue.data.description %}
               <p class="archive-entry-description">{{ issue.data.description }}</p>
               {% endif %}
-              {% if issue.data.domains and issue.data.domains.length > 0 %}
-              <div class="archive-entry-tags">
-                {% for d in issue.data.domains | slice(0, 3) %}<span class="archive-entry-tag">{{ d }}</span>{% endfor %}
-                {% if issue.data.domains.length > 3 %}<span class="archive-entry-tag archive-entry-tag-more">+{{ issue.data.domains.length - 3 }}</span>{% endif %}
-              </div>
-              {% endif %}
+              <p class="archive-entry-foot">
+                <time datetime="{{ issue.data.publish_date | dateFormat('iso') }}">{{ issue.data.publish_date | dateShort }}</time>
+                {% if issue.data.links and issue.data.links.length > 0 %}<span><strong>{{ issue.data.links.length }}</strong> links</span>{% endif %}
+                {% if issue.data.word_count %}<span><strong>{{ (issue.data.word_count / 1000) | round(1) }}k</strong> words</span>{% endif %}
+                {% if issue.data.audio_url %}<a href="{{ issue.data.audio_url }}" class="archive-entry-action archive-entry-listen" data-audio-url="{{ issue.data.audio_url }}" data-issue="{{ issue.data.number }}" data-tinylytics-event="archive.listen" data-tinylytics-event-value="{{ issue.data.number }}">&#9656; Listen</a>{% endif %}
+                <a href="/thingy/?prompt={{ ('Tell me about issue #' + issue.data.number) | urlencode }}" class="archive-entry-action archive-entry-chat" data-tinylytics-event="archive.chat" data-tinylytics-event-value="{{ issue.data.number }}">&#128172; Chat</a>
+              </p>
             </div>
-            <div class="archive-entry-stats">
-              {% if issue.data.links and issue.data.links.length > 0 %}<span><strong>{{ issue.data.links.length }}</strong> links</span>{% endif %}
-              {% if issue.data.domains and issue.data.domains.length > 0 %}<span><strong>{{ issue.data.domains.length }}</strong> domains</span>{% endif %}
-              {% if issue.data.word_count %}<span><strong>{{ (issue.data.word_count / 1000) | round(1) }}k</strong> words</span>{% endif %}
-              {% if issue.data.audio_url %}<span class="archive-entry-listen">▸ Listen</span>{% endif %}
-            </div>
-          </a>
+          </div>
         </li>
         {% endfor %}
       </ol>
@@ -156,11 +142,44 @@ permalink: /archive/
   var randomBtn = document.getElementById('archive-random');
   if (randomBtn) {
     randomBtn.addEventListener('click', function() {
-      var links = document.querySelectorAll('.archive-entry-link');
+      var links = document.querySelectorAll('.archive-entry-stretched');
       if (!links.length) return;
       var idx = Math.floor(Math.random() * links.length);
       window.location = links[idx].getAttribute('href');
     });
   }
+
+  // Inline Listen player — plays audio in place without leaving the page.
+  var currentAudio = null;
+  var currentBtn = null;
+  function resetBtn(btn) {
+    if (!btn) return;
+    btn.innerHTML = '▸ Listen';
+    btn.classList.remove('is-playing');
+  }
+  document.querySelectorAll('.archive-entry-listen').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var url = btn.dataset.audioUrl;
+      if (!url) return;
+      if (currentAudio && currentBtn === btn) {
+        if (currentAudio.paused) { currentAudio.play(); } else { currentAudio.pause(); }
+        return;
+      }
+      if (currentAudio) {
+        currentAudio.pause();
+        resetBtn(currentBtn);
+      }
+      currentAudio = new Audio(url);
+      currentBtn = btn;
+      currentAudio.addEventListener('play', function() {
+        btn.innerHTML = '⏸ Pause';
+        btn.classList.add('is-playing');
+      });
+      currentAudio.addEventListener('pause', function() { resetBtn(btn); });
+      currentAudio.addEventListener('ended', function() { resetBtn(btn); });
+      currentAudio.play();
+    });
+  });
 })();
 </script>

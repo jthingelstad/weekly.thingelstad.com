@@ -12,7 +12,7 @@ permalink: /
   <div class="container-wide">
     <div class="home-hero-grid">
       <div class="home-hero-copy">
-        <p class="eyebrow">Issue #{{ latest.data.number }} · Weekend reading since 2017</p>
+        <p class="eyebrow">Weekend reading since 2017</p>
         <h1 class="home-hero-title">A weekend letter<br>about <em>what I&rsquo;m</em><br><em>learning.</em></h1>
         <p class="home-hero-tagline">I&rsquo;m Jamie. Every weekend I send out the things I read and thought about during the week &mdash; technology, the indie web, vinyl, family, whatever&rsquo;s caught my attention. It&rsquo;s not a product. It&rsquo;s a letter. I&rsquo;d love it if you read along.</p>
         <div class="home-hero-subscribe">
@@ -22,16 +22,29 @@ permalink: /
         <p class="home-hero-proof">Free, every weekend &middot; No tracking, no ads &middot; Unsubscribe anytime</p>
       </div>
       <aside class="home-hero-side">
-        <a href="/archive/{{ latest.data.number }}/" class="home-stamp">
-          <span class="home-stamp-issue">#{{ latest.data.number }}</span>
-          <span class="home-stamp-date">{{ latest.data.publish_date | dateShort }}</span>
+        <div class="home-stamp">
+          <div class="home-stamp-head">
+            <div class="home-stamp-ident">
+              <span class="home-stamp-issue">#{{ latest.data.number }}</span>
+              <span class="home-stamp-date">{{ latest.data.publish_date | dateShort }}</span>
+            </div>
+            {% if latest.data.image %}
+            <div class="home-stamp-cover" aria-hidden="true" style="background-image: url('{{ latest.data.image }}');"></div>
+            {% endif %}
+          </div>
           <hr>
-          <p class="home-stamp-subject">{{ latest.data.subject }}</p>
+          <p class="home-stamp-subject"><a href="/archive/{{ latest.data.number }}/" class="home-stamp-stretched">{{ latest.data.subject }}</a></p>
           {% if latest.data.description %}
           <p class="home-stamp-desc">{{ latest.data.description }}</p>
           {% endif %}
-          <span class="home-stamp-cta">Read this issue &rarr;</span>
-        </a>
+          <p class="home-stamp-actions">
+            <a href="/archive/{{ latest.data.number }}/" class="home-stamp-action home-stamp-action-read">Read &rarr;</a>
+            {% if latest.data.audio_url %}
+            <a href="{{ latest.data.audio_url }}" class="home-stamp-action home-stamp-action-listen" data-audio-url="{{ latest.data.audio_url }}" data-tinylytics-event="home.listen" data-tinylytics-event-value="{{ latest.data.number }}">&#9656; Listen &rarr;</a>
+            {% endif %}
+            <a href="/thingy/?prompt={{ ('Tell me about issue #' + latest.data.number + '.') | urlencode }}" class="home-stamp-action home-stamp-action-chat" data-tinylytics-event="home.chat" data-tinylytics-event-value="{{ latest.data.number }}">&#128172; Chat &rarr;</a>
+          </p>
+        </div>
       </aside>
     </div>
   </div>
@@ -175,6 +188,34 @@ permalink: /
     <p><a href="/members/" class="btn btn-secondary">Learn more &rarr;</a></p>
   </div>
 </section>
+
+{# ── Inline Listen handler for the latest-issue stamp ── #}
+<script>
+(function() {
+  var btn = document.querySelector('.home-stamp-action-listen');
+  if (!btn) return;
+  var audio = null;
+  function reset() {
+    btn.innerHTML = '▸ Listen →';
+    btn.classList.remove('is-playing');
+  }
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (audio) {
+      if (audio.paused) { audio.play(); } else { audio.pause(); }
+      return;
+    }
+    audio = new Audio(btn.dataset.audioUrl);
+    audio.addEventListener('play', function() {
+      btn.innerHTML = '⏸ Pause';
+      btn.classList.add('is-playing');
+    });
+    audio.addEventListener('pause', reset);
+    audio.addEventListener('ended', reset);
+    audio.play();
+  });
+})();
+</script>
 
 {# ── Final CTA ── #}
 <section class="home-cta">

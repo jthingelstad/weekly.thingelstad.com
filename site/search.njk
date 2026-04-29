@@ -10,6 +10,9 @@ permalink: /search/
     <h1 class="search-title">Find <em>anything</em> from {{ archiveStats.yearsActive }} years of letters.</h1>
     <p class="search-lede">Full-text search across every issue I've ever sent. Every link, every note, every rabbit hole.</p>
     <div id="search" class="search-pf-wrap"></div>
+    <p id="search-thingy-nudge" class="search-thingy-nudge" hidden>
+      Want a synthesized answer? <a id="search-thingy-link" href="/thingy/" data-tinylytics-event="search.thingy_handoff">Talk to Thingy &rarr;</a>
+    </p>
     <div class="search-meta">
       <span><strong>{{ collections.issuesByDate[0].data.number }}</strong> issues</span>
       <span>&middot;</span>
@@ -54,10 +57,6 @@ permalink: /search/
         <p>Use quotes for exact matches: <code>"link rot"</code></p>
       </div>
       <div class="search-tip">
-        <p class="eyebrow">Tip &middot; Filter</p>
-        <p>Narrow by year using the sidebar after searching.</p>
-      </div>
-      <div class="search-tip">
         <p class="eyebrow">Tip &middot; Bookmark</p>
         <p>Searches sync to the URL &mdash; share or save them.</p>
       </div>
@@ -77,27 +76,38 @@ permalink: /search/
       element: "#search",
       showSubResults: true,
       showImages: false,
+      showFilters: false,
+      pageSize: 10,
     });
 
     const suggestions = document.getElementById('search-suggestions');
+    const thingyNudge = document.getElementById('search-thingy-nudge');
+    const thingyLink = document.getElementById('search-thingy-link');
 
     function hideSuggestions() { if (suggestions) suggestions.style.display = 'none'; }
     function showSuggestions() { if (suggestions) suggestions.style.display = ''; }
 
-    // Auto-open year filter and reverse sort (newest first)
-    new MutationObserver((_, obs) => {
-      const yearGroup = document.querySelector('.pagefind-ui__filter-group');
-      if (!yearGroup) return;
-      const details = yearGroup.closest('details') || yearGroup.querySelector('details');
-      if (details) details.open = true;
-      const panel = yearGroup.querySelector('.pagefind-ui__filter-panel');
-      if (!panel || panel.dataset.reversed) return;
-      const items = Array.from(panel.children);
-      if (items.length > 1) {
-        items.reverse().forEach(el => panel.appendChild(el));
-        panel.dataset.reversed = 'true';
+    function relocateNudge() {
+      if (!thingyNudge) return;
+      const drawer = document.querySelector('#search .pagefind-ui__drawer');
+      if (drawer && thingyNudge.parentElement !== drawer.parentElement) {
+        drawer.parentElement.insertBefore(thingyNudge, drawer);
       }
-    }).observe(document.getElementById('search'), { childList: true, subtree: true });
+    }
+
+    function updateThingyNudge(query) {
+      if (!thingyNudge || !thingyLink) return;
+      const q = (query || '').trim();
+      if (!q) {
+        thingyNudge.hidden = true;
+        return;
+      }
+      const prompt = `Tell me about "${q}" in the archive.`;
+      thingyLink.href = `/thingy/?prompt=${encodeURIComponent(prompt)}`;
+      thingyLink.textContent = `Talk to Thingy about "${q.length > 40 ? q.slice(0, 40) + '…' : q}" →`;
+      thingyNudge.hidden = false;
+      relocateNudge();
+    }
 
     // Suggestion tag clicks
     document.querySelectorAll('.search-tag').forEach(btn => {
@@ -110,6 +120,7 @@ permalink: /search/
         url.searchParams.set('q', q);
         history.replaceState(null, '', url);
         hideSuggestions();
+        updateThingyNudge(q);
       });
     });
 
@@ -119,6 +130,7 @@ permalink: /search/
     if (q) {
       pf.triggerSearch(q);
       hideSuggestions();
+      updateThingyNudge(q);
     }
 
     // Update URL on search and toggle suggestions
@@ -135,6 +147,7 @@ permalink: /search/
           showSuggestions();
         }
         history.replaceState(null, '', url);
+        updateThingyNudge(val);
       });
     }
   });

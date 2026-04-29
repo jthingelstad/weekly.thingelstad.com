@@ -10,12 +10,13 @@ ogType: article
     {%- set currentIndex = loop.index0 -%}
   {%- endif -%}
 {%- endfor -%}
-{%- set prev2 = allIssues[currentIndex - 2] if currentIndex > 1 else null -%}
 {%- set prev1 = allIssues[currentIndex - 1] if currentIndex > 0 else null -%}
 {%- set next1 = allIssues[currentIndex + 1] if currentIndex >= 0 and currentIndex < allIssues.length - 1 else null -%}
-{%- set next2 = allIssues[currentIndex + 2] if currentIndex >= 0 and currentIndex < allIssues.length - 2 else null -%}
 {%- set toc = content | extractToc -%}
 {%- set readMinutes = (word_count / 200) | round if word_count else 0 -%}
+{%- set listenSeconds = audio_duration_seconds or 0 -%}
+{%- set listenMinutes = (listenSeconds / 60) | int -%}
+{%- set listenSecondsRem = listenSeconds - (listenMinutes * 60) -%}
 
 {% block head %}
   <link rel="alternate" type="application/atom+xml" title="Links from Issue #{{ number }}" href="/archive/{{ number }}/links.xml">
@@ -28,11 +29,9 @@ ogType: article
       <div class="issue-bar-inner">
         <a href="/archive/" class="issue-back">&larr; Archive</a>
         <div class="issue-pager">
-          {% if prev2 %}<a href="/archive/{{ prev2.data.number }}/" class="issue-pager-btn issue-pager-far" title="Issue {{ prev2.data.number }}: {{ prev2.data.subject }}">&lsaquo; #{{ prev2.data.number }}</a>{% endif %}
           {% if prev1 %}<a href="/archive/{{ prev1.data.number }}/" class="issue-pager-btn" title="Issue {{ prev1.data.number }}: {{ prev1.data.subject }}">&lsaquo; #{{ prev1.data.number }}</a>{% endif %}
           <span class="issue-pager-here" aria-current="page">#{{ number }}</span>
           {% if next1 %}<a href="/archive/{{ next1.data.number }}/" class="issue-pager-btn" title="Issue {{ next1.data.number }}: {{ next1.data.subject }}">#{{ next1.data.number }} &rsaquo;</a>{% endif %}
-          {% if next2 %}<a href="/archive/{{ next2.data.number }}/" class="issue-pager-btn issue-pager-far" title="Issue {{ next2.data.number }}: {{ next2.data.subject }}">#{{ next2.data.number }} &rsaquo;</a>{% endif %}
         </div>
       </div>
     </div>
@@ -41,7 +40,6 @@ ogType: article
   <header class="issue-hero">
     <div class="container-narrow">
       <p class="eyebrow">Weekly Thing #<span data-pagefind-meta="issue">{{ number }}</span> &middot; <time datetime="{{ publish_date | dateFormat('iso') }}" data-pagefind-meta="date">{{ publish_date | dateFormat }}</time></p>
-      <span data-pagefind-filter="year" hidden>{{ publish_date | year }}</span>
       {%- set titleParts = subject | split(" / ") -%}
       <h1 class="issue-title" data-pagefind-meta="title">{{ titleParts | last if titleParts.length > 1 else subject }}</h1>
       {% if description %}
@@ -52,15 +50,11 @@ ogType: article
         <div>
           <div class="issue-byline-name">Jamie Thingelstad</div>
           <div class="issue-byline-meta">
-            {% if word_count %}{{ word_count | numberFormat }} words{% if readMinutes > 0 %} &middot; ~{{ readMinutes }} min read{% endif %}{% endif %}
+            {% if word_count %}{{ word_count | numberFormat }} words{% if readMinutes > 0 %} &middot; ~{{ readMinutes }} min read{% endif %}{% endif %}{% if listenSeconds > 0 %} &middot; {{ listenMinutes }}:{% if listenSecondsRem < 10 %}0{% endif %}{{ listenSecondsRem }} listen{% endif %}
           </div>
         </div>
         <div class="issue-byline-actions">
-          <button class="tinylytics_kudos issue-action" data-path="/archive/{{ number }}/">
-            <span aria-hidden="true">&#9825;</span>
-            <span class="kudos-label">Kudos</span>
-            <span class="kudos-count tinylytics_kudos_count"></span>
-          </button>
+          <button class="tinylytics_kudos issue-action issue-action-kudos" data-path="/archive/{{ number }}/" aria-label="Kudos"></button>
           <button class="share-button issue-action" data-url="{{ site.url }}/archive/{{ number }}/" data-title="{{ subject }}" data-tinylytics-event="issue.share" data-tinylytics-event-value="{{ number }}">
             <span aria-hidden="true">&#8599;</span>
             <span class="share-label">Share</span>
@@ -94,21 +88,6 @@ ogType: article
       </details>
       {% endif %}
 
-      {% if domains.length > 0 %}
-      <details class="issue-toc-section" open>
-        <summary class="eyebrow">Linked domains</summary>
-        <ul class="issue-domain-list">
-          {% for domain in domains %}
-          <li>{{ domain }}</li>
-          {% endfor %}
-        </ul>
-      </details>
-      {% endif %}
-
-      <div class="issue-toc-aside">
-        <p class="eyebrow">Discuss</p>
-        <a href="https://www.reddit.com/r/weeklything/?f=flair_name%3A%22Weekly%20Thing%20{{ number }}%22" class="issue-toc-discuss">r/WeeklyThing #{{ number }} &rarr;</a>
-      </div>
     </aside>
 
     <div class="issue-content">
