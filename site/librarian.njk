@@ -224,10 +224,14 @@ permalink: /thingy/
     const emailRe = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
 
     const params = new URLSearchParams(window.location.search);
-    const email = params.get('email');
+    const email = normalizeEmail(params.get('email'));
     const initialPrompt = normalizeInitialPrompt(params.get('prompt'));
     let initialPromptSubmitted = false;
     if (email) emailInput.value = email;
+
+    function normalizeEmail(value) {
+      return String(value || '').trim();
+    }
 
     function normalizeInitialPrompt(value) {
       return String(value || '').trim().slice(0, maxQuestionChars);
@@ -276,14 +280,18 @@ permalink: /thingy/
       maybeSubmitInitialPrompt();
     }
 
-    function setToken(value, message) {
+    function setToken(value, message, options = {}) {
       window.localStorage.setItem(storageKey, value);
       authPanel.hidden = true;
       chatPanel.hidden = false;
       hideAuthActions();
       if (message) addMessage('system', `<p>${escapeHtml(message)}</p>`);
       loadPrompts();
-      showBetaNotice();
+      if (options.skipBetaNotice) {
+        hideBetaNotice({ remember: false, focusQuestion: false });
+      } else {
+        showBetaNotice();
+      }
       if (betaOverlay.hidden) questionInput.focus();
       maybeSubmitInitialPrompt();
     }
@@ -716,9 +724,9 @@ permalink: /thingy/
       questionForm.requestSubmit();
     }
 
-    function handleAuthResponse(data) {
+    function handleAuthResponse(data, options = {}) {
       if (data.token) {
-        setToken(data.token, data.message);
+        setToken(data.token, data.message, options);
         setAuthMessage('');
         trackTinylyticsEvent('librarian.auth_success', data.status || 'active');
         return;
@@ -765,6 +773,25 @@ permalink: /thingy/
         trackTinylyticsEvent('librarian.auth_error', error.requestId ? 'server' : 'client');
       } finally {
         button.disabled = false;
+      }
+    }
+
+    async function submitAuthCheck(options = {}) {
+      if (!validateEmail()) return false;
+      authButton.disabled = true;
+      hideAuthActions();
+      setAuthMessage('Checking subscriber access...');
+      try {
+        const data = await postJson('/auth', { email: emailInput.value.trim(), action: 'check' });
+        handleAuthResponse(data, options);
+        return true;
+      } catch (error) {
+        setAuthMessage(error.message);
+        trackTinylyticsEvent('librarian.auth_error', error.requestId ? 'server' : 'client');
+        return false;
+      } finally {
+        authButton.disabled = false;
+        validateEmail();
       }
     }
 
@@ -849,20 +876,7 @@ permalink: /thingy/
 
     authForm.addEventListener('submit', async (event) => {
       event.preventDefault();
-      if (!validateEmail()) return;
-      authButton.disabled = true;
-      hideAuthActions();
-      setAuthMessage('Checking subscriber access...');
-      try {
-        const data = await postJson('/auth', { email: emailInput.value, action: 'check' });
-        handleAuthResponse(data);
-      } catch (error) {
-        setAuthMessage(error.message);
-        trackTinylyticsEvent('librarian.auth_error', error.requestId ? 'server' : 'client');
-      } finally {
-        authButton.disabled = false;
-        validateEmail();
-      }
+      await submitAuthCheck();
     });
 
     emailInput.addEventListener('input', () => {
@@ -954,7 +968,11 @@ permalink: /thingy/
 
     updateQuestionState();
 
-    if (token()) {
+    if (email) {
+      window.localStorage.removeItem(storageKey);
+      submitAuthCheck({ skipBetaNotice: Boolean(initialPrompt) });
+      trackTinylyticsEvent('librarian.auth_auto_start');
+    } else if (token()) {
       authPanel.hidden = true;
       chatPanel.hidden = false;
       loadPrompts();
