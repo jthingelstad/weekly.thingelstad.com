@@ -4,59 +4,72 @@ pageTitle: Thingy
 description: Ask Thingy, the archive librarian, to find and synthesize writing from the Weekly Thing archive.
 permalink: /thingy/
 ---
-<section class="librarian-page">
-  <div class="container librarian-shell">
-    <header class="librarian-header">
-      <div class="librarian-header-copy">
-        <p class="eyebrow">Archive Librarian</p>
-        <h1>Talk to Thingy</h1>
-        <p>Thingy is your guide to the entire Weekly Thing archive&mdash;every idea, link, and rabbit hole I&rsquo;ve ever shared. Ask about past issues, get recommendations, or chase down a half-remembered thought. It&rsquo;s playful, a little weird, and very good at connecting dots. Start anywhere.</p>
+<section class="thingy-page">
+  <header class="thingy-hero">
+    <div class="container-narrow">
+      <div class="thingy-hero-art">
+        <img src="/img/thingy.png" alt="" class="thingy-hero-thingy" width="1022" height="1022" loading="eager">
       </div>
-      <img src="/img/thingy.png" alt="Thingy" class="librarian-persona" width="1022" height="1022" loading="eager">
-    </header>
-
-    <div class="librarian-auth" id="librarian-auth">
-      <form class="librarian-form" id="librarian-auth-form">
-        <label for="librarian-email">Subscriber email</label>
-        <div class="librarian-auth-row">
-          <input id="librarian-email" name="email" type="email" autocomplete="email" required class="subscribe-input">
-          <button type="submit" id="librarian-auth-submit" data-tinylytics-event="librarian.auth_submit">Enter</button>
-        </div>
-        <span class="subscribe-error librarian-email-error" id="librarian-email-error" aria-live="polite"></span>
-        <p class="form-message" id="librarian-auth-message" aria-live="polite"></p>
-        <div class="librarian-auth-actions" id="librarian-auth-actions" hidden>
-          <button type="button" id="librarian-add-subscriber" hidden>Add me</button>
-          <button type="button" id="librarian-resend-confirmation" hidden>Resend confirmation email</button>
-        </div>
-        <p class="form-note">Access is available to Weekly Thing subscribers. Newsletter links may prefill this field.</p>
-      </form>
+      <p class="eyebrow">Members &middot; Beta</p>
+      <h1 class="thingy-h1">Meet <em>Thingy</em>.</h1>
+      <p class="thingy-lede">A librarian for the archive. Ask in plain English and Thingy will dig through every letter I&rsquo;ve sent, find what fits, and quote the originals back at you with links.</p>
     </div>
+  </header>
 
-    <div class="librarian-chat" id="librarian-chat" hidden>
-      <div class="librarian-chat-tools">
-        <button type="button" id="librarian-logout">Use a different email</button>
-      </div>
+  <div class="thingy-shell">
+    <div class="container-narrow">
+      <div class="thingy-card">
+        <div class="thingy-card-head">
+          <div class="thingy-card-avatar" aria-hidden="true">T</div>
+          <div class="thingy-card-id">
+            <p class="thingy-card-name">Thingy</p>
+            <p class="thingy-card-status"><span class="thingy-dot" aria-hidden="true"></span> Indexed through #{{ collections.issuesByDate[0].data.number }}</p>
+          </div>
+          <button type="button" id="librarian-logout" class="thingy-card-tool">Use a different email</button>
+        </div>
 
-      <div class="librarian-messages" id="librarian-messages" aria-live="polite">
-        <div class="librarian-message librarian-message-system">
-          <p>Ask about a topic, person, project, or theme from the archive. Thingy will cite the issues it uses.</p>
+        <div class="librarian-auth thingy-auth" id="librarian-auth">
+          <form class="librarian-form" id="librarian-auth-form">
+            <label for="librarian-email">Subscriber email</label>
+            <div class="librarian-auth-row">
+              <input id="librarian-email" name="email" type="email" autocomplete="email" required class="subscribe-input">
+              <button type="submit" id="librarian-auth-submit" data-tinylytics-event="librarian.auth_submit">Enter</button>
+            </div>
+            <span class="subscribe-error librarian-email-error" id="librarian-email-error" aria-live="polite"></span>
+            <p class="form-message" id="librarian-auth-message" aria-live="polite"></p>
+            <div class="librarian-auth-actions" id="librarian-auth-actions" hidden>
+              <button type="button" id="librarian-add-subscriber" hidden>Add me</button>
+              <button type="button" id="librarian-resend-confirmation" hidden>Resend confirmation email</button>
+            </div>
+            <p class="form-note">Access is available to Weekly Thing subscribers. Newsletter links may prefill this field.</p>
+          </form>
+        </div>
+
+        <div class="librarian-chat thingy-chat" id="librarian-chat" hidden>
+          <div class="librarian-messages" id="librarian-messages" aria-live="polite">
+            <div class="librarian-message librarian-message-system">
+              <p>Ask about a topic, person, project, or theme from the archive. Thingy will cite the issues it uses.</p>
+            </div>
+          </div>
+
+          <div class="librarian-prompts" id="librarian-prompts" aria-label="Suggested questions" hidden>
+          </div>
+
+          <form class="librarian-form librarian-question-form thingy-input" id="librarian-question-form">
+            <label for="librarian-question" class="sr-only">Ask Thingy</label>
+            <textarea id="librarian-question" name="message" rows="3" required maxlength="1200" placeholder="Ask Thingy anything about the archive&hellip;" aria-describedby="librarian-question-count"></textarea>
+            <div class="librarian-question-meta">
+              <span id="librarian-question-count">0 / 1200</span>
+            </div>
+            <div class="librarian-question-actions">
+              <button type="submit" data-tinylytics-event="librarian.question_submit">Ask &rarr;</button>
+              <button type="button" id="librarian-clear-chat" class="librarian-clear-button" data-tinylytics-event="librarian.clear">Start over</button>
+            </div>
+          </form>
         </div>
       </div>
 
-      <div class="librarian-prompts" id="librarian-prompts" aria-label="Suggested questions" hidden>
-      </div>
-
-      <form class="librarian-form librarian-question-form" id="librarian-question-form">
-        <label for="librarian-question" class="sr-only">Ask Thingy</label>
-        <textarea id="librarian-question" name="message" rows="3" required maxlength="1200" placeholder="Ask Thingy..." aria-describedby="librarian-question-count"></textarea>
-        <div class="librarian-question-meta">
-          <span id="librarian-question-count">0 / 1200</span>
-        </div>
-        <div class="librarian-question-actions">
-          <button type="submit" data-tinylytics-event="librarian.question_submit">Ask</button>
-          <button type="button" id="librarian-clear-chat" class="librarian-clear-button" data-tinylytics-event="librarian.clear">Start over</button>
-        </div>
-      </form>
+      <p class="thingy-foot-note">Thingy quotes from real issues. Always verify before quoting elsewhere.</p>
     </div>
   </div>
 

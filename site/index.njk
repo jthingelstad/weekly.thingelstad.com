@@ -6,124 +6,169 @@ permalink: /
 ---
 {% set latestIssues = collections.issuesByDate %}
 {% set latest = latestIssues[0] %}
+{% set latestToc = latest.content | extractToc %}
 
 {# ── Hero ── #}
-<section class="hero">
-  <div class="container">
-    <p class="hero-eyebrow">{{ copy.hero.eyebrow or "A newsletter by Jamie Thingelstad" }}</p>
-    <h1 class="hero-title">Weekly Thing</h1>
-    <p class="hero-tagline">{{ copy.hero.tagline or "Every weekend, one curious person sifts through the internet and sends you the things worth your time. Technology, culture, the indie web, and whatever else refuses to be ignored." }}</p>
-    <div class="hero-subscribe">
-      {% set subscribeId = "hero" %}
-      {% include "partials/subscribe-form.njk" %}
-    </div>
-    <p class="hero-proof">{{ copy.ctas.hero.proof or "Free, every weekend." }} {{ latest.data.number }} issues and counting since 2017.</p>
-  </div>
-</section>
-
-{# ── What this actually is ── #}
-<section class="section value-prop">
-  <div class="container">
-    <div class="value-grid">
-      <div class="value-main">
-        <h2>{{ (copy.valueProp.headline or "Not an algorithm. Not a feed.<br>Just one person paying attention.") | safe }}</h2>
-        {% for para in copy.valueProp.paragraphs %}
-        <p>{{ para }}</p>
-        {% endfor %}
+<section class="home-hero">
+  <div class="container-wide">
+    <div class="home-hero-grid">
+      <div class="home-hero-copy">
+        <p class="eyebrow">Issue #{{ latest.data.number }} · Weekend reading since 2017</p>
+        <h1 class="home-hero-title">A weekend letter<br>about <em>what I&rsquo;m</em><br><em>learning.</em></h1>
+        <p class="home-hero-tagline">I&rsquo;m Jamie. Every weekend I send out the things I read and thought about during the week &mdash; technology, the indie web, vinyl, family, whatever&rsquo;s caught my attention. It&rsquo;s not a product. It&rsquo;s a letter. I&rsquo;d love it if you read along.</p>
+        <div class="home-hero-subscribe">
+          {% set subscribeId = "hero" %}
+          {% include "partials/subscribe-form.njk" %}
+        </div>
+        <p class="home-hero-proof">Free, every weekend &middot; No tracking, no ads &middot; Unsubscribe anytime</p>
       </div>
-      <div class="value-stats">
-        <div class="value-stat">
-          <span class="value-stat-number">{{ archiveStats.totalLinks | numberFormat }}</span>
-          <span class="value-stat-label">curated links across {{ latest.data.number }} issues</span>
-        </div>
-        <div class="value-stat">
-          <span class="value-stat-number">{{ archiveStats.totalWords | numberFormat }}</span>
-          <span class="value-stat-label">words of commentary and context</span>
-        </div>
-        <div class="value-stat">
-          <span class="value-stat-number">{{ archiveStats.uniqueDomainsTotal | numberFormat }}</span>
-          <span class="value-stat-label">unique sources linked</span>
-        </div>
-      </div>
+      <aside class="home-hero-side">
+        <a href="/archive/{{ latest.data.number }}/" class="home-stamp">
+          <span class="home-stamp-issue">#{{ latest.data.number }}</span>
+          <span class="home-stamp-date">{{ latest.data.publish_date | dateShort }}</span>
+          <hr>
+          <p class="home-stamp-subject">{{ latest.data.subject }}</p>
+          {% if latestToc.length > 0 %}
+          <ul class="home-stamp-toc">
+            {%- for heading in latestToc -%}
+              {%- if heading.level == 2 -%}
+              <li>{{ heading.text }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+          {% endif %}
+          <span class="home-stamp-cta">Read this issue &rarr;</span>
+        </a>
+      </aside>
     </div>
   </div>
 </section>
 
-{# ── What Readers Say ── #}
-<section class="section reader-quotes">
-  <div class="container">
-    <h2 class="section-title">{{ copy.sections.readersSay or "What Readers Say" }}</h2>
-
-    <div class="survey-stats-row">
-      <div class="survey-stat">
-        <span class="survey-stat-number">{{ survey.stats.recommendationScore.value }}%</span>
-        <span class="survey-stat-label">{{ survey.stats.recommendationScore.label }}</span>
+{# ── Numbers strip ── #}
+<section class="home-numbers">
+  <div class="container-wide">
+    <div class="home-numbers-grid">
+      <div class="home-num">
+        <div class="home-num-value">{{ archiveStats.totalLinks | numberFormat }}</div>
+        <div class="home-num-label">links shared</div>
+        <div class="home-num-detail">across {{ latest.data.number }} issues</div>
       </div>
-      <div class="survey-stat">
-        <span class="survey-stat-number">{{ survey.stats.readWholeIssue.value }}%</span>
-        <span class="survey-stat-label">{{ survey.stats.readWholeIssue.label }}</span>
+      <div class="home-num">
+        <div class="home-num-value">{{ archiveStats.totalWords | numberFormat }}</div>
+        <div class="home-num-label">words written</div>
+        <div class="home-num-detail">notes &amp; commentary</div>
       </div>
-      <div class="survey-stat">
-        <span class="survey-stat-number">{{ survey.stats.longTimeReaders.value }}%</span>
-        <span class="survey-stat-label">{{ survey.stats.longTimeReaders.label }}</span>
+      <div class="home-num">
+        <div class="home-num-value">{{ archiveStats.uniqueDomainsTotal | numberFormat }}</div>
+        <div class="home-num-label">sources read</div>
+        <div class="home-num-detail">all over the web</div>
+      </div>
+      <div class="home-num">
+        <div class="home-num-value">{{ archiveStats.yearsActive }}</div>
+        <div class="home-num-label">years running</div>
+        <div class="home-num-detail">unbroken since May 2017</div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="feeling-words">
-      <p class="feeling-words-intro">Readers say the newsletter makes them feel:</p>
-      <div class="feeling-words-cloud">
+{# ── What this is + a typical week ── #}
+<section class="home-prop">
+  <div class="container-wide">
+    <div class="home-prop-grid">
+      <div class="home-prop-main">
+        <p class="eyebrow">What this is</p>
+        <h2>A letter, not a product. <em>Sharing what I&rsquo;m learning &mdash; nothing more.</em></h2>
+        <p>I&rsquo;m not chasing growth. I&rsquo;m not selling anything. The Weekly Thing is just a way to share what I read, what I&rsquo;m working on, and what I&rsquo;m puzzling over &mdash; with people who want to read along.</p>
+        <p>Range is the point. A single issue might cover agentic engineering, a cheeseburger review, an Ethereum deep dive, and family photos from Duluth. If something caught my attention, I&rsquo;ll tell you why. That&rsquo;s the whole pitch.</p>
+      </div>
+      <aside class="home-prop-card">
+        <p class="eyebrow">A typical week</p>
+        <ul class="home-prop-list">
+          {% if copy.whatYouGet and copy.whatYouGet.themes and copy.whatYouGet.themes.length > 0 %}
+            {% for theme in copy.whatYouGet.themes | slice(0, 4) %}
+            <li><span class="home-prop-tag">{{ theme.label }}</span> {{ theme.description }}</li>
+            {% endfor %}
+          {% else %}
+            <li><span class="home-prop-tag">Featured</span> One link worth your full attention</li>
+            <li><span class="home-prop-tag">Notable</span> 4&ndash;6 stories with commentary</li>
+            <li><span class="home-prop-tag">Briefly</span> A dozen quick mentions</li>
+            <li><span class="home-prop-tag">Personal</span> What I&rsquo;ve been up to</li>
+          {% endif %}
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{# ── Readers ── #}
+<section class="home-readers">
+  <div class="container-wide">
+    <p class="eyebrow">From readers</p>
+    <h2 class="home-h2">It&rsquo;s the kind of letter you actually <em>read</em>.</h2>
+
+    <div class="home-readers-stats">
+      <div><strong>{{ survey.stats.recommendationScore.value }}%</strong><span>{{ survey.stats.recommendationScore.label }}</span></div>
+      <div><strong>{{ survey.stats.readWholeIssue.value }}%</strong><span>{{ survey.stats.readWholeIssue.label }}</span></div>
+      <div><strong>{{ survey.stats.longTimeReaders.value }}%</strong><span>{{ survey.stats.longTimeReaders.label }}</span></div>
+    </div>
+
+    <div class="home-readers-quotes">
+      {% for quote in quotes %}{% if quote.featured %}
+      <blockquote class="home-q">
+        <p>&ldquo;{{ quote.text }}&rdquo;</p>
+        <footer>&mdash; Reader survey, {{ quote.source }}</footer>
+      </blockquote>
+      {% endif %}{% endfor %}
+    </div>
+
+    <div class="home-feelings">
+      <p class="eyebrow">Readers say it makes them feel</p>
+      <div class="home-feelings-cloud">
         {%- for word in survey.feelingWords %}
-        <span class="feeling-word feeling-word-{{ word.frequency }}">{{ word.word }}</span>
+        <span class="f{{ word.frequency }}">{{ word.word }}</span>
         {%- endfor %}
       </div>
-    </div>
-
-    <div class="quotes-grid">
-      {% for quote in quotes %}
-      {% if quote.featured %}
-      <blockquote class="quote-card">
-        <p>{{ quote.text }}</p>
-      </blockquote>
-      {% endif %}
-      {% endfor %}
     </div>
   </div>
 </section>
 
 {# ── Mid-page subscribe CTA ── #}
-<section class="section inline-cta">
-  <div class="container">
-    <p class="inline-cta-text">{{ copy.ctas.mid1.headline or "Join them. Free, every weekend." }}</p>
+<section class="home-inline-cta">
+  <div class="container-wide">
+    <p class="home-inline-cta-text">{{ copy.ctas.mid1.headline or "Read along, every weekend." }}</p>
     {% set subscribeId = "mid1" %}
     {% include "partials/subscribe-form.njk" %}
   </div>
 </section>
 
-{# ── Who writes this ── #}
-<section class="section about-author">
-  <div class="container">
-    <div class="about-grid">
-      <img src="/img/jamie-thingelstad.jpg" alt="Jamie Thingelstad" class="about-photo" loading="lazy" width="200" height="200">
-      <div class="about-text">
-        <h2>Who's behind this?</h2>
-        <p>Jamie Thingelstad is CTO of <a href="https://www.spscommerce.com">SPS Commerce</a> by day, but the Weekly Thing isn't about his day job. It's the output of a restless curiosity that ranges from AI and the indie web to escape rooms, vinyl records, and whatever Wikipedia rabbit hole he fell into this week.</p>
-        <p>A single issue might cover agentic engineering, a cheeseburger review, an Ethereum deep dive, and photos from a family trip to Duluth. That range is the point — and it's what keeps readers coming back.</p>
-        <p><a href="/about/">More about Jamie &rarr;</a></p>
+{# ── About ── #}
+<section class="home-about">
+  <div class="container-wide">
+    <div class="home-about-grid">
+      <img src="/img/jamie-thingelstad.jpg" alt="Jamie Thingelstad" class="home-about-photo" loading="lazy" width="200" height="200">
+      <div>
+        <p class="eyebrow">Hi, I&rsquo;m Jamie</p>
+        <h2 class="home-h2">Writing this from Saint Paul.</h2>
+        <p>I&rsquo;m a CTO by day at <a href="https://www.spscommerce.com">SPS Commerce</a>, but this letter isn&rsquo;t about my day job. It&rsquo;s about the rest of it &mdash; the reading, the tinkering, the workshop projects, the family hikes, and the Wikipedia rabbit holes I keep falling into.</p>
+        <p>I&rsquo;ve been writing the Weekly Thing every weekend since 2017. If any of that sounds like your kind of thing, I&rsquo;d love to have you along.</p>
+        <p><a href="/about/">More about me &rarr;</a></p>
       </div>
     </div>
   </div>
 </section>
 
-{# ── Voice: actual quotes from the newsletter ── #}
+{# ── How it sounds: actual quotes from issues ── #}
 {% if voiceSamples and voiceSamples.length > 0 %}
-<section class="section voice-section">
-  <div class="container">
-    <h2 class="section-title">{{ copy.sections.voiceTitle or "How It Sounds" }}</h2>
-    <div class="voice-grid">
+<section class="home-voice">
+  <div class="container-wide">
+    <p class="eyebrow">How it sounds</p>
+    <h2 class="home-h2">Pulled <em>verbatim</em> from real issues.</h2>
+    <div class="home-voice-grid">
       {% for sample in voiceSamples | slice(0, 3) %}
-      <blockquote class="voice-card">
+      <blockquote class="home-voice-card">
         <p>&ldquo;{{ sample.text }}&rdquo;</p>
-        <footer><a href="/archive/{{ sample.issueNumber }}/">{{ sample.issueTitle }}</a></footer>
+        <footer><a href="/archive/{{ sample.issueNumber }}/">#{{ sample.issueNumber }} &middot; {{ sample.issueTitle }}</a></footer>
       </blockquote>
       {% endfor %}
     </div>
@@ -131,95 +176,36 @@ permalink: /
 </section>
 {% endif %}
 
-{# ── What you'll actually get ── #}
-{% if copy.whatYouGet and copy.whatYouGet.themes and copy.whatYouGet.themes.length > 0 %}
-<section class="section what-you-get">
-  <div class="container">
-    <h2 class="section-title">{{ copy.whatYouGet.headline or "What you'll actually get" }}</h2>
-    {% if copy.whatYouGet.lede %}
-    <p class="section-lede">{{ copy.whatYouGet.lede }}</p>
-    {% endif %}
-    <div class="theme-grid">
-      {% for theme in copy.whatYouGet.themes %}
-      <article class="theme-card">
-        <h3 class="theme-label">{{ theme.label }}</h3>
-        <p class="theme-description">{{ theme.description }}</p>
-        {% if theme.exampleIssue %}
-        <p class="theme-example"><a href="/archive/{{ theme.exampleIssue }}/">See issue #{{ theme.exampleIssue }} &rarr;</a></p>
-        {% endif %}
-      </article>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
-
-{# ── Latest Issue ── #}
-{% if latest %}
-<section class="section latest-issue">
-  <div class="container">
-    <h2 class="section-title">Latest Issue</h2>
-    <article class="latest-issue-card">
-      <div class="latest-issue-meta">
-        <span class="issue-number">#{{ latest.data.number }}</span>
-        <time datetime="{{ latest.data.publish_date | dateFormat('iso') }}">{{ latest.data.publish_date | dateFormat }}</time>
-      </div>
-      <h3 class="latest-issue-title">
-        <a href="/archive/{{ latest.data.number }}/">{{ latest.data.subject }}</a>
-      </h3>
-      {% if latest.data.description %}
-      <p class="latest-issue-description">{{ latest.data.description }}</p>
-      {% endif %}
-      {% set toc = latest.content | extractToc %}
-      {% if toc.length > 0 %}
-      <div class="latest-issue-toc-inline">
-        <ol>
-          {% for heading in toc | slice(0, 8) %}
-          <li>{{ heading.text }}</li>
-          {% endfor %}
-          {% if toc.length > 8 %}
-          <li class="toc-more">+ {{ toc.length - 8 }} more sections</li>
-          {% endif %}
-        </ol>
-      </div>
-      {% endif %}
-      <a href="/archive/{{ latest.data.number }}/" class="btn btn-primary">Read this issue &rarr;</a>
-    </article>
-    <p class="section-cta"><a href="/archive/">Browse the full archive ({{ latest.data.number }} issues) &rarr;</a></p>
-  </div>
-</section>
-{% endif %}
-
-{# ── Mid-page subscribe CTA ── #}
-<section class="section inline-cta">
-  <div class="container">
-    <p class="inline-cta-text">{{ copy.ctas.mid2.headline or "Curious? Get it in your inbox every weekend." }}</p>
-    {% set subscribeId = "mid2" %}
-    {% include "partials/subscribe-form.njk" %}
-  </div>
-</section>
-
 {# ── Membership ── #}
-<section class="section supporting-section">
-  <div class="container">
-    <h2 class="section-title">{{ copy.sections.membership or "Membership" }}</h2>
-    <p>The Weekly Thing is free for everyone, always. Members contribute to a nonprofit selected each year — <strong>100% of fees are donated</strong>.</p>
+<section class="home-membership">
+  <div class="container-wide">
+    <p class="eyebrow">Supporting Membership</p>
+    <h2 class="home-h2">Free for everyone. <em>Members fund a nonprofit.</em></h2>
+    <p>The Weekly Thing is free for everyone, always. Members contribute to a nonprofit selected each year &mdash; <strong>100% of fees are donated</strong>.</p>
     {% if support.current %}
-    <p>This year, we're supporting <strong><a href="{{ support.current.url }}">{{ support.current.nonprofit }}</a></strong>.
-    {% if stats.amount_raised > 0 %} ${{ stats.amount_raised | round }} raised so far.{% endif %}
-    {% if stats.premium_subscriber_count > 0 %} {{ stats.premium_subscriber_count }} members.{% endif %}
-    </p>
+    <p>This year, supporting <strong><a href="{{ support.current.url }}">{{ support.current.nonprofit }}</a></strong>.{% if stats.amount_raised > 0 %} ${{ stats.amount_raised | round }} raised so far.{% endif %}{% if stats.premium_subscriber_count > 0 %} {{ stats.premium_subscriber_count }} members.{% endif %}</p>
     {% endif %}
     <p><a href="/members/" class="btn btn-secondary">Learn more &rarr;</a></p>
   </div>
 </section>
 
-{# ── Final CTA ── #}
-<section class="section footer-cta">
-  <div class="container">
-    <h2>{{ copy.ctas.footer.headline or "Start reading this weekend" }}</h2>
-    <p>Join {{ ((stats.subscriber_count / 100) | round * 100) | numberFormat }}+ readers. {{ copy.ctas.footer.body or "Get the Weekly Thing every weekend. No spam, no tracking, unsubscribe anytime." }}</p>
-    {% set subscribeId = "footer" %}
+{# ── Mid-page subscribe CTA ── #}
+<section class="home-inline-cta">
+  <div class="container-wide">
+    <p class="home-inline-cta-text">{{ copy.ctas.mid2.headline or "Curious? Get it in your inbox every weekend." }}</p>
+    {% set subscribeId = "mid2" %}
     {% include "partials/subscribe-form.njk" %}
+  </div>
+</section>
+
+{# ── Final CTA ── #}
+<section class="home-cta">
+  <div class="container-wide">
+    <h2 class="home-cta-title">Read along this weekend.</h2>
+    <p>Free, every weekend. No tracking, no ads. Unsubscribe anytime.</p>
+    <div class="home-cta-form">
+      {% set subscribeId = "footer" %}
+      {% include "partials/subscribe-form.njk" %}
+    </div>
   </div>
 </section>

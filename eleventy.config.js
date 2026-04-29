@@ -175,8 +175,12 @@ module.exports = function (eleventyConfig) {
     while ((match = regex.exec(content)) !== null) {
       const level = parseInt(match[1], 10);
       const id = match[2];
-      // Strip HTML tags from the heading text (links, anchor icons, etc.)
-      const text = match[3].replace(/<[^>]*>/g, "").trim();
+      // Drop the markdown-it-anchor permalink (`<a class="header-anchor">#</a>`)
+      // before stripping the remaining HTML tags from the heading text.
+      const text = match[3]
+        .replace(/<a\b[^>]*class="[^"]*header-anchor[^"]*"[^>]*>[\s\S]*?<\/a>/gi, "")
+        .replace(/<[^>]*>/g, "")
+        .trim();
       if (text) {
         headings.push({ level, text, id });
       }

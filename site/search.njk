@@ -4,33 +4,66 @@ pageTitle: Search
 description: Search the full archive of the Weekly Thing newsletter.
 permalink: /search/
 ---
-<section class="search-page">
-  <div class="container">
-    <h1>Search the Archive</h1>
-    <div id="search"></div>
-    <div id="search-suggestions" class="search-suggestions">
-      <div class="search-suggestions-group">
-        <h2>Try searching for</h2>
-        <div class="search-suggestion-tags">
-          <button class="search-suggestion" data-query="AI">AI</button>
-          <button class="search-suggestion" data-query="open web">open web</button>
-          <button class="search-suggestion" data-query="Apple">Apple</button>
-          <button class="search-suggestion" data-query="privacy">privacy</button>
-          <button class="search-suggestion" data-query="software engineering">software engineering</button>
-          <button class="search-suggestion" data-query="data visualization">data visualization</button>
-          <button class="search-suggestion" data-query="journalism">journalism</button>
-          <button class="search-suggestion" data-query="design">design</button>
-          <button class="search-suggestion" data-query="productivity">productivity</button>
-        </div>
+<section class="search-hero">
+  <div class="container-narrow">
+    <p class="eyebrow">Search the archive</p>
+    <h1 class="search-title">Find <em>anything</em> from {{ archiveStats.yearsActive }} years of letters.</h1>
+    <p class="search-lede">Full-text search across every issue I've ever sent. Every link, every note, every rabbit hole.</p>
+    <div id="search" class="search-pf-wrap"></div>
+    <div class="search-meta">
+      <span><strong>{{ collections.issuesByDate[0].data.number }}</strong> issues</span>
+      <span>&middot;</span>
+      <span><strong>{{ archiveStats.totalLinks | numberFormat }}</strong> links</span>
+      <span>&middot;</span>
+      <span><strong>{{ archiveStats.uniqueDomainsTotal | numberFormat }}</strong> domains indexed</span>
+    </div>
+  </div>
+</section>
+
+<section class="search-suggest" id="search-suggestions">
+  <div class="container-narrow">
+    <div class="search-block">
+      <p class="eyebrow">Example searches</p>
+      <div class="search-tags">
+        <button class="search-tag search-tag-example" data-query="agentic engineering">&#9906; agentic engineering</button>
+        <button class="search-tag search-tag-example" data-query="&quot;link rot&quot;">&#9906; "link rot"</button>
+        <button class="search-tag search-tag-example" data-query="IndieWeb">&#9906; IndieWeb</button>
+        <button class="search-tag search-tag-example" data-query="POAP">&#9906; POAP</button>
+        <button class="search-tag search-tag-example" data-query="cheeseburger">&#9906; cheeseburger</button>
       </div>
-      <div class="search-suggestions-group">
-        <h2>Tips</h2>
-        <ul class="search-tips">
-          <li>Use <strong>quotes</strong> for exact phrases: <button class="search-suggestion" data-query="&quot;link rot&quot;">"link rot"</button></li>
-          <li>Filter by year using the sidebar checkboxes</li>
-          <li>Bookmark searches with <code>?q=your+query</code> in the URL</li>
-          <li><button class="search-suggestion search-suggestion-link" data-query="weekly">Browse all issues</button></li>
-        </ul>
+    </div>
+
+    <div class="search-block">
+      <p class="eyebrow">Popular topics</p>
+      <div class="search-tags">
+        <button class="search-tag" data-query="AI">AI</button>
+        <button class="search-tag" data-query="Apple">Apple</button>
+        <button class="search-tag" data-query="open web">open web</button>
+        <button class="search-tag" data-query="privacy">privacy</button>
+        <button class="search-tag" data-query="design">design</button>
+        <button class="search-tag" data-query="productivity">productivity</button>
+        <button class="search-tag" data-query="journalism">journalism</button>
+        <button class="search-tag" data-query="data visualization">data viz</button>
+        <button class="search-tag" data-query="software engineering">software engineering</button>
+      </div>
+    </div>
+
+    <div class="search-tip-grid">
+      <div class="search-tip">
+        <p class="eyebrow">Tip &middot; Phrases</p>
+        <p>Use quotes for exact matches: <code>"link rot"</code></p>
+      </div>
+      <div class="search-tip">
+        <p class="eyebrow">Tip &middot; Filter</p>
+        <p>Narrow by year using the sidebar after searching.</p>
+      </div>
+      <div class="search-tip">
+        <p class="eyebrow">Tip &middot; Bookmark</p>
+        <p>Searches sync to the URL &mdash; share or save them.</p>
+      </div>
+      <div class="search-tip search-tip-cta">
+        <p class="eyebrow">Or just ask</p>
+        <p>Subscribers can ask <a href="/thingy/">Thingy</a>, the archive librarian, in plain English &rarr;</p>
       </div>
     </div>
   </div>
@@ -48,8 +81,8 @@ permalink: /search/
 
     const suggestions = document.getElementById('search-suggestions');
 
-    function hideSuggestions() { suggestions.style.display = 'none'; }
-    function showSuggestions() { suggestions.style.display = ''; }
+    function hideSuggestions() { if (suggestions) suggestions.style.display = 'none'; }
+    function showSuggestions() { if (suggestions) suggestions.style.display = ''; }
 
     // Auto-open year filter and reverse sort (newest first)
     new MutationObserver((_, obs) => {
@@ -67,7 +100,7 @@ permalink: /search/
     }).observe(document.getElementById('search'), { childList: true, subtree: true });
 
     // Suggestion tag clicks
-    document.querySelectorAll('.search-suggestion').forEach(btn => {
+    document.querySelectorAll('.search-tag').forEach(btn => {
       btn.addEventListener('click', () => {
         const q = btn.dataset.query;
         pf.triggerSearch(q);

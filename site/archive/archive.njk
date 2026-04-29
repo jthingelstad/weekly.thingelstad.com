@@ -4,77 +4,158 @@ pageTitle: Archive
 description: Browse all issues of the Weekly Thing newsletter.
 permalink: /archive/
 ---
-<section class="archive-page">
-  <div class="container">
-    <header class="archive-header">
-      <h1>Archive</h1>
-      <p>{{ collections.issuesByDate[0].data.number }} issues published since 2017.</p>
-      <div id="search" class="archive-search">
-        <a href="/search/">Search the archive &rarr;</a>
-      </div>
-    </header>
+{% set grouped = collections.issuesByDate | groupByYear %}
+{% set latestNumber = collections.issuesByDate[0].data.number %}
 
-    {% set grouped = collections.issuesByDate | groupByYear %}
+<section class="archive-hero">
+  <div class="container-wide">
+    <p class="eyebrow">The Archive</p>
+    <h1 class="archive-hero-title">{{ archiveStats.yearsActive }} years of <em>weekend letters</em>.</h1>
+    <p class="archive-hero-lede">Every issue I&rsquo;ve sent, going back to May 2017. {{ latestNumber }} letters, {{ archiveStats.totalLinks | numberFormat }} links, {{ archiveStats.totalWords | numberFormat }} words. Browse by year, by topic, or just dip in &mdash; it&rsquo;s all searchable.</p>
+    <div class="archive-hero-actions">
+      <a href="/search/" class="btn btn-primary">Search the archive &rarr;</a>
+      <button type="button" class="btn btn-secondary" id="archive-random">Random issue &#10547;</button>
+    </div>
+  </div>
+</section>
+
+<section class="archive-years-wrap">
+  <div class="container-wide">
+    <div class="archive-years-head">
+      <p class="eyebrow">Browse by year</p>
+      <span class="archive-years-current" data-archive-current>All years</span>
+    </div>
     <nav class="archive-years" aria-label="Filter by year">
-      <button class="archive-year-tab" data-year="all" data-tinylytics-event="archive.filter" data-tinylytics-event-value="all">All</button>
+      <button class="archive-year-tab" data-year="all" data-tinylytics-event="archive.filter" data-tinylytics-event-value="all">
+        <span class="archive-year-tab-label">All</span>
+        <span class="archive-year-tab-count">{{ latestNumber }}</span>
+      </button>
       {% for group in grouped %}
-      <button class="archive-year-tab" data-year="{{ group.year }}" data-tinylytics-event="archive.filter" data-tinylytics-event-value="{{ group.year }}">{{ group.year }}</button>
+      <button class="archive-year-tab" data-year="{{ group.year }}" data-tinylytics-event="archive.filter" data-tinylytics-event-value="{{ group.year }}">
+        <span class="archive-year-tab-label">{{ group.year }}</span>
+        <span class="archive-year-tab-count">{{ group.issues.length }}</span>
+      </button>
       {% endfor %}
     </nav>
+  </div>
+</section>
 
+<section class="archive-list-wrap">
+  <div class="container-wide">
     {% for group in grouped %}
+    {% set yearStat = (archiveStats.yearlyStats | slice(0, 99)) %}
+    {% set yearLinks = 0 %}
+    {% set yearWords = 0 %}
+    {% for ys in archiveStats.yearlyStats %}{% if ys.year == group.year %}{% set yearLinks = ys.links %}{% set yearWords = ys.words %}{% endif %}{% endfor %}
     <section class="archive-year" data-year="{{ group.year }}">
-      <h2 class="archive-year-heading" id="year-{{ group.year }}">{{ group.year }}</h2>
-      <div class="archive-list">
+      <header class="archive-year-head">
+        <h2 class="archive-year-heading" id="year-{{ group.year }}">{{ group.year }}</h2>
+        <div class="archive-year-meta">
+          <span>{{ group.issues.length }} issues</span>
+          <span>&middot;</span>
+          {% for ys in archiveStats.yearlyStats %}{% if ys.year == group.year %}
+          <span>{{ ys.links | numberFormat }} links</span>
+          <span>&middot;</span>
+          <span>{{ (ys.words / 1000) | round }}k words</span>
+          {% endif %}{% endfor %}
+        </div>
+      </header>
+      <ol class="archive-list">
         {% for issue in group.issues %}
-        <article class="archive-entry">
+        <li class="archive-entry">
           <a href="/archive/{{ issue.data.number }}/" class="archive-entry-link">
+            {% set hasCover = issue.data.image and ("files.thingelstad.com" in issue.data.image) %}
+            <div class="archive-entry-cover" aria-hidden="true"{% if hasCover %} style="background-image: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.45)), url('{{ issue.data.image }}'); background-size: cover; background-position: center;"{% else %} data-fallback="{{ issue.data.number }}"{% endif %}>
+              <span class="archive-entry-cover-num">{{ issue.data.number }}</span>
+            </div>
             <div class="archive-entry-meta">
               <span class="archive-entry-number">#{{ issue.data.number }}</span>
               <time class="archive-entry-date" datetime="{{ issue.data.publish_date | dateFormat('iso') }}">{{ issue.data.publish_date | dateShort }}</time>
             </div>
             <div class="archive-entry-body">
-              <span class="archive-entry-title">{{ issue.data.subject }}</span>
+              <h3 class="archive-entry-title">{{ issue.data.subject }}</h3>
               {% if issue.data.description %}
               <p class="archive-entry-description">{{ issue.data.description }}</p>
               {% endif %}
+              {% if issue.data.domains and issue.data.domains.length > 0 %}
+              <div class="archive-entry-tags">
+                {% for d in issue.data.domains | slice(0, 3) %}<span class="archive-entry-tag">{{ d }}</span>{% endfor %}
+                {% if issue.data.domains.length > 3 %}<span class="archive-entry-tag archive-entry-tag-more">+{{ issue.data.domains.length - 3 }}</span>{% endif %}
+              </div>
+              {% endif %}
             </div>
-            {% if issue.data.image %}
-            <img class="archive-entry-thumb" src="{{ issue.data.image }}" alt="" loading="lazy" />
-            {% endif %}
+            <div class="archive-entry-stats">
+              {% if issue.data.links and issue.data.links.length > 0 %}<span><strong>{{ issue.data.links.length }}</strong> links</span>{% endif %}
+              {% if issue.data.domains and issue.data.domains.length > 0 %}<span><strong>{{ issue.data.domains.length }}</strong> domains</span>{% endif %}
+              {% if issue.data.word_count %}<span><strong>{{ (issue.data.word_count / 1000) | round(1) }}k</strong> words</span>{% endif %}
+              {% if issue.data.audio_url %}<span class="archive-entry-listen">▸ Listen</span>{% endif %}
+            </div>
           </a>
-          {% if issue.data.audio_url %}
-          <a class="archive-listen-link" href="/archive/{{ issue.data.number }}/#listen">Listen</a>
-          {% endif %}
-        </article>
+        </li>
         {% endfor %}
-      </div>
+      </ol>
     </section>
     {% endfor %}
   </div>
 </section>
+
 <script>
-function selectYear(year, pushState) {
-  document.querySelectorAll('.archive-year-tab').forEach(function(t) { t.classList.remove('active'); });
-  document.querySelector('.archive-year-tab[data-year="' + year + '"]').classList.add('active');
-  document.querySelectorAll('.archive-year[data-year]').forEach(function(section) {
-    section.style.display = (year === 'all' || section.dataset.year === year) ? '' : 'none';
+(function() {
+  // Deterministic gradient palette for cover fallback.
+  var palette = [
+    'linear-gradient(135deg, #1a3a5c 0%, #2a4d3a 60%, #c44d2b 100%)',
+    'linear-gradient(160deg, #d97757 0%, #8a3815 100%)',
+    'linear-gradient(135deg, #2a4d3a 0%, #14181f 100%)',
+    'linear-gradient(135deg, #f4ede0 0%, #d8cdb6 50%, #7a6f5f 100%)',
+    'linear-gradient(135deg, #1f6fd6 0%, #134d99 100%)',
+    'linear-gradient(135deg, #c44d2b 0%, #6a1b1b 100%)',
+    'linear-gradient(135deg, #5a4a8a 0%, #2a1a4a 100%)'
+  ];
+  document.querySelectorAll('.archive-entry-cover[data-fallback]').forEach(function(el) {
+    var n = parseInt(el.dataset.fallback, 10) || 0;
+    el.style.background = palette[n % palette.length];
   });
-  if (pushState) {
-    var url = new URL(window.location);
-    if (year === 'all') { url.searchParams.delete('year'); } else { url.searchParams.set('year', year); }
-    history.pushState(null, '', url);
+
+  // Year filter (existing behaviour).
+  var yearsRoot = document.querySelector('.archive-years');
+  var current = document.querySelector('[data-archive-current]');
+  function selectYear(year, pushState) {
+    document.querySelectorAll('.archive-year-tab').forEach(function(t) { t.classList.remove('is-active'); });
+    var active = document.querySelector('.archive-year-tab[data-year="' + year + '"]');
+    if (active) active.classList.add('is-active');
+    document.querySelectorAll('.archive-year[data-year]').forEach(function(section) {
+      section.style.display = (year === 'all' || section.dataset.year === year) ? '' : 'none';
+    });
+    if (current) current.textContent = year === 'all' ? 'All years' : year;
+    if (pushState) {
+      var url = new URL(window.location);
+      if (year === 'all') { url.searchParams.delete('year'); } else { url.searchParams.set('year', year); }
+      history.pushState(null, '', url);
+    }
   }
-}
-document.querySelector('.archive-years').addEventListener('click', function(e) {
-  var tab = e.target.closest('.archive-year-tab');
-  if (!tab) return;
-  selectYear(tab.dataset.year, true);
-});
-window.addEventListener('popstate', function() {
-  var year = new URLSearchParams(window.location.search).get('year') || String(new Date().getFullYear());
-  selectYear(year, false);
-});
-var initialYear = new URLSearchParams(window.location.search).get('year') || String(new Date().getFullYear());
-selectYear(initialYear, false);
+  if (yearsRoot) {
+    yearsRoot.addEventListener('click', function(e) {
+      var tab = e.target.closest('.archive-year-tab');
+      if (!tab) return;
+      selectYear(tab.dataset.year, true);
+    });
+  }
+  window.addEventListener('popstate', function() {
+    var year = new URLSearchParams(window.location.search).get('year') || String(new Date().getFullYear());
+    selectYear(year, false);
+  });
+  var initialYear = new URLSearchParams(window.location.search).get('year') || String(new Date().getFullYear());
+  selectYear(initialYear, false);
+
+  // Random issue button.
+  var randomBtn = document.getElementById('archive-random');
+  if (randomBtn) {
+    randomBtn.addEventListener('click', function() {
+      var links = document.querySelectorAll('.archive-entry-link');
+      if (!links.length) return;
+      var idx = Math.floor(Math.random() * links.length);
+      window.location = links[idx].getAttribute('href');
+    });
+  }
+})();
 </script>
