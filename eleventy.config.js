@@ -165,6 +165,12 @@ module.exports = function (eleventyConfig) {
     return String(str).replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (_, key) => String(values[key] ?? ""));
   });
 
+  // Split a string on a separator. Nunjucks core has no `split` filter.
+  eleventyConfig.addFilter("split", (str, sep = " ") => {
+    if (str == null) return [];
+    return String(str).split(sep);
+  });
+
   // Extract headings from rendered HTML for TOC
   eleventyConfig.addFilter("extractToc", (content) => {
     if (!content) return [];

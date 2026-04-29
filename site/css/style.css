@@ -332,6 +332,8 @@ th {
   letter-spacing: -0.01em;
   color: var(--ink);
   text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .site-logo-mark {
@@ -1172,8 +1174,14 @@ th {
   font-family: var(--serif);
   font-size: 19px;
   line-height: 1.3;
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   color: var(--ink);
+}
+.home-stamp-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
 }
 .home-stamp-toc {
   list-style: none;
@@ -1348,38 +1356,32 @@ th {
 .home-readers-quotes > :nth-child(n+4) { display: none; }
 .home-q {
   margin: 0;
-  padding: 24px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  padding: 36px 8px 0;
+  background: transparent;
+  border: 0;
   position: relative;
 }
 .home-q::before {
   content: '\201C';
   position: absolute;
-  top: -8px;
-  left: 14px;
+  top: 12px;
+  left: 0;
   font-family: var(--serif);
-  font-size: 64px;
+  font-size: 56px;
   color: var(--accent);
-  opacity: 0.3;
+  opacity: 0.35;
   line-height: 1;
+  pointer-events: none;
 }
 .home-q p {
   font-family: var(--serif);
   font-size: 17px;
-  line-height: 1.45;
+  line-height: 1.5;
   font-style: italic;
   color: var(--ink);
-  margin-bottom: 12px;
+  margin: 0;
 }
 .home-readers-quotes > :first-child p { font-size: 22px; line-height: 1.4; }
-.home-q footer {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--muted);
-  letter-spacing: 0.05em;
-}
 
 .home-feelings {
   text-align: center;
@@ -1441,6 +1443,15 @@ th {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--line);
+}
+.home-about-greeting {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--accent);
+  font-weight: 400;
+  margin: 0 0 6px;
+  letter-spacing: -0.005em;
 }
 .home-about p {
   font-size: 17px;
@@ -1827,11 +1838,18 @@ th {
   color: var(--muted);
 }
 .issue-pager-btn {
-  color: var(--ink);
-  font-weight: 600;
+  color: var(--ink-soft);
+  font-weight: 500;
   text-decoration: none;
 }
 .issue-pager-btn:hover { color: var(--accent); }
+.issue-pager-here {
+  color: var(--accent);
+  font-weight: 700;
+  background: var(--accent-soft);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
 
 .issue-hero { padding: 64px 0 32px; }
 .issue-title {
@@ -1978,8 +1996,29 @@ th {
   padding-bottom: 16px;
 }
 @media (max-width: 960px) {
-  .issue-layout { grid-template-columns: 1fr; gap: 24px; }
-  .issue-toc { position: static !important; }
+  .issue-layout { grid-template-columns: 1fr; gap: 16px; }
+  .issue-toc {
+    position: static !important;
+    max-height: none;
+    overflow: visible;
+    font-size: 12px;
+  }
+  .issue-toc-section {
+    margin-top: 0;
+    padding-top: 8px;
+  }
+  .issue-toc-section + .issue-toc-section { padding-top: 8px; margin-top: 8px; }
+  .issue-toc-section > summary {
+    padding: 6px 0;
+    margin-bottom: 0;
+  }
+  .issue-toc-section[open] > summary { margin-bottom: 6px; }
+  .issue-toc-section[open] .issue-toc-list,
+  .issue-toc-section[open] .issue-domain-list { margin-bottom: 6px; }
+  .issue-toc-aside {
+    margin-top: 8px;
+    padding-top: 8px;
+  }
 }
 
 .issue-toc {
@@ -1990,11 +2029,39 @@ th {
   max-height: calc(100vh - 100px);
   overflow-y: auto;
 }
+.issue-toc-section {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.issue-toc-section:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.issue-toc-section > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  user-select: none;
+}
+.issue-toc-section > summary::-webkit-details-marker { display: none; }
+.issue-toc-section > summary::after {
+  content: "▾";
+  font-size: 10px;
+  color: var(--muted);
+  margin-left: 8px;
+  transition: transform 140ms ease;
+}
+.issue-toc-section[open] > summary::after { transform: rotate(180deg); }
+
 .issue-toc-list {
   list-style: none;
-  padding: 14px 0 0;
+  padding: 0;
   margin: 0;
-  border-top: 1px solid var(--line);
 }
 .issue-toc-item { padding: 0; margin: 0; }
 .issue-toc-list a {
@@ -2034,20 +2101,16 @@ th {
 .issue-domain-list {
   list-style: none;
   padding: 0;
-  margin: 6px 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
+  margin: 8px 0 0;
 }
 .issue-domain-list li {
   font-family: var(--mono);
-  font-size: 11px;
-  color: var(--muted);
-  background: var(--code-bg);
-  padding: 2px 6px;
-  border-radius: 3px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  padding: 3px 0;
+  line-height: 1.4;
+  word-break: break-all;
 }
-.issue-domain-list li.issue-domain-more { color: var(--accent); background: var(--accent-soft); }
 
 /* Issue content (rendered markdown body) */
 .issue-content {
@@ -2183,7 +2246,7 @@ th {
 }
 .issue-prevnext-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
 }
 .issue-prevnext-card {
@@ -2204,6 +2267,15 @@ th {
   text-decoration: none;
 }
 .issue-prevnext-card.issue-next .issue-prevnext-body { text-align: right; }
+.issue-prevnext-card.issue-prevnext-current {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  cursor: default;
+}
+.issue-prevnext-card.issue-prevnext-current:hover { border-color: var(--accent); }
+.issue-prevnext-card.issue-prevnext-current .issue-prevnext-body { text-align: center; }
+.issue-prevnext-card.issue-prevnext-current .issue-prevnext-num { color: var(--accent-deep); }
+.issue-prevnext-card.issue-prevnext-current .issue-prevnext-title { color: var(--ink); }
 .issue-prevnext-arrow {
   font-family: var(--serif);
   font-size: 22px;
@@ -2236,7 +2308,10 @@ th {
   color: var(--ink);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
+  .issue-prevnext-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
   .issue-prevnext-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 480px) {
@@ -3006,6 +3081,15 @@ th {
   background: #4a8a5a;
   display: inline-block;
 }
+.thingy-card-tools {
+  display: none;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.thingy-card:has(.librarian-chat:not([hidden])) .thingy-card-tools {
+  display: inline-flex;
+}
 .thingy-card-tool {
   font-family: var(--sans);
   font-size: 12px;
@@ -3015,10 +3099,6 @@ th {
   padding: 6px 10px;
   border-radius: 6px;
   cursor: pointer;
-  display: none;
-}
-.thingy-card:has(.librarian-chat:not([hidden])) .thingy-card-tool {
-  display: inline-flex;
 }
 .thingy-card-tool:hover {
   border-color: var(--accent);
@@ -3272,31 +3352,44 @@ th {
 .librarian-feedback {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
-  margin-top: var(--space-sm);
-  padding-top: var(--space-sm);
-  border-top: 1px solid var(--color-border-light);
-  font-family: var(--font-ui);
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--sans);
+}
+
+.librarian-feedback-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 4px;
 }
 
 .librarian-feedback button {
-  width: 2.2rem;
-  height: 2.2rem;
-  border: 1px solid var(--color-border);
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--line);
   border-radius: 6px;
-  background: transparent;
-  color: var(--color-text-muted);
-  font-size: 1rem;
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-size: 0.95rem;
   line-height: 1;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
 }
 
 .librarian-feedback button:hover,
 .librarian-feedback button.selected {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
-  background: var(--color-accent-soft);
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
 }
 
 .librarian-feedback button:hover {
@@ -3309,10 +3402,14 @@ th {
 }
 
 .librarian-feedback-status {
-  min-width: 4rem;
-  color: var(--color-text-muted);
-  font-size: var(--size-sm);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-left: 4px;
+  min-width: 0;
 }
+.librarian-feedback-status:empty { display: none; }
 
 .librarian-prompts {
   display: flex;

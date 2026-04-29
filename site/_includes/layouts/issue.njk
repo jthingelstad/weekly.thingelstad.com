@@ -28,8 +28,11 @@ ogType: article
       <div class="issue-bar-inner">
         <a href="/archive/" class="issue-back">&larr; Archive</a>
         <div class="issue-pager">
+          {% if prev2 %}<a href="/archive/{{ prev2.data.number }}/" class="issue-pager-btn" title="Issue {{ prev2.data.number }}: {{ prev2.data.subject }}">&lsaquo; #{{ prev2.data.number }}</a>{% endif %}
           {% if prev1 %}<a href="/archive/{{ prev1.data.number }}/" class="issue-pager-btn" title="Issue {{ prev1.data.number }}: {{ prev1.data.subject }}">&lsaquo; #{{ prev1.data.number }}</a>{% endif %}
+          <span class="issue-pager-here" aria-current="page">#{{ number }}</span>
           {% if next1 %}<a href="/archive/{{ next1.data.number }}/" class="issue-pager-btn" title="Issue {{ next1.data.number }}: {{ next1.data.subject }}">#{{ next1.data.number }} &rsaquo;</a>{% endif %}
+          {% if next2 %}<a href="/archive/{{ next2.data.number }}/" class="issue-pager-btn" title="Issue {{ next2.data.number }}: {{ next2.data.subject }}">#{{ next2.data.number }} &rsaquo;</a>{% endif %}
         </div>
       </div>
     </div>
@@ -39,7 +42,8 @@ ogType: article
     <div class="container-narrow">
       <p class="eyebrow">Weekly Thing #<span data-pagefind-meta="issue">{{ number }}</span> &middot; <time datetime="{{ publish_date | dateFormat('iso') }}" data-pagefind-meta="date">{{ publish_date | dateFormat }}</time></p>
       <span data-pagefind-filter="year" hidden>{{ publish_date | year }}</span>
-      <h1 class="issue-title" data-pagefind-meta="title">{{ subject }}</h1>
+      {%- set titleParts = subject | split(" / ") -%}
+      <h1 class="issue-title" data-pagefind-meta="title">{{ titleParts | last if titleParts.length > 1 else subject }}</h1>
       {% if description %}
       <p class="issue-dek">{{ description }}</p>
       {% endif %}
@@ -62,57 +66,48 @@ ogType: article
             <span class="share-label">Share</span>
           </button>
           {% if audio_url %}
-          <a href="#listen" class="issue-action issue-action-primary">Listen &#9656;</a>
+          <button type="button" class="issue-action issue-action-primary issue-listen" data-audio-url="{{ audio_url }}" data-tinylytics-event="issue.listen" data-tinylytics-event-value="{{ number }}">
+            <span class="issue-listen-icon" aria-hidden="true">&#9656;</span>
+            <span class="issue-listen-label">Listen</span>
+          </button>
+          <audio class="issue-listen-audio" preload="none" src="{{ audio_url }}" hidden>
+            <a href="{{ audio_url }}">Download the MP3</a>
+          </audio>
           {% endif %}
         </div>
       </div>
     </div>
   </header>
 
-  {% if image %}
-  <figure class="issue-cover">
-    <img class="issue-cover-img" src="{{ image }}" alt="" loading="lazy">
-    {% if description %}<figcaption class="issue-cover-cap">{{ description }}</figcaption>{% endif %}
-  </figure>
-  {% endif %}
-
-  {% if audio_url %}
-  <div class="issue-audio container-narrow" id="listen">
-    <div class="issue-audio-label">Listen</div>
-    <audio controls preload="none" src="{{ audio_url }}">
-      <a href="{{ audio_url }}">Download the MP3</a>
-    </audio>
-  </div>
-  {% endif %}
-
   <div class="issue-layout container-wide">
     <aside class="issue-toc">
       {% if toc.length > 0 %}
-      <p class="eyebrow">In this issue</p>
-      <ol class="issue-toc-list">
-        {% for heading in toc %}
-        <li class="issue-toc-item issue-toc-level-{{ heading.level }}">
-          <a href="#{{ heading.id }}">{{ heading.text }}</a>
-        </li>
-        {% endfor %}
-      </ol>
+      <details class="issue-toc-section" open>
+        <summary class="eyebrow">In this issue</summary>
+        <ol class="issue-toc-list">
+          {% for heading in toc %}
+          <li class="issue-toc-item issue-toc-level-{{ heading.level }}">
+            <a href="#{{ heading.id }}">{{ heading.text }}</a>
+          </li>
+          {% endfor %}
+        </ol>
+      </details>
       {% endif %}
 
       {% if domains.length > 0 %}
-      <div class="issue-toc-aside">
-        <p class="eyebrow">Linked domains</p>
+      <details class="issue-toc-section" open>
+        <summary class="eyebrow">Linked domains</summary>
         <ul class="issue-domain-list">
-          {% for domain in domains | slice(0, 12) %}
+          {% for domain in domains %}
           <li>{{ domain }}</li>
           {% endfor %}
-          {% if domains.length > 12 %}<li class="issue-domain-more">+ {{ domains.length - 12 }} more</li>{% endif %}
         </ul>
-      </div>
+      </details>
       {% endif %}
 
       <div class="issue-toc-aside">
         <p class="eyebrow">Discuss</p>
-        <a href="https://www.reddit.com/r/weeklything/" class="issue-toc-discuss">r/WeeklyThing &rarr;</a>
+        <a href="https://www.reddit.com/r/weeklything/?f=flair_name%3A%22Weekly%20Thing%20{{ number }}%22" class="issue-toc-discuss">r/WeeklyThing #{{ number }} &rarr;</a>
       </div>
     </aside>
 
@@ -120,50 +115,6 @@ ogType: article
       {{ content | safe }}
     </div>
   </div>
-
-  <nav class="issue-prevnext" aria-label="Issue navigation">
-    <div class="container-wide">
-      <p class="eyebrow issue-prevnext-label">Continue reading</p>
-      <div class="issue-prevnext-grid">
-        {% if prev2 %}
-        <a href="/archive/{{ prev2.data.number }}/" class="issue-prevnext-card issue-prev">
-          <span class="issue-prevnext-arrow">&larr;</span>
-          <div class="issue-prevnext-body">
-            <span class="issue-prevnext-num">#{{ prev2.data.number }}</span>
-            <span class="issue-prevnext-title">{{ prev2.data.subject }}</span>
-          </div>
-        </a>
-        {% endif %}
-        {% if prev1 %}
-        <a href="/archive/{{ prev1.data.number }}/" class="issue-prevnext-card issue-prev">
-          <span class="issue-prevnext-arrow">&larr;</span>
-          <div class="issue-prevnext-body">
-            <span class="issue-prevnext-num">#{{ prev1.data.number }}</span>
-            <span class="issue-prevnext-title">{{ prev1.data.subject }}</span>
-          </div>
-        </a>
-        {% endif %}
-        {% if next1 %}
-        <a href="/archive/{{ next1.data.number }}/" class="issue-prevnext-card issue-next">
-          <div class="issue-prevnext-body">
-            <span class="issue-prevnext-num">#{{ next1.data.number }}</span>
-            <span class="issue-prevnext-title">{{ next1.data.subject }}</span>
-          </div>
-          <span class="issue-prevnext-arrow">&rarr;</span>
-        </a>
-        {% endif %}
-        {% if next2 %}
-        <a href="/archive/{{ next2.data.number }}/" class="issue-prevnext-card issue-next">
-          <div class="issue-prevnext-body">
-            <span class="issue-prevnext-num">#{{ next2.data.number }}</span>
-            <span class="issue-prevnext-title">{{ next2.data.subject }}</span>
-          </div>
-          <span class="issue-prevnext-arrow">&rarr;</span>
-        </a>
-        {% endif %}
-      </div>
-    </div>
-  </nav>
 
   <section class="issue-cta-foot">
     <div class="container-narrow">
@@ -193,6 +144,45 @@ ogType: article
           }
         });
       }
+    });
+  }
+
+  // Collapse the sidebar sections by default on narrow viewports so the
+  // article body isn't pushed below a long list of headings/domains.
+  if (window.matchMedia && window.matchMedia('(max-width: 960px)').matches) {
+    document.querySelectorAll('.issue-toc-section[open]').forEach(function(d) {
+      d.removeAttribute('open');
+    });
+  }
+
+  var listenButton = document.querySelector('.issue-listen');
+  var listenAudio = document.querySelector('.issue-listen-audio');
+  if (listenButton && listenAudio) {
+    var icon = listenButton.querySelector('.issue-listen-icon');
+    var label = listenButton.querySelector('.issue-listen-label');
+    listenAudio.hidden = false;
+    listenAudio.style.display = 'none';
+    listenButton.addEventListener('click', function() {
+      if (listenAudio.paused) {
+        listenAudio.play();
+      } else {
+        listenAudio.pause();
+      }
+    });
+    listenAudio.addEventListener('play', function() {
+      if (icon) icon.textContent = '⏸';
+      if (label) label.textContent = 'Pause';
+      listenButton.classList.add('is-playing');
+    });
+    listenAudio.addEventListener('pause', function() {
+      if (icon) icon.textContent = '▶';
+      if (label) label.textContent = 'Listen';
+      listenButton.classList.remove('is-playing');
+    });
+    listenAudio.addEventListener('ended', function() {
+      if (icon) icon.textContent = '▶';
+      if (label) label.textContent = 'Listen';
+      listenButton.classList.remove('is-playing');
     });
   }
 })();

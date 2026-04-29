@@ -12,7 +12,7 @@ permalink: /thingy/
       </div>
       <p class="eyebrow">Members &middot; Beta</p>
       <h1 class="thingy-h1">Meet <em>Thingy</em>.</h1>
-      <p class="thingy-lede">A librarian for the archive. Ask in plain English and Thingy will dig through every letter I&rsquo;ve sent, find what fits, and quote the originals back at you with links.</p>
+      <p class="thingy-lede">Thingy is your guide to the entire Weekly Thing archive&mdash;every idea, link, and rabbit hole I&rsquo;ve ever shared. Ask about past issues, get recommendations, or chase down a half-remembered thought. It&rsquo;s playful, a little weird, and very good at connecting dots. Start anywhere.</p>
     </div>
   </header>
 
@@ -25,7 +25,10 @@ permalink: /thingy/
             <p class="thingy-card-name">Thingy</p>
             <p class="thingy-card-status"><span class="thingy-dot" aria-hidden="true"></span> Indexed through #{{ collections.issuesByDate[0].data.number }}</p>
           </div>
-          <button type="button" id="librarian-logout" class="thingy-card-tool">Use a different email</button>
+          <div class="thingy-card-tools">
+            <button type="button" id="librarian-clear-chat" class="thingy-card-tool" data-tinylytics-event="librarian.clear">Start over</button>
+            <button type="button" id="librarian-logout" class="thingy-card-tool">Use a different email</button>
+          </div>
         </div>
 
         <div class="librarian-auth thingy-auth" id="librarian-auth">
@@ -63,7 +66,6 @@ permalink: /thingy/
             </div>
             <div class="librarian-question-actions">
               <button type="submit" data-tinylytics-event="librarian.question_submit">Ask &rarr;</button>
-              <button type="button" id="librarian-clear-chat" class="librarian-clear-button" data-tinylytics-event="librarian.clear">Start over</button>
             </div>
           </form>
         </div>
@@ -592,7 +594,7 @@ permalink: /thingy/
       const controls = document.createElement('div');
       controls.className = 'librarian-feedback';
       controls.innerHTML = `
-        <span class="sr-only">Was this Thingy response useful?</span>
+        <span class="librarian-feedback-label">Was this useful?</span>
         <button type="button" data-reaction="up" aria-label="Thumbs up" aria-pressed="false" title="Thumbs up">&#128077;</button>
         <button type="button" data-reaction="down" aria-label="Thumbs down" aria-pressed="false" title="Thumbs down">&#128078;</button>
         <span class="librarian-feedback-status" aria-live="polite"></span>

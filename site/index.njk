@@ -6,7 +6,6 @@ permalink: /
 ---
 {% set latestIssues = collections.issuesByDate %}
 {% set latest = latestIssues[0] %}
-{% set latestToc = latest.content | extractToc %}
 
 {# ── Hero ── #}
 <section class="home-hero">
@@ -28,14 +27,8 @@ permalink: /
           <span class="home-stamp-date">{{ latest.data.publish_date | dateShort }}</span>
           <hr>
           <p class="home-stamp-subject">{{ latest.data.subject }}</p>
-          {% if latestToc.length > 0 %}
-          <ul class="home-stamp-toc">
-            {%- for heading in latestToc -%}
-              {%- if heading.level == 2 -%}
-              <li>{{ heading.text }}</li>
-              {%- endif -%}
-            {%- endfor -%}
-          </ul>
+          {% if latest.data.description %}
+          <p class="home-stamp-desc">{{ latest.data.description }}</p>
           {% endif %}
           <span class="home-stamp-cta">Read this issue &rarr;</span>
         </a>
@@ -85,16 +78,11 @@ permalink: /
       <aside class="home-prop-card">
         <p class="eyebrow">A typical week</p>
         <ul class="home-prop-list">
-          {% if copy.whatYouGet and copy.whatYouGet.themes and copy.whatYouGet.themes.length > 0 %}
-            {% for theme in copy.whatYouGet.themes | slice(0, 4) %}
-            <li><span class="home-prop-tag">{{ theme.label }}</span> {{ theme.description }}</li>
-            {% endfor %}
-          {% else %}
-            <li><span class="home-prop-tag">Featured</span> One link worth your full attention</li>
-            <li><span class="home-prop-tag">Notable</span> 4&ndash;6 stories with commentary</li>
-            <li><span class="home-prop-tag">Briefly</span> A dozen quick mentions</li>
-            <li><span class="home-prop-tag">Personal</span> What I&rsquo;ve been up to</li>
-          {% endif %}
+          <li><span class="home-prop-tag">Featured</span> One link worth your full attention</li>
+          <li><span class="home-prop-tag">Notable</span> 4&ndash;6 stories with commentary</li>
+          <li><span class="home-prop-tag">Briefly</span> A dozen quick mentions</li>
+          <li><span class="home-prop-tag">Journal</span> Field notes, photos, small moments</li>
+          <li><span class="home-prop-tag">Haiku</span> A small one to leave you with</li>
         </ul>
       </aside>
     </div>
@@ -117,7 +105,6 @@ permalink: /
       {% for quote in quotes %}{% if quote.featured %}
       <blockquote class="home-q">
         <p>&ldquo;{{ quote.text }}&rdquo;</p>
-        <footer>&mdash; Reader survey, {{ quote.source }}</footer>
       </blockquote>
       {% endif %}{% endfor %}
     </div>
@@ -148,8 +135,8 @@ permalink: /
     <div class="home-about-grid">
       <img src="/img/jamie-thingelstad.jpg" alt="Jamie Thingelstad" class="home-about-photo" loading="lazy" width="200" height="200">
       <div>
-        <p class="eyebrow">Hi, I&rsquo;m Jamie</p>
-        <h2 class="home-h2">Writing this from Saint Paul.</h2>
+        <p class="home-about-greeting">Hi, I&rsquo;m Jamie.</p>
+        <h2 class="home-h2">Writing this from Minneapolis.</h2>
         <p>I&rsquo;m a CTO by day at <a href="https://www.spscommerce.com">SPS Commerce</a>, but this letter isn&rsquo;t about my day job. It&rsquo;s about the rest of it &mdash; the reading, the tinkering, the workshop projects, the family hikes, and the Wikipedia rabbit holes I keep falling into.</p>
         <p>I&rsquo;ve been writing the Weekly Thing every weekend since 2017. If any of that sounds like your kind of thing, I&rsquo;d love to have you along.</p>
         <p><a href="/about/">More about me &rarr;</a></p>
@@ -168,7 +155,7 @@ permalink: /
       {% for sample in voiceSamples | slice(0, 3) %}
       <blockquote class="home-voice-card">
         <p>&ldquo;{{ sample.text }}&rdquo;</p>
-        <footer><a href="/archive/{{ sample.issueNumber }}/">#{{ sample.issueNumber }} &middot; {{ sample.issueTitle }}</a></footer>
+        <footer><a href="/archive/{{ sample.issueNumber }}/">{{ sample.issueTitle }}</a></footer>
       </blockquote>
       {% endfor %}
     </div>
