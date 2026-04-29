@@ -1797,6 +1797,8 @@ th {
   font-weight: 600;
 }
 
+.archive-entry-inline-meta { display: none; }
+
 /* Mobile */
 @media (max-width: 720px) {
   .archive-entry-link {
@@ -1807,6 +1809,24 @@ th {
   .archive-entry-cover-num { font-size: 14px; }
   .archive-entry-meta,
   .archive-entry-stats { display: none; }
+  .archive-entry-inline-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin: 0 0 6px;
+  }
+  .archive-entry-inline-num {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .archive-entry-inline-listen {
+    color: var(--color-audio-accent);
+    font-weight: 600;
+  }
 }
 
 /* ===================================================================
@@ -2453,7 +2473,46 @@ th {
   margin-bottom: var(--space-sm);
 }
 
-/* --- Support Page --- */
+/* --- Support Page (Refined) --- */
+.support-hero {
+  padding: 80px 0 24px;
+}
+.support-hero-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5.5vw, 56px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 12px 0 14px;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.support-hero-title em { font-style: italic; color: var(--accent); font-weight: 400; }
+.support-hero-lede {
+  font-size: 18px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  max-width: 56ch;
+  margin: 0 0 8px;
+}
+.support-page > section {
+  padding: 32px 0;
+  border-top: 1px solid var(--line-soft);
+}
+.support-page > section:first-of-type { border-top: none; }
+.support-page h2 {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin: 8px 0 12px;
+}
+.support-page h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  margin: 24px 0 10px;
+}
 .support-intro {
   font-size: var(--size-lg);
   margin-bottom: var(--space-2xl);
@@ -2490,6 +2549,33 @@ th {
 
 .support-how {
   margin: var(--space-2xl) 0;
+}
+
+/* --- FAQ Hero (Refined) --- */
+.faq-hero {
+  padding: 80px 0 24px;
+}
+.faq-hero-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5.5vw, 56px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 12px 0 14px;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.faq-hero-title em { font-style: italic; color: var(--accent); font-weight: 400; }
+.faq-hero-lede {
+  font-size: 18px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  max-width: 56ch;
+  margin: 0 0 8px;
+}
+.faq-page {
+  padding-top: 8px;
+  padding-bottom: 64px;
 }
 
 /* ===================================================================

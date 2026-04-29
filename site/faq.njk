@@ -1,5 +1,5 @@
 ---
-layout: layouts/page.njk
+layout: layouts/base.njk
 pageTitle: FAQ
 description: Frequently asked questions about the Weekly Thing newsletter.
 permalink: /faq/
@@ -8,7 +8,16 @@ permalink: /faq/
   yearsActive: archiveStats.yearsActive,
   issueCount: collections.issuesByDate[0].data.number
 } %}
-<div class="faq-page">
+
+<section class="faq-hero">
+  <div class="container-narrow">
+    <p class="eyebrow">Help</p>
+    <h1 class="faq-hero-title"><em>Questions</em> and answers.</h1>
+    <p class="faq-hero-lede">Everything I get asked about the Weekly Thing &mdash; how it works, what&rsquo;s in it, and how to follow along.</p>
+  </div>
+</section>
+
+<div class="faq-page container-narrow">
   {% for section in faq.sections %}
     <section class="faq-section">
       <h2>{{ section.title }}</h2>

@@ -5,7 +5,7 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ site.title }} Audio</title>
+    <title>{{ site.title }}</title>
     <description>{{ site.description | xmlEscape }}</description>
     <link>{{ site.url }}/</link>
     <atom:link href="{{ site.url }}/podcast.xml" rel="self" type="application/rss+xml"/>
@@ -13,7 +13,7 @@ eleventyExcludeFromCollections: true
     <itunes:author>{{ site.author | xmlEscape }}</itunes:author>
     <itunes:explicit>false</itunes:explicit>
     <itunes:category text="Technology"/>
-    <itunes:image href="{{ site.url }}/img/thingy.png"/>
+    <itunes:image href="{{ site.url }}/img/podcast-cover.png"/>
     {% for issue in collections.issuesByDate %}
     {% if issue.data.audio_url %}
     <item>
@@ -21,10 +21,15 @@ eleventyExcludeFromCollections: true
       <link>{{ site.url }}/archive/{{ issue.data.number }}/</link>
       <guid isPermaLink="false">weekly-thing-{{ issue.data.number }}-audio</guid>
       <pubDate>{{ issue.data.publish_date | dateFormat('rfc822') }}</pubDate>
-      {% if issue.data.description %}
-      <description>{{ issue.data.description | xmlEscape }}</description>
-      <itunes:summary>{{ issue.data.description | xmlEscape }}</itunes:summary>
-      {% endif %}
+      {%- set issueUrl = site.url + '/archive/' + (issue.data.number | string) + '/' -%}
+      {%- set descBody -%}
+{%- if issue.data.description -%}{{ issue.data.description }}
+
+{% endif -%}
+Read this issue: {{ issueUrl }}
+      {%- endset -%}
+      <description>{{ descBody | xmlEscape }}</description>
+      <itunes:summary>{{ descBody | xmlEscape }}</itunes:summary>
       <itunes:duration>{{ issue.data.audio_duration_seconds | itunesDuration }}</itunes:duration>
       <enclosure url="{{ issue.data.audio_url }}" length="{{ issue.data.audio_byte_size or 0 }}" type="audio/mpeg"/>
     </item>

@@ -73,6 +73,11 @@ permalink: /archive/
               <time class="archive-entry-date" datetime="{{ issue.data.publish_date | dateFormat('iso') }}">{{ issue.data.publish_date | dateShort }}</time>
             </div>
             <div class="archive-entry-body">
+              <p class="archive-entry-inline-meta">
+                <span class="archive-entry-inline-num">#{{ issue.data.number }}</span>
+                <time datetime="{{ issue.data.publish_date | dateFormat('iso') }}">{{ issue.data.publish_date | dateShort }}</time>
+                {% if issue.data.audio_url %}<span class="archive-entry-inline-listen">&#9656; Listen</span>{% endif %}
+              </p>
               <h3 class="archive-entry-title">{{ issue.data.subject }}</h3>
               {% if issue.data.description %}
               <p class="archive-entry-description">{{ issue.data.description }}</p>

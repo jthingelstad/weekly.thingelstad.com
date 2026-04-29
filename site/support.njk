@@ -1,17 +1,24 @@
 ---
-layout: layouts/page.njk
+layout: layouts/base.njk
 pageTitle: Supporting Membership
 description: Support the Weekly Thing and help fund a nonprofit each year.
 permalink: /members/
 ---
-<div class="support-page">
-  <p class="support-intro">The Weekly Thing is free for everyone, always. Supporting Members contribute to a community giving program where <strong>100% of membership fees go directly to a nonprofit</strong> selected each year.</p>
+<section class="support-hero">
+  <div class="container-narrow">
+    <p class="eyebrow">Membership</p>
+    <h1 class="support-hero-title">Free for everyone. <em>Members fund a nonprofit</em>.</h1>
+    <p class="support-hero-lede">The Weekly Thing is free for everyone, always. Supporting Members contribute to a community giving program where <strong>100% of membership fees go directly to a nonprofit</strong> selected each year.</p>
+  </div>
+</section>
 
+<div class="support-page container-narrow">
   {% if support.current %}
   <section class="support-current">
-    <h2>{{ support.current.year }} &mdash; {{ support.current.nonprofit }}</h2>
+    <p class="eyebrow">{{ support.current.year }} &middot; This year&rsquo;s nonprofit</p>
+    <h2>{{ support.current.nonprofit }}</h2>
     <p>{{ support.current.description }}</p>
-    <p><a href="{{ support.current.url }}">Visit {{ support.current.short_name or support.current.nonprofit }} &rarr;</a></p>
+    <p><a href="{{ support.current.url }}" class="btn btn-secondary">Visit {{ support.current.short_name or support.current.nonprofit }} &rarr;</a></p>
 
     <div class="support-stats">
       {% if stats.amount_raised > 0 %}
@@ -31,7 +38,8 @@ permalink: /members/
   {% endif %}
 
   <section class="support-how">
-    <h2>Become a Supporting Member</h2>
+    <p class="eyebrow">Become a member</p>
+    <h2>Support the work and the cause.</h2>
     <p>Supporting Members get a gold star recognition in each issue of the Weekly Thing. More importantly, your contribution goes directly to supporting organizations doing meaningful work.</p>
     <p><a href="https://buttondown.com/weekly-thing/membership" class="btn btn-primary" data-tinylytics-event="support.membership">Become a Supporting Member</a></p>
 
@@ -44,7 +52,8 @@ permalink: /members/
 
   {% if support.past.length > 0 %}
   <section class="support-history">
-    <h2>Past Nonprofits Supported</h2>
+    <p class="eyebrow">History</p>
+    <h2>Past nonprofits supported</h2>
     <table class="support-table">
       <thead>
         <tr>
