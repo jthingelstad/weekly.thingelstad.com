@@ -11,6 +11,22 @@ import { premiumThankYouSystemPrompt } from '../shared/prompts.mjs';
 
 const AUTH_RATE_LIMIT_MAX = 30;
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+const ALLOWED_SOURCES = new Set([
+  'thingy',
+  'site',
+  'hero',
+  'mid1',
+  'mid2',
+  'footer',
+  'about',
+  'issue'
+]);
+
+function normalizeSource(value) {
+  const raw = String(value || '').trim().toLowerCase();
+  if (!raw) return 'site';
+  return ALLOWED_SOURCES.has(raw) ? raw : 'site';
+}
 
 function clientIdentityHash(event) {
   return stableHash(`${clientSourceIp(event) || 'unknown'}\0${userAgent(event) || ''}`);
@@ -97,6 +113,7 @@ async function authHandler(event) {
   const body = parseBody(event);
   const email = normalizeEmail(body.email);
   const action = String(body.action || 'check').trim().toLowerCase();
+  const source = normalizeSource(body.source);
   const hashedEmail = email ? emailHash(email) : undefined;
 
   const authLimit = Number(process.env.AUTH_RATE_LIMIT_MAX || AUTH_RATE_LIMIT_MAX);
@@ -115,16 +132,16 @@ async function authHandler(event) {
 
   if (action === 'subscribe') {
     try {
-      const subscriber = await createSubscriber(email, event);
+      const subscriber = await createSubscriber(email, event, source);
       const status = subscriberStatus(subscriber);
-      logEvent('info', 'auth_subscribe_completed', { email_hash: hashedEmail, subscriber_status: status });
+      logEvent('info', 'auth_subscribe_completed', { email_hash: hashedEmail, subscriber_status: status, subscriber_source: source });
       return jsonResponse(200, {
         status: 'subscribed',
         subscriber_status: status,
-        message: 'Check your inbox to confirm your subscription before using Thingy.'
+        message: 'Check your inbox to confirm your subscription.'
       }, event);
     } catch (error) {
-      logEvent('error', 'buttondown_subscriber_create_failed', { email_hash: hashedEmail, error_type: error.constructor?.name || 'Error' });
+      logEvent('error', 'buttondown_subscriber_create_failed', { email_hash: hashedEmail, subscriber_source: source, error_type: error.constructor?.name || 'Error' });
       return jsonResponse(502, { error: 'Could not add that email right now.' }, event);
     }
   }

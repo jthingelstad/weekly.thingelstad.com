@@ -3,7 +3,27 @@ import { emailHash, normalizeEmail } from './session.mjs';
 import { logEvent } from './logging.mjs';
 
 const BUTTONDOWN_BASE = 'https://api.buttondown.com/v1';
-const LIBRARIAN_SOURCE_TAG_ID = 'sub_tag_3ts444xst99y08j8bqfnwt1g4h';
+
+const SOURCE_TAG_IDS = {
+  thingy: 'sub_tag_3ts444xst99y08j8bqfnwt1g4h',
+  site: 'sub_tag_4x4hy3d3ff9epa6ebx9k7rae51'
+};
+
+const PLACEMENT_TO_SOURCE = {
+  hero: 'site',
+  mid1: 'site',
+  mid2: 'site',
+  footer: 'site',
+  about: 'site',
+  issue: 'site'
+};
+
+export function resolveSourceTag(source) {
+  const key = String(source || '').trim().toLowerCase();
+  if (SOURCE_TAG_IDS[key]) return SOURCE_TAG_IDS[key];
+  if (PLACEMENT_TO_SOURCE[key]) return SOURCE_TAG_IDS[PLACEMENT_TO_SOURCE[key]];
+  return SOURCE_TAG_IDS.site;
+}
 
 function buttondownHeaders(extra = {}) {
   const apiKey = process.env.BUTTONDOWN_API_KEY;
@@ -37,10 +57,11 @@ export async function fetchSubscriber(email) {
   return readJsonResponse(response);
 }
 
-export async function createSubscriber(email, event) {
+export async function createSubscriber(email, event, source) {
+  const tagId = resolveSourceTag(source);
   const body = {
     email_address: normalizeEmail(email),
-    tags: [LIBRARIAN_SOURCE_TAG_ID]
+    tags: [tagId]
   };
   const ip = clientSourceIp(event);
   if (ip) body.ip_address = ip;

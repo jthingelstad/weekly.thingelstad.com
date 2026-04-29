@@ -620,6 +620,62 @@ th {
   min-height: 0;
 }
 
+.subscribe-shell {
+  width: 100%;
+}
+
+.subscribe-status {
+  font-size: var(--size-sm);
+  margin-top: var(--space-sm);
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+.subscribe-status-success {
+  color: var(--accent);
+}
+
+.subscribe-status-error {
+  color: var(--color-audio-accent);
+}
+
+.subscribe-action-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin-left: 0.25em;
+  font: inherit;
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.subscribe-action-link:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.subscribe-input-recognized {
+  background: var(--accent-soft);
+  color: var(--ink-soft);
+}
+
+.subscribe-input-recognized::placeholder {
+  color: var(--ink-soft);
+  opacity: 1;
+}
+
+.subscribe-button-recognized {
+  background: transparent;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+}
+
+.subscribe-button-recognized:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
 /* (button rules consolidated into the .btn block near the top of the file) */
 
 /* --- Sections --- */

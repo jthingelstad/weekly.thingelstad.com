@@ -1,54 +1,323 @@
-<form
-  action="https://buttondown.com/api/emails/embed-subscribe/{{ site.buttondownUsername }}"
-  method="post"
-  class="subscribe-form"
->
-  <label for="email-{{ subscribeId or 'default' }}" class="sr-only">Email address</label>
-  <div class="subscribe-field">
-    <input
-      type="email"
-      name="email"
-      id="email-{{ subscribeId or 'default' }}"
-      placeholder="you@example.com"
-      aria-label="Email address"
-      required
-      class="subscribe-input"
-    />
-    <span class="subscribe-error" aria-live="polite"></span>
-  </div>
-  <input type="hidden" value="1" name="embed" />
-  <button type="submit" class="subscribe-button" data-tinylytics-event="subscribe.submit" data-tinylytics-event-value="{{ subscribeId or 'default' }}">Subscribe</button>
-</form>
+<div class="subscribe-shell" data-subscribe-id="{{ subscribeId or 'default' }}" data-api-base="{{ site.librarianApiUrl }}">
+  <form
+    action="https://buttondown.com/api/emails/embed-subscribe/{{ site.buttondownUsername }}"
+    method="post"
+    class="subscribe-form"
+  >
+    <label for="email-{{ subscribeId or 'default' }}" class="sr-only">Email address</label>
+    <div class="subscribe-field">
+      <input
+        type="email"
+        name="email"
+        id="email-{{ subscribeId or 'default' }}"
+        placeholder="you@example.com"
+        aria-label="Email address"
+        required
+        class="subscribe-input"
+        data-default-placeholder="you@example.com"
+      />
+      <span class="subscribe-error" aria-live="polite"></span>
+    </div>
+    <input type="hidden" value="1" name="embed" />
+    <button type="submit" class="subscribe-button" data-default-label="Subscribe" data-tinylytics-event="subscribe.submit" data-tinylytics-event-value="{{ subscribeId or 'default' }}">Subscribe</button>
+  </form>
+  <p class="subscribe-status" role="status" aria-live="polite" hidden></p>
+</div>
 <script>
 (function() {
-  var form = document.currentScript.previousElementSibling;
-  var input = form.querySelector('.subscribe-input');
-  var error = form.querySelector('.subscribe-error');
-  var btn = form.querySelector('.subscribe-button');
+  var shell = document.currentScript.previousElementSibling;
+  var form = shell.querySelector('.subscribe-form');
+  var input = shell.querySelector('.subscribe-input');
+  var error = shell.querySelector('.subscribe-error');
+  var btn = shell.querySelector('.subscribe-button');
+  var status = shell.querySelector('.subscribe-status');
+  var subscribeId = shell.dataset.subscribeId || 'default';
+  var apiBase = String(shell.dataset.apiBase || '').replace(/\/$/, '');
+  var tokenKey = 'weeklyThingLibrarianToken';
+  var defaultPlaceholder = input.getAttribute('data-default-placeholder') || 'you@example.com';
+  var defaultButtonLabel = btn.getAttribute('data-default-label') || btn.textContent.trim();
   var emailRe = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+  var recognized = false;
+
+  function track(name, value) {
+    if (!name) return;
+    var sink = document.createElement('button');
+    sink.type = 'button';
+    sink.hidden = true;
+    sink.setAttribute('aria-hidden', 'true');
+    sink.setAttribute('data-tinylytics-event', name);
+    if (value) sink.setAttribute('data-tinylytics-event-value', value);
+    document.body.appendChild(sink);
+    sink.click();
+    sink.remove();
+  }
+
+  function decodeJwtPayload(token) {
+    try {
+      var part = token.split('.')[0];
+      if (!part) return null;
+      var b64 = part.replace(/-/g, '+').replace(/_/g, '/');
+      while (b64.length % 4) b64 += '=';
+      return JSON.parse(atob(b64));
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function tokenIsValid(token) {
+    if (!token) return false;
+    var payload = decodeJwtPayload(token);
+    if (!payload || typeof payload.exp !== 'number') return false;
+    return payload.exp > Math.floor(Date.now() / 1000);
+  }
+
+  function enterRecognizedState() {
+    recognized = true;
+    input.value = '';
+    input.setAttribute('placeholder', 'You’re already subscribed');
+    input.classList.add('subscribe-input-recognized');
+    btn.disabled = false;
+    btn.classList.add('subscribe-button-recognized');
+    btn.textContent = 'Forget me';
+    error.textContent = '';
+    input.classList.remove('invalid');
+    setStatus('', '');
+  }
+
+  function forgetMe() {
+    try { window.localStorage.removeItem(tokenKey); } catch (err) { /* ignore */ }
+    exitRecognizedState();
+    input.focus();
+    track('subscribe.forget_me', subscribeId);
+  }
+
+  function exitRecognizedState() {
+    if (!recognized) return;
+    recognized = false;
+    input.setAttribute('placeholder', defaultPlaceholder);
+    input.classList.remove('subscribe-input-recognized');
+    btn.classList.remove('subscribe-button-recognized');
+    btn.disabled = false;
+    btn.textContent = defaultButtonLabel;
+  }
+
+  function setStatus(message, kind) {
+    if (!status) return;
+    status.textContent = message || '';
+    status.hidden = !message;
+    status.className = 'subscribe-status' + (kind ? ' subscribe-status-' + kind : '');
+  }
+
+  function clearStatus() {
+    setStatus('', '');
+  }
+
+  function setBusy(busy, label) {
+    btn.disabled = !!busy;
+    if (busy) {
+      btn.dataset.busy = '1';
+      btn.dataset.preBusyLabel = btn.dataset.preBusyLabel || btn.textContent;
+      btn.textContent = label || 'Subscribing…';
+    } else if (btn.dataset.busy) {
+      btn.dataset.busy = '';
+      if (btn.dataset.preBusyLabel) {
+        btn.textContent = btn.dataset.preBusyLabel;
+        btn.dataset.preBusyLabel = '';
+      }
+    }
+  }
 
   function validate() {
     var val = input.value.trim();
     if (!val) {
       error.textContent = '';
+      input.classList.remove('invalid');
       btn.disabled = false;
-      return;
+      return false;
     }
     if (emailRe.test(val)) {
       error.textContent = '';
       input.classList.remove('invalid');
       btn.disabled = false;
-    } else {
-      error.textContent = 'Please enter a valid email address';
-      input.classList.add('invalid');
-      btn.disabled = true;
+      return true;
+    }
+    error.textContent = 'Please enter a valid email address';
+    input.classList.add('invalid');
+    btn.disabled = true;
+    return false;
+  }
+
+  function callAuth(payload) {
+    if (!apiBase) return Promise.reject(new Error('no-api-base'));
+    var controller = new AbortController();
+    var timeout = window.setTimeout(function() { controller.abort(); }, 12000);
+    return fetch(apiBase + '/auth', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller.signal
+    }).then(function(response) {
+      window.clearTimeout(timeout);
+      return response.json().catch(function() { return {}; }).then(function(data) {
+        return { ok: response.ok, status: response.status, data: data };
+      });
+    }, function(err) {
+      window.clearTimeout(timeout);
+      throw err;
+    });
+  }
+
+  function fallbackSubmit(reason) {
+    track('subscribe.fallback_submit', subscribeId + '.' + (reason || 'unknown'));
+    setBusy(false);
+    form.submit();
+  }
+
+  function persistTokenIfPresent(data) {
+    if (data && data.token) {
+      try { window.localStorage.setItem(tokenKey, data.token); } catch (err) { /* private mode */ }
     }
   }
 
-  input.addEventListener('input', validate);
-  form.addEventListener('submit', function(e) {
-    validate();
-    if (btn.disabled) e.preventDefault();
+  function renderActive(data) {
+    persistTokenIfPresent(data);
+    enterRecognizedState();
+    track('subscribe.already_subscribed', subscribeId + '.' + (data.status || 'active'));
+  }
+
+  function renderSubscribed(data) {
+    setStatus(data.message || 'Check your inbox to confirm your subscription.', 'success');
+    track('subscribe.submitted', subscribeId);
+  }
+
+  function renderUnconfirmed() {
+    setStatus('You signed up but haven’t confirmed yet. ', 'info');
+    var resendBtnEl = document.createElement('button');
+    resendBtnEl.type = 'button';
+    resendBtnEl.className = 'subscribe-action-link';
+    resendBtnEl.textContent = 'Resend confirmation email';
+    status.appendChild(resendBtnEl);
+    resendBtnEl.addEventListener('click', function() {
+      resendBtnEl.disabled = true;
+      callAuth({ email: input.value.trim(), action: 'resend_confirmation', source: subscribeId }).then(function(result) {
+        if (result.ok && result.data && result.data.status === 'reminder_sent') {
+          setStatus(result.data.message || 'Confirmation email sent. Check your inbox.', 'success');
+          track('subscribe.confirmation_resent', subscribeId);
+        } else {
+          setStatus((result.data && (result.data.error || result.data.message)) || 'Could not resend the confirmation email right now.', 'error');
+        }
+      }, function() {
+        setStatus('Could not resend the confirmation email right now.', 'error');
+      });
+    });
+    track('subscribe.unconfirmed', subscribeId);
+  }
+
+  function renderInactive() {
+    setStatus('That email is no longer subscribed. ', 'info');
+    var resubBtnEl = document.createElement('button');
+    resubBtnEl.type = 'button';
+    resubBtnEl.className = 'subscribe-action-link';
+    resubBtnEl.textContent = 'Resubscribe';
+    status.appendChild(resubBtnEl);
+    resubBtnEl.addEventListener('click', function() {
+      resubBtnEl.disabled = true;
+      doSubscribe();
+    });
+    track('subscribe.inactive', subscribeId);
+  }
+
+  function doSubscribe() {
+    setBusy(true, 'Subscribing…');
+    callAuth({ email: input.value.trim(), action: 'subscribe', source: subscribeId }).then(function(result) {
+      setBusy(false);
+      if (result.ok && result.data && result.data.status === 'subscribed') {
+        renderSubscribed(result.data);
+        return;
+      }
+      if (result.status === 429) {
+        setStatus((result.data && result.data.error) || 'Too many attempts. Please try again in a bit.', 'error');
+        return;
+      }
+      if (result.status >= 500 || result.status === 0) {
+        fallbackSubmit('subscribe-' + result.status);
+        return;
+      }
+      setStatus((result.data && (result.data.error || result.data.message)) || 'Could not add that email right now.', 'error');
+    }, function() {
+      fallbackSubmit('subscribe-network');
+    });
+  }
+
+  function handleSubmit(event) {
+    if (recognized) {
+      event.preventDefault();
+      forgetMe();
+      return;
+    }
+    if (!validate()) {
+      event.preventDefault();
+      return;
+    }
+    if (!apiBase) return;
+    event.preventDefault();
+    clearStatus();
+    setBusy(true, 'Checking…');
+    callAuth({ email: input.value.trim(), action: 'check', source: subscribeId }).then(function(result) {
+      setBusy(false);
+      var data = result.data || {};
+      if (result.ok && (data.status === 'active' || data.status === 'premium')) {
+        renderActive(data);
+        return;
+      }
+      if (result.ok && data.status === 'not_found') {
+        doSubscribe();
+        return;
+      }
+      if (result.ok && data.status === 'unconfirmed') {
+        renderUnconfirmed();
+        return;
+      }
+      if (result.status === 403 && data.status === 'inactive') {
+        renderInactive();
+        return;
+      }
+      if (result.status === 429) {
+        setStatus(data.error || 'Too many attempts. Please try again in a bit.', 'error');
+        return;
+      }
+      if (result.status === 400) {
+        setStatus(data.error || 'Please enter a valid email address.', 'error');
+        return;
+      }
+      fallbackSubmit('check-' + result.status);
+    }, function() {
+      fallbackSubmit('check-network');
+    });
+  }
+
+  input.addEventListener('focus', function() {
+    if (recognized) exitRecognizedState();
   });
+  input.addEventListener('input', function() {
+    if (recognized) exitRecognizedState();
+    clearStatus();
+    validate();
+  });
+  btn.addEventListener('click', function(event) {
+    if (!recognized) return;
+    event.preventDefault();
+    forgetMe();
+  });
+  form.addEventListener('submit', handleSubmit);
+
+  var stored = null;
+  try { stored = window.localStorage.getItem(tokenKey); } catch (err) { /* private mode */ }
+  if (tokenIsValid(stored)) {
+    enterRecognizedState();
+    track('subscribe.dimmed_recognized', subscribeId);
+  } else if (stored) {
+    try { window.localStorage.removeItem(tokenKey); } catch (err) { /* ignore */ }
+  }
 })();
 </script>
