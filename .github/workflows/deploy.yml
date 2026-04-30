@@ -80,15 +80,53 @@ jobs:
       # push: no data pipeline, build from committed files
       # workflow_dispatch with content_update=none: no data pipeline, build from committed files
 
+      # Render and upload audio for the latest issue. Idempotent: skips when
+      # the manifest's audio_script_hash already matches and the S3 object
+      # exists. continue-on-error so a transient OpenAI/AWS hiccup doesn't
+      # block the site deploy — audio can be retried by re-dispatching.
+      - name: Install ffmpeg
+        if: github.event_name != 'push'
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+
+      - name: Render and upload audio for latest issue
+        if: github.event_name != 'push'
+        continue-on-error: true
+        run: python pipeline/audio/audio.py build --latest
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: us-east-1
+
+      # Defensive resync: regenerate archive from the data/buttondown/ snapshots
+      # plus data/audio/manifest.json. audio.py runs this internally on success;
+      # this guarantees archive is current even if audio.py partially failed.
+      - name: Rebuild archive from manifests
+        if: github.event_name != 'push'
+        run: python pipeline/content/content.py build
+
       - name: Build librarian corpus
         if: github.event_name != 'push'
         run: python pipeline/librarian/build_librarian_corpus.py
+
+      # Embed corpus + graph and push to S3 so Thingy answers cite the new
+      # issue. Costs ~$0.20–$0.30 in Cohere embeddings per refresh.
+      # continue-on-error so a Bedrock hiccup doesn't block the site deploy.
+      - name: Upload embedded corpus + graph to S3
+        if: github.event_name != 'push'
+        continue-on-error: true
+        run: python pipeline/librarian/upload_librarian_corpus.py
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: us-east-1
+          LIBRARIAN_BUCKET: weekly-thing-librarian
 
       - name: Decide whether to build and deploy
         id: deploy-check
         run: |
           if [[ "${{ github.event_name }}" == "schedule" || ( "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.content_update }}" == "latest" ) ]]; then
-            if git diff --quiet -- data/buttondown/ data/librarian/ data/links/ site/archive/ site/_data/emails.json site/_data/stats.json; then
+            if git diff --quiet -- data/buttondown/ data/librarian/ data/links/ data/audio/ site/archive/ site/_data/emails.json site/_data/stats.json; then
               echo "should_deploy=false" >> "$GITHUB_OUTPUT"
               echo "No content changes found; skipping build and deploy."
             else
@@ -113,7 +151,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/buttondown/ data/librarian/ data/links/ site/archive/ site/_data/emails.json site/_data/stats.json
+          git add data/buttondown/ data/librarian/ data/links/ data/audio/ site/archive/ site/_data/emails.json site/_data/stats.json
           git diff --staged --quiet || (git commit -m "Add new newsletter issue(s)" && git push)
 
       - uses: actions/upload-pages-artifact@v5

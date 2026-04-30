@@ -223,16 +223,23 @@ Subscribe forms appear 4 times on the page (hero, two mid-page, footer).
 **Pipeline:**
 1. Setup Python 3.13 + Node 22
 2. `pip install` + `npm ci`
-3. Build content from tracked raw data by default
-4. Pull latest Buttondown issue only for the scheduled/manual fetch path
-5. `npx @11ty/eleventy`
-6. `npx pagefind --site _site --glob "**/*.html"`
-7. Auto-commit new raw data and generated files if the fetch path produced changes
-8. Upload and deploy to GitHub Pages
+3. Pull latest Buttondown issue (scheduled/manual fetch path; idempotent on `--skip-existing`)
+4. Render audio for the latest issue (`apt-get install ffmpeg`, `pipeline/audio/audio.py build --latest`) — idempotent, `continue-on-error` so a TTS hiccup doesn't block the deploy
+5. Build librarian corpus locally (smoke test)
+6. Embed corpus + graph and upload to S3 (`pipeline/librarian/upload_librarian_corpus.py`) — `continue-on-error` so a Bedrock hiccup doesn't block the deploy
+7. Build content from tracked raw data
+8. `npx @11ty/eleventy`
+9. `npx pagefind --site _site --glob "**/*.html"`
+10. Auto-commit new raw data, audio manifest/scripts, and generated files
+11. Upload and deploy to GitHub Pages
+
+**Required GitHub Actions secrets:** `BUTTONDOWN_API_KEY`, `STRIPE_API_KEY`, `OPENAI_API_KEY`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` (the `wt-archive` IAM user's keys — must have S3 write to `weekly-thing-librarian` and `files.thingelstad.com`, CloudFront `CreateInvalidation` on E3AEA6KRKI2B7E, and Bedrock `InvokeModel` on the embedding model).
 
 **Action versions:** checkout@v6, setup-python@v6, setup-node@v6, upload-pages-artifact@v5, deploy-pages@v4
 
 The `content_pipeline` workflow input controls whether content is pulled from Buttondown — values `none`, `latest`, `latest-skip-existing`, `all` — and the cron only runs during the publish window. See [`docs/content-pipeline.md`](docs/content-pipeline.md) for the full matrix and webhook caveat.
+
+A new issue published in the cron window is therefore zero-touch: site, audio MP3, podcast feed, and Thingy's deployed corpus all refresh automatically. Audio and corpus upload are non-fatal, so if either upstream is degraded the site still ships and the failed step can be retried by re-running the workflow.
 
 ## Bidirectional Sync
 
@@ -315,7 +322,7 @@ Each writes to `tmp/` (gitignored). Copy outputs to `docs/audits/` to snapshot.
 
 ## Still Needed
 
-1. **GitHub Actions secrets** — `BUTTONDOWN_API_KEY` and `STRIPE_API_KEY` must be set in repo settings
+1. **GitHub Actions secrets** — `BUTTONDOWN_API_KEY`, `STRIPE_API_KEY`, `OPENAI_API_KEY`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` must be set in repo settings
 2. **HTTPS enforcement** — enable in GitHub Pages settings after first successful deploy
 3. **Stripe donate URL** — Payment Link for one-time donations on `/members/`
 
