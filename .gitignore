@@ -32,5 +32,8 @@ _site/pagefind/
 # Local audit/working files
 tmp/
 
-# Large generated vector artifacts
+# Generated librarian artifacts (rebuilt by `npm run librarian:corpus` and
+# `npm run librarian:graph`; the deploy script regenerates them before upload).
+data/librarian/corpus.json
+data/librarian/graph.json
 data/librarian/*.embedded.json
