@@ -253,24 +253,25 @@ Compares `data/buttondown/bodies/*.md` and `data/buttondown/emails/*.json` again
 
 Step 5 is critical: it verifies Buttondown accepted the update and brings the tracked raw data back in line with the remote source.
 
-## Home Page Copy Refresh ("the creative team")
+## Home Page Voice Samples Refresh
 
-The home page marketing copy is regenerated on demand by an LLM pipeline rather than hand-written. Three files drive it:
+The "How It Sounds" pull-quotes on the home page are regenerated on demand by an LLM pipeline rather than hand-curated. Two files drive it:
 
 - `docs/creative/brief.md` — persistent creative brief (voice, themes, guardrails, running observations). Read at the start of each run and rewritten at the end so observations accumulate. **Hand-editable** — whatever is here is treated as ground truth on the next run.
-- `site/_data/copy.json` — generated marketing copy (hero, value prop, "what you'll actually get" themes, section titles, 4 CTAs). Templates in `site/index.njk` read from this with inline fallbacks.
 - `site/_data/voiceSamples.json` — generated pull-quotes for the "How It Sounds" section, pulled verbatim from real issues with verification.
 
-Pipeline: `pipeline/content/refresh_marketing_copy.py` stratified-samples ~48 issues over the last 2 years (8 most-recent anchor + 5 per quarter bucket, seeded). Sonnet 4.7 extracts themes, voice markers, and candidate pull-quotes. Opus 4.7 writes the final copy with hard anti-hype guardrails. Voice samples are verified verbatim against issue bodies before being written.
+Pipeline: `pipeline/content/refresh_marketing_copy.py` stratified-samples ~32 issues over the last 2 years (6 most-recent anchor + buckets, seeded). Sonnet 4.7 extracts themes and voice markers, picks 3–5 verbatim pull-quotes, and rewrites the brief. Voice samples are machine-verified verbatim against issue bodies before being written.
 
 ```bash
 make refresh-copy-dry   # full run, prints proposed changes, writes nothing
-make refresh-copy       # writes copy.json, voiceSamples.json, brief.md
+make refresh-copy       # writes voiceSamples.json, brief.md
 ```
 
-Expected cost: ~$1–2 per run. Run logs land in `tmp/copy-refresh-<timestamp>.json` (gitignored). Expected workflow: run, review `git diff`, commit. Not wired into CI — refreshes are explicit, human-initiated.
+Expected cost: ~$0.20–$0.40 per run. Run logs land in `tmp/copy-refresh-<timestamp>.json` (gitignored). Expected workflow: run, review `git diff`, commit. Not wired into CI — refreshes are explicit, human-initiated.
 
-`build_data.py` does **not** touch any of these three files.
+A previous version of this pipeline also generated `site/_data/copy.json` with home-page hero/value-prop/CTAs via an Opus 4.7 second pass. That output didn't deliver enough quality to justify the cost; it was removed and the home page is now hand-written in `site/index.njk` directly.
+
+`build_data.py` does **not** touch any of these files.
 
 ## Archive Audits
 
