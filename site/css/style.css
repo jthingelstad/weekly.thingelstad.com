@@ -3884,6 +3884,16 @@ th {
 .ops-stat-ok {
   border-color: var(--accent);
 }
+.ops-stat-detail {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+}
 .ops-table {
   width: 100%;
   border-collapse: collapse;

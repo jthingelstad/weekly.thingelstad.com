@@ -87,6 +87,26 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  // Short date + time UTC: "Mar 15, 2026 14:32 UTC"
+  eleventyConfig.addFilter("dateTimeShort", (dateStr) => {
+    if (!dateStr) return "";
+    const d = new Date(dateStr);
+    if (isNaN(d.getTime())) return String(dateStr);
+    const date = d.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      timeZone: "UTC",
+    });
+    const time = d.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+      timeZone: "UTC",
+    });
+    return `${date} ${time} UTC`;
+  });
+
   eleventyConfig.addFilter("itunesDuration", (seconds) => {
     const total = Math.max(0, Number(seconds) || 0);
     const hours = Math.floor(total / 3600);
