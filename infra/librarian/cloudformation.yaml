@@ -42,38 +42,6 @@ Parameters:
     Default: 30
     MinValue: 1
     Description: Maximum auth attempts per client identity per hour.
-  GuardrailEnabled:
-    Type: String
-    Default: "false"
-    AllowedValues:
-      - "true"
-      - "false"
-    Description: Enable the Bedrock Guardrail for Thingy model calls.
-  GuardrailTrace:
-    Type: String
-    Default: enabled
-    AllowedValues:
-      - enabled
-      - enabled_full
-      - disabled
-  GuardrailStreamProcessingMode:
-    Type: String
-    Default: sync
-    AllowedValues:
-      - sync
-      - async
-  GuardrailIdentifier:
-    Type: String
-    Default: ""
-    Description: Existing Bedrock Guardrail ID or ARN managed by the deploy script.
-  GuardrailVersion:
-    Type: String
-    Default: ""
-    Description: Existing Bedrock Guardrail version managed by the deploy script.
-
-Conditions:
-  UseBedrockGuardrail: !Equals [!Ref GuardrailEnabled, "true"]
-
 Resources:
   LibrarianTable:
     Type: AWS::DynamoDB::Table
@@ -148,9 +116,6 @@ Resources:
                   - arn:aws:bedrock:eu-central-1::foundation-model/cohere.rerank-v3-5:0
                   - arn:aws:bedrock:ap-northeast-1::foundation-model/cohere.rerank-v3-5:0
               - Effect: Allow
-                Action: bedrock:ApplyGuardrail
-                Resource: "*"
-              - Effect: Allow
                 Action: bedrock:Rerank
                 Resource: "*"
 
@@ -174,11 +139,6 @@ Resources:
           LOG_LEVEL: !Ref LogLevel
           AUTH_RATE_LIMIT_MAX: !Ref AuthRateLimitMax
           BEDROCK_AGENT_MODEL: us.anthropic.claude-sonnet-4-7
-          BEDROCK_GUARDRAIL_ENABLED: !Ref GuardrailEnabled
-          BEDROCK_GUARDRAIL_ID: !If [UseBedrockGuardrail, !Ref GuardrailIdentifier, ""]
-          BEDROCK_GUARDRAIL_VERSION: !If [UseBedrockGuardrail, !Ref GuardrailVersion, ""]
-          BEDROCK_GUARDRAIL_TRACE: !Ref GuardrailTrace
-          BEDROCK_GUARDRAIL_STREAM_PROCESSING_MODE: !Ref GuardrailStreamProcessingMode
       Handler: auth/handler.handler
       MemorySize: 1024
       Role: !GetAtt LibrarianFunctionRole.Arn
@@ -209,13 +169,9 @@ Resources:
           BEDROCK_EMBEDDING_MODEL: cohere.embed-english-v3
           BEDROCK_RERANK_MODEL: cohere.rerank-v3-5:0
           BEDROCK_RERANK_REGION: us-west-2
-          BEDROCK_GUARDRAIL_ENABLED: !Ref GuardrailEnabled
-          BEDROCK_GUARDRAIL_ID: !If [UseBedrockGuardrail, !Ref GuardrailIdentifier, ""]
-          BEDROCK_GUARDRAIL_VERSION: !If [UseBedrockGuardrail, !Ref GuardrailVersion, ""]
-          BEDROCK_GUARDRAIL_TRACE: !Ref GuardrailTrace
-          BEDROCK_GUARDRAIL_STREAM_PROCESSING_MODE: !Ref GuardrailStreamProcessingMode
       Handler: chat/handler.handler
       MemorySize: 1536
+      ReservedConcurrentExecutions: 5
       Role: !GetAtt LibrarianFunctionRole.Arn
       Runtime: nodejs20.x
       Timeout: 90

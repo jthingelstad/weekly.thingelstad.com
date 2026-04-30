@@ -61,7 +61,6 @@ make content-push  # PATCH changed fields
 - `OPENAI_API_KEY` — required for local audio generation with OpenAI TTS.
 - `WEEKLY_THING_ASSETS_BUCKET` — public archive asset bucket; defaults conceptually to `files.thingelstad.com`.
 - `LIBRARIAN_BUCKET` — private Thingy code/corpus/eval/log bucket; deploy tooling defaults to `weekly-thing-librarian`.
-- `BEDROCK_GUARDRAIL_ENABLED` — optional Thingy Bedrock Guardrail switch; defaults off until explicitly deployed.
 - `BEDROCK_EVAL_ROLE_ARN` — required only when starting Bedrock Model Evaluation jobs.
 
 ## Project Structure
