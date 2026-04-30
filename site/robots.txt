@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /ops/
+Disallow: /status.json
 
 Sitemap: https://weekly.thingelstad.com/sitemap.xml

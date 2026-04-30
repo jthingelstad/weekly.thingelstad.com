@@ -3828,3 +3828,111 @@ th {
     flex: 1 1 0;
   }
 }
+
+/* ===================================================================
+   /ops/ — pipeline status (unlinked, noindex)
+   =================================================================== */
+
+.ops-page {
+  padding: 48px 0 96px;
+}
+.ops-title {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 6px 0 12px;
+}
+.ops-meta {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.ops-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
+  margin: 0 0 36px;
+}
+.ops-stat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ops-stat strong {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.ops-stat span {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.ops-stat-warn {
+  border-color: #c44d2b;
+}
+.ops-stat-warn strong { color: #c44d2b; }
+.ops-stat-ok {
+  border-color: var(--accent);
+}
+.ops-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+.ops-table th,
+.ops-table td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--line-soft);
+}
+.ops-table th {
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  border-bottom-color: var(--line);
+}
+.ops-table tr:hover td {
+  background: var(--surface-2);
+}
+.ops-table a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.ops-flag {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.ops-flag.ok {
+  color: #1a6f3a;
+  background: rgba(26, 111, 58, 0.1);
+}
+.ops-flag.warn {
+  color: #c44d2b;
+  background: rgba(196, 77, 43, 0.1);
+}
+.ops-flag.muted {
+  color: var(--muted);
+  background: transparent;
+}
+.ops-note {
+  margin-top: 28px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
