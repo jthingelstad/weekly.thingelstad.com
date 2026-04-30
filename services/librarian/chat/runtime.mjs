@@ -13,7 +13,7 @@ import {
   loadToolSpecs
 } from '../shared/prompts.mjs';
 
-const DEFAULT_AGENT_MODEL = 'us.anthropic.claude-sonnet-4-6';
+const DEFAULT_AGENT_MODEL = 'us.anthropic.claude-sonnet-4-7';
 const DEFAULT_EMBEDDING_MODEL = 'cohere.embed-english-v3';
 const DEFAULT_RERANK_MODEL = 'cohere.rerank-v3-5:0';
 const DEFAULT_EMBEDDING_DIMENSIONS = 1024;
