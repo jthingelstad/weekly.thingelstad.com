@@ -21,6 +21,8 @@ Custom landing page and full archive site for **The Weekly Thing**, a weekly new
 
 The raw Buttondown body files are the editable source of truth for newsletter content in this repository. Generated archive markdown files are committed for fast static builds and reviewable diffs, but should not be edited directly.
 
+For deeper operator detail — Buttondown Liquid/Django template handling, the `content_pipeline` workflow input matrix, the Buttondown→GitHub Actions webhook constraint, the three-way push conflict detection — see [`docs/content-pipeline.md`](docs/content-pipeline.md). The Librarian/Thingy runtime, full env-var list with defaults, IAM cleanup plan, retrieval architecture, Tinylytics events, and deployment checklist live in [`docs/librarian.md`](docs/librarian.md).
+
 ### Newsletter Publishing History
 
 The Weekly Thing has been published continuously since May 13, 2017 across three different email platforms. Each platform left its own stylistic fingerprint in the archive bodies, which matters when writing scripts that process older issues.
@@ -79,7 +81,7 @@ weekly.thingelstad.com/
 │       ├── api/                   # Python API Gateway Lambda
 │       └── stream/                # Node Lambda Function URL stream handler
 ├── infra/
-│   └── librarian/                 # CloudFormation/SAM templates
+│   └── librarian/                 # CloudFormation template
 ├── data/
 │   ├── buttondown/
 │   │   ├── manifest.json           # Raw data manifest
@@ -230,6 +232,8 @@ Subscribe forms appear 4 times on the page (hero, two mid-page, footer).
 
 **Action versions:** checkout@v6, setup-python@v6, setup-node@v6, upload-pages-artifact@v5, deploy-pages@v4
 
+The `content_pipeline` workflow input controls whether content is pulled from Buttondown — values `none`, `latest`, `latest-skip-existing`, `all` — and the cron only runs during the publish window. See [`docs/content-pipeline.md`](docs/content-pipeline.md) for the full matrix and webhook caveat.
+
 ## Bidirectional Sync
 
 Raw Buttondown body markdown files and metadata JSON files can be edited locally and synced back to Buttondown:
@@ -317,5 +321,6 @@ Each writes to `tmp/` (gitignored). Copy outputs to `docs/audits/` to snapshot.
 
 ## Future Enhancements
 
-- **"Talk to the Archive" agent interface** — conversational AI over the archive (RAG pipeline)
 - **Issue tagging/categorization** — browsable topic categories
+
+(The "Talk to the Archive" agent — Thingy — shipped to private beta. Source: `services/librarian/`, infra: `infra/librarian/cloudformation.yaml`. Full architecture, env vars, IAM, retrieval, deploy checklist in [`docs/librarian.md`](docs/librarian.md).)
