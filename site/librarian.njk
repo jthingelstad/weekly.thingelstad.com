@@ -814,7 +814,7 @@ permalink: /thingy/
       let citations = [];
       let requestId = '';
       const controller = new AbortController();
-      const timeout = window.setTimeout(() => controller.abort(), 60000);
+      const timeout = window.setTimeout(() => controller.abort(), 75000);
       const response = await fetch(`${streamBase}/chat`, {
         method: 'POST',
         headers: {

@@ -229,7 +229,7 @@ Subscribe forms appear 4 times on the page (hero, two mid-page, footer).
 7. Auto-commit new raw data and generated files if the fetch path produced changes
 8. Upload and deploy to GitHub Pages
 
-**Action versions:** checkout@v5, setup-python@v5, setup-node@v5, upload-pages-artifact@v4, deploy-pages@v5
+**Action versions:** checkout@v6, setup-python@v6, setup-node@v6, upload-pages-artifact@v5, deploy-pages@v4
 
 ## Bidirectional Sync
 
@@ -262,7 +262,7 @@ The home page marketing copy is regenerated on demand by an LLM pipeline rather 
 - `site/_data/copy.json` — generated marketing copy (hero, value prop, "what you'll actually get" themes, section titles, 4 CTAs). Templates in `site/index.njk` read from this with inline fallbacks.
 - `site/_data/voiceSamples.json` — generated pull-quotes for the "How It Sounds" section, pulled verbatim from real issues with verification.
 
-Pipeline: `pipeline/content/refresh_marketing_copy.py` stratified-samples ~48 issues over the last 2 years (8 most-recent anchor + 5 per quarter bucket, seeded). Sonnet 4.6 extracts themes, voice markers, and candidate pull-quotes. Opus 4.7 writes the final copy with hard anti-hype guardrails. Voice samples are verified verbatim against issue bodies before being written.
+Pipeline: `pipeline/content/refresh_marketing_copy.py` stratified-samples ~48 issues over the last 2 years (8 most-recent anchor + 5 per quarter bucket, seeded). Sonnet 4.7 extracts themes, voice markers, and candidate pull-quotes. Opus 4.7 writes the final copy with hard anti-hype guardrails. Voice samples are verified verbatim against issue bodies before being written.
 
 ```bash
 make refresh-copy-dry   # full run, prints proposed changes, writes nothing

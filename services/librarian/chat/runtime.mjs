@@ -1013,7 +1013,22 @@ export const handler = awslambda.streamifyResponse(async (event, responseStream,
     }
 
     writeSse(stream, 'status', { message: 'Investigating the archive...' });
-    const result = await streamBedrockAgentAnswer(question, history, stream);
+    let deadlineExceeded = false;
+    const deadlineTimer = setTimeout(() => {
+      deadlineExceeded = true;
+      try {
+        writeSse(stream, 'error', { error: 'The archive is taking longer than usual. Please try again.', request_id: requestId });
+      } catch {}
+      try { stream.end(); } catch {}
+      logEvent('warn', 'chat_deadline_exceeded', { request_id: requestId, subscriber_hash: subscriberHash });
+    }, 55000);
+    let result;
+    try {
+      result = await streamBedrockAgentAnswer(question, history, stream);
+    } finally {
+      clearTimeout(deadlineTimer);
+    }
+    if (deadlineExceeded) return;
     const answer = result.answer;
     const citations = result.citations;
     writeSse(stream, 'citations', { citations });
