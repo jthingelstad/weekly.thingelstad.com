@@ -273,7 +273,7 @@ The "How It Sounds" pull-quotes on the home page are regenerated on demand by an
 - `docs/creative/brief.md` — persistent creative brief (voice, themes, guardrails, running observations). Read at the start of each run and rewritten at the end so observations accumulate. **Hand-editable** — whatever is here is treated as ground truth on the next run.
 - `site/_data/voiceSamples.json` — generated pull-quotes for the "How It Sounds" section, pulled verbatim from real issues with verification.
 
-Pipeline: `pipeline/content/refresh_marketing_copy.py` stratified-samples ~32 issues over the last 2 years (6 most-recent anchor + buckets, seeded). Sonnet 4.7 extracts themes and voice markers, picks 3–5 verbatim pull-quotes, and rewrites the brief. Voice samples are machine-verified verbatim against issue bodies before being written.
+Pipeline: `pipeline/content/refresh_marketing_copy.py` stratified-samples ~32 issues over the last 2 years (6 most-recent anchor + buckets, seeded). Sonnet 4.6 extracts themes and voice markers, picks 3–5 verbatim pull-quotes, and rewrites the brief. Voice samples are machine-verified verbatim against issue bodies before being written.
 
 ```bash
 make refresh-copy-dry   # full run, prints proposed changes, writes nothing

@@ -7,7 +7,7 @@ export const dynamodb = new DynamoDBClient({});
 export const s3 = new S3Client({});
 
 export function agentModel() {
-  return process.env.BEDROCK_AGENT_MODEL || 'us.anthropic.claude-sonnet-4-7';
+  return process.env.BEDROCK_AGENT_MODEL || 'us.anthropic.claude-sonnet-4-6';
 }
 
 export function embeddingModel() {

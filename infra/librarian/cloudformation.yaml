@@ -104,11 +104,11 @@ Resources:
                   - bedrock:InvokeModel
                   - bedrock:InvokeModelWithResponseStream
                 Resource:
-                  - !Sub arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:inference-profile/us.anthropic.claude-sonnet-4-7
+                  - !Sub arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:inference-profile/us.anthropic.claude-sonnet-4-6
                   - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/amazon.nova-pro-v1:0
-                  - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/anthropic.claude-sonnet-4-7
-                  - arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-7
-                  - arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-sonnet-4-7
+                  - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/anthropic.claude-sonnet-4-6
+                  - arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-6
+                  - arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-sonnet-4-6
                   - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/cohere.embed-english-v3
                   - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/cohere.rerank-v3-5:0
                   - arn:aws:bedrock:us-west-2::foundation-model/cohere.rerank-v3-5:0
@@ -138,7 +138,7 @@ Resources:
           SESSION_SECRET: !Ref SessionSecret
           LOG_LEVEL: !Ref LogLevel
           AUTH_RATE_LIMIT_MAX: !Ref AuthRateLimitMax
-          BEDROCK_AGENT_MODEL: us.anthropic.claude-sonnet-4-7
+          BEDROCK_AGENT_MODEL: us.anthropic.claude-sonnet-4-6
       Handler: auth/handler.handler
       MemorySize: 1024
       Role: !GetAtt LibrarianFunctionRole.Arn
@@ -165,7 +165,7 @@ Resources:
           GRAPH_KEY: !Ref GraphKey
           SESSION_SECRET: !Ref SessionSecret
           LOG_LEVEL: !Ref LogLevel
-          BEDROCK_AGENT_MODEL: us.anthropic.claude-sonnet-4-7
+          BEDROCK_AGENT_MODEL: us.anthropic.claude-sonnet-4-6
           BEDROCK_EMBEDDING_MODEL: cohere.embed-english-v3
           BEDROCK_RERANK_MODEL: cohere.rerank-v3-5:0
           BEDROCK_RERANK_REGION: us-west-2
@@ -369,11 +369,11 @@ Resources:
                 Action:
                   - bedrock:InvokeModel
                 Resource:
-                  - !Sub arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:inference-profile/us.anthropic.claude-sonnet-4-7
+                  - !Sub arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:inference-profile/us.anthropic.claude-sonnet-4-6
                   - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/amazon.nova-pro-v1:0
-                  - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/anthropic.claude-sonnet-4-7
-                  - arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-7
-                  - arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-sonnet-4-7
+                  - !Sub arn:aws:bedrock:${AWS::Region}::foundation-model/anthropic.claude-sonnet-4-6
+                  - arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-sonnet-4-6
+                  - arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-sonnet-4-6
 
   LibrarianDashboard:
     Type: AWS::CloudWatch::Dashboard
