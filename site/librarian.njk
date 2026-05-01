@@ -842,7 +842,9 @@ permalink: /thingy/
       function applyEvent(eventName, data) {
         if (eventName === 'meta') {
           requestId = data.request_id || requestId;
-        } else if (eventName === 'status' && !answer) {
+        } else if (eventName === 'status') {
+          answer = '';
+          pending.classList.add('librarian-message-pending');
           pending.innerHTML = `<p class="librarian-status-line"><span class="librarian-thinking-dot"></span>${escapeHtml(data.message || 'Thingy is working...')}</p>`;
         } else if (eventName === 'answer_delta') {
           const wasEmpty = answer === '';
