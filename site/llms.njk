@@ -62,6 +62,6 @@ Every issue, newest first. Each link points to a clean markdown version.
 
 {% for group in collections.issuesByDate | groupByYear -%}
 {% for issue in group.issues -%}
-- [#{{ issue.data.number }} — {{ issue.data.subject | safe }}]({{ site.url }}/archive/{{ issue.data.number }}.txt): {{ issue.data.publish_date | dateShort }}
+- [#{{ issue.data.number }} — {{ issue.data.subject | safe }}]({{ site.url }}/archive/{{ issue.data.number }}.txt): {{ issue.data.publish_date | dateShort }}{% if issue.data.description %}; {{ issue.data.description | safe }}{% endif %}
 {% endfor %}
 {% endfor %}
