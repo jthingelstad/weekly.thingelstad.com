@@ -6,11 +6,11 @@
   "image": "https://files.thingelstad.com/weekly-thing/300/cover.jpg",
   "slug": "300",
   "publish_date": "2024-11-09T12:00:00Z",
-  "absolute_url": "https://weekly.thingelstad.com/archive/300/",
+  "absolute_url": "https://buttondown.com/weekly-thing/archive/300/",
   "email_type": "public",
   "status": "sent",
   "secondary_id": 300,
   "body_path": "data/buttondown/bodies/300.md",
-  "fetched_at": "2026-04-26T13:28:50Z",
-  "source_hash": "3175de64a6f7544e9f85ab3705a990e05b7e3349eeac37c79024cdd8a8625c73"
+  "fetched_at": "2026-05-02T01:51:32Z",
+  "source_hash": "5262a6cbfc0a89959879308f3e76a1b2994b61907656b8cb6ea84ad404e60e35"
 }

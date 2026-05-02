@@ -7,7 +7,7 @@ publish_date: '2020-03-23T23:00:00Z'
 slug: special-thing-140-matching-donations-to-second
 description: ''
 image: https://www.thingelstad.com/uploads/2020/273055aabe.jpg
-absolute_url: https://weekly.thingelstad.com/archive/special-thing-140-matching-donations-to-second/
+absolute_url: https://buttondown.com/weekly-thing/archive/special-thing-140-matching-donations-to-second/
 domains:
 - www.2harvest.org
 links:
