@@ -1262,7 +1262,6 @@ th {
   color: var(--accent);
 }
 .home-stamp-action:hover { text-decoration: underline; color: var(--accent-deep); }
-.home-stamp-action-listen { color: var(--color-audio-accent); }
 .home-stamp-action-listen.is-playing { color: var(--accent-deep); }
 .home-stamp hr {
   border: none;
