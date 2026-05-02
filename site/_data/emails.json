@@ -4090,6 +4090,7 @@
     "image": "https://buttondown-attachments.s3.us-west-2.amazonaws.com/cb692d4b-a464-4126-aaac-e352b7edd7a5.jpg?AWSAccessKeyId=AKIAJEXF6S6TCOKT7N3Q&Signature=MlQFaOifaKpzwhXsWSNwrKmO5qY%3D&Expires=1707555879",
     "absolute_url": "https://buttondown.com/weekly-thing/archive/weekly-thing-for-august-5-2017/",
     "domains": [
+      "brettterpstra.com",
       "github.com",
       "regex101.com",
       "tech.mn",
@@ -4142,6 +4143,13 @@
         "url": "http://www.gq.com/story/aziz-ansari-gq-style-cover-story/amp",
         "domain": "www.gq.com",
         "heading_context": "[Aziz Ansari on Quitting the Internet, Loneliness, and Season 3 of Master of None](http://www.gq.com/story/aziz-ansari-gq-style-cover-story/amp)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Quantify everything with Exist.io custom tracking - BrettTerpstra.com",
+        "url": "http://brettterpstra.com/2017/08/02/quantify-everything-with-exist-dot-io-custom-tracking/",
+        "domain": "brettterpstra.com",
+        "heading_context": "[Quantify everything with Exist.io custom tracking - BrettTerpstra.com](http://brettterpstra.com/2017/08/02/quantify-everything-with-exist-dot-io-custom-tracking/) > Ever since I wrote Slogger, I\u2019ve been working toward a more \u201cquantified self.\u201d I\u2019m really bad at correlating events in my life beyond a couple of days. Did the bad night\u2019s sleep last week lead to eating things the next day I normally wouldn\u2019t, which led to increased stress and decreased physical activity over following days, which resulted in the way I\u2019m feeling today? ### [Unread 1.7 Release Notes](https://www.goldenhillsoftware.com/unread/unread-1-7-release-notes/) Unread is my RSS reader of choice, backed by Feedbin. I\u2019m happy to see it find a new home! \ud83d\udc4f\ud83c\udffb ### [antoinet/valora: WiFi Tracker Confuser](https://github.com/antoinet/valora) Very cool device to throw sand in the gears of people trying to track you. I hope and expect we'll see more devices like this to fight back against privacy invasions. ### [Docker vs. Kubernetes vs. Apache Mesos: Why What You Think You Know is Probably Wrong - Mesosphere](https://mesosphere.com/blog/docker-vs-kubernetes-vs-apache-mesos/) > There are countless articles, discussions, and lots of social chatter comparing Docker, Kubernetes, and Mesos. If you listen to the partially-informed, you\u2019d think that the three open source projects are in a fight-to-the death for container supremacy. ### [Craft Your Python Like Poetry - Trey Hunner](http://treyhunner.com/2017/07/craft-your-python-like-poetry/) > Line length is a big deal\u2026 programmers argue about it quite a bit. PEP 8, the Python style guide, recommends a 79 character maximum line length but concedes that a line length up to 100 characters is acceptable for teams that agree to use a specific longer line length. ### [Recommit to the values that built Etsy and aimed to build a better world for us all | Coworker.org](https://www.coworker.org/petitions/recommit-to-etsy-s-values-and-support-the-etsy-community-for-the-long-term) > As Etsy employees, we\u2019re privileged to work at a company that takes its mission and values just as seriously as it takes its bottom line. Every day we come to work to support Etsy sellers in earning an income doing something they love. ### [toddmotto/public-apis: A collective list of public JSON APIs for use in web development.](https://github.com/toddmotto/public-apis) A collective list of public JSON APIs for use in web development. ### [Palantir: the \u2018special ops\u2019 tech giant that wields as much real-world power as Google | World news | The Guardian](https://www.theguardian.com/world/2017/jul/30/palantir-peter-thiel-cia-data-crime-police) > In Minority Report, the 2002 movie adaptation of the Philip K Dick novel, Tom Cruise plays a police officer in the LAPD \u201cpre-crime\u201d unit. Using the premonitions of sentient mutants called \u201cpre-cogs\u201d, the police are able to predict when someone is going to commit a crime before it happens, swooping down from helicopters and arresting them on the street before they can do anything. ### [The digital native is a myth : Nature News](http://www.nature.com/news/the-digital-native-is-a-myth-1.22363) > Some people put the cut-off at 1984, but for most it is 1980. People born after that date are the digital natives; those born before are digital immigrants, doomed to be forever strangers in a computer-based strange land. ### [What Makes a Monolith Monolithic? | Form Follows Function](https://genehughson.wordpress.com/2017/07/26/what-makes-a-monolith-monolithic/) > It seems like everybody throws around the term \u201cmonolith\u201d, but what do we mean by that? Sam Newman started the ball rolling yesterday with this tweet: I'm at that point in the new book where I have to define what monolith means. ### [Ops: It's everyone's job now | Opensource.com](https://opensource.com/article/17/7/state-systems-administration) I found this view of the continuing evolution of DevOps interesting. I particularly liked the quote that \"Distributed systems are never 'up'; they exist in a constant state of partially degraded service. is a lot of truth there.",
         "section": "Links \ud83d\udccc"
       },
       {
@@ -4217,6 +4225,13 @@
         "section": "Links \ud83d\udccc"
       },
       {
+        "text": "Quantify everything with Exist.io custom tracking - BrettTerpstra.com",
+        "url": "http://brettterpstra.com/2017/08/02/quantify-everything-with-exist-dot-io-custom-tracking/",
+        "domain": "brettterpstra.com",
+        "heading_context": "[Quantify everything with Exist.io custom tracking - BrettTerpstra.com](http://brettterpstra.com/2017/08/02/quantify-everything-with-exist-dot-io-custom-tracking/) > Ever since I wrote Slogger, I\u2019ve been working toward a more \u201cquantified self.\u201d I\u2019m really bad at correlating events in my life beyond a couple of days. Did the bad night\u2019s sleep last week lead to eating things the next day I normally wouldn\u2019t, which led to increased stress and decreased physical activity over following days, which resulted in the way I\u2019m feeling today? ### [Unread 1.7 Release Notes](https://www.goldenhillsoftware.com/unread/unread-1-7-release-notes/) Unread is my RSS reader of choice, backed by Feedbin. I\u2019m happy to see it find a new home! \ud83d\udc4f\ud83c\udffb ### [antoinet/valora: WiFi Tracker Confuser](https://github.com/antoinet/valora) Very cool device to throw sand in the gears of people trying to track you. I hope and expect we'll see more devices like this to fight back against privacy invasions. ### [Docker vs. Kubernetes vs. Apache Mesos: Why What You Think You Know is Probably Wrong - Mesosphere](https://mesosphere.com/blog/docker-vs-kubernetes-vs-apache-mesos/) > There are countless articles, discussions, and lots of social chatter comparing Docker, Kubernetes, and Mesos. If you listen to the partially-informed, you\u2019d think that the three open source projects are in a fight-to-the death for container supremacy. ### [Craft Your Python Like Poetry - Trey Hunner](http://treyhunner.com/2017/07/craft-your-python-like-poetry/) > Line length is a big deal\u2026 programmers argue about it quite a bit. PEP 8, the Python style guide, recommends a 79 character maximum line length but concedes that a line length up to 100 characters is acceptable for teams that agree to use a specific longer line length. ### [Recommit to the values that built Etsy and aimed to build a better world for us all | Coworker.org](https://www.coworker.org/petitions/recommit-to-etsy-s-values-and-support-the-etsy-community-for-the-long-term) > As Etsy employees, we\u2019re privileged to work at a company that takes its mission and values just as seriously as it takes its bottom line. Every day we come to work to support Etsy sellers in earning an income doing something they love. ### [toddmotto/public-apis: A collective list of public JSON APIs for use in web development.](https://github.com/toddmotto/public-apis) A collective list of public JSON APIs for use in web development. ### [Palantir: the \u2018special ops\u2019 tech giant that wields as much real-world power as Google | World news | The Guardian](https://www.theguardian.com/world/2017/jul/30/palantir-peter-thiel-cia-data-crime-police) > In Minority Report, the 2002 movie adaptation of the Philip K Dick novel, Tom Cruise plays a police officer in the LAPD \u201cpre-crime\u201d unit. Using the premonitions of sentient mutants called \u201cpre-cogs\u201d, the police are able to predict when someone is going to commit a crime before it happens, swooping down from helicopters and arresting them on the street before they can do anything. ### [The digital native is a myth : Nature News](http://www.nature.com/news/the-digital-native-is-a-myth-1.22363) > Some people put the cut-off at 1984, but for most it is 1980. People born after that date are the digital natives; those born before are digital immigrants, doomed to be forever strangers in a computer-based strange land. ### [What Makes a Monolith Monolithic? | Form Follows Function](https://genehughson.wordpress.com/2017/07/26/what-makes-a-monolith-monolithic/) > It seems like everybody throws around the term \u201cmonolith\u201d, but what do we mean by that? Sam Newman started the ball rolling yesterday with this tweet: I'm at that point in the new book where I have to define what monolith means. ### [Ops: It's everyone's job now | Opensource.com](https://opensource.com/article/17/7/state-systems-administration) I found this view of the continuing evolution of DevOps interesting. I particularly liked the quote that \"Distributed systems are never 'up'; they exist in a constant state of partially degraded service. is a lot of truth there.",
+        "section": "Links \ud83d\udccc"
+      },
+      {
         "text": "Our Minds Have Been Hijacked by Our Phones. Tristan Harris Wants to Rescue Them | WIRED",
         "url": "https://www.wired.com/story/our-minds-have-been-hijacked-by-our-phones-tristan-harris-wants-to-rescue-them/",
         "domain": "www.wired.com",
@@ -4246,7 +4261,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1450
+    "word_count": 1449
   },
   {
     "id": "em_0w6wn1bzpj86c9da07tpkq15bv",
@@ -7556,7 +7571,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2163
+    "word_count": 2161
   },
   {
     "id": "em_75mzzr6w849008bwm86a5r2ta3",
@@ -7946,7 +7961,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2399
+    "word_count": 2398
   },
   {
     "id": "em_0vpnp7g3j78yvt3j7ccs16ph1k",
@@ -8279,7 +8294,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1609
+    "word_count": 1606
   },
   {
     "id": "em_16qa47mwhs8j9v98r6xmr1n6ky",
@@ -8291,9 +8306,32 @@
     "image": "https://files.thingelstad.com/weekly-thing/26/cover.jpg",
     "absolute_url": "https://buttondown.com/weekly-thing/archive/weekly-thing-for-november-4-2017/",
     "domains": [
+      "512pixels.net",
+      "about.sourcegraph.com",
+      "blogs.msdn.microsoft.com",
+      "boingboing.net",
+      "dev-blog.apollodata.com",
+      "dnsrecords.io",
+      "frappe.github.io",
+      "github.com",
+      "hyper.is",
+      "medium.com",
+      "miniflux.net",
+      "open.nytimes.com",
+      "seashells.io",
       "signal.org",
       "sixcolors.com",
-      "staltz.com"
+      "slides.com",
+      "sonarwhal.com",
+      "staltz.com",
+      "statico.github.io",
+      "toolsandtoys.net",
+      "www.economist.com",
+      "www.marketwatch.com",
+      "www.theatlantic.com",
+      "www.theverge.com",
+      "www.twilio.com",
+      "www.wired.com"
     ],
     "links": [
       {
@@ -8315,6 +8353,167 @@
         "url": "https://sixcolors.com/post/2017/10/iphone-x-tomorrows-iphone-today/",
         "domain": "sixcolors.com",
         "heading_context": "[iPhone X: Tomorrow's iPhone today - Six Colors](https://sixcolors.com/post/2017/10/iphone-x-tomorrows-iphone-today/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "The history of MarketWatch: How a sports data startup became a half-billion-dollar financial news site - MarketWatch",
+        "url": "https://www.marketwatch.com/story/the-history-of-marketwatch-how-a-sports-data-startup-became-a-half-billion-dollar-financial-news-site-2017-10-30",
+        "domain": "www.marketwatch.com",
+        "heading_context": "[The history of MarketWatch: How a sports data startup became a half-billion-dollar financial news site - MarketWatch](https://www.marketwatch.com/story/the-history-of-marketwatch-how-a-sports-data-startup-became-a-half-billion-dollar-financial-news-site-2017-10-30)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "GraphQL at massive scale: GraphQL as the glue in a microservice architecture",
+        "url": "https://about.sourcegraph.com/graphql/graphql-at-massive-scale-graphql-as-the-glue-in-a-microservice-architecture/",
+        "domain": "about.sourcegraph.com",
+        "heading_context": "[GraphQL at massive scale: GraphQL as the glue in a microservice architecture](https://about.sourcegraph.com/graphql/graphql-at-massive-scale-graphql-as-the-glue-in-a-microservice-architecture/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Super Mario Run\u2019s 200 million downloads didn\u2019t result in \u2018acceptable profit\u2019 for Nintendo - The Verge",
+        "url": "https://www.theverge.com/2017/10/31/16580976/super-mario-run-nintendo-downloads-profit",
+        "domain": "www.theverge.com",
+        "heading_context": "[Super Mario Run\u2019s 200 million downloads didn\u2019t result in \u2018acceptable profit\u2019 for Nintendo - The Verge](https://www.theverge.com/2017/10/31/16580976/super-mario-run-nintendo-downloads-profit)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Full-Size vs. Fun-Size Candy Bars: A Halloween Assessment - The Atlantic",
+        "url": "https://www.theatlantic.com/entertainment/archive/2017/10/big-candy-bars-have-no-place-on-halloween/544511/",
+        "domain": "www.theatlantic.com",
+        "heading_context": "[Full-Size vs. Fun-Size Candy Bars: A Halloween Assessment - The Atlantic](https://www.theatlantic.com/entertainment/archive/2017/10/big-candy-bars-have-no-place-on-halloween/544511/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Slides \u2013 Create and share presentations online",
+        "url": "https://slides.com/",
+        "domain": "slides.com",
+        "heading_context": "[Slides \u2013 Create and share presentations online](https://slides.com/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Perl is the most hated programming language / Boing Boing",
+        "url": "https://boingboing.net/2017/10/31/perl-is-the-most-hated-program.html",
+        "domain": "boingboing.net",
+        "heading_context": "[Perl is the most hated programming language / Boing Boing](https://boingboing.net/2017/10/31/perl-is-the-most-hated-program.html)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Frappe Charts",
+        "url": "https://frappe.github.io/charts/",
+        "domain": "frappe.github.io",
+        "heading_context": "[Frappe Charts](https://frappe.github.io/charts/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Seeing Myself in #MNTech \u2013 Jenna \u2013 Medium",
+        "url": "https://medium.com/@jennapederson/seeing-myself-in-mntech-7ff7520f8874",
+        "domain": "medium.com",
+        "heading_context": "[Seeing Myself in #MNTech \u2013 Jenna \u2013 Medium](https://medium.com/@jennapederson/seeing-myself-in-mntech-7ff7520f8874)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Vim After 15 Years | Ian Langworth\u2019s Things of Variable Interest",
+        "url": "https://statico.github.io/vim3.html",
+        "domain": "statico.github.io",
+        "heading_context": "[Vim After 15 Years | Ian Langworth\u2019s Things of Variable Interest](https://statico.github.io/vim3.html)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "How leading American newspapers got people to pay for news - Funnel vision",
+        "url": "https://www.economist.com/news/business/21730683-first-three-part-series-future-journalism-how-leading-american-newspapers-got",
+        "domain": "www.economist.com",
+        "heading_context": "[How leading American newspapers got people to pay for news - Funnel vision](https://www.economist.com/news/business/21730683-first-three-part-series-future-journalism-how-leading-american-newspapers-got)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Seashells",
+        "url": "https://seashells.io/",
+        "domain": "seashells.io",
+        "heading_context": "[Seashells](https://seashells.io/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "1Password 7 now Available for iOS \u2014Tools and Toys",
+        "url": "http://toolsandtoys.net/1password-7-ios/",
+        "domain": "toolsandtoys.net",
+        "heading_context": "[1Password 7 now Available for iOS \u2014Tools and Toys](http://toolsandtoys.net/1password-7-ios/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "sonar, a linting tool for the web",
+        "url": "https://sonarwhal.com/",
+        "domain": "sonarwhal.com",
+        "heading_context": "[sonar, a linting tool for the web](https://sonarwhal.com/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Why is the DOS path character \"\\\"? \u2013 Larry Osterman's WebLog",
+        "url": "https://blogs.msdn.microsoft.com/larryosterman/2005/06/24/why-is-the-dos-path-character/",
+        "domain": "blogs.msdn.microsoft.com",
+        "heading_context": "[Why is the DOS path character \"\\\"? \u2013 Larry Osterman's WebLog](https://blogs.msdn.microsoft.com/larryosterman/2005/06/24/why-is-the-dos-path-character/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "iOS 11.2 Bringing (some of) SiriKit to HomePod \u2014 512 Pixels",
+        "url": "https://512pixels.net/2017/10/ios-11-2-bringing-some-of-sirikit-to-homepod/",
+        "domain": "512pixels.net",
+        "heading_context": "[iOS 11.2 Bringing (some of) SiriKit to HomePod \u2014 512 Pixels](https://512pixels.net/2017/10/ios-11-2-bringing-some-of-sirikit-to-homepod/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Apple's iPhone X: The First Field Report | WIRED",
+        "url": "https://www.wired.com/story/iphone-x-first-impression/",
+        "domain": "www.wired.com",
+        "heading_context": "[Apple's iPhone X: The First Field Report | WIRED](https://www.wired.com/story/iphone-x-first-impression/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Miniflux - Minimalist RSS Reader",
+        "url": "https://miniflux.net/",
+        "domain": "miniflux.net",
+        "heading_context": "[Miniflux - Minimalist RSS Reader](https://miniflux.net/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Hyper - JS/HTML/CSS Terminal",
+        "url": "https://hyper.is/",
+        "domain": "hyper.is",
+        "heading_context": "[Hyper - JS/HTML/CSS Terminal](https://hyper.is/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Apollo Client 2.0 \u2013 Apollo GraphQL",
+        "url": "https://dev-blog.apollodata.com/apollo-client-2-0-5c8d0affcec7",
+        "domain": "dev-blog.apollodata.com",
+        "heading_context": "[Apollo Client 2.0 \u2013 Apollo GraphQL](https://dev-blog.apollodata.com/apollo-client-2-0-5c8d0affcec7)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "The New York Times is Now Available as a Tor Onion Service",
+        "url": "https://open.nytimes.com/https-open-nytimes-com-the-new-york-times-as-a-tor-onion-service-e0d0b67b7482",
+        "domain": "open.nytimes.com",
+        "heading_context": "[The New York Times is Now Available as a Tor Onion Service](https://open.nytimes.com/https-open-nytimes-com-the-new-york-times-as-a-tor-onion-service-e0d0b67b7482)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "DNS records lookup ~ dnsrecords.io",
+        "url": "https://dnsrecords.io/",
+        "domain": "dnsrecords.io",
+        "heading_context": "[DNS records lookup ~ dnsrecords.io](https://dnsrecords.io/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "TwilioQuest, the Fastest Way to Learn Twilio",
+        "url": "https://www.twilio.com/blog/2017/10/twilioquest-fastest-way-to-learn-twilio.html",
+        "domain": "www.twilio.com",
+        "heading_context": "[TwilioQuest, the Fastest Way to Learn Twilio](https://www.twilio.com/blog/2017/10/twilioquest-fastest-way-to-learn-twilio.html)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "profiling: An interactive continuous Python profiler.",
+        "url": "https://github.com/what-studio/profiling",
+        "domain": "github.com",
+        "heading_context": "[profiling: An interactive continuous Python profiler.](https://github.com/what-studio/profiling)",
         "section": "Links \ud83d\udccc"
       }
     ],
@@ -8339,10 +8538,171 @@
         "domain": "sixcolors.com",
         "heading_context": "[iPhone X: Tomorrow's iPhone today - Six Colors](https://sixcolors.com/post/2017/10/iphone-x-tomorrows-iphone-today/)",
         "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "The history of MarketWatch: How a sports data startup became a half-billion-dollar financial news site - MarketWatch",
+        "url": "https://www.marketwatch.com/story/the-history-of-marketwatch-how-a-sports-data-startup-became-a-half-billion-dollar-financial-news-site-2017-10-30",
+        "domain": "www.marketwatch.com",
+        "heading_context": "[The history of MarketWatch: How a sports data startup became a half-billion-dollar financial news site - MarketWatch](https://www.marketwatch.com/story/the-history-of-marketwatch-how-a-sports-data-startup-became-a-half-billion-dollar-financial-news-site-2017-10-30)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "GraphQL at massive scale: GraphQL as the glue in a microservice architecture",
+        "url": "https://about.sourcegraph.com/graphql/graphql-at-massive-scale-graphql-as-the-glue-in-a-microservice-architecture/",
+        "domain": "about.sourcegraph.com",
+        "heading_context": "[GraphQL at massive scale: GraphQL as the glue in a microservice architecture](https://about.sourcegraph.com/graphql/graphql-at-massive-scale-graphql-as-the-glue-in-a-microservice-architecture/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Super Mario Run\u2019s 200 million downloads didn\u2019t result in \u2018acceptable profit\u2019 for Nintendo - The Verge",
+        "url": "https://www.theverge.com/2017/10/31/16580976/super-mario-run-nintendo-downloads-profit",
+        "domain": "www.theverge.com",
+        "heading_context": "[Super Mario Run\u2019s 200 million downloads didn\u2019t result in \u2018acceptable profit\u2019 for Nintendo - The Verge](https://www.theverge.com/2017/10/31/16580976/super-mario-run-nintendo-downloads-profit)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Full-Size vs. Fun-Size Candy Bars: A Halloween Assessment - The Atlantic",
+        "url": "https://www.theatlantic.com/entertainment/archive/2017/10/big-candy-bars-have-no-place-on-halloween/544511/",
+        "domain": "www.theatlantic.com",
+        "heading_context": "[Full-Size vs. Fun-Size Candy Bars: A Halloween Assessment - The Atlantic](https://www.theatlantic.com/entertainment/archive/2017/10/big-candy-bars-have-no-place-on-halloween/544511/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Slides \u2013 Create and share presentations online",
+        "url": "https://slides.com/",
+        "domain": "slides.com",
+        "heading_context": "[Slides \u2013 Create and share presentations online](https://slides.com/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Perl is the most hated programming language / Boing Boing",
+        "url": "https://boingboing.net/2017/10/31/perl-is-the-most-hated-program.html",
+        "domain": "boingboing.net",
+        "heading_context": "[Perl is the most hated programming language / Boing Boing](https://boingboing.net/2017/10/31/perl-is-the-most-hated-program.html)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Frappe Charts",
+        "url": "https://frappe.github.io/charts/",
+        "domain": "frappe.github.io",
+        "heading_context": "[Frappe Charts](https://frappe.github.io/charts/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Seeing Myself in #MNTech \u2013 Jenna \u2013 Medium",
+        "url": "https://medium.com/@jennapederson/seeing-myself-in-mntech-7ff7520f8874",
+        "domain": "medium.com",
+        "heading_context": "[Seeing Myself in #MNTech \u2013 Jenna \u2013 Medium](https://medium.com/@jennapederson/seeing-myself-in-mntech-7ff7520f8874)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Vim After 15 Years | Ian Langworth\u2019s Things of Variable Interest",
+        "url": "https://statico.github.io/vim3.html",
+        "domain": "statico.github.io",
+        "heading_context": "[Vim After 15 Years | Ian Langworth\u2019s Things of Variable Interest](https://statico.github.io/vim3.html)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "How leading American newspapers got people to pay for news - Funnel vision",
+        "url": "https://www.economist.com/news/business/21730683-first-three-part-series-future-journalism-how-leading-american-newspapers-got",
+        "domain": "www.economist.com",
+        "heading_context": "[How leading American newspapers got people to pay for news - Funnel vision](https://www.economist.com/news/business/21730683-first-three-part-series-future-journalism-how-leading-american-newspapers-got)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Seashells",
+        "url": "https://seashells.io/",
+        "domain": "seashells.io",
+        "heading_context": "[Seashells](https://seashells.io/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "1Password 7 now Available for iOS \u2014Tools and Toys",
+        "url": "http://toolsandtoys.net/1password-7-ios/",
+        "domain": "toolsandtoys.net",
+        "heading_context": "[1Password 7 now Available for iOS \u2014Tools and Toys](http://toolsandtoys.net/1password-7-ios/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "sonar, a linting tool for the web",
+        "url": "https://sonarwhal.com/",
+        "domain": "sonarwhal.com",
+        "heading_context": "[sonar, a linting tool for the web](https://sonarwhal.com/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Why is the DOS path character \"\\\"? \u2013 Larry Osterman's WebLog",
+        "url": "https://blogs.msdn.microsoft.com/larryosterman/2005/06/24/why-is-the-dos-path-character/",
+        "domain": "blogs.msdn.microsoft.com",
+        "heading_context": "[Why is the DOS path character \"\\\"? \u2013 Larry Osterman's WebLog](https://blogs.msdn.microsoft.com/larryosterman/2005/06/24/why-is-the-dos-path-character/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "iOS 11.2 Bringing (some of) SiriKit to HomePod \u2014 512 Pixels",
+        "url": "https://512pixels.net/2017/10/ios-11-2-bringing-some-of-sirikit-to-homepod/",
+        "domain": "512pixels.net",
+        "heading_context": "[iOS 11.2 Bringing (some of) SiriKit to HomePod \u2014 512 Pixels](https://512pixels.net/2017/10/ios-11-2-bringing-some-of-sirikit-to-homepod/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Apple's iPhone X: The First Field Report | WIRED",
+        "url": "https://www.wired.com/story/iphone-x-first-impression/",
+        "domain": "www.wired.com",
+        "heading_context": "[Apple's iPhone X: The First Field Report | WIRED](https://www.wired.com/story/iphone-x-first-impression/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Miniflux - Minimalist RSS Reader",
+        "url": "https://miniflux.net/",
+        "domain": "miniflux.net",
+        "heading_context": "[Miniflux - Minimalist RSS Reader](https://miniflux.net/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Hyper - JS/HTML/CSS Terminal",
+        "url": "https://hyper.is/",
+        "domain": "hyper.is",
+        "heading_context": "[Hyper - JS/HTML/CSS Terminal](https://hyper.is/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "Apollo Client 2.0 \u2013 Apollo GraphQL",
+        "url": "https://dev-blog.apollodata.com/apollo-client-2-0-5c8d0affcec7",
+        "domain": "dev-blog.apollodata.com",
+        "heading_context": "[Apollo Client 2.0 \u2013 Apollo GraphQL](https://dev-blog.apollodata.com/apollo-client-2-0-5c8d0affcec7)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "The New York Times is Now Available as a Tor Onion Service",
+        "url": "https://open.nytimes.com/https-open-nytimes-com-the-new-york-times-as-a-tor-onion-service-e0d0b67b7482",
+        "domain": "open.nytimes.com",
+        "heading_context": "[The New York Times is Now Available as a Tor Onion Service](https://open.nytimes.com/https-open-nytimes-com-the-new-york-times-as-a-tor-onion-service-e0d0b67b7482)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "DNS records lookup ~ dnsrecords.io",
+        "url": "https://dnsrecords.io/",
+        "domain": "dnsrecords.io",
+        "heading_context": "[DNS records lookup ~ dnsrecords.io](https://dnsrecords.io/)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "TwilioQuest, the Fastest Way to Learn Twilio",
+        "url": "https://www.twilio.com/blog/2017/10/twilioquest-fastest-way-to-learn-twilio.html",
+        "domain": "www.twilio.com",
+        "heading_context": "[TwilioQuest, the Fastest Way to Learn Twilio](https://www.twilio.com/blog/2017/10/twilioquest-fastest-way-to-learn-twilio.html)",
+        "section": "Links \ud83d\udccc"
+      },
+      {
+        "text": "profiling: An interactive continuous Python profiler.",
+        "url": "https://github.com/what-studio/profiling",
+        "domain": "github.com",
+        "heading_context": "[profiling: An interactive continuous Python profiler.](https://github.com/what-studio/profiling)",
+        "section": "Links \ud83d\udccc"
       }
     ],
     "briefly_links": [],
-    "word_count": 2019
+    "word_count": 2014
   },
   {
     "id": "em_7g359tm4gt8v1t2xt6dgpbx89z",
@@ -9319,7 +9679,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2381
+    "word_count": 2380
   },
   {
     "id": "em_0t793xphen86aax9tnmdq35sny",
@@ -9921,7 +10281,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1961
+    "word_count": 1956
   },
   {
     "id": "em_1sqakqch3x9fxtsh0pqd2hdrdf",
@@ -9966,7 +10326,7 @@
     "links": [],
     "notable_links": [],
     "briefly_links": [],
-    "word_count": 2025
+    "word_count": 2024
   },
   {
     "id": "em_1mkg0vd8kt86tthdtwh3bm6dpw",
@@ -9981,7 +10341,7 @@
     "links": [],
     "notable_links": [],
     "briefly_links": [],
-    "word_count": 1579
+    "word_count": 1570
   },
   {
     "id": "em_64tn7hq23x8ps8evtaf71jp3c7",
@@ -10011,7 +10371,7 @@
     "links": [],
     "notable_links": [],
     "briefly_links": [],
-    "word_count": 1102
+    "word_count": 1097
   },
   {
     "id": "em_2qm1f86gnv98wbgefh5z08r6sx",
@@ -10026,7 +10386,7 @@
     "links": [],
     "notable_links": [],
     "briefly_links": [],
-    "word_count": 3223
+    "word_count": 3222
   },
   {
     "id": "em_3xkp6203a78af8q573jfczcq4n",
@@ -10056,7 +10416,7 @@
     "links": [],
     "notable_links": [],
     "briefly_links": [],
-    "word_count": 1604
+    "word_count": 1603
   },
   {
     "id": "em_627q4db0em8rx81t98rtz227y8",
@@ -10071,7 +10431,7 @@
     "links": [],
     "notable_links": [],
     "briefly_links": [],
-    "word_count": 1529
+    "word_count": 1522
   },
   {
     "id": "em_77hqzz4fhv82narvsdfyjmcjwn",
@@ -10116,7 +10476,7 @@
     "links": [],
     "notable_links": [],
     "briefly_links": [],
-    "word_count": 1769
+    "word_count": 1776
   },
   {
     "id": "em_6yx747s6fd8fqv4y9zt1peh4g4",
@@ -10131,7 +10491,7 @@
     "links": [],
     "notable_links": [],
     "briefly_links": [],
-    "word_count": 1436
+    "word_count": 1443
   },
   {
     "id": "em_5kzjdzw80w9y89kfybt1gke31y",
@@ -10191,7 +10551,7 @@
     "links": [],
     "notable_links": [],
     "briefly_links": [],
-    "word_count": 1720
+    "word_count": 1722
   },
   {
     "id": "em_2hrt4wnmb2802vjqc8pqcfh6bp",
@@ -10206,7 +10566,7 @@
     "links": [],
     "notable_links": [],
     "briefly_links": [],
-    "word_count": 2409
+    "word_count": 2408
   },
   {
     "id": "em_4wwte5z8ng9bpvj0x8859k6k7z",
@@ -10236,7 +10596,7 @@
     "links": [],
     "notable_links": [],
     "briefly_links": [],
-    "word_count": 2275
+    "word_count": 2276
   },
   {
     "id": "em_1pvp2emmc99c9bt50sbe1fh38y",
@@ -10722,7 +11082,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1800
+    "word_count": 1797
   },
   {
     "id": "em_50ztv720488mgs781tstxam56j",
@@ -10934,7 +11294,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1586
+    "word_count": 1585
   },
   {
     "id": "em_3nvy05ptck9pabmsjsxgfcnjv4",
@@ -12066,7 +12426,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1557
+    "word_count": 1550
   },
   {
     "id": "em_0wjnc8q9m28m7bp0nsft3n7j7x",
@@ -12396,7 +12756,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1880
+    "word_count": 1879
   },
   {
     "id": "em_6rd5zpy0qz8x19p2jq70yv57j8",
@@ -12985,7 +13345,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1785
+    "word_count": 1784
   },
   {
     "id": "em_7061gm27z192n8pgqse12e29e4",
@@ -13242,7 +13602,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1751
+    "word_count": 1748
   },
   {
     "id": "em_1dad7d0g1a89f9w62k5wgw0591",
@@ -13726,7 +14086,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1285
+    "word_count": 1284
   },
   {
     "id": "em_45dbd49h2f8vzv1mqz0g95s9qr",
@@ -13939,7 +14299,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1810
+    "word_count": 1807
   },
   {
     "id": "em_4dvsvk4xx49yd95a4br3ndk5bm",
@@ -14453,7 +14813,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1361
+    "word_count": 1362
   },
   {
     "id": "em_3zvgbg8mbb9s3v5zt5xb6e1ch8",
@@ -14710,7 +15070,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2124
+    "word_count": 2128
   },
   {
     "id": "em_615ddbzjb39hzvk5w668sqwgk9",
@@ -14923,7 +15283,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1446
+    "word_count": 1443
   },
   {
     "id": "em_58ahsqs4xx8g18jbgw8v63dj2h",
@@ -15553,7 +15913,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2578
+    "word_count": 2577
   },
   {
     "id": "em_5mw5p07rtn9mebcgkx0sa07cxz",
@@ -15580,6 +15940,7 @@
       "steveblank.com",
       "stratechery.com",
       "theintercept.com",
+      "www.forbes.com",
       "www.macstories.net",
       "www.reuters.com"
     ],
@@ -15624,6 +15985,13 @@
         "url": "https://solar.lowtechmagazine.com/2018/09/how-to-build-a-lowtech-website/",
         "domain": "solar.lowtechmagazine.com",
         "heading_context": "[Low\u2190Tech Magazine](https://solar.lowtechmagazine.com/2018/09/how-to-build-a-lowtech-website/)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
+        "text": "Exclusive: WhatsApp Cofounder Brian Acton Gives The Inside Story On #DeleteFacebook And Why He Left $850 Million Behind",
+        "url": "https://www.forbes.com/sites/parmyolson/2018/09/26/exclusive-whatsapp-cofounder-brian-acton-gives-the-inside-story-on-deletefacebook-and-why-he-left-850-million-behind/#53b644b63f20",
+        "domain": "www.forbes.com",
+        "heading_context": "[Exclusive: WhatsApp Cofounder Brian Acton Gives The Inside Story On #DeleteFacebook And Why He Left $850 Million Behind](https://www.forbes.com/sites/parmyolson/2018/09/26/exclusive-whatsapp-cofounder-brian-acton-gives-the-inside-story-on-deletefacebook-and-why-he-left-850-million-behind/#53b644b63f20)",
         "section": "Notable Links \ud83d\udccc"
       },
       {
@@ -15762,6 +16130,13 @@
         "section": "Notable Links \ud83d\udccc"
       },
       {
+        "text": "Exclusive: WhatsApp Cofounder Brian Acton Gives The Inside Story On #DeleteFacebook And Why He Left $850 Million Behind",
+        "url": "https://www.forbes.com/sites/parmyolson/2018/09/26/exclusive-whatsapp-cofounder-brian-acton-gives-the-inside-story-on-deletefacebook-and-why-he-left-850-million-behind/#53b644b63f20",
+        "domain": "www.forbes.com",
+        "heading_context": "[Exclusive: WhatsApp Cofounder Brian Acton Gives The Inside Story On #DeleteFacebook And Why He Left $850 Million Behind](https://www.forbes.com/sites/parmyolson/2018/09/26/exclusive-whatsapp-cofounder-brian-acton-gives-the-inside-story-on-deletefacebook-and-why-he-left-850-million-behind/#53b644b63f20)",
+        "section": "Notable Links \ud83d\udccc"
+      },
+      {
         "text": "Instagram\u2019s CEO \u2013 Stratechery by Ben Thompson",
         "url": "https://stratechery.com/2018/instagrams-ceo/",
         "domain": "stratechery.com",
@@ -15854,7 +16229,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2644
+    "word_count": 2636
   },
   {
     "id": "em_00cnp82bat8s7brana4w548ejq",
@@ -16067,7 +16442,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1411
+    "word_count": 1413
   },
   {
     "id": "em_7t9zxhntv28a082ezavkfmv1nw",
@@ -16234,7 +16609,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1718
+    "word_count": 1716
   },
   {
     "id": "em_4ba2ft3fha9ay9n183przv8c0t",
@@ -16462,7 +16837,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1938
+    "word_count": 1934
   },
   {
     "id": "em_2sd09mjnvm9fwte404k6c4j811",
@@ -16689,7 +17064,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2031
+    "word_count": 2009
   },
   {
     "id": "em_1rcn3jc6279rev2srzqqs2h7me",
@@ -16885,7 +17260,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1456
+    "word_count": 1455
   },
   {
     "id": "em_08p6aqg7v592xa9cw24mnskf44",
@@ -17173,7 +17548,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2402
+    "word_count": 2401
   },
   {
     "id": "em_01rs9nr1r39v6skbc9cxn6xa9h",
@@ -17371,7 +17746,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2023
+    "word_count": 2019
   },
   {
     "id": "em_6yq1w7tarx8x4rn9zrxptn6z8z",
@@ -17685,7 +18060,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2210
+    "word_count": 2207
   },
   {
     "id": "em_7fh51f2jm193x9k2vqe61ejzgr",
@@ -17939,7 +18314,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2068
+    "word_count": 2067
   },
   {
     "id": "em_37yrmf8j5r8rkbdw6krhwrpweq",
@@ -18407,7 +18782,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2171
+    "word_count": 2170
   },
   {
     "id": "em_49efshavk19csscxpfyb6exwqf",
@@ -18696,7 +19071,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1457
+    "word_count": 1455
   },
   {
     "id": "em_3gs83av9gf8ge9gq2gctavbaw8",
@@ -19107,7 +19482,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1410
+    "word_count": 1408
   },
   {
     "id": "em_390sk78gxk8gv8asdcemefavp8",
@@ -19408,7 +19783,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2095
+    "word_count": 2091
   },
   {
     "id": "em_1x100zxw6x9ct9mjthtsq2r6g7",
@@ -19591,7 +19966,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1166
+    "word_count": 1167
   },
   {
     "id": "em_5a36exyvf89vz8rmyyk46j03x7",
@@ -19787,7 +20162,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1723
+    "word_count": 1720
   },
   {
     "id": "em_0x11eyza7j9v4afm5khmxc947v",
@@ -19954,7 +20329,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1562
+    "word_count": 1559
   },
   {
     "id": "em_2jdyta2se6876bkqcsg0qcesyh",
@@ -20106,7 +20481,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1133
+    "word_count": 1130
   },
   {
     "id": "em_3fjs3z9dbt8dn8sdt8kfsndv5r",
@@ -20364,7 +20739,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1468
+    "word_count": 1463
   },
   {
     "id": "em_0avrzvb93p8bj9xretejw3q84k",
@@ -20591,7 +20966,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1563
+    "word_count": 1560
   },
   {
     "id": "em_05nbabq1x08bsr0vrpsng0c6yn",
@@ -20971,7 +21346,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1162
+    "word_count": 1167
   },
   {
     "id": "em_2bwktkf05k8cxrj0j89t377x9s",
@@ -21168,7 +21543,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1974
+    "word_count": 1973
   },
   {
     "id": "em_0abxmjya029azb0na5sdqn7ywg",
@@ -21305,7 +21680,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1179
+    "word_count": 1175
   },
   {
     "id": "em_7nctaet4y0834ssbnfmvgfdx1x",
@@ -21700,7 +22075,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1955
+    "word_count": 1954
   },
   {
     "id": "em_2vcjcmwp9j9hkvn0q3ktafx7af",
@@ -21940,7 +22315,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2070
+    "word_count": 2069
   },
   {
     "id": "em_19mcwfbtcs9d39c13exjv1tbh2",
@@ -22670,7 +23045,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2004
+    "word_count": 2005
   },
   {
     "id": "em_3dm84b6esy81y90hfr45yrg1h2",
@@ -23036,7 +23411,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1864
+    "word_count": 1860
   },
   {
     "id": "em_3wkfw5akh090st1eqfy2bdc4w1",
@@ -24133,7 +24508,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1257
+    "word_count": 1254
   },
   {
     "id": "em_7fw90tqwc8971bn9wtnjqym6wg",
@@ -24316,7 +24691,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1334
+    "word_count": 1333
   },
   {
     "id": "em_4d48747hnc96fsxfcqajd5k9g9",
@@ -24513,7 +24888,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1474
+    "word_count": 1473
   },
   {
     "id": "em_2v1g8q9bjc9vqshfypx42dvs03",
@@ -24681,7 +25056,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1433
+    "word_count": 1432
   },
   {
     "id": "em_4cx5m4z2bx8g5agtsypp81q1ds",
@@ -25268,7 +25643,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2391
+    "word_count": 2390
   },
   {
     "id": "em_1d840h8gmp85fvwhgr0gyh1gja",
@@ -25706,7 +26081,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1389
+    "word_count": 1396
   },
   {
     "id": "em_5t171n0dfn982sbf5838y86m43",
@@ -25934,7 +26309,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1885
+    "word_count": 1881
   },
   {
     "id": "em_08t1ryp4en9w0szxkh0w84j2dk",
@@ -26190,7 +26565,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2337
+    "word_count": 2334
   },
   {
     "id": "em_7np6wja6c49mft91qbe9haxd80",
@@ -26282,10 +26657,10 @@
         "section": "Notable Links \ud83d\udccc"
       },
       {
-        "text": "Stefano Maffulli",
+        "text": "Why Richard Stallman doesn't matter | Stefano Maffulli",
         "url": "https://maffulli.net/2019/10/17/why-richard-stallman-doesnt-matter/",
         "domain": "maffulli.net",
-        "heading_context": "[Why Richard Stallman doesn\u2019t matter | ][ Stefano Maffulli](https://maffulli.net/2019/10/17/why-richard-stallman-doesnt-matter/)",
+        "heading_context": "[Why Richard Stallman doesn't matter | Stefano Maffulli](https://maffulli.net/2019/10/17/why-richard-stallman-doesnt-matter/)",
         "section": "Notable Links \ud83d\udccc"
       },
       {
@@ -26382,10 +26757,10 @@
         "section": "Notable Links \ud83d\udccc"
       },
       {
-        "text": "Stefano Maffulli",
+        "text": "Why Richard Stallman doesn't matter | Stefano Maffulli",
         "url": "https://maffulli.net/2019/10/17/why-richard-stallman-doesnt-matter/",
         "domain": "maffulli.net",
-        "heading_context": "[Why Richard Stallman doesn\u2019t matter | ][ Stefano Maffulli](https://maffulli.net/2019/10/17/why-richard-stallman-doesnt-matter/)",
+        "heading_context": "[Why Richard Stallman doesn't matter | Stefano Maffulli](https://maffulli.net/2019/10/17/why-richard-stallman-doesnt-matter/)",
         "section": "Notable Links \ud83d\udccc"
       },
       {
@@ -26418,7 +26793,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 1900
+    "word_count": 1899
   },
   {
     "id": "em_438qrvwbsv9drbdpagx69ccvpy",
@@ -27298,7 +27673,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2134
+    "word_count": 2103
   },
   {
     "id": "em_4gzzx5jvea94xamsmaesnax3jm",
@@ -27525,7 +27900,7 @@
       }
     ],
     "briefly_links": [],
-    "word_count": 2076
+    "word_count": 2075
   },
   {
     "id": "em_6px212gppf8d1a8gxxkj94sgvm",
@@ -29295,7 +29670,7 @@
         "section": "FYI"
       }
     ],
-    "word_count": 1872
+    "word_count": 1871
   },
   {
     "id": "em_4z09y5cv8p9sd9s6ga55zdaazp",
@@ -38645,7 +39020,7 @@
       },
       {
         "text": "Global coronavirus rise by one-day record of 400,000",
-        "url": "https://news.trust.org/item/20201017151359-xc8gp/%22",
+        "url": "https://news.trust.org/item/20201017151359-xc8gp/",
         "domain": "news.trust.org",
         "heading_context": null,
         "section": "FYI"
@@ -38768,7 +39143,7 @@
       },
       {
         "text": "Global coronavirus rise by one-day record of 400,000",
-        "url": "https://news.trust.org/item/20201017151359-xc8gp/%22",
+        "url": "https://news.trust.org/item/20201017151359-xc8gp/",
         "domain": "news.trust.org",
         "heading_context": null,
         "section": "FYI"
@@ -57726,7 +58101,7 @@
         "section": "Briefly"
       }
     ],
-    "word_count": 838
+    "word_count": 835
   },
   {
     "id": "em_56x8abd55h9x9ansea0z1t2z9q",
@@ -65197,7 +65572,7 @@
         "section": "Briefly"
       }
     ],
-    "word_count": 2413
+    "word_count": 2412
   },
   {
     "id": "em_4nvr3yhqd29snbd9p9a09j5w1d",
@@ -66541,7 +66916,7 @@
         "section": "Briefly"
       }
     ],
-    "word_count": 3115
+    "word_count": 3116
   },
   {
     "id": "em_1aa8bcjbg89a2rpmfhmgsz2jva",
@@ -69873,7 +70248,7 @@
         "section": "Briefly"
       }
     ],
-    "word_count": 3134
+    "word_count": 3133
   },
   {
     "id": "em_66p2nk8fw79xhtsfrn9mea8j0e",
@@ -71707,7 +72082,7 @@
         "section": "Briefly"
       }
     ],
-    "word_count": 5441
+    "word_count": 5442
   },
   {
     "id": "em_4awn6sja099v5v3f74vbdcxqdh",
@@ -74954,7 +75329,7 @@
         "section": "Briefly"
       }
     ],
-    "word_count": 2652
+    "word_count": 2653
   },
   {
     "id": "em_0zh5zpd5n48ry9pdncabs95rep",
@@ -81927,10 +82302,10 @@
         "section": "Notable"
       },
       {
-        "text": "Mapping the Mind of a Large Language Model Anthropic",
+        "text": "Mapping the Mind of a Large Language Model | Anthropic",
         "url": "https://www.anthropic.com/research/mapping-mind-language-model",
         "domain": "www.anthropic.com",
-        "heading_context": "[Mapping the Mind of a Large Language Model Anthropic](https://www.anthropic.com/research/mapping-mind-language-model)",
+        "heading_context": "[Mapping the Mind of a Large Language Model | Anthropic](https://www.anthropic.com/research/mapping-mind-language-model)",
         "section": "Notable"
       },
       {
@@ -82027,10 +82402,10 @@
         "section": "Notable"
       },
       {
-        "text": "Mapping the Mind of a Large Language Model Anthropic",
+        "text": "Mapping the Mind of a Large Language Model | Anthropic",
         "url": "https://www.anthropic.com/research/mapping-mind-language-model",
         "domain": "www.anthropic.com",
-        "heading_context": "[Mapping the Mind of a Large Language Model Anthropic](https://www.anthropic.com/research/mapping-mind-language-model)",
+        "heading_context": "[Mapping the Mind of a Large Language Model | Anthropic](https://www.anthropic.com/research/mapping-mind-language-model)",
         "section": "Notable"
       },
       {
@@ -82099,7 +82474,7 @@
         "section": "Briefly"
       }
     ],
-    "word_count": 2039
+    "word_count": 2040
   },
   {
     "id": "em_5ks51jbr978349pdsjx2rj3ryk",
@@ -84528,7 +84903,7 @@
         "section": "Briefly"
       }
     ],
-    "word_count": 3621
+    "word_count": 3625
   },
   {
     "id": "em_2b95qerffw94na488r03cqh28p",
@@ -84753,7 +85128,7 @@
         "section": "Briefly"
       }
     ],
-    "word_count": 2578
+    "word_count": 2579
   },
   {
     "id": "em_328yq0gmfg8618ng7s56wramwa",
@@ -89174,7 +89549,7 @@
         "section": "Briefly"
       }
     ],
-    "word_count": 2495
+    "word_count": 2496
   },
   {
     "id": "em_4skgdbb67w8kkastwm84kwj25d",
@@ -98562,10 +98937,10 @@
         "section": "Notable"
       },
       {
-        "text": "Claude's new constitution Anthropic",
+        "text": "Claude's new constitution | Anthropic",
         "url": "https://www.anthropic.com/news/claude-new-constitution",
         "domain": "www.anthropic.com",
-        "heading_context": "[Claude's new constitution Anthropic](https://www.anthropic.com/news/claude-new-constitution)",
+        "heading_context": "[Claude's new constitution | Anthropic](https://www.anthropic.com/news/claude-new-constitution)",
         "section": "Notable"
       },
       {
@@ -98704,10 +99079,10 @@
         "section": "Notable"
       },
       {
-        "text": "Claude's new constitution Anthropic",
+        "text": "Claude's new constitution | Anthropic",
         "url": "https://www.anthropic.com/news/claude-new-constitution",
         "domain": "www.anthropic.com",
-        "heading_context": "[Claude's new constitution Anthropic](https://www.anthropic.com/news/claude-new-constitution)",
+        "heading_context": "[Claude's new constitution | Anthropic](https://www.anthropic.com/news/claude-new-constitution)",
         "section": "Notable"
       }
     ],
@@ -98804,7 +99179,7 @@
         "section": "Briefly"
       }
     ],
-    "word_count": 2846,
+    "word_count": 2847,
     "audio_url": "https://files.thingelstad.com/weekly-thing/338/weekly-thing-338.mp3",
     "audio_duration_seconds": 1043,
     "audio_voice": "openai-tts-1-hd:echo",

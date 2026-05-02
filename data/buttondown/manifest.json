@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-02T01:51:32Z",
+  "generated_at": "2026-05-02T02:17:12Z",
   "count": 346,
   "emails": [
     {
@@ -8,7 +8,7 @@
       "subject": "Weekly Thing for May 13, 2017",
       "publish_date": "2017-05-13T13:00:00Z",
       "source_hash": "4f1795af7b7e6e9026d0b0710b2f7b75dbf3e474deb3e6402cfb13b97831f789",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/1.json",
       "body_path": "data/buttondown/bodies/1.md",
       "archive_path": "site/archive/1.md"
@@ -19,7 +19,7 @@
       "subject": "Weekly Thing for May 20, 2017",
       "publish_date": "2017-05-20T13:00:00Z",
       "source_hash": "654fa080e9c24100469a02a95a14cc720cd8fa2a5e4475bbba656af4c84bbb13",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/2.json",
       "body_path": "data/buttondown/bodies/2.md",
       "archive_path": "site/archive/2.md"
@@ -29,8 +29,8 @@
       "id": "em_3fn02vsa3d9c9ttfc0gr398wfz",
       "subject": "Weekly Thing for May 27, 2017",
       "publish_date": "2017-05-27T13:00:00Z",
-      "source_hash": "2725d1e3a2f0ee36ea4ce5f25d0d8291103f25f6ba8cdf92150456a1c0a2d83e",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "b24809073ceaf5fcfdae2d6063c0a919aa1feba47da26b8f7e0533377c505e5e",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/3.json",
       "body_path": "data/buttondown/bodies/3.md",
       "archive_path": "site/archive/3.md"
@@ -40,8 +40,8 @@
       "id": "em_2b66khs6aw9xs9vphf1t0hzdxt",
       "subject": "Weekly Thing for June 3, 2017",
       "publish_date": "2017-06-03T13:00:00Z",
-      "source_hash": "638dafbbb42241b87bb8ea4189b49f3266eafca630b2a0ffead19f6ef9af1176",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "8b89885a3b8ca3d9e71de61987cc8ea84ea79dbd25a5b38ba41b4dd1bd6e62de",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/4.json",
       "body_path": "data/buttondown/bodies/4.md",
       "archive_path": "site/archive/4.md"
@@ -52,7 +52,7 @@
       "subject": "Weekly Thing for June 10, 2017",
       "publish_date": "2017-06-10T13:00:00Z",
       "source_hash": "edc1d7356925e84df0b67773e99a28b7e4500708976a56acab022190f419b11e",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/5.json",
       "body_path": "data/buttondown/bodies/5.md",
       "archive_path": "site/archive/5.md"
@@ -63,7 +63,7 @@
       "subject": "Weekly Thing for June 17, 2017",
       "publish_date": "2017-06-17T13:00:00Z",
       "source_hash": "7956f42c0f64950352ac0b66d6e94a9e9288799447b17099688d2a34fa662482",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/6.json",
       "body_path": "data/buttondown/bodies/6.md",
       "archive_path": "site/archive/6.md"
@@ -74,7 +74,7 @@
       "subject": "Weekly Thing for June 24, 2017",
       "publish_date": "2017-06-24T13:00:00Z",
       "source_hash": "0cfe56d27529972d85730ec8e0c675da44c5278019a02ddd0920d54ce8d64981",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/7.json",
       "body_path": "data/buttondown/bodies/7.md",
       "archive_path": "site/archive/7.md"
@@ -84,8 +84,8 @@
       "id": "em_2wr86jtmgp8338aw8mfnz4eb6a",
       "subject": "Weekly Thing for July 1, 2017",
       "publish_date": "2017-07-01T13:00:00Z",
-      "source_hash": "d192fd5c80f11fa0e62cac33586b180f143071aa393ed802dfbe84c5a4feb80b",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "2e9a4dc15f67e188b46205e505fb6e607dd6f7d6e09b57383ba6a2cf1925778d",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/8.json",
       "body_path": "data/buttondown/bodies/8.md",
       "archive_path": "site/archive/8.md"
@@ -96,7 +96,7 @@
       "subject": "Weekly Thing for July 8, 2017",
       "publish_date": "2017-07-08T13:00:00Z",
       "source_hash": "495ae7576e28885fe2f8cd58dc7920360c6e348ff05a6820677645d7fbd798d6",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/9.json",
       "body_path": "data/buttondown/bodies/9.md",
       "archive_path": "site/archive/9.md"
@@ -107,7 +107,7 @@
       "subject": "Weekly Thing for July 15, 2017",
       "publish_date": "2017-07-15T13:00:00Z",
       "source_hash": "3f8da5ac8d4cc72f802a54276ae68bedcb4771d9dd8f8813d4e3399f15c432a6",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/10.json",
       "body_path": "data/buttondown/bodies/10.md",
       "archive_path": "site/archive/10.md"
@@ -118,7 +118,7 @@
       "subject": "Weekly Thing for July 22, 2017",
       "publish_date": "2017-07-22T13:00:00Z",
       "source_hash": "d02ab0959e4a885750cf7b12469c13a1018c75512a283a8dd6f79ee690d8ff94",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/11.json",
       "body_path": "data/buttondown/bodies/11.md",
       "archive_path": "site/archive/11.md"
@@ -128,8 +128,8 @@
       "id": "em_6k5rg7nx0r8vq97c4gspqrjt6c",
       "subject": "Weekly Thing for July 29, 2017",
       "publish_date": "2017-07-29T13:00:00Z",
-      "source_hash": "5d8608ee50106ff92f633505f77c3346375ea1e5ee4f87d929617eacd95c436d",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "b270304110a14364afb7271afb01396a5f37e3ea88ab2b3b7d659b7031851ea8",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/12.json",
       "body_path": "data/buttondown/bodies/12.md",
       "archive_path": "site/archive/12.md"
@@ -139,8 +139,8 @@
       "id": "em_58wkmxwya58k19cvfx7e70m33d",
       "subject": "Weekly Thing for August 5, 2017",
       "publish_date": "2017-08-05T13:00:00Z",
-      "source_hash": "34e2d190a7de526e2c2a067e7569300d23698dc1c6cc2538c8f652a412d8ab93",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "1029daf5137e5689060fd8432b9c7db312b43871da289a9cff83c6251f08eabb",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/13.json",
       "body_path": "data/buttondown/bodies/13.md",
       "archive_path": "site/archive/13.md"
@@ -151,7 +151,7 @@
       "subject": "Weekly Thing for August 12, 2017",
       "publish_date": "2017-08-12T13:00:00Z",
       "source_hash": "0dec78bd57a176a294643997bc862a259adf658daffe9054d06991a741bbeb19",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/14.json",
       "body_path": "data/buttondown/bodies/14.md",
       "archive_path": "site/archive/14.md"
@@ -162,7 +162,7 @@
       "subject": "Weekly Thing for August 19, 2017",
       "publish_date": "2017-08-19T13:00:00Z",
       "source_hash": "0e793fe9be614d21b061a0fd7380d9cc04e478c18b7870438d1010be5ef4a253",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/15.json",
       "body_path": "data/buttondown/bodies/15.md",
       "archive_path": "site/archive/15.md"
@@ -173,7 +173,7 @@
       "subject": "Weekly Thing for August 26, 2017",
       "publish_date": "2017-08-26T13:00:00Z",
       "source_hash": "ee24d6c3a25c706afc4bce07fd0278b1f5feca76afcdcfa5ee01622dd4b657b3",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/16.json",
       "body_path": "data/buttondown/bodies/16.md",
       "archive_path": "site/archive/16.md"
@@ -184,7 +184,7 @@
       "subject": "Weekly Thing for September 2, 2017",
       "publish_date": "2017-09-02T13:00:00Z",
       "source_hash": "f6e6dfd3b6615c8dcac9b0e5b70e816669e44313b1e506e98c110d735e1b5b74",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/17.json",
       "body_path": "data/buttondown/bodies/17.md",
       "archive_path": "site/archive/17.md"
@@ -195,7 +195,7 @@
       "subject": "Weekly Thing for September 9, 2017",
       "publish_date": "2017-09-09T13:00:00Z",
       "source_hash": "3f64a98bee1eb117885ea179676ae919d788cc31533f83ba022d29cc9956b397",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/18.json",
       "body_path": "data/buttondown/bodies/18.md",
       "archive_path": "site/archive/18.md"
@@ -206,7 +206,7 @@
       "subject": "Weekly Thing for September 16, 2017",
       "publish_date": "2017-09-16T13:00:00Z",
       "source_hash": "fcff7c6a5c859dcf5d782de3c55790adaeca910d016771f043576fa7859564ad",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/19.json",
       "body_path": "data/buttondown/bodies/19.md",
       "archive_path": "site/archive/19.md"
@@ -217,7 +217,7 @@
       "subject": "Weekly Thing for September 23, 2017",
       "publish_date": "2017-09-23T13:00:00Z",
       "source_hash": "9c2976091dbdad8e40c17e272fa7e1f3399c6da51a60e8cf4fb9463dac1d7bfc",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/20.json",
       "body_path": "data/buttondown/bodies/20.md",
       "archive_path": "site/archive/20.md"
@@ -228,7 +228,7 @@
       "subject": "Weekly Thing for September 30, 2017",
       "publish_date": "2017-09-30T13:00:00Z",
       "source_hash": "b5c4bdc3948585f401d2650898eac4c13885666cc1927e6c4aa88b0719cb7eb9",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/21.json",
       "body_path": "data/buttondown/bodies/21.md",
       "archive_path": "site/archive/21.md"
@@ -239,7 +239,7 @@
       "subject": "Weekly Thing for October 7, 2017",
       "publish_date": "2017-10-07T00:00:00Z",
       "source_hash": "ceae832014b3d2533571240e624fe2f607a9c1f83f862d3be16438a048e3b04b",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/22.json",
       "body_path": "data/buttondown/bodies/22.md",
       "archive_path": "site/archive/22.md"
@@ -249,8 +249,8 @@
       "id": "em_7xv159j71h8va9nmrwgz02a4kg",
       "subject": "Weekly Thing for October 14, 2017",
       "publish_date": "2017-10-14T12:00:00Z",
-      "source_hash": "d66453d36afc6e8e702df44162bd0a7738a3caa5d546fcdfb142e0eb9a2e0cff",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "739883749ce3d8793734401247b926b740a30d4664ece2de30ac478acff96430",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/23.json",
       "body_path": "data/buttondown/bodies/23.md",
       "archive_path": "site/archive/23.md"
@@ -260,8 +260,8 @@
       "id": "em_75mzzr6w849008bwm86a5r2ta3",
       "subject": "Weekly Thing for October 21, 2017",
       "publish_date": "2017-10-21T14:00:04Z",
-      "source_hash": "04be8a04b733216f318364e20f9ad7cbf272ea49bc4313a18663766081a8b58e",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "c6c39157740cc117365362a00c6aee72f95d096039481b3513125efff9fc5eea",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/24.json",
       "body_path": "data/buttondown/bodies/24.md",
       "archive_path": "site/archive/24.md"
@@ -271,8 +271,8 @@
       "id": "em_0vpnp7g3j78yvt3j7ccs16ph1k",
       "subject": "Weekly Thing for October 28, 2017",
       "publish_date": "2017-10-28T12:00:00Z",
-      "source_hash": "51b0b2388c1c366b78d1ef4c465a9bea7bb7a06482920955d322c134b902f743",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "a4585e8a245417611452f6e6734dacacbe05efd2d8d480758a5ec2a2cc8dd533",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/25.json",
       "body_path": "data/buttondown/bodies/25.md",
       "archive_path": "site/archive/25.md"
@@ -282,8 +282,8 @@
       "id": "em_16qa47mwhs8j9v98r6xmr1n6ky",
       "subject": "Weekly Thing for November 4, 2017",
       "publish_date": "2017-11-04T13:17:27Z",
-      "source_hash": "37cb0202b32f531c3c0834d59e5b7d3c5c06515a0fbdc30aa123ab9cf17bc6fc",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "50492cf88c0700bf4a72fe391d632e05fdda6bee8476cc113f5996be642c5dd3",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/26.json",
       "body_path": "data/buttondown/bodies/26.md",
       "archive_path": "site/archive/26.md"
@@ -293,8 +293,8 @@
       "id": "em_7g359tm4gt8v1t2xt6dgpbx89z",
       "subject": "Weekly Thing for November 11, 2017",
       "publish_date": "2017-11-11T14:20:43Z",
-      "source_hash": "cfcdfa097f7950c725e50b72a2a6ff0ab53b3852b2d66a61b95aaecc17553638",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "ff30689eda442ccee3e1e96a2b672e43c5a721aa5f7f5a6ad2e0fbe9a19c39bd",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/27.json",
       "body_path": "data/buttondown/bodies/27.md",
       "archive_path": "site/archive/27.md"
@@ -304,8 +304,8 @@
       "id": "em_04v0b6h7jv8hmvz656vrg3mfj7",
       "subject": "Weekly Thing for November 18, 2017",
       "publish_date": "2017-11-18T13:08:06Z",
-      "source_hash": "802aede632ca00a662918720734368dd5edd89b85f3a22e2765f1815ebc1b8b8",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "155fd13059cee80795f7fcffc06e4e22cd38b681fdd46cc440ecff7d6e950e2a",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/28.json",
       "body_path": "data/buttondown/bodies/28.md",
       "archive_path": "site/archive/28.md"
@@ -315,8 +315,8 @@
       "id": "em_2c1whr9vzy940vdgbpesb36b12",
       "subject": "Weekly Thing for November 25, 2017",
       "publish_date": "2017-11-25T13:00:00Z",
-      "source_hash": "ffe2f030ead90e4af90e85cba847d6508591ba141a68cdb113a177c8dbb7133b",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "60168e0dfae7d460413c66963356025ee78dc0bb05320c00a7b5dc951f872c45",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/29.json",
       "body_path": "data/buttondown/bodies/29.md",
       "archive_path": "site/archive/29.md"
@@ -326,8 +326,8 @@
       "id": "em_0t793xphen86aax9tnmdq35sny",
       "subject": "Weekly Thing for December 2, 2017",
       "publish_date": "2017-12-02T13:00:00Z",
-      "source_hash": "df3b2fa99c1fab647e65541f9c34f246e69fd4eceed15fdc1feb54f487eddc01",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "7b0c686cd5f3b440c7a669455b51646c6f9873df14254a704221d7126ba00910",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/30.json",
       "body_path": "data/buttondown/bodies/30.md",
       "archive_path": "site/archive/30.md"
@@ -337,8 +337,8 @@
       "id": "em_56t1hexk6a8n0rehq4nz4bsvsa",
       "subject": "Weekly Thing for December 9, 2017",
       "publish_date": "2017-12-09T13:00:00Z",
-      "source_hash": "e78f75d2a30cc8d0cfc14c4c62eb3c06b74900dd004d8cf57a5d9e8a66dae46d",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "1206d59d01d5625d34c7d6b07ce6ef274e84dffe14458c349a1f0b873298a003",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/31.json",
       "body_path": "data/buttondown/bodies/31.md",
       "archive_path": "site/archive/31.md"
@@ -349,7 +349,7 @@
       "subject": "Weekly Thing for December 16, 2017",
       "publish_date": "2017-12-16T13:42:00Z",
       "source_hash": "bb9da98334229c45b8849f98e6a3a63bfbe1a44f0b854d4b3497dcaec24cab33",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/32.json",
       "body_path": "data/buttondown/bodies/32.md",
       "archive_path": "site/archive/32.md"
@@ -359,8 +359,8 @@
       "id": "em_4qdfmba5k390tskyp2qx1x2d0d",
       "subject": "Weekly Thing for December 23, 2017",
       "publish_date": "2017-12-23T13:00:00Z",
-      "source_hash": "387c1d415146a9df5dc0ebfd8caf6bdab8d698e7e50564eb4c277c851bb2e887",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "fff04259d0bc8faf9276f56f3f33d3db393009d1769b14438d0fc116147a5d87",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/33.json",
       "body_path": "data/buttondown/bodies/33.md",
       "archive_path": "site/archive/33.md"
@@ -370,8 +370,8 @@
       "id": "em_11ms2k72bq82ysys74p7cbdc1k",
       "subject": "Weekly Thing for December 30, 2017",
       "publish_date": "2017-12-30T16:11:42Z",
-      "source_hash": "4bdfff51fecaa717b3b0c5439b63c4032102d2602e894201b1229a77bf25f849",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "a286b0145da04f4323deadebb132f8d00935edf63b74a3c0e0566dacd4c6c46f",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/34.json",
       "body_path": "data/buttondown/bodies/34.md",
       "archive_path": "site/archive/34.md"
@@ -381,8 +381,8 @@
       "id": "em_1mkg0vd8kt86tthdtwh3bm6dpw",
       "subject": "Weekly Thing for January 6, 2018",
       "publish_date": "2018-01-07T01:28:21Z",
-      "source_hash": "e679b3685e01422543ad91745b59b5255a75dc36751864aa31dcc1e30f504852",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "0ecc4e8ea548598aeba2cab7936d708ebaa0c01b4dce350d239cd27ffec0eee7",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/35.json",
       "body_path": "data/buttondown/bodies/35.md",
       "archive_path": "site/archive/35.md"
@@ -392,8 +392,8 @@
       "id": "em_64tn7hq23x8ps8evtaf71jp3c7",
       "subject": "Weekly Thing for January 13, 2018",
       "publish_date": "2018-01-13T21:23:30Z",
-      "source_hash": "ea41078661058663090a6fa2be58f349667a7c485d153a8b12b0e660c43983eb",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "8e79a32c858be188396bfd203deac0dfcdba459fe00650e31a12a25a72d62782",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/36.json",
       "body_path": "data/buttondown/bodies/36.md",
       "archive_path": "site/archive/36.md"
@@ -403,8 +403,8 @@
       "id": "em_3a0m16wyax9cs97pc83nhs6vmc",
       "subject": "Weekly Thing for January 20, 2018",
       "publish_date": "2018-01-20T13:00:00Z",
-      "source_hash": "951285a7ac2b9987c4e25c5ba9701b9a334b1cebe6261cdf1d636a51a2cb1bfd",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "e962638ebd7f028055b53acfacf084af7d960152ff9ae1cf47f357af78fd4d72",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/37.json",
       "body_path": "data/buttondown/bodies/37.md",
       "archive_path": "site/archive/37.md"
@@ -414,8 +414,8 @@
       "id": "em_2qm1f86gnv98wbgefh5z08r6sx",
       "subject": "Weekly Thing for January 27, 2018",
       "publish_date": "2018-01-27T13:00:00Z",
-      "source_hash": "0db4c6ea7019fbc61b53c5019060636870d2c4d844ca7c98aa8d1fcb60676aab",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "04ddeed832ec1ee4eb450e7df939e79f2bab4401aaf425efbc727c79aaa2b146",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/38.json",
       "body_path": "data/buttondown/bodies/38.md",
       "archive_path": "site/archive/38.md"
@@ -426,7 +426,7 @@
       "subject": "Weekly Thing for February 3, 2018",
       "publish_date": "2018-02-03T13:00:00Z",
       "source_hash": "185f1b8a4701bd064ef6927dd1a008f6f32a19c179a75308e99ac1d8f51e1fa2",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/39.json",
       "body_path": "data/buttondown/bodies/39.md",
       "archive_path": "site/archive/39.md"
@@ -436,8 +436,8 @@
       "id": "em_1nx0jcd6kg9q1vmxka3s07tcbk",
       "subject": "Weekly Thing for February 10, 2018",
       "publish_date": "2018-02-10T14:43:06Z",
-      "source_hash": "4b42cd945494544a57f489984b3b7f3e1b7865469f5ae848bb7a3e6be848454a",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "28cba125e8fb3242b19a0d538545702745858781fa917087ae40cbb36ceed115",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/40.json",
       "body_path": "data/buttondown/bodies/40.md",
       "archive_path": "site/archive/40.md"
@@ -447,8 +447,8 @@
       "id": "em_627q4db0em8rx81t98rtz227y8",
       "subject": "Weekly Thing for February 17, 2018",
       "publish_date": "2018-02-17T17:08:59Z",
-      "source_hash": "4ef26c2a5fe2df5632e0640a970b9206625f4cdef04435f34e502445c9fc9e82",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "31a43cdb55a283d3ee39aff14c5ae4a3a07e4a664069a73d4b5e2818609fed4f",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/41.json",
       "body_path": "data/buttondown/bodies/41.md",
       "archive_path": "site/archive/41.md"
@@ -459,7 +459,7 @@
       "subject": "Weekly Thing #42 / Feb 24, 2018",
       "publish_date": "2018-02-24T13:00:00Z",
       "source_hash": "ac166882ca8a6d42b26905ff0fe5fd4bfefe3235a8d0ffc48a531f478822cfd1",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/42.json",
       "body_path": "data/buttondown/bodies/42.md",
       "archive_path": "site/archive/42.md"
@@ -469,8 +469,8 @@
       "id": "em_4bwc6p6mnc8qrts272tftaa3d5",
       "subject": "Weekly Thing #43 / Mar 3, 2018",
       "publish_date": "2018-03-03T13:28:23Z",
-      "source_hash": "b940184a29fb3c9767d1cecf5f4a7645e4ff539e75569ed4fdbf82e27b3ae6c1",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "5ea81b729452b5e479c1b9dfe76038064ed77fbfef35c5c1f6f58a8adfc53e93",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/43.json",
       "body_path": "data/buttondown/bodies/43.md",
       "archive_path": "site/archive/43.md"
@@ -480,8 +480,8 @@
       "id": "em_3cbmm8sp7p8zr9hyv1kw2ewzme",
       "subject": "Weekly Thing #44 / Mar 10, 2018",
       "publish_date": "2018-03-10T13:00:00Z",
-      "source_hash": "7627a6f76625161f5ecee94a206fd0a9e5e6b517cb095f68dc124962e42c4b5e",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "aaa6b52b284e689ed4e06930c7e07b1d18e929d8e1077953cd1e775d7688d437",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/44.json",
       "body_path": "data/buttondown/bodies/44.md",
       "archive_path": "site/archive/44.md"
@@ -491,8 +491,8 @@
       "id": "em_6yx747s6fd8fqv4y9zt1peh4g4",
       "subject": "Weekly Thing #45 / Mar 17, 2018",
       "publish_date": "2018-03-17T12:00:00Z",
-      "source_hash": "2b782fe091c7d129ad52408c37fb4c53bd6ed20e9ef8c71e7e5f30da4dcedd4e",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "00c8fd1b4f4dc3f377f11eefba0d31b7503adab769af98198d5365bb004e871a",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/45.json",
       "body_path": "data/buttondown/bodies/45.md",
       "archive_path": "site/archive/45.md"
@@ -503,7 +503,7 @@
       "subject": "Weekly Thing #46 / Mar 24, 2018",
       "publish_date": "2018-03-24T12:56:15Z",
       "source_hash": "88ec6a22f5c5589ca62509531df2c5ced2faf5300f9bb00f1a7af032bd9bb513",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/46.json",
       "body_path": "data/buttondown/bodies/46.md",
       "archive_path": "site/archive/46.md"
@@ -513,8 +513,8 @@
       "id": "em_165k5yt4yt8kprnwzv6zmjrzmp",
       "subject": "Weekly Thing #47 / Mar 31, 2018",
       "publish_date": "2018-03-31T12:00:00Z",
-      "source_hash": "7b3acac2f6c55400fb356af15756ac001d26d6fdaafe573fdb025180cb5c52bc",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "1c87499d581e3d7d4cff19e9d867d0c73005eb5cf206704a6ddfc4d7a6fed1ac",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/47.json",
       "body_path": "data/buttondown/bodies/47.md",
       "archive_path": "site/archive/47.md"
@@ -524,8 +524,8 @@
       "id": "em_7expmsspzt8h2vkhn4rjqgbkew",
       "subject": "Weekly Thing #48 / Apr 7, 2018",
       "publish_date": "2018-04-07T12:00:00Z",
-      "source_hash": "95b76b7b838b8d80560b23628f861bc7f693f11da9a6f6612103258fe4011274",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "02919ba9fbdcffb413275342a79d8f7f55159f2f7ecbcd5b3546761268871961",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/48.json",
       "body_path": "data/buttondown/bodies/48.md",
       "archive_path": "site/archive/48.md"
@@ -535,8 +535,8 @@
       "id": "em_74zhe4dhck9728yracts0rr2jq",
       "subject": "Weekly Thing #49 / Apr 14, 2018",
       "publish_date": "2018-04-14T12:00:00Z",
-      "source_hash": "7eabb6df8a88982b52f7e28e04788d80b59d155180c1d9bf88f74253db1506e4",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "dbfdf86921f5928d4e0b96303717587ebe8e33af6d285f915d2c59761b2cd1b4",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/49.json",
       "body_path": "data/buttondown/bodies/49.md",
       "archive_path": "site/archive/49.md"
@@ -546,8 +546,8 @@
       "id": "em_2hrt4wnmb2802vjqc8pqcfh6bp",
       "subject": "Weekly Thing #50 / Apr 21, 2018",
       "publish_date": "2018-04-21T12:00:00Z",
-      "source_hash": "7915f8c443603ce0cf5a82a32eedfb2426328d86b4331589ae67dd5e626437e6",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "ee34882cd44a8a74d5004c2af765e8cca9e99a9a59e4a85d7cff32f1786f6cc3",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/50.json",
       "body_path": "data/buttondown/bodies/50.md",
       "archive_path": "site/archive/50.md"
@@ -558,7 +558,7 @@
       "subject": "Weekly Thing #51 / Apr 28, 2018",
       "publish_date": "2018-04-28T12:00:00Z",
       "source_hash": "1151875ec726c3b95a34071083d234f4244ff3dd7ce136808654e1872521b661",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/51.json",
       "body_path": "data/buttondown/bodies/51.md",
       "archive_path": "site/archive/51.md"
@@ -568,8 +568,8 @@
       "id": "em_46ne47ak2s92g8ds9t5q57m60n",
       "subject": "Weekly Thing #52 / May 5, 2018",
       "publish_date": "2018-05-05T12:00:00Z",
-      "source_hash": "594942ad13729ae954dcb2a7b66c08342769255fe6309048f5594e4efd8a7504",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "007b2c0786090ae6667648162fe4ffaa77cb36ea77766608620459608cf748b5",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/52.json",
       "body_path": "data/buttondown/bodies/52.md",
       "archive_path": "site/archive/52.md"
@@ -580,7 +580,7 @@
       "subject": "Weekly Thing #53 / May 12, 2018",
       "publish_date": "2018-05-12T12:00:00Z",
       "source_hash": "a85717d28f01bf0e0cc9d8b6ee46affa79acf353d398b59e38597b435e54281f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/53.json",
       "body_path": "data/buttondown/bodies/53.md",
       "archive_path": "site/archive/53.md"
@@ -590,8 +590,8 @@
       "id": "em_7mdm52fcy69v8s8ckxt3qw7apn",
       "subject": "Weekly Thing #54 / May 19, 2018",
       "publish_date": "2018-05-19T12:00:00Z",
-      "source_hash": "f58fce68ac93613703ac17341cf362c929f0fd24683e922696195bdfd1cab984",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "fb5d7ee3332bb7b34e539dc71296a5786a7838eac23558e0625ea50b2dc6bf45",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/54.json",
       "body_path": "data/buttondown/bodies/54.md",
       "archive_path": "site/archive/54.md"
@@ -601,8 +601,8 @@
       "id": "em_50ztv720488mgs781tstxam56j",
       "subject": "Weekly Thing #55 / May 26, 2018",
       "publish_date": "2018-05-26T12:00:00Z",
-      "source_hash": "e8cc45e3fecdaebaa7791914d11b6cbc2ea0d6f7b20feb58991e8b85f8fc6dea",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "4d78b666ae029217757c438a4b83d2cd1d11042066c3444a57704dd68480b61f",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/55.json",
       "body_path": "data/buttondown/bodies/55.md",
       "archive_path": "site/archive/55.md"
@@ -612,8 +612,8 @@
       "id": "em_3nvy05ptck9pabmsjsxgfcnjv4",
       "subject": "Weekly Thing #56 / Jun 2, 2018",
       "publish_date": "2018-06-02T12:00:00Z",
-      "source_hash": "e08474e6bd0906a230809109f8e134a90a6d0b2ae25ff65c4d903de448ab7981",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "2d20c87a757e18ff1c26bb5f48ac0a7b9856d62478720d952b452f1526771578",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/56.json",
       "body_path": "data/buttondown/bodies/56.md",
       "archive_path": "site/archive/56.md"
@@ -623,8 +623,8 @@
       "id": "em_08bc65yxfc8csb7gf73ng7gf7m",
       "subject": "Weekly Thing #57 / Jun 9, 2018",
       "publish_date": "2018-06-09T12:18:52Z",
-      "source_hash": "a8e1c1bf609488797bdb121fdda134f5c3df86a5cc8321e45e2f40cada2849fb",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "bea5db0f51aed38471c8743afea65df98779c3ab6134aafacf45c2fb85c50585",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/57.json",
       "body_path": "data/buttondown/bodies/57.md",
       "archive_path": "site/archive/57.md"
@@ -634,8 +634,8 @@
       "id": "em_2afbdx6k3k84db9dyzjhaqc5kc",
       "subject": "Weekly Thing #58 / Jun 16, 2018",
       "publish_date": "2018-06-16T12:00:00Z",
-      "source_hash": "c2212e59de9f7144a8e101ca5d3fad490775979ab6416f82b4983f4daf2d08a4",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "f43e7b7c4758d655a9d06a8c4f74729f3712de90178a9fe6979e28a181829b5c",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/58.json",
       "body_path": "data/buttondown/bodies/58.md",
       "archive_path": "site/archive/58.md"
@@ -645,8 +645,8 @@
       "id": "em_2055pewygn915askxmc02w4jtp",
       "subject": "Weekly Thing #59 / Jun 23, 2018",
       "publish_date": "2018-06-23T12:00:00Z",
-      "source_hash": "2e613a8ec546135397207ed739712b464fddaf185b8378af6869f6f70ed24bd3",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "bd1c4421a6c771fd940718e2cc8f058281318bed0e2b5ec7b7dc4d6419ad9ccb",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/59.json",
       "body_path": "data/buttondown/bodies/59.md",
       "archive_path": "site/archive/59.md"
@@ -656,8 +656,8 @@
       "id": "em_0wjnc8q9m28m7bp0nsft3n7j7x",
       "subject": "Weekly Thing #60 / Jun 30, 2018",
       "publish_date": "2018-06-30T12:00:00Z",
-      "source_hash": "c563f6cf2821b729d36fd8864ea03fd3b047f58e326bb80b3a11702b05010f04",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "cf02ff73491da3a3c56001e7b290302b9b28657e485b522038111072bea7b0d9",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/60.json",
       "body_path": "data/buttondown/bodies/60.md",
       "archive_path": "site/archive/60.md"
@@ -668,7 +668,7 @@
       "subject": "Weekly Thing #61 / Jul 7, 2018",
       "publish_date": "2018-07-07T12:00:00Z",
       "source_hash": "991ca78d328e17b286ad510992e0df27294c9af367b25d9b08d1b28780dcfa5a",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/61.json",
       "body_path": "data/buttondown/bodies/61.md",
       "archive_path": "site/archive/61.md"
@@ -678,8 +678,8 @@
       "id": "em_1ra1rrn7nm8hxr4ct72h8d0bs8",
       "subject": "Weekly Thing #62 / Jul 14, 2018",
       "publish_date": "2018-07-14T12:57:10Z",
-      "source_hash": "7216645ce1207a0d3a4961be107435df27206e01f88116ffb04ad21f32105a62",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "17dc86f4581e222f49603c4dd4b2705407f22fd7c49530d181d4cee3f65e09b3",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/62.json",
       "body_path": "data/buttondown/bodies/62.md",
       "archive_path": "site/archive/62.md"
@@ -689,8 +689,8 @@
       "id": "em_7061gm27z192n8pgqse12e29e4",
       "subject": "Weekly Thing #63 / Jul 21, 2018",
       "publish_date": "2018-07-21T12:00:00Z",
-      "source_hash": "3fe3f9d81ccdff84f72fdbd324ad18efa494e7e7070d286a4bea2cc86dfe12a9",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "c87ae5c062a56ee4a3661b5bf5e46278788c81a863e217f71cee2344d4961ce8",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/63.json",
       "body_path": "data/buttondown/bodies/63.md",
       "archive_path": "site/archive/63.md"
@@ -700,8 +700,8 @@
       "id": "em_1dad7d0g1a89f9w62k5wgw0591",
       "subject": "Weekly Thing #64 / Jul 28, 2018",
       "publish_date": "2018-07-28T12:50:16Z",
-      "source_hash": "f0839590162c8b69abef8bb53632382c7bb431e0fafcfaacb0e05496d7f79a50",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "faf3be8a9648bbeedffbdb10be74c8c4d23d46812ac704c5f91bda1ea95417e0",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/64.json",
       "body_path": "data/buttondown/bodies/64.md",
       "archive_path": "site/archive/64.md"
@@ -711,8 +711,8 @@
       "id": "em_0rjhbvmb169z09zkcb3k4vwqpj",
       "subject": "Weekly Thing #65 / Aug 4, 2018",
       "publish_date": "2018-08-04T12:00:00Z",
-      "source_hash": "dfae909a997359e82f2f362724d36495c936c07c8e48ffc32266c15861f65aa8",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "b405c2174ecee9f6411383d6d7133061d7f6b0dcd1017954137b6e35db2d3959",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/65.json",
       "body_path": "data/buttondown/bodies/65.md",
       "archive_path": "site/archive/65.md"
@@ -722,8 +722,8 @@
       "id": "em_45dbd49h2f8vzv1mqz0g95s9qr",
       "subject": "Weekly Thing #66 / Aug 11, 2018",
       "publish_date": "2018-08-11T12:00:00Z",
-      "source_hash": "24f1aa601f164444c27da91b80b292d30bf907130f7dc388a3b3aa914fb9db6a",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "2bffcf12e8d45544309a336c035e1a0fc949bfd70103b0e42b52f3e4627d771e",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/66.json",
       "body_path": "data/buttondown/bodies/66.md",
       "archive_path": "site/archive/66.md"
@@ -733,8 +733,8 @@
       "id": "em_4dvsvk4xx49yd95a4br3ndk5bm",
       "subject": "Weekly Thing #67 / Aug 18, 2018",
       "publish_date": "2018-08-18T12:00:00Z",
-      "source_hash": "6d38c401ca8ad3dde5f188aa01f062f5ccfce0408be441acd0f718ecefdbeee9",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "c479c1e1373eacd2fad7b48b2d09a370d4e4f7e0c399fd3d22105933ca680162",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/67.json",
       "body_path": "data/buttondown/bodies/67.md",
       "archive_path": "site/archive/67.md"
@@ -744,8 +744,8 @@
       "id": "em_1kkx9yxcwe88nrzm6g0ddpw8yy",
       "subject": "Weekly Thing #68 / Aug 25, 2018",
       "publish_date": "2018-08-25T12:00:00Z",
-      "source_hash": "902bb3d49d6f7b1437a4fc4b6d2a48ba9d8de771c49ed63be3f3751442a89c6d",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "06f6407abeebf02d8c955576743609668731f5ff91e81d6a9c387f9ce63e8856",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/68.json",
       "body_path": "data/buttondown/bodies/68.md",
       "archive_path": "site/archive/68.md"
@@ -755,8 +755,8 @@
       "id": "em_3zvgbg8mbb9s3v5zt5xb6e1ch8",
       "subject": "Weekly Thing #69 / Sep 1, 2018",
       "publish_date": "2018-09-01T12:00:00Z",
-      "source_hash": "30f33dd92bbb85e6c4e7482bee6efb8188e5f5ecf4d99e55a5c4660b582e4ac5",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "91471bfe6e5e8317257ffa689678fbdd329bac2523402f183c56c775b8a5ae70",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/69.json",
       "body_path": "data/buttondown/bodies/69.md",
       "archive_path": "site/archive/69.md"
@@ -766,8 +766,8 @@
       "id": "em_615ddbzjb39hzvk5w668sqwgk9",
       "subject": "Weekly Thing #70 / Sep 8, 2018",
       "publish_date": "2018-09-08T12:00:00Z",
-      "source_hash": "6f2a5a7d22e40351a498ca2b2f14141ac2d4ce1cef540e0d66762e911fcd90a6",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "4608e503358b19c93ecca516d65e3360211aea26b15b0ad486df3106560ef616",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/70.json",
       "body_path": "data/buttondown/bodies/70.md",
       "archive_path": "site/archive/70.md"
@@ -777,8 +777,8 @@
       "id": "em_58ahsqs4xx8g18jbgw8v63dj2h",
       "subject": "Weekly Thing #71 / Sep 15, 2018",
       "publish_date": "2018-09-15T12:00:00Z",
-      "source_hash": "dd09dc79fda88d4481185e8d8f91b837578df074395dfb6becef9e1c1040147f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "25b1e4c2582a9872c052685962d27abf79870d2a1ae01a38de663f4dcecc1e02",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/71.json",
       "body_path": "data/buttondown/bodies/71.md",
       "archive_path": "site/archive/71.md"
@@ -788,8 +788,8 @@
       "id": "em_40vsjc2nwv9dt88m9wzgvw0vgj",
       "subject": "Weekly Thing #72 / Sep 22, 2018",
       "publish_date": "2018-09-22T12:00:00Z",
-      "source_hash": "89710bbad8380afef397859e25ea76fa94f7b576e5c2a3211c62a669d81b8a69",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "bf42c4b2c99da33084813aec86468ebbe8d89b3cf151a9b743a21181a5128b1e",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/72.json",
       "body_path": "data/buttondown/bodies/72.md",
       "archive_path": "site/archive/72.md"
@@ -799,8 +799,8 @@
       "id": "em_5mw5p07rtn9mebcgkx0sa07cxz",
       "subject": "Weekly Thing #73 / Sep 29, 2018",
       "publish_date": "2018-09-29T12:00:00Z",
-      "source_hash": "e1704aabd574a0f25c034d9e7fc29a0f835c187bfdc7da61814a2fbe095df27a",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "95ef44918b6f14fed3034f88d14421745ed7f68e873e4f8d0e45e9d85f4aeec0",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/73.json",
       "body_path": "data/buttondown/bodies/73.md",
       "archive_path": "site/archive/73.md"
@@ -810,8 +810,8 @@
       "id": "em_00cnp82bat8s7brana4w548ejq",
       "subject": "Weekly Thing #74 / Oct 6, 2018",
       "publish_date": "2018-10-06T12:00:00Z",
-      "source_hash": "add94146f57cdc789753afba610f9a851fa0a8055118ef11e2d1153bbe157399",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "66d9d8d5e60e7ecfe25aea28db9a8e34b76b6a5941238438785dd2a6c668bdb4",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/74.json",
       "body_path": "data/buttondown/bodies/74.md",
       "archive_path": "site/archive/74.md"
@@ -821,8 +821,8 @@
       "id": "em_7t9zxhntv28a082ezavkfmv1nw",
       "subject": "Weekly Thing #75 / Oct 13, 2018",
       "publish_date": "2018-10-13T12:00:00Z",
-      "source_hash": "bf49992b954e1b2f9f08d0b7972b6b928ef6549c25ed87741d850b207ce00a93",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "6d4a774d460f25928d919e4213e2bbc30d42b7f37bbf7f78b6011072f6c5e17f",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/75.json",
       "body_path": "data/buttondown/bodies/75.md",
       "archive_path": "site/archive/75.md"
@@ -832,8 +832,8 @@
       "id": "em_4ba2ft3fha9ay9n183przv8c0t",
       "subject": "Weekly Thing #76 / Oct 20, 2018",
       "publish_date": "2018-10-20T12:00:00Z",
-      "source_hash": "34faa7fd4669798078063cc364e9616237d91cd663f689749012fcff79175969",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "79374ef2daf1df22f49ced7b47197ca8d450d4446810cbcd92f678eddfa185b5",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/76.json",
       "body_path": "data/buttondown/bodies/76.md",
       "archive_path": "site/archive/76.md"
@@ -843,8 +843,8 @@
       "id": "em_2sd09mjnvm9fwte404k6c4j811",
       "subject": "Weekly Thing #77 / Oct 27, 2018",
       "publish_date": "2018-10-27T12:00:00Z",
-      "source_hash": "b5f78171dbae1a02a9c616317b7d2b79ae0aecf4640e63b3f6f5c65d1220a4d1",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "f8af48e5eb5db1884444598496a1baddc234e93f4a76eac8b6d5d46c171263cc",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/77.json",
       "body_path": "data/buttondown/bodies/77.md",
       "archive_path": "site/archive/77.md"
@@ -854,8 +854,8 @@
       "id": "em_1rcn3jc6279rev2srzqqs2h7me",
       "subject": "Weekly Thing #78 / Nov 3, 2018",
       "publish_date": "2018-11-03T12:00:00Z",
-      "source_hash": "982bda0632c90dcbd399bd725a6d60406f71ebf4d405fa0033522cdc14b54ae3",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "edb646c62f99bcb1b6f30d2af60661cb85d38ddb2e69275671408db6e71371e6",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/78.json",
       "body_path": "data/buttondown/bodies/78.md",
       "archive_path": "site/archive/78.md"
@@ -865,8 +865,8 @@
       "id": "em_08p6aqg7v592xa9cw24mnskf44",
       "subject": "Weekly Thing #79 / Nov 10, 2018",
       "publish_date": "2018-11-10T13:00:00Z",
-      "source_hash": "bbeecd4a94ecd403d68306d0106559f3c1b0abb4c4080553b813e71ea7a4498f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "c3a86d802a08fcd021e0f95c14249f96e7086fb5f5c2793de260ae6b553bdd75",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/79.json",
       "body_path": "data/buttondown/bodies/79.md",
       "archive_path": "site/archive/79.md"
@@ -876,8 +876,8 @@
       "id": "em_01rs9nr1r39v6skbc9cxn6xa9h",
       "subject": "Weekly Thing #80 / Nov 17, 2018",
       "publish_date": "2018-11-17T13:00:00Z",
-      "source_hash": "96a148473e301cb773959b624fa75f66e40a9d0c41f95f2e7d5ee15d9923875e",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "8ce1afeaa54b7543cb880eb44bdee466012900823130e9ee3aab66ca327b1b1f",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/80.json",
       "body_path": "data/buttondown/bodies/80.md",
       "archive_path": "site/archive/80.md"
@@ -887,8 +887,8 @@
       "id": "em_6yq1w7tarx8x4rn9zrxptn6z8z",
       "subject": "Weekly Thing #81 / Nov 24, 2018",
       "publish_date": "2018-11-24T13:00:00Z",
-      "source_hash": "9b7d438ca1d9314db9be0fb4b45fcdb30785f2efd07f6690060329e010b94684",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "6b367042919b30d91955ddbac098d5f15a3dc79863f8c1266aa4ca9d9413edc8",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/81.json",
       "body_path": "data/buttondown/bodies/81.md",
       "archive_path": "site/archive/81.md"
@@ -898,8 +898,8 @@
       "id": "em_7fh51f2jm193x9k2vqe61ejzgr",
       "subject": "Weekly Thing #82 / Dec 1, 2018",
       "publish_date": "2018-12-01T13:00:00Z",
-      "source_hash": "8a930777a39d6713493519975bae749cc82fadc6325b45ca360517b276dce9a8",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "6baff94178798a8871959403d1e41f330f48e132c9767954f5ff7ca9fb790730",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/82.json",
       "body_path": "data/buttondown/bodies/82.md",
       "archive_path": "site/archive/82.md"
@@ -909,8 +909,8 @@
       "id": "em_37yrmf8j5r8rkbdw6krhwrpweq",
       "subject": "Weekly Thing #83 / Dec 8, 2018",
       "publish_date": "2018-12-08T13:00:00Z",
-      "source_hash": "1cac9b4a8a4b7384e088bca4df958e6991da6ff06cb62c351c73b2440d34ce1f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "74a16f2da78537c9b0bbfe08dc24baaa59b3dcffe0d0072c89890b4710c66c22",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/83.json",
       "body_path": "data/buttondown/bodies/83.md",
       "archive_path": "site/archive/83.md"
@@ -920,8 +920,8 @@
       "id": "em_6azk81mnnh8egttetxzg7ajj4n",
       "subject": "Weekly Thing #84 / Dec 15, 2018",
       "publish_date": "2018-12-15T13:00:00Z",
-      "source_hash": "9002ca53bb333e8467e34dc7312ac6d322145f652f8bcb64b0a525c9949daf37",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "9293c2cd16edd59931331170991984e46ab70ab701066d42603cb0afb2d17eec",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/84.json",
       "body_path": "data/buttondown/bodies/84.md",
       "archive_path": "site/archive/84.md"
@@ -932,7 +932,7 @@
       "subject": "Weekly Thing #85 / Dec 22, 2018",
       "publish_date": "2018-12-22T13:00:00Z",
       "source_hash": "ed4b8552a7017af4cd119a0208c8185fe02aef59781a88742f74e3fd4571137b",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/85.json",
       "body_path": "data/buttondown/bodies/85.md",
       "archive_path": "site/archive/85.md"
@@ -942,8 +942,8 @@
       "id": "em_0a0mmvcpay8evbdhc1zt8htf8w",
       "subject": "Weekly Thing #86 / Dec 29, 2018",
       "publish_date": "2018-12-29T13:00:00Z",
-      "source_hash": "69fe4172a0442adc2a8a2fc5a35063bbc8b6a838164e4cb598f4d783e12db12c",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "26fb2a82a984a5973a954891dc1274e98d3af8637c1adf259a682f6800d0d928",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/86.json",
       "body_path": "data/buttondown/bodies/86.md",
       "archive_path": "site/archive/86.md"
@@ -953,8 +953,8 @@
       "id": "em_3gs83av9gf8ge9gq2gctavbaw8",
       "subject": "Weekly Thing #87 / Jan 5, 2019",
       "publish_date": "2019-01-05T13:00:00Z",
-      "source_hash": "fa6582d8faf29f7da594204b5f3c917a7dec866bfd39deee033328a350b87ff2",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "847587274544e667dac831bbbe8bdc15cf8e6f7c4feb3878213f2f5d19a09258",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/87.json",
       "body_path": "data/buttondown/bodies/87.md",
       "archive_path": "site/archive/87.md"
@@ -964,8 +964,8 @@
       "id": "em_722swej91s9gn8jkh7e6sd845t",
       "subject": "Weekly Thing #88 / Jan 12, 2019",
       "publish_date": "2019-01-12T13:00:00Z",
-      "source_hash": "930052987b9e40a4dea0a2d4f732be4d98286c7491c32c3a031596fc1ab3dd30",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "4d4b83b1a278aeebc34e91f2ff609682da226243e1ab2ae7d765e762eb895df0",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/88.json",
       "body_path": "data/buttondown/bodies/88.md",
       "archive_path": "site/archive/88.md"
@@ -975,8 +975,8 @@
       "id": "em_390sk78gxk8gv8asdcemefavp8",
       "subject": "Weekly Thing #89 / Jan 19, 2019",
       "publish_date": "2019-01-19T13:00:00Z",
-      "source_hash": "c6596e9180892cbd996f62956bc8a5aedc05e6e8789e7774977e99238d5b11b2",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "be1317a688b2314f8f2c9ad56bcbd937cd4f4c857f215ecd2d52ec12c5963410",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/89.json",
       "body_path": "data/buttondown/bodies/89.md",
       "archive_path": "site/archive/89.md"
@@ -986,8 +986,8 @@
       "id": "em_1x100zxw6x9ct9mjthtsq2r6g7",
       "subject": "Weekly Thing #90 / Jan 26, 2019",
       "publish_date": "2019-01-26T13:00:00Z",
-      "source_hash": "bd2e5498b67950eba7f19b2e9aead827414dc064958b3f3b4035b26cce2a806e",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "b15c913f03436c919786d543463db0eea5c5d1a10f3e88f81879c038eff25954",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/90.json",
       "body_path": "data/buttondown/bodies/90.md",
       "archive_path": "site/archive/90.md"
@@ -997,8 +997,8 @@
       "id": "em_5a36exyvf89vz8rmyyk46j03x7",
       "subject": "Weekly Thing #91 / Feb 2, 2019",
       "publish_date": "2019-02-02T13:00:00Z",
-      "source_hash": "c5c9c6113bb8649a6e205c1586578c83e1b6ff1cad582e504082bdb17b48a9db",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "3326e95309baddd3efde2da98319656ad65238c38b1cff4678f13ace4b5910c1",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/91.json",
       "body_path": "data/buttondown/bodies/91.md",
       "archive_path": "site/archive/91.md"
@@ -1008,8 +1008,8 @@
       "id": "em_0x11eyza7j9v4afm5khmxc947v",
       "subject": "Weekly Thing #92 / Feb 9, 2019",
       "publish_date": "2019-02-09T13:00:00Z",
-      "source_hash": "64c5899ecff66ff9de8abba150ed44631075767d4eb43b50d50f2c4889491192",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "9f3532c6a7eb9db39003d046b8b9d2d63788fe07665b73184e6bf70ba75b80b8",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/92.json",
       "body_path": "data/buttondown/bodies/92.md",
       "archive_path": "site/archive/92.md"
@@ -1019,8 +1019,8 @@
       "id": "em_2jdyta2se6876bkqcsg0qcesyh",
       "subject": "Weekly Thing #93 / Feb 16, 2019",
       "publish_date": "2019-02-16T13:00:00Z",
-      "source_hash": "494cc683732f8310e160b56839c17024d3d153725cca6ce2baf7b383488ba2de",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "90609a78471bc30c3012f2659d2a925d98769402b4935ab33f7025c2735958cc",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/93.json",
       "body_path": "data/buttondown/bodies/93.md",
       "archive_path": "site/archive/93.md"
@@ -1030,8 +1030,8 @@
       "id": "em_3fjs3z9dbt8dn8sdt8kfsndv5r",
       "subject": "Weekly Thing #94 / Feb 23, 2019",
       "publish_date": "2019-02-23T13:00:00Z",
-      "source_hash": "e1bc620005a37cbf73cd742c5bfb3cec1b12443247893be3dcfbac4e3294b473",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "874f011a26652d8f1341b04d2d7d0acfa4fd59e9f6b249e65af76723f18394fc",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/94.json",
       "body_path": "data/buttondown/bodies/94.md",
       "archive_path": "site/archive/94.md"
@@ -1041,8 +1041,8 @@
       "id": "em_0avrzvb93p8bj9xretejw3q84k",
       "subject": "Weekly Thing #95 / Mar 2, 2019",
       "publish_date": "2019-03-02T13:00:00Z",
-      "source_hash": "ecc25c746e3f93cac5f408e1defebc04967f781afdfb232029305ea2d374a48c",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "67372df8c6b8620f5d83f593757bafd3440227fb955fb71e80a0b18d4f442219",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/95.json",
       "body_path": "data/buttondown/bodies/95.md",
       "archive_path": "site/archive/95.md"
@@ -1052,8 +1052,8 @@
       "id": "em_05nbabq1x08bsr0vrpsng0c6yn",
       "subject": "Weekly Thing #96 / Mar 9, 2019",
       "publish_date": "2019-03-09T13:00:00Z",
-      "source_hash": "cce90e9c7a2166323dd04a4fa9344615ccd0a9f8a379ecb0a89af711f60b3fe5",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "55e39e12b93b600a799a0753659a29d2497b0306e8a3022bebc1845d2c8d6efa",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/96.json",
       "body_path": "data/buttondown/bodies/96.md",
       "archive_path": "site/archive/96.md"
@@ -1063,8 +1063,8 @@
       "id": "em_0xvnmpe5178k8bht7trr0y46n7",
       "subject": "Weekly Thing #97 / Mar 16, 2019",
       "publish_date": "2019-03-16T12:00:00Z",
-      "source_hash": "163098cecae0ff4a714b758041467245bf31a32f998d7d380cfd6938df7d5f49",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "05131acc58acf2f7607269f2904b24be61faf1188c1feece2c261f190d60111e",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/97.json",
       "body_path": "data/buttondown/bodies/97.md",
       "archive_path": "site/archive/97.md"
@@ -1074,8 +1074,8 @@
       "id": "em_2bwktkf05k8cxrj0j89t377x9s",
       "subject": "Weekly Thing #98 / Mar 23, 2019",
       "publish_date": "2019-03-23T12:00:00Z",
-      "source_hash": "a376b6f9aa090c6250509d9391dfc904a445d7e818e0f862167150b61a1f0ad9",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "9edbfc4c5f2c766a06b32aaec3290f5953ee0e05f701be44a478e50a95da680e",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/98.json",
       "body_path": "data/buttondown/bodies/98.md",
       "archive_path": "site/archive/98.md"
@@ -1085,8 +1085,8 @@
       "id": "em_0abxmjya029azb0na5sdqn7ywg",
       "subject": "Weekly Thing #99 / Mar 30, 2019",
       "publish_date": "2019-03-30T12:00:00Z",
-      "source_hash": "1057e8092a260c41af68d001cbde83651fec3f48b65756324559b632d751cc42",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "4bf812744aed7f62111818f8aeebc506136ab72754441bfd0e040dbe62cf291a",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/99.json",
       "body_path": "data/buttondown/bodies/99.md",
       "archive_path": "site/archive/99.md"
@@ -1096,8 +1096,8 @@
       "id": "em_7nctaet4y0834ssbnfmvgfdx1x",
       "subject": "Weekly Thing #100 / Apr 6, 2019",
       "publish_date": "2019-04-06T12:00:00Z",
-      "source_hash": "c71be36b7b48e040ad0540cddc75ccf37347984dd4a0b8de229f1ff5fc980c87",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "cb15a9d7ef18ab7306a2a09bb43891dc9fccf24741681fa12671d12f63f1d6e5",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/100.json",
       "body_path": "data/buttondown/bodies/100.md",
       "archive_path": "site/archive/100.md"
@@ -1107,8 +1107,8 @@
       "id": "em_2zw5xekzde9zfsb9m6wt88ykhd",
       "subject": "Weekly Thing #101 / Apr 13, 2019",
       "publish_date": "2019-04-13T12:00:00Z",
-      "source_hash": "9d4274cc69f5d89ba3bb90c5b3d00a4dd1364049779ed9ec6f0756aea13bb69b",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "04391d4d335b2c775fe142419915ddef369a2e2f5475565ea82d86a2b76f4ecc",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/101.json",
       "body_path": "data/buttondown/bodies/101.md",
       "archive_path": "site/archive/101.md"
@@ -1118,8 +1118,8 @@
       "id": "em_2vcjcmwp9j9hkvn0q3ktafx7af",
       "subject": "Weekly Thing #102 / Apr 20, 2019",
       "publish_date": "2019-04-20T12:00:00Z",
-      "source_hash": "9dd3eeb07d4bcba205503da07b49e78883d02cb0589ffcb0ffc8d68bbf6e4a9a",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "1b5d47068611dba7a3efe9bc98c4286277b12e103f44eb2174e659c171c51848",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/102.json",
       "body_path": "data/buttondown/bodies/102.md",
       "archive_path": "site/archive/102.md"
@@ -1129,8 +1129,8 @@
       "id": "em_19mcwfbtcs9d39c13exjv1tbh2",
       "subject": "Weekly Thing #103 / Apr 27, 2019",
       "publish_date": "2019-04-27T12:00:00Z",
-      "source_hash": "45de5fadb2badae369b6e8a35143de948a70478bf9199a16e160fd9f5922e062",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "6a52317523167c4bc8ba394f038eac16b343b6f9be79d78aa909797832637ba9",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/103.json",
       "body_path": "data/buttondown/bodies/103.md",
       "archive_path": "site/archive/103.md"
@@ -1141,7 +1141,7 @@
       "subject": "Weekly Thing #104 / May 4, 2019",
       "publish_date": "2019-05-04T12:00:00Z",
       "source_hash": "4692166f44204ddd64043c0fdf9145c3dad6cfa100296417f94492b40c79b763",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/104.json",
       "body_path": "data/buttondown/bodies/104.md",
       "archive_path": "site/archive/104.md"
@@ -1151,8 +1151,8 @@
       "id": "em_0rwz71j5mr9mw9w408mv7jt0x5",
       "subject": "Weekly Thing #105 / May 11, 2019",
       "publish_date": "2019-05-11T12:00:00Z",
-      "source_hash": "7fb4e599d14e24246e4e75b3ddebaeecb2c17284aa4a7cab54640d508eb84f36",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "5d52d52547e0d9515dea9605601f932538677b6e4e20f9436a6626a3284050e4",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/105.json",
       "body_path": "data/buttondown/bodies/105.md",
       "archive_path": "site/archive/105.md"
@@ -1162,8 +1162,8 @@
       "id": "em_2q32ayprkx8mbt487n3yzfsysr",
       "subject": "Weekly Thing #106 / May 18, 2019",
       "publish_date": "2019-05-18T12:00:00Z",
-      "source_hash": "4e3ea6192a3b6a6fed3b0c3f99b96cf105b679bdd424940c18501fdc3e03631c",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "b9e0c71ba3081c9c3a8504d524281a9fec7c34f89c39e624ff331bff5fbbb11d",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/106.json",
       "body_path": "data/buttondown/bodies/106.md",
       "archive_path": "site/archive/106.md"
@@ -1174,7 +1174,7 @@
       "subject": "Weekly Thing #107 / May 25, 2019",
       "publish_date": "2019-05-25T12:00:00Z",
       "source_hash": "f3173afd25c887027716733fde25b0df2989164f73645843a805a548168b64c7",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/107.json",
       "body_path": "data/buttondown/bodies/107.md",
       "archive_path": "site/archive/107.md"
@@ -1184,8 +1184,8 @@
       "id": "em_5zkrbde7418r1sxd7epy08r5kw",
       "subject": "Weekly Thing #108 / Jun 1, 2019",
       "publish_date": "2019-06-01T12:00:00Z",
-      "source_hash": "86340aba7e47399f24bd02a58241c81dc962b07e279a81ffc075cc20297413c7",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "818f4c1ef93f71147042cf9b6761ba9294e70def1dec963f03676eb883b08277",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/108.json",
       "body_path": "data/buttondown/bodies/108.md",
       "archive_path": "site/archive/108.md"
@@ -1195,8 +1195,8 @@
       "id": "em_3wkfw5akh090st1eqfy2bdc4w1",
       "subject": "Weekly Thing #109 / Jun 8, 2019",
       "publish_date": "2019-06-08T12:00:00Z",
-      "source_hash": "fc8a5353e6447a5a85728b2975264696b991e3fbd95e2b483cc6bd38703d0b3a",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "b8f9982339fb96d8d03ec14f4257f0d0ae0bb34be0f3ef36f1ddf5df6f40c882",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/109.json",
       "body_path": "data/buttondown/bodies/109.md",
       "archive_path": "site/archive/109.md"
@@ -1206,8 +1206,8 @@
       "id": "em_4whs9wabz498r8amf0yeq5ahb8",
       "subject": "Weekly Thing #110 / Jun 15, 2019",
       "publish_date": "2019-06-15T12:00:00Z",
-      "source_hash": "5dcfd8ce6596c45976931af3e9f873f7bfc5843a3afb63d4bbe71ee23848aefe",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "bdc25fa1f25ee22c27d7d42a57ea6b2283a5b4e1efce6c6199f5a2ec38e72371",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/110.json",
       "body_path": "data/buttondown/bodies/110.md",
       "archive_path": "site/archive/110.md"
@@ -1217,8 +1217,8 @@
       "id": "em_5n9cjmksqn81rrg05s6h1020z2",
       "subject": "Weekly Thing #111 / Jun 22, 2019",
       "publish_date": "2019-06-22T12:00:00Z",
-      "source_hash": "0b72eec2ea29500e3b40a849249516eb102a27b647fda2d5a2d38ca30e390a7a",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "ce777e3585efe73f6468507541f9e4f969fd1ba16498349b309b2d0b393ca5bc",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/111.json",
       "body_path": "data/buttondown/bodies/111.md",
       "archive_path": "site/archive/111.md"
@@ -1229,7 +1229,7 @@
       "subject": "Weekly Thing #112 / Jun 29, 2019",
       "publish_date": "2019-06-29T12:00:00Z",
       "source_hash": "b31a3ac0d32e68883149c3bbe002f4c697a98efb63aa6328cda710ae6d41bf5c",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/112.json",
       "body_path": "data/buttondown/bodies/112.md",
       "archive_path": "site/archive/112.md"
@@ -1239,8 +1239,8 @@
       "id": "em_085v1evnsf9e9a8yq77gz7pqeb",
       "subject": "Weekly Thing #113 / Aug 17, 2019",
       "publish_date": "2019-08-17T12:17:40Z",
-      "source_hash": "997ab7d345a041cb7d0c8396db17bf597c89392840936513a998989282161d90",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "0fcbb48b371bdae866c66d0d356981c9d02f688e01878debabf77b4ba14f289e",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/113.json",
       "body_path": "data/buttondown/bodies/113.md",
       "archive_path": "site/archive/113.md"
@@ -1250,8 +1250,8 @@
       "id": "em_7fw90tqwc8971bn9wtnjqym6wg",
       "subject": "Weekly Thing #114 / Aug 24, 2019",
       "publish_date": "2019-08-24T13:31:40Z",
-      "source_hash": "33e4541faab6162454cdc693c641b3978ff10d8e8c5e1f02d0d846a3359f74a6",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "216b1189140c12850858f175f881ae3bbe1a9978141a13b821ab9928fed48ac3",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/114.json",
       "body_path": "data/buttondown/bodies/114.md",
       "archive_path": "site/archive/114.md"
@@ -1261,8 +1261,8 @@
       "id": "em_4d48747hnc96fsxfcqajd5k9g9",
       "subject": "Weekly Thing #115 / Aug 31, 2019",
       "publish_date": "2019-08-31T12:00:00Z",
-      "source_hash": "9e9df19175eb8fcb308648b448197dfba43444d644af0e6a6aa101f920ff8778",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "9ff8fb8e5176b176357d84ab93202e7209b91604634230e0f95008df76625753",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/115.json",
       "body_path": "data/buttondown/bodies/115.md",
       "archive_path": "site/archive/115.md"
@@ -1272,8 +1272,8 @@
       "id": "em_2v1g8q9bjc9vqshfypx42dvs03",
       "subject": "Weekly Thing #116 / Sep 7, 2019",
       "publish_date": "2019-09-07T12:00:00Z",
-      "source_hash": "1249036c172e96d7976bc7a8174c9171c81776ba769a2452a2721fe551dd4a6f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "d5172b234801e6704103fa13e2c4b813a932f0295bee6a64e27676dfa955a55c",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/116.json",
       "body_path": "data/buttondown/bodies/116.md",
       "archive_path": "site/archive/116.md"
@@ -1284,7 +1284,7 @@
       "subject": "Weekly Thing #117 / Sep 14, 2019",
       "publish_date": "2019-09-14T12:00:00Z",
       "source_hash": "c53babff71044984a81feb6780d7c4bbf6ede8b3c0ba0cd7a958d739e42578b7",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/117.json",
       "body_path": "data/buttondown/bodies/117.md",
       "archive_path": "site/archive/117.md"
@@ -1294,8 +1294,8 @@
       "id": "em_0fffmrq05j9bdvmvr0tpkfb0q0",
       "subject": "Weekly Thing #118 / Sep 21, 2019",
       "publish_date": "2019-09-21T12:00:00Z",
-      "source_hash": "1e614c6b87d3b1a5ed2ec12a9c6aafb16fc254c78e84422c4cac1b506553a72d",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "67895afdbcfe229e84c65d84fe48dbe2b171ebc257757e45903817f38a65f95d",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/118.json",
       "body_path": "data/buttondown/bodies/118.md",
       "archive_path": "site/archive/118.md"
@@ -1306,7 +1306,7 @@
       "subject": "Weekly Thing #119 / Sep 28, 2019",
       "publish_date": "2019-09-28T12:00:29Z",
       "source_hash": "b19bed4fbca676eb54cc2e8958bb84929fdfa4f7e923148efe68d76fe78c6e3e",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/119.json",
       "body_path": "data/buttondown/bodies/119.md",
       "archive_path": "site/archive/119.md"
@@ -1316,8 +1316,8 @@
       "id": "em_34xdz71x4n9vyvgrpjswgmeh4q",
       "subject": "Weekly Thing #120 / Oct 5, 2019",
       "publish_date": "2019-10-05T12:00:15Z",
-      "source_hash": "764a61648c3f895ef5d1f04d6bf5d9e05969a074a22eb92cc080a54433d4ffdf",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "2013fa59e285c02ce8884b57e3eace2c9efaff6e60e0452ecdd115cd40eaa8e2",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/120.json",
       "body_path": "data/buttondown/bodies/120.md",
       "archive_path": "site/archive/120.md"
@@ -1327,8 +1327,8 @@
       "id": "em_5t171n0dfn982sbf5838y86m43",
       "subject": "Weekly Thing #121 / Oct 12, 2019",
       "publish_date": "2019-10-12T12:00:58Z",
-      "source_hash": "b5b1b2dee43377a6ab0e57bdce75c8284e665912f86355fd2bd9954bd0b11c0d",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "e7c7bcdc08a42df347cb46a68d7ed3910cafc1e9c1c29cac1a95a6c9334588f3",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/121.json",
       "body_path": "data/buttondown/bodies/121.md",
       "archive_path": "site/archive/121.md"
@@ -1338,8 +1338,8 @@
       "id": "em_08t1ryp4en9w0szxkh0w84j2dk",
       "subject": "Weekly Thing #122 / Oct 19, 2019",
       "publish_date": "2019-10-19T12:00:17Z",
-      "source_hash": "e174b39f40d49ca1993e3b5e24db072070410cab095266a8f8e25f2a8dcb5f9e",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "0d95087a6fa10d771206c8b8da9f76f697cd006a2e45de1c745e7d99f439ad9b",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/122.json",
       "body_path": "data/buttondown/bodies/122.md",
       "archive_path": "site/archive/122.md"
@@ -1349,8 +1349,8 @@
       "id": "em_7np6wja6c49mft91qbe9haxd80",
       "subject": "Weekly Thing #123 / Oct 26, 2019",
       "publish_date": "2019-10-26T12:00:44Z",
-      "source_hash": "51a35f868de70bdc873abd2180ec8518c81cbc43e79b6b593292054e1f0a729c",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "0da5858520a623a713d4da28564ffa80d8e4825de61bc1bf7c6a1e0386c3f410",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/123.json",
       "body_path": "data/buttondown/bodies/123.md",
       "archive_path": "site/archive/123.md"
@@ -1360,8 +1360,8 @@
       "id": "em_438qrvwbsv9drbdpagx69ccvpy",
       "subject": "Weekly Thing #124 / Nov 2, 2019",
       "publish_date": "2019-11-02T12:00:00Z",
-      "source_hash": "0494e90506f32037803ed1cb5886e4aaeb8a1252cb3f205defb2da514c7b9ca9",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "f109c3186c31a98fbd465ca68efe0ca850c084a10cd420467aabca804d58474b",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/124.json",
       "body_path": "data/buttondown/bodies/124.md",
       "archive_path": "site/archive/124.md"
@@ -1371,8 +1371,8 @@
       "id": "em_54edgfw1xp82pvwhc6yjchx8rw",
       "subject": "Weekly Thing #125 / Nov 9, 2019",
       "publish_date": "2019-11-09T13:00:12Z",
-      "source_hash": "a80e94ff0daf8fcd3261cf75fd4d5e5c3489f6fd1fc6a5015e4fd7ee64bbbf39",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "454f78042f8f18d77aeb91f2224c9ff17e29cfbb3152a16f005f2efe0fee55b4",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/125.json",
       "body_path": "data/buttondown/bodies/125.md",
       "archive_path": "site/archive/125.md"
@@ -1383,7 +1383,7 @@
       "subject": "Weekly Thing #126 / Nov 16, 2019",
       "publish_date": "2019-11-16T13:00:17Z",
       "source_hash": "cf4bcb39104d0e805ba1c35e83da912172324a614bdfd24a53fe4d84cfaa7e65",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/126.json",
       "body_path": "data/buttondown/bodies/126.md",
       "archive_path": "site/archive/126.md"
@@ -1393,8 +1393,8 @@
       "id": "em_7kwae08rs79sf9s4gv362vp7w8",
       "subject": "Weekly Thing #127 / Nov 23, 2019",
       "publish_date": "2019-11-23T13:00:47Z",
-      "source_hash": "90bd87bb31c2625b28a98fa631aa5de0de86e0cc685f4a7f5d4c57611738de60",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "c6bf8a4f507938392e71f620a58f56bb1e98f0f0d93c08763e170fb97d63e3bc",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/127.json",
       "body_path": "data/buttondown/bodies/127.md",
       "archive_path": "site/archive/127.md"
@@ -1404,8 +1404,8 @@
       "id": "em_4gzzx5jvea94xamsmaesnax3jm",
       "subject": "Weekly Thing #128 / Nov 30, 2019",
       "publish_date": "2019-11-30T13:00:04Z",
-      "source_hash": "13ae43ad60a888507ed9d0c70de93ee245b8754d19919cf57721626c52d71ac2",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "c70fb552fbbcf7dc7d47b5c4511982998e89cf56d4a18e7ffe621696a320e6df",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/128.json",
       "body_path": "data/buttondown/bodies/128.md",
       "archive_path": "site/archive/128.md"
@@ -1415,8 +1415,8 @@
       "id": "em_6px212gppf8d1a8gxxkj94sgvm",
       "subject": "Weekly Thing #129 / Dec 7, 2019",
       "publish_date": "2019-12-07T13:00:10Z",
-      "source_hash": "04fd60d8612c3cd75f6ea7a1a9e2caf922b70b73ecde4a17229e89461252474a",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "2d3a81b016f97b3dc9e6501cd306d2621b5cd7ffb38c026e3c3bf8586549f8cd",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/129.json",
       "body_path": "data/buttondown/bodies/129.md",
       "archive_path": "site/archive/129.md"
@@ -1427,7 +1427,7 @@
       "subject": "Weekly Thing #130 / Dec 14, 2019",
       "publish_date": "2019-12-14T13:00:51Z",
       "source_hash": "a8796f94ba74eb66e4f70afe945ab20c5b8656fd2783e4e251856a9bba0a6bcf",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/130.json",
       "body_path": "data/buttondown/bodies/130.md",
       "archive_path": "site/archive/130.md"
@@ -1438,7 +1438,7 @@
       "subject": "Weekly Thing #131 / GoatCounter, Hobbies, AR, Leadership, Ring",
       "publish_date": "2020-01-18T13:00:00Z",
       "source_hash": "9ec2bdd26bc3f6ecc8b03486ac2afdf6a517962e02d45bd19b3277a1d98d1873",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/131.json",
       "body_path": "data/buttondown/bodies/131.md",
       "archive_path": "site/archive/131.md"
@@ -1449,7 +1449,7 @@
       "subject": "Weekly Thing #132 / Backdoors, Espresso, Technical Debt, Coaching, Studio Ghibli",
       "publish_date": "2020-01-25T13:00:00Z",
       "source_hash": "6f8168ecd44c5bb017651be79eb83567d2afda383b07eea7fc06b0e12eaa92ee",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/132.json",
       "body_path": "data/buttondown/bodies/132.md",
       "archive_path": "site/archive/132.md"
@@ -1460,7 +1460,7 @@
       "subject": "Weekly Thing #133 / Clayton Christensen, iPad at 10, Ukraine, Nintendo Switch, Apple Map Expansion",
       "publish_date": "2020-02-01T13:00:00Z",
       "source_hash": "fd3ce1e28aa5137956f986570bf867f644b96fef070e059f0875f19507a73909",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/133.json",
       "body_path": "data/buttondown/bodies/133.md",
       "archive_path": "site/archive/133.md"
@@ -1470,8 +1470,8 @@
       "id": "em_31jy9xr7d18jt9d3whsy3jfpf3",
       "subject": "Weekly Thing #134 / Platform & Product, Corporate Athlete, Mindfulness",
       "publish_date": "2020-02-08T13:00:00Z",
-      "source_hash": "b18e9b02e543c17a42a9810059dbe77aa4ca485899892bec9102952bc29bf44a",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "c99bc3e50c69237bc1adc2b79a15fd5d82b2a33235675a4079fd7f4df6f2e2ea",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/134.json",
       "body_path": "data/buttondown/bodies/134.md",
       "archive_path": "site/archive/134.md"
@@ -1482,7 +1482,7 @@
       "subject": "Weekly Thing #135 / Spy Emails, Engineering Strategy, True Fans",
       "publish_date": "2020-02-15T13:00:00Z",
       "source_hash": "14ef30896caa41b36b9b4e1bd47bfc1d05837487e62223083b4e76f9df76a7dd",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/135.json",
       "body_path": "data/buttondown/bodies/135.md",
       "archive_path": "site/archive/135.md"
@@ -1493,7 +1493,7 @@
       "subject": "Weekly Thing #136 / Wikipedia, Side Quest, Latency, Signal",
       "publish_date": "2020-02-22T13:00:00Z",
       "source_hash": "5f5bfdb2cee482b85e8f8eda29418d0751d527bbcf9905145720be987faac3fe",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/136.json",
       "body_path": "data/buttondown/bodies/136.md",
       "archive_path": "site/archive/136.md"
@@ -1504,7 +1504,7 @@
       "subject": "Weekly Thing #137 / Let's Encrypt, Fraidycat, Metagame, Real-Flame what?",
       "publish_date": "2020-02-29T13:00:00Z",
       "source_hash": "a4c608c54e76de2518cd4e58ac44bc544430255a2c9829cb526b6b8968f69612",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/137.json",
       "body_path": "data/buttondown/bodies/137.md",
       "archive_path": "site/archive/137.md"
@@ -1515,7 +1515,7 @@
       "subject": "Weekly Thing #138 / Covid-19, Credibility, Clearview AI, Hair Freezing",
       "publish_date": "2020-03-07T13:00:00Z",
       "source_hash": "359d730fef071fabd32051b7c91cbd5cc57bc11394afbfe33569f1be60ee0b18",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/138.json",
       "body_path": "data/buttondown/bodies/138.md",
       "archive_path": "site/archive/138.md"
@@ -1526,7 +1526,7 @@
       "subject": "Weekly Thing #139 / Control, Energy",
       "publish_date": "2020-03-14T12:00:00Z",
       "source_hash": "9b2fab6b0d0da56d160125a54d62bc3b4774eb5dae856944fab894a9bed6ab44",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/139.json",
       "body_path": "data/buttondown/bodies/139.md",
       "archive_path": "site/archive/139.md"
@@ -1537,7 +1537,7 @@
       "subject": "Weekly Thing #140 / Conversations, Leadership, Remote, iPad",
       "publish_date": "2020-03-21T12:00:00Z",
       "source_hash": "d70832828aa60d91bfa26b24b29e45c70ff0540440f9ab77f5b34bd072f2e838",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/140.json",
       "body_path": "data/buttondown/bodies/140.md",
       "archive_path": "site/archive/140.md"
@@ -1548,7 +1548,7 @@
       "subject": "Special Thing #140 / Matching Donations to Second Harvest!",
       "publish_date": "2020-03-23T23:00:00Z",
       "source_hash": "e3c9e94babdbe32221658c9fb997a556533752ac19e67f0f910ae3b37c8b7722",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/140-special.json",
       "body_path": "data/buttondown/bodies/140-special.md",
       "archive_path": "site/archive/140-special.md"
@@ -1559,7 +1559,7 @@
       "subject": "Weekly Thing #141 / We provided 147,360 meals for those in need!",
       "publish_date": "2020-03-28T12:00:00Z",
       "source_hash": "a0a074acc462ee85f6731d2d4ce1b38133e61ee26a68f27ad5a51fa2ccc159a1",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/141.json",
       "body_path": "data/buttondown/bodies/141.md",
       "archive_path": "site/archive/141.md"
@@ -1569,8 +1569,8 @@
       "id": "em_6006myhqgn9s4bbjtzjqe8se6m",
       "subject": "Weekly Thing #142 / Signaling, Zoom, Bill Gates, Decision Journal",
       "publish_date": "2020-04-04T12:00:00Z",
-      "source_hash": "21452984edfb056f68f35e8f14a58a6a47d1086f6719a0654d19f8f4205aeb79",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "65386b0eabfc1f3268785eaace940008ec6db3087dfb18a26a0f11f485cc5a5e",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/142.json",
       "body_path": "data/buttondown/bodies/142.md",
       "archive_path": "site/archive/142.md"
@@ -1581,7 +1581,7 @@
       "subject": "Weekly Thing #143 / Archetypes, Wear a Mask, Zoom",
       "publish_date": "2020-04-11T12:00:00Z",
       "source_hash": "c41005fb0e6b22a6c8d6319957936a582fcbde73c11e6982c3888a1ba8ca0c07",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/143.json",
       "body_path": "data/buttondown/bodies/143.md",
       "archive_path": "site/archive/143.md"
@@ -1592,7 +1592,7 @@
       "subject": "Weekly Thing #144 / Contact Tracing, Stockdale Paradox, John Prine, Goat 2 Meeting",
       "publish_date": "2020-04-18T12:00:00Z",
       "source_hash": "a1777d8497e48173e36b9f0a5b63627494e771970cb1c603d251588a1dfb69a1",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/144.json",
       "body_path": "data/buttondown/bodies/144.md",
       "archive_path": "site/archive/144.md"
@@ -1603,7 +1603,7 @@
       "subject": "Weekly Thing #145 / Permanent, Coronavirus, Zoom Fatigue",
       "publish_date": "2020-04-25T12:00:00Z",
       "source_hash": "e56823f43ffe155f10a30c56e6dbfb6a08c64acc3cbd61ca93d031bc066b175c",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/145.json",
       "body_path": "data/buttondown/bodies/145.md",
       "archive_path": "site/archive/145.md"
@@ -1614,7 +1614,7 @@
       "subject": "Weekly Thing #146 / Stoics, Lockdown, MnTech, Learning a Language",
       "publish_date": "2020-05-02T12:00:00Z",
       "source_hash": "ae531f7245710e38ad445d089d3c6bcd0bd0b08d537ecbc3046a5a948ec55c19",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/146.json",
       "body_path": "data/buttondown/bodies/146.md",
       "archive_path": "site/archive/146.md"
@@ -1624,8 +1624,8 @@
       "id": "em_30p5pj9p8h8fvbbd8bvmdds0bx",
       "subject": "Weekly Thing #147 / Do The Work, Good Writing, Bye Amazon",
       "publish_date": "2020-05-09T12:00:00Z",
-      "source_hash": "5f4e9ae74c9ffab94f6f828fef7b882770145b5f39146f21a3034f8a686808b9",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "c0dab65b46b3ca963a36bc80cf4d45c2bc90924ddb6b406ccbafccf93b21645e",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/147.json",
       "body_path": "data/buttondown/bodies/147.md",
       "archive_path": "site/archive/147.md"
@@ -1636,7 +1636,7 @@
       "subject": "Weekly Thing #148 / What Day Is It?, Written Communication, Lisp",
       "publish_date": "2020-05-16T12:00:00Z",
       "source_hash": "30bbad6a4eb25b5b18ef74ca3e002f8402c65e8b6eaa4432c9620936a6ebd0e8",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/148.json",
       "body_path": "data/buttondown/bodies/148.md",
       "archive_path": "site/archive/148.md"
@@ -1647,7 +1647,7 @@
       "subject": "Weekly Thing #149 / RSS, Blogs, Giphy, Flour",
       "publish_date": "2020-05-23T12:00:00Z",
       "source_hash": "13ff7553fe6dee15507664426dac28f25be594bfade56e83d97ff5eb8e1ed46a",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/149.json",
       "body_path": "data/buttondown/bodies/149.md",
       "archive_path": "site/archive/149.md"
@@ -1657,8 +1657,8 @@
       "id": "em_2d78d6dvd58538nxycejarg074",
       "subject": "Weekly Thing #150 / Speed, Insane Videoconferencing, OmniFocus, LaTeX",
       "publish_date": "2020-05-30T12:00:00Z",
-      "source_hash": "6f70911a422afa0760846978a4a0c98fc1d3d75ce2e99cd37a263e110274e87f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "c02c2ea377f76587e068f9b02565ab4808e054258b5ad9c81d8b76ad1b3d0233",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/150.json",
       "body_path": "data/buttondown/bodies/150.md",
       "archive_path": "site/archive/150.md"
@@ -1669,7 +1669,7 @@
       "subject": "Weekly Thing #151 / George Floyd, I Can’t Breathe, Black Lives Matter",
       "publish_date": "2020-06-06T12:00:00Z",
       "source_hash": "fb548a676d42fb774880fecb8e4300082eb18eec00e8eac626721c2e594b2b55",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/151.json",
       "body_path": "data/buttondown/bodies/151.md",
       "archive_path": "site/archive/151.md"
@@ -1680,7 +1680,7 @@
       "subject": "Weekly Thing #152 / Juneteenth, Uncomfortable Conversations, Facebook",
       "publish_date": "2020-06-13T12:00:00Z",
       "source_hash": "df1931b4d51fb3005b63e65da17e3374bac7ad107c96bb522634af848ed6ce4b",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/152.json",
       "body_path": "data/buttondown/bodies/152.md",
       "archive_path": "site/archive/152.md"
@@ -1691,7 +1691,7 @@
       "subject": "Weekly Thing #153 / Values Oasis, Bison, Masks",
       "publish_date": "2020-06-20T12:00:00Z",
       "source_hash": "7c6ebf292d715892c6ccba1a457c020c908267f94e13b1f3c921268df0baa55c",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/153.json",
       "body_path": "data/buttondown/bodies/153.md",
       "archive_path": "site/archive/153.md"
@@ -1702,7 +1702,7 @@
       "subject": "Weekly Thing #154 / Giving Feedback, Apple WWDC, Anti-Encryption",
       "publish_date": "2020-06-27T12:00:00Z",
       "source_hash": "76e72285384260c0138c90c43490d0fdc05a81d21820a43c6ae714722c1c1812",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/154.json",
       "body_path": "data/buttondown/bodies/154.md",
       "archive_path": "site/archive/154.md"
@@ -1713,7 +1713,7 @@
       "subject": "Weekly Thing #155 / Menu Engineers, Halo, RFC8890",
       "publish_date": "2020-09-05T12:00:00Z",
       "source_hash": "69e05f1229e1fe67c7e59a1f413bd1ec145ed8c93c7dabdd40ce693c26cbc5cd",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/155.json",
       "body_path": "data/buttondown/bodies/155.md",
       "archive_path": "site/archive/155.md"
@@ -1724,7 +1724,7 @@
       "subject": "Weekly Thing #156 / Identity, AI, Peloton, UPSERT",
       "publish_date": "2020-09-12T12:00:00Z",
       "source_hash": "5527eac15162c8f385c023e3197b5c39ace59f3cb4e3380b75e0fcc54097a1aa",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/156.json",
       "body_path": "data/buttondown/bodies/156.md",
       "archive_path": "site/archive/156.md"
@@ -1735,7 +1735,7 @@
       "subject": "Weekly Thing #157 / Superpower, Dune, Three Year Rule",
       "publish_date": "2020-09-19T12:00:00Z",
       "source_hash": "7bfe2f2bc51e894884ffe843c51ab92763921c422619491f8e92947565c478fd",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/157.json",
       "body_path": "data/buttondown/bodies/157.md",
       "archive_path": "site/archive/157.md"
@@ -1746,7 +1746,7 @@
       "subject": "Weekly Thing #158 / Blacklight, Whistleblower, Fly Fishing",
       "publish_date": "2020-09-26T12:00:00Z",
       "source_hash": "095abe3e22ea7b4eff923b192d0aa307b1f9988747ede03f53cb917b7a74a6b1",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/158.json",
       "body_path": "data/buttondown/bodies/158.md",
       "archive_path": "site/archive/158.md"
@@ -1756,8 +1756,8 @@
       "id": "em_6bja6ef9bp9m2ajed035cc70am",
       "subject": "Weekly Thing #159 / 911 Outage, Small Tech, Workflows",
       "publish_date": "2020-10-03T12:00:00Z",
-      "source_hash": "4e736950e1df2386383efd602a6e89c29e87f20041cc5797cfd9db05075ffe95",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "bfb5712bfa48899c0d3a404c5aa559cce09bccb8835cfbcada004ecb5fe98a73",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/159.json",
       "body_path": "data/buttondown/bodies/159.md",
       "archive_path": "site/archive/159.md"
@@ -1768,7 +1768,7 @@
       "subject": "Weekly Thing #160 / Unlived Life, Disinformation, Snowflake ❄️",
       "publish_date": "2020-10-10T12:00:00Z",
       "source_hash": "761fa19fd2517cecbd3606f6f4c48fe4fa3ac080419f91d559ef9f5bea2b37ee",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/160.json",
       "body_path": "data/buttondown/bodies/160.md",
       "archive_path": "site/archive/160.md"
@@ -1778,8 +1778,8 @@
       "id": "em_07tmjfmd4a86z9vn98phsbnhsj",
       "subject": "Weekly Thing #161 / Letter, Asterisk, You Should Write ✍️",
       "publish_date": "2020-10-18T12:00:00Z",
-      "source_hash": "59703141505d3acf531ecef2360b8ff111bfe39abf8789e881aba48982c2b0b3",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "446416f88f42009a16dde463522bb3c42509007661625e7f4cfa32651a5a81cf",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/161.json",
       "body_path": "data/buttondown/bodies/161.md",
       "archive_path": "site/archive/161.md"
@@ -1789,8 +1789,8 @@
       "id": "em_22b5yjnyc781hsk8zqvfpagc4g",
       "subject": "Weekly Thing #162 / iPhone 12, Lidar, Quibi",
       "publish_date": "2020-10-24T12:00:00Z",
-      "source_hash": "8abda619761e825c4705da76fda6ff4f952cb6a0e1848ab6d0500be889d35da2",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "84c8a8b342fce95d4f097abbb2bcc608ed8f0b6a967bd8c567454f052a50a469",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/162.json",
       "body_path": "data/buttondown/bodies/162.md",
       "archive_path": "site/archive/162.md"
@@ -1800,8 +1800,8 @@
       "id": "em_2qk0wr0ctf881rgnmnw5jb1qj7",
       "subject": "Weekly Thing #163 / BeOS, Management Track, Writing is Thinking",
       "publish_date": "2020-10-31T13:00:00Z",
-      "source_hash": "81eddcce151fb1fbda1d2dcc639dc2b4fa5f9b544f5b60c15c6c82cff0082468",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "3fff1425c8ada06af21be5ba6cfee154e25afba84258dea366972a16623c0834",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/163.json",
       "body_path": "data/buttondown/bodies/163.md",
       "archive_path": "site/archive/163.md"
@@ -1812,7 +1812,7 @@
       "subject": "Weekly Thing #164 / Raspberry Pi 400, Time Blocking, Platform",
       "publish_date": "2020-11-07T13:00:00Z",
       "source_hash": "76155866a609e09768a84744bfbfa96af6f8b78a127f4162d897a7af7bb5dcaa",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/164.json",
       "body_path": "data/buttondown/bodies/164.md",
       "archive_path": "site/archive/164.md"
@@ -1823,7 +1823,7 @@
       "subject": "Weekly Thing #165 / Sessions, Friluftsliv, Everlong",
       "publish_date": "2020-11-14T13:00:00Z",
       "source_hash": "90c64590064f4377fd4b22d61f93d4183ac472a527c8a0b8c47ce54d6ae9750b",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/165.json",
       "body_path": "data/buttondown/bodies/165.md",
       "archive_path": "site/archive/165.md"
@@ -1834,7 +1834,7 @@
       "subject": "Weekly Thing #166 / Chess, Disruption, M1 Macs, Five Hindrances",
       "publish_date": "2020-11-21T13:00:00Z",
       "source_hash": "dff7398271e22ac59338d7d8d494a0522c72ab0ea0a20cdc2c18d87c4c909dc0",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/166.json",
       "body_path": "data/buttondown/bodies/166.md",
       "archive_path": "site/archive/166.md"
@@ -1845,7 +1845,7 @@
       "subject": "Weekly Thing #167 / Production Oriented Development, Fathom",
       "publish_date": "2020-11-29T13:00:00Z",
       "source_hash": "a1993678d8ff7b26dea17a0f6ac1738a409d11d8b542ea460fcedf329f4cf060",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/167.json",
       "body_path": "data/buttondown/bodies/167.md",
       "archive_path": "site/archive/167.md"
@@ -1856,7 +1856,7 @@
       "subject": "Weekly Thing #168 / Buy Gifts, Gratitude, DeepMind",
       "publish_date": "2020-12-05T13:00:00Z",
       "source_hash": "b7a3da9229b33db4af84c164f544f8db6906ce887d2ebcb110de05ce2c0e2b13",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/168.json",
       "body_path": "data/buttondown/bodies/168.md",
       "archive_path": "site/archive/168.md"
@@ -1867,7 +1867,7 @@
       "subject": "Weekly Thing #169 / Ted Lasso, Think for Yourself, Range",
       "publish_date": "2020-12-12T13:00:00Z",
       "source_hash": "14d227391c1476eb81e2b08b8612feb6bfd302ecebe6f4a3f011efe34766cdc4",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/169.json",
       "body_path": "data/buttondown/bodies/169.md",
       "archive_path": "site/archive/169.md"
@@ -1878,7 +1878,7 @@
       "subject": "Weekly Thing #170 / MeetingBar, Platforms, Wikipedia",
       "publish_date": "2021-01-23T13:00:00Z",
       "source_hash": "c0b3cc9f615bdba35f87cae150103eef875e755f937463774ffc5833ffdfc72b",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/170.json",
       "body_path": "data/buttondown/bodies/170.md",
       "archive_path": "site/archive/170.md"
@@ -1889,7 +1889,7 @@
       "subject": "Weekly Thing #171 / Earthrise, Firecracker, Rivian",
       "publish_date": "2021-01-30T13:00:00Z",
       "source_hash": "9ce08195989f1df7b1cb967e4b8299795680ce91d9783c2b91aa323aa28e9ff7",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/171.json",
       "body_path": "data/buttondown/bodies/171.md",
       "archive_path": "site/archive/171.md"
@@ -1900,7 +1900,7 @@
       "subject": "Weekly Thing #172 / Blockchain, Bezos, Privacy",
       "publish_date": "2021-02-06T13:00:00Z",
       "source_hash": "491770e92b37716b2cbfee43f634edd4dba30929c0064191280137694ce44e75",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/172.json",
       "body_path": "data/buttondown/bodies/172.md",
       "archive_path": "site/archive/172.md"
@@ -1911,7 +1911,7 @@
       "subject": "Weekly Thing #173 / Minot, Unicorn, Bunch",
       "publish_date": "2021-02-13T16:55:35.260587Z",
       "source_hash": "e15c98c66e928f9a83774ffaa8d29b3dd0a8476fab7e79befd60b5e633f1bd07",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/173.json",
       "body_path": "data/buttondown/bodies/173.md",
       "archive_path": "site/archive/173.md"
@@ -1922,7 +1922,7 @@
       "subject": "Weekly Thing #174 / Responsively, Underline, Skittish",
       "publish_date": "2021-02-20T13:00:00Z",
       "source_hash": "1c174cafae4722639b59ff0539abd7dcdb62c06e0c6ca65a90076ef9ee51ade5",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/174.json",
       "body_path": "data/buttondown/bodies/174.md",
       "archive_path": "site/archive/174.md"
@@ -1933,7 +1933,7 @@
       "subject": "Weekly Thing #175 / Crontab, Fry's, Daft Punk",
       "publish_date": "2021-02-27T13:00:00Z",
       "source_hash": "9c19509c8608b98f43d2fe7c69fe2e81316f521e4791aba0024cc1b0881fc053",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/175.json",
       "body_path": "data/buttondown/bodies/175.md",
       "archive_path": "site/archive/175.md"
@@ -1944,7 +1944,7 @@
       "subject": "Weekly Thing #176 / Brave Search, Speed, Finger.Farm",
       "publish_date": "2021-03-07T13:00:00Z",
       "source_hash": "87a6698684275c65d660213a026256525c9076180de1950124eee006086fe3a1",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/176.json",
       "body_path": "data/buttondown/bodies/176.md",
       "archive_path": "site/archive/176.md"
@@ -1955,7 +1955,7 @@
       "subject": "Weekly Thing #177 / NFTs, Roblox, HEY World, Exchange",
       "publish_date": "2021-03-13T13:00:00Z",
       "source_hash": "1a3f119fb287bf84af2c914aa273479cb4cc7067c67635ac8638a69dbdbea35d",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/177.json",
       "body_path": "data/buttondown/bodies/177.md",
       "archive_path": "site/archive/177.md"
@@ -1966,7 +1966,7 @@
       "subject": "Weekly Thing #178 / Reverse Meetings, OODA Loop, Hockey Goalies",
       "publish_date": "2021-03-21T12:00:00Z",
       "source_hash": "36e775e95a4410ce141e720f28da65a97a8e53b8534e05bf0f07a7364dbb4f8a",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/178.json",
       "body_path": "data/buttondown/bodies/178.md",
       "archive_path": "site/archive/178.md"
@@ -1977,7 +1977,7 @@
       "subject": "Weekly Thing #179 / Nemawashi, Transformation, Geldingadalur",
       "publish_date": "2021-03-27T12:00:00Z",
       "source_hash": "6b16538d719c915104e30433e5a6620a9152f629f20a8c072276ad51ce696955",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/179.json",
       "body_path": "data/buttondown/bodies/179.md",
       "archive_path": "site/archive/179.md"
@@ -1988,7 +1988,7 @@
       "subject": "Weekly Thing #180 / Tetris, Ever Given, Backstory",
       "publish_date": "2021-04-03T12:00:00Z",
       "source_hash": "dff1a9c738a1c804622dbf78205160d3e998efd358c62eb5626b21e0e62ab034",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/180.json",
       "body_path": "data/buttondown/bodies/180.md",
       "archive_path": "site/archive/180.md"
@@ -1999,7 +1999,7 @@
       "subject": "Weekly Thing #181 / Grit, Collectible, Crypto",
       "publish_date": "2021-04-10T12:00:00Z",
       "source_hash": "21669698c663bac812705ae0a02e4735095a5d673168ebc4fbf2479507a6d0a2",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/181.json",
       "body_path": "data/buttondown/bodies/181.md",
       "archive_path": "site/archive/181.md"
@@ -2010,7 +2010,7 @@
       "subject": "Weekly Thing #182 / Technical Debt, Identity, Neeva",
       "publish_date": "2021-04-17T12:00:00Z",
       "source_hash": "9295dbe4c7d0263fdb9d730c5f295217e26a921fad9a91d09b115b193d1d605b",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/182.json",
       "body_path": "data/buttondown/bodies/182.md",
       "archive_path": "site/archive/182.md"
@@ -2021,7 +2021,7 @@
       "subject": "Weekly Thing #183 / Visidata, FTP, Amazon",
       "publish_date": "2021-04-24T12:00:00Z",
       "source_hash": "ff094b50580bbdabb245bd1adbf096e2f226b4ae1f9058504d06e81f445279cd",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/183.json",
       "body_path": "data/buttondown/bodies/183.md",
       "archive_path": "site/archive/183.md"
@@ -2032,7 +2032,7 @@
       "subject": "Weekly Thing #184 / UML, Vizy, Markdown",
       "publish_date": "2021-05-01T13:00:52.183489Z",
       "source_hash": "cd66b92c8165a17e34435b2d620f9efe1df288f71264296d9e306cd113a623ca",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/184.json",
       "body_path": "data/buttondown/bodies/184.md",
       "archive_path": "site/archive/184.md"
@@ -2042,8 +2042,8 @@
       "id": "em_7ap9rd8y768n6a0h5ab2cvmqzc",
       "subject": "Weekly Thing #185 / Signal, Peloton, Meebits",
       "publish_date": "2021-05-08T12:00:00Z",
-      "source_hash": "15d323f4d209b50c9b3ee141a4d6771806233a00b00ee5681d9b2bbd61646efe",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "50141cb9f1a3d7408d554a464ce5587ede8aad1224a0380c56c1ac145b55ae03",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/185.json",
       "body_path": "data/buttondown/bodies/185.md",
       "archive_path": "site/archive/185.md"
@@ -2054,7 +2054,7 @@
       "subject": "Weekly Thing #186 / Blockchain, Pairing, Sharding",
       "publish_date": "2021-05-15T12:00:00Z",
       "source_hash": "04798ccf4d2a77fcef547fdb7f77089063e1751892ec693e2bf62912e655f81e",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/186.json",
       "body_path": "data/buttondown/bodies/186.md",
       "archive_path": "site/archive/186.md"
@@ -2065,7 +2065,7 @@
       "subject": "Weekly Thing #187 / AirTags, M1 iPad Pro, Flamingo",
       "publish_date": "2021-05-22T12:00:00Z",
       "source_hash": "479d4a888baaa0a14c23028a2fedccdede9956c5383d64106cf853dc59c6f7a1",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/187.json",
       "body_path": "data/buttondown/bodies/187.md",
       "archive_path": "site/archive/187.md"
@@ -2076,7 +2076,7 @@
       "subject": "Weekly Thing #188 / Ethereum, Emulator, Ephemerality",
       "publish_date": "2021-05-29T12:00:00Z",
       "source_hash": "a79da57929e56ea736d685162ebf1d41bf80c8f409cd93ced8ffae95f232cade",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/188.json",
       "body_path": "data/buttondown/bodies/188.md",
       "archive_path": "site/archive/188.md"
@@ -2087,7 +2087,7 @@
       "subject": "Weekly Thing #189 / TiddlyWiki, JsonLogic, Smiling",
       "publish_date": "2021-06-05T12:00:00Z",
       "source_hash": "9250be9196405ef8ea67f9adf8efa317d5e4ff4f40d489079c828a1353c184b2",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/189.json",
       "body_path": "data/buttondown/bodies/189.md",
       "archive_path": "site/archive/189.md"
@@ -2098,7 +2098,7 @@
       "subject": "Weekly Thing #190 / WWDC, Passport, Roll",
       "publish_date": "2021-06-12T12:00:00Z",
       "source_hash": "1701bda459fb813f0cc2c6866424abc9ba64ea5e7776280445e31fe9c102c70d",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/190.json",
       "body_path": "data/buttondown/bodies/190.md",
       "archive_path": "site/archive/190.md"
@@ -2109,7 +2109,7 @@
       "subject": "Weekly Thing #191 / Decentralizing, Coffee, Future",
       "publish_date": "2021-06-19T13:06:01.794696Z",
       "source_hash": "dd9dd26b3d150159ca23714b4550824004862df3bdc1e9c98c807ede2f64b44d",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/191.json",
       "body_path": "data/buttondown/bodies/191.md",
       "archive_path": "site/archive/191.md"
@@ -2120,7 +2120,7 @@
       "subject": "Weekly Thing #192 / Endemic, Solidify, Zsync",
       "publish_date": "2021-06-26T12:00:00Z",
       "source_hash": "8fdea57fe466a60ff862b0225fa14d65cca1d90b89dcd7001fac736b6615dabb",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/192.json",
       "body_path": "data/buttondown/bodies/192.md",
       "archive_path": "site/archive/192.md"
@@ -2131,7 +2131,7 @@
       "subject": "Weekly Thing #193 / POAPs, DAOs, NFTs",
       "publish_date": "2021-09-04T12:00:00Z",
       "source_hash": "0e00715d097efb1d705706765b60e0e48e808dc8f33b40b9e987f4d493f64564",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/193.json",
       "body_path": "data/buttondown/bodies/193.md",
       "archive_path": "site/archive/193.md"
@@ -2142,7 +2142,7 @@
       "subject": "Weekly Thing #194 / Writing, Playdate, OpenMoji",
       "publish_date": "2021-09-11T12:00:00Z",
       "source_hash": "92b06bb18a4b09025ca06465386fafb394336cce7a56b99e41c78d7eeeba05eb",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/194.json",
       "body_path": "data/buttondown/bodies/194.md",
       "archive_path": "site/archive/194.md"
@@ -2153,7 +2153,7 @@
       "subject": "Weekly Thing #195 / Privacy, Loot, Minus",
       "publish_date": "2021-09-18T21:26:54.597314Z",
       "source_hash": "4701d2e38323c213dd00fbee67f4f1cb59fb2eff9ff1814bf20ce9b12d00436d",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/195.json",
       "body_path": "data/buttondown/bodies/195.md",
       "archive_path": "site/archive/195.md"
@@ -2164,7 +2164,7 @@
       "subject": "Weekly Thing #196 / iPhone 13, iOS 15, watchOS 8",
       "publish_date": "2021-09-25T12:00:00Z",
       "source_hash": "08f8b3a910bc1afb356fccae6ad474f7b2301cfabec0bb453be5b16945a9259e",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/196.json",
       "body_path": "data/buttondown/bodies/196.md",
       "archive_path": "site/archive/196.md"
@@ -2175,7 +2175,7 @@
       "subject": "Weekly Thing #197 / Cloudflare, Bunches, Float",
       "publish_date": "2021-10-02T12:00:00Z",
       "source_hash": "f5811b2c87bad55139215a37f2b6ea681220c07dcbe0319d6dbddcf834501dbd",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/197.json",
       "body_path": "data/buttondown/bodies/197.md",
       "archive_path": "site/archive/197.md"
@@ -2186,7 +2186,7 @@
       "subject": "Weekly Thing #198 / Facebook, News, Kyiv",
       "publish_date": "2021-10-09T12:00:00Z",
       "source_hash": "f808bf5e6eb28de0753df89e359188382e9c65083f91633ea4aaab417c000714",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/198.json",
       "body_path": "data/buttondown/bodies/198.md",
       "archive_path": "site/archive/198.md"
@@ -2197,7 +2197,7 @@
       "subject": "Weekly Thing #199 / Revolutions, Dopamine, Reconsolidation",
       "publish_date": "2021-10-16T12:00:00Z",
       "source_hash": "e566d0657083db9829209df2dd3665d0f3b5e161cd1d045cf3f6b3443400c22f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/199.json",
       "body_path": "data/buttondown/bodies/199.md",
       "archive_path": "site/archive/199.md"
@@ -2208,7 +2208,7 @@
       "subject": "Weekly Thing #200 / Developers, Org Design, Types",
       "publish_date": "2021-10-23T12:00:00Z",
       "source_hash": "84cd5c19f25895e77d1ebca8b746cac9669b03b73a714b365cf4c6a1ac9da165",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/200.json",
       "body_path": "data/buttondown/bodies/200.md",
       "archive_path": "site/archive/200.md"
@@ -2219,7 +2219,7 @@
       "subject": "Weekly Thing #201 / Collecting, Smart, Stupid",
       "publish_date": "2021-10-30T13:16:16.080584Z",
       "source_hash": "dfdbd6a87e5a669b083b9602544142a8fbb45edd058002fb1fd85e79b16fea5f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/201.json",
       "body_path": "data/buttondown/bodies/201.md",
       "archive_path": "site/archive/201.md"
@@ -2229,8 +2229,8 @@
       "id": "em_6evv79zvw59b6aw88e7qkahs8q",
       "subject": "Weekly Thing #202 / Goalies, Curves, Spiders",
       "publish_date": "2021-11-06T11:55:59.533919Z",
-      "source_hash": "5b4eecaed067eb28d698c7e3dd98546fad1caf00804b23e199f8231b99bf9472",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "d3e62022a4d5a57941b45347b4b4a0f19d316ff6bdb44063a34948f576b6611f",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/202.json",
       "body_path": "data/buttondown/bodies/202.md",
       "archive_path": "site/archive/202.md"
@@ -2240,8 +2240,8 @@
       "id": "em_2j2ayekf199x7s5q9fwazwdad6",
       "subject": "Weekly Thing #203 / Discord, Family, Names",
       "publish_date": "2021-11-13T13:40:57.439061Z",
-      "source_hash": "5a39581f6907f2077e2898aad93ee0636459f70bdc13fd70c56556177a3647ab",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "ab2b0965fa79e759601332a4b91f159e660764972db796adc24588bd9ddb5c35",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/203.json",
       "body_path": "data/buttondown/bodies/203.md",
       "archive_path": "site/archive/203.md"
@@ -2252,7 +2252,7 @@
       "subject": "Weekly Thing #204 / Containers, Constitution, Cancel",
       "publish_date": "2021-11-20T13:24:44.617115Z",
       "source_hash": "69ae09305f5aecaa78ebbe53eba094b23fe8b249e3a4d519f213481e8124b741",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/204.json",
       "body_path": "data/buttondown/bodies/204.md",
       "archive_path": "site/archive/204.md"
@@ -2263,7 +2263,7 @@
       "subject": "Weekly Thing #205 / Hurl, Faster, Web3",
       "publish_date": "2021-11-27T13:00:00Z",
       "source_hash": "12813e71e410a24a64b99974c981db4df59e45849e5e349818cc6026f2c4d857",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/205.json",
       "body_path": "data/buttondown/bodies/205.md",
       "archive_path": "site/archive/205.md"
@@ -2274,7 +2274,7 @@
       "subject": "Weekly Thing #206 / Omicron, Overengineering, Endaoment",
       "publish_date": "2021-12-04T13:00:00Z",
       "source_hash": "a28503ae53badf1382f4067d4a2754907a953a4787a9bb406d4d27e757f462df",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/206.json",
       "body_path": "data/buttondown/bodies/206.md",
       "archive_path": "site/archive/206.md"
@@ -2285,7 +2285,7 @@
       "subject": "Weekly Thing #207 / Architecture, Contrarian, Storytelling",
       "publish_date": "2021-12-11T13:10:58.996452Z",
       "source_hash": "b451cf4b2368ecde292b2abb5b3b0a9649b68204d5a4d014631a3f886f7aba31",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/207.json",
       "body_path": "data/buttondown/bodies/207.md",
       "archive_path": "site/archive/207.md"
@@ -2296,7 +2296,7 @@
       "subject": "Weekly Thing #208 / GPS, Intel, Omicron",
       "publish_date": "2022-01-22T13:00:00Z",
       "source_hash": "14410dd87ef92efa3eaeda353b513a96241da1a02d69087db5243ea89b4a3d9e",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/208.json",
       "body_path": "data/buttondown/bodies/208.md",
       "archive_path": "site/archive/208.md"
@@ -2307,7 +2307,7 @@
       "subject": "Weekly Thing #209 / PGP, Soulbound, Mosey",
       "publish_date": "2022-01-29T13:00:00Z",
       "source_hash": "64f56dcaa15c933c0d1e435752f21d54e054f6aec4d12478d1a3416420c38589",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/209.json",
       "body_path": "data/buttondown/bodies/209.md",
       "archive_path": "site/archive/209.md"
@@ -2318,7 +2318,7 @@
       "subject": "Weekly Thing #210 / Wyoming, WebAssembly, Wordle",
       "publish_date": "2022-02-05T13:00:00Z",
       "source_hash": "0d7c1b5a29166bfb2f68c196be7cde91f768dbd4825266508e22205aac3b9ff6",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/210.json",
       "body_path": "data/buttondown/bodies/210.md",
       "archive_path": "site/archive/210.md"
@@ -2329,7 +2329,7 @@
       "subject": "Weekly Thing #211 / Polar Bears, Delegating, Capes",
       "publish_date": "2022-02-12T13:00:00Z",
       "source_hash": "5ca847b1b549eca2fbba286f8be605d0c5499943c2e29d3f749d22c5d134515b",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/211.json",
       "body_path": "data/buttondown/bodies/211.md",
       "archive_path": "site/archive/211.md"
@@ -2340,7 +2340,7 @@
       "subject": "Weekly Thing #212 / Words, Mermaid, Beats",
       "publish_date": "2022-02-19T20:43:05.052802Z",
       "source_hash": "16cd12fb2b4d13b2fc2c443045a00cefafcc2482212d33ddb7ff7a1670b02090",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/212.json",
       "body_path": "data/buttondown/bodies/212.md",
       "archive_path": "site/archive/212.md"
@@ -2351,7 +2351,7 @@
       "subject": "Weekly Thing #213 / Ukraine",
       "publish_date": "2022-02-26T13:00:00Z",
       "source_hash": "1f964aa1180b9d22d8870efc4b8dd55c119f02aa09a9b1a6721393f975c14a49",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/213.json",
       "body_path": "data/buttondown/bodies/213.md",
       "archive_path": "site/archive/213.md"
@@ -2361,8 +2361,8 @@
       "id": "em_5x6tkzktby85wayd2v0yx6tnhz",
       "subject": "Weekly Thing #214 / Support Ukraine",
       "publish_date": "2022-03-06T13:00:00Z",
-      "source_hash": "28af9ce5b3a0e0982e8e32d045173255237565c626484f49fb72568ed3dddb9f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "6837ee84b788eb4a7aab1663e1bc0d646e8eef6bc6d8601d528c0686c4b065df",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/214.json",
       "body_path": "data/buttondown/bodies/214.md",
       "archive_path": "site/archive/214.md"
@@ -2373,7 +2373,7 @@
       "subject": "Weekly Thing #215 / Queues, Tor, Venting",
       "publish_date": "2022-03-13T12:00:00Z",
       "source_hash": "21062269bca462c3b7db3e07cb34b180a1f475f0fdf9caa2d55e93b624764cb2",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/215.json",
       "body_path": "data/buttondown/bodies/215.md",
       "archive_path": "site/archive/215.md"
@@ -2383,8 +2383,8 @@
       "id": "em_7p9aey5tw69bptxe7tec9xqk49",
       "subject": "Weekly Thing #216 / NFT, DST, PDP",
       "publish_date": "2022-03-20T12:00:00Z",
-      "source_hash": "2be640d6bcc75f1723cd6128df43d6b0148f4767805bb1f1810881a1e75fe861",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "ddf1c4fc8827d98802122d616f27880dadc1a07f9422505063386a128bf70557",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/216.json",
       "body_path": "data/buttondown/bodies/216.md",
       "archive_path": "site/archive/216.md"
@@ -2395,7 +2395,7 @@
       "subject": "Weekly Thing #217 / Ukraine, Coaching, Population",
       "publish_date": "2022-03-27T12:00:00Z",
       "source_hash": "71b19abd8ea0c0f87b3746023693fe3a7f3806c86439fa696bedfce572f0b01b",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/217.json",
       "body_path": "data/buttondown/bodies/217.md",
       "archive_path": "site/archive/217.md"
@@ -2406,7 +2406,7 @@
       "subject": "Weekly Thing #218 / An unscheduled break",
       "publish_date": "2022-04-02T12:00:00Z",
       "source_hash": "af5acc8386cb5dc1039fedf740bed0c0082614553dcf3b1e5832b7697d4d7951",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/218.json",
       "body_path": "data/buttondown/bodies/218.md",
       "archive_path": "site/archive/218.md"
@@ -2417,7 +2417,7 @@
       "subject": "Weekly Thing #219 / Friendships, FloriNouns, Rich Strike",
       "publish_date": "2022-05-14T13:44:25.921412Z",
       "source_hash": "35d6c01f2a306b865e255926fe82af18c7090631b410c0262f4beb1a73852764",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/219.json",
       "body_path": "data/buttondown/bodies/219.md",
       "archive_path": "site/archive/219.md"
@@ -2428,7 +2428,7 @@
       "subject": "Weekly Thing #220 / Ukraine DAO, Nouns, Icebergs",
       "publish_date": "2022-05-21T12:00:00Z",
       "source_hash": "c295e7c791d0360b22d0c69122420377013f1cb9b75a2b53282e489adf955e14",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/220.json",
       "body_path": "data/buttondown/bodies/220.md",
       "archive_path": "site/archive/220.md"
@@ -2439,7 +2439,7 @@
       "subject": "Weekly Thing #221 / Rebooting, Incidents, Risk",
       "publish_date": "2022-05-29T12:51:56.314612Z",
       "source_hash": "4487fbd3a7134853f99a62690702275a7ffa228c0065432b899a1a16003eb0d7",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/221.json",
       "body_path": "data/buttondown/bodies/221.md",
       "archive_path": "site/archive/221.md"
@@ -2450,7 +2450,7 @@
       "subject": "Weekly Thing #222 / Smalltalk, Friendships, Automata",
       "publish_date": "2022-06-05T13:45:54.710507Z",
       "source_hash": "9688aff4b753158e7eff8954600bf41236ad94ccc5fb387eff835515870fecf2",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/222.json",
       "body_path": "data/buttondown/bodies/222.md",
       "archive_path": "site/archive/222.md"
@@ -2461,7 +2461,7 @@
       "subject": "Weekly Thing #223 / Digital Identity, Finding a Mode, WWDC",
       "publish_date": "2022-06-11T13:24:52.312201Z",
       "source_hash": "113deee50bf16c80535d33bfb6cbc503793499e6778ccaf71f4ece6c2471a450",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/223.json",
       "body_path": "data/buttondown/bodies/223.md",
       "archive_path": "site/archive/223.md"
@@ -2472,7 +2472,7 @@
       "subject": "Weekly Thing #224 / Self, Learning, Identity",
       "publish_date": "2022-06-18T18:42:47.546107Z",
       "source_hash": "efe2c924dbe45b5e1f92116b08a0722f0aea14f472bd117ce39e22f7931f300a",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/224.json",
       "body_path": "data/buttondown/bodies/224.md",
       "archive_path": "site/archive/224.md"
@@ -2483,7 +2483,7 @@
       "subject": "Weekly Thing #225 / Prestige, WebAssembly, PhizFans",
       "publish_date": "2022-06-25T14:00:13.068483Z",
       "source_hash": "e8c114e0aac6c3f0d57f0dfbcf3828c91d4477f2f4c4fa3daa56cf6cbd038409",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/225.json",
       "body_path": "data/buttondown/bodies/225.md",
       "archive_path": "site/archive/225.md"
@@ -2494,7 +2494,7 @@
       "subject": "Weekly Thing #226 / Patagonia, Merge, Walrus",
       "publish_date": "2022-09-17T13:35:27.387277Z",
       "source_hash": "b34596953edd73cabfe824c435c6fa48e11e685a74336e4db2d3e3ea86062ef5",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/226.json",
       "body_path": "data/buttondown/bodies/226.md",
       "archive_path": "site/archive/226.md"
@@ -2505,7 +2505,7 @@
       "subject": "Weekly Thing #227 / Attention, Minnedemo, Learning",
       "publish_date": "2022-09-24T12:00:00Z",
       "source_hash": "a5d4b7bd8b6f86b0b21a7c92084e25f0f0d019e51fe67573f645cef1521c2d29",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/227.json",
       "body_path": "data/buttondown/bodies/227.md",
       "archive_path": "site/archive/227.md"
@@ -2516,7 +2516,7 @@
       "subject": "Weekly Thing #228 / Technical, Adversarial, Overcomplicating",
       "publish_date": "2022-10-02T12:00:00Z",
       "source_hash": "d5cec08a6d740c3e07b88530a0918fa9475a0f8be1c4a83c9d94b30dc62daebb",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/228.json",
       "body_path": "data/buttondown/bodies/228.md",
       "archive_path": "site/archive/228.md"
@@ -2527,7 +2527,7 @@
       "subject": "Weekly Thing #229 / Time, Zolatron, Maigret",
       "publish_date": "2022-10-08T13:28:15.514574Z",
       "source_hash": "d11667934e63f4486a3abac9c5910f96c8c43ef4b51d6ad9feb4ae1441370040",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/229.json",
       "body_path": "data/buttondown/bodies/229.md",
       "archive_path": "site/archive/229.md"
@@ -2538,7 +2538,7 @@
       "subject": "Weekly Thing #230 / Calendar, Fractal, Reminiscing",
       "publish_date": "2022-10-15T12:00:00Z",
       "source_hash": "30ff306dbc7624ff2dc15ec74e41e692fa013cd15d50f3b874cf9292230e7554",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/230.json",
       "body_path": "data/buttondown/bodies/230.md",
       "archive_path": "site/archive/230.md"
@@ -2549,7 +2549,7 @@
       "subject": "Weekly Thing #231 / UNIX Pipe, Slow Roads, Personal Brand",
       "publish_date": "2022-10-29T12:00:00Z",
       "source_hash": "d4b8f91e7987d69294cca212a6cbe4030f26ddecc648d7eb5fbbe4979a131f8e",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/231.json",
       "body_path": "data/buttondown/bodies/231.md",
       "archive_path": "site/archive/231.md"
@@ -2560,7 +2560,7 @@
       "subject": "Weekly Thing #232 / Fiber, Decker, Privacy",
       "publish_date": "2022-11-05T12:00:00Z",
       "source_hash": "10c067f1345c161037a8e9c9687fcf16f41cb2fb984b0bba07c36e57b51be2ac",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/232.json",
       "body_path": "data/buttondown/bodies/232.md",
       "archive_path": "site/archive/232.md"
@@ -2571,7 +2571,7 @@
       "subject": "Weekly Thing #233 / Versepad, \"Just\", Mastadon",
       "publish_date": "2022-11-13T13:00:00Z",
       "source_hash": "214c9e77cdcee4f3c37a4fb7afa513de77b659ba75a1a9784dc1bfd87e8bc1fb",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/233.json",
       "body_path": "data/buttondown/bodies/233.md",
       "archive_path": "site/archive/233.md"
@@ -2582,7 +2582,7 @@
       "subject": "Weekly Thing #234 / Distributed, Principles, Drivers",
       "publish_date": "2022-11-19T13:00:00Z",
       "source_hash": "e6c108dd693936bddf0c8ac3e6a958e74562e7822bd518ed5432ae77e16c627a",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/234.json",
       "body_path": "data/buttondown/bodies/234.md",
       "archive_path": "site/archive/234.md"
@@ -2593,7 +2593,7 @@
       "subject": "Weekly Thing #235 / TikTok, Busy, Stories",
       "publish_date": "2022-11-27T13:00:00Z",
       "source_hash": "e4689c51554e5ecf1ed99c0a8b977a721e7316a7ac77d000c08fc8d7288aa511",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/235.json",
       "body_path": "data/buttondown/bodies/235.md",
       "archive_path": "site/archive/235.md"
@@ -2603,8 +2603,8 @@
       "id": "em_1075z8gjtf96batq5477fegbg0",
       "subject": "Weekly Thing #236 / ChatGPT, Reading, Legitimacy",
       "publish_date": "2022-12-03T13:00:00Z",
-      "source_hash": "e62f358a3594d246e1c0b8c8183000cb1123ad711e08751b3e25caa5bb6b8990",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "b7b140a2840ca65ecafec63bc7bde0c19563dc02d3da0f8fde94b02e6019816b",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/236.json",
       "body_path": "data/buttondown/bodies/236.md",
       "archive_path": "site/archive/236.md"
@@ -2615,7 +2615,7 @@
       "subject": "Weekly Thing #237 / Ethereum, Zelensky, Fadell + Erratic Narratives",
       "publish_date": "2022-12-11T13:00:00Z",
       "source_hash": "beaf8051270111b6f35b88fda3dac9084ad3b0c5d047ba5c8c28653b449ea492",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/237.json",
       "body_path": "data/buttondown/bodies/237.md",
       "archive_path": "site/archive/237.md"
@@ -2626,7 +2626,7 @@
       "subject": "Weekly Thing #238 / Addiction, Disruption, Intentional",
       "publish_date": "2023-01-21T13:00:00Z",
       "source_hash": "3ddd26fa3fb68e06cfd59c806264df43874d13d3161970c97204d37793758eac",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/238.json",
       "body_path": "data/buttondown/bodies/238.md",
       "archive_path": "site/archive/238.md"
@@ -2637,7 +2637,7 @@
       "subject": "Weekly Thing #239 / Helmets, Bear, Smile",
       "publish_date": "2023-01-29T13:00:00Z",
       "source_hash": "2b22ae965285358a71ee2d0d28eb151b6f4729aeb6f6d5f21e7863ef39e1926d",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/239.json",
       "body_path": "data/buttondown/bodies/239.md",
       "archive_path": "site/archive/239.md"
@@ -2647,8 +2647,8 @@
       "id": "em_1e4465xvz49cdrgywxseamcxwk",
       "subject": "Weekly Thing #240 / Shapes, Tags, Ubiquity",
       "publish_date": "2023-02-05T13:00:00Z",
-      "source_hash": "1a7c0bd1658c86e846f8cbb1e5f10478b261307e29b4c93935aff695f1f3cac6",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "8adb46a877f4cd585017b7d4c86b64b52fba2033018443756cc03b3304bd1836",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/240.json",
       "body_path": "data/buttondown/bodies/240.md",
       "archive_path": "site/archive/240.md"
@@ -2659,7 +2659,7 @@
       "subject": "Weekly Thing #241 / Wildebeest, Reputation, Zero",
       "publish_date": "2023-02-11T13:00:00Z",
       "source_hash": "254799c153e041b9d199a7a29f5b7eda2dd24f0decd16e3f58156781e0c71256",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/241.json",
       "body_path": "data/buttondown/bodies/241.md",
       "archive_path": "site/archive/241.md"
@@ -2670,7 +2670,7 @@
       "subject": "Weekly Thing #242 / Stories, Volcano, Decemberists",
       "publish_date": "2023-02-19T13:00:00Z",
       "source_hash": "c1468f78ebab9d392081fbcae748eded14fc800eebbd7e23de311ad88c397bd1",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/242.json",
       "body_path": "data/buttondown/bodies/242.md",
       "archive_path": "site/archive/242.md"
@@ -2681,7 +2681,7 @@
       "subject": "Weekly Thing #243 / Montaigne, Ordinals, Salsa + Ukraine Fundraiser!",
       "publish_date": "2023-02-26T13:00:00Z",
       "source_hash": "7b112e720947c4cdbb67bdf98317ed60e602705dc08d1470fe16eb156ed2fe6a",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/243.json",
       "body_path": "data/buttondown/bodies/243.md",
       "archive_path": "site/archive/243.md"
@@ -2692,7 +2692,7 @@
       "subject": "Weekly Thing #244 / Fans, Sameness, Fediverse + Ukraine Fundraiser!",
       "publish_date": "2023-03-04T14:29:53.320060Z",
       "source_hash": "b11025d888091afdf4438c3762de634707c581f679d00aa5da90295903923492",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/244.json",
       "body_path": "data/buttondown/bodies/244.md",
       "archive_path": "site/archive/244.md"
@@ -2703,7 +2703,7 @@
       "subject": "Weekly Thing #245 / Curation, Outcomes, Disturbed",
       "publish_date": "2023-03-11T13:00:00Z",
       "source_hash": "ea024df68c3681c97833929490fddd5f6379b7e2d85542fa1db83020451dc3f2",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/245.json",
       "body_path": "data/buttondown/bodies/245.md",
       "archive_path": "site/archive/245.md"
@@ -2714,7 +2714,7 @@
       "subject": "Weekly Thing #246 / Banks, Stablecoin, Trust",
       "publish_date": "2023-03-18T12:00:00Z",
       "source_hash": "f56cd48f55a68f7d02ac1b74ac9b02f7400b59144885a2fb7e83b6826ecbddf8",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/246.json",
       "body_path": "data/buttondown/bodies/246.md",
       "archive_path": "site/archive/246.md"
@@ -2725,7 +2725,7 @@
       "subject": "Weekly Thing #247 / New York, Fingerprints, Snitch",
       "publish_date": "2023-03-25T18:14:04.877968Z",
       "source_hash": "5ff5ba7ecac1e151d7fb6f2473342a15f303073bf1af2c170aaa2c2b16cd5821",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/247.json",
       "body_path": "data/buttondown/bodies/247.md",
       "archive_path": "site/archive/247.md"
@@ -2736,7 +2736,7 @@
       "subject": "Weekly Thing #248 / Bicycle, Attention, Shapella",
       "publish_date": "2023-04-01T12:00:00Z",
       "source_hash": "cf60d064f8a197b0c86bea96c8ffac2e4cfe5e8530aa3b2e70c87b4eec824d7b",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/248.json",
       "body_path": "data/buttondown/bodies/248.md",
       "archive_path": "site/archive/248.md"
@@ -2747,7 +2747,7 @@
       "subject": "Weekly Thing #249 / GPT, Privacy, Crypto",
       "publish_date": "2023-04-08T13:37:17.093276Z",
       "source_hash": "1a9ee01d00c99b606d47c01b41034e76096569ee4e007746b9b8e1b6acfd6ce6",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/249.json",
       "body_path": "data/buttondown/bodies/249.md",
       "archive_path": "site/archive/249.md"
@@ -2757,8 +2757,8 @@
       "id": "em_0tb7yeezvm872srmaydng9mk11",
       "subject": "Weekly Thing #250 / LLM, Shanghai, Wing",
       "publish_date": "2023-04-16T12:00:00Z",
-      "source_hash": "6eb94af074de2b15f8f85090a5380df9ebc461c1ba471b61ee71e4988dd63e84",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "cccdf51a446ded785b37220adcf62dec7a57edaca0dfe0a793614f4f2f49cf36",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/250.json",
       "body_path": "data/buttondown/bodies/250.md",
       "archive_path": "site/archive/250.md"
@@ -2769,7 +2769,7 @@
       "subject": "Weekly Thing #251 / Moloch, Chess, Protocol",
       "publish_date": "2023-04-24T01:14:21.760981Z",
       "source_hash": "e317a598f5f940efc6140af3b9077438bc3ceaab6f8531e80a644ae1c2a5f906",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/251.json",
       "body_path": "data/buttondown/bodies/251.md",
       "archive_path": "site/archive/251.md"
@@ -2780,7 +2780,7 @@
       "subject": "Weekly Thing #252 / Elevator, Evidence, Everything",
       "publish_date": "2023-04-29T12:00:00Z",
       "source_hash": "ab6bf823b9b32e01e3eb66e2b23de2639728e9a86fe717b66ef34fc00e594b59",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/252.json",
       "body_path": "data/buttondown/bodies/252.md",
       "archive_path": "site/archive/252.md"
@@ -2791,7 +2791,7 @@
       "subject": "Weekly Thing #253 / Domains, Anybox, Currl",
       "publish_date": "2023-05-07T12:00:00Z",
       "source_hash": "87b89393f16d006647ffff7f106d298eb35a3d4b6e801ca6fec8a8feb138c82f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/253.json",
       "body_path": "data/buttondown/bodies/253.md",
       "archive_path": "site/archive/253.md"
@@ -2802,7 +2802,7 @@
       "subject": "Weekly Thing #254 / Redis, Dooce, Batteries",
       "publish_date": "2023-05-13T12:00:00Z",
       "source_hash": "bbd885cc992564998ba7e18f026d1f7f514f447398da722665cd089ff4bdf978",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/254.json",
       "body_path": "data/buttondown/bodies/254.md",
       "archive_path": "site/archive/254.md"
@@ -2812,8 +2812,8 @@
       "id": "em_6dwsbwt11r8eaa97123ebp4v78",
       "subject": "Weekly Thing #255 / Lassie, Vore, Alby",
       "publish_date": "2023-05-20T12:00:00Z",
-      "source_hash": "9d3442250aadb9ac9291ad712d46454f28391764f4a9946ec78d8780df115339",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "6029329ce7cca8883c90ccb89ff15208625ba3897fd4a392bd45501b3d96b044",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/255.json",
       "body_path": "data/buttondown/bodies/255.md",
       "archive_path": "site/archive/255.md"
@@ -2823,8 +2823,8 @@
       "id": "em_45fzjr9fg48t8v7pbza4n2bewy",
       "subject": "Weekly Thing #2^8 / Bitcoin, Kagi, Brink",
       "publish_date": "2023-05-27T12:55:31.595352Z",
-      "source_hash": "29ee8ce3dcfc59494dadd00f094757a41aaacfd818cc73f69533fea046de4643",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "d7110f97231250ebc331e0b5342f5d6ddd2fd5aaa1d5cbd1a622dd600faee925",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/256.json",
       "body_path": "data/buttondown/bodies/256.md",
       "archive_path": "site/archive/256.md"
@@ -2835,7 +2835,7 @@
       "subject": "Weekly Thing #257 / Nostr, Time, Bcrypt",
       "publish_date": "2023-06-04T13:54:32.821147Z",
       "source_hash": "eb2be5cee28dcbc5194f509e100e40e44c72d70d7bb0b0d499d5fe5c9f51e7fb",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/257.json",
       "body_path": "data/buttondown/bodies/257.md",
       "archive_path": "site/archive/257.md"
@@ -2846,7 +2846,7 @@
       "subject": "Weekly Thing #258 / Vision, Strike, Reputation",
       "publish_date": "2023-06-11T12:00:00Z",
       "source_hash": "af49cf88e36cc67027406f8fc0e9c327a44cd5aa1e0990ac7cb439c2eddf504f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/258.json",
       "body_path": "data/buttondown/bodies/258.md",
       "archive_path": "site/archive/258.md"
@@ -2857,7 +2857,7 @@
       "subject": "Weekly Thing #259 / Vision Pro, Tiny Awards, Mental Liquidity",
       "publish_date": "2023-06-18T12:34:58.103002Z",
       "source_hash": "e8aa571b5ac59f3282ba602495e3b9a606025010c412b8db962ba55b8f9e7c3f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/259.json",
       "body_path": "data/buttondown/bodies/259.md",
       "archive_path": "site/archive/259.md"
@@ -2868,7 +2868,7 @@
       "subject": "Weekly Thing #260 / Rash, Hashing, Arguably",
       "publish_date": "2023-07-01T12:00:00Z",
       "source_hash": "fcca30473c545441cf9bc49277c6d0bcb59c30f2a2fcc6e8c5394900e717faa8",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/260.json",
       "body_path": "data/buttondown/bodies/260.md",
       "archive_path": "site/archive/260.md"
@@ -2879,7 +2879,7 @@
       "subject": "Weekly Thing 261 / Bloomfield Bridge, Critical Ignoring, Subscription Era",
       "publish_date": "2023-09-16T13:29:03.976753Z",
       "source_hash": "89874f69ad2d1138c6640548c25f8c5ccf4dc1a97531b51c37e3ceab2785b228",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/261.json",
       "body_path": "data/buttondown/bodies/261.md",
       "archive_path": "site/archive/261.md"
@@ -2889,8 +2889,8 @@
       "id": "em_50bdkdq7ea9k5931jacyvad22a",
       "subject": "Weekly Thing 262 / Simulator, System, Snoopy",
       "publish_date": "2023-09-23T12:00:00Z",
-      "source_hash": "b98a77bb08db66909d3c2aa0a7289a8a7dc0ccdbc789c81e9bd28d6da2439743",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "7347bd403a98868b0c9ccae13cacd3690b02f1bfd28db8d800e3f6b731022008",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/262.json",
       "body_path": "data/buttondown/bodies/262.md",
       "archive_path": "site/archive/262.md"
@@ -2901,7 +2901,7 @@
       "subject": "Weekly Thing 263 / Copilot, Del.icio.us, Pancake",
       "publish_date": "2023-09-30T12:00:00Z",
       "source_hash": "0d2fbaabbc9d9737ede145ebe06880c9722f489ef35b3030fffba5d332a61b8c",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/263.json",
       "body_path": "data/buttondown/bodies/263.md",
       "archive_path": "site/archive/263.md"
@@ -2912,7 +2912,7 @@
       "subject": "Weekly Thing 264 / Dazed, Zany, Llama",
       "publish_date": "2023-10-07T12:00:00Z",
       "source_hash": "139ca44031fa52b7180eae6bf3f2fdf3151b370dc4c0954b5cd3890e7d28ad07",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/264.json",
       "body_path": "data/buttondown/bodies/264.md",
       "archive_path": "site/archive/264.md"
@@ -2922,8 +2922,8 @@
       "id": "em_4yf7eh6chn9p2b6a1we5e5hzjx",
       "subject": "Weekly Thing 265 / Magic, Copilot, Shortery",
       "publish_date": "2023-10-14T12:00:00Z",
-      "source_hash": "23f457eae5fc93596cb47ab2c30b5d3e5b615947202ee940243631d20fc79601",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "ec8152a37cdcf2ff263d029cb930065e6d09c333b6f6ea2cb9acb3efaffe48e6",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/265.json",
       "body_path": "data/buttondown/bodies/265.md",
       "archive_path": "site/archive/265.md"
@@ -2934,7 +2934,7 @@
       "subject": "Weekly Thing 266 / Obsessed, DiceRight, Omnivore",
       "publish_date": "2023-10-21T12:00:00Z",
       "source_hash": "aa22b7e3380bf8751db6f8c52f974e058967c3d50da6bc5316d05bd8a255416b",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/266.json",
       "body_path": "data/buttondown/bodies/266.md",
       "archive_path": "site/archive/266.md"
@@ -2945,7 +2945,7 @@
       "subject": "Weekly Thing 267 / Generative, Ghibli, Mermaid",
       "publish_date": "2023-10-29T12:00:00Z",
       "source_hash": "f231d91eb82a10aead2514686cf6ebd46aa9228e8103dc23bbb775e4ca8fc2f8",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/267.json",
       "body_path": "data/buttondown/bodies/267.md",
       "archive_path": "site/archive/267.md"
@@ -2956,7 +2956,7 @@
       "subject": "Weekly Thing 268 / Schema, Achtung, Gamification",
       "publish_date": "2023-11-05T12:00:00Z",
       "source_hash": "b40aaa05effaa2f3de1c67158e86bc341eb15f992f06538a73a7b311fbb3792b",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/268.json",
       "body_path": "data/buttondown/bodies/268.md",
       "archive_path": "site/archive/268.md"
@@ -2967,7 +2967,7 @@
       "subject": "Weekly Thing 269 / Phind, Textcasting, Tailspin",
       "publish_date": "2023-11-12T13:00:00Z",
       "source_hash": "6803e116707a53e394ae17268012d938d520c28a90eed2864fd758abc4412be8",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/269.json",
       "body_path": "data/buttondown/bodies/269.md",
       "archive_path": "site/archive/269.md"
@@ -2978,7 +2978,7 @@
       "subject": "Weekly Thing 270 / Panoramic, RCS, Finnegans",
       "publish_date": "2023-11-18T13:00:00Z",
       "source_hash": "b6a749c8451a15e7af8bd97b9be0d1628dfd57721179ca5d5aca8c4548b63f5f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/270.json",
       "body_path": "data/buttondown/bodies/270.md",
       "archive_path": "site/archive/270.md"
@@ -2989,7 +2989,7 @@
       "subject": "Weekly Thing 271 / Imperfectionist, Zeitgeisty, Inko",
       "publish_date": "2023-11-25T13:00:00Z",
       "source_hash": "2540694550cbf554711912717186fc8acc8c52a22328a699e9af7fb63775189c",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/271.json",
       "body_path": "data/buttondown/bodies/271.md",
       "archive_path": "site/archive/271.md"
@@ -3000,7 +3000,7 @@
       "subject": "Weekly Thing 272 / Escape, Fuzzy, Melodrip",
       "publish_date": "2023-12-10T13:00:00Z",
       "source_hash": "674ea8999d6a2a676232d46435c1eb7dd43a233c108424942b07d22ae352564f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/272.json",
       "body_path": "data/buttondown/bodies/272.md",
       "archive_path": "site/archive/272.md"
@@ -3010,8 +3010,8 @@
       "id": "em_5b074xmqgr8mhs7k4n01kb4wa2",
       "subject": "Weekly Thing 273 / Trippy, Buffalo, Bitkey",
       "publish_date": "2023-12-17T13:00:00Z",
-      "source_hash": "4c6d9f90ff0b51bc447c3cc70c81de622b3ecdd47023d43cb89a34474e972f4b",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "bc78520d3b2ff218dac9c07ec04007da8a9ee9b6cf4ae846fe42115cc8780b13",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/273.json",
       "body_path": "data/buttondown/bodies/273.md",
       "archive_path": "site/archive/273.md"
@@ -3022,7 +3022,7 @@
       "subject": "Weekly Thing 274 / Gibberish, Happyfeed, Airshow",
       "publish_date": "2024-01-27T13:00:00Z",
       "source_hash": "f47746964ee493a8a22644f50845168ec21eb79b8666015254327fba8af71f7f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/274.json",
       "body_path": "data/buttondown/bodies/274.md",
       "archive_path": "site/archive/274.md"
@@ -3033,7 +3033,7 @@
       "subject": "Weekly Thing 275 / Vision, Sense, Magic",
       "publish_date": "2024-02-04T13:00:00Z",
       "source_hash": "a03c7f50c617c2b87fbc6e20bb6d1af3b42e70dacb6ae489d7b8b320407d0415",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/275.json",
       "body_path": "data/buttondown/bodies/275.md",
       "archive_path": "site/archive/275.md"
@@ -3044,7 +3044,7 @@
       "subject": "Weekly Thing 276 / Contextual, Copilot, Collections",
       "publish_date": "2024-02-11T13:00:00Z",
       "source_hash": "f5e22eafa227156387aa08546ba078cb56e0e9b7cd7f3b30495bcfb658904ae6",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/276.json",
       "body_path": "data/buttondown/bodies/276.md",
       "archive_path": "site/archive/276.md"
@@ -3055,7 +3055,7 @@
       "subject": "Weekly Thing 277 / Privacy, Scammed, OmniFocus",
       "publish_date": "2024-02-18T13:00:00Z",
       "source_hash": "1804f83416af54d52a582d40b1d975e15877f29f44d313281f7fc7d4071cc015",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/277.json",
       "body_path": "data/buttondown/bodies/277.md",
       "archive_path": "site/archive/277.md"
@@ -3066,7 +3066,7 @@
       "subject": "Weekly Thing 278 / Groq, GraphRAG, Gasless",
       "publish_date": "2024-03-02T13:00:00Z",
       "source_hash": "d54c68e64176a3e418c987a2792b09387374476107b9901fee957022665375a4",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/278.json",
       "body_path": "data/buttondown/bodies/278.md",
       "archive_path": "site/archive/278.md"
@@ -3077,7 +3077,7 @@
       "subject": "Weekly Thing 279 / Nushell, BlackCat, Daemons",
       "publish_date": "2024-03-10T12:30:00Z",
       "source_hash": "f105d9b172cab64ae380792be4c96078d0a5485a25c99f0e4657aaaa7a7c4109",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/279.json",
       "body_path": "data/buttondown/bodies/279.md",
       "archive_path": "site/archive/279.md"
@@ -3088,7 +3088,7 @@
       "subject": "Weekly Thing 280 / Canvas, Undersea, Documents",
       "publish_date": "2024-03-16T12:29:21.202294Z",
       "source_hash": "61fb3ed4c5fb46a616e528d51a0cacff76ea6c015dc55f273a8993dcdeabc142",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/280.json",
       "body_path": "data/buttondown/bodies/280.md",
       "archive_path": "site/archive/280.md"
@@ -3099,7 +3099,7 @@
       "subject": "Weekly Thing 281 / Fediverse, Odyssey, Echo Chess",
       "publish_date": "2024-03-31T12:00:00Z",
       "source_hash": "b5b5f94da22db2da73dcbc0a5aa190841336a20e205668cae64d2cf24bc54fd3",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/281.json",
       "body_path": "data/buttondown/bodies/281.md",
       "archive_path": "site/archive/281.md"
@@ -3110,7 +3110,7 @@
       "subject": "Weekly Thing 282 / Decentralized, Blobs, Rewards",
       "publish_date": "2024-04-06T12:00:00Z",
       "source_hash": "a7c019e657d614c7ad3b78d3ce94f5207c97f261dfc6a72b6df3249f3afd70b7",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/282.json",
       "body_path": "data/buttondown/bodies/282.md",
       "archive_path": "site/archive/282.md"
@@ -3120,8 +3120,8 @@
       "id": "em_7507jqvmbb9m6v32wgj1ae9893",
       "subject": "Weekly Thing 283 / Betula, Blocky, Tables",
       "publish_date": "2024-04-13T12:00:00Z",
-      "source_hash": "e14919111f5b4342d8087caacc98b415d7abfd4ac64f026c402d72018bcb7583",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "320964265d6f9cada275e0d2a1a8adff40eb96316adb4c57eb9a923f223cc132",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/283.json",
       "body_path": "data/buttondown/bodies/283.md",
       "archive_path": "site/archive/283.md"
@@ -3132,7 +3132,7 @@
       "subject": "Weekly Thing 284 / Playdate, Tetris, Calvin",
       "publish_date": "2024-04-20T12:00:00Z",
       "source_hash": "f1b7ee620ee18abb588a95e6616663a816d5dd2e42f8dfda94f0100f5ec5b369",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/284.json",
       "body_path": "data/buttondown/bodies/284.md",
       "archive_path": "site/archive/284.md"
@@ -3143,7 +3143,7 @@
       "subject": "Weekly Thing 285 / Voyager, ActivityPub, Trackers",
       "publish_date": "2024-04-28T12:27:19.603398Z",
       "source_hash": "8edbd5c3e324ea436820136c55a021c660cd7d728d5f2f3ea0f0b9367583d3f1",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/285.json",
       "body_path": "data/buttondown/bodies/285.md",
       "archive_path": "site/archive/285.md"
@@ -3153,8 +3153,8 @@
       "id": "em_2b687m6xbc8vx843ym5n55z26p",
       "subject": "Weekly Thing 286 / Cypherpunk, Printing music, Rabbit",
       "publish_date": "2024-05-04T12:00:00Z",
-      "source_hash": "248700d325478793404c2d856677b3f03fbcfb303a2d11207fa89bac1eb1cccf",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "0fe2c1856ffe7871029ca1a421ac06d980634d3f3fd8ac79ca9500867c8b993a",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/286.json",
       "body_path": "data/buttondown/bodies/286.md",
       "archive_path": "site/archive/286.md"
@@ -3165,7 +3165,7 @@
       "subject": "Weekly Thing 287 / Plinky, Piccolo, Privacy",
       "publish_date": "2024-05-11T14:28:41.217563Z",
       "source_hash": "27529cabf46206b302266ea68cb773ffc8d05c78158b4d198aae9966250072af",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/287.json",
       "body_path": "data/buttondown/bodies/287.md",
       "archive_path": "site/archive/287.md"
@@ -3176,7 +3176,7 @@
       "subject": "Weekly Thing 288 / Hackerverse, Symbolica, Curators",
       "publish_date": "2024-05-19T13:49:05.893764Z",
       "source_hash": "5077bf9022a7f10baa4ae2df464a39ea1589a88d72b0dddb93d791fd81576993",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/288.json",
       "body_path": "data/buttondown/bodies/288.md",
       "archive_path": "site/archive/288.md"
@@ -3186,8 +3186,8 @@
       "id": "em_69141yfm8581xaejqqtp6pkjb3",
       "subject": "Weekly Thing 289 / Queueing, Counting, Mapping",
       "publish_date": "2024-05-25T12:00:00Z",
-      "source_hash": "20d66c4c82142205be334432c9f8e6da4eaeb36c20f6e0c72c5278a2d893fd2c",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "30ffb215dccb08f20e63232890761e926a00205ad288962f741c322b601e6343",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/289.json",
       "body_path": "data/buttondown/bodies/289.md",
       "archive_path": "site/archive/289.md"
@@ -3198,7 +3198,7 @@
       "subject": "Weekly Thing 290 / Kino, Krebs, Kagi",
       "publish_date": "2024-06-01T13:54:38.227321Z",
       "source_hash": "36624d1f67ec5e50cbfcf8dcc11b801e596f7e2eb4a8c0c4f6e0436ab98b2b5e",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/290.json",
       "body_path": "data/buttondown/bodies/290.md",
       "archive_path": "site/archive/290.md"
@@ -3209,7 +3209,7 @@
       "subject": "Weekly Thing 291 / Ireland 🇮🇪",
       "publish_date": "2024-08-04T12:00:00Z",
       "source_hash": "03a1bf44df44c2210733143ba1bba1cc9deccaa51007c83fe30b0eb52f59ee55",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/291.json",
       "body_path": "data/buttondown/bodies/291.md",
       "archive_path": "site/archive/291.md"
@@ -3220,7 +3220,7 @@
       "subject": "Weekly Thing 292 / Signal, Checkboxes, Hope",
       "publish_date": "2024-09-07T13:54:31.713364Z",
       "source_hash": "2a335a3976877873c3691b0165188b841625d1c8b8c1f04a4286e6d51ebc7d21",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/292.json",
       "body_path": "data/buttondown/bodies/292.md",
       "archive_path": "site/archive/292.md"
@@ -3231,7 +3231,7 @@
       "subject": "Weekly Thing 293 / WHOIS, Glowtime, Place",
       "publish_date": "2024-09-14T12:20:58.332267Z",
       "source_hash": "dfe9ebc89aada8695a08bec00948674500c62870b5863a455858018aef04c7d1",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/293.json",
       "body_path": "data/buttondown/bodies/293.md",
       "archive_path": "site/archive/293.md"
@@ -3242,7 +3242,7 @@
       "subject": "Weekly Thing 294 / Vaporizing, Intelligence, Contraption",
       "publish_date": "2024-09-28T12:00:00Z",
       "source_hash": "aec13165ee3a79a3421f14beef7f6dec98a92d1fca03ecc02a96a24a015d34f4",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/294.json",
       "body_path": "data/buttondown/bodies/294.md",
       "archive_path": "site/archive/294.md"
@@ -3253,7 +3253,7 @@
       "subject": "Weekly Thing 295 / Links, Surveillance, POSSE",
       "publish_date": "2024-10-06T12:00:00Z",
       "source_hash": "21c87f9ec329eecf66deb4f05c84a333c613b66d029c379320b0772f9773f1ff",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/295.json",
       "body_path": "data/buttondown/bodies/295.md",
       "archive_path": "site/archive/295.md"
@@ -3264,7 +3264,7 @@
       "subject": "Weekly Thing 296 / Awk, Fav, Alarmo",
       "publish_date": "2024-10-13T14:17:02.439726Z",
       "source_hash": "472c99405a85f5b0f0a8a43d0fa388d90b8739d3e9527a36ad38f34c9d656962",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/296.json",
       "body_path": "data/buttondown/bodies/296.md",
       "archive_path": "site/archive/296.md"
@@ -3274,8 +3274,8 @@
       "id": "em_7dcvp7qts49hdtaphzsmebb8z8",
       "subject": "Weekly Thing 297 / People, Building, \"Pure Blogger\"",
       "publish_date": "2024-10-19T12:00:00Z",
-      "source_hash": "295a81f4597e588455042868c9c203e71d5fde41d09a5bc12ec123d576dfed15",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "2dcf7949157c224e11398194d7357e0635328f5b1d4598425d5c15e75a590f28",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/297.json",
       "body_path": "data/buttondown/bodies/297.md",
       "archive_path": "site/archive/297.md"
@@ -3285,8 +3285,8 @@
       "id": "em_409v3havmw8jvs1y9zwze9xz51",
       "subject": "Weekly Thing 298 / Tool, Solar, Circles",
       "publish_date": "2024-10-27T12:00:00Z",
-      "source_hash": "b81c080c94727264f6b8bbdd45d69f2433ca147fd452a6685b08515bcd9597bb",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "71c05d40dfda09d3ba0bad433c7cae076daa40eaf6fb68302dcbddf7112a370f",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/298.json",
       "body_path": "data/buttondown/bodies/298.md",
       "archive_path": "site/archive/298.md"
@@ -3296,8 +3296,8 @@
       "id": "em_2b95qerffw94na488r03cqh28p",
       "subject": "Weekly Thing 299 / Apples, Abundance, Australia",
       "publish_date": "2024-11-04T01:45:48.042998Z",
-      "source_hash": "705f798e1a48af845ae3888b2304130badf503388667b79e013b2cf8952bea34",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "0f092cd663f4f294e0854f495dc509bb8dc45c064fb89a12dd222b8223a315e9",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/299.json",
       "body_path": "data/buttondown/bodies/299.md",
       "archive_path": "site/archive/299.md"
@@ -3308,7 +3308,7 @@
       "subject": "Weekly Thing 300 / Traceroute, 34x34x34, Typst",
       "publish_date": "2024-11-09T12:00:00Z",
       "source_hash": "5262a6cbfc0a89959879308f3e76a1b2994b61907656b8cb6ea84ad404e60e35",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/300.json",
       "body_path": "data/buttondown/bodies/300.md",
       "archive_path": "site/archive/300.md"
@@ -3319,7 +3319,7 @@
       "subject": "Weekly Thing 301 / TinyTroupe, Monarch, Leaving",
       "publish_date": "2024-11-17T12:00:00Z",
       "source_hash": "0896e35bac24f0b143632240d25da076a8a81b39b44ce975ce1c7516d68cf696",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/301.json",
       "body_path": "data/buttondown/bodies/301.md",
       "archive_path": "site/archive/301.md"
@@ -3329,8 +3329,8 @@
       "id": "em_1rkwskkag18bwtdsvqq6d9b0g1",
       "subject": "Weekly Thing 302 / Recipe, Poetry, OnAir",
       "publish_date": "2024-11-24T12:00:00Z",
-      "source_hash": "17be7d5a0382d55a7b8a5b563d75d8445b18405e6748d34d64389585026f509d",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "e333f3d14926dd88fed541cd4243c0218cc61d7beec6528736bc528b696c04f6",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/302.json",
       "body_path": "data/buttondown/bodies/302.md",
       "archive_path": "site/archive/302.md"
@@ -3341,7 +3341,7 @@
       "subject": "Weekly Thing 303 / Petnames, Synapse, jless",
       "publish_date": "2024-12-01T12:00:00Z",
       "source_hash": "8f5747fa3e16dc1e3ac5e0ee9d38e3381446026c796d06f3627596bdc223b7dc",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/303.json",
       "body_path": "data/buttondown/bodies/303.md",
       "archive_path": "site/archive/303.md"
@@ -3352,7 +3352,7 @@
       "subject": "Weekly Thing 304 / Connections, Vince, Markwhen",
       "publish_date": "2024-12-08T12:00:00Z",
       "source_hash": "c266b0f48681097dfb14d872001bb21aa5d27e7fa94ee3c294c52496c1081abf",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/304.json",
       "body_path": "data/buttondown/bodies/304.md",
       "archive_path": "site/archive/304.md"
@@ -3363,7 +3363,7 @@
       "subject": "Weekly Thing 305 / Lighthouse, Willow, Artemis",
       "publish_date": "2024-12-15T12:00:00Z",
       "source_hash": "c644c2e99840526f9e9646d1a3d2576b98260cf7b08076c9aec69b5237e6cec1",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/305.json",
       "body_path": "data/buttondown/bodies/305.md",
       "archive_path": "site/archive/305.md"
@@ -3374,7 +3374,7 @@
       "subject": "Weekly Thing 306 / Spell, McLarens, Lynch",
       "publish_date": "2025-01-25T13:20:36.911856Z",
       "source_hash": "3ab543b69c8b04852c17567010c350bd033238d250c00610c2a0006a36ffeb85",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/306.json",
       "body_path": "data/buttondown/bodies/306.md",
       "archive_path": "site/archive/306.md"
@@ -3385,7 +3385,7 @@
       "subject": "Weekly Thing 307 / Attention, Goose, Pulse",
       "publish_date": "2025-02-01T16:40:44.101373Z",
       "source_hash": "dda292ba02b5c9bb812de0a914efc3bbd5c3d2c986470b7aed2f3aa5b4f95023",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/307.json",
       "body_path": "data/buttondown/bodies/307.md",
       "archive_path": "site/archive/307.md"
@@ -3395,8 +3395,8 @@
       "id": "em_0rjf176sje91krbkccsnv47czm",
       "subject": "Weekly Thing 308 / Tapestry, Terminal, Tab",
       "publish_date": "2025-02-09T12:00:00Z",
-      "source_hash": "b8d6f897063b1826f23b0601d9b909e1b50678d22eecb0dce17d33df6cb3acd6",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "ddab967579eb47c2d4ecf1e6a6f0d3479c2ed5ab594fc73ae16eef1f3334500f",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/308.json",
       "body_path": "data/buttondown/bodies/308.md",
       "archive_path": "site/archive/308.md"
@@ -3407,7 +3407,7 @@
       "subject": "Weekly Thing 309 / Programming, Silence, Drones",
       "publish_date": "2025-02-16T19:26:11.676945Z",
       "source_hash": "47295ba824f98256feee9f58541575aa253a6d03c826c8c90c59b78c969a3b34",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/309.json",
       "body_path": "data/buttondown/bodies/309.md",
       "archive_path": "site/archive/309.md"
@@ -3418,7 +3418,7 @@
       "subject": "Weekly Thing 310 / Signals, Research, Playlist",
       "publish_date": "2025-02-23T12:00:00Z",
       "source_hash": "a5a21aa3a52452ae91bbab1a8a6b2f1487237c66c6d633f682d45eb2a3e86ea2",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/310.json",
       "body_path": "data/buttondown/bodies/310.md",
       "archive_path": "site/archive/310.md"
@@ -3429,7 +3429,7 @@
       "subject": "Weekly Thing 311 / WikiTok, Bookmarklets, Tapestry",
       "publish_date": "2025-03-01T16:00:56.135461Z",
       "source_hash": "95cfebf9ee2f79694503bbebf0e0bce091ffee6173d1a295748121b81f24007d",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/311.json",
       "body_path": "data/buttondown/bodies/311.md",
       "archive_path": "site/archive/311.md"
@@ -3439,8 +3439,8 @@
       "id": "em_4rgcw7ehw68kdbxfhpvqc7kxpr",
       "subject": "Weekly Thing 312 / Tangled, Graphing, Starlink",
       "publish_date": "2025-03-08T12:00:00Z",
-      "source_hash": "4aada81c41c2311478a2bf748bf448e82a3d51a4be72e4ebdc1be584ff69615c",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "5898e63b4fb6cea59dd687e0c085cfe515d36f248a17c89909817257e3df3647",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/312.json",
       "body_path": "data/buttondown/bodies/312.md",
       "archive_path": "site/archive/312.md"
@@ -3451,7 +3451,7 @@
       "subject": "Weekly Thing 313 / Agentic, Shadows, WireMock",
       "publish_date": "2025-03-15T15:08:33.653855Z",
       "source_hash": "94848c57572196e8f69b51b5387ed432dea743fa8de413dc9c17ac3bbe8c6b29",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/313.json",
       "body_path": "data/buttondown/bodies/313.md",
       "archive_path": "site/archive/313.md"
@@ -3462,7 +3462,7 @@
       "subject": "Weekly Thing 314 / Interfaces, π, Bubbles",
       "publish_date": "2025-03-22T16:55:55.513807Z",
       "source_hash": "3140c865965b0a275b36ba51074a8a47946c95f9be4eb2e98790389742a90193",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/314.json",
       "body_path": "data/buttondown/bodies/314.md",
       "archive_path": "site/archive/314.md"
@@ -3473,7 +3473,7 @@
       "subject": "Weekly Thing 315 / Innovation, Yak, Calligraphr",
       "publish_date": "2025-03-30T11:00:00Z",
       "source_hash": "7e62ad4f1d653a4d70b8411a93e300def2e67e383e8006c9dadf7cd65f14d9d7",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/315.json",
       "body_path": "data/buttondown/bodies/315.md",
       "archive_path": "site/archive/315.md"
@@ -3484,7 +3484,7 @@
       "subject": "Weekly Thing 316 / Blogroll, CaMeL, Insider",
       "publish_date": "2025-04-20T11:00:00Z",
       "source_hash": "1dd0e7e5bfd0a9082bc51271a23d3da1584f27bc3173bf89c1bcfed8e12a1c83",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/316.json",
       "body_path": "data/buttondown/bodies/316.md",
       "archive_path": "site/archive/316.md"
@@ -3495,7 +3495,7 @@
       "subject": "Weekly Thing 317 / Assembly, Blogging, Cyberpunk",
       "publish_date": "2025-05-03T12:47:46.075883Z",
       "source_hash": "7e392c5e08c41613dd6bcd760d787e31d065d547f8c9a0429921ad40d53d212d",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/317.json",
       "body_path": "data/buttondown/bodies/317.md",
       "archive_path": "site/archive/317.md"
@@ -3506,7 +3506,7 @@
       "subject": "Weekly Thing 318 / Sycophancy, Rollerblades, Yoga",
       "publish_date": "2025-05-10T11:00:00Z",
       "source_hash": "e65850a3aa59135418a34d9e73d800dd209b81555a9a72f75c7f81f510709ffb",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/318.json",
       "body_path": "data/buttondown/bodies/318.md",
       "archive_path": "site/archive/318.md"
@@ -3517,7 +3517,7 @@
       "subject": "Weekly Thing 319 / Embeddings, Passkeys, Macros",
       "publish_date": "2025-05-17T16:10:14.428502Z",
       "source_hash": "8ff878a5484f7d892d9873069cb5574e192f4c4260db09167e866806d6abcd38",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/319.json",
       "body_path": "data/buttondown/bodies/319.md",
       "archive_path": "site/archive/319.md"
@@ -3528,7 +3528,7 @@
       "subject": "Weekly Thing 320 / Octopus, Agentic, Voyager",
       "publish_date": "2025-05-24T14:01:57.424024Z",
       "source_hash": "8f8780c1f6b8a9d514665907fdec0dc9f091bfdaf81e8da2056163f522302086",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/320.json",
       "body_path": "data/buttondown/bodies/320.md",
       "archive_path": "site/archive/320.md"
@@ -3539,7 +3539,7 @@
       "subject": "Weekly Thing 321 / Saluting, Tetris, Sky",
       "publish_date": "2025-05-31T15:43:21.901129Z",
       "source_hash": "3ee8c405520f818f208344d82024a8311be8f876758ba471390ea2ce8676c8ff",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/321.json",
       "body_path": "data/buttondown/bodies/321.md",
       "archive_path": "site/archive/321.md"
@@ -3550,7 +3550,7 @@
       "subject": "Weekly Thing 322 / Banff & Lake Louise",
       "publish_date": "2025-06-07T15:49:26.513746Z",
       "source_hash": "f72ba15e9e0d14a0267e66eb981f420a8b104123947a95d0892b7e45c93af295",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/322.json",
       "body_path": "data/buttondown/bodies/322.md",
       "archive_path": "site/archive/322.md"
@@ -3561,7 +3561,7 @@
       "subject": "Weekly Thing 323 / Context, Dithering, Liquid Glass",
       "publish_date": "2025-06-15T14:14:05.003555Z",
       "source_hash": "ec58cb76988f90aa93f9bb19531cc8f5f51a84d55195455993af08b6cb95637c",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/323.json",
       "body_path": "data/buttondown/bodies/323.md",
       "archive_path": "site/archive/323.md"
@@ -3571,8 +3571,8 @@
       "id": "em_3xcgsavwhd96rvzjxk4kc7s8cz",
       "subject": "Weekly Thing 324 / Agents, Shortcuts, Joy",
       "publish_date": "2025-06-21T11:00:00Z",
-      "source_hash": "88ebf47e7fd7e25d11b8e50cac4d2dc88c27ee764d6c9c57bb29054f908b849d",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "15ec8fd3d21c450ae6758618b188007f97023650cc27cdc2f06cb1e03370aa7e",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/324.json",
       "body_path": "data/buttondown/bodies/324.md",
       "archive_path": "site/archive/324.md"
@@ -3583,7 +3583,7 @@
       "subject": "Weekly Thing 325 / Platform, Agents, Legacy",
       "publish_date": "2025-06-28T12:31:52.684292Z",
       "source_hash": "a5017da2ad599498cd00eec4c9f3ee35c3aa4e56cf23c54298c6f712575a18b3",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/325.json",
       "body_path": "data/buttondown/bodies/325.md",
       "archive_path": "site/archive/325.md"
@@ -3594,7 +3594,7 @@
       "subject": "Weekly Thing 326 / Tempo, Seedship, Refraction",
       "publish_date": "2025-09-14T11:00:00Z",
       "source_hash": "b3182fe1f011d070eae75646a731dceac68d20838fe0db93df062ea05def88f6",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/326.json",
       "body_path": "data/buttondown/bodies/326.md",
       "archive_path": "site/archive/326.md"
@@ -3605,7 +3605,7 @@
       "subject": "Weekly Thing 327 / Prototypes, Tahoe, UTF-8",
       "publish_date": "2025-09-20T11:00:00Z",
       "source_hash": "7feaecfd5fb7ed0e0b0754250208c264a4534bf714f1e35de03116f1cc247efa",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/327.json",
       "body_path": "data/buttondown/bodies/327.md",
       "archive_path": "site/archive/327.md"
@@ -3616,7 +3616,7 @@
       "subject": "Weekly Thing 328 / Agents, Pulse, Vision",
       "publish_date": "2025-09-27T14:14:06.316093Z",
       "source_hash": "eb66f5e6af1ff2a0eda5b873fbd2975add9f50ae9f8504517882fc6352f821d8",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/328.json",
       "body_path": "data/buttondown/bodies/328.md",
       "archive_path": "site/archive/328.md"
@@ -3627,7 +3627,7 @@
       "subject": "Weekly Thing 329 / Another Thing",
       "publish_date": "2025-10-11T11:00:00Z",
       "source_hash": "9a577c28d5615802652cd43f477846dccac2cab7f797838cd9829850b8ea8728",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/329.json",
       "body_path": "data/buttondown/bodies/329.md",
       "archive_path": "site/archive/329.md"
@@ -3638,7 +3638,7 @@
       "subject": "Weekly Thing 330 / Music, Intervals, Nanochat",
       "publish_date": "2025-10-19T13:17:15.822885Z",
       "source_hash": "92cd7bbe52bcc8767308a4225ef3b26f5638d9da8d7f82060942888bf1aa7f50",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/330.json",
       "body_path": "data/buttondown/bodies/330.md",
       "archive_path": "site/archive/330.md"
@@ -3649,7 +3649,7 @@
       "subject": "Weekly Thing 331 / RFC, Security, Tokens",
       "publish_date": "2025-11-02T12:00:00Z",
       "source_hash": "111124a3fb370fa77280f14c4afff892f431f37193a6eb6a2af0b78cbf1172c8",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/331.json",
       "body_path": "data/buttondown/bodies/331.md",
       "archive_path": "site/archive/331.md"
@@ -3660,7 +3660,7 @@
       "subject": "Weekly Thing 332 / Compute, Avatar, Cryptography",
       "publish_date": "2025-11-16T12:00:00Z",
       "source_hash": "8ca1fd01af32079d1239617433634c24af08f45b477a403de9fc56dcef438e85",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/332.json",
       "body_path": "data/buttondown/bodies/332.md",
       "archive_path": "site/archive/332.md"
@@ -3671,7 +3671,7 @@
       "subject": "Weekly Thing 333 / Gemini, LangChain, Illusion",
       "publish_date": "2025-11-23T15:08:05.936493Z",
       "source_hash": "8eff58532d64f033304c060dc0a778de07e020b3fb65dcded7345ea1038d6418",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/333.json",
       "body_path": "data/buttondown/bodies/333.md",
       "archive_path": "site/archive/333.md"
@@ -3682,7 +3682,7 @@
       "subject": "Weekly Thing 334 / Privacy, Shopping, Consciousness",
       "publish_date": "2025-11-29T14:07:53.633931Z",
       "source_hash": "66066babd0084d3f20a223a8436ad2a0c71dacff495fa0b7f3b6586eaf9b8833",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/334.json",
       "body_path": "data/buttondown/bodies/334.md",
       "archive_path": "site/archive/334.md"
@@ -3693,7 +3693,7 @@
       "subject": "Weekly Thing 335 / Complexity, Fizzy, Soul",
       "publish_date": "2025-12-06T12:00:00Z",
       "source_hash": "abcb6b1ecb5f6c018f289f0a872bd1376fd5bbfc195d402605d6e6de37c2fb9f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/335.json",
       "body_path": "data/buttondown/bodies/335.md",
       "archive_path": "site/archive/335.md"
@@ -3704,7 +3704,7 @@
       "subject": "Weekly Thing 336 / Culture, Retention, Transmission",
       "publish_date": "2025-12-13T12:00:00Z",
       "source_hash": "690de97de015c0f078f345e5d38fd282816c90d592e5f31fa3f03b1d9a14215c",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/336.json",
       "body_path": "data/buttondown/bodies/336.md",
       "archive_path": "site/archive/336.md"
@@ -3715,7 +3715,7 @@
       "subject": "Weekly Thing 337 / Sunrise, Vision, Offline",
       "publish_date": "2026-01-18T23:38:09.178700Z",
       "source_hash": "42c9ca1f44acc22dc394ea991f4227a524f8ffbe0c411ac3b0e3b4a23898f3de",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/337.json",
       "body_path": "data/buttondown/bodies/337.md",
       "archive_path": "site/archive/337.md"
@@ -3725,8 +3725,8 @@
       "id": "em_6n5118gmh88ca8s80yqwja7x4s",
       "subject": "Weekly Thing 338 / Authority, Humanizer, Left",
       "publish_date": "2026-01-24T13:48:16.711401Z",
-      "source_hash": "f04c9cfd5593104be687b74a938b7ee4d6bfe46f5844b95d4db20d10c10ae47f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "b4bd0710287ec31294e1a2467fd48fa174a921d1c283de9501f62a4fe5c380f4",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/338.json",
       "body_path": "data/buttondown/bodies/338.md",
       "archive_path": "site/archive/338.md"
@@ -3737,7 +3737,7 @@
       "subject": "Weekly Thing 339 / OpenClaw, Isometric, Prism",
       "publish_date": "2026-02-01T14:23:01.200307Z",
       "source_hash": "aecc33c13f737a0a020ad9b3cdfdbe3ebadd210d3c35b5032128ec316c4dffb5",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/339.json",
       "body_path": "data/buttondown/bodies/339.md",
       "archive_path": "site/archive/339.md"
@@ -3748,7 +3748,7 @@
       "subject": "Weekly Thing 340 / Moltbook, Frontier, Poster",
       "publish_date": "2026-02-08T14:44:36.479380Z",
       "source_hash": "bc552782fcd37555fee8cfafee33e0bfaeb11e8ed016d4a9904098aac46bdf34",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/340.json",
       "body_path": "data/buttondown/bodies/340.md",
       "archive_path": "site/archive/340.md"
@@ -3759,7 +3759,7 @@
       "subject": "Weekly Thing 341 / Minions, MAX, ReMemory",
       "publish_date": "2026-02-15T20:53:02.714451Z",
       "source_hash": "09828bc1297feec86b20bb0f9be2d93d60ed0db9bf009197018131be6f169b29",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/341.json",
       "body_path": "data/buttondown/bodies/341.md",
       "archive_path": "site/archive/341.md"
@@ -3770,7 +3770,7 @@
       "subject": "Weekly Thing 342 / Claude, Otto, Elixir",
       "publish_date": "2026-03-08T13:39:25.075213Z",
       "source_hash": "71ed4384a2ce0d51d9a1d7ac5fa98e3f90f78d2f8d134551f1fb0f75a301bdf6",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/342.json",
       "body_path": "data/buttondown/bodies/342.md",
       "archive_path": "site/archive/342.md"
@@ -3780,8 +3780,8 @@
       "id": "em_4a6peg88tg8xct3t58ww4fk748",
       "subject": "Weekly Thing 343 / Commune, Chaos, Renaissance",
       "publish_date": "2026-03-15T13:54:58.792391Z",
-      "source_hash": "41dd176645621062b025b0b777f41d3232e4d03f96cffa0f01bd8ab60136fc2f",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "source_hash": "f7aa53c71febc389fbaa5607e63cab45450c31aaff024c413daa472fee4a6905",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/343.json",
       "body_path": "data/buttondown/bodies/343.md",
       "archive_path": "site/archive/343.md"
@@ -3792,7 +3792,7 @@
       "subject": "Weekly Thing 344 / Mythos, Artemis, Signals",
       "publish_date": "2026-04-19T12:39:11.789242Z",
       "source_hash": "1da153db5ccd9aa3d32b3f1600c4498a2eaa208984a7e98fc4c468f801ff7f06",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/344.json",
       "body_path": "data/buttondown/bodies/344.md",
       "archive_path": "site/archive/344.md"
@@ -3803,7 +3803,7 @@
       "subject": "Weekly Thing 345 / Codex, Headless, Wikiwise",
       "publish_date": "2026-04-26T12:00:00Z",
       "source_hash": "15bee25aa44fca5903b99239675dd12107f7964a6616a379eef9f97e92476996",
-      "fetched_at": "2026-05-02T01:51:32Z",
+      "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/345.json",
       "body_path": "data/buttondown/bodies/345.md",
       "archive_path": "site/archive/345.md"
