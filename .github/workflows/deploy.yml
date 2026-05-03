@@ -88,6 +88,14 @@ jobs:
         if: github.event_name != 'push'
         run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
 
+      # The audio pipeline is three stages: scripts build → validate → audio.
+      # `audio build --latest` reads the committed script from disk, so we
+      # must run scripts build first when polling a fresh issue.
+      - name: Build audio script for latest issue
+        if: github.event_name != 'push'
+        continue-on-error: true
+        run: python pipeline/audio/audio.py scripts build --latest
+
       - name: Render and upload audio for latest issue
         if: github.event_name != 'push'
         continue-on-error: true
