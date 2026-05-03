@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-02T02:17:12Z",
-  "count": 346,
+  "generated_at": "2026-05-03T14:19:29Z",
+  "count": 347,
   "emails": [
     {
       "number": 1,
@@ -3807,6 +3807,17 @@
       "snapshot_path": "data/buttondown/emails/345.json",
       "body_path": "data/buttondown/bodies/345.md",
       "archive_path": "site/archive/345.md"
+    },
+    {
+      "number": 346,
+      "id": "em_4btwsqbtaa9k2bmmaq9ygnk4a3",
+      "subject": "Weekly Thing 346 / Wuphf, Landsat, Eclipse",
+      "publish_date": "2026-05-03T13:54:35.604000Z",
+      "source_hash": "60f61d8dbe1b2f157eeb5a6ffac46e26c75466913ef35d3afde576dff5a16527",
+      "fetched_at": "2026-05-03T14:19:29Z",
+      "snapshot_path": "data/buttondown/emails/346.json",
+      "body_path": "data/buttondown/bodies/346.md",
+      "archive_path": "site/archive/346.md"
     }
   ]
 }
