@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "The Weekly Thing — newsletter landing page and archive",
   "scripts": {
-    "build": "eleventy",
+    "build": "eleventy --config apps/site/eleventy.config.js",
     "build:search": "pagefind --site _site --glob '**/*.html'",
     "build:all": "npm run build && npm run build:search",
-    "serve": "eleventy --serve",
+    "serve": "eleventy --serve --config apps/site/eleventy.config.js",
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
     "data": "python pipeline/content/content.py build && python pipeline/librarian/build_librarian_corpus.py",

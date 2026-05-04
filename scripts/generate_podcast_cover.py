@@ -17,7 +17,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 REPO = Path(__file__).resolve().parents[1]
-OUT = REPO / "site" / "img" / "podcast-cover.png"
+OUT = REPO / "apps" / "site" / "img" / "podcast-cover.png"
 
 SIZE = 3000
 BG = (31, 111, 214)        # --accent

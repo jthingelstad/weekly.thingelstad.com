@@ -4,13 +4,13 @@ const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = function (eleventyConfig) {
   // --- Passthrough copy ---
-  eleventyConfig.addPassthroughCopy("site/img");
-  eleventyConfig.addPassthroughCopy("site/css");
-  eleventyConfig.addPassthroughCopy("site/CNAME");
-  eleventyConfig.addPassthroughCopy("site/favicon.svg");
-  eleventyConfig.addPassthroughCopy("site/robots.txt");
+  eleventyConfig.addPassthroughCopy("apps/site/img");
+  eleventyConfig.addPassthroughCopy("apps/site/css");
+  eleventyConfig.addPassthroughCopy("apps/site/CNAME");
+  eleventyConfig.addPassthroughCopy("apps/site/favicon.svg");
+  eleventyConfig.addPassthroughCopy("apps/site/robots.txt");
   // Prevent GitHub Pages from running Jekyll
-  eleventyConfig.addPassthroughCopy({ "site/_nojekyll": ".nojekyll" });
+  eleventyConfig.addPassthroughCopy({ "apps/site/_nojekyll": ".nojekyll" });
 
   // Ensure dev server sends UTF-8 charset for .txt files (GitHub Pages does
   // this automatically in production, but the local dev server does not).
@@ -280,7 +280,7 @@ module.exports = function (eleventyConfig) {
   // --- Config ---
   return {
     dir: {
-    input: "site",
+      input: "apps/site",
       output: "_site",
       includes: "_includes",
       data: "_data",
