@@ -5,11 +5,11 @@ BM25 lexical retrieval, and calls the Anthropic API directly with a minimal
 admin system prompt -- no Bedrock, no Thingy persona, no guardrails.
 
 Usage:
-    python pipeline/librarian/archive_chat.py                          # REPL
-    python pipeline/librarian/archive_chat.py -q "What recurring..."   # one-shot
-    python pipeline/librarian/archive_chat.py --brief docs/draft.md
-    python pipeline/librarian/archive_chat.py --model opus
-    python pipeline/librarian/archive_chat.py --top-k 12 --rebuild
+    python apps/archive-chat/archive_chat.py                          # REPL
+    python apps/archive-chat/archive_chat.py -q "What recurring..."   # one-shot
+    python apps/archive-chat/archive_chat.py --brief docs/draft.md
+    python apps/archive-chat/archive_chat.py --model opus
+    python apps/archive-chat/archive_chat.py --top-k 12 --rebuild
 """
 
 from __future__ import annotations
