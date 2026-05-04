@@ -76,12 +76,10 @@ weekly.thingelstad.com/
 │   ├── audits/                    # repeatable archive audit and repair tooling
 │   ├── links/                     # planned linked-URL retrieval and aggregation step
 │   └── one-shot/                  # archived scripts that applied one-time cleanup
-├── services/
+├── apps/
 │   └── librarian/
-│       ├── api/                   # Python API Gateway Lambda
-│       └── stream/                # Node Lambda Function URL stream handler
-├── infra/
-│   └── librarian/                 # CloudFormation template
+│       ├── lambda/                # Thingy Node Lambda code (chat/, auth/, shared/, prompts/, tests/)
+│       └── infra/                 # CloudFormation template
 ├── data/
 │   ├── buttondown/
 │   │   ├── manifest.json           # Raw data manifest
@@ -332,4 +330,4 @@ Each writes to `tmp/` (gitignored). Copy outputs to `docs/audits/` to snapshot.
 
 - **Issue tagging/categorization** — browsable topic categories
 
-(The "Talk to the Archive" agent — Thingy — shipped to private beta. Source: `services/librarian/`, infra: `infra/librarian/cloudformation.yaml`. Full architecture, env vars, IAM, retrieval, deploy checklist in [`docs/librarian.md`](docs/librarian.md).)
+(The "Talk to the Archive" agent — Thingy — shipped to private beta. Source: `apps/librarian/lambda/`, infra: `apps/librarian/infra/cloudformation.yaml`. Full architecture, env vars, IAM, retrieval, deploy checklist in [`docs/librarian.md`](docs/librarian.md).)

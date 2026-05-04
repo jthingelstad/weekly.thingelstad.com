@@ -20,7 +20,7 @@
     "librarian:bedrock:logging": "python pipeline/librarian/configure_bedrock_logging.py",
     "librarian:conversations": "python pipeline/librarian/review_librarian_conversations.py",
     "librarian:deploy": "python pipeline/librarian/deploy_librarian_aws.py",
-    "librarian:test": "npm --prefix services/librarian test",
+    "librarian:test": "npm --prefix apps/librarian/lambda test",
     "data:fresh": "python pipeline/content/content.py pull --all",
     "content:pull": "python pipeline/content/content.py pull --all",
     "content:pull:latest": "python pipeline/content/content.py pull --latest",
