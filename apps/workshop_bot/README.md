@@ -8,8 +8,8 @@
 
 This bot is one component of a larger system. The Weekly Thing already has:
 
-- **Thingy** — production Lambda agent answering reader questions about the archive (lives at `services/librarian/`, deployed to AWS). NOT built here.
-- **archive_chat** — local CLI for unrestricted author research against the archive (`pipeline/librarian/archive_chat.py`). NOT replaced.
+- **Thingy** — production Lambda agent answering reader questions about the archive (lives at `apps/librarian/lambda/`, deployed to AWS). NOT built here.
+- **archive_chat** — local CLI for unrestricted author research against the archive (`apps/archive-chat/archive_chat.py`). NOT replaced.
 - **Eleventy site** — `weekly.thingelstad.com` static site.
 - **Buttondown** — newsletter platform; content is synced to `data/buttondown/`.
 - **Shortcuts pipeline** — Jamie's iOS Shortcuts build the actual newsletter, using DataJar for inter-shortcut state.
@@ -36,12 +36,12 @@ Each agent is a distinct system prompt + a set of tools. They share corpus acces
 **Linky** — forward-looking, NOT archive research. Reads unpublished Pinboard bookmarks, finds themes, suggests groupings, helps Jamie curate what should go in the next issue. Outputs a structured preview with link summaries, theme clusters, and confidence notes.
 
 **Marky** — has two modes:
-- *Scheduled (daily)*: fetch Tinylytics, post engagement summary in `#cross-talk`, write to SQLite.
+- *Scheduled (daily)*: fetch Tinylytics, post engagement summary in `#chatter`, write to SQLite.
 - *On-demand*: given a draft + photo on S3, generate subject line (3-word convention used by The Weekly Thing) and issue description. Write back to S3 for Shortcuts pipeline to pick up.
 
 **Patty** — supporter program steward (NOT subscription tier; this is a nonprofit-spirited support program). Two jobs:
 - *Scheduled weekly*: draft the supporter CTA snippet for the next issue. Output goes to S3 (public, since it's going into the newsletter anyway). Attributed to Thingy in the published issue, not Patty — Patty is invisible to readers.
-- *Event-driven*: when Buttondown reports new/churned supporters, post in `#cross-talk` (tagged as signup/churn signal).
+- *Event-driven*: when Buttondown reports new/churned supporters, post in `#chatter` (tagged as signup/churn signal).
 
 ---
 
@@ -56,14 +56,14 @@ WORKSHOP (category)
 ├─ #promotion      → Marky work (subject lines, descriptions, angles)
 ├─ #supporters     → Patty work (CTA drafts, supporter analysis)
 ├─ #workshop       → multi-agent collaboration; bring drafts/ideas, any agent responds
-└─ #cross-talk     → operational heartbeat:
+└─ #chatter     → operational heartbeat:
                        - signups (new supporters from Patty)
                        - churn (unsubscribes from Patty)
                        - engagement (daily Tinylytics from Marky)
                        - deployments (build/publish notifications)
 ```
 
-`#cross-talk` is read-mostly — agents post status updates here automatically. The signal types are differentiated by message format and bot identity, not by separate channels. Keeps signal density high in one place rather than spreading thin across four channels.
+`#chatter` is read-mostly — agents post status updates here automatically. The signal types are differentiated by message format and bot identity, not by separate channels. Keeps signal density high in one place rather than spreading thin across four channels.
 
 `#workshop` is the multi-agent collaboration room. When you want multiple agents weighing in on the same thing — bring a draft, ask Eddy first, then ask Marky to react, then ask Patty for the supporter angle — that happens here. Each agent in `#workshop` sees the full thread history including other agents' responses.
 
@@ -76,7 +76,7 @@ The four single-agent channels (`#editorial`, `#research`, `#promotion`, `#suppo
 Two distinct storage layers with different access boundaries:
 
 ### SQLite (private, local) — operational state
-Path: `apps/workshop-bot/data/workshop.db` (gitignored).
+Path: `apps/workshop_bot/data/workshop.db` (gitignored).
 
 Used for:
 - Agent outputs (drafts, analyses, research notes)
@@ -106,10 +106,10 @@ S3 is what Shortcuts can read (public HTTP). SQLite is what agents read among th
 
 ## Repo Location
 
-This bot lives at `apps/workshop-bot/` in the existing monorepo. Shared retrieval/corpus code may be extracted to `librarian-core/` if reuse is needed; otherwise import directly from `pipeline/librarian/` and `services/librarian/shared/`.
+This bot lives at `apps/workshop_bot/` in the existing monorepo. Shared retrieval/corpus primitives already live in `librarian-core/` (installed editable) — import from there. The Thingy Lambda at `apps/librarian/lambda/` is Node and not directly importable from Python; copy patterns rather than code.
 
 ```
-apps/workshop-bot/
+apps/workshop_bot/
 ├── README.md
 ├── pyproject.toml or requirements.txt
 ├── bot.py                    # entrypoint
@@ -155,7 +155,7 @@ apps/workshop-bot/
 - **Buttondown**: REST API (`api.buttondown.com/v1/`)
 - **Env management**: `python-dotenv`, secrets in `.env`
 
-Match the existing codebase conventions in `pipeline/librarian/` and `services/librarian/`.
+Match the existing codebase conventions in `librarian-core/`, `apps/archive-chat/`, and `apps/librarian/lambda/`.
 
 ---
 
@@ -251,7 +251,7 @@ CREATE TABLE channel_routes (
 ## Implementation Approach (Recommended Order)
 
 ### Phase 1 — Foundation (build first)
-1. Repo skeleton at `apps/workshop-bot/` with the structure above.
+1. Repo skeleton at `apps/workshop_bot/` with the structure above.
 2. SQLite schema + migration runner.
 3. Discord bot connection, channel-to-agent routing.
 4. Shared `tools/anthropic_client.py` wrapper with prompt caching.
@@ -269,15 +269,15 @@ CREATE TABLE channel_routes (
 
 ### Phase 4 — Scheduling
 12. APScheduler setup.
-13. Marky daily Tinylytics fetch → `#cross-talk` (tagged as engagement signal).
+13. Marky daily Tinylytics fetch → `#chatter` (tagged as engagement signal).
 14. Linky weekly Pinboard scan → `#research`.
 15. Patty weekly CTA draft → S3.
 
 ### Phase 5 — Webhooks (later)
-16. Buttondown webhook receiver for `subscriber.created` / `subscriber.deleted` → Patty posts in `#cross-talk` (tagged as signup/churn signal).
+16. Buttondown webhook receiver for `subscriber.created` / `subscriber.deleted` → Patty posts in `#chatter` (tagged as signup/churn signal).
 
 ### Phase 6 — Cross-talk
-17. Agents in `#cross-talk` see and respond to each other's posts. This is mostly system-prompt work, not new code.
+17. Agents in `#chatter` see and respond to each other's posts. This is mostly system-prompt work, not new code.
 
 ---
 
@@ -296,8 +296,8 @@ CREATE TABLE channel_routes (
 
 This repo already has conventions worth respecting:
 
-- Python style follows what's in `pipeline/librarian/`.
-- Prompts as separate `.md` files (see `services/librarian/prompts/`).
+- Python style follows what's in `librarian-core/` and `apps/archive-chat/`.
+- Prompts as separate `.md` files (see `apps/librarian/lambda/prompts/`).
 - `.env` for secrets, never commit. Use `.env.example`.
 - Logging: structured, JSON-friendly. CloudWatch-compatible if it ever moves to Lambda.
 - Citation convention: when agents reference archive issues, use `#NNN` format consistent with Thingy and archive_chat.
@@ -334,7 +334,7 @@ TINYLYTICS_SITE_UID=
 BUTTONDOWN_API_KEY=
 
 # Workshop Bot
-WORKSHOP_DB_PATH=apps/workshop-bot/data/workshop.db
+WORKSHOP_DB_PATH=apps/workshop_bot/data/workshop.db
 WORKSHOP_LOG_LEVEL=INFO
 ```
 
@@ -344,9 +344,9 @@ WORKSHOP_LOG_LEVEL=INFO
 
 Start by:
 
-1. Reading the existing repo structure: `pipeline/librarian/archive_chat.py`, `services/librarian/`, `data/buttondown/`, top-level `Makefile`, `requirements.txt`.
+1. Reading the existing repo structure: `apps/archive-chat/archive_chat.py`, `apps/librarian/lambda/`, `librarian-core/`, `data/buttondown/`, top-level `Makefile`, `requirements.txt`.
 2. Asking Jamie any clarifying questions before scaffolding.
-3. Proposing the v1 directory structure for `apps/workshop-bot/` and a minimal working example: bot connects to Discord, responds to `@eddy hello` with a placeholder reply.
+3. Proposing the v1 directory structure for `apps/workshop_bot/` and a minimal working example: bot connects to Discord, responds to `@eddy hello` with a placeholder reply.
 4. Once that works, building Eddy end-to-end against a real S3 draft path.
 
 Don't try to build all four agents at once. One agent fully working is more valuable than four agents half-built.

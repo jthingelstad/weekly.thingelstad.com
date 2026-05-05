@@ -84,7 +84,7 @@ weekly.thingelstad.com/
 │   │   ├── infra/                  # CloudFormation template
 │   │   └── admin/                  # operator scripts for the live stack (scaffolding)
 │   ├── archive-chat/               # local-only admin CLI (no Bedrock, no guardrails)
-│   └── workshop-bot/               # scaffolding for the four-agent Discord bot (not yet implemented)
+│   └── workshop_bot/               # four-agent Discord bot (Eddy, Linky, Marky, Patty)
 ├── librarian-core/                 # shared Python package (corpus, BM25 retrieval, graph) — installed editable
 ├── pipeline/
 │   ├── content/                    # Buttondown pull/build/diff/push, marketing copy refresh
