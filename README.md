@@ -13,10 +13,10 @@ Source for [The Weekly Thing](https://weekly.thingelstad.com), a newsletter Jami
 | `pipeline/content/` | Buttondown pull/build/diff/push and marketing copy refresh. |
 | `pipeline/corpus/` and `pipeline/graph/` | CLI wrappers around `librarian_core` builders. |
 | `pipeline/deploy/` | AWS deploy, corpus/graph upload, Bedrock logging config. |
-| `pipeline/audio/`, `pipeline/audits/`, `pipeline/links/`, `pipeline/one-shot/` | Domain-specific pipelines and historical cleanup scripts. |
+| `pipeline/audio/`, `pipeline/audits/`, `pipeline/one-shot/` | Domain-specific pipelines and historical cleanup scripts. |
 | `data/buttondown/` | Editable Buttondown source: bodies, emails, manifest. Pulled from Buttondown, edited locally, pushed back. |
 | `data/{librarian,audio,links}/` | Generated build artifacts. |
-| `content/buttondown/` | Author-managed Buttondown configuration: automation bodies, newsletter CSS, transactional templates. (Step 6 scaffolding; sync scripts in `pipeline/buttondown/` are TBD.) |
+| `content/buttondown/` | Author-managed Buttondown configuration: automation bodies, newsletter CSS, transactional templates. (Step 6 scaffolding; sync scripts are TBD and will live alongside `pipeline/content/`.) |
 | `docs/` | Operator guides, audit snapshots, creative brief, email CSS. |
 
 ## Quick start

@@ -92,8 +92,6 @@ weekly.thingelstad.com/
 │   ├── deploy/                     # AWS deploy, corpus/graph upload, Bedrock logging
 │   ├── audio/                      # audio script + TTS rendering + manifest + cover
 │   ├── audits/                     # repeatable archive audit and repair tooling
-│   ├── links/                      # planned linked-URL retrieval and aggregation step
-│   ├── buttondown/                 # planned automations/newsletter sync (scaffolding)
 │   ├── one-shot/                   # archived scripts that applied one-time cleanup
 │   └── status.py                   # generates apps/site/_data/status.json for /ops/
 ├── content/
@@ -315,5 +313,6 @@ Each writes to `tmp/` (gitignored). Copy outputs to `docs/audits/` to snapshot.
 ## Future Enhancements
 
 - **Issue tagging/categorization** — browsable topic categories
+- **Workshop_bot ↔ Thingy corpus consolidation** — workshop_bot loads its own BM25 corpus in-memory at startup from `apps/site/archive/` and only refreshes on bot restart. Thingy's S3 corpus (with Bedrock embeddings + rerank) auto-refreshes via the GH Action on every new issue. Bridge auth already exists (`DiscordBridgeSecret`, `apps/workshop_bot/tools/thingy_client.py`). Three viable consolidation paths: add a thin `/retrieve` endpoint on the Lambda; have workshop_bot auto-reload its local corpus on a schedule; or fetch the S3 corpus directly from workshop_bot. Decision deferred.
 
 (The "Talk to the Archive" agent — Thingy — shipped to private beta. Source: `apps/librarian/lambda/`, infra: `apps/librarian/infra/cloudformation.yaml`. Full architecture, env vars, IAM, retrieval, deploy checklist in [`docs/librarian.md`](docs/librarian.md).)
