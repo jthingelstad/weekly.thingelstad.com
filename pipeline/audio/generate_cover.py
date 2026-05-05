@@ -7,7 +7,7 @@ a circular "W" mark above the wordmark in serif italic.
 Run from the repo root:
 
     source venv/bin/activate
-    python scripts/generate_podcast_cover.py
+    python pipeline/audio/generate_cover.py
 """
 
 from __future__ import annotations
@@ -16,7 +16,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-REPO = Path(__file__).resolve().parents[1]
+REPO = Path(__file__).resolve().parents[2]
 OUT = REPO / "apps" / "site" / "img" / "podcast-cover.png"
 
 SIZE = 3000
