@@ -30,6 +30,9 @@ playwright-report/
 # Pagefind
 _site/pagefind/
 
+# Workshop bot runtime DB (recreated locally)
+apps/workshop-bot/data/
+
 # Local audit/working files
 tmp/
 
