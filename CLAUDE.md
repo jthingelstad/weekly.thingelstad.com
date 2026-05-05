@@ -83,8 +83,7 @@ weekly.thingelstad.com/
 │   │   ├── lambda/                 # Node Lambda code (chat/, auth/, shared/, prompts/, tests/)
 │   │   ├── infra/                  # CloudFormation template
 │   │   └── admin/                  # operator scripts for the live stack (scaffolding)
-│   ├── archive-chat/               # local-only admin CLI (no Bedrock, no guardrails)
-│   └── workshop_bot/               # four-agent Discord bot (Eddy, Linky, Marky, Patty)
+│   └── workshop_bot/               # Discord workshop: Eddy, Linky, Marky, Patty + Thingy bridge
 ├── librarian-core/                 # shared Python package (corpus, BM25 retrieval, graph) — installed editable
 ├── pipeline/
 │   ├── content/                    # Buttondown pull/build/diff/push, marketing copy refresh

@@ -8,8 +8,7 @@ Source for [The Weekly Thing](https://weekly.thingelstad.com), a newsletter Jami
 |---|---|
 | `apps/site/` | Eleventy static site — landing page, archive, feeds. Deployed to GitHub Pages. |
 | `apps/librarian/` | Thingy — the AWS Lambda agent that answers questions against the archive. Source under `lambda/`, infra under `infra/`, operator scripts under `admin/` (scaffolding). |
-| `apps/archive-chat/` | Local-only admin CLI for unrestricted archive research (no Bedrock, no guardrails). |
-| `apps/workshop_bot/` | Four-agent Discord bot (Eddy, Linky, Marky, Patty) for newsletter authoring assistance. v1: on-demand mention-driven. |
+| `apps/workshop_bot/` | Five-bot Discord workshop (Eddy, Linky, Marky, Patty + Thingy bridge) for newsletter authoring assistance and reader Q&A. |
 | `librarian-core/` | Shared Python package: corpus loader, BM25 retrieval, graph builder. Installed editable. |
 | `pipeline/content/` | Buttondown pull/build/diff/push and marketing copy refresh. |
 | `pipeline/corpus/` and `pipeline/graph/` | CLI wrappers around `librarian_core` builders. |
@@ -29,7 +28,6 @@ pip install -r requirements.txt && npm install
 make serve              # local dev server
 make build              # full production build
 make content-pull       # fetch latest from Buttondown, then rebuild generated data
-make librarian-ask ARGS="-q 'what does Jamie think about RSS'"
 ```
 
 See the per-app README in each `apps/*/` directory and the deeper architecture docs in `CLAUDE.md` and `docs/`.
