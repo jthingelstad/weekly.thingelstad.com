@@ -72,7 +72,10 @@ weekly.thingelstad.com/
 ├── .github/workflows/deploy.yml    # Build & deploy to GitHub Pages
 ├── pipeline/
 │   ├── content/                   # Buttondown pull/build/diff/push and marketing copy refresh
-│   ├── librarian/                 # corpus, graph, eval, conversation review, AWS deploy
+│   ├── corpus/                    # archive corpus build CLI (lib in librarian-core)
+│   ├── graph/                     # archive graph build CLI (lib in librarian-core)
+│   ├── eval/                      # eval scripts, questions, rubric, conversation review
+│   ├── deploy/                    # AWS deploy, corpus/graph upload, Bedrock logging config
 │   ├── audits/                    # repeatable archive audit and repair tooling
 │   ├── links/                     # planned linked-URL retrieval and aggregation step
 │   └── one-shot/                  # archived scripts that applied one-time cleanup
@@ -226,7 +229,7 @@ Subscribe forms appear 4 times on the page (hero, two mid-page, footer).
 3. Pull latest Buttondown issue (scheduled/manual fetch path; idempotent on `--skip-existing`)
 4. Render audio for the latest issue (`apt-get install ffmpeg`, `pipeline/audio/audio.py build --latest`) — idempotent, `continue-on-error` so a TTS hiccup doesn't block the deploy
 5. Build librarian corpus locally (smoke test)
-6. Embed corpus + graph and upload to S3 (`pipeline/librarian/upload_librarian_corpus.py`) — `continue-on-error` so a Bedrock hiccup doesn't block the deploy
+6. Embed corpus + graph and upload to S3 (`pipeline/deploy/upload_corpus.py`) — `continue-on-error` so a Bedrock hiccup doesn't block the deploy
 7. Build content from tracked raw data
 8. `npx @11ty/eleventy`
 9. `npx pagefind --site _site --glob "**/*.html"`
