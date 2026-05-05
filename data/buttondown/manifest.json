@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-03T14:19:29Z",
+  "generated_at": "2026-05-05T00:19:03Z",
   "count": 347,
   "emails": [
     {
@@ -11,7 +11,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/1.json",
       "body_path": "data/buttondown/bodies/1.md",
-      "archive_path": "site/archive/1.md"
+      "archive_path": "apps/site/archive/1.md"
     },
     {
       "number": 2,
@@ -22,7 +22,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/2.json",
       "body_path": "data/buttondown/bodies/2.md",
-      "archive_path": "site/archive/2.md"
+      "archive_path": "apps/site/archive/2.md"
     },
     {
       "number": 3,
@@ -33,7 +33,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/3.json",
       "body_path": "data/buttondown/bodies/3.md",
-      "archive_path": "site/archive/3.md"
+      "archive_path": "apps/site/archive/3.md"
     },
     {
       "number": 4,
@@ -44,7 +44,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/4.json",
       "body_path": "data/buttondown/bodies/4.md",
-      "archive_path": "site/archive/4.md"
+      "archive_path": "apps/site/archive/4.md"
     },
     {
       "number": 5,
@@ -55,7 +55,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/5.json",
       "body_path": "data/buttondown/bodies/5.md",
-      "archive_path": "site/archive/5.md"
+      "archive_path": "apps/site/archive/5.md"
     },
     {
       "number": 6,
@@ -66,7 +66,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/6.json",
       "body_path": "data/buttondown/bodies/6.md",
-      "archive_path": "site/archive/6.md"
+      "archive_path": "apps/site/archive/6.md"
     },
     {
       "number": 7,
@@ -77,7 +77,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/7.json",
       "body_path": "data/buttondown/bodies/7.md",
-      "archive_path": "site/archive/7.md"
+      "archive_path": "apps/site/archive/7.md"
     },
     {
       "number": 8,
@@ -88,7 +88,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/8.json",
       "body_path": "data/buttondown/bodies/8.md",
-      "archive_path": "site/archive/8.md"
+      "archive_path": "apps/site/archive/8.md"
     },
     {
       "number": 9,
@@ -99,7 +99,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/9.json",
       "body_path": "data/buttondown/bodies/9.md",
-      "archive_path": "site/archive/9.md"
+      "archive_path": "apps/site/archive/9.md"
     },
     {
       "number": 10,
@@ -110,7 +110,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/10.json",
       "body_path": "data/buttondown/bodies/10.md",
-      "archive_path": "site/archive/10.md"
+      "archive_path": "apps/site/archive/10.md"
     },
     {
       "number": 11,
@@ -121,7 +121,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/11.json",
       "body_path": "data/buttondown/bodies/11.md",
-      "archive_path": "site/archive/11.md"
+      "archive_path": "apps/site/archive/11.md"
     },
     {
       "number": 12,
@@ -132,7 +132,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/12.json",
       "body_path": "data/buttondown/bodies/12.md",
-      "archive_path": "site/archive/12.md"
+      "archive_path": "apps/site/archive/12.md"
     },
     {
       "number": 13,
@@ -143,7 +143,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/13.json",
       "body_path": "data/buttondown/bodies/13.md",
-      "archive_path": "site/archive/13.md"
+      "archive_path": "apps/site/archive/13.md"
     },
     {
       "number": 14,
@@ -154,7 +154,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/14.json",
       "body_path": "data/buttondown/bodies/14.md",
-      "archive_path": "site/archive/14.md"
+      "archive_path": "apps/site/archive/14.md"
     },
     {
       "number": 15,
@@ -165,7 +165,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/15.json",
       "body_path": "data/buttondown/bodies/15.md",
-      "archive_path": "site/archive/15.md"
+      "archive_path": "apps/site/archive/15.md"
     },
     {
       "number": 16,
@@ -176,7 +176,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/16.json",
       "body_path": "data/buttondown/bodies/16.md",
-      "archive_path": "site/archive/16.md"
+      "archive_path": "apps/site/archive/16.md"
     },
     {
       "number": 17,
@@ -187,7 +187,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/17.json",
       "body_path": "data/buttondown/bodies/17.md",
-      "archive_path": "site/archive/17.md"
+      "archive_path": "apps/site/archive/17.md"
     },
     {
       "number": 18,
@@ -198,7 +198,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/18.json",
       "body_path": "data/buttondown/bodies/18.md",
-      "archive_path": "site/archive/18.md"
+      "archive_path": "apps/site/archive/18.md"
     },
     {
       "number": 19,
@@ -209,7 +209,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/19.json",
       "body_path": "data/buttondown/bodies/19.md",
-      "archive_path": "site/archive/19.md"
+      "archive_path": "apps/site/archive/19.md"
     },
     {
       "number": 20,
@@ -220,7 +220,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/20.json",
       "body_path": "data/buttondown/bodies/20.md",
-      "archive_path": "site/archive/20.md"
+      "archive_path": "apps/site/archive/20.md"
     },
     {
       "number": 21,
@@ -231,7 +231,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/21.json",
       "body_path": "data/buttondown/bodies/21.md",
-      "archive_path": "site/archive/21.md"
+      "archive_path": "apps/site/archive/21.md"
     },
     {
       "number": 22,
@@ -242,7 +242,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/22.json",
       "body_path": "data/buttondown/bodies/22.md",
-      "archive_path": "site/archive/22.md"
+      "archive_path": "apps/site/archive/22.md"
     },
     {
       "number": 23,
@@ -253,7 +253,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/23.json",
       "body_path": "data/buttondown/bodies/23.md",
-      "archive_path": "site/archive/23.md"
+      "archive_path": "apps/site/archive/23.md"
     },
     {
       "number": 24,
@@ -264,7 +264,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/24.json",
       "body_path": "data/buttondown/bodies/24.md",
-      "archive_path": "site/archive/24.md"
+      "archive_path": "apps/site/archive/24.md"
     },
     {
       "number": 25,
@@ -275,7 +275,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/25.json",
       "body_path": "data/buttondown/bodies/25.md",
-      "archive_path": "site/archive/25.md"
+      "archive_path": "apps/site/archive/25.md"
     },
     {
       "number": 26,
@@ -286,7 +286,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/26.json",
       "body_path": "data/buttondown/bodies/26.md",
-      "archive_path": "site/archive/26.md"
+      "archive_path": "apps/site/archive/26.md"
     },
     {
       "number": 27,
@@ -297,7 +297,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/27.json",
       "body_path": "data/buttondown/bodies/27.md",
-      "archive_path": "site/archive/27.md"
+      "archive_path": "apps/site/archive/27.md"
     },
     {
       "number": 28,
@@ -308,7 +308,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/28.json",
       "body_path": "data/buttondown/bodies/28.md",
-      "archive_path": "site/archive/28.md"
+      "archive_path": "apps/site/archive/28.md"
     },
     {
       "number": 29,
@@ -319,7 +319,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/29.json",
       "body_path": "data/buttondown/bodies/29.md",
-      "archive_path": "site/archive/29.md"
+      "archive_path": "apps/site/archive/29.md"
     },
     {
       "number": 30,
@@ -330,7 +330,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/30.json",
       "body_path": "data/buttondown/bodies/30.md",
-      "archive_path": "site/archive/30.md"
+      "archive_path": "apps/site/archive/30.md"
     },
     {
       "number": 31,
@@ -341,7 +341,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/31.json",
       "body_path": "data/buttondown/bodies/31.md",
-      "archive_path": "site/archive/31.md"
+      "archive_path": "apps/site/archive/31.md"
     },
     {
       "number": 32,
@@ -352,7 +352,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/32.json",
       "body_path": "data/buttondown/bodies/32.md",
-      "archive_path": "site/archive/32.md"
+      "archive_path": "apps/site/archive/32.md"
     },
     {
       "number": 33,
@@ -363,7 +363,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/33.json",
       "body_path": "data/buttondown/bodies/33.md",
-      "archive_path": "site/archive/33.md"
+      "archive_path": "apps/site/archive/33.md"
     },
     {
       "number": 34,
@@ -374,7 +374,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/34.json",
       "body_path": "data/buttondown/bodies/34.md",
-      "archive_path": "site/archive/34.md"
+      "archive_path": "apps/site/archive/34.md"
     },
     {
       "number": 35,
@@ -385,7 +385,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/35.json",
       "body_path": "data/buttondown/bodies/35.md",
-      "archive_path": "site/archive/35.md"
+      "archive_path": "apps/site/archive/35.md"
     },
     {
       "number": 36,
@@ -396,7 +396,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/36.json",
       "body_path": "data/buttondown/bodies/36.md",
-      "archive_path": "site/archive/36.md"
+      "archive_path": "apps/site/archive/36.md"
     },
     {
       "number": 37,
@@ -407,7 +407,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/37.json",
       "body_path": "data/buttondown/bodies/37.md",
-      "archive_path": "site/archive/37.md"
+      "archive_path": "apps/site/archive/37.md"
     },
     {
       "number": 38,
@@ -418,7 +418,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/38.json",
       "body_path": "data/buttondown/bodies/38.md",
-      "archive_path": "site/archive/38.md"
+      "archive_path": "apps/site/archive/38.md"
     },
     {
       "number": 39,
@@ -429,7 +429,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/39.json",
       "body_path": "data/buttondown/bodies/39.md",
-      "archive_path": "site/archive/39.md"
+      "archive_path": "apps/site/archive/39.md"
     },
     {
       "number": 40,
@@ -440,7 +440,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/40.json",
       "body_path": "data/buttondown/bodies/40.md",
-      "archive_path": "site/archive/40.md"
+      "archive_path": "apps/site/archive/40.md"
     },
     {
       "number": 41,
@@ -451,7 +451,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/41.json",
       "body_path": "data/buttondown/bodies/41.md",
-      "archive_path": "site/archive/41.md"
+      "archive_path": "apps/site/archive/41.md"
     },
     {
       "number": 42,
@@ -462,7 +462,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/42.json",
       "body_path": "data/buttondown/bodies/42.md",
-      "archive_path": "site/archive/42.md"
+      "archive_path": "apps/site/archive/42.md"
     },
     {
       "number": 43,
@@ -473,7 +473,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/43.json",
       "body_path": "data/buttondown/bodies/43.md",
-      "archive_path": "site/archive/43.md"
+      "archive_path": "apps/site/archive/43.md"
     },
     {
       "number": 44,
@@ -484,7 +484,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/44.json",
       "body_path": "data/buttondown/bodies/44.md",
-      "archive_path": "site/archive/44.md"
+      "archive_path": "apps/site/archive/44.md"
     },
     {
       "number": 45,
@@ -495,7 +495,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/45.json",
       "body_path": "data/buttondown/bodies/45.md",
-      "archive_path": "site/archive/45.md"
+      "archive_path": "apps/site/archive/45.md"
     },
     {
       "number": 46,
@@ -506,7 +506,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/46.json",
       "body_path": "data/buttondown/bodies/46.md",
-      "archive_path": "site/archive/46.md"
+      "archive_path": "apps/site/archive/46.md"
     },
     {
       "number": 47,
@@ -517,7 +517,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/47.json",
       "body_path": "data/buttondown/bodies/47.md",
-      "archive_path": "site/archive/47.md"
+      "archive_path": "apps/site/archive/47.md"
     },
     {
       "number": 48,
@@ -528,7 +528,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/48.json",
       "body_path": "data/buttondown/bodies/48.md",
-      "archive_path": "site/archive/48.md"
+      "archive_path": "apps/site/archive/48.md"
     },
     {
       "number": 49,
@@ -539,7 +539,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/49.json",
       "body_path": "data/buttondown/bodies/49.md",
-      "archive_path": "site/archive/49.md"
+      "archive_path": "apps/site/archive/49.md"
     },
     {
       "number": 50,
@@ -550,7 +550,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/50.json",
       "body_path": "data/buttondown/bodies/50.md",
-      "archive_path": "site/archive/50.md"
+      "archive_path": "apps/site/archive/50.md"
     },
     {
       "number": 51,
@@ -561,7 +561,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/51.json",
       "body_path": "data/buttondown/bodies/51.md",
-      "archive_path": "site/archive/51.md"
+      "archive_path": "apps/site/archive/51.md"
     },
     {
       "number": 52,
@@ -572,7 +572,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/52.json",
       "body_path": "data/buttondown/bodies/52.md",
-      "archive_path": "site/archive/52.md"
+      "archive_path": "apps/site/archive/52.md"
     },
     {
       "number": 53,
@@ -583,7 +583,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/53.json",
       "body_path": "data/buttondown/bodies/53.md",
-      "archive_path": "site/archive/53.md"
+      "archive_path": "apps/site/archive/53.md"
     },
     {
       "number": 54,
@@ -594,7 +594,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/54.json",
       "body_path": "data/buttondown/bodies/54.md",
-      "archive_path": "site/archive/54.md"
+      "archive_path": "apps/site/archive/54.md"
     },
     {
       "number": 55,
@@ -605,7 +605,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/55.json",
       "body_path": "data/buttondown/bodies/55.md",
-      "archive_path": "site/archive/55.md"
+      "archive_path": "apps/site/archive/55.md"
     },
     {
       "number": 56,
@@ -616,7 +616,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/56.json",
       "body_path": "data/buttondown/bodies/56.md",
-      "archive_path": "site/archive/56.md"
+      "archive_path": "apps/site/archive/56.md"
     },
     {
       "number": 57,
@@ -627,7 +627,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/57.json",
       "body_path": "data/buttondown/bodies/57.md",
-      "archive_path": "site/archive/57.md"
+      "archive_path": "apps/site/archive/57.md"
     },
     {
       "number": 58,
@@ -638,7 +638,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/58.json",
       "body_path": "data/buttondown/bodies/58.md",
-      "archive_path": "site/archive/58.md"
+      "archive_path": "apps/site/archive/58.md"
     },
     {
       "number": 59,
@@ -649,7 +649,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/59.json",
       "body_path": "data/buttondown/bodies/59.md",
-      "archive_path": "site/archive/59.md"
+      "archive_path": "apps/site/archive/59.md"
     },
     {
       "number": 60,
@@ -660,7 +660,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/60.json",
       "body_path": "data/buttondown/bodies/60.md",
-      "archive_path": "site/archive/60.md"
+      "archive_path": "apps/site/archive/60.md"
     },
     {
       "number": 61,
@@ -671,7 +671,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/61.json",
       "body_path": "data/buttondown/bodies/61.md",
-      "archive_path": "site/archive/61.md"
+      "archive_path": "apps/site/archive/61.md"
     },
     {
       "number": 62,
@@ -682,7 +682,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/62.json",
       "body_path": "data/buttondown/bodies/62.md",
-      "archive_path": "site/archive/62.md"
+      "archive_path": "apps/site/archive/62.md"
     },
     {
       "number": 63,
@@ -693,7 +693,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/63.json",
       "body_path": "data/buttondown/bodies/63.md",
-      "archive_path": "site/archive/63.md"
+      "archive_path": "apps/site/archive/63.md"
     },
     {
       "number": 64,
@@ -704,7 +704,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/64.json",
       "body_path": "data/buttondown/bodies/64.md",
-      "archive_path": "site/archive/64.md"
+      "archive_path": "apps/site/archive/64.md"
     },
     {
       "number": 65,
@@ -715,7 +715,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/65.json",
       "body_path": "data/buttondown/bodies/65.md",
-      "archive_path": "site/archive/65.md"
+      "archive_path": "apps/site/archive/65.md"
     },
     {
       "number": 66,
@@ -726,7 +726,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/66.json",
       "body_path": "data/buttondown/bodies/66.md",
-      "archive_path": "site/archive/66.md"
+      "archive_path": "apps/site/archive/66.md"
     },
     {
       "number": 67,
@@ -737,7 +737,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/67.json",
       "body_path": "data/buttondown/bodies/67.md",
-      "archive_path": "site/archive/67.md"
+      "archive_path": "apps/site/archive/67.md"
     },
     {
       "number": 68,
@@ -748,7 +748,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/68.json",
       "body_path": "data/buttondown/bodies/68.md",
-      "archive_path": "site/archive/68.md"
+      "archive_path": "apps/site/archive/68.md"
     },
     {
       "number": 69,
@@ -759,7 +759,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/69.json",
       "body_path": "data/buttondown/bodies/69.md",
-      "archive_path": "site/archive/69.md"
+      "archive_path": "apps/site/archive/69.md"
     },
     {
       "number": 70,
@@ -770,7 +770,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/70.json",
       "body_path": "data/buttondown/bodies/70.md",
-      "archive_path": "site/archive/70.md"
+      "archive_path": "apps/site/archive/70.md"
     },
     {
       "number": 71,
@@ -781,7 +781,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/71.json",
       "body_path": "data/buttondown/bodies/71.md",
-      "archive_path": "site/archive/71.md"
+      "archive_path": "apps/site/archive/71.md"
     },
     {
       "number": 72,
@@ -792,7 +792,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/72.json",
       "body_path": "data/buttondown/bodies/72.md",
-      "archive_path": "site/archive/72.md"
+      "archive_path": "apps/site/archive/72.md"
     },
     {
       "number": 73,
@@ -803,7 +803,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/73.json",
       "body_path": "data/buttondown/bodies/73.md",
-      "archive_path": "site/archive/73.md"
+      "archive_path": "apps/site/archive/73.md"
     },
     {
       "number": 74,
@@ -814,7 +814,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/74.json",
       "body_path": "data/buttondown/bodies/74.md",
-      "archive_path": "site/archive/74.md"
+      "archive_path": "apps/site/archive/74.md"
     },
     {
       "number": 75,
@@ -825,7 +825,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/75.json",
       "body_path": "data/buttondown/bodies/75.md",
-      "archive_path": "site/archive/75.md"
+      "archive_path": "apps/site/archive/75.md"
     },
     {
       "number": 76,
@@ -836,7 +836,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/76.json",
       "body_path": "data/buttondown/bodies/76.md",
-      "archive_path": "site/archive/76.md"
+      "archive_path": "apps/site/archive/76.md"
     },
     {
       "number": 77,
@@ -847,7 +847,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/77.json",
       "body_path": "data/buttondown/bodies/77.md",
-      "archive_path": "site/archive/77.md"
+      "archive_path": "apps/site/archive/77.md"
     },
     {
       "number": 78,
@@ -858,7 +858,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/78.json",
       "body_path": "data/buttondown/bodies/78.md",
-      "archive_path": "site/archive/78.md"
+      "archive_path": "apps/site/archive/78.md"
     },
     {
       "number": 79,
@@ -869,7 +869,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/79.json",
       "body_path": "data/buttondown/bodies/79.md",
-      "archive_path": "site/archive/79.md"
+      "archive_path": "apps/site/archive/79.md"
     },
     {
       "number": 80,
@@ -880,7 +880,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/80.json",
       "body_path": "data/buttondown/bodies/80.md",
-      "archive_path": "site/archive/80.md"
+      "archive_path": "apps/site/archive/80.md"
     },
     {
       "number": 81,
@@ -891,7 +891,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/81.json",
       "body_path": "data/buttondown/bodies/81.md",
-      "archive_path": "site/archive/81.md"
+      "archive_path": "apps/site/archive/81.md"
     },
     {
       "number": 82,
@@ -902,7 +902,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/82.json",
       "body_path": "data/buttondown/bodies/82.md",
-      "archive_path": "site/archive/82.md"
+      "archive_path": "apps/site/archive/82.md"
     },
     {
       "number": 83,
@@ -913,7 +913,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/83.json",
       "body_path": "data/buttondown/bodies/83.md",
-      "archive_path": "site/archive/83.md"
+      "archive_path": "apps/site/archive/83.md"
     },
     {
       "number": 84,
@@ -924,7 +924,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/84.json",
       "body_path": "data/buttondown/bodies/84.md",
-      "archive_path": "site/archive/84.md"
+      "archive_path": "apps/site/archive/84.md"
     },
     {
       "number": 85,
@@ -935,7 +935,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/85.json",
       "body_path": "data/buttondown/bodies/85.md",
-      "archive_path": "site/archive/85.md"
+      "archive_path": "apps/site/archive/85.md"
     },
     {
       "number": 86,
@@ -946,7 +946,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/86.json",
       "body_path": "data/buttondown/bodies/86.md",
-      "archive_path": "site/archive/86.md"
+      "archive_path": "apps/site/archive/86.md"
     },
     {
       "number": 87,
@@ -957,7 +957,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/87.json",
       "body_path": "data/buttondown/bodies/87.md",
-      "archive_path": "site/archive/87.md"
+      "archive_path": "apps/site/archive/87.md"
     },
     {
       "number": 88,
@@ -968,7 +968,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/88.json",
       "body_path": "data/buttondown/bodies/88.md",
-      "archive_path": "site/archive/88.md"
+      "archive_path": "apps/site/archive/88.md"
     },
     {
       "number": 89,
@@ -979,7 +979,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/89.json",
       "body_path": "data/buttondown/bodies/89.md",
-      "archive_path": "site/archive/89.md"
+      "archive_path": "apps/site/archive/89.md"
     },
     {
       "number": 90,
@@ -990,7 +990,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/90.json",
       "body_path": "data/buttondown/bodies/90.md",
-      "archive_path": "site/archive/90.md"
+      "archive_path": "apps/site/archive/90.md"
     },
     {
       "number": 91,
@@ -1001,7 +1001,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/91.json",
       "body_path": "data/buttondown/bodies/91.md",
-      "archive_path": "site/archive/91.md"
+      "archive_path": "apps/site/archive/91.md"
     },
     {
       "number": 92,
@@ -1012,7 +1012,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/92.json",
       "body_path": "data/buttondown/bodies/92.md",
-      "archive_path": "site/archive/92.md"
+      "archive_path": "apps/site/archive/92.md"
     },
     {
       "number": 93,
@@ -1023,7 +1023,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/93.json",
       "body_path": "data/buttondown/bodies/93.md",
-      "archive_path": "site/archive/93.md"
+      "archive_path": "apps/site/archive/93.md"
     },
     {
       "number": 94,
@@ -1034,7 +1034,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/94.json",
       "body_path": "data/buttondown/bodies/94.md",
-      "archive_path": "site/archive/94.md"
+      "archive_path": "apps/site/archive/94.md"
     },
     {
       "number": 95,
@@ -1045,7 +1045,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/95.json",
       "body_path": "data/buttondown/bodies/95.md",
-      "archive_path": "site/archive/95.md"
+      "archive_path": "apps/site/archive/95.md"
     },
     {
       "number": 96,
@@ -1056,7 +1056,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/96.json",
       "body_path": "data/buttondown/bodies/96.md",
-      "archive_path": "site/archive/96.md"
+      "archive_path": "apps/site/archive/96.md"
     },
     {
       "number": 97,
@@ -1067,7 +1067,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/97.json",
       "body_path": "data/buttondown/bodies/97.md",
-      "archive_path": "site/archive/97.md"
+      "archive_path": "apps/site/archive/97.md"
     },
     {
       "number": 98,
@@ -1078,7 +1078,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/98.json",
       "body_path": "data/buttondown/bodies/98.md",
-      "archive_path": "site/archive/98.md"
+      "archive_path": "apps/site/archive/98.md"
     },
     {
       "number": 99,
@@ -1089,7 +1089,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/99.json",
       "body_path": "data/buttondown/bodies/99.md",
-      "archive_path": "site/archive/99.md"
+      "archive_path": "apps/site/archive/99.md"
     },
     {
       "number": 100,
@@ -1100,7 +1100,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/100.json",
       "body_path": "data/buttondown/bodies/100.md",
-      "archive_path": "site/archive/100.md"
+      "archive_path": "apps/site/archive/100.md"
     },
     {
       "number": 101,
@@ -1111,7 +1111,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/101.json",
       "body_path": "data/buttondown/bodies/101.md",
-      "archive_path": "site/archive/101.md"
+      "archive_path": "apps/site/archive/101.md"
     },
     {
       "number": 102,
@@ -1122,7 +1122,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/102.json",
       "body_path": "data/buttondown/bodies/102.md",
-      "archive_path": "site/archive/102.md"
+      "archive_path": "apps/site/archive/102.md"
     },
     {
       "number": 103,
@@ -1133,7 +1133,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/103.json",
       "body_path": "data/buttondown/bodies/103.md",
-      "archive_path": "site/archive/103.md"
+      "archive_path": "apps/site/archive/103.md"
     },
     {
       "number": 104,
@@ -1144,7 +1144,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/104.json",
       "body_path": "data/buttondown/bodies/104.md",
-      "archive_path": "site/archive/104.md"
+      "archive_path": "apps/site/archive/104.md"
     },
     {
       "number": 105,
@@ -1155,7 +1155,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/105.json",
       "body_path": "data/buttondown/bodies/105.md",
-      "archive_path": "site/archive/105.md"
+      "archive_path": "apps/site/archive/105.md"
     },
     {
       "number": 106,
@@ -1166,7 +1166,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/106.json",
       "body_path": "data/buttondown/bodies/106.md",
-      "archive_path": "site/archive/106.md"
+      "archive_path": "apps/site/archive/106.md"
     },
     {
       "number": 107,
@@ -1177,7 +1177,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/107.json",
       "body_path": "data/buttondown/bodies/107.md",
-      "archive_path": "site/archive/107.md"
+      "archive_path": "apps/site/archive/107.md"
     },
     {
       "number": 108,
@@ -1188,7 +1188,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/108.json",
       "body_path": "data/buttondown/bodies/108.md",
-      "archive_path": "site/archive/108.md"
+      "archive_path": "apps/site/archive/108.md"
     },
     {
       "number": 109,
@@ -1199,7 +1199,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/109.json",
       "body_path": "data/buttondown/bodies/109.md",
-      "archive_path": "site/archive/109.md"
+      "archive_path": "apps/site/archive/109.md"
     },
     {
       "number": 110,
@@ -1210,7 +1210,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/110.json",
       "body_path": "data/buttondown/bodies/110.md",
-      "archive_path": "site/archive/110.md"
+      "archive_path": "apps/site/archive/110.md"
     },
     {
       "number": 111,
@@ -1221,7 +1221,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/111.json",
       "body_path": "data/buttondown/bodies/111.md",
-      "archive_path": "site/archive/111.md"
+      "archive_path": "apps/site/archive/111.md"
     },
     {
       "number": 112,
@@ -1232,7 +1232,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/112.json",
       "body_path": "data/buttondown/bodies/112.md",
-      "archive_path": "site/archive/112.md"
+      "archive_path": "apps/site/archive/112.md"
     },
     {
       "number": 113,
@@ -1243,7 +1243,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/113.json",
       "body_path": "data/buttondown/bodies/113.md",
-      "archive_path": "site/archive/113.md"
+      "archive_path": "apps/site/archive/113.md"
     },
     {
       "number": 114,
@@ -1254,7 +1254,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/114.json",
       "body_path": "data/buttondown/bodies/114.md",
-      "archive_path": "site/archive/114.md"
+      "archive_path": "apps/site/archive/114.md"
     },
     {
       "number": 115,
@@ -1265,7 +1265,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/115.json",
       "body_path": "data/buttondown/bodies/115.md",
-      "archive_path": "site/archive/115.md"
+      "archive_path": "apps/site/archive/115.md"
     },
     {
       "number": 116,
@@ -1276,7 +1276,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/116.json",
       "body_path": "data/buttondown/bodies/116.md",
-      "archive_path": "site/archive/116.md"
+      "archive_path": "apps/site/archive/116.md"
     },
     {
       "number": 117,
@@ -1287,7 +1287,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/117.json",
       "body_path": "data/buttondown/bodies/117.md",
-      "archive_path": "site/archive/117.md"
+      "archive_path": "apps/site/archive/117.md"
     },
     {
       "number": 118,
@@ -1298,7 +1298,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/118.json",
       "body_path": "data/buttondown/bodies/118.md",
-      "archive_path": "site/archive/118.md"
+      "archive_path": "apps/site/archive/118.md"
     },
     {
       "number": 119,
@@ -1309,7 +1309,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/119.json",
       "body_path": "data/buttondown/bodies/119.md",
-      "archive_path": "site/archive/119.md"
+      "archive_path": "apps/site/archive/119.md"
     },
     {
       "number": 120,
@@ -1320,7 +1320,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/120.json",
       "body_path": "data/buttondown/bodies/120.md",
-      "archive_path": "site/archive/120.md"
+      "archive_path": "apps/site/archive/120.md"
     },
     {
       "number": 121,
@@ -1331,7 +1331,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/121.json",
       "body_path": "data/buttondown/bodies/121.md",
-      "archive_path": "site/archive/121.md"
+      "archive_path": "apps/site/archive/121.md"
     },
     {
       "number": 122,
@@ -1342,7 +1342,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/122.json",
       "body_path": "data/buttondown/bodies/122.md",
-      "archive_path": "site/archive/122.md"
+      "archive_path": "apps/site/archive/122.md"
     },
     {
       "number": 123,
@@ -1353,7 +1353,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/123.json",
       "body_path": "data/buttondown/bodies/123.md",
-      "archive_path": "site/archive/123.md"
+      "archive_path": "apps/site/archive/123.md"
     },
     {
       "number": 124,
@@ -1364,7 +1364,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/124.json",
       "body_path": "data/buttondown/bodies/124.md",
-      "archive_path": "site/archive/124.md"
+      "archive_path": "apps/site/archive/124.md"
     },
     {
       "number": 125,
@@ -1375,7 +1375,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/125.json",
       "body_path": "data/buttondown/bodies/125.md",
-      "archive_path": "site/archive/125.md"
+      "archive_path": "apps/site/archive/125.md"
     },
     {
       "number": 126,
@@ -1386,7 +1386,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/126.json",
       "body_path": "data/buttondown/bodies/126.md",
-      "archive_path": "site/archive/126.md"
+      "archive_path": "apps/site/archive/126.md"
     },
     {
       "number": 127,
@@ -1397,7 +1397,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/127.json",
       "body_path": "data/buttondown/bodies/127.md",
-      "archive_path": "site/archive/127.md"
+      "archive_path": "apps/site/archive/127.md"
     },
     {
       "number": 128,
@@ -1408,7 +1408,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/128.json",
       "body_path": "data/buttondown/bodies/128.md",
-      "archive_path": "site/archive/128.md"
+      "archive_path": "apps/site/archive/128.md"
     },
     {
       "number": 129,
@@ -1419,7 +1419,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/129.json",
       "body_path": "data/buttondown/bodies/129.md",
-      "archive_path": "site/archive/129.md"
+      "archive_path": "apps/site/archive/129.md"
     },
     {
       "number": 130,
@@ -1430,7 +1430,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/130.json",
       "body_path": "data/buttondown/bodies/130.md",
-      "archive_path": "site/archive/130.md"
+      "archive_path": "apps/site/archive/130.md"
     },
     {
       "number": 131,
@@ -1441,7 +1441,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/131.json",
       "body_path": "data/buttondown/bodies/131.md",
-      "archive_path": "site/archive/131.md"
+      "archive_path": "apps/site/archive/131.md"
     },
     {
       "number": 132,
@@ -1452,7 +1452,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/132.json",
       "body_path": "data/buttondown/bodies/132.md",
-      "archive_path": "site/archive/132.md"
+      "archive_path": "apps/site/archive/132.md"
     },
     {
       "number": 133,
@@ -1463,7 +1463,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/133.json",
       "body_path": "data/buttondown/bodies/133.md",
-      "archive_path": "site/archive/133.md"
+      "archive_path": "apps/site/archive/133.md"
     },
     {
       "number": 134,
@@ -1474,7 +1474,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/134.json",
       "body_path": "data/buttondown/bodies/134.md",
-      "archive_path": "site/archive/134.md"
+      "archive_path": "apps/site/archive/134.md"
     },
     {
       "number": 135,
@@ -1485,7 +1485,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/135.json",
       "body_path": "data/buttondown/bodies/135.md",
-      "archive_path": "site/archive/135.md"
+      "archive_path": "apps/site/archive/135.md"
     },
     {
       "number": 136,
@@ -1496,7 +1496,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/136.json",
       "body_path": "data/buttondown/bodies/136.md",
-      "archive_path": "site/archive/136.md"
+      "archive_path": "apps/site/archive/136.md"
     },
     {
       "number": 137,
@@ -1507,7 +1507,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/137.json",
       "body_path": "data/buttondown/bodies/137.md",
-      "archive_path": "site/archive/137.md"
+      "archive_path": "apps/site/archive/137.md"
     },
     {
       "number": 138,
@@ -1518,7 +1518,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/138.json",
       "body_path": "data/buttondown/bodies/138.md",
-      "archive_path": "site/archive/138.md"
+      "archive_path": "apps/site/archive/138.md"
     },
     {
       "number": 139,
@@ -1529,7 +1529,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/139.json",
       "body_path": "data/buttondown/bodies/139.md",
-      "archive_path": "site/archive/139.md"
+      "archive_path": "apps/site/archive/139.md"
     },
     {
       "number": 140,
@@ -1540,7 +1540,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/140.json",
       "body_path": "data/buttondown/bodies/140.md",
-      "archive_path": "site/archive/140.md"
+      "archive_path": "apps/site/archive/140.md"
     },
     {
       "number": "140-special",
@@ -1551,7 +1551,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/140-special.json",
       "body_path": "data/buttondown/bodies/140-special.md",
-      "archive_path": "site/archive/140-special.md"
+      "archive_path": "apps/site/archive/140-special.md"
     },
     {
       "number": 141,
@@ -1562,7 +1562,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/141.json",
       "body_path": "data/buttondown/bodies/141.md",
-      "archive_path": "site/archive/141.md"
+      "archive_path": "apps/site/archive/141.md"
     },
     {
       "number": 142,
@@ -1573,7 +1573,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/142.json",
       "body_path": "data/buttondown/bodies/142.md",
-      "archive_path": "site/archive/142.md"
+      "archive_path": "apps/site/archive/142.md"
     },
     {
       "number": 143,
@@ -1584,7 +1584,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/143.json",
       "body_path": "data/buttondown/bodies/143.md",
-      "archive_path": "site/archive/143.md"
+      "archive_path": "apps/site/archive/143.md"
     },
     {
       "number": 144,
@@ -1595,7 +1595,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/144.json",
       "body_path": "data/buttondown/bodies/144.md",
-      "archive_path": "site/archive/144.md"
+      "archive_path": "apps/site/archive/144.md"
     },
     {
       "number": 145,
@@ -1606,7 +1606,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/145.json",
       "body_path": "data/buttondown/bodies/145.md",
-      "archive_path": "site/archive/145.md"
+      "archive_path": "apps/site/archive/145.md"
     },
     {
       "number": 146,
@@ -1617,7 +1617,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/146.json",
       "body_path": "data/buttondown/bodies/146.md",
-      "archive_path": "site/archive/146.md"
+      "archive_path": "apps/site/archive/146.md"
     },
     {
       "number": 147,
@@ -1628,7 +1628,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/147.json",
       "body_path": "data/buttondown/bodies/147.md",
-      "archive_path": "site/archive/147.md"
+      "archive_path": "apps/site/archive/147.md"
     },
     {
       "number": 148,
@@ -1639,7 +1639,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/148.json",
       "body_path": "data/buttondown/bodies/148.md",
-      "archive_path": "site/archive/148.md"
+      "archive_path": "apps/site/archive/148.md"
     },
     {
       "number": 149,
@@ -1650,7 +1650,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/149.json",
       "body_path": "data/buttondown/bodies/149.md",
-      "archive_path": "site/archive/149.md"
+      "archive_path": "apps/site/archive/149.md"
     },
     {
       "number": 150,
@@ -1661,7 +1661,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/150.json",
       "body_path": "data/buttondown/bodies/150.md",
-      "archive_path": "site/archive/150.md"
+      "archive_path": "apps/site/archive/150.md"
     },
     {
       "number": 151,
@@ -1672,7 +1672,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/151.json",
       "body_path": "data/buttondown/bodies/151.md",
-      "archive_path": "site/archive/151.md"
+      "archive_path": "apps/site/archive/151.md"
     },
     {
       "number": 152,
@@ -1683,7 +1683,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/152.json",
       "body_path": "data/buttondown/bodies/152.md",
-      "archive_path": "site/archive/152.md"
+      "archive_path": "apps/site/archive/152.md"
     },
     {
       "number": 153,
@@ -1694,7 +1694,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/153.json",
       "body_path": "data/buttondown/bodies/153.md",
-      "archive_path": "site/archive/153.md"
+      "archive_path": "apps/site/archive/153.md"
     },
     {
       "number": 154,
@@ -1705,7 +1705,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/154.json",
       "body_path": "data/buttondown/bodies/154.md",
-      "archive_path": "site/archive/154.md"
+      "archive_path": "apps/site/archive/154.md"
     },
     {
       "number": 155,
@@ -1716,7 +1716,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/155.json",
       "body_path": "data/buttondown/bodies/155.md",
-      "archive_path": "site/archive/155.md"
+      "archive_path": "apps/site/archive/155.md"
     },
     {
       "number": 156,
@@ -1727,7 +1727,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/156.json",
       "body_path": "data/buttondown/bodies/156.md",
-      "archive_path": "site/archive/156.md"
+      "archive_path": "apps/site/archive/156.md"
     },
     {
       "number": 157,
@@ -1738,7 +1738,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/157.json",
       "body_path": "data/buttondown/bodies/157.md",
-      "archive_path": "site/archive/157.md"
+      "archive_path": "apps/site/archive/157.md"
     },
     {
       "number": 158,
@@ -1749,7 +1749,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/158.json",
       "body_path": "data/buttondown/bodies/158.md",
-      "archive_path": "site/archive/158.md"
+      "archive_path": "apps/site/archive/158.md"
     },
     {
       "number": 159,
@@ -1760,7 +1760,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/159.json",
       "body_path": "data/buttondown/bodies/159.md",
-      "archive_path": "site/archive/159.md"
+      "archive_path": "apps/site/archive/159.md"
     },
     {
       "number": 160,
@@ -1771,7 +1771,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/160.json",
       "body_path": "data/buttondown/bodies/160.md",
-      "archive_path": "site/archive/160.md"
+      "archive_path": "apps/site/archive/160.md"
     },
     {
       "number": 161,
@@ -1782,7 +1782,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/161.json",
       "body_path": "data/buttondown/bodies/161.md",
-      "archive_path": "site/archive/161.md"
+      "archive_path": "apps/site/archive/161.md"
     },
     {
       "number": 162,
@@ -1793,7 +1793,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/162.json",
       "body_path": "data/buttondown/bodies/162.md",
-      "archive_path": "site/archive/162.md"
+      "archive_path": "apps/site/archive/162.md"
     },
     {
       "number": 163,
@@ -1804,7 +1804,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/163.json",
       "body_path": "data/buttondown/bodies/163.md",
-      "archive_path": "site/archive/163.md"
+      "archive_path": "apps/site/archive/163.md"
     },
     {
       "number": 164,
@@ -1815,7 +1815,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/164.json",
       "body_path": "data/buttondown/bodies/164.md",
-      "archive_path": "site/archive/164.md"
+      "archive_path": "apps/site/archive/164.md"
     },
     {
       "number": 165,
@@ -1826,7 +1826,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/165.json",
       "body_path": "data/buttondown/bodies/165.md",
-      "archive_path": "site/archive/165.md"
+      "archive_path": "apps/site/archive/165.md"
     },
     {
       "number": 166,
@@ -1837,7 +1837,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/166.json",
       "body_path": "data/buttondown/bodies/166.md",
-      "archive_path": "site/archive/166.md"
+      "archive_path": "apps/site/archive/166.md"
     },
     {
       "number": 167,
@@ -1848,7 +1848,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/167.json",
       "body_path": "data/buttondown/bodies/167.md",
-      "archive_path": "site/archive/167.md"
+      "archive_path": "apps/site/archive/167.md"
     },
     {
       "number": 168,
@@ -1859,7 +1859,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/168.json",
       "body_path": "data/buttondown/bodies/168.md",
-      "archive_path": "site/archive/168.md"
+      "archive_path": "apps/site/archive/168.md"
     },
     {
       "number": 169,
@@ -1870,7 +1870,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/169.json",
       "body_path": "data/buttondown/bodies/169.md",
-      "archive_path": "site/archive/169.md"
+      "archive_path": "apps/site/archive/169.md"
     },
     {
       "number": 170,
@@ -1881,7 +1881,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/170.json",
       "body_path": "data/buttondown/bodies/170.md",
-      "archive_path": "site/archive/170.md"
+      "archive_path": "apps/site/archive/170.md"
     },
     {
       "number": 171,
@@ -1892,7 +1892,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/171.json",
       "body_path": "data/buttondown/bodies/171.md",
-      "archive_path": "site/archive/171.md"
+      "archive_path": "apps/site/archive/171.md"
     },
     {
       "number": 172,
@@ -1903,7 +1903,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/172.json",
       "body_path": "data/buttondown/bodies/172.md",
-      "archive_path": "site/archive/172.md"
+      "archive_path": "apps/site/archive/172.md"
     },
     {
       "number": 173,
@@ -1914,7 +1914,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/173.json",
       "body_path": "data/buttondown/bodies/173.md",
-      "archive_path": "site/archive/173.md"
+      "archive_path": "apps/site/archive/173.md"
     },
     {
       "number": 174,
@@ -1925,7 +1925,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/174.json",
       "body_path": "data/buttondown/bodies/174.md",
-      "archive_path": "site/archive/174.md"
+      "archive_path": "apps/site/archive/174.md"
     },
     {
       "number": 175,
@@ -1936,7 +1936,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/175.json",
       "body_path": "data/buttondown/bodies/175.md",
-      "archive_path": "site/archive/175.md"
+      "archive_path": "apps/site/archive/175.md"
     },
     {
       "number": 176,
@@ -1947,7 +1947,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/176.json",
       "body_path": "data/buttondown/bodies/176.md",
-      "archive_path": "site/archive/176.md"
+      "archive_path": "apps/site/archive/176.md"
     },
     {
       "number": 177,
@@ -1958,7 +1958,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/177.json",
       "body_path": "data/buttondown/bodies/177.md",
-      "archive_path": "site/archive/177.md"
+      "archive_path": "apps/site/archive/177.md"
     },
     {
       "number": 178,
@@ -1969,7 +1969,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/178.json",
       "body_path": "data/buttondown/bodies/178.md",
-      "archive_path": "site/archive/178.md"
+      "archive_path": "apps/site/archive/178.md"
     },
     {
       "number": 179,
@@ -1980,7 +1980,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/179.json",
       "body_path": "data/buttondown/bodies/179.md",
-      "archive_path": "site/archive/179.md"
+      "archive_path": "apps/site/archive/179.md"
     },
     {
       "number": 180,
@@ -1991,7 +1991,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/180.json",
       "body_path": "data/buttondown/bodies/180.md",
-      "archive_path": "site/archive/180.md"
+      "archive_path": "apps/site/archive/180.md"
     },
     {
       "number": 181,
@@ -2002,7 +2002,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/181.json",
       "body_path": "data/buttondown/bodies/181.md",
-      "archive_path": "site/archive/181.md"
+      "archive_path": "apps/site/archive/181.md"
     },
     {
       "number": 182,
@@ -2013,7 +2013,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/182.json",
       "body_path": "data/buttondown/bodies/182.md",
-      "archive_path": "site/archive/182.md"
+      "archive_path": "apps/site/archive/182.md"
     },
     {
       "number": 183,
@@ -2024,7 +2024,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/183.json",
       "body_path": "data/buttondown/bodies/183.md",
-      "archive_path": "site/archive/183.md"
+      "archive_path": "apps/site/archive/183.md"
     },
     {
       "number": 184,
@@ -2035,7 +2035,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/184.json",
       "body_path": "data/buttondown/bodies/184.md",
-      "archive_path": "site/archive/184.md"
+      "archive_path": "apps/site/archive/184.md"
     },
     {
       "number": 185,
@@ -2046,7 +2046,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/185.json",
       "body_path": "data/buttondown/bodies/185.md",
-      "archive_path": "site/archive/185.md"
+      "archive_path": "apps/site/archive/185.md"
     },
     {
       "number": 186,
@@ -2057,7 +2057,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/186.json",
       "body_path": "data/buttondown/bodies/186.md",
-      "archive_path": "site/archive/186.md"
+      "archive_path": "apps/site/archive/186.md"
     },
     {
       "number": 187,
@@ -2068,7 +2068,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/187.json",
       "body_path": "data/buttondown/bodies/187.md",
-      "archive_path": "site/archive/187.md"
+      "archive_path": "apps/site/archive/187.md"
     },
     {
       "number": 188,
@@ -2079,7 +2079,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/188.json",
       "body_path": "data/buttondown/bodies/188.md",
-      "archive_path": "site/archive/188.md"
+      "archive_path": "apps/site/archive/188.md"
     },
     {
       "number": 189,
@@ -2090,7 +2090,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/189.json",
       "body_path": "data/buttondown/bodies/189.md",
-      "archive_path": "site/archive/189.md"
+      "archive_path": "apps/site/archive/189.md"
     },
     {
       "number": 190,
@@ -2101,7 +2101,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/190.json",
       "body_path": "data/buttondown/bodies/190.md",
-      "archive_path": "site/archive/190.md"
+      "archive_path": "apps/site/archive/190.md"
     },
     {
       "number": 191,
@@ -2112,7 +2112,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/191.json",
       "body_path": "data/buttondown/bodies/191.md",
-      "archive_path": "site/archive/191.md"
+      "archive_path": "apps/site/archive/191.md"
     },
     {
       "number": 192,
@@ -2123,7 +2123,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/192.json",
       "body_path": "data/buttondown/bodies/192.md",
-      "archive_path": "site/archive/192.md"
+      "archive_path": "apps/site/archive/192.md"
     },
     {
       "number": 193,
@@ -2134,7 +2134,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/193.json",
       "body_path": "data/buttondown/bodies/193.md",
-      "archive_path": "site/archive/193.md"
+      "archive_path": "apps/site/archive/193.md"
     },
     {
       "number": 194,
@@ -2145,7 +2145,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/194.json",
       "body_path": "data/buttondown/bodies/194.md",
-      "archive_path": "site/archive/194.md"
+      "archive_path": "apps/site/archive/194.md"
     },
     {
       "number": 195,
@@ -2156,7 +2156,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/195.json",
       "body_path": "data/buttondown/bodies/195.md",
-      "archive_path": "site/archive/195.md"
+      "archive_path": "apps/site/archive/195.md"
     },
     {
       "number": 196,
@@ -2167,7 +2167,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/196.json",
       "body_path": "data/buttondown/bodies/196.md",
-      "archive_path": "site/archive/196.md"
+      "archive_path": "apps/site/archive/196.md"
     },
     {
       "number": 197,
@@ -2178,7 +2178,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/197.json",
       "body_path": "data/buttondown/bodies/197.md",
-      "archive_path": "site/archive/197.md"
+      "archive_path": "apps/site/archive/197.md"
     },
     {
       "number": 198,
@@ -2189,7 +2189,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/198.json",
       "body_path": "data/buttondown/bodies/198.md",
-      "archive_path": "site/archive/198.md"
+      "archive_path": "apps/site/archive/198.md"
     },
     {
       "number": 199,
@@ -2200,7 +2200,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/199.json",
       "body_path": "data/buttondown/bodies/199.md",
-      "archive_path": "site/archive/199.md"
+      "archive_path": "apps/site/archive/199.md"
     },
     {
       "number": 200,
@@ -2211,7 +2211,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/200.json",
       "body_path": "data/buttondown/bodies/200.md",
-      "archive_path": "site/archive/200.md"
+      "archive_path": "apps/site/archive/200.md"
     },
     {
       "number": 201,
@@ -2222,7 +2222,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/201.json",
       "body_path": "data/buttondown/bodies/201.md",
-      "archive_path": "site/archive/201.md"
+      "archive_path": "apps/site/archive/201.md"
     },
     {
       "number": 202,
@@ -2233,7 +2233,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/202.json",
       "body_path": "data/buttondown/bodies/202.md",
-      "archive_path": "site/archive/202.md"
+      "archive_path": "apps/site/archive/202.md"
     },
     {
       "number": 203,
@@ -2244,7 +2244,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/203.json",
       "body_path": "data/buttondown/bodies/203.md",
-      "archive_path": "site/archive/203.md"
+      "archive_path": "apps/site/archive/203.md"
     },
     {
       "number": 204,
@@ -2255,7 +2255,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/204.json",
       "body_path": "data/buttondown/bodies/204.md",
-      "archive_path": "site/archive/204.md"
+      "archive_path": "apps/site/archive/204.md"
     },
     {
       "number": 205,
@@ -2266,7 +2266,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/205.json",
       "body_path": "data/buttondown/bodies/205.md",
-      "archive_path": "site/archive/205.md"
+      "archive_path": "apps/site/archive/205.md"
     },
     {
       "number": 206,
@@ -2277,7 +2277,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/206.json",
       "body_path": "data/buttondown/bodies/206.md",
-      "archive_path": "site/archive/206.md"
+      "archive_path": "apps/site/archive/206.md"
     },
     {
       "number": 207,
@@ -2288,7 +2288,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/207.json",
       "body_path": "data/buttondown/bodies/207.md",
-      "archive_path": "site/archive/207.md"
+      "archive_path": "apps/site/archive/207.md"
     },
     {
       "number": 208,
@@ -2299,7 +2299,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/208.json",
       "body_path": "data/buttondown/bodies/208.md",
-      "archive_path": "site/archive/208.md"
+      "archive_path": "apps/site/archive/208.md"
     },
     {
       "number": 209,
@@ -2310,7 +2310,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/209.json",
       "body_path": "data/buttondown/bodies/209.md",
-      "archive_path": "site/archive/209.md"
+      "archive_path": "apps/site/archive/209.md"
     },
     {
       "number": 210,
@@ -2321,7 +2321,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/210.json",
       "body_path": "data/buttondown/bodies/210.md",
-      "archive_path": "site/archive/210.md"
+      "archive_path": "apps/site/archive/210.md"
     },
     {
       "number": 211,
@@ -2332,7 +2332,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/211.json",
       "body_path": "data/buttondown/bodies/211.md",
-      "archive_path": "site/archive/211.md"
+      "archive_path": "apps/site/archive/211.md"
     },
     {
       "number": 212,
@@ -2343,7 +2343,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/212.json",
       "body_path": "data/buttondown/bodies/212.md",
-      "archive_path": "site/archive/212.md"
+      "archive_path": "apps/site/archive/212.md"
     },
     {
       "number": 213,
@@ -2354,7 +2354,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/213.json",
       "body_path": "data/buttondown/bodies/213.md",
-      "archive_path": "site/archive/213.md"
+      "archive_path": "apps/site/archive/213.md"
     },
     {
       "number": 214,
@@ -2365,7 +2365,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/214.json",
       "body_path": "data/buttondown/bodies/214.md",
-      "archive_path": "site/archive/214.md"
+      "archive_path": "apps/site/archive/214.md"
     },
     {
       "number": 215,
@@ -2376,7 +2376,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/215.json",
       "body_path": "data/buttondown/bodies/215.md",
-      "archive_path": "site/archive/215.md"
+      "archive_path": "apps/site/archive/215.md"
     },
     {
       "number": 216,
@@ -2387,7 +2387,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/216.json",
       "body_path": "data/buttondown/bodies/216.md",
-      "archive_path": "site/archive/216.md"
+      "archive_path": "apps/site/archive/216.md"
     },
     {
       "number": 217,
@@ -2398,7 +2398,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/217.json",
       "body_path": "data/buttondown/bodies/217.md",
-      "archive_path": "site/archive/217.md"
+      "archive_path": "apps/site/archive/217.md"
     },
     {
       "number": 218,
@@ -2409,7 +2409,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/218.json",
       "body_path": "data/buttondown/bodies/218.md",
-      "archive_path": "site/archive/218.md"
+      "archive_path": "apps/site/archive/218.md"
     },
     {
       "number": 219,
@@ -2420,7 +2420,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/219.json",
       "body_path": "data/buttondown/bodies/219.md",
-      "archive_path": "site/archive/219.md"
+      "archive_path": "apps/site/archive/219.md"
     },
     {
       "number": 220,
@@ -2431,7 +2431,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/220.json",
       "body_path": "data/buttondown/bodies/220.md",
-      "archive_path": "site/archive/220.md"
+      "archive_path": "apps/site/archive/220.md"
     },
     {
       "number": 221,
@@ -2442,7 +2442,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/221.json",
       "body_path": "data/buttondown/bodies/221.md",
-      "archive_path": "site/archive/221.md"
+      "archive_path": "apps/site/archive/221.md"
     },
     {
       "number": 222,
@@ -2453,7 +2453,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/222.json",
       "body_path": "data/buttondown/bodies/222.md",
-      "archive_path": "site/archive/222.md"
+      "archive_path": "apps/site/archive/222.md"
     },
     {
       "number": 223,
@@ -2464,7 +2464,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/223.json",
       "body_path": "data/buttondown/bodies/223.md",
-      "archive_path": "site/archive/223.md"
+      "archive_path": "apps/site/archive/223.md"
     },
     {
       "number": 224,
@@ -2475,7 +2475,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/224.json",
       "body_path": "data/buttondown/bodies/224.md",
-      "archive_path": "site/archive/224.md"
+      "archive_path": "apps/site/archive/224.md"
     },
     {
       "number": 225,
@@ -2486,7 +2486,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/225.json",
       "body_path": "data/buttondown/bodies/225.md",
-      "archive_path": "site/archive/225.md"
+      "archive_path": "apps/site/archive/225.md"
     },
     {
       "number": 226,
@@ -2497,7 +2497,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/226.json",
       "body_path": "data/buttondown/bodies/226.md",
-      "archive_path": "site/archive/226.md"
+      "archive_path": "apps/site/archive/226.md"
     },
     {
       "number": 227,
@@ -2508,7 +2508,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/227.json",
       "body_path": "data/buttondown/bodies/227.md",
-      "archive_path": "site/archive/227.md"
+      "archive_path": "apps/site/archive/227.md"
     },
     {
       "number": 228,
@@ -2519,7 +2519,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/228.json",
       "body_path": "data/buttondown/bodies/228.md",
-      "archive_path": "site/archive/228.md"
+      "archive_path": "apps/site/archive/228.md"
     },
     {
       "number": 229,
@@ -2530,7 +2530,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/229.json",
       "body_path": "data/buttondown/bodies/229.md",
-      "archive_path": "site/archive/229.md"
+      "archive_path": "apps/site/archive/229.md"
     },
     {
       "number": 230,
@@ -2541,7 +2541,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/230.json",
       "body_path": "data/buttondown/bodies/230.md",
-      "archive_path": "site/archive/230.md"
+      "archive_path": "apps/site/archive/230.md"
     },
     {
       "number": 231,
@@ -2552,7 +2552,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/231.json",
       "body_path": "data/buttondown/bodies/231.md",
-      "archive_path": "site/archive/231.md"
+      "archive_path": "apps/site/archive/231.md"
     },
     {
       "number": 232,
@@ -2563,7 +2563,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/232.json",
       "body_path": "data/buttondown/bodies/232.md",
-      "archive_path": "site/archive/232.md"
+      "archive_path": "apps/site/archive/232.md"
     },
     {
       "number": 233,
@@ -2574,7 +2574,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/233.json",
       "body_path": "data/buttondown/bodies/233.md",
-      "archive_path": "site/archive/233.md"
+      "archive_path": "apps/site/archive/233.md"
     },
     {
       "number": 234,
@@ -2585,7 +2585,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/234.json",
       "body_path": "data/buttondown/bodies/234.md",
-      "archive_path": "site/archive/234.md"
+      "archive_path": "apps/site/archive/234.md"
     },
     {
       "number": 235,
@@ -2596,7 +2596,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/235.json",
       "body_path": "data/buttondown/bodies/235.md",
-      "archive_path": "site/archive/235.md"
+      "archive_path": "apps/site/archive/235.md"
     },
     {
       "number": 236,
@@ -2607,7 +2607,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/236.json",
       "body_path": "data/buttondown/bodies/236.md",
-      "archive_path": "site/archive/236.md"
+      "archive_path": "apps/site/archive/236.md"
     },
     {
       "number": 237,
@@ -2618,7 +2618,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/237.json",
       "body_path": "data/buttondown/bodies/237.md",
-      "archive_path": "site/archive/237.md"
+      "archive_path": "apps/site/archive/237.md"
     },
     {
       "number": 238,
@@ -2629,7 +2629,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/238.json",
       "body_path": "data/buttondown/bodies/238.md",
-      "archive_path": "site/archive/238.md"
+      "archive_path": "apps/site/archive/238.md"
     },
     {
       "number": 239,
@@ -2640,7 +2640,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/239.json",
       "body_path": "data/buttondown/bodies/239.md",
-      "archive_path": "site/archive/239.md"
+      "archive_path": "apps/site/archive/239.md"
     },
     {
       "number": 240,
@@ -2651,7 +2651,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/240.json",
       "body_path": "data/buttondown/bodies/240.md",
-      "archive_path": "site/archive/240.md"
+      "archive_path": "apps/site/archive/240.md"
     },
     {
       "number": 241,
@@ -2662,7 +2662,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/241.json",
       "body_path": "data/buttondown/bodies/241.md",
-      "archive_path": "site/archive/241.md"
+      "archive_path": "apps/site/archive/241.md"
     },
     {
       "number": 242,
@@ -2673,7 +2673,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/242.json",
       "body_path": "data/buttondown/bodies/242.md",
-      "archive_path": "site/archive/242.md"
+      "archive_path": "apps/site/archive/242.md"
     },
     {
       "number": 243,
@@ -2684,7 +2684,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/243.json",
       "body_path": "data/buttondown/bodies/243.md",
-      "archive_path": "site/archive/243.md"
+      "archive_path": "apps/site/archive/243.md"
     },
     {
       "number": 244,
@@ -2695,7 +2695,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/244.json",
       "body_path": "data/buttondown/bodies/244.md",
-      "archive_path": "site/archive/244.md"
+      "archive_path": "apps/site/archive/244.md"
     },
     {
       "number": 245,
@@ -2706,7 +2706,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/245.json",
       "body_path": "data/buttondown/bodies/245.md",
-      "archive_path": "site/archive/245.md"
+      "archive_path": "apps/site/archive/245.md"
     },
     {
       "number": 246,
@@ -2717,7 +2717,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/246.json",
       "body_path": "data/buttondown/bodies/246.md",
-      "archive_path": "site/archive/246.md"
+      "archive_path": "apps/site/archive/246.md"
     },
     {
       "number": 247,
@@ -2728,7 +2728,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/247.json",
       "body_path": "data/buttondown/bodies/247.md",
-      "archive_path": "site/archive/247.md"
+      "archive_path": "apps/site/archive/247.md"
     },
     {
       "number": 248,
@@ -2739,7 +2739,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/248.json",
       "body_path": "data/buttondown/bodies/248.md",
-      "archive_path": "site/archive/248.md"
+      "archive_path": "apps/site/archive/248.md"
     },
     {
       "number": 249,
@@ -2750,7 +2750,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/249.json",
       "body_path": "data/buttondown/bodies/249.md",
-      "archive_path": "site/archive/249.md"
+      "archive_path": "apps/site/archive/249.md"
     },
     {
       "number": 250,
@@ -2761,7 +2761,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/250.json",
       "body_path": "data/buttondown/bodies/250.md",
-      "archive_path": "site/archive/250.md"
+      "archive_path": "apps/site/archive/250.md"
     },
     {
       "number": 251,
@@ -2772,7 +2772,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/251.json",
       "body_path": "data/buttondown/bodies/251.md",
-      "archive_path": "site/archive/251.md"
+      "archive_path": "apps/site/archive/251.md"
     },
     {
       "number": 252,
@@ -2783,7 +2783,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/252.json",
       "body_path": "data/buttondown/bodies/252.md",
-      "archive_path": "site/archive/252.md"
+      "archive_path": "apps/site/archive/252.md"
     },
     {
       "number": 253,
@@ -2794,7 +2794,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/253.json",
       "body_path": "data/buttondown/bodies/253.md",
-      "archive_path": "site/archive/253.md"
+      "archive_path": "apps/site/archive/253.md"
     },
     {
       "number": 254,
@@ -2805,7 +2805,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/254.json",
       "body_path": "data/buttondown/bodies/254.md",
-      "archive_path": "site/archive/254.md"
+      "archive_path": "apps/site/archive/254.md"
     },
     {
       "number": 255,
@@ -2816,7 +2816,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/255.json",
       "body_path": "data/buttondown/bodies/255.md",
-      "archive_path": "site/archive/255.md"
+      "archive_path": "apps/site/archive/255.md"
     },
     {
       "number": 256,
@@ -2827,7 +2827,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/256.json",
       "body_path": "data/buttondown/bodies/256.md",
-      "archive_path": "site/archive/256.md"
+      "archive_path": "apps/site/archive/256.md"
     },
     {
       "number": 257,
@@ -2838,7 +2838,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/257.json",
       "body_path": "data/buttondown/bodies/257.md",
-      "archive_path": "site/archive/257.md"
+      "archive_path": "apps/site/archive/257.md"
     },
     {
       "number": 258,
@@ -2849,7 +2849,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/258.json",
       "body_path": "data/buttondown/bodies/258.md",
-      "archive_path": "site/archive/258.md"
+      "archive_path": "apps/site/archive/258.md"
     },
     {
       "number": 259,
@@ -2860,7 +2860,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/259.json",
       "body_path": "data/buttondown/bodies/259.md",
-      "archive_path": "site/archive/259.md"
+      "archive_path": "apps/site/archive/259.md"
     },
     {
       "number": 260,
@@ -2871,7 +2871,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/260.json",
       "body_path": "data/buttondown/bodies/260.md",
-      "archive_path": "site/archive/260.md"
+      "archive_path": "apps/site/archive/260.md"
     },
     {
       "number": 261,
@@ -2882,7 +2882,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/261.json",
       "body_path": "data/buttondown/bodies/261.md",
-      "archive_path": "site/archive/261.md"
+      "archive_path": "apps/site/archive/261.md"
     },
     {
       "number": 262,
@@ -2893,7 +2893,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/262.json",
       "body_path": "data/buttondown/bodies/262.md",
-      "archive_path": "site/archive/262.md"
+      "archive_path": "apps/site/archive/262.md"
     },
     {
       "number": 263,
@@ -2904,7 +2904,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/263.json",
       "body_path": "data/buttondown/bodies/263.md",
-      "archive_path": "site/archive/263.md"
+      "archive_path": "apps/site/archive/263.md"
     },
     {
       "number": 264,
@@ -2915,7 +2915,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/264.json",
       "body_path": "data/buttondown/bodies/264.md",
-      "archive_path": "site/archive/264.md"
+      "archive_path": "apps/site/archive/264.md"
     },
     {
       "number": 265,
@@ -2926,7 +2926,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/265.json",
       "body_path": "data/buttondown/bodies/265.md",
-      "archive_path": "site/archive/265.md"
+      "archive_path": "apps/site/archive/265.md"
     },
     {
       "number": 266,
@@ -2937,7 +2937,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/266.json",
       "body_path": "data/buttondown/bodies/266.md",
-      "archive_path": "site/archive/266.md"
+      "archive_path": "apps/site/archive/266.md"
     },
     {
       "number": 267,
@@ -2948,7 +2948,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/267.json",
       "body_path": "data/buttondown/bodies/267.md",
-      "archive_path": "site/archive/267.md"
+      "archive_path": "apps/site/archive/267.md"
     },
     {
       "number": 268,
@@ -2959,7 +2959,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/268.json",
       "body_path": "data/buttondown/bodies/268.md",
-      "archive_path": "site/archive/268.md"
+      "archive_path": "apps/site/archive/268.md"
     },
     {
       "number": 269,
@@ -2970,7 +2970,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/269.json",
       "body_path": "data/buttondown/bodies/269.md",
-      "archive_path": "site/archive/269.md"
+      "archive_path": "apps/site/archive/269.md"
     },
     {
       "number": 270,
@@ -2981,7 +2981,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/270.json",
       "body_path": "data/buttondown/bodies/270.md",
-      "archive_path": "site/archive/270.md"
+      "archive_path": "apps/site/archive/270.md"
     },
     {
       "number": 271,
@@ -2992,7 +2992,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/271.json",
       "body_path": "data/buttondown/bodies/271.md",
-      "archive_path": "site/archive/271.md"
+      "archive_path": "apps/site/archive/271.md"
     },
     {
       "number": 272,
@@ -3003,7 +3003,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/272.json",
       "body_path": "data/buttondown/bodies/272.md",
-      "archive_path": "site/archive/272.md"
+      "archive_path": "apps/site/archive/272.md"
     },
     {
       "number": 273,
@@ -3014,7 +3014,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/273.json",
       "body_path": "data/buttondown/bodies/273.md",
-      "archive_path": "site/archive/273.md"
+      "archive_path": "apps/site/archive/273.md"
     },
     {
       "number": 274,
@@ -3025,7 +3025,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/274.json",
       "body_path": "data/buttondown/bodies/274.md",
-      "archive_path": "site/archive/274.md"
+      "archive_path": "apps/site/archive/274.md"
     },
     {
       "number": 275,
@@ -3036,7 +3036,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/275.json",
       "body_path": "data/buttondown/bodies/275.md",
-      "archive_path": "site/archive/275.md"
+      "archive_path": "apps/site/archive/275.md"
     },
     {
       "number": 276,
@@ -3047,7 +3047,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/276.json",
       "body_path": "data/buttondown/bodies/276.md",
-      "archive_path": "site/archive/276.md"
+      "archive_path": "apps/site/archive/276.md"
     },
     {
       "number": 277,
@@ -3058,7 +3058,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/277.json",
       "body_path": "data/buttondown/bodies/277.md",
-      "archive_path": "site/archive/277.md"
+      "archive_path": "apps/site/archive/277.md"
     },
     {
       "number": 278,
@@ -3069,7 +3069,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/278.json",
       "body_path": "data/buttondown/bodies/278.md",
-      "archive_path": "site/archive/278.md"
+      "archive_path": "apps/site/archive/278.md"
     },
     {
       "number": 279,
@@ -3080,7 +3080,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/279.json",
       "body_path": "data/buttondown/bodies/279.md",
-      "archive_path": "site/archive/279.md"
+      "archive_path": "apps/site/archive/279.md"
     },
     {
       "number": 280,
@@ -3091,7 +3091,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/280.json",
       "body_path": "data/buttondown/bodies/280.md",
-      "archive_path": "site/archive/280.md"
+      "archive_path": "apps/site/archive/280.md"
     },
     {
       "number": 281,
@@ -3102,7 +3102,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/281.json",
       "body_path": "data/buttondown/bodies/281.md",
-      "archive_path": "site/archive/281.md"
+      "archive_path": "apps/site/archive/281.md"
     },
     {
       "number": 282,
@@ -3113,7 +3113,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/282.json",
       "body_path": "data/buttondown/bodies/282.md",
-      "archive_path": "site/archive/282.md"
+      "archive_path": "apps/site/archive/282.md"
     },
     {
       "number": 283,
@@ -3124,7 +3124,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/283.json",
       "body_path": "data/buttondown/bodies/283.md",
-      "archive_path": "site/archive/283.md"
+      "archive_path": "apps/site/archive/283.md"
     },
     {
       "number": 284,
@@ -3135,7 +3135,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/284.json",
       "body_path": "data/buttondown/bodies/284.md",
-      "archive_path": "site/archive/284.md"
+      "archive_path": "apps/site/archive/284.md"
     },
     {
       "number": 285,
@@ -3146,7 +3146,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/285.json",
       "body_path": "data/buttondown/bodies/285.md",
-      "archive_path": "site/archive/285.md"
+      "archive_path": "apps/site/archive/285.md"
     },
     {
       "number": 286,
@@ -3157,7 +3157,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/286.json",
       "body_path": "data/buttondown/bodies/286.md",
-      "archive_path": "site/archive/286.md"
+      "archive_path": "apps/site/archive/286.md"
     },
     {
       "number": 287,
@@ -3168,7 +3168,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/287.json",
       "body_path": "data/buttondown/bodies/287.md",
-      "archive_path": "site/archive/287.md"
+      "archive_path": "apps/site/archive/287.md"
     },
     {
       "number": 288,
@@ -3179,7 +3179,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/288.json",
       "body_path": "data/buttondown/bodies/288.md",
-      "archive_path": "site/archive/288.md"
+      "archive_path": "apps/site/archive/288.md"
     },
     {
       "number": 289,
@@ -3190,7 +3190,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/289.json",
       "body_path": "data/buttondown/bodies/289.md",
-      "archive_path": "site/archive/289.md"
+      "archive_path": "apps/site/archive/289.md"
     },
     {
       "number": 290,
@@ -3201,7 +3201,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/290.json",
       "body_path": "data/buttondown/bodies/290.md",
-      "archive_path": "site/archive/290.md"
+      "archive_path": "apps/site/archive/290.md"
     },
     {
       "number": 291,
@@ -3212,7 +3212,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/291.json",
       "body_path": "data/buttondown/bodies/291.md",
-      "archive_path": "site/archive/291.md"
+      "archive_path": "apps/site/archive/291.md"
     },
     {
       "number": 292,
@@ -3223,7 +3223,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/292.json",
       "body_path": "data/buttondown/bodies/292.md",
-      "archive_path": "site/archive/292.md"
+      "archive_path": "apps/site/archive/292.md"
     },
     {
       "number": 293,
@@ -3234,7 +3234,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/293.json",
       "body_path": "data/buttondown/bodies/293.md",
-      "archive_path": "site/archive/293.md"
+      "archive_path": "apps/site/archive/293.md"
     },
     {
       "number": 294,
@@ -3245,7 +3245,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/294.json",
       "body_path": "data/buttondown/bodies/294.md",
-      "archive_path": "site/archive/294.md"
+      "archive_path": "apps/site/archive/294.md"
     },
     {
       "number": 295,
@@ -3256,7 +3256,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/295.json",
       "body_path": "data/buttondown/bodies/295.md",
-      "archive_path": "site/archive/295.md"
+      "archive_path": "apps/site/archive/295.md"
     },
     {
       "number": 296,
@@ -3267,7 +3267,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/296.json",
       "body_path": "data/buttondown/bodies/296.md",
-      "archive_path": "site/archive/296.md"
+      "archive_path": "apps/site/archive/296.md"
     },
     {
       "number": 297,
@@ -3278,7 +3278,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/297.json",
       "body_path": "data/buttondown/bodies/297.md",
-      "archive_path": "site/archive/297.md"
+      "archive_path": "apps/site/archive/297.md"
     },
     {
       "number": 298,
@@ -3289,7 +3289,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/298.json",
       "body_path": "data/buttondown/bodies/298.md",
-      "archive_path": "site/archive/298.md"
+      "archive_path": "apps/site/archive/298.md"
     },
     {
       "number": 299,
@@ -3300,7 +3300,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/299.json",
       "body_path": "data/buttondown/bodies/299.md",
-      "archive_path": "site/archive/299.md"
+      "archive_path": "apps/site/archive/299.md"
     },
     {
       "number": 300,
@@ -3311,7 +3311,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/300.json",
       "body_path": "data/buttondown/bodies/300.md",
-      "archive_path": "site/archive/300.md"
+      "archive_path": "apps/site/archive/300.md"
     },
     {
       "number": 301,
@@ -3322,7 +3322,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/301.json",
       "body_path": "data/buttondown/bodies/301.md",
-      "archive_path": "site/archive/301.md"
+      "archive_path": "apps/site/archive/301.md"
     },
     {
       "number": 302,
@@ -3333,7 +3333,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/302.json",
       "body_path": "data/buttondown/bodies/302.md",
-      "archive_path": "site/archive/302.md"
+      "archive_path": "apps/site/archive/302.md"
     },
     {
       "number": 303,
@@ -3344,7 +3344,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/303.json",
       "body_path": "data/buttondown/bodies/303.md",
-      "archive_path": "site/archive/303.md"
+      "archive_path": "apps/site/archive/303.md"
     },
     {
       "number": 304,
@@ -3355,7 +3355,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/304.json",
       "body_path": "data/buttondown/bodies/304.md",
-      "archive_path": "site/archive/304.md"
+      "archive_path": "apps/site/archive/304.md"
     },
     {
       "number": 305,
@@ -3366,7 +3366,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/305.json",
       "body_path": "data/buttondown/bodies/305.md",
-      "archive_path": "site/archive/305.md"
+      "archive_path": "apps/site/archive/305.md"
     },
     {
       "number": 306,
@@ -3377,7 +3377,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/306.json",
       "body_path": "data/buttondown/bodies/306.md",
-      "archive_path": "site/archive/306.md"
+      "archive_path": "apps/site/archive/306.md"
     },
     {
       "number": 307,
@@ -3388,7 +3388,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/307.json",
       "body_path": "data/buttondown/bodies/307.md",
-      "archive_path": "site/archive/307.md"
+      "archive_path": "apps/site/archive/307.md"
     },
     {
       "number": 308,
@@ -3399,7 +3399,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/308.json",
       "body_path": "data/buttondown/bodies/308.md",
-      "archive_path": "site/archive/308.md"
+      "archive_path": "apps/site/archive/308.md"
     },
     {
       "number": 309,
@@ -3410,7 +3410,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/309.json",
       "body_path": "data/buttondown/bodies/309.md",
-      "archive_path": "site/archive/309.md"
+      "archive_path": "apps/site/archive/309.md"
     },
     {
       "number": 310,
@@ -3421,7 +3421,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/310.json",
       "body_path": "data/buttondown/bodies/310.md",
-      "archive_path": "site/archive/310.md"
+      "archive_path": "apps/site/archive/310.md"
     },
     {
       "number": 311,
@@ -3432,7 +3432,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/311.json",
       "body_path": "data/buttondown/bodies/311.md",
-      "archive_path": "site/archive/311.md"
+      "archive_path": "apps/site/archive/311.md"
     },
     {
       "number": 312,
@@ -3443,7 +3443,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/312.json",
       "body_path": "data/buttondown/bodies/312.md",
-      "archive_path": "site/archive/312.md"
+      "archive_path": "apps/site/archive/312.md"
     },
     {
       "number": 313,
@@ -3454,7 +3454,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/313.json",
       "body_path": "data/buttondown/bodies/313.md",
-      "archive_path": "site/archive/313.md"
+      "archive_path": "apps/site/archive/313.md"
     },
     {
       "number": 314,
@@ -3465,7 +3465,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/314.json",
       "body_path": "data/buttondown/bodies/314.md",
-      "archive_path": "site/archive/314.md"
+      "archive_path": "apps/site/archive/314.md"
     },
     {
       "number": 315,
@@ -3476,7 +3476,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/315.json",
       "body_path": "data/buttondown/bodies/315.md",
-      "archive_path": "site/archive/315.md"
+      "archive_path": "apps/site/archive/315.md"
     },
     {
       "number": 316,
@@ -3487,7 +3487,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/316.json",
       "body_path": "data/buttondown/bodies/316.md",
-      "archive_path": "site/archive/316.md"
+      "archive_path": "apps/site/archive/316.md"
     },
     {
       "number": 317,
@@ -3498,7 +3498,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/317.json",
       "body_path": "data/buttondown/bodies/317.md",
-      "archive_path": "site/archive/317.md"
+      "archive_path": "apps/site/archive/317.md"
     },
     {
       "number": 318,
@@ -3509,7 +3509,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/318.json",
       "body_path": "data/buttondown/bodies/318.md",
-      "archive_path": "site/archive/318.md"
+      "archive_path": "apps/site/archive/318.md"
     },
     {
       "number": 319,
@@ -3520,7 +3520,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/319.json",
       "body_path": "data/buttondown/bodies/319.md",
-      "archive_path": "site/archive/319.md"
+      "archive_path": "apps/site/archive/319.md"
     },
     {
       "number": 320,
@@ -3531,7 +3531,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/320.json",
       "body_path": "data/buttondown/bodies/320.md",
-      "archive_path": "site/archive/320.md"
+      "archive_path": "apps/site/archive/320.md"
     },
     {
       "number": 321,
@@ -3542,7 +3542,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/321.json",
       "body_path": "data/buttondown/bodies/321.md",
-      "archive_path": "site/archive/321.md"
+      "archive_path": "apps/site/archive/321.md"
     },
     {
       "number": 322,
@@ -3553,7 +3553,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/322.json",
       "body_path": "data/buttondown/bodies/322.md",
-      "archive_path": "site/archive/322.md"
+      "archive_path": "apps/site/archive/322.md"
     },
     {
       "number": 323,
@@ -3564,7 +3564,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/323.json",
       "body_path": "data/buttondown/bodies/323.md",
-      "archive_path": "site/archive/323.md"
+      "archive_path": "apps/site/archive/323.md"
     },
     {
       "number": 324,
@@ -3575,7 +3575,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/324.json",
       "body_path": "data/buttondown/bodies/324.md",
-      "archive_path": "site/archive/324.md"
+      "archive_path": "apps/site/archive/324.md"
     },
     {
       "number": 325,
@@ -3586,7 +3586,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/325.json",
       "body_path": "data/buttondown/bodies/325.md",
-      "archive_path": "site/archive/325.md"
+      "archive_path": "apps/site/archive/325.md"
     },
     {
       "number": 326,
@@ -3597,7 +3597,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/326.json",
       "body_path": "data/buttondown/bodies/326.md",
-      "archive_path": "site/archive/326.md"
+      "archive_path": "apps/site/archive/326.md"
     },
     {
       "number": 327,
@@ -3608,7 +3608,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/327.json",
       "body_path": "data/buttondown/bodies/327.md",
-      "archive_path": "site/archive/327.md"
+      "archive_path": "apps/site/archive/327.md"
     },
     {
       "number": 328,
@@ -3619,7 +3619,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/328.json",
       "body_path": "data/buttondown/bodies/328.md",
-      "archive_path": "site/archive/328.md"
+      "archive_path": "apps/site/archive/328.md"
     },
     {
       "number": 329,
@@ -3630,7 +3630,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/329.json",
       "body_path": "data/buttondown/bodies/329.md",
-      "archive_path": "site/archive/329.md"
+      "archive_path": "apps/site/archive/329.md"
     },
     {
       "number": 330,
@@ -3641,7 +3641,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/330.json",
       "body_path": "data/buttondown/bodies/330.md",
-      "archive_path": "site/archive/330.md"
+      "archive_path": "apps/site/archive/330.md"
     },
     {
       "number": 331,
@@ -3652,7 +3652,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/331.json",
       "body_path": "data/buttondown/bodies/331.md",
-      "archive_path": "site/archive/331.md"
+      "archive_path": "apps/site/archive/331.md"
     },
     {
       "number": 332,
@@ -3663,7 +3663,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/332.json",
       "body_path": "data/buttondown/bodies/332.md",
-      "archive_path": "site/archive/332.md"
+      "archive_path": "apps/site/archive/332.md"
     },
     {
       "number": 333,
@@ -3674,7 +3674,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/333.json",
       "body_path": "data/buttondown/bodies/333.md",
-      "archive_path": "site/archive/333.md"
+      "archive_path": "apps/site/archive/333.md"
     },
     {
       "number": 334,
@@ -3685,7 +3685,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/334.json",
       "body_path": "data/buttondown/bodies/334.md",
-      "archive_path": "site/archive/334.md"
+      "archive_path": "apps/site/archive/334.md"
     },
     {
       "number": 335,
@@ -3696,7 +3696,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/335.json",
       "body_path": "data/buttondown/bodies/335.md",
-      "archive_path": "site/archive/335.md"
+      "archive_path": "apps/site/archive/335.md"
     },
     {
       "number": 336,
@@ -3707,7 +3707,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/336.json",
       "body_path": "data/buttondown/bodies/336.md",
-      "archive_path": "site/archive/336.md"
+      "archive_path": "apps/site/archive/336.md"
     },
     {
       "number": 337,
@@ -3718,7 +3718,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/337.json",
       "body_path": "data/buttondown/bodies/337.md",
-      "archive_path": "site/archive/337.md"
+      "archive_path": "apps/site/archive/337.md"
     },
     {
       "number": 338,
@@ -3729,7 +3729,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/338.json",
       "body_path": "data/buttondown/bodies/338.md",
-      "archive_path": "site/archive/338.md"
+      "archive_path": "apps/site/archive/338.md"
     },
     {
       "number": 339,
@@ -3740,7 +3740,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/339.json",
       "body_path": "data/buttondown/bodies/339.md",
-      "archive_path": "site/archive/339.md"
+      "archive_path": "apps/site/archive/339.md"
     },
     {
       "number": 340,
@@ -3751,7 +3751,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/340.json",
       "body_path": "data/buttondown/bodies/340.md",
-      "archive_path": "site/archive/340.md"
+      "archive_path": "apps/site/archive/340.md"
     },
     {
       "number": 341,
@@ -3762,7 +3762,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/341.json",
       "body_path": "data/buttondown/bodies/341.md",
-      "archive_path": "site/archive/341.md"
+      "archive_path": "apps/site/archive/341.md"
     },
     {
       "number": 342,
@@ -3773,7 +3773,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/342.json",
       "body_path": "data/buttondown/bodies/342.md",
-      "archive_path": "site/archive/342.md"
+      "archive_path": "apps/site/archive/342.md"
     },
     {
       "number": 343,
@@ -3784,7 +3784,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/343.json",
       "body_path": "data/buttondown/bodies/343.md",
-      "archive_path": "site/archive/343.md"
+      "archive_path": "apps/site/archive/343.md"
     },
     {
       "number": 344,
@@ -3795,7 +3795,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/344.json",
       "body_path": "data/buttondown/bodies/344.md",
-      "archive_path": "site/archive/344.md"
+      "archive_path": "apps/site/archive/344.md"
     },
     {
       "number": 345,
@@ -3806,7 +3806,7 @@
       "fetched_at": "2026-05-02T02:17:12Z",
       "snapshot_path": "data/buttondown/emails/345.json",
       "body_path": "data/buttondown/bodies/345.md",
-      "archive_path": "site/archive/345.md"
+      "archive_path": "apps/site/archive/345.md"
     },
     {
       "number": 346,
@@ -3817,7 +3817,7 @@
       "fetched_at": "2026-05-03T14:19:29Z",
       "snapshot_path": "data/buttondown/emails/346.json",
       "body_path": "data/buttondown/bodies/346.md",
-      "archive_path": "site/archive/346.md"
+      "archive_path": "apps/site/archive/346.md"
     }
   ]
 }

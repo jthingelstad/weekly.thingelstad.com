@@ -15,7 +15,7 @@ Custom landing page and full archive site for **The Weekly Thing**, a weekly new
 
 ### Architecture Pattern: Tracked Raw Data + 11ty
 
-- **Python content pipeline** runs first: fetches Buttondown emails into tracked raw data under `data/buttondown/`, transforms the raw Buttondown body into public archive markdown, extracts editorial links and domains, assigns issue numbers, and writes generated files into `site/archive/` and `site/_data/`.
+- **Python content pipeline** runs first: fetches Buttondown emails into tracked raw data under `data/buttondown/`, transforms the raw Buttondown body into public archive markdown, extracts editorial links and domains, assigns issue numbers, and writes generated files into `apps/site/archive/` and `apps/site/_data/`.
 - **11ty** runs second: reads generated `.md` files as a collection and JSON data files, renders all pages with Nunjucks templates, and handles markdown rendering, heading anchors, and TOC generation.
 - **Pagefind** runs third: indexes the built HTML for full-text search.
 
@@ -62,73 +62,55 @@ make content-push  # PATCH changed fields
 - `STRIPE_API_KEY` — required for Stripe balance fetch. Same pattern.
 - `OPENAI_API_KEY` — required for local audio generation with OpenAI TTS.
 - `WEEKLY_THING_ASSETS_BUCKET` — public archive asset bucket; defaults conceptually to `files.thingelstad.com`.
-- `LIBRARIAN_BUCKET` — private Thingy code/corpus/eval/log bucket; deploy tooling defaults to `weekly-thing-librarian`.
-- `BEDROCK_EVAL_ROLE_ARN` — required only when starting Bedrock Model Evaluation jobs.
+- `LIBRARIAN_BUCKET` — private Thingy code/corpus/log bucket; deploy tooling defaults to `weekly-thing-librarian`.
 
 ## Project Structure
 
 ```
 weekly.thingelstad.com/
 ├── .github/workflows/deploy.yml    # Build & deploy to GitHub Pages
-├── pipeline/
-│   ├── content/                   # Buttondown pull/build/diff/push and marketing copy refresh
-│   ├── corpus/                    # archive corpus build CLI (lib in librarian-core)
-│   ├── graph/                     # archive graph build CLI (lib in librarian-core)
-│   ├── eval/                      # eval scripts, questions, rubric, conversation review
-│   ├── deploy/                    # AWS deploy, corpus/graph upload, Bedrock logging config
-│   ├── audits/                    # repeatable archive audit and repair tooling
-│   ├── links/                     # planned linked-URL retrieval and aggregation step
-│   └── one-shot/                  # archived scripts that applied one-time cleanup
 ├── apps/
-│   └── librarian/
-│       ├── lambda/                # Thingy Node Lambda code (chat/, auth/, shared/, prompts/, tests/)
-│       └── infra/                 # CloudFormation template
+│   ├── site/                       # Eleventy static site (deployed to GitHub Pages)
+│   │   ├── eleventy.config.js      # 11ty configuration
+│   │   ├── _data/                  # JSON/JS data (emails, stats, site, support, quotes, survey, status, voiceSamples, redirects, archiveStats, faq)
+│   │   ├── _includes/              # layouts/ + partials/
+│   │   ├── archive/                # 1.md … 345.md, generated per-issue pages
+│   │   ├── css/                    # style.css
+│   │   ├── img/                    # static images
+│   │   ├── index.njk, about.njk, support.njk, search.njk, faq.njk, feed.njk, issue-links-feed.njk, podcast.njk, ops.njk, librarian.njk, …
+│   │   └── CNAME, robots.txt, _nojekyll, favicon.svg
+│   ├── librarian/                  # Thingy — Lambda agent for archive Q&A
+│   │   ├── lambda/                 # Node Lambda code (chat/, auth/, shared/, prompts/, tests/)
+│   │   ├── infra/                  # CloudFormation template
+│   │   └── admin/                  # operator scripts for the live stack (scaffolding)
+│   ├── archive-chat/               # local-only admin CLI (no Bedrock, no guardrails)
+│   └── workshop-bot/               # scaffolding for the four-agent Discord bot (not yet implemented)
+├── librarian-core/                 # shared Python package (corpus, BM25 retrieval, graph) — installed editable
+├── pipeline/
+│   ├── content/                    # Buttondown pull/build/diff/push, marketing copy refresh
+│   ├── corpus/                     # archive corpus build CLI (lib in librarian-core)
+│   ├── graph/                      # archive graph build CLI (lib in librarian-core)
+│   ├── deploy/                     # AWS deploy, corpus/graph upload, Bedrock logging
+│   ├── audio/                      # audio script + TTS rendering + manifest + cover
+│   ├── audits/                     # repeatable archive audit and repair tooling
+│   ├── links/                      # planned linked-URL retrieval and aggregation step
+│   ├── buttondown/                 # planned automations/newsletter sync (scaffolding)
+│   ├── one-shot/                   # archived scripts that applied one-time cleanup
+│   └── status.py                   # generates apps/site/_data/status.json for /ops/
+├── content/
+│   └── buttondown/                 # author-managed Buttondown config (automations/, newsletter/) — scaffolding
 ├── data/
 │   ├── buttondown/
 │   │   ├── manifest.json           # Raw data manifest
 │   │   ├── emails/                 # Buttondown email metadata JSON snapshots, tracked
 │   │   └── bodies/                 # Raw Buttondown body markdown, tracked and editable
 │   ├── librarian/                  # tracked corpus and graph artifacts
-│   └── links/                      # tracked linked-URL aggregation artifacts
+│   ├── links/                      # tracked linked-URL aggregation artifacts
+│   └── audio/                      # tracked audio manifest + scripts
 ├── docs/
 │   └── audits/                     # Snapshot of archive audits — see docs/audits/README.md
 │                                   # (archive-audit, llm-audit, missing-photos, missing-microblog-posts)
-├── site/
-│   ├── _data/
-│   │   ├── emails.json             # Metadata index (generated, committed)
-│   │   ├── archiveStats.js         # Computed stats for landing page and FAQ
-│   │   ├── stats.json              # Subscriber count, premium count, Stripe balance
-│   │   ├── site.json               # Site metadata, Tinylytics ID, social links
-│   │   ├── support.json            # Supporting Membership nonprofit info
-│   │   ├── quotes.json             # Reader survey quotes (25 quotes, tagged)
-│   │   ├── survey.json             # Reader survey stats, feeling words, tenure data
-│   │   └── redirects.js            # Buttondown slug → issue number redirects
-│   ├── _includes/
-│   │   ├── layouts/
-│   │   │   ├── base.njk            # Base HTML (head, header, footer, analytics)
-│   │   │   ├── page.njk            # Standard page wrapper
-│   │   │   └── issue.njk           # Individual issue layout (TOC, domains, nav)
-│   │   └── partials/
-│   │       ├── header.njk
-│   │       ├── footer.njk
-│   │       ├── subscribe-form.njk
-│   │       └── issue-card.njk
-│   ├── archive/
-│   │   ├── 1.md … 345.md          # One .md file per issue (generated, committed)
-│   │   └── (plus special issues)
-│   ├── index.njk                   # Landing page (/)
-│   ├── about.njk                   # About page (/about/)
-│   ├── support.njk                 # Supporting Membership (/members/)
-│   ├── search.njk                  # Pagefind search (/search/)
-│   ├── faq.njk                     # FAQ (/faq/)
-│   ├── feed.njk                    # Atom feed (/feed.xml)
-│   ├── issue-links-feed.njk        # Per-issue links feed (/archive/N/links.xml)
-│   ├── css/style.css               # Single stylesheet (~32KB)
-│   ├── img/                        # Static images
-│   ├── CNAME                       # GitHub Pages custom domain
-│   ├── _nojekyll                   # Disable Jekyll on GitHub Pages
-│   └── favicon.svg
-├── eleventy.config.js              # 11ty configuration
+├── tests/                          # Python unittest + Playwright e2e
 ├── package.json
 ├── requirements.txt
 ├── Makefile
@@ -152,7 +134,7 @@ The Python pipeline extracts only editorially curated links, not incidental inli
 
 **Domain exclusion list** (`pipeline/content/domain_exclusions.py`): Excludes newsletter's own domains, Buttondown, image CDNs, URL shorteners, social media, Wikipedia, YouTube, and other utility domains from domain lists and stats.
 
-## Archive Files (`site/archive/*.md`)
+## Archive Files (`apps/site/archive/*.md`)
 
 Each issue is a standalone generated markdown file with YAML front matter. The body is the public archive rendering of the raw Buttondown body, produced by `pipeline/content/content.py`.
 
@@ -170,9 +152,11 @@ The `number` field determines the URL (`/archive/247/`). Assigned by the pipelin
 
 Buttondown Liquid/template cleanup also happens in `pipeline/content/content.py`, not in 11ty. The archive transform removes email-only or subscriber-personalized blocks and renders known public variables such as `{{ email_url }}` before link extraction, feeds, search indexing, and page rendering.
 
-## 11ty Configuration (`eleventy.config.js`)
+## 11ty Configuration (`apps/site/eleventy.config.js`)
 
-- **Input:** `src` / **Output:** `_site`
+Invoked from the repo root via `eleventy --config apps/site/eleventy.config.js` (see `package.json`). The output dir `_site/` stays at the repo root so CI's `upload-pages-artifact` step picks it up unchanged.
+
+- **Input:** `apps/site` / **Output:** `_site`
 - **Template formats:** `njk`, `md`
 - **Markdown:** `markdown-it` with `markdown-it-anchor` for heading IDs
 - **Collections:** `issuesByNumber` (ascending), `issuesByDate` (newest first)
@@ -210,7 +194,7 @@ Subscribe forms appear 4 times on the page (hero, two mid-page, footer).
 | `/feed.xml` | `feed.njk` | Atom feed (all issues) |
 | `/archive/N/links.xml` | `issue-links-feed.njk` | Per-issue links feed |
 | `/archive/<slug>/` | `redirects.njk` | Redirects from old Buttondown URLs |
-| `/ops/` | `ops.njk` | **Unlinked, noindex.** Per-issue pipeline state report — Buttondown source, body edits, archive, audio (rendered, stale, missing), Thingy corpus freshness. Reads from `site/_data/status.json`, regenerated by `pipeline/status.py` at build time. |
+| `/ops/` | `ops.njk` | **Unlinked, noindex.** Per-issue pipeline state report — Buttondown source, body edits, archive, audio (rendered, stale, missing), Thingy corpus freshness. Reads from `apps/site/_data/status.json`, regenerated by `pipeline/status.py` at build time. |
 | `/status.json` | `status-json.njk` | Same data, JSON form. Both `/ops/` and `/status.json` are `Disallow`'d in robots.txt. |
 
 ## RSS Feeds
@@ -256,7 +240,7 @@ python pipeline/content/content.py push --issue 42 --yes # push single issue
 
 Compares `data/buttondown/bodies/*.md` and `data/buttondown/emails/*.json` against the committed baseline in `HEAD`, confirms the live Buttondown value has not diverged unexpectedly, then PATCHes changed fields to the Buttondown API.
 
-**Important:** `pipeline/content/content.py build` regenerates `site/archive/*.md` unconditionally from raw Buttondown data. Any local archive `.md` edit will be overwritten. The durability flow is:
+**Important:** `pipeline/content/content.py build` regenerates `apps/site/archive/*.md` unconditionally from raw Buttondown data. Any local archive `.md` edit will be overwritten. The durability flow is:
 
 1. Edit the raw body in `data/buttondown/bodies/<number>.md` or metadata in `data/buttondown/emails/<number>.json`
 2. `python pipeline/content/content.py build` to regenerate archive files and metadata
@@ -272,7 +256,7 @@ Step 5 is critical: it verifies Buttondown accepted the update and brings the tr
 The "How It Sounds" pull-quotes on the home page are regenerated on demand by an LLM pipeline rather than hand-curated. Two files drive it:
 
 - `docs/creative/brief.md` — persistent creative brief (voice, themes, guardrails, running observations). Read at the start of each run and rewritten at the end so observations accumulate. **Hand-editable** — whatever is here is treated as ground truth on the next run.
-- `site/_data/voiceSamples.json` — generated pull-quotes for the "How It Sounds" section, pulled verbatim from real issues with verification.
+- `apps/site/_data/voiceSamples.json` — generated pull-quotes for the "How It Sounds" section, pulled verbatim from real issues with verification.
 
 Pipeline: `pipeline/content/refresh_marketing_copy.py` stratified-samples ~32 issues over the last 2 years (6 most-recent anchor + buckets, seeded). Sonnet 4.6 extracts themes and voice markers, picks 3–5 verbatim pull-quotes, and rewrites the brief. Voice samples are machine-verified verbatim against issue bodies before being written.
 
@@ -283,7 +267,7 @@ make refresh-copy       # writes voiceSamples.json, brief.md
 
 Expected cost: ~$0.20–$0.40 per run. Run logs land in `tmp/copy-refresh-<timestamp>.json` (gitignored). Expected workflow: run, review `git diff`, commit. Not wired into CI — refreshes are explicit, human-initiated.
 
-A previous version of this pipeline also generated `site/_data/copy.json` with home-page hero/value-prop/CTAs via an Opus 4.7 second pass. That output didn't deliver enough quality to justify the cost; it was removed and the home page is now hand-written in `site/index.njk` directly.
+A previous version of this pipeline also generated `apps/site/_data/copy.json` with home-page hero/value-prop/CTAs via an Opus 4.7 second pass. That output didn't deliver enough quality to justify the cost; it was removed and the home page is now hand-written in `apps/site/index.njk` directly.
 
 `build_data.py` does **not** touch any of these files.
 

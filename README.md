@@ -7,14 +7,13 @@ Source for [The Weekly Thing](https://weekly.thingelstad.com), a newsletter Jami
 | Path | What it produces |
 |---|---|
 | `apps/site/` | Eleventy static site — landing page, archive, feeds. Deployed to GitHub Pages. |
-| `apps/librarian/` | Thingy — the AWS Lambda agent that answers questions against the archive. Source under `lambda/`, infra under `infra/`. |
+| `apps/librarian/` | Thingy — the AWS Lambda agent that answers questions against the archive. Source under `lambda/`, infra under `infra/`, operator scripts under `admin/` (scaffolding). |
 | `apps/archive-chat/` | Local-only admin CLI for unrestricted archive research (no Bedrock, no guardrails). |
 | `apps/workshop-bot/` | Scaffolding for a future four-agent Discord bot. Not yet implemented. |
 | `librarian-core/` | Shared Python package: corpus loader, BM25 retrieval, graph builder. Installed editable. |
 | `pipeline/content/` | Buttondown pull/build/diff/push and marketing copy refresh. |
 | `pipeline/corpus/` and `pipeline/graph/` | CLI wrappers around `librarian_core` builders. |
 | `pipeline/deploy/` | AWS deploy, corpus/graph upload, Bedrock logging config. |
-| `pipeline/eval/` | Eval question sets, rubric, evaluation scripts, conversation review. |
 | `pipeline/audio/`, `pipeline/audits/`, `pipeline/links/`, `pipeline/one-shot/` | Domain-specific pipelines and historical cleanup scripts. |
 | `data/buttondown/` | Editable Buttondown source: bodies, emails, manifest. Pulled from Buttondown, edited locally, pushed back. |
 | `data/{librarian,audio,links}/` | Generated build artifacts. |
