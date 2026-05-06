@@ -1,0 +1,50 @@
+---
+layout: layouts/base.njk
+permalink: /topics/
+pageTitle: Topics
+description: "Browse every topic mentioned across the archive of The Weekly Thing."
+---
+{%- set letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','#'] -%}
+{%- set firstYear = 2017 -%}{# The Weekly Thing started May 2017 #}
+{%- set thisYear = '' | currentYear -%}
+{%- set yearSpan = thisYear - firstYear + 1 -%}
+
+<article class="topics-index">
+  <header class="topics-index-header">
+    <p class="eyebrow">Index</p>
+    <h1>Topics</h1>
+    <p class="topics-index-lede">
+      <strong>{{ topics.all.length | numberFormat }}</strong> topics across
+      <strong>{{ yearSpan }}</strong> years of The Weekly Thing. Each topic
+      appears in three or more issues.
+    </p>
+  </header>
+
+  <nav class="topics-az" aria-label="Jump to letter">
+    {%- for letter in letters -%}
+      {%- set bucket = topics.byLetter[letter] -%}
+      {%- if bucket and bucket.length > 0 -%}
+      <a href="#letter-{{ 'other' if letter == '#' else letter }}">{{ letter | upper if letter != '#' else '#' }}</a>
+      {%- else -%}
+      <span class="topics-az-empty">{{ letter | upper if letter != '#' else '#' }}</span>
+      {%- endif -%}
+    {%- endfor -%}
+  </nav>
+
+  {%- for letter in letters -%}
+    {%- set bucket = topics.byLetter[letter] -%}
+    {%- if bucket and bucket.length > 0 -%}
+    <section class="topics-letter" id="letter-{{ 'other' if letter == '#' else letter }}">
+      <h2 class="topics-letter-heading">{{ letter | upper if letter != '#' else '#' }}</h2>
+      <ul class="topics-letter-list">
+        {%- for t in bucket -%}
+        <li class="topics-letter-item">
+          <a href="/topics/{{ t.slug }}/">{{ t.name }}</a>
+          <span class="topics-letter-count">{{ t.count }}</span>
+        </li>
+        {%- endfor -%}
+      </ul>
+    </section>
+    {%- endif -%}
+  {%- endfor -%}
+</article>

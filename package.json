@@ -9,7 +9,7 @@
     "serve": "eleventy --serve --config apps/site/eleventy.config.js",
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
-    "data": "python pipeline/content/content.py build && python pipeline/corpus/build.py",
+    "data": "python pipeline/content/content.py build && python pipeline/corpus/build.py && python pipeline/graph/build.py",
     "librarian:corpus": "python pipeline/corpus/build.py",
     "librarian:corpus:upload": "python pipeline/deploy/upload_corpus.py",
     "librarian:graph": "python pipeline/graph/build.py",

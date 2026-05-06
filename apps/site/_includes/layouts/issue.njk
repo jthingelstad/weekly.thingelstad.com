@@ -88,6 +88,23 @@ ogType: article
       </details>
       {% endif %}
 
+      {%- set issueTopicSlugs = topics.byIssue[number | string] -%}
+      {%- if issueTopicSlugs and issueTopicSlugs.length > 0 -%}
+      <details class="issue-topics-section" open>
+        <summary class="eyebrow">Topics</summary>
+        <ul class="issue-topics-list">
+          {%- for slug in issueTopicSlugs -%}
+            {%- set topic = topics.bySlug[slug] -%}
+            {%- if topic -%}
+            <li class="issue-topics-item">
+              <a href="/topics/{{ topic.slug }}/">{{ topic.name }}</a>
+            </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </details>
+      {%- endif -%}
+
     </aside>
 
     <div class="issue-content">

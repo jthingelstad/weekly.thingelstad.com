@@ -1,0 +1,49 @@
+---
+layout: layouts/base.njk
+---
+<article class="topic">
+  <header class="topic-header">
+    <p class="eyebrow">Topic</p>
+    <h1>{{ topic.name }}</h1>
+    <p class="topic-stat">
+      Mentioned in <strong>{{ topic.count | numberFormat }}</strong>
+      {% if topic.count == 1 %}issue{% else %}issues{% endif %}{% if topic.firstDate and topic.lastDate %},
+      from {{ topic.firstDate | dateFormat('MMM yyyy') }} to {{ topic.lastDate | dateFormat('MMM yyyy') }}{% endif %}.
+    </p>
+  </header>
+
+  <section class="topic-issues">
+    <h2 class="eyebrow">Issues</h2>
+    <ol class="topic-issue-list">
+      {%- for it in topic.issues -%}
+      <li class="topic-issue-item">
+        <a class="topic-issue-link" href="/archive/{{ it.number }}/">
+          <span class="topic-issue-num">#{{ it.number }}</span>
+          <span class="topic-issue-subject">{{ it.subject }}</span>
+          <time class="topic-issue-date" datetime="{{ it.publish_date | dateFormat('iso') }}">
+            {{ it.publish_date | dateShort }}
+          </time>
+        </a>
+      </li>
+      {%- endfor -%}
+    </ol>
+  </section>
+
+  {%- if topic.related and topic.related.length > 0 -%}
+  <section class="topic-related">
+    <h2 class="eyebrow">Related topics</h2>
+    <ul class="topic-related-list">
+      {%- for r in topic.related -%}
+      <li class="topic-related-item">
+        <a href="/topics/{{ r.slug }}/">{{ r.name }}</a>
+        <span class="topic-related-co">{{ r.coMentions }}</span>
+      </li>
+      {%- endfor -%}
+    </ul>
+  </section>
+  {%- endif -%}
+
+  <nav class="topic-foot-nav">
+    <a href="/topics/">← All topics</a>
+  </nav>
+</article>

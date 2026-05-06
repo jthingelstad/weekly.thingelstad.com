@@ -1,0 +1,12 @@
+---
+pagination:
+  data: topics.all
+  size: 1
+  alias: topic
+permalink: /topics/{{ topic.slug }}/
+layout: layouts/topic.njk
+eleventyComputed:
+  pageTitle: "{{ topic.name }}"
+  description: "{{ topic.count }} issue{% if topic.count != 1 %}s{% endif %} of The Weekly Thing mention{% if topic.count == 1 %}s{% endif %} {{ topic.name }}{% if topic.firstDate and topic.lastDate %}, from {{ topic.firstDate | dateFormat('MMM yyyy') }} to {{ topic.lastDate | dateFormat('MMM yyyy') }}{% endif %}."
+eleventyExcludeFromCollections: true
+---
