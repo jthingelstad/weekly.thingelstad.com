@@ -159,6 +159,21 @@ jobs:
           AWS_DEFAULT_REGION: us-east-1
           LIBRARIAN_BUCKET: weekly-thing-librarian
 
+      # Topics on the static site read data/librarian/graph.json. The
+      # graph (and the corpus it derives from) is gitignored, and on
+      # push events the upstream corpus/graph build steps above are
+      # skipped — so without this step the site would build with empty
+      # topic data. The heuristic build is ~3s and needs no AWS.
+      - name: Ensure corpus + graph for site data
+        if: steps.deploy-check.outputs.should_deploy == 'true'
+        run: |
+          if [ ! -f data/librarian/corpus.json ]; then
+            python pipeline/corpus/build.py
+          fi
+          if [ ! -f data/librarian/graph.json ]; then
+            python pipeline/graph/build.py
+          fi
+
       - name: Build site
         if: steps.deploy-check.outputs.should_deploy == 'true'
         run: npm run build
