@@ -16,8 +16,10 @@ Source for [The Weekly Thing](https://weekly.thingelstad.com), a newsletter Jami
 | `pipeline/audio/`, `pipeline/audits/`, `pipeline/one-shot/` | Domain-specific pipelines and historical cleanup scripts. |
 | `data/buttondown/` | Editable Buttondown source: bodies, emails, manifest. Pulled from Buttondown, edited locally, pushed back. |
 | `data/{librarian,audio,links}/` | Generated build artifacts. |
-| `content/buttondown/` | Author-managed Buttondown configuration: automation bodies, newsletter CSS, transactional templates. (Step 6 scaffolding; sync scripts are TBD and will live alongside `pipeline/content/`.) |
+| `content/buttondown/` | Author-managed Buttondown configuration: automation bodies, newsletter CSS, transactional templates. Hand-synced to Buttondown; no automation. |
 | `docs/` | Operator guides, audit snapshots, creative brief, email CSS. |
+
+For deeper detail see [`CLAUDE.md`](CLAUDE.md) (architecture overview) and [`docs/`](docs/) — particularly [`docs/content-pipeline.md`](docs/content-pipeline.md) for the Buttondown sync workflow and [`docs/librarian.md`](docs/librarian.md) for Thingy's runtime, env vars, and deploy checklist.
 
 ## Quick start
 
@@ -30,4 +32,4 @@ make build              # full production build
 make content-pull       # fetch latest from Buttondown, then rebuild generated data
 ```
 
-See the per-app README in each `apps/*/` directory and the deeper architecture docs in `CLAUDE.md` and `docs/`.
+See the per-app README in each `apps/*/` directory for app-specific notes.

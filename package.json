@@ -17,7 +17,6 @@
     "librarian:bedrock:logging": "python pipeline/deploy/bedrock_logging.py",
     "librarian:deploy": "python pipeline/deploy/aws.py",
     "librarian:test": "npm --prefix apps/librarian/lambda test",
-    "data:fresh": "python pipeline/content/content.py pull --all",
     "content:pull": "python pipeline/content/content.py pull --all",
     "content:pull:latest": "python pipeline/content/content.py pull --latest",
     "content:pull:latest:skip-existing": "python pipeline/content/content.py pull --latest --skip-existing",
@@ -25,10 +24,6 @@
     "content:diff": "python pipeline/content/content.py diff",
     "content:push": "python pipeline/content/content.py push --dry-run",
     "content:push:live": "python pipeline/content/content.py push --yes",
-    "fetch:latest": "python pipeline/content/content.py pull --latest",
-    "fetch:latest:skip-existing": "python pipeline/content/content.py pull --latest --skip-existing",
-    "sync": "python pipeline/content/content.py push --dry-run",
-    "sync:push": "python pipeline/content/content.py push --yes",
     "refresh-copy": "python pipeline/content/refresh_marketing_copy.py",
     "refresh-copy:dry": "python pipeline/content/refresh_marketing_copy.py --dry-run"
   },

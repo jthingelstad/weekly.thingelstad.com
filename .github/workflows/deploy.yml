@@ -53,6 +53,15 @@ jobs:
 
       - run: npm ci
 
+      - name: Install Lambda dependencies
+        run: npm --prefix apps/librarian/lambda ci
+
+      - name: Run Python tests
+        run: python -m unittest discover -s tests -p 'test_*.py' -t .
+
+      - name: Run Lambda tests
+        run: npm --prefix apps/librarian/lambda test
+
       # Full rebuild only when explicitly requested.
       - name: Full data rebuild
         if: github.event_name == 'workflow_dispatch' && inputs.content_update == 'full'
@@ -129,6 +138,39 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: us-east-1
           LIBRARIAN_BUCKET: weekly-thing-librarian
+
+      # Deploy Thingy Lambda when its code, infra, or deploy script changes.
+      # Skips corpus upload (handled above) and the Bedrock smoke test
+      # (the deploying identity is the same that already invokes Bedrock
+      # for embeddings, so a separate smoke test is redundant in CI).
+      # continue-on-error so a CFN/IAM hiccup doesn't block the site deploy.
+      - name: Detect Lambda changes
+        id: lambda-changes
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          elif [[ "${{ github.event_name }}" == "push" ]]; then
+            if git diff --quiet HEAD~1 HEAD -- apps/librarian/ pipeline/deploy/aws.py; then
+              echo "changed=false" >> "$GITHUB_OUTPUT"
+            else
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy Thingy Lambda
+        if: steps.lambda-changes.outputs.changed == 'true'
+        continue-on-error: true
+        run: python pipeline/deploy/aws.py --skip-corpus-upload --skip-smoke-test
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: us-east-1
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          LIBRARIAN_BUCKET: weekly-thing-librarian
+          LIBRARIAN_BRIDGE_SECRET: ${{ secrets.LIBRARIAN_BRIDGE_SECRET }}
+          LIBRARIAN_SESSION_SECRET: ${{ secrets.LIBRARIAN_SESSION_SECRET }}
 
       - name: Decide whether to build and deploy
         id: deploy-check

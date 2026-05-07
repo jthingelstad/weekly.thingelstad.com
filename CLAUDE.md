@@ -21,7 +21,7 @@ Custom landing page and full archive site for **The Weekly Thing**, a weekly new
 
 The raw Buttondown body files are the editable source of truth for newsletter content in this repository. Generated archive markdown files are committed for fast static builds and reviewable diffs, but should not be edited directly.
 
-For deeper operator detail — Buttondown Liquid/Django template handling, the `content_pipeline` workflow input matrix, the Buttondown→GitHub Actions webhook constraint, the three-way push conflict detection — see [`docs/content-pipeline.md`](docs/content-pipeline.md). The Librarian/Thingy runtime, full env-var list with defaults, IAM cleanup plan, retrieval architecture, Tinylytics events, and deployment checklist live in [`docs/librarian.md`](docs/librarian.md).
+For deeper operator detail — Buttondown Liquid/Django template handling, the `content_update` workflow input matrix, the Buttondown→GitHub Actions webhook constraint, the three-way push conflict detection — see [`docs/content-pipeline.md`](docs/content-pipeline.md). The Librarian/Thingy runtime, full env-var list with defaults, IAM cleanup plan, retrieval architecture, Tinylytics events, and deployment checklist live in [`docs/librarian.md`](docs/librarian.md).
 
 ### Newsletter Publishing History
 
@@ -221,7 +221,7 @@ Subscribe forms appear 4 times on the page (hero, two mid-page, footer).
 
 **Action versions:** checkout@v6, setup-python@v6, setup-node@v6, upload-pages-artifact@v5, deploy-pages@v4
 
-The `content_pipeline` workflow input controls whether content is pulled from Buttondown — values `none`, `latest`, `latest-skip-existing`, `all` — and the cron only runs during the publish window. See [`docs/content-pipeline.md`](docs/content-pipeline.md) for the full matrix and webhook caveat.
+The `content_update` workflow input controls whether content is pulled from Buttondown — values `none`, `latest`, `latest-force`, `full` — and the cron only runs during the publish window. See [`docs/content-pipeline.md`](docs/content-pipeline.md) for the full matrix and webhook caveat.
 
 A new issue published in the cron window is therefore zero-touch: site, audio MP3, podcast feed, and Thingy's deployed corpus all refresh automatically. Audio and corpus upload are non-fatal, so if either upstream is degraded the site still ships and the failed step can be retried by re-running the workflow.
 
@@ -306,9 +306,7 @@ Each writes to `tmp/` (gitignored). Copy outputs to `docs/audits/` to snapshot.
 
 ## Still Needed
 
-1. **GitHub Actions secrets** — `BUTTONDOWN_API_KEY`, `STRIPE_API_KEY`, `OPENAI_API_KEY`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` must be set in repo settings
-2. **HTTPS enforcement** — enable in GitHub Pages settings after first successful deploy
-3. **Stripe donate URL** — Payment Link for one-time donations on `/members/`
+1. **Stripe donate URL** — Payment Link for one-time donations on `/members/`
 
 ## Future Enhancements
 
