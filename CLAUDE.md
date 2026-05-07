@@ -304,10 +304,6 @@ Each writes to `tmp/` (gitignored). Copy outputs to `docs/audits/` to snapshot.
 
 `content/buttondown/newsletter/buttondown-email.css` is the production email stylesheet. Paste its contents into Buttondown's **Custom CSS** field so issues delivered to inboxes match the archive site (Source Serif 4 headings, Source Sans 3 body, blue accent, mono section markers). The file uses system-font fallbacks (Charter, Iowan Old Style, SF Mono) since most email clients don't load remote fonts.
 
-## Still Needed
-
-1. **Stripe donate URL** — Payment Link for one-time donations on `/members/`
-
 ## Future Enhancements
 
 - **Issue tagging/categorization** — browsable topic categories

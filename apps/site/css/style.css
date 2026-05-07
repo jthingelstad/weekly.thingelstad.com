@@ -2842,6 +2842,15 @@ th {
   margin: var(--space-2xl) 0;
 }
 
+.support-thanks {
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 24px 0 0;
+}
+.support-thanks p { margin: 0; }
+
 /* --- FAQ Hero (Refined) --- */
 .faq-hero {
   padding: 80px 0 24px;
