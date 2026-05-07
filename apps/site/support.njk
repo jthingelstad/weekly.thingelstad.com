@@ -13,6 +13,15 @@ permalink: /members/
 </section>
 
 <div class="support-page container-narrow">
+  <div id="support-thanks" class="support-thanks" hidden>
+    <p><strong>Thank you for your gift.</strong> 100% goes to {{ support.current.short_name or support.current.nonprofit }}. The amount-raised stat updates on the next site build.</p>
+  </div>
+  <script>
+    if (new URLSearchParams(location.search).get('thanks') === '1') {
+      document.getElementById('support-thanks').hidden = false;
+    }
+  </script>
+
   {% if support.current %}
   <section class="support-current">
     <p class="eyebrow">{{ support.current.year }} &middot; This year&rsquo;s nonprofit</p>
@@ -45,7 +54,7 @@ permalink: /members/
 
     {% if support.current.stripe_donate_url %}
     <h3>One-Time Gift</h3>
-    <p>Prefer to make a one-time contribution instead of a recurring membership? You can give directly.</p>
+    <p>Prefer to give once instead of joining as a recurring Supporting Member? Pick any amount &mdash; $48 (a year of Supporting Membership) is suggested, but anything is welcome. 100% goes to {{ support.current.short_name or support.current.nonprofit }}.</p>
     <p><a href="{{ support.current.stripe_donate_url }}" class="btn btn-secondary" data-tinylytics-event="support.donate">Make a One-Time Gift</a></p>
     {% endif %}
   </section>
