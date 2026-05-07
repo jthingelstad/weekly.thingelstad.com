@@ -32,6 +32,7 @@ _site/pagefind/
 
 # Workshop bot runtime DB (recreated locally)
 apps/workshop_bot/data/
+apps/workshop_bot/logs/
 *.db-journal
 *.db-wal
 *.db-shm

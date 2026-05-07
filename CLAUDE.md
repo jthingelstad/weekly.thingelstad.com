@@ -205,7 +205,7 @@ Subscribe forms appear 4 times on the page (hero, two mid-page, footer).
 **Triggers:** push to main, manual `workflow_dispatch`, weekly cron for latest-issue fetch
 
 **Pipeline:**
-1. Setup Python 3.13 + Node 22
+1. Setup Python 3.14 + Node 22
 2. `pip install` + `npm ci`
 3. Pull latest Buttondown issue (scheduled/manual fetch path; idempotent on `--skip-existing`)
 4. Render audio for the latest issue (`apt-get install ffmpeg`, `pipeline/audio/audio.py build --latest`) — idempotent, `continue-on-error` so a TTS hiccup doesn't block the deploy
