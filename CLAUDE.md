@@ -302,7 +302,7 @@ Each writes to `tmp/` (gitignored). Copy outputs to `docs/audits/` to snapshot.
 
 ## Workshop bot slash commands
 
-`/workshop` is the operator slash-command surface, registered on **Eddy only** (slash commands are scoped per Discord application token; a single host avoids fan-out). The command tree syncs to a guild instantly when `DISCORD_GUILD_ID` is set, otherwise globally (~1h propagation). The group requires `manage_guild` permission so it's hidden from non-admin members.
+`/workshop` is the operator slash-command surface, registered on **Eddy only** (slash commands are scoped per Discord application token; a single host avoids fan-out). The command tree syncs to the guild named by `DISCORD_SERVER_ID` (instant) when set, otherwise globally (~1h propagation). The group requires `manage_guild` permission so it's hidden from non-admin members.
 
 Subcommands:
 
