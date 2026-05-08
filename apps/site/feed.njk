@@ -25,6 +25,7 @@ eleventyExcludeFromCollections: true
     <updated>{{ issue.data.publish_date | dateFormat('iso') }}</updated>
     {% if issue.data.description %}
     <summary type="text">{{ issue.data.description | xmlEscape }}</summary>
+    <content type="html">&lt;p&gt;{{ issue.data.description | xmlEscape }}&lt;/p&gt;&lt;img src="https://tinylytics.app/pixel/{{ site.tinylyticsId }}.gif?path=/feed/{{ issue.data.number }}/" alt="" width="1" height="1" style="border:0" /&gt;</content>
     {% endif %}
   </entry>
   {% endfor %}
