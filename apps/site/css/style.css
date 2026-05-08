@@ -2315,6 +2315,27 @@ th {
   color: var(--muted);
   margin-left: 4px;
 }
+.topic-thingy {
+  margin-top: 40px;
+  padding: 16px 20px;
+  background: var(--accent-soft);
+  border-radius: 8px;
+}
+.topic-thingy-lede {
+  margin: 0;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+.topic-thingy-lede em { font-style: italic; }
+.topic-thingy-link {
+  margin-left: 6px;
+  color: var(--accent-deep);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.topic-thingy-link:hover { text-decoration: underline; }
+
 .topic-foot-nav {
   margin-top: 48px;
   padding-top: 24px;

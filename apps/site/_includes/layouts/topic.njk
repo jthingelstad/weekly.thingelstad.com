@@ -29,6 +29,13 @@ layout: layouts/base.njk
     </ol>
   </section>
 
+  <aside class="topic-thingy">
+    <p class="topic-thingy-lede">
+      Want to go deeper on <em>{{ topic.name }}</em>?
+      <a class="topic-thingy-link" href="/thingy/?prompt={{ ('Tell me about ' + topic.name + ' in The Weekly Thing.') | urlencode }}" data-tinylytics-event="topic.thingy_nudge" data-tinylytics-event-value="{{ topic.slug }}">Ask Thingy →</a>
+    </p>
+  </aside>
+
   {%- if topic.related and topic.related.length > 0 -%}
   <section class="topic-related">
     <h2 class="eyebrow">Related topics</h2>
