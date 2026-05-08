@@ -1,0 +1,65 @@
+<script>
+(function() {
+  var STORAGE_KEY = 'weeklyThingAttribution';
+  var MAX_LEN = 500;
+
+  function safeRead() {
+    try {
+      var raw = window.localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      var parsed = JSON.parse(raw);
+      return parsed && typeof parsed === 'object' ? parsed : null;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function safeWrite(value) {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
+    } catch (err) { /* private mode, quota, etc. */ }
+  }
+
+  function clip(value) {
+    if (typeof value !== 'string') return '';
+    var trimmed = value.trim();
+    return trimmed.length > MAX_LEN ? trimmed.slice(0, MAX_LEN) : trimmed;
+  }
+
+  function externalReferrer() {
+    try {
+      var raw = document.referrer;
+      if (!raw) return '';
+      var url = new URL(raw);
+      if (url.hostname === window.location.hostname) return '';
+      return clip(raw);
+    } catch (err) {
+      return '';
+    }
+  }
+
+  function buildRecord() {
+    var params;
+    try { params = new URLSearchParams(window.location.search); }
+    catch (err) { params = null; }
+    var ref = clip(params ? params.get('ref') || '' : '');
+    var referrer = externalReferrer();
+    if (!ref && !referrer) return null;
+    return {
+      ref: ref || undefined,
+      landing_url: clip(window.location.pathname + window.location.search) || undefined,
+      referrer_url: referrer || undefined,
+      captured_at: new Date().toISOString()
+    };
+  }
+
+  if (!safeRead()) {
+    var record = buildRecord();
+    if (record) safeWrite(record);
+  }
+
+  window.weeklyThingAttribution = function() {
+    return safeRead();
+  };
+})();
+</script>

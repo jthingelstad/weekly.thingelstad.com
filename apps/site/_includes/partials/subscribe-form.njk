@@ -147,8 +147,26 @@
     return false;
   }
 
+  function readAttribution() {
+    try {
+      if (typeof window.weeklyThingAttribution === 'function') {
+        return window.weeklyThingAttribution() || undefined;
+      }
+    } catch (err) { /* ignore */ }
+    return undefined;
+  }
+
+  function withAttribution(payload) {
+    if (payload.action === 'subscribe' || payload.action === 'resend_confirmation') {
+      var attribution = readAttribution();
+      if (attribution) payload.attribution = attribution;
+    }
+    return payload;
+  }
+
   function callAuth(payload) {
     if (!apiBase) return Promise.reject(new Error('no-api-base'));
+    payload = withAttribution(payload);
     var controller = new AbortController();
     var timeout = window.setTimeout(function() { controller.abort(); }, 12000);
     return fetch(apiBase + '/auth', {

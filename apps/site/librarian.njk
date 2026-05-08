@@ -770,13 +770,27 @@ permalink: /thingy/
       trackTinylyticsEvent('librarian.auth_inactive');
     }
 
+    function readAttribution() {
+      try {
+        if (typeof window.weeklyThingAttribution === 'function') {
+          return window.weeklyThingAttribution() || undefined;
+        }
+      } catch (err) { /* ignore */ }
+      return undefined;
+    }
+
     async function submitAuthAction(action, button) {
       if (!validateEmail()) return;
       button.disabled = true;
       hideAuthActions();
       setAuthMessage(action === 'subscribe' ? 'Adding you to the Weekly Thing...' : 'Sending the confirmation email...');
       try {
-        const data = await postJson('/auth', { email: emailInput.value, action, source: 'thingy' });
+        const payload = { email: emailInput.value, action, source: 'thingy' };
+        if (action === 'subscribe' || action === 'resend_confirmation') {
+          const attribution = readAttribution();
+          if (attribution) payload.attribution = attribution;
+        }
+        const data = await postJson('/auth', payload);
         handleAuthResponse(data);
       } catch (error) {
         setAuthMessage(error.message);
