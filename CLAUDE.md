@@ -300,6 +300,14 @@ Each writes to `tmp/` (gitignored). Copy outputs to `docs/audits/` to snapshot.
 - **Accessible:** proper heading hierarchy, alt text, color contrast, keyboard nav.
 - **Mobile-first** responsive design.
 
+## Workshop bot slash commands
+
+`/workshop` is the operator slash-command surface, registered on **Eddy only** (slash commands are scoped per Discord application token; a single host avoids fan-out). The command tree syncs to a guild instantly when `DISCORD_GUILD_ID` is set, otherwise globally (~1h propagation). The group requires `manage_guild` permission so it's hidden from non-admin members.
+
+Subcommands:
+
+- `/workshop heartbeat <agent>` — fire one persona's heartbeat on demand. `agent` is one of `eddy`/`linky`/`marky`/`patty`, or `team` to fire all four in parallel. Reuses `scheduler.handlers.heartbeat` so a manual fire is indistinguishable from a scheduled fire (same `db.AgentRun` rows, same home-channel post, same PASS-swallow). The invoker always gets an ephemeral ack — including on PASS — so a quiet heartbeat doesn't look like a silent failure. Source: `apps/workshop_bot/personas/commands.py`.
+
 ## Email styling
 
 `content/buttondown/newsletter/buttondown-email.css` is the production email stylesheet. Paste its contents into Buttondown's **Custom CSS** field so issues delivered to inboxes match the archive site (Source Serif 4 headings, Source Sans 3 body, blue accent, mono section markers). The file uses system-font fallbacks (Charter, Iowan Old Style, SF Mono) since most email clients don't load remote fonts.
