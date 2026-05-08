@@ -24,8 +24,9 @@ __pycache__/
 test-results/
 playwright-report/
 
-# Local Claude settings
-.claude/
+# Local Claude settings (project-level skills under .claude/skills/ are committed)
+.claude/*
+!.claude/skills/
 
 # Pagefind
 _site/pagefind/
