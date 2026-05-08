@@ -124,6 +124,15 @@ module.exports = function (eleventyConfig) {
     return Number(num).toLocaleString("en-US");
   });
 
+  // Format currency with commas + two decimals (e.g., 944.62 → "944.62", 1234 → "1,234.00")
+  eleventyConfig.addFilter("currency", (num) => {
+    if (num == null) return "0.00";
+    return Number(num).toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  });
+
   // Year from date
   eleventyConfig.addFilter("year", (dateStr) => {
     if (!dateStr) return "";

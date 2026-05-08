@@ -32,7 +32,7 @@ permalink: /members/
     <div class="support-stats">
       {% if stats.amount_raised > 0 %}
       <div class="support-stat">
-        <span class="stat-value">${{ stats.amount_raised | round }}</span>
+        <span class="stat-value">${{ stats.amount_raised | currency }}</span>
         <span class="stat-label">raised for {{ support.current.short_name or support.current.nonprofit }} this year</span>
       </div>
       {% endif %}
@@ -76,7 +76,7 @@ permalink: /members/
         <tr>
           <td>{{ org.year }}</td>
           <td><a href="{{ org.url }}">{{ org.nonprofit }}</a></td>
-          <td>{% if org.amount_raised %}${{ org.amount_raised | round }}{% else %}&mdash;{% endif %}</td>
+          <td>{% if org.amount_raised %}${{ org.amount_raised | currency }}{% else %}&mdash;{% endif %}</td>
         </tr>
         {% endfor %}
       </tbody>
