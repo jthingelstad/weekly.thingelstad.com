@@ -584,6 +584,59 @@ permalink: /thingy/
       }
     }
 
+    function buildSharePromptUrl(prompt) {
+      const url = new URL('/thingy/', window.location.origin);
+      url.searchParams.set('prompt', prompt);
+      return url.toString();
+    }
+
+    function addShareControls(messageElement, prompt) {
+      if (!prompt) return;
+      const para = messageElement.querySelector('p');
+      if (!para) return;
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'librarian-share-anchor';
+      button.setAttribute('aria-label', 'Copy a sharable link to this prompt');
+      button.setAttribute('title', 'Share this prompt');
+      button.textContent = '#';
+      para.appendChild(document.createTextNode(' '));
+      para.appendChild(button);
+      let resetTimer = 0;
+      function flash(text, kind) {
+        button.textContent = text;
+        button.dataset.kind = kind || '';
+        window.clearTimeout(resetTimer);
+        resetTimer = window.setTimeout(() => {
+          button.textContent = '#';
+          button.dataset.kind = '';
+        }, 1500);
+      }
+      button.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const shareUrl = buildSharePromptUrl(prompt);
+        if (typeof navigator.share === 'function') {
+          try {
+            await navigator.share({ title: 'Ask Thingy', text: prompt, url: shareUrl });
+            trackTinylyticsEvent('librarian.share_native');
+            return;
+          } catch (error) {
+            if (error && error.name === 'AbortError') return;
+            // fall through to clipboard
+          }
+        }
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+          try {
+            await navigator.clipboard.writeText(shareUrl);
+            flash('✓', 'success');
+            trackTinylyticsEvent('librarian.share_copy');
+            return;
+          } catch (error) { /* fall through */ }
+        }
+        flash('!', 'error');
+      });
+    }
+
     function addFeedbackControls(messageElement, requestId) {
       if (!requestId) return;
       const controls = document.createElement('div');
@@ -951,7 +1004,8 @@ permalink: /thingy/
       const questionWordCount = message.split(/\s+/).filter(Boolean).length;
       const questionSize = questionWordCount < 6 ? 'short' : questionWordCount < 18 ? 'medium' : 'long';
       const history = compactHistory(conversationHistory);
-      addMessage('user', `<p>${escapeHtml(message)}</p>`);
+      const userMessage = addMessage('user', `<p>${escapeHtml(message)}</p>`);
+      addShareControls(userMessage, message);
       questionInput.value = '';
       updateQuestionState();
       const pending = addMessage('assistant', '<p class="librarian-status-line"><span class="librarian-thinking-dot"></span>Thingy is looking through the archive...</p>');

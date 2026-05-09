@@ -3981,6 +3981,45 @@ th {
   cursor: wait;
 }
 
+.librarian-share-anchor {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  font-family: var(--sans);
+  font-size: 0.7em;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 140ms ease, color 140ms ease;
+  vertical-align: baseline;
+}
+@media (hover: none) {
+  .librarian-share-anchor { opacity: 0.55; }
+}
+.librarian-message-user:hover .librarian-share-anchor,
+.librarian-message-user:focus-within .librarian-share-anchor {
+  opacity: 1;
+}
+.librarian-share-anchor:hover {
+  color: #fff;
+}
+.librarian-share-anchor:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 2px;
+  opacity: 1;
+}
+.librarian-share-anchor[data-kind="success"] {
+  color: #fff;
+  opacity: 1;
+}
+.librarian-share-anchor[data-kind="error"] {
+  color: #ffd7d2;
+  opacity: 1;
+}
+
 .librarian-feedback-status {
   font-family: var(--mono);
   font-size: 11px;
