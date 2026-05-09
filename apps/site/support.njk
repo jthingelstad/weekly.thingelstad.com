@@ -22,18 +22,55 @@ permalink: /members/
     }
   </script>
 
+  {% if supportTotals.totalRaised > 0 %}
+  <section class="support-impact">
+    <p class="eyebrow">Total impact</p>
+    <p class="support-impact-figure">${{ supportTotals.totalRaised | currency }}</p>
+    <p class="support-impact-caption">raised for great digital nonprofits since {{ supportTotals.sinceYear }}.</p>
+  </section>
+  {% endif %}
+
+  <section class="support-how">
+    <p class="eyebrow">Become a member</p>
+    <h2>Two ways to give</h2>
+    <div class="support-how-grid">
+      <div class="support-how-col">
+        <h3>Recurring &middot; ${{ support.yearly_price }}/year</h3>
+        <p>If the Weekly Thing has earned a place in your week, become a Supporting Member. It&rsquo;s ${{ support.yearly_price }} a year &mdash; less than a coffee a month &mdash; and every dollar funds a nonprofit doing meaningful work for the open web. Cancel anytime.</p>
+        {% include "partials/upgrade-form.njk" %}
+      </div>
+      {% if support.current.stripe_donate_url %}
+      <div class="support-how-col">
+        <h3>One-Time &middot; Any amount</h3>
+        <p>Not ready to commit annually? A single gift in any amount keeps the program going and funds the cause. ${{ support.yearly_price }} matches a year of membership, but anything you&rsquo;d like to give is welcome.</p>
+        <p><a href="{{ support.current.stripe_donate_url }}" class="btn btn-primary" data-tinylytics-event="support.donate">Make a One-Time Gift</a></p>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
   {% if support.current %}
   <section class="support-current">
-    <p class="eyebrow">{{ support.current.year }} &middot; This year&rsquo;s nonprofit</p>
+    <p class="eyebrow">{{ support.current.year_label or support.current.year }} &middot; The Supporting Member nonprofit pick</p>
     <h2>{{ support.current.nonprofit }}</h2>
-    <p>{{ support.current.description }}</p>
-    <p><a href="{{ support.current.url }}" class="btn btn-secondary">Visit {{ support.current.short_name or support.current.nonprofit }} &rarr;</a></p>
+    <p>{{ support.current.description }} <a href="/thingy/?prompt={{ ('Tell me about ' + (support.current.short_name or support.current.nonprofit)) | urlencode }}" data-tinylytics-event="support.thingy_handoff">Chat with Thingy about {{ support.current.short_name or support.current.nonprofit }} &rarr;</a></p>
+    <div class="support-current-action">
+      <a href="{{ support.current.url }}" class="btn btn-secondary">Visit {{ support.current.short_name or support.current.nonprofit }} &rarr;</a>
+      {% if support.current.logo %}
+      <img src="{{ support.current.logo }}" alt="{{ support.current.nonprofit }} logo" class="support-current-logo">
+      {% endif %}
+    </div>
 
     <div class="support-stats">
-      {% if stats.amount_raised > 0 %}
+      {% if support.current.amount_raised %}
+      <div class="support-stat">
+        <span class="stat-value">${{ support.current.amount_raised | currency }}</span>
+        <span class="stat-label">donated to {{ support.current.short_name or support.current.nonprofit }}</span>
+      </div>
+      {% elif stats.amount_raised > 0 %}
       <div class="support-stat">
         <span class="stat-value">${{ stats.amount_raised | currency }}</span>
-        <span class="stat-label">raised for {{ support.current.short_name or support.current.nonprofit }} this year</span>
+        <span class="stat-label">raised for {{ support.current.short_name or support.current.nonprofit }} so far</span>
       </div>
       {% endif %}
       {% if stats.premium_subscriber_count > 0 %}
@@ -45,19 +82,6 @@ permalink: /members/
     </div>
   </section>
   {% endif %}
-
-  <section class="support-how">
-    <p class="eyebrow">Become a member</p>
-    <h2>Support the work and the cause.</h2>
-    <p>Supporting Members get a gold star recognition in each issue of the Weekly Thing. More importantly, your contribution goes directly to supporting organizations doing meaningful work.</p>
-    <p><a href="https://buttondown.com/weekly-thing" class="btn btn-primary" data-tinylytics-event="support.membership">Become a Supporting Member</a></p>
-
-    {% if support.current.stripe_donate_url %}
-    <h3>One-Time Gift</h3>
-    <p>Prefer to give once instead of joining as a recurring Supporting Member? Pick any amount &mdash; $48 (a year of Supporting Membership) is suggested, but anything is welcome. 100% goes to {{ support.current.short_name or support.current.nonprofit }}.</p>
-    <p><a href="{{ support.current.stripe_donate_url }}" class="btn btn-secondary" data-tinylytics-event="support.donate">Make a One-Time Gift</a></p>
-    {% endif %}
-  </section>
 
   {% if support.past.length > 0 %}
   <section class="support-history">
@@ -74,8 +98,15 @@ permalink: /members/
       <tbody>
         {% for org in support.past %}
         <tr>
-          <td>{{ org.year }}</td>
-          <td><a href="{{ org.url }}">{{ org.nonprofit }}</a></td>
+          <td>{{ org.year_label or org.year }}</td>
+          <td>
+            <a href="{{ org.url }}" class="support-table-org">
+              {% if org.logo %}
+              <img src="{{ org.logo }}" alt="{{ org.nonprofit }} logo" class="support-table-logo">
+              {% endif %}
+              <span>{{ org.nonprofit }}</span>
+            </a>
+          </td>
           <td>{% if org.amount_raised %}${{ org.amount_raised | currency }}{% else %}&mdash;{% endif %}</td>
         </tr>
         {% endfor %}

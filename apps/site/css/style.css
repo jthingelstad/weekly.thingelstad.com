@@ -2858,9 +2858,134 @@ th {
 .support-table {
   max-width: 32rem;
 }
+.support-impact .eyebrow {
+  margin-bottom: 8px;
+}
+.support-impact-figure {
+  font-family: var(--serif);
+  font-size: clamp(56px, 9vw, 96px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--accent);
+  margin: 0 0 12px;
+}
+.support-impact-caption {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(18px, 2.2vw, 22px);
+  color: var(--ink-soft);
+  max-width: 38ch;
+  margin: 0;
+  text-wrap: balance;
+}
+.support-current-action {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 16px 0;
+}
+.support-current-logo {
+  display: block;
+  height: 40px;
+  width: auto;
+  margin: 0;
+  border-radius: 0;
+}
+.support-table-org {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.support-table-logo {
+  height: 24px;
+  width: auto;
+  flex-shrink: 0;
+  border-radius: 0;
+}
 
 .support-how {
   margin: var(--space-2xl) 0;
+}
+.support-how-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin-top: 16px;
+}
+@media (min-width: 720px) {
+  .support-how-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+}
+.support-how-col h3 {
+  margin-top: 0;
+}
+
+/* --- Upgrade form (members page) --- */
+.upgrade-shell {
+  margin-top: 16px;
+}
+.upgrade-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.upgrade-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.upgrade-input {
+  width: 100%;
+  font: inherit;
+  padding: 12px 14px;
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  background: var(--surface, #fff);
+  color: var(--ink);
+}
+.upgrade-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+.upgrade-input.invalid {
+  border-color: #c0392b;
+}
+.upgrade-error {
+  font-size: 13px;
+  color: #c0392b;
+  min-height: 1em;
+}
+.upgrade-button {
+  width: 100%;
+}
+
+.upgrade-status {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.upgrade-status-success {
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+}
+.upgrade-status-info {
+  background: var(--line-soft);
+  color: var(--ink);
+}
+.upgrade-status-error {
+  background: #fdecea;
+  color: #c0392b;
+}
+.upgrade-continue {
+  display: inline-block;
+  margin-top: 10px;
 }
 
 .support-thanks {

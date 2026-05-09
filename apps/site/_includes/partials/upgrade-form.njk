@@ -1,0 +1,339 @@
+<div class="upgrade-shell"
+     data-api-base="{{ site.librarianApiUrl }}"
+     data-checkout-url="{{ support.stripe_yearly_url }}">
+  <form class="upgrade-form" novalidate>
+    <div class="upgrade-field">
+      <label for="upgrade-email" class="sr-only">Email address</label>
+      <input
+        type="email"
+        name="email"
+        id="upgrade-email"
+        placeholder="you@example.com"
+        autocomplete="email"
+        aria-label="Email address"
+        required
+        class="upgrade-input"
+        data-default-placeholder="you@example.com"
+      />
+      <span class="upgrade-error" aria-live="polite"></span>
+    </div>
+    <button type="submit" class="upgrade-button btn btn-primary" data-default-label="Become a Supporting Member" data-tinylytics-event="support.upgrade.submit">Become a Supporting Member</button>
+  </form>
+  <div class="upgrade-status" role="status" aria-live="polite" hidden></div>
+</div>
+<script>
+(function() {
+  var shell = document.currentScript.previousElementSibling;
+  var form = shell.querySelector('.upgrade-form');
+  var input = shell.querySelector('.upgrade-input');
+  var error = shell.querySelector('.upgrade-error');
+  var btn = shell.querySelector('.upgrade-button');
+  var status = shell.querySelector('.upgrade-status');
+  var apiBase = String(shell.dataset.apiBase || '').replace(/\/$/, '');
+  var checkoutBaseUrl = shell.dataset.checkoutUrl || '';
+  var tokenKey = 'weeklyThingLibrarianToken';
+  var emailKey = 'weeklyThingSubscriberEmail';
+  var defaultButtonLabel = btn.getAttribute('data-default-label') || btn.textContent.trim();
+  var emailRe = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+
+  function track(name, value) {
+    if (!name) return;
+    var sink = document.createElement('button');
+    sink.type = 'button';
+    sink.hidden = true;
+    sink.setAttribute('aria-hidden', 'true');
+    sink.setAttribute('data-tinylytics-event', name);
+    if (value) sink.setAttribute('data-tinylytics-event-value', value);
+    document.body.appendChild(sink);
+    sink.click();
+    sink.remove();
+  }
+
+  function checkoutUrl(email) {
+    if (!checkoutBaseUrl) return '';
+    var sep = checkoutBaseUrl.indexOf('?') >= 0 ? '&' : '?';
+    return checkoutBaseUrl + sep + 'locked_prefilled_email=' + encodeURIComponent(email);
+  }
+
+  function setStatus(html, kind) {
+    status.innerHTML = html || '';
+    status.hidden = !html;
+    status.className = 'upgrade-status' + (kind ? ' upgrade-status-' + kind : '');
+  }
+
+  function clearStatus() { setStatus('', ''); }
+
+  function setBusy(busy, label) {
+    btn.disabled = !!busy;
+    if (busy) {
+      btn.dataset.busy = '1';
+      btn.dataset.preBusyLabel = btn.dataset.preBusyLabel || btn.textContent;
+      btn.textContent = label || 'Working…';
+    } else if (btn.dataset.busy) {
+      btn.dataset.busy = '';
+      if (btn.dataset.preBusyLabel) {
+        btn.textContent = btn.dataset.preBusyLabel;
+        btn.dataset.preBusyLabel = '';
+      }
+    }
+  }
+
+  function validate() {
+    var val = input.value.trim();
+    if (!val) {
+      error.textContent = '';
+      input.classList.remove('invalid');
+      return false;
+    }
+    if (emailRe.test(val)) {
+      error.textContent = '';
+      input.classList.remove('invalid');
+      return true;
+    }
+    error.textContent = 'Please enter a valid email address';
+    input.classList.add('invalid');
+    return false;
+  }
+
+  function readAttribution() {
+    try {
+      if (typeof window.weeklyThingAttribution === 'function') {
+        return window.weeklyThingAttribution() || undefined;
+      }
+    } catch (err) { /* ignore */ }
+    return undefined;
+  }
+
+  function callAuth(payload) {
+    if (!apiBase) return Promise.reject(new Error('no-api-base'));
+    if (payload.action === 'subscribe' || payload.action === 'resend_confirmation') {
+      var attribution = readAttribution();
+      if (attribution) payload.attribution = attribution;
+    }
+    var controller = new AbortController();
+    var timeout = window.setTimeout(function() { controller.abort(); }, 12000);
+    return fetch(apiBase + '/auth', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller.signal
+    }).then(function(response) {
+      window.clearTimeout(timeout);
+      return response.json().catch(function() { return {}; }).then(function(data) {
+        return { ok: response.ok, status: response.status, data: data };
+      });
+    }, function(err) {
+      window.clearTimeout(timeout);
+      throw err;
+    });
+  }
+
+  function fallbackToStripe(reason) {
+    track('support.upgrade.fallback', reason || 'unknown');
+    if (checkoutBaseUrl) window.location.href = checkoutBaseUrl;
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function(ch) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+    });
+  }
+
+  function redirectToStripe(email) {
+    var url = checkoutUrl(email);
+    if (!url) return fallbackToStripe('no-url');
+    track('support.upgrade.redirect');
+    window.location.href = url;
+  }
+
+  function renderAlreadyPremium() {
+    setStatus('<strong>You’re already a Supporting Member \u{1F31F}</strong> Thank you for your support.', 'success');
+    btn.hidden = true;
+    track('support.upgrade.already_premium');
+  }
+
+  function renderUnconfirmed(email) {
+    setStatus('We sent a confirmation email to <strong>' + escapeHtml(email) + '</strong> when you signed up. Confirm it first, then come back to upgrade. <button type="button" class="subscribe-action-link" data-action="resend">Resend confirmation</button>', 'info');
+    var resend = status.querySelector('[data-action="resend"]');
+    if (resend) resend.addEventListener('click', function() {
+      resend.disabled = true;
+      callAuth({ email: email, action: 'resend_confirmation', source: 'support' }).then(function(result) {
+        if (result.ok && result.data && result.data.status === 'reminder_sent') {
+          setStatus(escapeHtml(result.data.message || 'Confirmation email sent. Check your inbox.'), 'success');
+        } else {
+          setStatus(escapeHtml((result.data && (result.data.error || result.data.message)) || 'Could not resend the confirmation right now.'), 'error');
+        }
+      }, function() {
+        setStatus('Could not resend the confirmation right now.', 'error');
+      });
+    });
+    track('support.upgrade.unconfirmed');
+  }
+
+  function renderNotFound(email) {
+    setStatus(
+      '<strong>' + escapeHtml(email) + '</strong> isn’t subscribed to the Weekly Thing yet. The newsletter is free — subscribe first, then come back to become a Supporting Member. ' +
+      '<button type="button" class="subscribe-action-link" data-action="subscribe">Subscribe me to the Weekly Thing</button>',
+      'info'
+    );
+    var subscribeBtn = status.querySelector('[data-action="subscribe"]');
+    if (subscribeBtn) subscribeBtn.addEventListener('click', function() {
+      subscribeBtn.disabled = true;
+      doSubscribeAndWait(email);
+    });
+    track('support.upgrade.not_found');
+  }
+
+  function renderInactive(email) {
+    setStatus(
+      'That email was previously unsubscribed. ' +
+      '<button type="button" class="subscribe-action-link" data-action="resub">Resubscribe to the Weekly Thing</button>',
+      'info'
+    );
+    var resub = status.querySelector('[data-action="resub"]');
+    if (resub) resub.addEventListener('click', function() {
+      resub.disabled = true;
+      doSubscribeAndWait(email);
+    });
+    track('support.upgrade.inactive');
+  }
+
+  function renderConfirmationPending(email) {
+    setStatus(
+      '<strong>Check the inbox for ' + escapeHtml(email) + '</strong> to confirm your subscription. Once you confirm, come back to this page to become a Supporting Member.',
+      'success'
+    );
+    btn.hidden = true;
+    track('support.upgrade.confirmation_pending');
+  }
+
+  function doSubscribeAndWait(email) {
+    setBusy(true, 'Subscribing…');
+    callAuth({ email: email, action: 'subscribe', source: 'support' }).then(function(result) {
+      setBusy(false);
+      if (result.ok && result.data && result.data.status === 'subscribed') {
+        renderConfirmationPending(email);
+        return;
+      }
+      if (result.status === 429) {
+        setStatus(escapeHtml((result.data && result.data.error) || 'Too many attempts. Please try again in a bit.'), 'error');
+        return;
+      }
+      setStatus(escapeHtml((result.data && (result.data.error || result.data.message)) || 'Could not add that email right now. Please try again.'), 'error');
+    }, function() {
+      setStatus('Network error. Please try again.', 'error');
+    });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    if (!validate()) return;
+    var email = input.value.trim();
+    if (!apiBase) return fallbackToStripe('no-api-base');
+    clearStatus();
+    setBusy(true, 'Checking…');
+    callAuth({ email: email, action: 'check', source: 'support' }).then(function(result) {
+      setBusy(false);
+      var data = result.data || {};
+      if (result.ok && data.status === 'premium') {
+        renderAlreadyPremium();
+        return;
+      }
+      if (result.ok && (data.status === 'active')) {
+        if (data.token) {
+          try {
+            window.localStorage.setItem(tokenKey, data.token);
+            window.localStorage.setItem(emailKey, email);
+          } catch (err) { /* ignore */ }
+        }
+        redirectToStripe(email);
+        return;
+      }
+      if (result.ok && data.status === 'not_found') {
+        renderNotFound(email);
+        return;
+      }
+      if (result.ok && data.status === 'unconfirmed') {
+        renderUnconfirmed(email);
+        return;
+      }
+      if (result.status === 403 && data.status === 'inactive') {
+        renderInactive(email);
+        return;
+      }
+      if (result.status === 429) {
+        setStatus(escapeHtml(data.error || 'Too many attempts. Please try again in a bit.'), 'error');
+        return;
+      }
+      if (result.status === 400) {
+        setStatus(escapeHtml(data.error || 'Please enter a valid email address.'), 'error');
+        return;
+      }
+      fallbackToStripe('check-' + result.status);
+    }, function() {
+      fallbackToStripe('check-network');
+    });
+  }
+
+  input.addEventListener('input', function() {
+    clearStatus();
+    btn.hidden = false;
+    validate();
+  });
+  form.addEventListener('submit', handleSubmit);
+
+  function readStoredEmail() {
+    try { return window.localStorage.getItem(emailKey) || ''; } catch (err) { return ''; }
+  }
+
+  // Read ?email=... and strip it from the URL so it doesn't linger in bookmarks
+  // or shared links. Returns the email if present and well-formed, else ''.
+  function consumeQueryEmail() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var raw = params.get('email') || '';
+      if (!raw) return '';
+      params.delete('email');
+      var search = params.toString();
+      var clean = window.location.pathname + (search ? '?' + search : '') + window.location.hash;
+      window.history.replaceState(null, '', clean);
+      return raw.trim();
+    } catch (err) { return ''; }
+  }
+
+  function autoRecognize() {
+    var queryEmail = consumeQueryEmail();
+    var fromQuery = !!(queryEmail && emailRe.test(queryEmail));
+    var seed = fromQuery ? queryEmail : readStoredEmail();
+    if (!seed || !emailRe.test(seed)) return;
+    input.value = seed;
+    if (fromQuery) track('support.upgrade.query_prefill');
+    if (!apiBase) return;
+    setBusy(true, 'Checking…');
+    callAuth({ email: seed, action: 'check', source: 'support' }).then(function(result) {
+      setBusy(false);
+      var data = result.data || {};
+      if (result.ok && data.status === 'premium') {
+        renderAlreadyPremium();
+        return;
+      }
+      if (result.ok && data.status === 'active') {
+        if (data.token) {
+          try {
+            window.localStorage.setItem(tokenKey, data.token);
+            window.localStorage.setItem(emailKey, seed);
+          } catch (err) { /* ignore */ }
+        }
+        track('support.upgrade.recognized', fromQuery ? 'query' : 'stored');
+        return;
+      }
+      // Other states: leave the prefilled email; user submits to see the prompt.
+    }, function() {
+      setBusy(false);
+      // Network error on auto-check is silent — user can still click submit.
+    });
+  }
+
+  autoRecognize();
+})();
+</script>

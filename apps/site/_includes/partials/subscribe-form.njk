@@ -34,6 +34,7 @@
   var subscribeId = shell.dataset.subscribeId || 'default';
   var apiBase = String(shell.dataset.apiBase || '').replace(/\/$/, '');
   var tokenKey = 'weeklyThingLibrarianToken';
+  var emailKey = 'weeklyThingSubscriberEmail';
   var defaultPlaceholder = input.getAttribute('data-default-placeholder') || 'you@example.com';
   var defaultButtonLabel = btn.getAttribute('data-default-label') || btn.textContent.trim();
   var emailRe = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
@@ -85,7 +86,10 @@
   }
 
   function forgetMe() {
-    try { window.localStorage.removeItem(tokenKey); } catch (err) { /* ignore */ }
+    try {
+      window.localStorage.removeItem(tokenKey);
+      window.localStorage.removeItem(emailKey);
+    } catch (err) { /* ignore */ }
     exitRecognizedState();
     input.focus();
     track('subscribe.forget_me', subscribeId);
@@ -191,14 +195,17 @@
     form.submit();
   }
 
-  function persistTokenIfPresent(data) {
+  function persistTokenIfPresent(data, email) {
     if (data && data.token) {
-      try { window.localStorage.setItem(tokenKey, data.token); } catch (err) { /* private mode */ }
+      try {
+        window.localStorage.setItem(tokenKey, data.token);
+        if (email) window.localStorage.setItem(emailKey, email);
+      } catch (err) { /* private mode */ }
     }
   }
 
   function renderActive(data) {
-    persistTokenIfPresent(data);
+    persistTokenIfPresent(data, input.value.trim());
     enterRecognizedState();
     track('subscribe.already_subscribed', subscribeId + '.' + (data.status || 'active'));
   }
