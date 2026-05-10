@@ -102209,6 +102209,10 @@
         "section": "Briefly"
       }
     ],
-    "word_count": 4530
+    "word_count": 4530,
+    "audio_url": "https://files.thingelstad.com/weekly-thing/347/weekly-thing-347.mp3",
+    "audio_duration_seconds": 1654,
+    "audio_voice": "openai-tts-1-hd:echo",
+    "audio_byte_size": 39796233
   }
 ]
