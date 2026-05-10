@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-05T00:19:03Z",
-  "count": 347,
+  "generated_at": "2026-05-10T12:18:14Z",
+  "count": 348,
   "emails": [
     {
       "number": 1,
@@ -3818,6 +3818,17 @@
       "snapshot_path": "data/buttondown/emails/346.json",
       "body_path": "data/buttondown/bodies/346.md",
       "archive_path": "apps/site/archive/346.md"
+    },
+    {
+      "number": 347,
+      "id": "em_73cwkxbtmv9p8a9r92mk508g0g",
+      "subject": "Weekly Thing 347 / Scrum, FilamentHound, DO_NOT_TRACK",
+      "publish_date": "2026-05-10T12:00:00Z",
+      "source_hash": "0d45b6d380305d9a8f6db4a6af6b4a25e3af1a9861ccbfedf100f409aadd8c02",
+      "fetched_at": "2026-05-10T12:18:14Z",
+      "snapshot_path": "data/buttondown/emails/347.json",
+      "body_path": "data/buttondown/bodies/347.md",
+      "archive_path": "apps/site/archive/347.md"
     }
   ]
 }
