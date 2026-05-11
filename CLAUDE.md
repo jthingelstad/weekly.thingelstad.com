@@ -300,15 +300,13 @@ Each writes to `tmp/` (gitignored). Copy outputs to `docs/audits/` to snapshot.
 - **Accessible:** proper heading hierarchy, alt text, color contrast, keyboard nav.
 - **Mobile-first** responsive design.
 
-## Workshop bot slash commands
+## Workshop bot — jobs spine
 
-`/workshop` is the operator slash-command surface, registered on **Eddy only** (slash commands are scoped per Discord application token; a single host avoids fan-out). The command tree syncs to the guild named by `DISCORD_SERVER_ID` (instant) when set, otherwise globally (~1h propagation). The group requires `manage_guild` permission so it's hidden from non-admin members.
+The workshop_bot (`apps/workshop_bot/`) was rebuilt around a **jobs spine**: every user-facing action is a deterministic Python job in `apps/workshop_bot/jobs/`, fired by the `/workshop job <name>` slash surface (host: Eddy; `job` is a subcommand group; `manage_guild`-gated) and/or by cron. Some jobs make small encapsulated LLM calls; most are pure Python. Single-asset locking (`job_locks` table) serializes jobs that write the same workspace file.
 
-All workshop_bot user-facing actions are **jobs** — deterministic Python in `apps/workshop_bot/jobs/`, fired by `/workshop job <name> [<args>]` (`job` is a subcommand group; job names are flat and hyphenated). The content-loop redesign is landing incrementally; today the wired job is:
+Issue-assembly flow: `start-issue` → `update-draft` (daily 17:00 CT; pure projection of Pinboard/micro.blog/asset files into `draft.md`; Eddy reviews Tue–Fri) → `create-final` (Eddy reorder review → `final.md`) → auto-fires `compose-haiku` + `compose-meta` + `compose-cta` in parallel → `build-publish` (inlines everything → `publish.md`) → `pipeline/content/content.py publish` creates the Buttondown draft. Parallel tracks: `pinboard-scan` (Linky, Mon–Fri 06:30/18:30 during the window), `promotion-prep` (Marky, RSS-triggered post-ship), `daily-metrics` (Marky, daily 19:00 CT) + `add-campaign` / `campaign-report`. Issue assets are standalone files in `s3://files.thingelstad.com/weekly-thing/{N}/` (`intro.md`, `currently.md`, `haiku.md`, `metadata.json`, `cta-*.md`, `draft.md`, `final.md`, `publish.md`).
 
-- `/workshop job start-issue <number> <pub-date> <day-count>` — records the in-flight issue window in `workshop.db` (later steps also create the S3 folder, write `draft.md` from the starter template, and auto-fire `update-draft`).
-
-The earlier `/workshop heartbeat <agent>` and `/workshop next-issue` commands were retired in the redesign. Source: `apps/workshop_bot/personas/commands.py`. Full redesign spec: `docs/workshop-content-loop-design-brief.md`.
+Per-persona heartbeats and the `agent_inbox` / `s3_personas__*` / `WORKSHOP_BUCKET` machinery from the prior design were all decommissioned; `s3_issues__*` tools were renamed `workspace__*`. New SQLite tables: `job_locks`, `draft_digests`, `goals`, `campaigns`, `campaign_metrics`. Source: `apps/workshop_bot/` (see `apps/workshop_bot/CLAUDE.md` for project memory and `docs/workshop-content-loop-design-brief.md` for the full design). The old iOS Shortcuts assemble pipeline stays as a recovery tool until a few ships succeed via the new flow.
 
 ## Email styling
 
