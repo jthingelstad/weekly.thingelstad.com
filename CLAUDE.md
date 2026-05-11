@@ -304,9 +304,11 @@ Each writes to `tmp/` (gitignored). Copy outputs to `docs/audits/` to snapshot.
 
 `/workshop` is the operator slash-command surface, registered on **Eddy only** (slash commands are scoped per Discord application token; a single host avoids fan-out). The command tree syncs to the guild named by `DISCORD_SERVER_ID` (instant) when set, otherwise globally (~1h propagation). The group requires `manage_guild` permission so it's hidden from non-admin members.
 
-Subcommands:
+All workshop_bot user-facing actions are **jobs** — deterministic Python in `apps/workshop_bot/jobs/`, fired by `/workshop job <name> [<args>]` (`job` is a subcommand group; job names are flat and hyphenated). The content-loop redesign is landing incrementally; today the wired job is:
 
-- `/workshop heartbeat <agent>` — fire one persona's heartbeat on demand. `agent` is one of `eddy`/`linky`/`marky`/`patty`, or `team` to fire all four in parallel. Reuses `scheduler.handlers.heartbeat` so a manual fire is indistinguishable from a scheduled fire (same `db.AgentRun` rows, same home-channel post, same PASS-swallow). The invoker always gets an ephemeral ack — including on PASS — so a quiet heartbeat doesn't look like a silent failure. Source: `apps/workshop_bot/personas/commands.py`.
+- `/workshop job start-issue <number> <pub-date> <day-count>` — records the in-flight issue window in `workshop.db` (later steps also create the S3 folder, write `draft.md` from the starter template, and auto-fire `update-draft`).
+
+The earlier `/workshop heartbeat <agent>` and `/workshop next-issue` commands were retired in the redesign. Source: `apps/workshop_bot/personas/commands.py`. Full redesign spec: `docs/workshop-content-loop-design-brief.md`.
 
 ## Email styling
 
