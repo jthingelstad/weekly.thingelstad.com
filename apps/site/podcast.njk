@@ -39,7 +39,11 @@ eleventyExcludeFromCollections: true
     <item>
       {% set subjectParts = issue.data.subject | split(" / ") -%}
       {%- set subjectTail = subjectParts | last if subjectParts.length > 1 else issue.data.subject -%}
+      {%- if issue.data.subject.startsWith("WT") -%}
+      {%- set episodeTitle = issue.data.subject -%}
+      {%- else -%}
       {%- set episodeTitle = "#" + (issue.data.number | string) + " — " + subjectTail -%}
+      {%- endif -%}
       {%- set issueUrl = site.url + '/archive/' + (issue.data.number | string) + '/' -%}
       <title>{{- episodeTitle | xmlEscape -}}</title>
       <link>{{- issueUrl -}}</link>

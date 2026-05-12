@@ -417,7 +417,7 @@ permalink: /thingy/
     }
 
     function citationTitle(citation) {
-      const parts = [`#${citation.issue_number}: ${citation.subject || 'Weekly Thing'}`];
+      const parts = [`WT${citation.issue_number}: ${citation.subject || 'Weekly Thing'}`];
       if (citation.publish_date) parts.push(String(citation.publish_date).slice(0, 10));
       if (citation.section) parts.push(citation.section);
       return parts.join(' | ');
@@ -427,10 +427,10 @@ permalink: /thingy/
       if (!citationsByIssue || citationsByIssue.size === 0) return html;
       return html.split(/(<[^>]+>)/g).map((part) => {
         if (part.startsWith('<')) return part;
-        return part.replace(/(^|[^\w&])#(\d{1,4})\b/g, (match, prefix, issue) => {
+        return part.replace(/(^|[^\w&])(?:WT|#)(\d{1,4})\b/g, (match, prefix, issue) => {
           const citation = citationsByIssue.get(issue);
           if (!citation) return match;
-          return `${prefix}<a href="${safeMarkdownUrl(citation.url)}" title="${escapeHtml(citationTitle(citation))}" data-tinylytics-event="librarian.source_click" data-tinylytics-event-value="${escapeHtml(issue)}">#${escapeHtml(issue)}</a>`;
+          return `${prefix}<a href="${safeMarkdownUrl(citation.url)}" title="${escapeHtml(citationTitle(citation))}" data-tinylytics-event="librarian.source_click" data-tinylytics-event-value="${escapeHtml(issue)}">WT${escapeHtml(issue)}</a>`;
         });
       }).join('');
     }

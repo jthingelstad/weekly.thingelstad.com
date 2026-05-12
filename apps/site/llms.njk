@@ -46,7 +46,7 @@ Use `/archive/N/` for per-issue HTML, `/archive/N.txt` for clean per-issue markd
 Newest issues, with clean markdown links.
 
 {% for issue in collections.issuesByDate | slice(0, 12) -%}
-- [#{{ issue.data.number }} — {{ issue.data.subject | safe }}]({{ site.url }}/archive/{{ issue.data.number }}.txt): {{ issue.data.publish_date | dateShort }}{% if issue.data.description %}; {{ issue.data.description | safe }}{% endif %}
+- [{% if issue.data.subject.startsWith("WT") %}{{ issue.data.subject | safe }}{% else %}#{{ issue.data.number }} — {{ issue.data.subject | safe }}{% endif %}]({{ site.url }}/archive/{{ issue.data.number }}.txt): {{ issue.data.publish_date | dateShort }}{% if issue.data.description %}; {{ issue.data.description | safe }}{% endif %}
 {% endfor %}
 
 ## Site Pages
@@ -62,6 +62,6 @@ Every issue, newest first. Each link points to a clean markdown version.
 
 {% for group in collections.issuesByDate | groupByYear -%}
 {% for issue in group.issues -%}
-- [#{{ issue.data.number }} — {{ issue.data.subject | safe }}]({{ site.url }}/archive/{{ issue.data.number }}.txt): {{ issue.data.publish_date | dateShort }}{% if issue.data.description %}; {{ issue.data.description | safe }}{% endif %}
+- [{% if issue.data.subject.startsWith("WT") %}{{ issue.data.subject | safe }}{% else %}#{{ issue.data.number }} — {{ issue.data.subject | safe }}{% endif %}]({{ site.url }}/archive/{{ issue.data.number }}.txt): {{ issue.data.publish_date | dateShort }}{% if issue.data.description %}; {{ issue.data.description | safe }}{% endif %}
 {% endfor %}
 {% endfor %}

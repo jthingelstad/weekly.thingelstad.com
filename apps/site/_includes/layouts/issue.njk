@@ -19,7 +19,7 @@ ogType: article
 {%- set listenSecondsRem = listenSeconds - (listenMinutes * 60) -%}
 
 {% block head %}
-  <link rel="alternate" type="application/atom+xml" title="Links from Issue #{{ number }}" href="/archive/{{ number }}/links.xml">
+  <link rel="alternate" type="application/atom+xml" title="Links from WT{{ number }}" href="/archive/{{ number }}/links.xml">
 {% endblock %}
 
 <article class="issue" data-pagefind-body>
@@ -29,9 +29,9 @@ ogType: article
       <div class="issue-bar-inner">
         <a href="/archive/" class="issue-back">&larr; Archive</a>
         <div class="issue-pager">
-          {% if prev1 %}<a href="/archive/{{ prev1.data.number }}/" class="issue-pager-btn" title="Issue {{ prev1.data.number }}: {{ prev1.data.subject }}">&lsaquo; #{{ prev1.data.number }}</a>{% endif %}
-          <span class="issue-pager-here" aria-current="page">#{{ number }}</span>
-          {% if next1 %}<a href="/archive/{{ next1.data.number }}/" class="issue-pager-btn" title="Issue {{ next1.data.number }}: {{ next1.data.subject }}">#{{ next1.data.number }} &rsaquo;</a>{% endif %}
+          {% if prev1 %}<a href="/archive/{{ prev1.data.number }}/" class="issue-pager-btn" title="WT{{ prev1.data.number }}: {{ prev1.data.subject }}">&lsaquo; WT{{ prev1.data.number }}</a>{% endif %}
+          <span class="issue-pager-here" aria-current="page">WT{{ number }}</span>
+          {% if next1 %}<a href="/archive/{{ next1.data.number }}/" class="issue-pager-btn" title="WT{{ next1.data.number }}: {{ next1.data.subject }}">WT{{ next1.data.number }} &rsaquo;</a>{% endif %}
         </div>
       </div>
     </div>
@@ -39,9 +39,10 @@ ogType: article
 
   <header class="issue-hero">
     <div class="container-narrow">
-      <p class="eyebrow">Weekly Thing #<span data-pagefind-meta="issue">{{ number }}</span> &middot; <time datetime="{{ publish_date | dateFormat('iso') }}" data-pagefind-meta="date">{{ publish_date | dateFormat }}</time></p>
-      {%- set titleParts = subject | split(" / ") -%}
-      <h1 class="issue-title" data-pagefind-meta="title">{{ titleParts | last if titleParts.length > 1 else subject }}</h1>
+      <p class="eyebrow">Weekly Thing <span data-pagefind-meta="issue">{{ number }}</span> &middot; <time datetime="{{ publish_date | dateFormat('iso') }}" data-pagefind-meta="date">{{ publish_date | dateFormat }}</time></p>
+      {%- set displayTitle = subject -%}
+      {%- if " — " in displayTitle -%}{%- set displayTitle = displayTitle | split(" — ") | last -%}{%- elif " / " in displayTitle -%}{%- set displayTitle = displayTitle | split(" / ") | last -%}{%- endif -%}
+      <h1 class="issue-title" data-pagefind-meta="title">{{ displayTitle }}</h1>
       {% if description %}
       <p class="issue-dek">{{ description }}</p>
       {% endif %}

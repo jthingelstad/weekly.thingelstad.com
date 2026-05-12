@@ -18,7 +18,7 @@ layout: layouts/base.njk
       {%- for it in topic.issues -%}
       <li class="topic-issue-item">
         <a class="topic-issue-link" href="/archive/{{ it.number }}/">
-          <span class="topic-issue-num">#{{ it.number }}</span>
+          <span class="topic-issue-num">WT{{ it.number }}</span>
           <span class="topic-issue-subject">{{ it.subject }}</span>
           <time class="topic-issue-date" datetime="{{ it.publish_date | dateFormat('iso') }}">
             {{ it.publish_date | dateShort }}
