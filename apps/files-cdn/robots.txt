@@ -1,0 +1,45 @@
+# files.thingelstad.com — robots.txt
+#
+# The asset bucket fronted by CloudFront E3AEA6KRKI2B7E. Mixes public,
+# indexable assets (issue cover images, podcast MP3s, journal photos,
+# older personal uploads) with workshop in-progress files written by the
+# workshop_bot under the same `weekly-thing/<N>/` prefix as the shipped
+# assets. Default policy is allow; blocks below cover only the in-flight
+# / intermediate / scratch files.
+#
+# Source-of-truth: apps/files-cdn/robots.txt in
+# jthingelstad/weekly.thingelstad.com. Deploy after edit:
+#
+#   aws s3 cp apps/files-cdn/robots.txt s3://files.thingelstad.com/robots.txt \
+#       --content-type "text/plain; charset=utf-8" \
+#       --cache-control "max-age=300"
+#   aws cloudfront create-invalidation \
+#       --distribution-id E3AEA6KRKI2B7E --paths "/robots.txt"
+
+User-agent: *
+
+# Weekly Thing — workshop / in-progress / intermediate files inside
+# `weekly-thing/<N>/`. Shipped public assets share the prefix and are
+# intentionally NOT blocked: `cover.jpg`, `cover-large.jpg`,
+# `weekly-thing-<N>.mp3` (the podcast audio), and `journal/*` photos.
+Disallow: /weekly-thing/*/draft.md
+Disallow: /weekly-thing/*/draft.html
+Disallow: /weekly-thing/*/final.md
+Disallow: /weekly-thing/*/final.html
+Disallow: /weekly-thing/*/publish.md
+Disallow: /weekly-thing/*/publish.html
+Disallow: /weekly-thing/*/intro.md
+Disallow: /weekly-thing/*/currently.json
+Disallow: /weekly-thing/*/cover.json
+Disallow: /weekly-thing/*/haiku.md
+Disallow: /weekly-thing/*/metadata.json
+Disallow: /weekly-thing/*/cta-*.md
+Disallow: /weekly-thing/*/eddy-*.md
+Disallow: /weekly-thing/*/body-*.mp3
+
+# The in-flight-issue pointer JSON — runtime data for the homepage badge,
+# not content to index.
+Disallow: /weekly-thing/workshop.json
+
+# Scratch uploads.
+Disallow: /tmp/
