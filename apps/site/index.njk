@@ -206,10 +206,13 @@ permalink: /
   var el = document.querySelector('.home-next-issue');
   if (!el || !window.fetch) return;
   var latestShipped = Number(el.dataset.latestShipped || 0);
-  // Plain GET, no custom headers — keeps the request CORS-safelisted (the
-  // file's already served `Cache-Control: no-cache` from CloudFront, so the
-  // browser will revalidate anyway).
-  fetch('https://files.thingelstad.com/weekly-thing/workshop.json')
+  // `cache: 'no-store'` bypasses the browser's HTTP cache for this request
+  // (and doesn't store the response). Important because conditional 304s
+  // from CloudFront don't carry the CORS header (the Response Headers
+  // Policy doesn't apply to 304s — known CloudFront limitation), so a
+  // cached entry would poison subsequent revalidations. `no-store` doesn't
+  // add request headers, so the request stays CORS-safelisted (no preflight).
+  fetch('https://files.thingelstad.com/weekly-thing/workshop.json', { cache: 'no-store' })
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (data) {
       if (!data) return;
