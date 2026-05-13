@@ -41,5 +41,9 @@ Disallow: /weekly-thing/*/body-*.mp3
 # not content to index.
 Disallow: /weekly-thing/workshop.json
 
+# Personal / family — not for indexing.
+Disallow: /family/
+Disallow: /random/
+
 # Scratch uploads.
 Disallow: /tmp/
