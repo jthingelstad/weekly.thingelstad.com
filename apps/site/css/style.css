@@ -1269,20 +1269,12 @@ th {
   font-family: var(--mono);
   font-size: 12.5px;
   letter-spacing: 0.04em;
-  color: var(--muted);
+  color: var(--accent-deep);
   line-height: 1.5;
 }
 .home-next-issue-text {
   font-weight: 600;
-  color: var(--accent-deep);
 }
-.home-next-issue-cta {
-  color: var(--accent);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-}
-.home-next-issue-cta:hover { color: var(--accent-deep); }
 .home-stamp hr {
   border: none;
   border-top: 1px solid var(--line);

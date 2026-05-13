@@ -21,11 +21,6 @@ on:
     # Weekend morning polling window for new issues.
     # Covers roughly 6am-10am America/Chicago across CST/CDT.
     - cron: '0 11-16 * * 6,0'
-    # Daily rebuild during the work week — picks up the in-flight issue's
-    # workshop.json (the homepage "WT N coming in K days" badge bakes the
-    # latest pub_date at build time, so a daily build keeps the badge in
-    # sync after `/workshop issue start` without needing a code push).
-    - cron: '15 12 * * 1-5'
 
 permissions:
   contents: read

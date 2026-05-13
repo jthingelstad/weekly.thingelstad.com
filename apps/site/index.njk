@@ -45,18 +45,14 @@ permalink: /
             <a href="/thingy/?prompt={{ ('Tell me about issue #' + latest.data.number) | urlencode }}" class="home-stamp-action home-stamp-action-chat" data-tinylytics-event="home.chat" data-tinylytics-event-value="{{ latest.data.number }}">&#128172; Chat &rarr;</a>
           </p>
         </div>
-        {# Next-issue badge. Renders only when workshop_bot has set an
-           in-flight issue *newer* than the latest shipped one; the inline
-           script below decides whether to actually show it based on
-           days-to-publish (silent if past or >7 days out). #}
-        {% if nextIssue.pub_date and nextIssue.issue_number and nextIssue.issue_number > latest.data.number %}
-        <p class="home-next-issue" hidden
-           data-issue-number="{{ nextIssue.issue_number }}"
-           data-pub-date="{{ nextIssue.pub_date }}">
+        {# Next-issue badge. The inline script below fetches the live
+           workshop.json pointer at page load, computes days-to-publish
+           against the visitor's local clock, and unhides this when the
+           in-flight issue is newer than the latest shipped one *and*
+           pub_date is 0–7 days out. Silent otherwise. #}
+        <p class="home-next-issue" hidden data-latest-shipped="{{ latest.data.number }}">
           <span class="home-next-issue-text"></span>
-          <a class="home-next-issue-cta" href="#email-hero" data-tinylytics-event="home.next_issue_subscribe" data-tinylytics-event-value="{{ nextIssue.issue_number }}">Subscribe so you don&rsquo;t miss it.</a>
         </p>
-        {% endif %}
       </aside>
     </div>
   </div>
@@ -201,27 +197,39 @@ permalink: /
   </div>
 </section>
 
-{# ── Inline computation for the next-issue badge — runs on every visit, so
-       "coming in N days" is always fresh against the visitor's local date,
-       not whenever the site was last built. Silent if past or >7 days out. #}
+{# ── Next-issue badge: fetch the live workshop.json pointer on every
+       visit and render "WT N coming in K days." if the in-flight issue is
+       newer than the latest shipped one and is 0–7 days out. Silent on
+       any failure / past pub_date / >7-day horizon. #}
 <script>
 (function () {
   var el = document.querySelector('.home-next-issue');
-  if (!el) return;
-  var issueNo = el.dataset.issueNumber;
-  var parts = (el.dataset.pubDate || '').split('-').map(Number);
-  if (!issueNo || parts.length !== 3 || !parts[0]) return;
-  var pub = new Date(parts[0], parts[1] - 1, parts[2]);
-  var today = new Date(); today.setHours(0, 0, 0, 0);
-  var diff = Math.round((pub - today) / 86400000);
-  if (diff < 0 || diff > 7) return;
-  var msg;
-  if (diff === 0) msg = 'WT' + issueNo + ' publishes today.';
-  else if (diff === 1) msg = 'WT' + issueNo + ' coming tomorrow.';
-  else msg = 'WT' + issueNo + ' coming in ' + diff + ' days.';
-  var text = el.querySelector('.home-next-issue-text');
-  if (text) text.textContent = msg + ' ';
-  el.hidden = false;
+  if (!el || !window.fetch) return;
+  var latestShipped = Number(el.dataset.latestShipped || 0);
+  // Plain GET, no custom headers — keeps the request CORS-safelisted (the
+  // file's already served `Cache-Control: no-cache` from CloudFront, so the
+  // browser will revalidate anyway).
+  fetch('https://files.thingelstad.com/weekly-thing/workshop.json')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data) return;
+      var n = Number(data.issue_number);
+      var parts = String(data.pub_date || '').split('-').map(Number);
+      if (!Number.isFinite(n) || n <= 0 || parts.length !== 3 || !parts[0]) return;
+      if (latestShipped && n <= latestShipped) return;  // not newer than what's shipped
+      var pub = new Date(parts[0], parts[1] - 1, parts[2]);
+      var today = new Date(); today.setHours(0, 0, 0, 0);
+      var diff = Math.round((pub - today) / 86400000);
+      if (diff < 0 || diff > 7) return;
+      var msg;
+      if (diff === 0) msg = 'WT' + n + ' publishes today.';
+      else if (diff === 1) msg = 'WT' + n + ' coming tomorrow.';
+      else msg = 'WT' + n + ' coming in ' + diff + ' days.';
+      var text = el.querySelector('.home-next-issue-text');
+      if (text) text.textContent = msg;
+      el.hidden = false;
+    })
+    .catch(function () { /* silent — badge stays hidden */ });
 })();
 </script>
 
