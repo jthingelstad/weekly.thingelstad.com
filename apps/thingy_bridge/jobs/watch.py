@@ -1,4 +1,4 @@
-"""``thingy-watch`` + the ``/workshop thingy …`` reads.
+"""``thingy-watch`` + the ``/thingy …`` reads.
 
 Jamie can't see what readers ask the public archive agent (Thingy) — it
 lives in a Lambda, conversations only in DynamoDB. This module gives him a
@@ -7,11 +7,11 @@ window:
 - ``watch(ctx)`` — the hourly job. Pulls logged conversation turns from
   the Lambda (``thingy_client.fetch_conversations`` → the auth endpoint's
   ``list_conversations`` action), groups them into conversations (same
-  reader, turns within ~30 min / a fresh browser history), has Eddy write
-  a two-sided assessment of each *new* one, mirrors it into
+  reader, turns within ~30 min / a fresh browser history), runs a
+  one-shot Sonnet two-sided assessment of each *new* one, mirrors it into
   ``thingy_conversations`` (a stable local id that outlives the Lambda's
   ~60-day TTL), and posts a card to ``#chatter``. PASSes silently when
-  there's nothing new. Manual re-fire = ``/workshop thingy sync``.
+  there's nothing new. Manual re-fire = ``/thingy sync``.
 - ``recent(ctx, count)`` — the last N mirrored conversations, one line each.
 - ``show(ctx, conv_id)`` — one conversation: the card + the full transcript
   (returned as ``data['transcript_md']`` for the command to attach as a file).
@@ -24,15 +24,17 @@ stable per person but not reversible.
 from __future__ import annotations
 
 import asyncio
+import json
 import logging
+import re
 from datetime import datetime, timedelta, timezone
 from typing import Any, Optional
 from zoneinfo import ZoneInfo
 
 from ..tools import anthropic_client, db, thingy_client
-from . import _base, _compose
+from . import _base
 
-logger = logging.getLogger("workshop.jobs.thingy")
+logger = logging.getLogger("thingy_bridge.jobs.watch")
 
 NAME = "thingy-watch"
 
@@ -140,7 +142,7 @@ def group_into_conversations(turns: list[dict]) -> list[list[dict]]:
     return convos
 
 
-# ---------- assessment (Eddy, one-shot) ----------
+# ---------- assessment (one-shot Sonnet) ----------
 
 def _transcript_for_prompt(turns: list[dict]) -> str:
     lines: list[str] = []
@@ -152,12 +154,30 @@ def _transcript_for_prompt(turns: list[dict]) -> str:
     return "\n\n".join(lines)
 
 
+_JSON_PAYLOAD_RE = re.compile(r"\{.*\}", re.DOTALL)
+
+
+def _parse_json_payload(reply: str) -> Optional[dict[str, Any]]:
+    """Extract and parse the first JSON object in ``reply`` (the model is
+    asked to return only JSON; tolerate code fences / surrounding prose).
+    Inlined from workshop_bot's ``_compose.parse_json_payload`` — the
+    bridge has no other JSON-payload jobs, so a shared helper would be
+    overkill."""
+    if not reply:
+        return None
+    m = _JSON_PAYLOAD_RE.search(reply)
+    if not m:
+        return None
+    try:
+        data = json.loads(m.group(0))
+    except (ValueError, TypeError):
+        return None
+    return data if isinstance(data, dict) else None
+
+
 def _parse_assessment(reply: str) -> Optional[dict[str, str]]:
-    """Project the model's JSON reply down to the four assessment fields.
-    Delegates the JSON-fishing to :func:`_compose.parse_json_payload`
-    (the same helper compose-haiku uses) and keeps only the field
-    projection that's specific to the assessment shape."""
-    data = _compose.parse_json_payload(reply)
+    """Project the model's JSON reply down to the four assessment fields."""
+    data = _parse_json_payload(reply)
     if data is None:
         return None
     out = {}
@@ -191,9 +211,9 @@ def _sync_assess(prompt: str, user_msg: str) -> Optional[str]:
 
 async def _assess(turns: list[dict]) -> dict[str, str]:
     try:
-        base = anthropic_client.load_prompt("eddy-thingy-review")
+        base = anthropic_client.load_prompt("review-conversation")
     except Exception:  # noqa: BLE001
-        logger.warning("thingy-watch: eddy-thingy-review prompt missing")
+        logger.warning("thingy-watch: review-conversation prompt missing")
         return _fallback_assessment(turns)
     user_msg = "Here is the conversation to assess:\n\n" + _transcript_for_prompt(turns)
     try:
@@ -241,7 +261,7 @@ def _card(conv: dict, *, for_show: bool = False) -> str:
     if for_show:
         tail += "  ·  full transcript attached"
     else:
-        tail += f"  ·  `/workshop thingy show {conv['id']}` for the transcript"
+        tail += f"  ·  `/thingy show {conv['id']}` for the transcript"
     parts.append(tail)
     return "\n".join(parts)
 
@@ -295,7 +315,7 @@ def _transcript_md(conv: dict) -> str:
 async def watch(ctx: "_base.JobContext") -> "_base.JobResult":
     # Whole-job lock so a slow cron run (one slow Lambda call + LLM
     # assessment per conversation can push past the hour) can't overlap
-    # with the next scheduled fire or a manual `/workshop thingy sync`.
+    # with the next scheduled fire or a manual `/thingy sync`.
     # Without it both instances would pay for LLM assessments on the
     # same convos — DB inserts are idempotent on turn request ids, so
     # only one card lands per convo, but the cost is real.
@@ -362,7 +382,7 @@ async def _watch_locked(ctx: "_base.JobContext") -> "_base.JobResult":
                 "topic": assess.get("topic"), "assessment_md": _assessment_md(assess),
                 "source_issues": issues,
             }
-            if await ctx.post("DISCORD_CHANNEL_CHATTER", _card(conv_row), persona="eddy"):
+            if await ctx.post("DISCORD_CHANNEL_CHATTER", _card(conv_row), persona="thingy"):
                 db.mark_thingy_conversation_posted(conv_id)
                 posted += 1
 
@@ -370,8 +390,8 @@ async def _watch_locked(ctx: "_base.JobContext") -> "_base.JobResult":
     if extra > 0 and posted > 0:
         await ctx.post(
             "DISCORD_CHANNEL_CHATTER",
-            f"…and **{extra}** more new conversation{'s' if extra != 1 else ''} — `/workshop thingy recent`.",
-            persona="eddy",
+            f"…and **{extra}** more new conversation{'s' if extra != 1 else ''} — `/thingy recent`.",
+            persona="thingy",
         )
 
     note = f"thingy-watch: {stored} new conversation{'s' if stored != 1 else ''} mirrored ({posted} posted to #chatter)"
@@ -380,7 +400,7 @@ async def _watch_locked(ctx: "_base.JobContext") -> "_base.JobResult":
     return _base.JobResult(True, note + ".", data={"stored": stored, "posted": posted})
 
 
-# ---------- /workshop thingy reads ----------
+# ---------- /thingy reads ----------
 
 def _recent_line(c: dict) -> str:
     fb = _FEEDBACK_EMOJI.get(c.get("feedback") or "", "")
@@ -399,18 +419,18 @@ async def recent(ctx: "_base.JobContext", *, count: int = 8) -> "_base.JobResult
         return _base.JobResult(
             True,
             "No Thingy conversations mirrored yet. The hourly `thingy-watch` will fill this in "
-            "as readers chat — or run `/workshop thingy sync` to pull now.",
+            "as readers chat — or run `/thingy sync` to pull now.",
         )
     lines = [f"**Recent Thingy conversations** (last {len(rows)}):"]
     lines += [_recent_line(c) for c in rows]
-    lines.append("`/workshop thingy show <id>` for the assessment + full transcript.")
+    lines.append("`/thingy show <id>` for the assessment + full transcript.")
     return _base.JobResult(True, "\n".join(lines))
 
 
 async def show(ctx: "_base.JobContext", *, conv_id: int) -> "_base.JobResult":
     conv = db.get_thingy_conversation(int(conv_id))
     if conv is None:
-        return _base.JobResult(False, f"No mirrored Thingy conversation `#{conv_id}`. Try `/workshop thingy recent`.")
+        return _base.JobResult(False, f"No mirrored Thingy conversation `#{conv_id}`. Try `/thingy recent`.")
     return _base.JobResult(
         True,
         _card(conv, for_show=True),

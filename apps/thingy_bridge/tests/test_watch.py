@@ -1,5 +1,5 @@
-"""Tests for the Thingy conversation watcher + reads (jobs/thingy.py),
-the thingy_conversations db helpers, and the /workshop thingy wiring."""
+"""Tests for the Thingy conversation watcher + reads (jobs/watch.py),
+the thingy_conversations db helpers, and the /thingy slash wiring."""
 
 from __future__ import annotations
 
@@ -14,12 +14,12 @@ from unittest.mock import AsyncMock, MagicMock, patch
 REPO = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO))
 
-from apps.workshop_bot.tests import _stubs  # noqa: E402
+from apps.thingy_bridge.tests import _stubs  # noqa: E402
 
 _stubs.install()
 
-from apps.workshop_bot.jobs import _base, thingy as thingy_job  # noqa: E402
-from apps.workshop_bot.tools import db  # noqa: E402
+from apps.thingy_bridge.jobs import _base, watch as thingy_job  # noqa: E402
+from apps.thingy_bridge.tools import db  # noqa: E402
 
 
 def _turn(rid, sub, created_at, *, q="q?", a="a.", history=0, issues=None, feedback=None):
@@ -87,22 +87,22 @@ class RenderTests(unittest.TestCase):
         self.assertIn("👍", card)
         self.assertIn("RSS readers", card)
         self.assertIn("WT200, WT247", card)
-        self.assertIn("/workshop thingy show 5", card)
+        self.assertIn("/thingy show 5", card)
 
 
 class _DBCase(unittest.TestCase):
     def setUp(self):
         self._tmp = tempfile.TemporaryDirectory()
-        self._orig = os.environ.get("WORKSHOP_DB_PATH")
-        os.environ["WORKSHOP_DB_PATH"] = str(Path(self._tmp.name) / "t.db")
+        self._orig = os.environ.get("THINGY_BRIDGE_DB_PATH")
+        os.environ["THINGY_BRIDGE_DB_PATH"] = str(Path(self._tmp.name) / "t.db")
         db.run_migrations()
 
     def tearDown(self):
         self._tmp.cleanup()
         if self._orig is None:
-            os.environ.pop("WORKSHOP_DB_PATH", None)
+            os.environ.pop("THINGY_BRIDGE_DB_PATH", None)
         else:
-            os.environ["WORKSHOP_DB_PATH"] = self._orig
+            os.environ["THINGY_BRIDGE_DB_PATH"] = self._orig
 
 
 class DbHelperTests(_DBCase):
@@ -171,7 +171,7 @@ class WatchTests(_DBCase):
         self.assertIn("no new conversations", res.message)
 
     def test_watch_surfaces_lambda_error(self):
-        from apps.workshop_bot.tools.thingy_client import ThingyError
+        from apps.thingy_bridge.tools.thingy_client import ThingyError
         with patch.object(thingy_job.thingy_client, "fetch_conversations",
                           AsyncMock(side_effect=ThingyError("bridge down"))):
             res = asyncio.run(thingy_job.watch(self._ctx()))
@@ -226,15 +226,16 @@ class ReadCommandTests(_DBCase):
 
 
 class WiringTests(unittest.TestCase):
+    @unittest.skip("populated in commit 4 — bridge commands.py")
     def test_thingy_subgroup_wired(self):
-        from apps.workshop_bot.personas import commands
-        tree = commands.register_workshop_commands(MagicMock())
-        workshop = tree.groups[0]
-        thingy = next(c for c in workshop.commands if getattr(c, "name", None) == "thingy")
+        from apps.thingy_bridge.commands import register_thingy_commands
+        tree = register_thingy_commands(MagicMock())
+        thingy = next(c for c in tree.commands if getattr(c, "name", None) == "thingy")
         self.assertEqual({getattr(c, "_cmd_name", None) for c in thingy.commands}, {"recent", "show", "sync"})
 
+    @unittest.skip("populated in commit 4 — bridge scheduler/jobs.py JOBS tuple")
     def test_scheduler_has_thingy_watch(self):
-        from apps.workshop_bot.scheduler.jobs import by_id
+        from apps.thingy_bridge.scheduler.jobs import by_id
         spec = by_id("thingy-watch")
         self.assertIsNotNone(spec)
         self.assertEqual(spec.cron, "7 * * * *")
@@ -246,7 +247,7 @@ class WatchLockTests(_DBCase):
     starting a parallel instance that'd pay for duplicate LLM calls."""
 
     def test_concurrent_watch_is_blocked_by_job_lock(self):
-        from apps.workshop_bot.jobs._base import job_lock
+        from apps.thingy_bridge.jobs._base import job_lock
         ctx = _base.JobContext(deps=None, trigger="scheduled")
         ctx.post = AsyncMock(return_value=True)
         # Pre-acquire the lock; the watch call should see "already running."

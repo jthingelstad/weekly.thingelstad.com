@@ -84,7 +84,7 @@ def _install_stubs() -> None:
 _install_stubs()
 
 
-from apps.workshop_bot.tools import db, thingy_client, thingy_render  # noqa: E402
+from apps.thingy_bridge.tools import db, thingy_client, thingy_render  # noqa: E402
 
 
 class CitationInjectionTests(unittest.TestCase):
@@ -321,15 +321,15 @@ class ThingyDbHelperTests(unittest.TestCase):
 
     def setUp(self):
         self._tmpdir = tempfile.TemporaryDirectory()
-        self._orig_path = os.environ.get("WORKSHOP_DB_PATH")
-        os.environ["WORKSHOP_DB_PATH"] = str(Path(self._tmpdir.name) / "test.db")
+        self._orig_path = os.environ.get("THINGY_BRIDGE_DB_PATH")
+        os.environ["THINGY_BRIDGE_DB_PATH"] = str(Path(self._tmpdir.name) / "test.db")
         db.run_migrations()
 
     def tearDown(self):
         if self._orig_path is None:
-            os.environ.pop("WORKSHOP_DB_PATH", None)
+            os.environ.pop("THINGY_BRIDGE_DB_PATH", None)
         else:
-            os.environ["WORKSHOP_DB_PATH"] = self._orig_path
+            os.environ["THINGY_BRIDGE_DB_PATH"] = self._orig_path
         self._tmpdir.cleanup()
 
     def test_token_roundtrip(self):
@@ -385,15 +385,15 @@ class ProfileRoundtripTests(unittest.TestCase):
 
     def setUp(self):
         self._tmpdir = tempfile.TemporaryDirectory()
-        self._orig_path = os.environ.get("WORKSHOP_DB_PATH")
-        os.environ["WORKSHOP_DB_PATH"] = str(Path(self._tmpdir.name) / "test.db")
+        self._orig_path = os.environ.get("THINGY_BRIDGE_DB_PATH")
+        os.environ["THINGY_BRIDGE_DB_PATH"] = str(Path(self._tmpdir.name) / "test.db")
         db.run_migrations()
 
     def tearDown(self):
         if self._orig_path is None:
-            os.environ.pop("WORKSHOP_DB_PATH", None)
+            os.environ.pop("THINGY_BRIDGE_DB_PATH", None)
         else:
-            os.environ["WORKSHOP_DB_PATH"] = self._orig_path
+            os.environ["THINGY_BRIDGE_DB_PATH"] = self._orig_path
         self._tmpdir.cleanup()
 
     def test_no_profile_round_trips_as_none(self):
@@ -454,7 +454,7 @@ class WelcomeBackFormatTests(unittest.TestCase):
 
     def setUp(self):
         # Defer import so the persona module loads under stubs.
-        from apps.workshop_bot.personas import thingy
+        from apps.thingy_bridge.personas import thingy
         self.thingy = thingy
 
     def test_returning_with_summary(self):
