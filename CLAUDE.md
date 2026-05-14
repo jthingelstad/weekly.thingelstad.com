@@ -79,11 +79,12 @@ weekly.thingelstad.com/
 │   │   ├── img/                    # static images
 │   │   ├── index.njk, about.njk, support.njk, search.njk, faq.njk, feed.njk, issue-links-feed.njk, podcast.njk, ops.njk, librarian.njk, …
 │   │   └── CNAME, robots.txt, _nojekyll, favicon.svg
-│   ├── librarian/                  # Thingy — Lambda agent for archive Q&A
+│   ├── librarian/                  # Thingy intelligence — Lambda agent for archive Q&A
 │   │   ├── lambda/                 # Node Lambda code (chat/, auth/, shared/, prompts/, tests/)
 │   │   ├── infra/                  # CloudFormation template
 │   │   └── admin/                  # operator scripts for the live stack (scaffolding)
-│   └── workshop_bot/               # Discord workshop: Eddy, Linky, Marky, Patty + Thingy bridge
+│   ├── thingy_bridge/              # Discord ↔ Lambda bridge for the public reader Q&A surface (#ask-thingy)
+│   └── workshop_bot/               # Discord workshop: Eddy, Linky, Marky, Patty (author-facing)
 ├── librarian-core/                 # shared Python package (corpus, BM25 retrieval, graph) — installed editable
 ├── pipeline/
 │   ├── content/                    # Buttondown pull/build/diff/push, marketing copy refresh
@@ -306,9 +307,9 @@ The workshop_bot (`apps/workshop_bot/`) was rebuilt around a **jobs spine**: eve
 
 Issue-assembly flow: `issue start` → `issue update` (daily 17:00 CT; pure projection of Pinboard/micro.blog/asset files into `draft.md`; Eddy reviews Tue–Fri) → `issue final` (Eddy reorder review → `final.md`) → `issue haiku` / `issue subject` / `issue cta` (run on demand, any order — Eddy/Patty post options to a channel, Jamie reacts to pick) → `issue publish` (assembles `publish.md`; refuses with a missing-list until the required assets exist) → `pipeline/content/content.py publish --issue N` creates the Buttondown draft. Parallel tracks: `links scan` (Linky, Mon–Fri 06:30/18:30 during the window), `promo prep` (Marky, RSS-triggered post-ship), `promo metrics` (Marky, daily 19:00 CT) + `campaign add` / `campaign report`. Issue assets are standalone files in `s3://files.thingelstad.com/weekly-thing/{N}/` (`intro.md`, `currently.md`, `haiku.md`, `metadata.json`, `cta-*.md`, `draft.md`, `final.md`, `publish.md`).
 
-Per-persona heartbeats and the `agent_inbox` / `s3_personas__*` / `WORKSHOP_BUCKET` machinery from the prior design were all decommissioned; `s3_issues__*` tools were renamed `workspace__*`. New SQLite tables: `job_locks`, `draft_digests`, `goals`, `campaigns`, `campaign_metrics`, `thingy_conversations`, `follow_ups`. Source: `apps/workshop_bot/` (see `apps/workshop_bot/CLAUDE.md` for project memory and `docs/workshop-content-loop-design-brief.md` for the full design). The old iOS Shortcuts assemble pipeline stays as a recovery tool until a few ships succeed via the new flow.
+Per-persona heartbeats and the `agent_inbox` / `s3_personas__*` / `WORKSHOP_BUCKET` machinery from the prior design were all decommissioned; `s3_issues__*` tools were renamed `workspace__*`. New SQLite tables: `job_locks`, `draft_digests`, `goals`, `campaigns`, `campaign_metrics`, `follow_ups`. Source: `apps/workshop_bot/` (see `apps/workshop_bot/CLAUDE.md` for project memory and `docs/workshop-content-loop-design-brief.md` for the full design). The old iOS Shortcuts assemble pipeline stays as a recovery tool until a few ships succeed via the new flow.
 
-`/workshop thingy {recent,show,sync}` + an hourly `thingy-watch` job give Jamie a window into the public Thingy agent's conversations: it pulls newly-logged turns from the Librarian Lambda (the `list_conversations` auth action, bridge-secret-gated — see `docs/librarian.md`), groups them into conversations, has Eddy assess each new one, mirrors it into `thingy_conversations`, and posts a card to `#chatter`. `recent`/`show` are DB reads (`show` attaches the full transcript).
+**Two-process Discord topology.** The reader-facing Thingy bot (`#ask-thingy` + the `thingy-watch` operator mirror + `/thingy {recent,show,sync}` slash tree) lives in [`apps/thingy_bridge/`](apps/thingy_bridge/) as a separate Python process — independent restart, independent SQLite (`apps/thingy_bridge/data/thingy_bridge.db` with the `thingy_tokens` / `thingy_requests` / `thingy_conversations` tables). workshop_bot is purely author-facing; the two processes share the Discord server (and `#chatter`, where the bridge's `thingy-watch` posts operator-side conversation cards) but no code or DB. A workshop_bot restart for an author-flow change no longer drops `#ask-thingy`.
 
 **Follow-ups** are the targeted replacement for the retired per-persona heartbeats: an agent (via the `followup__schedule` tool) or Jamie (via `/workshop followup add`) registers a commitment — time-based ("I'll check in tomorrow evening", any distance) or issue-based ("when we get to issue 387") — in the `follow_ups` table; the hourly `follow-up-sweep` job fires the due ones, running the persona's agent loop with the note + current context so it posts a check-in in its channel. `jobs/follow_up.py`; `/workshop followup {list,add,cancel}`.
 
@@ -319,6 +320,6 @@ Per-persona heartbeats and the `agent_inbox` / `s3_personas__*` / `WORKSHOP_BUCK
 ## Future Enhancements
 
 - **Issue tagging/categorization** — browsable topic categories
-- **Workshop_bot ↔ Thingy corpus consolidation** — workshop_bot loads its own BM25 corpus in-memory at startup from `apps/site/archive/` and only refreshes on bot restart. Thingy's S3 corpus (with Bedrock embeddings + rerank) auto-refreshes via the GH Action on every new issue. Bridge auth already exists (`DiscordBridgeSecret`, `apps/workshop_bot/tools/thingy_client.py`). Three viable consolidation paths: add a thin `/retrieve` endpoint on the Lambda; have workshop_bot auto-reload its local corpus on a schedule; or fetch the S3 corpus directly from workshop_bot. Decision deferred.
+- **Workshop_bot ↔ Thingy corpus consolidation** — workshop_bot loads its own BM25 corpus in-memory at startup from `apps/site/archive/` and only refreshes on bot restart. Thingy's S3 corpus (with Bedrock embeddings + rerank) auto-refreshes via the GH Action on every new issue. Bridge auth already exists (`DiscordBridgeSecret`, `apps/thingy_bridge/tools/thingy_client.py`). Three viable consolidation paths: add a thin `/retrieve` endpoint on the Lambda; have workshop_bot auto-reload its local corpus on a schedule; or fetch the S3 corpus directly from workshop_bot. Decision deferred.
 
 (The "Talk to the Archive" agent — Thingy — shipped to private beta. Source: `apps/librarian/lambda/`, infra: `apps/librarian/infra/cloudformation.yaml`. Full architecture, env vars, IAM, retrieval, deploy checklist in [`docs/librarian.md`](docs/librarian.md).)
