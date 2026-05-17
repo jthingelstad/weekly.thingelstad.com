@@ -3,6 +3,17 @@ name: Build and Deploy
 on:
   push:
     branches: [main]
+    # Author-only directories that don't affect the site build or the
+    # Thingy Lambda. paths-ignore only filters push/PR events; schedule,
+    # workflow_dispatch, and repository_dispatch always run.
+    paths-ignore:
+      - 'apps/workshop_bot/**'
+      - 'apps/thingy_bridge/**'
+      - 'docs/**'
+      - 'content/buttondown/**'
+      - 'CLAUDE.md'
+      - 'AGENTS.md'
+      - 'README.md'
   repository_dispatch:
     types: [new_issue]
   workflow_dispatch:
@@ -18,9 +29,10 @@ on:
           - latest-force
           - full
   schedule:
-    # Weekend morning polling window for new issues.
-    # Covers roughly 6am-10am America/Chicago across CST/CDT.
-    - cron: '0 11-16 * * 6,0'
+    # Weekend morning polling window for new issues. Fires at :05 past the
+    # hour so we don't race Buttondown's send when Jamie publishes on the
+    # hour. Covers roughly 6am-10am America/Chicago across CST/CDT.
+    - cron: '5 11-16 * * 6,0'
 
 permissions:
   contents: read
