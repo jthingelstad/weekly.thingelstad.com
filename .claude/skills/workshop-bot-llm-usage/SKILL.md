@@ -38,7 +38,7 @@ Rows where `model IS NULL` are *not* LLM calls — they're the scheduler's outer
 
 ## Anthropic pricing (per million tokens, USD)
 
-Keep this in sync with [Anthropic's pricing page](https://www.anthropic.com/pricing) when models or rates change.
+Keep this in sync with [Anthropic's pricing page](https://www.anthropic.com/pricing) **and** with `apps/workshop_bot/tools/llm/anthropic_client.py` — the in-process source of truth is `anthropic_client.RATES_USD_PER_MTOK` and `anthropic_client.cost_usd(...)`. When rates change, update both.
 
 | model | input | output | cache_read | cache_create |
 |---|---|---|---|---|
