@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-10T12:18:14Z",
-  "count": 348,
+  "generated_at": "2026-05-17T11:24:47Z",
+  "count": 349,
   "emails": [
     {
       "number": 1,
@@ -3829,6 +3829,17 @@
       "snapshot_path": "data/buttondown/emails/347.json",
       "body_path": "data/buttondown/bodies/347.md",
       "archive_path": "apps/site/archive/347.md"
+    },
+    {
+      "number": 348,
+      "id": "em_6s4p1yj4ts9yzsa7jabn9h3e33",
+      "subject": "WT348 — Agents as Collaborators",
+      "publish_date": "2026-05-17T11:00:00Z",
+      "source_hash": "c5ff7ac8a3a7bc9632876bb93642261e61b3f528d240991b8babcb17a3dc98a2",
+      "fetched_at": "2026-05-17T11:24:47Z",
+      "snapshot_path": "data/buttondown/emails/348.json",
+      "body_path": "data/buttondown/bodies/348.md",
+      "archive_path": "apps/site/archive/348.md"
     }
   ]
 }
