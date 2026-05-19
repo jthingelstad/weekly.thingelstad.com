@@ -4,8 +4,7 @@ on:
   push:
     branches: [main]
     # Author-only directories that don't affect the site build or the
-    # Thingy Lambda. paths-ignore only filters push/PR events; schedule,
-    # workflow_dispatch, and repository_dispatch always run.
+    # Thingy Lambda.
     paths-ignore:
       - 'apps/workshop_bot/**'
       - 'apps/thingy_bridge/**'
@@ -14,25 +13,7 @@ on:
       - 'CLAUDE.md'
       - 'AGENTS.md'
       - 'README.md'
-  repository_dispatch:
-    types: [new_issue]
   workflow_dispatch:
-    inputs:
-      content_update:
-        description: "Content pipeline to run before deploying"
-        required: true
-        default: "none"
-        type: choice
-        options:
-          - none
-          - latest
-          - latest-force
-          - full
-  schedule:
-    # Weekend morning polling window for new issues. Fires at :05 past the
-    # hour so we don't race Buttondown's send when Jamie publishes on the
-    # hour. Covers roughly 6am-10am America/Chicago across CST/CDT.
-    - cron: '5 11-16 * * 6,0'
 
 permissions:
   contents: read
@@ -46,8 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    outputs:
-      should_deploy: ${{ steps.deploy-check.outputs.should_deploy }}
     steps:
       - uses: actions/checkout@v6
 
@@ -74,51 +53,32 @@ jobs:
       - name: Run Lambda tests
         run: npm --prefix apps/librarian/lambda test
 
-      # Full rebuild only when explicitly requested.
-      - name: Full data rebuild
-        if: github.event_name == 'workflow_dispatch' && inputs.content_update == 'full'
-        run: python pipeline/content/content.py pull --all
+      # Stats refresh — subscriber counts + Stripe balance for the landing
+      # page. Best-effort; a Buttondown/Stripe hiccup falls back to the
+      # committed values in apps/site/_data/stats.json.
+      - name: Refresh stats
+        continue-on-error: true
+        run: python pipeline/content/content.py stats
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
           STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
-
-      # New issue: repository_dispatch from an authenticated relay, or manual latest update.
-      - name: Fetch latest issue and update if present
-        if: github.event_name == 'repository_dispatch' || (github.event_name == 'workflow_dispatch' && inputs.content_update == 'latest-force')
-        run: python pipeline/content/content.py pull --latest
-        env:
-          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
-          STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
-
-      # Scheduled/manual polling should be cheap and no-op when the latest issue is already committed.
-      - name: Poll latest issue
-        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.content_update == 'latest')
-        run: python pipeline/content/content.py pull --latest --skip-existing
-        env:
-          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
-          STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
-
-      # push: no data pipeline, build from committed files
-      # workflow_dispatch with content_update=none: no data pipeline, build from committed files
 
       # Render and upload audio for the latest issue. Idempotent: skips when
       # the manifest's audio_script_hash already matches and the S3 object
       # exists. continue-on-error so a transient OpenAI/AWS hiccup doesn't
       # block the site deploy — audio can be retried by re-dispatching.
       - name: Install ffmpeg
-        if: github.event_name != 'push'
         run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
 
-      # The audio pipeline is three stages: scripts build → validate → audio.
-      # `audio build --latest` reads the committed script from disk, so we
-      # must run scripts build first when polling a fresh issue.
+      # Workshop-shipped issues bring their own data/issues/{N}/transcript/
+      # directory; the audio pipeline TTSes each file as its own utterance.
+      # Legacy issues fall through to body_to_audio_script + chunk_text on
+      # archive.md. scripts build is the legacy-path cache primer.
       - name: Build audio script for latest issue
-        if: github.event_name != 'push'
         continue-on-error: true
         run: python pipeline/audio/audio.py scripts build --latest
 
       - name: Render and upload audio for latest issue
-        if: github.event_name != 'push'
         continue-on-error: true
         run: python pipeline/audio/audio.py build --latest
         env:
@@ -127,22 +87,19 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: us-east-1
 
-      # Defensive resync: regenerate archive from the data/buttondown/ snapshots
-      # plus data/audio/manifest.json. audio.py runs this internally on success;
-      # this guarantees archive is current even if audio.py partially failed.
-      - name: Rebuild archive from manifests
-        if: github.event_name != 'push'
+      # Build apps/site/archive/{N}.md + apps/site/_data/emails.json from
+      # data/issues/{N}/. After audio so the latest issue's audio_url
+      # is in data/audio/manifest.json before front matter is emitted.
+      - name: Build archive from data/issues/
         run: python pipeline/content/content.py build
 
       - name: Build librarian corpus
-        if: github.event_name != 'push'
         run: python pipeline/corpus/build.py
 
       # Embed corpus + graph and push to S3 so Thingy answers cite the new
       # issue. Costs ~$0.20–$0.30 in Cohere embeddings per refresh.
       # continue-on-error so a Bedrock hiccup doesn't block the site deploy.
       - name: Upload embedded corpus + graph to S3
-        if: github.event_name != 'push'
         continue-on-error: true
         run: python pipeline/deploy/upload_corpus.py
         env:
@@ -152,10 +109,6 @@ jobs:
           LIBRARIAN_BUCKET: weekly-thing-librarian
 
       # Deploy Thingy Lambda when its code, infra, or deploy script changes.
-      # Skips corpus upload (handled above) and the Bedrock smoke test
-      # (the deploying identity is the same that already invokes Bedrock
-      # for embeddings, so a separate smoke test is redundant in CI).
-      # continue-on-error so a CFN/IAM hiccup doesn't block the site deploy.
       - name: Detect Lambda changes
         id: lambda-changes
         run: |
@@ -184,27 +137,10 @@ jobs:
           LIBRARIAN_BRIDGE_SECRET: ${{ secrets.LIBRARIAN_BRIDGE_SECRET }}
           LIBRARIAN_SESSION_SECRET: ${{ secrets.LIBRARIAN_SESSION_SECRET }}
 
-      - name: Decide whether to build and deploy
-        id: deploy-check
-        run: |
-          if [[ "${{ github.event_name }}" == "schedule" || ( "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.content_update }}" == "latest" ) ]]; then
-            if git diff --quiet -- data/buttondown/ data/librarian/ data/links/ data/audio/ apps/site/archive/ apps/site/_data/emails.json apps/site/_data/stats.json; then
-              echo "should_deploy=false" >> "$GITHUB_OUTPUT"
-              echo "No content changes found; skipping build and deploy."
-            else
-              echo "should_deploy=true" >> "$GITHUB_OUTPUT"
-              echo "Content changes found; building and deploying."
-            fi
-          else
-            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
-            echo "Build and deploy required for this event."
-          fi
-
       # Generate the per-issue pipeline state report. Powers /ops/ on the
       # site (unlinked, noindex) and /status.json. Reads S3 to fetch the
       # deployed corpus's last-modified timestamp; non-fatal if S3 fails.
       - name: Generate pipeline status report
-        if: steps.deploy-check.outputs.should_deploy == 'true'
         continue-on-error: true
         run: python pipeline/status.py --json apps/site/_data/status.json
         env:
@@ -213,13 +149,10 @@ jobs:
           AWS_DEFAULT_REGION: us-east-1
           LIBRARIAN_BUCKET: weekly-thing-librarian
 
-      # Topics on the static site read data/librarian/graph.json. The
-      # graph (and the corpus it derives from) is gitignored, and on
-      # push events the upstream corpus/graph build steps above are
-      # skipped — so without this step the site would build with empty
-      # topic data. The heuristic build is ~3s and needs no AWS.
+      # Topics on the static site read data/librarian/graph.json. The graph
+      # (and the corpus it derives from) is gitignored, so we need to
+      # ensure both exist before 11ty runs.
       - name: Ensure corpus + graph for site data
-        if: steps.deploy-check.outputs.should_deploy == 'true'
         run: |
           if [ ! -f data/librarian/corpus.json ]; then
             python pipeline/corpus/build.py
@@ -229,29 +162,29 @@ jobs:
           fi
 
       - name: Build site
-        if: steps.deploy-check.outputs.should_deploy == 'true'
         run: npm run build
 
       - name: Build search index
-        if: steps.deploy-check.outputs.should_deploy == 'true'
         run: npm run build:search
 
-      - name: Commit new issues
-        if: github.event_name != 'push' && steps.deploy-check.outputs.should_deploy == 'true'
+      # Auto-commit the audio manifest/scripts and the regenerated archive
+      # files. workshop_bot's ship sequence commits data/issues/{N}/ via
+      # the GitHub API; this step picks up downstream side effects (audio
+      # output, the build's regenerated archive + emails.json + stats).
+      - name: Commit downstream artifacts
+        if: github.event_name != 'push'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/buttondown/ data/librarian/ data/links/ data/audio/ apps/site/archive/ apps/site/_data/emails.json apps/site/_data/stats.json
-          git diff --staged --quiet || (git commit -m "Add new newsletter issue(s)" && git push)
+          git add data/librarian/ data/links/ data/audio/ apps/site/archive/ apps/site/_data/emails.json apps/site/_data/stats.json
+          git diff --staged --quiet || (git commit -m "Refresh downstream artifacts" && git push)
 
       - uses: actions/upload-pages-artifact@v5
-        if: steps.deploy-check.outputs.should_deploy == 'true'
         with:
           path: _site
 
   deploy:
     needs: build
-    if: needs.build.outputs.should_deploy == 'true'
     runs-on: ubuntu-latest
     permissions:
       pages: write

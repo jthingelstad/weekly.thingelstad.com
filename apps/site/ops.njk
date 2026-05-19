@@ -23,7 +23,7 @@ eleventyExcludeFromCollections: true
       <div class="ops-stat"><strong>{{ status.summary.audio_rendered }}</strong><span>audio rendered</span></div>
       <div class="ops-stat ops-stat-{% if status.summary.audio_out_of_date > 0 %}warn{% else %}ok{% endif %}"><strong>{{ status.summary.audio_out_of_date }}</strong><span>audio stale</span></div>
       <div class="ops-stat"><strong>{{ status.summary.audio_missing }}</strong><span>audio missing</span></div>
-      <div class="ops-stat ops-stat-{% if status.summary.buttondown_local_edits > 0 %}warn{% else %}ok{% endif %}"><strong>{{ status.summary.buttondown_local_edits }}</strong><span>uncommitted body edits</span></div>
+      <div class="ops-stat ops-stat-{% if status.summary.archive_local_edits > 0 %}warn{% else %}ok{% endif %}"><strong>{{ status.summary.archive_local_edits }}</strong><span>uncommitted archive edits</span></div>
       <div class="ops-stat ops-stat-{% if status.summary.librarian_likely_stale %}warn{% else %}ok{% endif %}">
         <strong>{% if status.summary.librarian_likely_stale %}stale{% else %}ok{% endif %}</strong>
         <span>thingy corpus</span>

@@ -20,4 +20,4 @@ Eleventy is invoked from the repo root with `--config apps/site/eleventy.config.
 - `css/`, `img/`, `404.njk`, `feed.njk`, `sitemap.njk` — standard static-site bits
 - `CNAME`, `_nojekyll`, `robots.txt`, `favicon.svg` — passthrough copies
 
-The archive markdown files are generated and should not be hand-edited. Edit raw bodies in `data/buttondown/bodies/` and rebuild.
+The archive markdown files are generated and should not be hand-edited. Edit canonical bodies in `data/issues/{N}/archive.md` and run `pipeline/content/content.py build` (or `make build`).

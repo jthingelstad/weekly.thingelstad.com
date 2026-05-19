@@ -2,26 +2,24 @@
 
 ## Project Overview
 
-Custom landing page and full archive site for **The Weekly Thing**, a weekly newsletter by Jamie Thingelstad published since 2017. The site replaces Buttondown's hosted landing page while continuing to use Buttondown as the email publishing engine.
+Custom landing page and full archive site for **The Weekly Thing**, a weekly newsletter by Jamie Thingelstad published since 2017. workshop_bot (`apps/workshop_bot/`) is the canonical author surface — it assembles each issue and ships it three ways: email (Buttondown), website archive (this repo), and audio transcript (per-block files for TTS). Buttondown is a delivery channel for email only; the website is canonical.
 
 **Live URL:** `weekly.thingelstad.com`
 **Repo:** `jthingelstad/weekly.thingelstad.com`
 **Hosting:** GitHub Pages
 **Site Generator:** Eleventy 3.x (11ty) with Nunjucks templates
-**Data Pipeline:** Python scripts for Buttondown API fetch, link extraction, and archive file generation
-**Data Source:** Buttondown API (build-time only)
+**Issue Source:** `data/issues/{N}/` — written by workshop_bot's ship sequence via the GitHub Git Data API
 **Search:** Pagefind (static, runs post-build)
 **Analytics:** Tinylytics (privacy-focused, cookie-free)
 
-### Architecture Pattern: Tracked Raw Data + 11ty
+### Architecture Pattern: Workshop-as-Source
 
-- **Python content pipeline** runs first: fetches Buttondown emails into tracked raw data under `data/buttondown/`, transforms the raw Buttondown body into public archive markdown, extracts editorial links and domains, assigns issue numbers, and writes generated files into `apps/site/archive/` and `apps/site/_data/`.
-- **11ty** runs second: reads generated `.md` files as a collection and JSON data files, renders all pages with Nunjucks templates, and handles markdown rendering, heading anchors, and TOC generation.
-- **Pagefind** runs third: indexes the built HTML for full-text search.
+- **workshop_bot** (separate process in `apps/workshop_bot/`) is the canonical author surface. Each `/eddy issue send` runs a six-step ship sequence: `compose-archive` (writes `archive.md` + `links.json`) → `compose-transcript` (writes per-block `transcript/NNN-*.txt`) → POST/PATCH Buttondown draft → re-emit archive.md with absolute_url → atomic commit on this repo's main via the GitHub Git Data API → success card. See `apps/workshop_bot/CLAUDE.md` for the full workshop runtime.
+- **`pipeline/content/content.py build`** reads `data/issues/{N}/{archive.md, metadata.json, links.json}` and writes `apps/site/archive/{N}.md` + `apps/site/_data/emails.json` with the 11ty front-matter contract (adds `layout`, `permalink`, `tags`, `audio_*`).
+- **11ty** reads the generated `.md` files and renders the site.
+- **Pagefind** indexes the built HTML for full-text search.
 
-The raw Buttondown body files are the editable source of truth for newsletter content in this repository. Generated archive markdown files are committed for fast static builds and reviewable diffs, but should not be edited directly.
-
-For deeper operator detail — Buttondown Liquid/Django template handling, the `content_update` workflow input matrix, the Buttondown→GitHub Actions webhook constraint, the three-way push conflict detection — see [`docs/content-pipeline.md`](docs/content-pipeline.md). The Librarian/Thingy runtime, full env-var list with defaults, IAM cleanup plan, retrieval architecture, Tinylytics events, and deployment checklist live in [`docs/librarian.md`](docs/librarian.md).
+`data/issues/{N}/archive.md` is the editorial source of truth. Edits land there (via workshop_bot, or hand-edited and committed); the build regenerates `apps/site/archive/{N}.md` from those bytes. The Librarian/Thingy runtime, full env-var list with defaults, IAM cleanup plan, retrieval architecture, Tinylytics events, and deployment checklist live in [`docs/librarian.md`](docs/librarian.md).
 
 ### Newsletter Publishing History
 
@@ -33,7 +31,7 @@ The Weekly Thing has been published continuously since May 13, 2017 across three
 | #42–#~130 | Mar 2018 – late 2019 | **MailChimp** | Templated headers (`Weekly Newsletter from Jamie Thingelstad`, `#42 \| Feb 24, 2018 \| Permalink (*\|ARCHIVE\|*)`); inline links; emoji-suffixed section headings appear in this era (`## Featured Links 🏅`, `## Notable Links 📌`, `## Yet More Links 🍞`); some issues (e.g., #106) are plain-text with bare URLs and no markdown link syntax |
 | #~131 onward | 2020 – present | **Buttondown** | Canonical section names (`## Notable`, `## Featured`, `## Briefly`, `## Must Read`); structured H3-under-H2 link format: `### [Title](url)`; Buttondown template tags like `{{ email_url }}`; `<!-- buttondown-editor-mode: plaintext -->` preamble |
 
-All archive bodies today live in Buttondown (the Tinyletter and MailChimp issues were migrated in). The editor-mode comment is present on every issue as a consequence. Processing scripts should handle all three eras — in particular, link extraction must accept the emoji-suffixed MailChimp-era section names (`pipeline/content/process_emails.py`'s `NOTABLE_SECTIONS` / `BRIEFLY_SECTIONS` sets include these variants).
+Migration history note: all archive bodies were migrated forward into a single canonical store under `data/issues/{N}/`. Link extraction in `librarian_core.links` (shared by the website build and workshop_bot's `compose-archive`) accepts the era-specific Notable/Briefly section names — including the emoji-suffixed MailChimp-era variants (`## Notable Links 📌`, `## Featured Links 🏅`, `## Yet More Links 🍞`) — via the `NOTABLE_SECTIONS` / `BRIEFLY_SECTIONS` sets.
 
 ## Build & Run
 
@@ -42,26 +40,25 @@ All archive bodies today live in Buttondown (the Tinyletter and MailChimp issues
 python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt && npm install
 
-# Dev (uses tracked raw Buttondown data)
+# Dev — regenerates apps/site/archive/ from data/issues/, then 11ty serves
 make serve
 
-# Full production build
+# Full production build (regenerate archive + 11ty + Pagefind)
 make build
 
-# Fetch content from Buttondown, then rebuild generated data
-make content-pull
-
-# Sync raw body/metadata edits back to Buttondown
-make content-diff  # preview changed Buttondown fields
-make content-push  # PATCH changed fields
+# Refresh subscriber count + Stripe balance in apps/site/_data/stats.json
+make stats
 ```
+
+Issues themselves are committed by workshop_bot (`/eddy issue send`), not by an operator-side pull. If workshop_bot is down on publish day, the week skips.
 
 ### Environment Variables
 
-- `BUTTONDOWN_API_KEY` — required for API fetch. Local: `.env` file. CI: GitHub Actions secret.
-- `STRIPE_API_KEY` — required for Stripe balance fetch. Same pattern.
-- `OPENAI_API_KEY` — required for local audio generation with OpenAI TTS.
-- `WEEKLY_THING_ASSETS_BUCKET` — public archive asset bucket; defaults conceptually to `files.thingelstad.com`.
+- `BUTTONDOWN_API_KEY` — required for stats refresh + workshop_bot's email ship. Local: `.env`. CI: GitHub Actions secret.
+- `STRIPE_API_KEY` — required for Stripe balance refresh. Same pattern.
+- `OPENAI_API_KEY` — required for audio TTS generation.
+- `GITHUB_PAT_TOKEN` — fine-grained PAT with Contents:write on this repo, used by workshop_bot's ship sequence to commit `data/issues/{N}/*` via the GitHub Git Data API. Workshop-only env var.
+- `WEEKLY_THING_ASSETS_BUCKET` — public archive asset bucket; defaults to `files.thingelstad.com`.
 - `LIBRARIAN_BUCKET` — private Thingy code/corpus/log bucket; deploy tooling defaults to `weekly-thing-librarian`.
 
 ## Project Structure
@@ -87,24 +84,21 @@ weekly.thingelstad.com/
 │   └── workshop_bot/               # Discord workshop: Eddy, Linky, Marky, Patty (author-facing)
 ├── librarian-core/                 # shared Python package (corpus, BM25 retrieval, graph) — installed editable
 ├── pipeline/
-│   ├── content/                    # Buttondown pull/build/diff/push, marketing copy refresh
+│   ├── content/                    # build (data/issues/ → apps/site/archive/) + stats refresh + Buttondown publish helper
 │   ├── corpus/                     # archive corpus build CLI (lib in librarian-core)
 │   ├── graph/                      # archive graph build CLI (lib in librarian-core)
 │   ├── deploy/                     # AWS deploy, corpus/graph upload, Bedrock logging
-│   ├── audio/                      # audio script + TTS rendering + manifest + cover
+│   ├── audio/                      # audio script + TTS rendering + manifest + cover (per-block or legacy single-string)
 │   ├── audits/                     # repeatable archive audit and repair tooling
 │   ├── one-shot/                   # archived scripts that applied one-time cleanup
 │   └── status.py                   # generates apps/site/_data/status.json for /ops/
 ├── content/
 │   └── buttondown/                 # author-managed Buttondown config (automations/, newsletter/) — scaffolding
 ├── data/
-│   ├── buttondown/
-│   │   ├── manifest.json           # Raw data manifest
-│   │   ├── emails/                 # Buttondown email metadata JSON snapshots, tracked
-│   │   └── bodies/                 # Raw Buttondown body markdown, tracked and editable
+│   ├── issues/{N}/                 # CANONICAL: archive.md + metadata.json + links.json + transcript/NNN-*.txt
 │   ├── librarian/                  # tracked corpus and graph artifacts
 │   ├── links/                      # tracked linked-URL aggregation artifacts
-│   └── audio/                      # tracked audio manifest + scripts
+│   └── audio/                      # tracked audio manifest + scripts (legacy issues only)
 ├── docs/
 │   └── audits/                     # Snapshot of archive audits — see docs/audits/README.md
 │                                   # (archive-audit, llm-audit, missing-photos, missing-microblog-posts)
@@ -118,9 +112,9 @@ weekly.thingelstad.com/
 
 ## Link Extraction — Editorial Links Only
 
-The Python pipeline extracts only editorially curated links, not incidental inline references.
+`librarian_core.links` (shared between the website build and workshop_bot's `compose-archive`) extracts only editorially curated links, not incidental inline references.
 
-**Notable sections** (`## Notable`, `## Must Read`, `## Featured`):
+**Notable sections** (`## Notable`, `## Must Read`, `## Featured`, plus the emoji-suffixed MailChimp-era variants):
 - Only links from H3 headings are extracted: `### [Title](url)`
 - Inline links in commentary text below headings are ignored (e.g., biographical Wikipedia links, POAP links, reddit references)
 
@@ -130,25 +124,23 @@ The Python pipeline extracts only editorially curated links, not incidental inli
 
 **Early issues** (no H2 section structure): all links extracted as fallback.
 
-**Domain exclusion list** (`pipeline/content/domain_exclusions.py`): Excludes newsletter's own domains, Buttondown, image CDNs, URL shorteners, social media, Wikipedia, YouTube, and other utility domains from domain lists and stats.
+**Domain exclusion list** (`pipeline/content/domain_exclusions.py`): Excludes newsletter's own domains, Buttondown, image CDNs, URL shorteners, social media, Wikipedia, YouTube, and other utility domains from domain lists and stats. workshop_bot's `tools/avoid_domains.py` is a separate hand-maintained copy used for Pinboard pre-filtering (keep them loosely in sync).
 
 ## Archive Files (`apps/site/archive/*.md`)
 
-Each issue is a standalone generated markdown file with YAML front matter. The body is the public archive rendering of the raw Buttondown body, produced by `pipeline/content/content.py`.
+Each issue is a standalone generated markdown file with YAML front matter. The body is a verbatim re-emit of `data/issues/{N}/archive.md`'s body — no Liquid-strip transform, no link re-extraction at build time. workshop_bot's `compose-archive` did both before commit.
 
 Do not edit these files directly. They include this generated-file notice immediately after front matter:
 
 ```md
-<!-- Generated by pipeline/content/content.py from data/buttondown; do not edit directly. -->
+<!-- Generated by pipeline/content/content.py from data/issues; do not edit directly. -->
 ```
 
-Body corrections, archive cleanup, and broad editorial fixes belong in `data/buttondown/bodies/*.md`, then `python pipeline/content/content.py build` regenerates the archive files. Metadata corrections such as subject, description, image, and slug belong in `data/buttondown/emails/*.json`.
+Body corrections, archive cleanup, and broad editorial fixes belong in `data/issues/{N}/archive.md`. `python pipeline/content/content.py build` regenerates `apps/site/archive/{N}.md` from those bytes plus the audio manifest. Metadata corrections (subject, description, image, slug) edit the front matter in `data/issues/{N}/archive.md` directly — `data/issues/{N}/metadata.json` is a structured sibling for non-markdown consumers (status report, workshop_bot reads).
 
-Front matter includes: `layout`, `buttondown_id`, `number`, `subject`, `publish_date`, `slug`, `description`, `image`, `absolute_url`, `domains` (list), `links` (list of editorial link objects), `word_count`, `permalink`, `tags`.
+Front matter includes: `layout`, `buttondown_id`, `number`, `subject`, `publish_date`, `slug`, `description`, `image`, `absolute_url`, `domains` (list), `links` (list of editorial link objects), `word_count`, `permalink`, `tags`, plus `audio_*` fields injected at build time from `data/audio/manifest.json`.
 
-The `number` field determines the URL (`/archive/247/`). Assigned by the pipeline from subject line parsing; early issues without numbers are auto-numbered by date.
-
-Buttondown Liquid/template cleanup also happens in `pipeline/content/content.py`, not in 11ty. The archive transform removes email-only or subscriber-personalized blocks and renders known public variables such as `{{ email_url }}` before link extraction, feeds, search indexing, and page rendering.
+The `number` field determines the URL (`/archive/247/`). For Workshop-shipped issues, the number comes from `/eddy issue start <N>`; for migrated legacy issues, it was assigned during the one-time backfill from subject-line parsing or auto-numbered by date.
 
 ## 11ty Configuration (`apps/site/eleventy.config.js`)
 
@@ -192,7 +184,7 @@ Subscribe forms appear 4 times on the page (hero, two mid-page, footer).
 | `/feed.xml` | `feed.njk` | Atom feed (all issues) |
 | `/archive/N/links.xml` | `issue-links-feed.njk` | Per-issue links feed |
 | `/archive/<slug>/` | `redirects.njk` | Redirects from old Buttondown URLs |
-| `/ops/` | `ops.njk` | **Unlinked, noindex.** Per-issue pipeline state report — Buttondown source, body edits, archive, audio (rendered, stale, missing), Thingy corpus freshness. Reads from `apps/site/_data/status.json`, regenerated by `pipeline/status.py` at build time. |
+| `/ops/` | `ops.njk` | **Unlinked, noindex.** Per-issue pipeline state report — archive edits, audio (rendered, stale, missing), Thingy corpus freshness. Reads from `apps/site/_data/status.json`, regenerated by `pipeline/status.py` at build time. |
 | `/status.json` | `status-json.njk` | Same data, JSON form. Both `/ops/` and `/status.json` are `Disallow`'d in robots.txt. |
 
 ## RSS Feeds
@@ -203,51 +195,26 @@ Subscribe forms appear 4 times on the page (hero, two mid-page, footer).
 
 ## GitHub Actions (`.github/workflows/deploy.yml`)
 
-**Triggers:** push to main, manual `workflow_dispatch`, weekly cron for latest-issue fetch
+**Triggers:** push to main, manual `workflow_dispatch`. No cron, no webhook, no `repository_dispatch` — workshop_bot's ship sequence commits `data/issues/{N}/*` directly via the GitHub Git Data API, and the resulting push triggers this workflow.
 
 **Pipeline:**
-1. Setup Python 3.14 + Node 22
-2. `pip install` + `npm ci`
-3. Pull latest Buttondown issue (scheduled/manual fetch path; idempotent on `--skip-existing`)
+1. Setup Python 3.14 + Node 22; `pip install` + `npm ci`
+2. Run Python + Lambda tests
+3. Refresh stats (`pipeline/content/content.py stats`) — subscriber counts + Stripe balance, `continue-on-error`
 4. Render audio for the latest issue (`apt-get install ffmpeg`, `pipeline/audio/audio.py build --latest`) — idempotent, `continue-on-error` so a TTS hiccup doesn't block the deploy
-5. Build librarian corpus locally (smoke test)
-6. Embed corpus + graph and upload to S3 (`pipeline/deploy/upload_corpus.py`) — `continue-on-error` so a Bedrock hiccup doesn't block the deploy
-7. Build content from tracked raw data
-8. `npx @11ty/eleventy`
-9. `npx pagefind --site _site --glob "**/*.html"`
-10. Auto-commit new raw data, audio manifest/scripts, and generated files
+5. Build archive from `data/issues/` (`pipeline/content/content.py build`)
+6. Build librarian corpus, embed + upload to S3 (`pipeline/deploy/upload_corpus.py`) — `continue-on-error`
+7. Detect + deploy Thingy Lambda if its code/infra changed
+8. `pipeline/status.py` writes the `/ops/` snapshot
+9. `npx @11ty/eleventy` + Pagefind
+10. Auto-commit downstream artifacts (audio manifest, regenerated archive, emails.json, stats.json) on non-push triggers
 11. Upload and deploy to GitHub Pages
 
-**Required GitHub Actions secrets:** `BUTTONDOWN_API_KEY`, `STRIPE_API_KEY`, `OPENAI_API_KEY`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` (the `wt-archive` IAM user's keys — must have S3 write to `weekly-thing-librarian` and `files.thingelstad.com`, CloudFront `CreateInvalidation` on E3AEA6KRKI2B7E, and Bedrock `InvokeModel` on the embedding model).
+**Required GitHub Actions secrets:** `BUTTONDOWN_API_KEY` (stats), `STRIPE_API_KEY` (balance), `OPENAI_API_KEY` (TTS), `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` (the `wt-archive` IAM user's keys — must have S3 write to `weekly-thing-librarian` and `files.thingelstad.com`, CloudFront `CreateInvalidation` on E3AEA6KRKI2B7E, and Bedrock `InvokeModel` on the embedding model).
 
 **Action versions:** checkout@v6, setup-python@v6, setup-node@v6, upload-pages-artifact@v5, deploy-pages@v4
 
-The `content_update` workflow input controls whether content is pulled from Buttondown — values `none`, `latest`, `latest-force`, `full` — and the cron only runs during the publish window. See [`docs/content-pipeline.md`](docs/content-pipeline.md) for the full matrix and webhook caveat.
-
-A new issue published in the cron window is therefore zero-touch: site, audio MP3, podcast feed, and Thingy's deployed corpus all refresh automatically. Audio and corpus upload are non-fatal, so if either upstream is degraded the site still ships and the failed step can be retried by re-running the workflow.
-
-## Bidirectional Sync
-
-Raw Buttondown body markdown files and metadata JSON files can be edited locally and synced back to Buttondown:
-
-```bash
-python pipeline/content/content.py diff                  # preview changes
-python pipeline/content/content.py push --yes            # push all changes
-python pipeline/content/content.py push --issue 42 --yes # push single issue
-```
-
-Compares `data/buttondown/bodies/*.md` and `data/buttondown/emails/*.json` against the committed baseline in `HEAD`, confirms the live Buttondown value has not diverged unexpectedly, then PATCHes changed fields to the Buttondown API.
-
-**Important:** `pipeline/content/content.py build` regenerates `apps/site/archive/*.md` unconditionally from raw Buttondown data. Any local archive `.md` edit will be overwritten. The durability flow is:
-
-1. Edit the raw body in `data/buttondown/bodies/<number>.md` or metadata in `data/buttondown/emails/<number>.json`
-2. `python pipeline/content/content.py build` to regenerate archive files and metadata
-3. `python pipeline/content/content.py diff` to preview Buttondown API changes
-4. `python pipeline/content/content.py push --yes` to push
-5. `python pipeline/content/content.py pull --latest` or `python pipeline/content/content.py pull --all` to refresh tracked raw data from Buttondown
-6. `python pipeline/content/content.py diff` should now show "No local changes detected"
-
-Step 5 is critical: it verifies Buttondown accepted the update and brings the tracked raw data back in line with the remote source.
+A new issue is zero-touch on the operator side: workshop_bot ships → repo gets a commit → this workflow rebuilds the site (with the new issue's audio rendered + corpus refreshed). If workshop_bot is down on publish day, the week skips — there's no operator-side pull recovery.
 
 ## Home Page Voice Samples Refresh
 
