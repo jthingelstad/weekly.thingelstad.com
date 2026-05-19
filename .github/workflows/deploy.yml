@@ -63,40 +63,13 @@ jobs:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
           STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
 
-      # Two-pass build: workshop_bot's ship sequence committed data/issues/{N}/
-      # but apps/site/archive/{N}.md doesn't exist yet for the new issue. The
-      # audio pipeline picks "latest" by walking apps/site/archive/, so we need
-      # that file to exist before audio runs. Build → audio → build:
-      #   1. First build: creates apps/site/archive/{N}.md without audio_url
-      #      (data/audio/manifest.json doesn't have a new entry yet).
-      #   2. Audio: latest_issue() now sees the new issue, renders TTS, uploads
-      #      MP3, writes audio_url + duration + byte_size to manifest.json.
-      #   3. Second build: regenerates apps/site/archive/{N}.md so the front
-      #      matter carries the audio_* fields the site templates render.
-      - name: Build archive from data/issues/ (first pass — pre-audio)
-        run: python pipeline/content/content.py build
-
-      - name: Install ffmpeg
-        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
-
-      # Workshop-shipped issues bring their own data/issues/{N}/transcript/
-      # directory; the audio pipeline TTSes each file as its own utterance.
-      # Legacy issues fall through to body_to_audio_script + chunk_text on
-      # archive.md. scripts build is the legacy-path cache primer.
-      - name: Build audio script for latest issue
-        continue-on-error: true
-        run: python pipeline/audio/audio.py scripts build --latest
-
-      - name: Render and upload audio for latest issue
-        continue-on-error: true
-        run: python pipeline/audio/audio.py build --latest
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
-
-      - name: Build archive from data/issues/ (second pass — inject audio_url)
+      # Single-pass build: workshop_bot's ship sequence committed
+      # data/issues/{N}/*, render-audio uploaded the MP3, and the audio
+      # entry in data/audio/manifest.json is already in the commit. The
+      # build just needs to materialize apps/site/archive/{N}.md from those
+      # canonical bytes (front matter gets audio_* injected from the
+      # manifest entry).
+      - name: Build archive from data/issues/
         run: python pipeline/content/content.py build
 
       - name: Build librarian corpus
@@ -173,16 +146,15 @@ jobs:
       - name: Build search index
         run: npm run build:search
 
-      # Auto-commit the audio manifest/scripts and the regenerated archive
-      # files. workshop_bot's ship sequence commits data/issues/{N}/ via
-      # the GitHub API; this step picks up downstream side effects (audio
-      # output, the build's regenerated archive + emails.json + stats).
+      # Auto-commit downstream artifacts on non-push triggers (manual
+      # workflow_dispatch). The push trigger doesn't need this — workshop_bot
+      # already committed the canonical sources; CI just builds + deploys.
       - name: Commit downstream artifacts
         if: github.event_name != 'push'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/librarian/ data/links/ data/audio/ apps/site/archive/ apps/site/_data/emails.json apps/site/_data/stats.json
+          git add data/librarian/ data/links/ apps/site/archive/ apps/site/_data/emails.json apps/site/_data/stats.json
           git diff --staged --quiet || (git commit -m "Refresh downstream artifacts" && git push)
 
       - uses: actions/upload-pages-artifact@v5
