@@ -27,7 +27,7 @@ Source for [The Weekly Thing](https://weekly.thingelstad.com), a newsletter Jami
 | [`pipeline/corpus/`](pipeline/corpus/), [`pipeline/graph/`](pipeline/graph/) | CLI wrappers around `librarian_core`. |
 | [`pipeline/status.py`](pipeline/status.py) | Generates `apps/site/_data/status.json` for the `/ops/` page. |
 | [`data/issues/{N}/`](data/issues/) | **Canonical issue store.** `archive.md` (editorial body + front matter), `metadata.json`, `links.json`, `transcript/NNN-*.txt`. Written by workshop_bot's ship sequence via the GitHub Git Data API. |
-| [`data/{librarian,audio,links}/`](data/) | Generated build artifacts (tracked). |
+| [`data/{librarian,audio}/`](data/) | Generated build artifacts (tracked). |
 | [`content/buttondown/`](content/buttondown/) | Author-managed Buttondown configuration (automation bodies, newsletter CSS, transactional templates). Hand-synced to Buttondown. |
 | [`docs/`](docs/) | Operator guides, audit snapshots, creative brief, design notes. See [`docs/librarian.md`](docs/librarian.md) for the Lambda runtime detail. |
 

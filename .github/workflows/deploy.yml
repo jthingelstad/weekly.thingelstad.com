@@ -154,7 +154,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/librarian/ data/links/ apps/site/archive/ apps/site/_data/emails.json apps/site/_data/stats.json
+          git add data/librarian/ apps/site/archive/ apps/site/_data/emails.json apps/site/_data/stats.json
           git diff --staged --quiet || (git commit -m "Refresh downstream artifacts" && git push)
 
       - uses: actions/upload-pages-artifact@v5
