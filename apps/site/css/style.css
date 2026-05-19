@@ -2498,6 +2498,33 @@ th {
   margin: 32px 0 8px;
   color: var(--ink);
 }
+/* Journal day sub-header: plain text H3 (no link inside) — distinguish from
+   the titled-post H3-link tier above by using a smaller sans label with a
+   soft underline. Browsers without :has() fall back to the standard h3
+   styling above — acceptable. */
+.issue-content h3:not(:has(a)) {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 40px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+/* Journal note paragraph: a single-paragraph entry that opens with a
+   linked timestamp + em-dash + body. Tighten the leading time link so it
+   reads as a label rather than a primary navigation link. */
+.issue-content p > a[href^="https://www.thingelstad.com/"]:first-child {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+}
+.issue-content p > a[href^="https://www.thingelstad.com/"]:first-child:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
 .issue-content h4 {
   font-family: var(--serif);
   font-weight: 500;
