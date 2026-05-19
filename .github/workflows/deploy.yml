@@ -63,10 +63,19 @@ jobs:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
           STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
 
-      # Render and upload audio for the latest issue. Idempotent: skips when
-      # the manifest's audio_script_hash already matches and the S3 object
-      # exists. continue-on-error so a transient OpenAI/AWS hiccup doesn't
-      # block the site deploy — audio can be retried by re-dispatching.
+      # Two-pass build: workshop_bot's ship sequence committed data/issues/{N}/
+      # but apps/site/archive/{N}.md doesn't exist yet for the new issue. The
+      # audio pipeline picks "latest" by walking apps/site/archive/, so we need
+      # that file to exist before audio runs. Build → audio → build:
+      #   1. First build: creates apps/site/archive/{N}.md without audio_url
+      #      (data/audio/manifest.json doesn't have a new entry yet).
+      #   2. Audio: latest_issue() now sees the new issue, renders TTS, uploads
+      #      MP3, writes audio_url + duration + byte_size to manifest.json.
+      #   3. Second build: regenerates apps/site/archive/{N}.md so the front
+      #      matter carries the audio_* fields the site templates render.
+      - name: Build archive from data/issues/ (first pass — pre-audio)
+        run: python pipeline/content/content.py build
+
       - name: Install ffmpeg
         run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
 
@@ -87,10 +96,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: us-east-1
 
-      # Build apps/site/archive/{N}.md + apps/site/_data/emails.json from
-      # data/issues/{N}/. After audio so the latest issue's audio_url
-      # is in data/audio/manifest.json before front matter is emitted.
-      - name: Build archive from data/issues/
+      - name: Build archive from data/issues/ (second pass — inject audio_url)
         run: python pipeline/content/content.py build
 
       - name: Build librarian corpus
