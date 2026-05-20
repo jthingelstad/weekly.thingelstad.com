@@ -1,0 +1,64 @@
+---
+layout: layouts/base.njk
+pageTitle: Listen
+description: Issues of the Weekly Thing newsletter available as audio.
+permalink: /listen/
+---
+<section class="archive-hero">
+  <div class="container-wide">
+    <p class="eyebrow">Audio</p>
+    <h1>Listen</h1>
+    <p class="archive-hero-tagline">
+      Selected issues of the Weekly Thing are produced as audio. Play any episode here, or subscribe via the <a href="/podcast.xml">podcast feed</a> in your favorite podcast app.
+    </p>
+  </div>
+</section>
+
+<section class="archive-list-wrap">
+  <div class="container-wide archive-container">
+    <ol class="archive-list">
+      {% for issue in collections.podcastEpisodes %}
+      <li class="archive-entry">
+        <div class="archive-entry-link">
+          {% set hasCover = issue.data.image and ("files.thingelstad.com" in issue.data.image) %}
+          <div class="archive-entry-cover" aria-hidden="true"{% if hasCover %} style="background-image: linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.45)), url('{{ issue.data.image }}'); background-size: cover; background-position: center;"{% else %} data-fallback="{{ issue.data.number }}"{% endif %}>
+            <span class="archive-entry-cover-num">WT{{ issue.data.number }}</span>
+          </div>
+          <div class="archive-entry-body">
+            <h3 class="archive-entry-title"><a href="/archive/{{ issue.data.number }}/" class="archive-entry-stretched">{{ issue.data.subject }}</a></h3>
+            {% if issue.data.description %}
+            <p class="archive-entry-description">{{ issue.data.description }}</p>
+            {% endif %}
+            <p class="archive-entry-foot">
+              <time datetime="{{ issue.data.publish_date | dateFormat('iso') }}">{{ issue.data.publish_date | dateShort }}</time>
+              {% if issue.data.audio_duration_seconds %}<span><strong>{{ (issue.data.audio_duration_seconds / 60) | round }}</strong> min</span>{% endif %}
+              <a href="{{ issue.data.audio_url }}" class="archive-entry-action archive-entry-listen" data-audio-url="{{ issue.data.audio_url }}" data-issue="{{ issue.data.number }}" data-tinylytics-event="listen.listen" data-tinylytics-event-value="{{ issue.data.number }}">▶️ Listen &rarr;</a>
+              <a href="/thingy/?prompt={{ ('Tell me about issue #' + issue.data.number) | urlencode }}" class="archive-entry-action archive-entry-chat" data-tinylytics-event="listen.chat" data-tinylytics-event-value="{{ issue.data.number }}">💬 Chat &rarr;</a>
+            </p>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<script>
+(function() {
+  // Same fallback gradient palette as the archive index so cover-less
+  // entries match visually across surfaces.
+  var palette = [
+    'linear-gradient(135deg, #1a3a5c 0%, #2a4d3a 60%, #c44d2b 100%)',
+    'linear-gradient(160deg, #d97757 0%, #8a3815 100%)',
+    'linear-gradient(135deg, #2a4d3a 0%, #14181f 100%)',
+    'linear-gradient(135deg, #f4ede0 0%, #d8cdb6 50%, #7a6f5f 100%)',
+    'linear-gradient(135deg, #1f6fd6 0%, #134d99 100%)',
+    'linear-gradient(135deg, #c44d2b 0%, #6a1b1b 100%)',
+    'linear-gradient(135deg, #5a4a8a 0%, #2a1a4a 100%)'
+  ];
+  document.querySelectorAll('.archive-entry-cover[data-fallback]').forEach(function(el) {
+    var n = parseInt(el.dataset.fallback, 10) || 0;
+    el.style.background = palette[n % palette.length];
+  });
+})();
+</script>

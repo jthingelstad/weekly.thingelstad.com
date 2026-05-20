@@ -1881,7 +1881,7 @@ th {
   z-index: 2;
 }
 .archive-entry-action:hover { text-decoration: underline; }
-.archive-entry-listen { color: var(--color-audio-accent); }
+.archive-entry-listen,
 .archive-entry-chat { color: var(--accent); }
 
 /* Mobile */

@@ -14,6 +14,7 @@ const path = require("path");
 const emails = require("./emails.json");
 
 const GRAPH_PATH = path.join(__dirname, "..", "..", "..", "data", "librarian", "graph.json");
+const AUDIO_MANIFEST_PATH = path.join(__dirname, "..", "..", "..", "data", "audio", "manifest.json");
 const MIN_ISSUES = 3;
 const PER_ISSUE_CHIPS = 8;
 const RELATED_LIMIT = 8;
@@ -39,17 +40,37 @@ function loadGraph() {
   }
 }
 
+function loadAudioManifest() {
+  if (!fs.existsSync(AUDIO_MANIFEST_PATH)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(AUDIO_MANIFEST_PATH, "utf8")) || {};
+  } catch {
+    return {};
+  }
+}
+
 module.exports = (() => {
   const graph = loadGraph();
   if (!graph || !graph.entity_index || !graph.issues) return emptyShape();
 
-  // Per-issue metadata from emails.json
+  // Per-issue metadata from emails.json + audio manifest. The
+  // expanded shape lets topic.njk render the same archive-entry
+  // cards the main archive page uses (cover, description, links
+  // count, word count, Listen action).
+  const audioManifest = loadAudioManifest();
   const metaByNumber = {};
   for (const e of emails) {
     if (typeof e.number === "number") {
+      const audioRec = audioManifest[String(e.number)];
       metaByNumber[String(e.number)] = {
         publish_date: e.publish_date,
         subject: e.subject,
+        description: e.description || "",
+        image: e.image || "",
+        links: Array.isArray(e.links) ? e.links : [],
+        word_count: e.word_count || 0,
+        audio_url:
+          audioRec && audioRec.audio_url ? audioRec.audio_url : "",
       };
     }
   }
@@ -102,13 +123,18 @@ module.exports = (() => {
         number: n,
         publish_date: dateByNumber(n),
         subject: metaByNumber[n]?.subject || "",
+        description: metaByNumber[n]?.description || "",
+        image: metaByNumber[n]?.image || "",
+        links: metaByNumber[n]?.links || [],
+        word_count: metaByNumber[n]?.word_count || 0,
+        audio_url: metaByNumber[n]?.audio_url || "",
       }))
       .sort((a, b) =>
         a.publish_date < b.publish_date ? 1 :
         a.publish_date > b.publish_date ? -1 :
         Number(b.number) - Number(a.number)
       );
-    rec.issues = sorted; // now array of { number, publish_date, subject }
+    rec.issues = sorted; // now full archive-shaped issue records
     rec.lastNumber = sorted[0]?.number || null;
     rec.firstNumber = sorted[sorted.length - 1]?.number || null;
     rec.lastDate = sorted[0]?.publish_date || null;

@@ -12,22 +12,54 @@ layout: layouts/base.njk
     </p>
   </header>
 
-  <section class="topic-issues">
+  <section class="topic-issues archive-list-wrap">
     <h2 class="eyebrow">Issues</h2>
-    <ol class="topic-issue-list">
+    <ol class="archive-list">
       {%- for it in topic.issues -%}
-      <li class="topic-issue-item">
-        <a class="topic-issue-link" href="/archive/{{ it.number }}/">
-          <span class="topic-issue-num">WT{{ it.number }}</span>
-          <span class="topic-issue-subject">{{ it.subject }}</span>
-          <time class="topic-issue-date" datetime="{{ it.publish_date | dateFormat('iso') }}">
-            {{ it.publish_date | dateShort }}
-          </time>
-        </a>
+      <li class="archive-entry">
+        <div class="archive-entry-link">
+          {% set hasCover = it.image and ("files.thingelstad.com" in it.image) %}
+          <div class="archive-entry-cover" aria-hidden="true"{% if hasCover %} style="background-image: linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.45)), url('{{ it.image }}'); background-size: cover; background-position: center;"{% else %} data-fallback="{{ it.number }}"{% endif %}>
+            <span class="archive-entry-cover-num">WT{{ it.number }}</span>
+          </div>
+          <div class="archive-entry-body">
+            <h3 class="archive-entry-title"><a href="/archive/{{ it.number }}/" class="archive-entry-stretched">{{ it.subject }}</a></h3>
+            {% if it.description %}
+            <p class="archive-entry-description">{{ it.description }}</p>
+            {% endif %}
+            <p class="archive-entry-foot">
+              <time datetime="{{ it.publish_date | dateFormat('iso') }}">{{ it.publish_date | dateShort }}</time>
+              {% if it.links and it.links.length > 0 %}<span><strong>{{ it.links.length }}</strong> links</span>{% endif %}
+              {% if it.word_count %}<span><strong>{{ (it.word_count / 1000) | round(1) }}k</strong> words</span>{% endif %}
+              {% if it.audio_url %}<a href="{{ it.audio_url }}" class="archive-entry-action archive-entry-listen" data-audio-url="{{ it.audio_url }}" data-issue="{{ it.number }}" data-tinylytics-event="topic.listen" data-tinylytics-event-value="{{ it.number }}">▶️ Listen &rarr;</a>{% endif %}
+              <a href="/thingy/?prompt={{ ('Tell me about issue #' + it.number) | urlencode }}" class="archive-entry-action archive-entry-chat" data-tinylytics-event="topic.chat" data-tinylytics-event-value="{{ it.number }}">💬 Chat &rarr;</a>
+            </p>
+          </div>
+        </div>
       </li>
       {%- endfor -%}
     </ol>
   </section>
+
+  <script>
+  (function() {
+    // Same deterministic gradient palette as the main archive page so
+    // the fallback covers visually match across surfaces.
+    var palette = [
+      'linear-gradient(135deg, #1a3a5c 0%, #2a4d3a 60%, #c44d2b 100%)',
+      'linear-gradient(160deg, #d97757 0%, #8a3815 100%)',
+      'linear-gradient(135deg, #2a4d3a 0%, #14181f 100%)',
+      'linear-gradient(135deg, #f4ede0 0%, #d8cdb6 50%, #7a6f5f 100%)',
+      'linear-gradient(135deg, #1f6fd6 0%, #134d99 100%)',
+      'linear-gradient(135deg, #c44d2b 0%, #6a1b1b 100%)',
+      'linear-gradient(135deg, #5a4a8a 0%, #2a1a4a 100%)'
+    ];
+    document.querySelectorAll('.topic-issues .archive-entry-cover[data-fallback]').forEach(function(el) {
+      var n = parseInt(el.dataset.fallback, 10) || 0;
+      el.style.background = palette[n % palette.length];
+    });
+  })();
+  </script>
 
   <aside class="topic-thingy">
     <p class="topic-thingy-lede">
