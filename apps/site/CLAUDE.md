@@ -65,12 +65,12 @@ Both `/ops/` and `/status.json` are `Disallow`'d in `robots.txt`.
 
 The "How It Sounds" home-page pull-quotes are regenerated on demand by an LLM pipeline, not hand-curated. Two files drive it:
 
-- `docs/creative/brief.md` — persistent creative brief (voice, themes, guardrails). Hand-editable; treated as ground truth on the next run.
+- `pipeline/content/marketing-brief.md` — the generator's persistent context (voice, themes, guardrails). Hand-editable; treated as ground truth on the next run. The canonical *human* voice doc is `docs/voice-and-style.md`, which this brief should track.
 - `_data/voiceSamples.json` — generated pull-quotes, pulled verbatim from real issues with verification.
 
 ```bash
 make refresh-copy-dry   # prints proposed changes, writes nothing
-make refresh-copy       # writes voiceSamples.json + brief.md
+make refresh-copy       # writes voiceSamples.json + marketing-brief.md
 ```
 
 Stratified sample of ~32 issues over the last 2 years; Sonnet picks 3-5 verbatim pull-quotes and rewrites the brief. Machine-verified verbatim against issue bodies. Expected cost: ~$0.20-0.40 per run. Run logs land in `tmp/copy-refresh-<timestamp>.json` (gitignored). Not wired into CI — refreshes are explicit, human-initiated. Expected workflow: run, review `git diff`, commit.

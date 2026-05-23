@@ -29,7 +29,9 @@ Source for [The Weekly Thing](https://weekly.thingelstad.com), a newsletter Jami
 | [`data/issues/{N}/`](data/issues/) | **Canonical issue store.** `archive.md` (editorial body + front matter), `metadata.json`, `links.json`, `transcript/NNN-*.txt`. Written by workshop_bot's ship sequence via the GitHub Git Data API. |
 | [`data/{librarian,audio}/`](data/) | Generated build artifacts (tracked). |
 | [`content/buttondown/`](content/buttondown/) | Author-managed Buttondown configuration (automation bodies, newsletter CSS, transactional templates). Hand-synced to Buttondown. |
-| [`docs/`](docs/) | Operator guides, audit snapshots, creative brief, design notes. See [`docs/librarian.md`](docs/librarian.md) for the Lambda runtime detail. |
+| [`docs/`](docs/) | **How The Weekly Thing works** — the editorial north star: the publishing process, sections, voice, agents, programs. Start at [`docs/README.md`](docs/README.md). |
+| [`reference/`](reference/) | Durable technical reference — the [Librarian/Thingy Lambda runtime](reference/librarian.md) and third-party [systems](reference/systems/) (Buttondown, Pinboard, Stripe, Tinylytics). |
+| [`notes/`](notes/) | Point-in-time project artifacts — design briefs, audit snapshots, progress logs. Working history, not canonical. |
 
 For deeper operational detail, each major directory has a `CLAUDE.md` next to its `README.md`: [`/CLAUDE.md`](CLAUDE.md) for the architecture pattern + cross-cutting conventions, [`apps/workshop_bot/CLAUDE.md`](apps/workshop_bot/CLAUDE.md) for the workshop runtime, [`apps/librarian/CLAUDE.md`](apps/librarian/CLAUDE.md) for the Lambda, and so on. READMEs (these files) are for human readers; CLAUDE.md files are operational memory.
 
