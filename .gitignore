@@ -9,6 +9,7 @@ cache/
 
 # Environment variables
 .env
+.env-*
 
 # Python
 venv/
