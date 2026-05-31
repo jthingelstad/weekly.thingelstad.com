@@ -12,6 +12,7 @@
     "data": "python pipeline/content/content.py build && python pipeline/corpus/build.py && python pipeline/graph/build.py",
     "librarian:corpus": "python pipeline/corpus/build.py",
     "librarian:corpus:upload": "python pipeline/deploy/upload_corpus.py",
+    "librarian:deploy:blog": "python pipeline/deploy/upload_blog_corpus.py",
     "librarian:graph": "python pipeline/graph/build.py",
     "librarian:graph:upload": "python pipeline/graph/build.py --upload",
     "librarian:bedrock:logging": "python pipeline/deploy/bedrock_logging.py",

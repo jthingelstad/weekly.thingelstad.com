@@ -56,6 +56,11 @@ permalink: /thingy/
           <form class="librarian-form librarian-question-form thingy-input" id="librarian-question-form">
             <label for="librarian-question" class="sr-only">Ask Thingy</label>
             <textarea id="librarian-question" name="message" rows="3" required maxlength="1200" placeholder="Ask Thingy anything about the archive&hellip;" aria-describedby="librarian-question-count"></textarea>
+            <fieldset class="librarian-scope" id="librarian-scope">
+              <legend class="sr-only">Which sources should Thingy search?</legend>
+              <label><input type="checkbox" id="librarian-scope-wt" value="weekly_thing" checked> Weekly Thing</label>
+              <label><input type="checkbox" id="librarian-scope-blog" value="blog"> Jamie&rsquo;s blog</label>
+            </fieldset>
             <div class="librarian-question-meta">
               <span id="librarian-question-count">0 / 1200</span>
             </div>
@@ -101,6 +106,8 @@ permalink: /thingy/
     const logoutButton = document.getElementById('librarian-logout');
     const clearChatButton = document.getElementById('librarian-clear-chat');
     const questionInput = document.getElementById('librarian-question');
+    const scopeWtBox = document.getElementById('librarian-scope-wt');
+    const scopeBlogBox = document.getElementById('librarian-scope-blog');
     const questionButton = questionForm.querySelector('button[type="submit"]');
     const questionCount = document.getElementById('librarian-question-count');
     const messages = document.getElementById('librarian-messages');
@@ -109,6 +116,7 @@ permalink: /thingy/
     const betaCloseButton = document.getElementById('librarian-beta-close');
     const storageKey = 'weeklyThingLibrarianToken';
     const betaNoticeStorageKey = 'weeklyThingLibrarianBetaNotice';
+    const scopeStorageKey = 'weeklyThingLibrarianScope';
     const maxHistoryMessages = 8;
     const maxHistoryChars = 4000;
     const maxQuestionChars = Number(questionInput.getAttribute('maxlength') || '1200');
@@ -269,6 +277,37 @@ permalink: /thingy/
 
     function token() {
       return window.localStorage.getItem(storageKey);
+    }
+
+    // Two checkboxes encode three scopes: both checked = "both", blog only =
+    // "blog", otherwise (WT only, or neither) = "weekly_thing". The Lambda
+    // defaults to weekly_thing too, so "neither" degrades safely.
+    function currentScope() {
+      const wt = scopeWtBox && scopeWtBox.checked;
+      const blog = scopeBlogBox && scopeBlogBox.checked;
+      if (wt && blog) return 'both';
+      if (blog) return 'blog';
+      return 'weekly_thing';
+    }
+
+    function persistScope() {
+      try { window.localStorage.setItem(scopeStorageKey, currentScope()); } catch (error) { /* ignore */ }
+    }
+
+    function restoreScope() {
+      if (!scopeWtBox || !scopeBlogBox) return;
+      let saved = '';
+      try { saved = window.localStorage.getItem(scopeStorageKey) || ''; } catch (error) { saved = ''; }
+      if (saved === 'blog') {
+        scopeWtBox.checked = false;
+        scopeBlogBox.checked = true;
+      } else if (saved === 'both') {
+        scopeWtBox.checked = true;
+        scopeBlogBox.checked = true;
+      } else {
+        scopeWtBox.checked = true;
+        scopeBlogBox.checked = false;
+      }
     }
 
     function showBetaNotice() {
@@ -872,7 +911,7 @@ permalink: /thingy/
       }
     }
 
-    async function postStreamingChat(message, pending, history) {
+    async function postStreamingChat(message, pending, history, scope) {
       if (!streamBase) {
         throw new Error('Thingy has not been connected to the archive stream API yet.');
       }
@@ -888,7 +927,7 @@ permalink: /thingy/
           'content-type': 'application/json',
           authorization: `Bearer ${token()}`
         },
-        body: JSON.stringify({ message, history }),
+        body: JSON.stringify({ message, history, scope }),
         signal: controller.signal
       }).catch((error) => {
         if (error.name === 'AbortError') {
@@ -1011,7 +1050,7 @@ permalink: /thingy/
       const pending = addMessage('assistant', '<p class="librarian-status-line"><span class="librarian-thinking-dot"></span>Thingy is looking through the archive...</p>');
       pending.classList.add('librarian-message-pending');
       try {
-        const data = await postStreamingChat(message, pending, history);
+        const data = await postStreamingChat(message, pending, history, currentScope());
         pending.classList.remove('librarian-message-pending');
         rememberTurn(message, data.answer || '');
         addFeedbackControls(pending, data.request_id);
@@ -1040,6 +1079,10 @@ permalink: /thingy/
     });
 
     questionInput.addEventListener('input', updateQuestionState);
+
+    restoreScope();
+    if (scopeWtBox) scopeWtBox.addEventListener('change', persistScope);
+    if (scopeBlogBox) scopeBlogBox.addEventListener('change', persistScope);
 
     prompts.addEventListener('click', (event) => {
       const target = event.target instanceof Element ? event.target : event.target.parentElement;
