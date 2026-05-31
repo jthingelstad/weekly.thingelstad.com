@@ -244,6 +244,7 @@ permalink: /thingy/
     const params = new URLSearchParams(window.location.search);
     const email = normalizeEmail(params.get('email'));
     const initialPrompt = normalizeInitialPrompt(params.get('prompt'));
+    const initialScope = normalizeScopeParam(params.get('scope'));
     let initialPromptSubmitted = false;
     if (email) emailInput.value = email;
 
@@ -253,6 +254,16 @@ permalink: /thingy/
 
     function normalizeInitialPrompt(value) {
       return String(value || '').trim().slice(0, maxQuestionChars);
+    }
+
+    // Map a ?scope= URL value to one of the three canonical scopes, or '' when
+    // absent/unrecognized so it doesn't clobber the reader's saved scope.
+    function normalizeScopeParam(value) {
+      const raw = String(value || '').trim().toLowerCase().replace(/[\s-]+/g, '_');
+      if (raw === 'blog' || raw === 'thingelstad' || raw === 'thingelstad_com') return 'blog';
+      if (raw === 'both' || raw === 'all' || raw === 'everything') return 'both';
+      if (raw === 'weekly_thing' || raw === 'wt' || raw === 'weeklything' || raw === 'issues' || raw === 'archive') return 'weekly_thing';
+      return '';
     }
 
     function validateEmail() {
@@ -294,20 +305,27 @@ permalink: /thingy/
       try { window.localStorage.setItem(scopeStorageKey, currentScope()); } catch (error) { /* ignore */ }
     }
 
-    function restoreScope() {
+    // Set the checkbox pair from a scope string. Inverse of currentScope():
+    // blog → blog only, both → both checked, anything else → WT only.
+    function applyScope(scope) {
       if (!scopeWtBox || !scopeBlogBox) return;
-      let saved = '';
-      try { saved = window.localStorage.getItem(scopeStorageKey) || ''; } catch (error) { saved = ''; }
-      if (saved === 'blog') {
+      if (scope === 'blog') {
         scopeWtBox.checked = false;
         scopeBlogBox.checked = true;
-      } else if (saved === 'both') {
+      } else if (scope === 'both') {
         scopeWtBox.checked = true;
         scopeBlogBox.checked = true;
       } else {
         scopeWtBox.checked = true;
         scopeBlogBox.checked = false;
       }
+    }
+
+    function restoreScope() {
+      if (!scopeWtBox || !scopeBlogBox) return;
+      let saved = '';
+      try { saved = window.localStorage.getItem(scopeStorageKey) || ''; } catch (error) { saved = ''; }
+      applyScope(saved);
     }
 
     function showBetaNotice() {
@@ -623,13 +641,16 @@ permalink: /thingy/
       }
     }
 
-    function buildSharePromptUrl(prompt) {
+    function buildSharePromptUrl(prompt, scope) {
       const url = new URL('/thingy/', window.location.origin);
       url.searchParams.set('prompt', prompt);
+      // Always encode the scope so the link reproduces the exact scope used
+      // for this turn, regardless of the recipient's saved preference.
+      url.searchParams.set('scope', scope || 'weekly_thing');
       return url.toString();
     }
 
-    function addShareControls(messageElement, prompt) {
+    function addShareControls(messageElement, prompt, scope) {
       if (!prompt) return;
       const para = messageElement.querySelector('p');
       if (!para) return;
@@ -653,7 +674,7 @@ permalink: /thingy/
       }
       button.addEventListener('click', async (event) => {
         event.preventDefault();
-        const shareUrl = buildSharePromptUrl(prompt);
+        const shareUrl = buildSharePromptUrl(prompt, scope);
         if (typeof navigator.share === 'function') {
           try {
             await navigator.share({ title: 'Ask Thingy', text: prompt, url: shareUrl });
@@ -1043,14 +1064,15 @@ permalink: /thingy/
       const questionWordCount = message.split(/\s+/).filter(Boolean).length;
       const questionSize = questionWordCount < 6 ? 'short' : questionWordCount < 18 ? 'medium' : 'long';
       const history = compactHistory(conversationHistory);
+      const scope = currentScope();
       const userMessage = addMessage('user', `<p>${escapeHtml(message)}</p>`);
-      addShareControls(userMessage, message);
+      addShareControls(userMessage, message, scope);
       questionInput.value = '';
       updateQuestionState();
       const pending = addMessage('assistant', '<p class="librarian-status-line"><span class="librarian-thinking-dot"></span>Thingy is looking through the archive...</p>');
       pending.classList.add('librarian-message-pending');
       try {
-        const data = await postStreamingChat(message, pending, history, currentScope());
+        const data = await postStreamingChat(message, pending, history, scope);
         pending.classList.remove('librarian-message-pending');
         rememberTurn(message, data.answer || '');
         addFeedbackControls(pending, data.request_id);
@@ -1081,6 +1103,12 @@ permalink: /thingy/
     questionInput.addEventListener('input', updateQuestionState);
 
     restoreScope();
+    // A ?scope= in the URL (e.g. from a shared prompt link) wins over the
+    // reader's saved scope, and is applied before any initial prompt submits.
+    if (initialScope) {
+      applyScope(initialScope);
+      persistScope();
+    }
     if (scopeWtBox) scopeWtBox.addEventListener('change', persistScope);
     if (scopeBlogBox) scopeBlogBox.addEventListener('change', persistScope);
 
