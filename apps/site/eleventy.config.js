@@ -3,6 +3,11 @@ const { runtime: nunjucksRuntime } = require("nunjucks");
 const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = function (eleventyConfig) {
+  // Operational docs live inside the Eleventy input tree for humans and agents,
+  // but they are not public site pages.
+  eleventyConfig.ignores.add("apps/site/README.md");
+  eleventyConfig.ignores.add("apps/site/CLAUDE.md");
+
   // --- Passthrough copy ---
   eleventyConfig.addPassthroughCopy("apps/site/img");
   eleventyConfig.addPassthroughCopy("apps/site/css");

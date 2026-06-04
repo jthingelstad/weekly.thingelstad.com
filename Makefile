@@ -1,54 +1,31 @@
-.PHONY: build serve clean librarian-corpus librarian-corpus-upload librarian-graph librarian-graph-upload librarian-deploy content-build refresh-copy refresh-copy-dry audio audio-issue stats test-workshop test-workshop-env
+.PHONY: build serve stats test clean
 
-librarian-corpus:
-	npm run librarian:corpus
+# weekly is a render surface. Content (issue archives, _data indexes, the topic
+# graph) is produced by Studio (studio-thing) and pushed in via the handoff.
+# These targets just build, preview, refresh weekly's own stats, and clean.
+# Production tooling (archive build, corpus, audio, Lambda, agents) lives in Studio.
 
-librarian-corpus-upload:
-	npm run librarian:corpus:upload
-
-librarian-graph:
-	npm run librarian:graph
-
-librarian-graph-upload:
-	npm run librarian:graph:upload
-
-librarian-deploy:
-	npm run librarian:deploy
-
+# Full production build → _site/  (Eleventy + Pagefind)
 build:
-	python pipeline/content/content.py build
-	npm run build:all
+	npm run build
+	npm run build:search
 
+# Local dev server (Eleventy --serve)
 serve:
-	python pipeline/content/content.py build
 	npm run serve
 
+# Refresh weekly's own landing-page stats (subscriber + supporter numbers).
+# Needs BUTTONDOWN_API_KEY + STRIPE_API_KEY in the environment.
+stats:
+	npm run refresh-stats
+
+# Playwright end-to-end tests against the built site + on-site Thingy UI.
+test:
+	npx playwright test
+
+# Remove build output + local test artifacts (and any leftover Python cruft
+# from the pre-cutover monorepo that still lingers on disk).
 clean:
 	rm -rf _site cache tmp test-results playwright-report
-	rm -f data/librarian/*.embedded.json
-	find . -type d \( -name __pycache__ -o -name .pytest_cache \) -prune -exec rm -rf {} +
+	find . -type d -name __pycache__ -prune -exec rm -rf {} +
 	find . -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
-
-content-build:
-	python pipeline/content/content.py build
-
-stats:
-	python pipeline/content/content.py stats
-
-refresh-copy:
-	npm run refresh-copy
-
-refresh-copy-dry:
-	npm run refresh-copy:dry
-
-audio:
-	python pipeline/audio/audio.py build --latest
-
-audio-issue:
-	python pipeline/audio/audio.py build --issue $(ISSUE)
-
-test-workshop:
-	venv/bin/python -m unittest discover -s apps/workshop_bot/tests -t .
-
-test-workshop-env:
-	set -a; source .env; set +a; venv/bin/python -m unittest discover -s apps/workshop_bot/tests -t .
