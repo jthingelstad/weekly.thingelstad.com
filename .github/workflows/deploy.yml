@@ -1,18 +1,14 @@
 name: Build and Deploy
 
+# Render-only surface. Studio (studio-thing) owns production and commits the
+# generated 11ty inputs into this repo (apps/site/archive/*.md,
+# apps/site/_data/{emails,stats,status}.json, data/librarian/graph.json).
+# Weekly just builds the site with 11ty + Pagefind and deploys to Pages.
+# See studio-thing/PHASE_2.md.
+
 on:
   push:
     branches: [main]
-    # Author-only directories that don't affect the site build or the
-    # Thingy Lambda.
-    paths-ignore:
-      - 'apps/workshop_bot/**'
-      - 'apps/thingy_bridge/**'
-      - 'docs/**'
-      - 'content/buttondown/**'
-      - 'CLAUDE.md'
-      - 'AGENTS.md'
-      - 'README.md'
   workflow_dispatch:
 
 permissions:
@@ -25,137 +21,21 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v6
-
-      - uses: actions/setup-python@v6
-        with:
-          python-version: '3.14'
-          cache: 'pip'
 
       - uses: actions/setup-node@v6
         with:
           node-version: '22'
           cache: 'npm'
 
-      - run: pip install -r requirements.txt
-
       - run: npm ci
-
-      - name: Install Lambda dependencies
-        run: npm --prefix apps/librarian/lambda ci
-
-      - name: Run Python tests
-        run: python -m unittest discover -s tests -p 'test_*.py' -t .
-
-      - name: Run Lambda tests
-        run: npm --prefix apps/librarian/lambda test
-
-      # Stats refresh — subscriber counts + Stripe balance for the landing
-      # page. Best-effort; a Buttondown/Stripe hiccup falls back to the
-      # committed values in apps/site/_data/stats.json.
-      - name: Refresh stats
-        continue-on-error: true
-        run: python pipeline/content/content.py stats
-        env:
-          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
-          STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
-
-      # Single-pass build: workshop_bot's ship sequence committed
-      # data/issues/{N}/*, render-audio uploaded the MP3, and the audio
-      # entry in data/audio/manifest.json is already in the commit. The
-      # build just needs to materialize apps/site/archive/{N}.md from those
-      # canonical bytes (front matter gets audio_* injected from the
-      # manifest entry).
-      - name: Build archive from data/issues/
-        run: python pipeline/content/content.py build
-
-      - name: Build librarian corpus
-        run: python pipeline/corpus/build.py
-
-      # Embed corpus + graph and push to S3 so Thingy answers cite the new
-      # issue. Costs ~$0.20–$0.30 in Cohere embeddings per refresh.
-      # continue-on-error so a Bedrock hiccup doesn't block the site deploy.
-      - name: Upload embedded corpus + graph to S3
-        continue-on-error: true
-        run: python pipeline/deploy/upload_corpus.py
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
-          LIBRARIAN_BUCKET: weekly-thing-librarian
-
-      # Deploy Thingy Lambda when its code, infra, or deploy script changes.
-      - name: Detect Lambda changes
-        id: lambda-changes
-        run: |
-          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          elif [[ "${{ github.event_name }}" == "push" ]]; then
-            if git diff --quiet HEAD~1 HEAD -- apps/librarian/ pipeline/deploy/aws.py; then
-              echo "changed=false" >> "$GITHUB_OUTPUT"
-            else
-              echo "changed=true" >> "$GITHUB_OUTPUT"
-            fi
-          else
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Deploy Thingy Lambda
-        if: steps.lambda-changes.outputs.changed == 'true'
-        continue-on-error: true
-        run: python pipeline/deploy/aws.py --skip-corpus-upload --skip-smoke-test
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
-          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
-          LIBRARIAN_BUCKET: weekly-thing-librarian
-          LIBRARIAN_BRIDGE_SECRET: ${{ secrets.LIBRARIAN_BRIDGE_SECRET }}
-          LIBRARIAN_SESSION_SECRET: ${{ secrets.LIBRARIAN_SESSION_SECRET }}
-
-      # Generate the per-issue pipeline state report. Powers /ops/ on the
-      # site (unlinked, noindex) and /status.json. Reads S3 to fetch the
-      # deployed corpus's last-modified timestamp; non-fatal if S3 fails.
-      - name: Generate pipeline status report
-        continue-on-error: true
-        run: python pipeline/status.py --json apps/site/_data/status.json
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
-          LIBRARIAN_BUCKET: weekly-thing-librarian
-
-      # Topics on the static site read data/librarian/graph.json. The graph
-      # (and the corpus it derives from) is gitignored, so we need to
-      # ensure both exist before 11ty runs.
-      - name: Ensure corpus + graph for site data
-        run: |
-          if [ ! -f data/librarian/corpus.json ]; then
-            python pipeline/corpus/build.py
-          fi
-          if [ ! -f data/librarian/graph.json ]; then
-            python pipeline/graph/build.py
-          fi
 
       - name: Build site
         run: npm run build
 
       - name: Build search index
         run: npm run build:search
-
-      # Auto-commit downstream artifacts on non-push triggers (manual
-      # workflow_dispatch). The push trigger doesn't need this — workshop_bot
-      # already committed the canonical sources; CI just builds + deploys.
-      - name: Commit downstream artifacts
-        if: github.event_name != 'push'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/librarian/ apps/site/archive/ apps/site/_data/emails.json apps/site/_data/stats.json
-          git diff --staged --quiet || (git commit -m "Refresh downstream artifacts" && git push)
 
       - uses: actions/upload-pages-artifact@v5
         with:
