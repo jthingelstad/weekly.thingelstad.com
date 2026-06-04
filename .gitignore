@@ -11,12 +11,6 @@ cache/
 .env
 .env-*
 
-# Python
-venv/
-__pycache__/
-*.pyc
-*.egg-info/
-
 # OS files
 .DS_Store
 
@@ -32,22 +26,16 @@ playwright-report/
 # Pagefind
 _site/pagefind/
 
-# Workshop bot runtime DB (recreated locally)
-apps/workshop_bot/data/
-apps/workshop_bot/logs/
-*.db-journal
-*.db-wal
-*.db-shm
-
 # Local audit/working files
 tmp/
 
-# Generated librarian artifacts (rebuilt by `npm run librarian:corpus` and
-# `npm run librarian:graph`; the deploy script regenerates them before upload).
+# Generated librarian artifacts pushed in by Studio. Listed here so a
+# local rebuild (if someone wires one up) doesn't accidentally commit
+# rebuilt copies — the canonical versions are committed by Studio's
+# handoff via git-tree (which bypasses .gitignore).
 data/librarian/corpus.json
 data/librarian/graph.json
 data/librarian/*.embedded.json
 
-# Generated pipeline status report (rebuilt by `pipeline/status.py` at
-# build time; powers /ops/ and /status.json).
+# Generated pipeline status report pushed in by Studio. Same caveat as above.
 apps/site/_data/status.json
