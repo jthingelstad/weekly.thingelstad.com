@@ -7,21 +7,9 @@
     "build:search": "pagefind --site _site --glob '**/*.html'",
     "build:all": "npm run build && npm run build:search",
     "serve": "eleventy --serve --config apps/site/eleventy.config.js",
+    "refresh-stats": "node scripts/refresh-stats.mjs",
     "test:e2e": "playwright test",
-    "test:e2e:headed": "playwright test --headed",
-    "data": "python pipeline/content/content.py build && python pipeline/corpus/build.py && python pipeline/graph/build.py",
-    "librarian:corpus": "python pipeline/corpus/build.py",
-    "librarian:corpus:upload": "python pipeline/deploy/upload_corpus.py",
-    "librarian:deploy:blog": "python pipeline/deploy/upload_blog_corpus.py",
-    "librarian:graph": "python pipeline/graph/build.py",
-    "librarian:graph:upload": "python pipeline/graph/build.py --upload",
-    "librarian:bedrock:logging": "python pipeline/deploy/bedrock_logging.py",
-    "librarian:deploy": "python pipeline/deploy/aws.py",
-    "librarian:test": "npm --prefix apps/librarian/lambda test",
-    "content:build": "python pipeline/content/content.py build",
-    "content:stats": "python pipeline/content/content.py stats",
-    "refresh-copy": "python pipeline/content/refresh_marketing_copy.py",
-    "refresh-copy:dry": "python pipeline/content/refresh_marketing_copy.py --dry-run"
+    "test:e2e:headed": "playwright test --headed"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",

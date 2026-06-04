@@ -1,9 +1,10 @@
 name: Build and Deploy
 
-# Render-only surface. Studio (studio-thing) owns production and commits the
+# Render surface. Studio (studio-thing) owns production and commits the
 # generated 11ty inputs into this repo (apps/site/archive/*.md,
-# apps/site/_data/{emails,stats,status}.json, data/librarian/graph.json).
-# Weekly just builds the site with 11ty + Pagefind and deploys to Pages.
+# apps/site/_data/{emails,status}.json, data/librarian/graph.json).
+# Weekly refreshes its own landing-page stats (subscriber/supporter numbers)
+# here, then builds with 11ty + Pagefind and deploys to Pages.
 # See studio-thing/PHASE_2.md.
 
 on:
@@ -30,6 +31,16 @@ jobs:
           cache: 'npm'
 
       - run: npm ci
+
+      # weekly owns its landing-page stats (subscriber + supporter numbers).
+      # Best-effort: a Buttondown/Stripe hiccup falls back to the committed
+      # stats.json, so it never blocks the deploy.
+      - name: Refresh stats
+        continue-on-error: true
+        run: npm run refresh-stats
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
 
       - name: Build site
         run: npm run build
