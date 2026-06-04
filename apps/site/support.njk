@@ -53,7 +53,7 @@ permalink: /members/
   <section class="support-current">
     <p class="eyebrow">{{ support.current.year_label or support.current.year }} &middot; The Supporting Member nonprofit pick</p>
     <h2>{{ support.current.nonprofit }}</h2>
-    <p>{{ support.current.description }} <a href="/thingy/?prompt={{ ('Tell me about ' + (support.current.short_name or support.current.nonprofit)) | urlencode }}" data-tinylytics-event="support.thingy_handoff">Chat with Thingy about {{ support.current.short_name or support.current.nonprofit }} &rarr;</a></p>
+    <p>{{ support.current.description }} <a href="{{ site.thingyUrl }}/?prompt={{ ('Tell me about ' + (support.current.short_name or support.current.nonprofit)) | urlencode }}" data-tinylytics-event="support.thingy_handoff">Chat with Thingy about {{ support.current.short_name or support.current.nonprofit }} &rarr;</a></p>
     <div class="support-current-action">
       <a href="{{ support.current.url }}" class="btn btn-secondary">Visit {{ support.current.short_name or support.current.nonprofit }} &rarr;</a>
       {% if support.current.logo %}

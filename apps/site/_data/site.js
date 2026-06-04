@@ -23,6 +23,7 @@ module.exports = {
   title: 'Weekly Thing',
   description: 'A weekly collection of interesting links, ideas, and observations from across the internet, curated by Jamie Thingelstad.',
   url: 'https://weekly.thingelstad.com',
+  thingyUrl: 'https://thingy.thingelstad.com',
   author: 'Jamie Thingelstad',
   authorUrl: 'https://www.thingelstad.com',
   tinylyticsId: envValue('TINYLYTICS_SITE_UID') || (/^\d+$/.test(envValue('TINYLYTICS_SITE_ID')) ? '' : envValue('TINYLYTICS_SITE_ID')) || 'a2YQr3ZMqkySNYSwz4uF',

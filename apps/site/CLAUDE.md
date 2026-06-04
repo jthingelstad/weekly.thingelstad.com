@@ -57,7 +57,7 @@ pull-quotes, pulled verbatim from real issues. Infrequent, explicit, human-revie
 `/` (hand-written landing), `/archive/` (year-grouped from `issuesByDate`), `/archive/N/` (generated
 per-issue, `layout: archive`), `/archive/<slug>/` redirects (`redirects.njk` + `_data/redirects.js`),
 hand-written `/about/ /members/ /faq/ /search/`, `/feed.xml`, `/archive/N/links.xml`, `/podcast.xml`,
-`/thingy/` (on-site Thingy chat), `/ops/` + `/status.json` (unlinked, noindex, `Disallow`'d in
+`/thingy/` (redirect to standalone Thingy), `/ops/` + `/status.json` (unlinked, noindex, `Disallow`'d in
 `robots.txt`, read from `_data/status.json`).
 
 ## Pagefind

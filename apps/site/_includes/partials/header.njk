@@ -8,14 +8,14 @@
       {% set navItems = [
         { href: "/", label: "Home" },
         { href: "/archive/", label: "Archive" },
-        { href: "/thingy/", label: "Thingy" },
+        { href: site.thingyUrl + "/", label: "Thingy", external: true },
         { href: "/topics/", label: "Topics" },
         { href: "/search/", label: "Search" },
         { href: "/about/", label: "About" },
         { href: "/members/", label: "Members" }
       ] %}
       {% for item in navItems %}
-      {% set isActive = page.url | isActiveNav(item.href) %}
+      {% set isActive = (not item.external) and (page.url | isActiveNav(item.href)) %}
       <a href="{{ item.href }}"{% if isActive %} class="is-active" aria-current="page"{% endif %}>{{ item.label }}</a>
       {% endfor %}
     </nav>

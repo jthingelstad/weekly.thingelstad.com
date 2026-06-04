@@ -78,7 +78,7 @@ permalink: /archive/
                 {% if issue.data.links and issue.data.links.length > 0 %}<span><strong>{{ issue.data.links.length }}</strong> links</span>{% endif %}
                 {% if issue.data.word_count %}<span><strong>{{ (issue.data.word_count / 1000) | round(1) }}k</strong> words</span>{% endif %}
                 {% if issue.data.audio_url %}<a href="{{ issue.data.audio_url }}" class="archive-entry-action archive-entry-listen" data-audio-url="{{ issue.data.audio_url }}" data-issue="{{ issue.data.number }}" data-tinylytics-event="archive.listen" data-tinylytics-event-value="{{ issue.data.number }}">▶️ Listen &rarr;</a>{% endif %}
-                <a href="/thingy/?prompt={{ ('Tell me about issue #' + issue.data.number) | urlencode }}" class="archive-entry-action archive-entry-chat" data-tinylytics-event="archive.chat" data-tinylytics-event-value="{{ issue.data.number }}">💬 Chat &rarr;</a>
+                <a href="{{ site.thingyUrl }}/?prompt={{ ('Tell me about issue #' + issue.data.number) | urlencode }}" class="archive-entry-action archive-entry-chat" data-tinylytics-event="archive.chat" data-tinylytics-event-value="{{ issue.data.number }}">💬 Chat &rarr;</a>
               </p>
             </div>
           </div>
