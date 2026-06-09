@@ -2932,6 +2932,28 @@ th {
   margin: 0;
   border-radius: 0;
 }
+.support-benefits > p {
+  max-width: 62ch;
+}
+.support-benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 16px;
+}
+.support-benefit {
+  padding: 20px 0 0;
+  border-top: 1px solid var(--line-soft);
+}
+.support-benefit h3 {
+  margin-top: 0;
+}
+@media (min-width: 720px) {
+  .support-benefits-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+}
 .support-table-org {
   display: inline-flex;
   align-items: center;
