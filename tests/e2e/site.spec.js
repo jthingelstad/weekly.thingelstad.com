@@ -35,18 +35,32 @@ test('main navigation stays on one row at mobile widths', async ({ page }) => {
   }
 });
 
-test('main navigation marks the current section', async ({ page }) => {
-  await page.goto('/thingy/');
+test('legacy Thingy URL redirects to standalone chat', async ({ page }) => {
+  await page.route('https://thingy.thingelstad.com/chat/?prompt=RSS#sources', async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'text/html',
+      body: '<!doctype html><title>Thingy Chat</title><h1>Thingy Chat</h1>',
+    });
+  });
 
-  await expect(page.locator('.site-nav a.is-active')).toHaveText('Thingy');
-  await expect(page.locator('.site-nav a[aria-current="page"]')).toHaveAttribute('href', '/thingy/');
-  await expect(page.getByText('Thingy is your guide to the entire Weekly Thing archive')).toBeVisible();
-  await expect(page.locator('.librarian-persona')).toBeVisible();
+  await page.goto('/thingy/?prompt=RSS#sources');
+
+  await expect(page).toHaveURL('https://thingy.thingelstad.com/chat/?prompt=RSS#sources');
+  await expect(page.locator('h1')).toHaveText('Thingy Chat');
 });
 
-test('old librarian URL redirects to Thingy', async ({ page }) => {
-  await page.goto('/librarian');
+test('old librarian URL redirects to standalone chat', async ({ page }) => {
+  await page.route('https://thingy.thingelstad.com/chat/', async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'text/html',
+      body: '<!doctype html><title>Thingy Chat</title><h1>Thingy Chat</h1>',
+    });
+  });
 
-  await expect(page).toHaveURL(/\/thingy\/$/);
-  await expect(page.locator('h1')).toContainText('Thingy');
+  await page.goto('/librarian/');
+
+  await expect(page).toHaveURL('https://thingy.thingelstad.com/chat/');
+  await expect(page.locator('h1')).toHaveText('Thingy Chat');
 });

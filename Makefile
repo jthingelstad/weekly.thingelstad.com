@@ -19,7 +19,7 @@ serve:
 stats:
 	npm run refresh-stats
 
-# Playwright end-to-end tests against the built site + on-site Thingy UI.
+# Playwright end-to-end tests against the built site + Thingy redirects.
 test:
 	npx playwright test
 

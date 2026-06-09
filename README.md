@@ -39,7 +39,7 @@ the 11ty inputs and commits them here via one atomic handoff. This repo just bui
 | `apps/site/archive/*.md` | **Generated, pushed in by Studio.** One page per issue. Do not edit here (the next handoff overwrites). |
 | `apps/site/_data/` | A mix: pushed by Studio (`emails.json`, `status.json`), fetched by this repo's CI (`stats.json`), and hand-authored (`site.json`, `support.json`, `quotes.json`, `faq.json`, …). |
 | `data/librarian/graph.json` | Topic graph, pushed by Studio; powers the site's topic pages. |
-| [`tests/e2e/`](tests/e2e/) | Playwright end-to-end tests for the rendered site + the on-site Thingy UI. |
+| [`tests/e2e/`](tests/e2e/) | Playwright end-to-end tests for the rendered site + the legacy Thingy redirect. |
 
 Editorial body, the agents, the pipeline, the publishing eras, link-extraction rules — all moved to
 **Studio**. Start at `studio-thing/README.md` / `studio-thing/CLAUDE.md`.
@@ -51,9 +51,9 @@ Editorial body, the agents, the pipeline, the publishing eras, link-extraction r
 Studio produces, weekly renders. `data/issues/{N}/archive.md` (in Studio) is the editorial source of
 truth; Studio's CI builds the 11ty inputs (`apps/site/archive/*.md`, `_data/emails.json`,
 `_data/status.json`, `data/librarian/graph.json`) and commits them here via the handoff. This repo's CI
-runs Eleventy + Pagefind, fetches its own landing-page stats, and deploys to GitHub Pages. The Thingy
-chat on the site is served by the Librarian Lambda (deployed from Studio) and also has its own standalone
-home at [`thingy.thingelstad.com`](https://thingy.thingelstad.com).
+runs Eleventy + Pagefind, fetches its own landing-page stats, and deploys to GitHub Pages. Thingy runs
+as a standalone app at [`thingy.thingelstad.com`](https://thingy.thingelstad.com); this site links and
+redirects readers to its chat surface.
 
 ---
 
@@ -98,7 +98,7 @@ GitHub Pages deploys with the default `GITHUB_TOKEN`.
 | `/feed.xml` | `feed.njk` | Atom feed (all issues) |
 | `/archive/N/links.xml` | `issue-links-feed.njk` | Per-issue links feed |
 | `/podcast.xml` | `podcast.njk` | Podcast RSS feed |
-| `/thingy/` | `librarian.njk` | On-site Thingy chat (also standalone at thingy.thingelstad.com) |
+| `/thingy/` | `librarian.njk` | Redirect to standalone Thingy chat at thingy.thingelstad.com |
 | `/ops/` | `ops.njk` | **Unlinked, noindex.** Per-issue pipeline state. Reads `_data/status.json`. |
 
 ### Design
@@ -106,7 +106,7 @@ GitHub Pages deploys with the default `GITHUB_TOKEN`.
 Editorial, magazine-like. Source Serif 4 for display + italic accents, Source Sans 3 for body/UI,
 JetBrains Mono for eyebrows and meta. Generous whitespace. `#fcfcfa` background, `#1f6fd6` accent (deep
 `#134d99`, soft `#e1edff`), dark mode via `prefers-color-scheme`. No JS required for core reading — JS
-only for the subscribe form, Pagefind search, archive year filter, Thingy chat, and Tinylytics.
+only for the subscribe form, Pagefind search, archive year filter, Thingy handoffs, and Tinylytics.
 Mobile-first and accessible: heading hierarchy, alt text, color contrast, keyboard nav.
 
 ---

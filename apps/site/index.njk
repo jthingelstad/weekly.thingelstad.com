@@ -42,7 +42,7 @@ permalink: /
             {% if latest.data.audio_url %}
             <a href="{{ latest.data.audio_url }}" class="home-stamp-action home-stamp-action-listen" data-audio-url="{{ latest.data.audio_url }}" data-tinylytics-event="home.listen" data-tinylytics-event-value="{{ latest.data.number }}">▶️ Listen &rarr;</a>
             {% endif %}
-            <a href="{{ site.thingyUrl }}/?prompt={{ ('Tell me about issue #' + latest.data.number) | urlencode }}" class="home-stamp-action home-stamp-action-chat" data-tinylytics-event="home.chat" data-tinylytics-event-value="{{ latest.data.number }}">💬 Chat &rarr;</a>
+            <a href="{{ site.thingyUrl }}/chat/?prompt={{ ('Tell me about issue #' + latest.data.number) | urlencode }}" class="home-stamp-action home-stamp-action-chat" data-tinylytics-event="home.chat" data-tinylytics-event-value="{{ latest.data.number }}">💬 Chat &rarr;</a>
           </p>
         </div>
         {# Next-issue badge. The inline script below fetches the live

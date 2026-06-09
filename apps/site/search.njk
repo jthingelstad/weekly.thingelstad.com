@@ -11,7 +11,7 @@ permalink: /search/
     <p class="search-lede">Full-text search across every issue I've ever sent. Every link, every note, every rabbit hole.</p>
     <div id="search" class="search-pf-wrap"></div>
     <p id="search-thingy-nudge" class="search-thingy-nudge" hidden>
-      Want a synthesized answer? <a id="search-thingy-link" href="{{ site.thingyUrl }}/" data-tinylytics-event="search.thingy_handoff">Talk to Thingy &rarr;</a>
+      Want a synthesized answer? <a id="search-thingy-link" href="{{ site.thingyUrl }}/chat/" data-tinylytics-event="search.thingy_handoff">Talk to Thingy &rarr;</a>
     </p>
     <div class="search-meta">
       <span><strong>{{ collections.issuesByDate[0].data.number }}</strong> issues</span>
@@ -62,7 +62,7 @@ permalink: /search/
       </div>
       <div class="search-tip search-tip-cta">
         <p class="eyebrow">Or just ask</p>
-        <p>Subscribers can ask <a href="{{ site.thingyUrl }}/">Thingy</a>, the archive librarian, in plain English &rarr;</p>
+        <p>Subscribers can ask <a href="{{ site.thingyUrl }}/chat/">Thingy</a>, the archive librarian, in plain English &rarr;</p>
       </div>
     </div>
   </div>
@@ -103,7 +103,7 @@ permalink: /search/
         return;
       }
       const prompt = `Tell me about "${q}" in the archive.`;
-      thingyLink.href = `{{ site.thingyUrl }}/?prompt=${encodeURIComponent(prompt)}`;
+      thingyLink.href = `{{ site.thingyUrl }}/chat/?prompt=${encodeURIComponent(prompt)}`;
       thingyLink.textContent = `Talk to Thingy about "${q.length > 40 ? q.slice(0, 40) + '…' : q}" →`;
       thingyNudge.hidden = false;
       relocateNudge();

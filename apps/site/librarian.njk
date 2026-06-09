@@ -7,15 +7,15 @@ eleventyExcludeFromCollections: true
 <head>
   <meta charset="utf-8">
   <meta name="robots" content="noindex">
-  <meta http-equiv="refresh" content="0; url={{ site.thingyUrl }}/">
-  <link rel="canonical" href="{{ site.thingyUrl }}/">
+  <meta http-equiv="refresh" content="0; url={{ site.thingyUrl }}/chat/">
+  <link rel="canonical" href="{{ site.thingyUrl }}/chat/">
   <title>Redirecting to Thingy</title>
 </head>
 <body>
-  <p>Redirecting to <a id="thingy-redirect-link" href="{{ site.thingyUrl }}/">Thingy</a>...</p>
+  <p>Redirecting to <a id="thingy-redirect-link" href="{{ site.thingyUrl }}/chat/">Thingy</a>...</p>
   <script>
     (function() {
-      var target = new URL('{{ site.thingyUrl }}/');
+      var target = new URL('{{ site.thingyUrl }}/chat/');
       target.search = window.location.search;
       target.hash = window.location.hash;
       document.getElementById('thingy-redirect-link').href = target.href;

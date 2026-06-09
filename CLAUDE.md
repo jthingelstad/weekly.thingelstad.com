@@ -57,7 +57,7 @@ default `GITHUB_TOKEN`.
 - **Tinylytics kudos** overwrites innerHTML — render heart/label via CSS `::before` so they survive.
 - **Don't hand-edit generated files** (`apps/site/archive/*.md`, the pushed `_data/*.json`,
   `data/librarian/graph.json`) — fix upstream in Studio.
-- **e2e tests** (`tests/e2e/`) are Playwright specs against the rendered site + on-site Thingy UI. They
+- **e2e tests** (`tests/e2e/`) are Playwright specs against the rendered site + Thingy redirects. They
   aren't wired into the deploy workflow; run them manually or add a CI step if you want the coverage.
 
 ## Pointer to Studio

@@ -62,7 +62,7 @@ handoff. Edit the canonical body in `studio-thing/data/issues/{N}/archive.md`.
 | `/feed.xml` | `feed.njk` | Atom feed |
 | `/archive/N/links.xml` | `issue-links-feed.njk` | Per-issue links feed |
 | `/podcast.xml` | `podcast.njk` | Podcast RSS |
-| `/thingy/` | `librarian.njk` | Redirect to standalone Thingy at thingy.thingelstad.com |
+| `/thingy/` | `librarian.njk` | Redirect to standalone Thingy chat at thingy.thingelstad.com |
 | `/ops/`, `/status.json` | `ops.njk`, `status-json.njk` | Unlinked, noindex pipeline state |
 
 ## Design
