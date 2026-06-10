@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-06-10T03:13:45.914815Z",
+  "generated_at": "2026-06-10T03:17:03.485990Z",
   "extraction_model": "heuristic",
   "issue_count": 351,
   "issues": {
@@ -17829,46 +17829,40 @@
         "Cannon Lake",
         "Chaos Rising",
         "Dairy Queen",
-        "Getaway Motor Cafe",
-        "Movie",
-        "Star Trek Title Card Generator",
-        "The Instigators",
-        "github.com",
-        "trek.epicrandomness.com",
-        "Apple Original Film",
         "Blizzard",
         "Boundary Waters",
-        "Brick",
         "Calm",
-        "Carver",
-        "Casey Affleck",
         "Chaos Rising Pokemon",
         "Check",
         "Claude Code",
         "Codex",
         "Display",
-        "Enjoying",
         "Gold",
         "Group",
         "Harvia",
         "Interior",
-        "Logan Lucky",
         "Look",
-        "Lucky Logan",
         "Lundeen",
         "Man",
         "Marc Heu Patisserie",
         "Marc Hue Patisserie",
-        "Matt Damon",
         "Mazie",
-        "Meandering",
         "Mega Greninja",
         "Mega Greninja EX Pokemon",
         "Mega Greninja Gold",
-        "Memorial Day"
+        "Memorial Day",
+        "Morning",
+        "Note",
+        "Pontoon",
+        "Purple",
+        "Reddit",
+        "Sakatah Singing Hills State Trail",
+        "Tall",
+        "Tyler",
+        "While",
+        "Won"
       ],
       "tropes": [
-        "open web and ownership",
         "ai as collaborator"
       ],
       "similar_issues": []
@@ -19765,8 +19759,7 @@
       "341",
       "346",
       "348",
-      "349",
-      "350"
+      "349"
     ],
     "wired.com": [
       "6",
@@ -21945,7 +21938,8 @@
       "334",
       "341",
       "343",
-      "345"
+      "345",
+      "350"
     ],
     "your peak": [
       "18"
@@ -30099,8 +30093,7 @@
       "99"
     ],
     "enjoying": [
-      "99",
-      "350"
+      "99"
     ],
     "exercising": [
       "99"
@@ -30287,7 +30280,8 @@
       "130",
       "161",
       "244",
-      "342"
+      "342",
+      "350"
     ],
     "year in taxes": [
       "101"
@@ -31319,7 +31313,8 @@
       "231"
     ],
     "pontoon": [
-      "114"
+      "114",
+      "350"
     ],
     "sona mehring": [
       "114"
@@ -33181,7 +33176,8 @@
       "276",
       "306",
       "313",
-      "322"
+      "322",
+      "350"
     ],
     "andreessen-horowitz": [
       "137"
@@ -34362,7 +34358,8 @@
       "151"
     ],
     "note": [
-      "151"
+      "151",
+      "350"
     ],
     "patrick's": [
       "151"
@@ -48202,40 +48199,13 @@
     "dairy queen": [
       "350"
     ],
-    "getaway motor cafe": [
-      "350"
-    ],
-    "movie": [
-      "350"
-    ],
-    "star trek title card generator": [
-      "350"
-    ],
-    "the instigators": [
-      "350"
-    ],
-    "trek.epicrandomness.com": [
-      "350"
-    ],
-    "apple original film": [
-      "350"
-    ],
     "blizzard": [
       "350"
     ],
     "boundary waters": [
       "350"
     ],
-    "brick": [
-      "350"
-    ],
     "calm": [
-      "350"
-    ],
-    "carver": [
-      "350"
-    ],
-    "casey affleck": [
       "350"
     ],
     "chaos rising pokemon": [
@@ -48256,12 +48226,6 @@
     "interior": [
       "350"
     ],
-    "logan lucky": [
-      "350"
-    ],
-    "lucky logan": [
-      "350"
-    ],
     "lundeen": [
       "350"
     ],
@@ -48269,12 +48233,6 @@
       "350"
     ],
     "marc hue patisserie": [
-      "350"
-    ],
-    "matt damon": [
-      "350"
-    ],
-    "meandering": [
       "350"
     ],
     "mega greninja": [
@@ -48287,6 +48245,21 @@
       "350"
     ],
     "memorial day": [
+      "350"
+    ],
+    "morning": [
+      "350"
+    ],
+    "purple": [
+      "350"
+    ],
+    "sakatah singing hills state trail": [
+      "350"
+    ],
+    "tall": [
+      "350"
+    ],
+    "won": [
       "350"
     ]
   },
@@ -48629,8 +48602,7 @@
       "346",
       "347",
       "348",
-      "349",
-      "350"
+      "349"
     ],
     "tools for thought": [
       "1",
