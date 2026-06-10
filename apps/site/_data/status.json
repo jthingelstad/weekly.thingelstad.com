@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-08T17:44:32Z",
+  "generated_at": "2026-06-10T03:11:37Z",
   "summary": {
     "total_issues": 350,
     "archive_local_edits": 0,
@@ -7,23 +7,23 @@
     "audio_rendered": 84,
     "audio_out_of_date": 83,
     "audio_missing": 266,
-    "deployed_corpus_uploaded_at": "2026-06-08T17:43:26Z",
-    "latest_archive_modified_at": "2026-06-08T17:42:57Z",
+    "deployed_corpus_uploaded_at": "2026-06-10T03:09:53Z",
+    "latest_archive_modified_at": "2026-06-10T03:09:18Z",
     "librarian_likely_stale": false
   },
   "deployed": {
     "corpus": {
-      "size": 164875293,
-      "last_modified": "2026-06-08T17:43:26Z",
-      "etag": "3d1d3b5911bb89cfb489ed8e28fdb730-20",
+      "size": 164875257,
+      "last_modified": "2026-06-10T03:09:53Z",
+      "etag": "8a3dde81c14471502119e9d2332cd6cc-20",
       "embedding_model": "cohere.embed-english-v3",
       "issue_count": 351,
       "chunk_count": 9656
     },
     "graph": {
       "size": 593676,
-      "last_modified": "2026-06-08T17:43:44Z",
-      "etag": "3c4e073bb97923c702cd03176c7a8e00"
+      "last_modified": "2026-06-10T03:10:13Z",
+      "etag": "f24b85b14b788b45837492e4761f2b27"
     }
   },
   "issues": [
