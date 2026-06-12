@@ -32,6 +32,9 @@ jobs:
 
       - run: npm ci
 
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
+
       # weekly owns its landing-page stats (subscriber + supporter numbers).
       # Best-effort: a Buttondown/Stripe hiccup falls back to the committed
       # stats.json, so it never blocks the deploy.
