@@ -1,9 +1,9 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-06-12T14:31:52.194342Z",
+  "generated_at": "2026-06-15T04:07:13.025882Z",
   "extraction_model": "heuristic",
-  "issue_count": 351,
+  "issue_count": 350,
   "issues": {
     "1": {
       "entities": [
@@ -17823,49 +17823,6 @@
         "durable archives"
       ],
       "similar_issues": []
-    },
-    "350": {
-      "entities": [
-        "Cannon Lake",
-        "Chaos Rising",
-        "Dairy Queen",
-        "Blizzard",
-        "Boundary Waters",
-        "Calm",
-        "Chaos Rising Pokemon",
-        "Check",
-        "Claude Code",
-        "Codex",
-        "Display",
-        "Gold",
-        "Group",
-        "Harvia",
-        "Interior",
-        "Look",
-        "Lundeen",
-        "Man",
-        "Marc Heu Patisserie",
-        "Marc Hue Patisserie",
-        "Mazie",
-        "Mega Greninja",
-        "Mega Greninja EX Pokemon",
-        "Mega Greninja Gold",
-        "Memorial Day",
-        "Morning",
-        "Note",
-        "Pontoon",
-        "Purple",
-        "Reddit",
-        "Sakatah Singing Hills State Trail",
-        "Tall",
-        "Tyler",
-        "While",
-        "Won"
-      ],
-      "tropes": [
-        "ai as collaborator"
-      ],
-      "similar_issues": []
     }
   },
   "entity_index": {
@@ -19277,8 +19234,7 @@
       "49",
       "61",
       "152",
-      "310",
-      "350"
+      "310"
     ],
     "change": [
       "4",
@@ -19399,8 +19355,7 @@
       "4",
       "57",
       "79",
-      "246",
-      "350"
+      "246"
     ],
     "minnebar": [
       "4",
@@ -21839,8 +21794,7 @@
       "286",
       "289",
       "296",
-      "349",
-      "350"
+      "349"
     ],
     "not": [
       "18",
@@ -21938,8 +21892,7 @@
       "334",
       "341",
       "343",
-      "345",
-      "350"
+      "345"
     ],
     "your peak": [
       "18"
@@ -25114,8 +25067,7 @@
     "check": [
       "45",
       "191",
-      "231",
-      "350"
+      "231"
     ],
     "chicken pot pie": [
       "45"
@@ -30280,8 +30232,7 @@
       "130",
       "161",
       "244",
-      "342",
-      "350"
+      "342"
     ],
     "year in taxes": [
       "101"
@@ -31313,8 +31264,7 @@
       "231"
     ],
     "pontoon": [
-      "114",
-      "350"
+      "114"
     ],
     "sona mehring": [
       "114"
@@ -33176,8 +33126,7 @@
       "276",
       "306",
       "313",
-      "322",
-      "350"
+      "322"
     ],
     "andreessen-horowitz": [
       "137"
@@ -34358,8 +34307,7 @@
       "151"
     ],
     "note": [
-      "151",
-      "350"
+      "151"
     ],
     "patrick's": [
       "151"
@@ -46954,8 +46902,7 @@
       "345",
       "346",
       "347",
-      "349",
-      "350"
+      "349"
     ],
     "get some air": [
       "328"
@@ -47023,8 +46970,7 @@
       "342",
       "343",
       "344",
-      "345",
-      "350"
+      "345"
     ],
     "first malicious mcp": [
       "329"
@@ -48160,8 +48106,7 @@
       "349"
     ],
     "man": [
-      "349",
-      "350"
+      "349"
     ],
     "owning": [
       "349"
@@ -48192,75 +48137,6 @@
     ],
     "timesofindia.indiatimes.com": [
       "349"
-    ],
-    "chaos rising": [
-      "350"
-    ],
-    "dairy queen": [
-      "350"
-    ],
-    "blizzard": [
-      "350"
-    ],
-    "boundary waters": [
-      "350"
-    ],
-    "calm": [
-      "350"
-    ],
-    "chaos rising pokemon": [
-      "350"
-    ],
-    "display": [
-      "350"
-    ],
-    "gold": [
-      "350"
-    ],
-    "group": [
-      "350"
-    ],
-    "harvia": [
-      "350"
-    ],
-    "interior": [
-      "350"
-    ],
-    "lundeen": [
-      "350"
-    ],
-    "marc heu patisserie": [
-      "350"
-    ],
-    "marc hue patisserie": [
-      "350"
-    ],
-    "mega greninja": [
-      "350"
-    ],
-    "mega greninja ex pokemon": [
-      "350"
-    ],
-    "mega greninja gold": [
-      "350"
-    ],
-    "memorial day": [
-      "350"
-    ],
-    "morning": [
-      "350"
-    ],
-    "purple": [
-      "350"
-    ],
-    "sakatah singing hills state trail": [
-      "350"
-    ],
-    "tall": [
-      "350"
-    ],
-    "won": [
-      "350"
     ]
   },
   "trope_index": {
@@ -49254,8 +49130,7 @@
       "346",
       "347",
       "348",
-      "349",
-      "350"
+      "349"
     ],
     "durable archives": [
       "1",
