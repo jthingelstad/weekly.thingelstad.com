@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-06-29T11:09:16Z",
+  "generated_at": "2026-06-29T11:25:21Z",
   "summary": {
-    "total_issues": 350,
+    "total_issues": 349,
     "archive_local_edits": 0,
-    "archive_missing": 1,
+    "archive_missing": 0,
     "audio_rendered": 84,
     "audio_out_of_date": 83,
-    "audio_missing": 266,
-    "deployed_corpus_uploaded_at": "2026-06-29T11:08:49Z",
-    "latest_archive_modified_at": "2026-06-29T11:08:19Z",
+    "audio_missing": 265,
+    "deployed_corpus_uploaded_at": "2026-06-29T11:24:53Z",
+    "latest_archive_modified_at": "2026-06-29T11:24:22Z",
     "librarian_likely_stale": false
   },
   "deployed": {
     "corpus": {
-      "size": 164880111,
-      "last_modified": "2026-06-29T11:08:49Z",
-      "etag": "95128c54cdafdfb1e87842b31ba9973d-20",
+      "size": 164791633,
+      "last_modified": "2026-06-29T11:24:53Z",
+      "etag": "19b514197733710a95892b9da8561080-20",
       "embedding_model": "cohere.embed-english-v3",
-      "issue_count": 351,
-      "chunk_count": 9656
+      "issue_count": 350,
+      "chunk_count": 9651
     },
     "graph": {
-      "size": 593760,
-      "last_modified": "2026-06-29T11:09:07Z",
-      "etag": "d084f34b9fb766e7da135f8346823223"
+      "size": 592252,
+      "last_modified": "2026-06-29T11:25:12Z",
+      "etag": "7e7818d1016fe5550de1903482c9abfe"
     }
   },
   "issues": [
@@ -8401,30 +8401,6 @@
         "manifest_script_hash": "sha256:68cceb3e99c04f94f62159500dc9f5d22522b09d4b361ae0f51225b1d28dd77a",
         "current_script_hash": "sha256:4f6e1b7040b67db29fb33a8d28fc2c96ccc66253490a7a803336a534eeb9d9b8",
         "out_of_date": true
-      }
-    },
-    {
-      "number": 360,
-      "subject": "",
-      "publish_date": "",
-      "body": {
-        "tracked": true,
-        "has_local_edits": false
-      },
-      "archive": {
-        "exists": false,
-        "word_count": null
-      },
-      "audio": {
-        "in_manifest": false,
-        "url": null,
-        "duration_seconds": null,
-        "byte_size": null,
-        "voice": null,
-        "rendered_at": null,
-        "manifest_script_hash": "",
-        "current_script_hash": "",
-        "out_of_date": false
       }
     }
   ]
