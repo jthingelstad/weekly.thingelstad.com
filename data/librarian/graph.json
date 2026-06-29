@@ -1,9 +1,9 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-06-29T02:58:08.077299Z",
+  "generated_at": "2026-06-29T11:08:32.648397Z",
   "extraction_model": "heuristic",
-  "issue_count": 350,
+  "issue_count": 351,
   "issues": {
     "1": {
       "entities": [
@@ -17823,6 +17823,53 @@
         "durable archives"
       ],
       "similar_issues": []
+    },
+    "360": {
+      "entities": [
+        "Elixir",
+        "Product Manager",
+        "Build Manager",
+        "Codex",
+        "Data Analyst",
+        "Evaluator",
+        "Just",
+        "Operations Manager",
+        "Owns",
+        "Quality Manager",
+        "AI-generated",
+        "API",
+        "Automations",
+        "Check",
+        "Clash Royale",
+        "Clash Royale API",
+        "Claude",
+        "Claude Code",
+        "Claude Cowork",
+        "Converts",
+        "Discord",
+        "Elixir's Agentic Product Team",
+        "Elixir's Github Issues",
+        "Event Core",
+        "Happy Father",
+        "Hello",
+        "Jarvi",
+        "Judges",
+        "LLM",
+        "Minnesota",
+        "My Claude Code",
+        "Operations",
+        "PM I've",
+        "Reddit",
+        "RoyaleAPI",
+        "Starting",
+        "Turns",
+        "Watches"
+      ],
+      "tropes": [
+        "local community",
+        "ai as collaborator"
+      ],
+      "similar_issues": []
     }
   },
   "entity_index": {
@@ -18504,7 +18551,8 @@
       "304",
       "320",
       "338",
-      "349"
+      "349",
+      "360"
     ],
     "new kind": [
       "2"
@@ -20516,7 +20564,8 @@
       "10"
     ],
     "operations": [
-      "10"
+      "10",
+      "360"
     ],
     "pinboard blog": [
       "10"
@@ -21392,7 +21441,8 @@
       "333",
       "336",
       "344",
-      "345"
+      "345",
+      "360"
     ],
     "keeping": [
       "15",
@@ -22344,7 +22394,8 @@
       "339",
       "342",
       "343",
-      "346"
+      "346",
+      "360"
     ],
     "busy traffic": [
       "21"
@@ -25067,7 +25118,8 @@
     "check": [
       "45",
       "191",
-      "231"
+      "231",
+      "360"
     ],
     "chicken pot pie": [
       "45"
@@ -32215,7 +32267,8 @@
       "125"
     ],
     "starting": [
-      "125"
+      "125",
+      "360"
     ],
     "true connection": [
       "125"
@@ -32739,7 +32792,8 @@
     "hello": [
       "132",
       "222",
-      "327"
+      "327",
+      "360"
     ],
     "here we go again": [
       "132"
@@ -33126,7 +33180,8 @@
       "276",
       "306",
       "313",
-      "322"
+      "322",
+      "360"
     ],
     "andreessen-horowitz": [
       "137"
@@ -38373,7 +38428,8 @@
       "246",
       "257",
       "263",
-      "348"
+      "348",
+      "360"
     ],
     "problem": [
       "203"
@@ -41694,7 +41750,8 @@
       "343",
       "347",
       "348",
-      "349"
+      "349",
+      "360"
     ],
     "llms": [
       "250",
@@ -43147,7 +43204,8 @@
       "345",
       "346",
       "347",
-      "349"
+      "349",
+      "360"
     ],
     "federal charges": [
       "271"
@@ -45170,7 +45228,8 @@
       "301"
     ],
     "ai-generated": [
-      "302"
+      "302",
+      "360"
     ],
     "an interview with": [
       "302"
@@ -46902,7 +46961,8 @@
       "345",
       "346",
       "347",
-      "349"
+      "349",
+      "360"
     ],
     "get some air": [
       "328"
@@ -46970,7 +47030,8 @@
       "342",
       "343",
       "344",
-      "345"
+      "345",
+      "360"
     ],
     "first malicious mcp": [
       "329"
@@ -47722,7 +47783,8 @@
     "elixir": [
       "343",
       "345",
-      "346"
+      "346",
+      "360"
     ],
     "gpt-5.4": [
       "343"
@@ -47791,7 +47853,8 @@
       "344"
     ],
     "automations": [
-      "344"
+      "344",
+      "360"
     ],
     "bambu p2s": [
       "344"
@@ -48137,6 +48200,72 @@
     ],
     "timesofindia.indiatimes.com": [
       "349"
+    ],
+    "product manager": [
+      "360"
+    ],
+    "build manager": [
+      "360"
+    ],
+    "data analyst": [
+      "360"
+    ],
+    "evaluator": [
+      "360"
+    ],
+    "operations manager": [
+      "360"
+    ],
+    "owns": [
+      "360"
+    ],
+    "quality manager": [
+      "360"
+    ],
+    "clash royale": [
+      "360"
+    ],
+    "clash royale api": [
+      "360"
+    ],
+    "claude cowork": [
+      "360"
+    ],
+    "converts": [
+      "360"
+    ],
+    "elixir's agentic product team": [
+      "360"
+    ],
+    "elixir's github issues": [
+      "360"
+    ],
+    "event core": [
+      "360"
+    ],
+    "happy father": [
+      "360"
+    ],
+    "jarvi": [
+      "360"
+    ],
+    "judges": [
+      "360"
+    ],
+    "my claude code": [
+      "360"
+    ],
+    "pm i've": [
+      "360"
+    ],
+    "royaleapi": [
+      "360"
+    ],
+    "turns": [
+      "360"
+    ],
+    "watches": [
+      "360"
     ]
   },
   "trope_index": {
@@ -48902,7 +49031,8 @@
       "343",
       "347",
       "348",
-      "349"
+      "349",
+      "360"
     ],
     "ai as collaborator": [
       "1",
@@ -49130,7 +49260,8 @@
       "346",
       "347",
       "348",
-      "349"
+      "349",
+      "360"
     ],
     "durable archives": [
       "1",
