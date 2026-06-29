@@ -1,9 +1,9 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-06-29T02:56:14.522108Z",
+  "generated_at": "2026-06-29T02:58:08.077299Z",
   "extraction_model": "heuristic",
-  "issue_count": 351,
+  "issue_count": 350,
   "issues": {
     "1": {
       "entities": [
@@ -17823,16 +17823,6 @@
         "durable archives"
       ],
       "similar_issues": []
-    },
-    "360": {
-      "entities": [
-        "reddit.com",
-        "Check",
-        "Reddit",
-        "Reddit Hello"
-      ],
-      "tropes": [],
-      "similar_issues": []
     }
   },
   "entity_index": {
@@ -25077,8 +25067,7 @@
     "check": [
       "45",
       "191",
-      "231",
-      "360"
+      "231"
     ],
     "chicken pot pie": [
       "45"
@@ -33137,8 +33126,7 @@
       "276",
       "306",
       "313",
-      "322",
-      "360"
+      "322"
     ],
     "andreessen-horowitz": [
       "137"
@@ -40161,8 +40149,7 @@
     ],
     "reddit.com": [
       "227",
-      "338",
-      "360"
+      "338"
     ],
     "robinrendle.com": [
       "227",
@@ -48150,9 +48137,6 @@
     ],
     "timesofindia.indiatimes.com": [
       "349"
-    ],
-    "reddit hello": [
-      "360"
     ]
   },
   "trope_index": {
