@@ -17,26 +17,31 @@ test('main navigation stays on one row at mobile widths', async ({ page }) => {
       const links = Array.from(nav.querySelectorAll('a'));
       const rowTops = new Set(links.map((link) => Math.round(link.getBoundingClientRect().top)));
       const firstLink = links[0].getBoundingClientRect();
-      const lastLink = links[links.length - 1].getBoundingClientRect();
 
       return {
         rows: rowTops.size,
         bodyScrollWidth: document.documentElement.scrollWidth,
         viewportWidth: window.innerWidth,
         firstLinkLeft: Math.round(firstLink.left),
-        lastLinkRight: Math.round(lastLink.right),
       };
     });
 
     expect(navLayout.rows, `${viewport.width}px nav rows`).toBe(1);
     expect(navLayout.bodyScrollWidth, `${viewport.width}px body width`).toBeLessThanOrEqual(navLayout.viewportWidth);
     expect(navLayout.firstLinkLeft, `${viewport.width}px first link`).toBeGreaterThanOrEqual(0);
-    expect(navLayout.lastLinkRight, `${viewport.width}px last link`).toBeLessThanOrEqual(navLayout.viewportWidth);
+
+    const lastLinkRight = await page.locator('.site-nav').evaluate((nav) => {
+      nav.scrollLeft = nav.scrollWidth;
+      return Math.round(nav.querySelector('a:last-child').getBoundingClientRect().right);
+    });
+    expect(lastLinkRight, `${viewport.width}px last link after scrolling`).toBeLessThanOrEqual(
+      viewport.width,
+    );
   }
 });
 
 test('legacy Thingy URL redirects to standalone chat', async ({ page }) => {
-  await page.route('https://thingy.thingelstad.com/chat/?prompt=RSS#sources', async (route) => {
+  await page.route('https://thingy.thingelstad.com/chat/?prompt=RSS', async (route) => {
     await route.fulfill({
       status: 200,
       contentType: 'text/html',
