@@ -122,7 +122,7 @@ below. Weekly is purely the last hop.
 
 ## Tech stack
 
-- **Node 22** — Eleventy site, Pagefind
+- **Node 24** — Eleventy site, Pagefind
 - **Eleventy 3.x** — static site generator
 - **Nunjucks** — templates
 - **markdown-it** + `markdown-it-anchor` — body rendering with heading IDs
