@@ -42,7 +42,8 @@ and overwritten by the next handoff. Editorial fixes go in `studio-thing/data/is
 
 Render-only. Triggered by push to `main` (Studio's handoff commit) + manual `workflow_dispatch`. Steps:
 `npm ci` → fetch landing-page stats → `npm run build` (11ty) → `npm run build:search` (Pagefind) →
-upload + deploy to GitHub Pages. No Python, no Lambda, no corpus build — those run in Studio.
+install Playwright Chromium → `npm run test:e2e` → upload + deploy to GitHub Pages. No Python, no
+Lambda, no corpus build — those run in Studio.
 
 ## Secrets
 
@@ -57,8 +58,8 @@ default `GITHUB_TOKEN`.
 - **Tinylytics kudos** overwrites innerHTML — render heart/label via CSS `::before` so they survive.
 - **Don't hand-edit generated files** (`apps/site/archive/*.md`, the pushed `_data/*.json`,
   `data/librarian/graph.json`) — fix upstream in Studio.
-- **e2e tests** (`tests/e2e/`) are Playwright specs against the rendered site + Thingy redirects. They
-  aren't wired into the deploy workflow; run them manually or add a CI step if you want the coverage.
+- **e2e tests** (`tests/e2e/`) are Playwright specs against the rendered site + Thingy redirects. The
+  deploy workflow installs Chromium and runs them before uploading the Pages artifact.
 
 ## Pointer to Studio
 

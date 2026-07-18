@@ -80,8 +80,8 @@ Logout / Sign out / Use different email).
 ## Deploy
 
 GitHub Actions → GitHub Pages, triggered by push to `main` (Studio's handoff commit, or a hand-authored
-change). Render-only: `npm ci` → fetch stats → `npm run build` → `npm run build:search` → deploy. No
-Python, no Lambda — those run in Studio.
+change). Render-only: `npm ci` → fetch stats → `npm run build` → `npm run build:search` → install
+Playwright Chromium → `npm run test:e2e` → deploy. No Python, no Lambda — those run in Studio.
 
 ## Conventions
 
