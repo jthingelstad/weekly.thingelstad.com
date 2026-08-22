@@ -33,6 +33,9 @@ jobs:
 
       - run: npm ci
 
+      - name: Validate documentation links
+        run: npm run test:docs
+
       - name: Audit dependencies
         run: npm audit --audit-level=high
 
