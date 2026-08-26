@@ -2948,12 +2948,6 @@ th {
 .support-benefit h3 {
   margin-top: 0;
 }
-@media (min-width: 720px) {
-  .support-benefits-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-  }
-}
 .support-table-org {
   display: inline-flex;
   align-items: center;
