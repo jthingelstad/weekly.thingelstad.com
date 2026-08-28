@@ -26,9 +26,6 @@ WT Builder's website send commits these as one atomic commit (which triggers the
 
 - `data/librarian/graph.json` — topic graph for the topic pages.
 
-`apps/site/_data/status.json` is a frozen snapshot of the retired Studio pipeline; `/ops/` reads it and
-is pending rework against WT Builder.
-
 **Never edit `apps/site/archive/*.md` (or the pushed files) here.** They're regenerated upstream and
 overwritten by the next handoff. Fix the issue in WT Builder and re-send; historical repairs go in
 `librarian-thing/data/issues/{N}/archive.md`.
@@ -36,7 +33,7 @@ overwritten by the next handoff. Fix the issue in WT Builder and re-send; histor
 ## Data files in `apps/site/_data/`
 
 - **Pushed in** (don't hand-edit): `emails.json` by WT Builder; `data/librarian/graph.json` by
-  `librarian-thing`. `status.json` is frozen (see above).
+  `librarian-thing`.
 - **Owned by this repo:** `stats.json` — subscriber + Stripe figures, fetched by *weekly's own CI* (a
   landing-page presentation concern).
 - **Hand-authored** (edit directly): `site.json`, `support.json`, `quotes.json`, `survey.json`,

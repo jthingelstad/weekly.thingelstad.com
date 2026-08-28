@@ -33,7 +33,6 @@ overwrites local edits.
 
 Knowing which is which matters: hand-edits to non-authored files get clobbered.
 
-**Pushed in by Studio** (don't hand-edit): `emails.json` (issue index), `status.json` (`/ops/` state).
 The topic graph `data/librarian/graph.json` is pushed too.
 
 **Fetched by weekly's own CI:** `stats.json` — subscriber + Stripe figures. This is a *presentation*
@@ -57,8 +56,7 @@ pull-quotes, pulled verbatim from real issues. Infrequent, explicit, human-revie
 `/` (hand-written landing), `/archive/` (year-grouped from `issuesByDate`), `/archive/N/` (generated
 per-issue, `layout: archive`), `/archive/<slug>/` redirects (`redirects.njk` + `_data/redirects.js`),
 hand-written `/about/ /members/ /faq/ /search/`, `/feed.xml`, `/archive/N/links.xml`, `/podcast.xml`,
-`/thingy/` (redirect to standalone Thingy), `/ops/` + `/status.json` (unlinked, noindex, `Disallow`'d in
-`robots.txt`, read from `_data/status.json`).
+
 
 ## Pagefind
 

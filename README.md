@@ -39,7 +39,7 @@ Shortcuts workflow remains the fallback producer.)
 | [`apps/site/`](apps/site/) | The Eleventy static site — landing page, full archive, feeds. The only app here. |
 | [`apps/files-cdn/`](apps/files-cdn/) | `robots.txt` for the `files.thingelstad.com` public asset domain. |
 | `apps/site/archive/*.md` | **Generated, pushed in by WT Builder.** One page per issue. Do not edit here (the next handoff overwrites). |
-| `apps/site/_data/` | A mix: pushed by WT Builder (`emails.json`), fetched by this repo's CI (`stats.json`), and hand-authored (`site.json`, `support.json`, `quotes.json`, `faq.json`, …). `status.json` is a frozen snapshot of the retired Studio pipeline until `/ops/` is reworked. |
+| `apps/site/_data/` | A mix: pushed by WT Builder (`emails.json`), fetched by this repo's CI (`stats.json`), and hand-authored (`site.json`, `support.json`, `quotes.json`, `faq.json`, …). |
 | `data/librarian/graph.json` | Topic graph, pushed by `librarian-thing`; powers the site's topic pages. |
 | [`tests/e2e/`](tests/e2e/) | Playwright end-to-end tests for the rendered site + the legacy Thingy redirect. |
 
@@ -102,7 +102,6 @@ GitHub Pages deploys with the default `GITHUB_TOKEN`.
 | `/archive/N/links.xml` | `issue-links-feed.njk` | Per-issue links feed |
 | `/podcast.xml` | `podcast.njk` | Podcast RSS feed |
 | `/thingy/` | `librarian.njk` | Redirect to standalone Thingy chat at thingy.thingelstad.com |
-| `/ops/` | `ops.njk` | **Unlinked, noindex.** Reads `_data/status.json` — a frozen snapshot of the retired Studio pipeline, pending rework against WT Builder. |
 
 ### Design
 

@@ -29,7 +29,6 @@ apps/site/
 ├── eleventy.config.js    ← passthroughs, filters, collections, markdown setup
 ├── _data/                ← JSON + JS data files (see CLAUDE.md for source-of-truth per file)
 │   ├── emails.json       ← (pushed by WT Builder) lightweight issue index
-│   ├── status.json       ← frozen snapshot of the retired Studio pipeline (/ops/ pending rework)
 │   ├── stats.json        ← (fetched by weekly's CI) subscriber + Stripe figures
 │   ├── voiceSamples.json ← home-page pull-quotes (its Studio refresh pipeline is retired)
 │   ├── site.js           ← (hand-authored) URL, author, social, Tinylytics UID
@@ -42,7 +41,7 @@ apps/site/
 ├── css/, img/
 ├── index.njk, about.njk, support.njk, search.njk, faq.njk, …
 ├── feed.njk, issue-links-feed.njk, podcast.njk
-├── librarian.njk, ops.njk, status-json.njk, redirects.njk
+├── librarian.njk, redirects.njk
 └── CNAME, robots.txt, _nojekyll, favicon.svg
 ```
 
@@ -65,7 +64,6 @@ handoff. Fix the issue in WT Builder and re-send; historical repairs go in
 | `/archive/N/links.xml` | `issue-links-feed.njk` | Per-issue links feed |
 | `/podcast.xml` | `podcast.njk` | Podcast RSS |
 | `/thingy/` | `librarian.njk` | Redirect to standalone Thingy chat at thingy.thingelstad.com |
-| `/ops/`, `/status.json` | `ops.njk`, `status-json.njk` | Unlinked, noindex pipeline state |
 
 ## Design
 

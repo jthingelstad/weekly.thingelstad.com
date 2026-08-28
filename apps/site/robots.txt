@@ -1,7 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /ops/
-Disallow: /status.json
 Disallow: /thingy/?
 
 Sitemap: https://weekly.thingelstad.com/sitemap.xml

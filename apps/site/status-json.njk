@@ -1,5 +1,0 @@
----
-permalink: /status.json
-eleventyExcludeFromCollections: true
----
-{% if status %}{{ status | dump | safe }}{% else %}{"error": "Status report not generated yet."}{% endif %}
