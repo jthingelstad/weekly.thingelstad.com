@@ -1,7 +1,7 @@
 # apps/site/ — project memory
 
 Operational notes for working in the Eleventy site. Human-facing overview lives in
-[`README.md`](README.md). This repo is a **render surface**; the producer is Studio (`studio-thing`).
+[`README.md`](README.md). This repo is a **render surface**; the producer is WT Builder (`wt-builder`).
 Repo-wide notes: [`../../CLAUDE.md`](../../CLAUDE.md).
 
 ## Eleventy invocation
@@ -18,15 +18,15 @@ scripts: `npm run build`, `npm run build:search`). The output dir `_site/` stays
   `issueNumberBase`, `xmlEscape`, `markdownify`, `extractToc`, `groupByYear`
 - **Passthrough copy:** `img/`, `css/`, `CNAME`, `favicon.svg`, `_nojekyll`
 
-## Where the content comes from — Studio, not here
+## Where the content comes from — WT Builder, not here
 
-`apps/site/archive/{N}.md` is **generated upstream and pushed in by Studio's handoff**, not built in this
-repo. The canonical body lives in `studio-thing/data/issues/{N}/archive.md`; Studio's
-`pipeline/content/content.py build` writes the 11ty-shaped `{N}.md` (front matter: `layout: archive`,
-`permalink: /archive/{N}/`, `tags: ["issue"]`, audio fields) and commits it here.
+`apps/site/archive/{N}.md` is **generated upstream and pushed in by WT Builder's website send**, not
+built in this repo. WT Builder renders the 11ty-shaped `{N}.md` (front matter: layout, `permalink:
+/archive/{N}/`, `tags: issue`, audio fields) from its canonical issue and commits it here; the same
+issue's canonical text is committed to `librarian-thing/data/issues/{N}/` for the corpus.
 
 Every generated file carries an inline notice (`<!-- Generated … do not edit directly. -->`).
-**Editorial fixes go upstream in Studio**, never in `apps/site/archive/` here — the next handoff
+**Editorial fixes go upstream in WT Builder**, never in `apps/site/archive/` here — the next handoff
 overwrites local edits.
 
 ## `_data/` files — source of truth

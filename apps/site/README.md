@@ -2,7 +2,8 @@
 
 The Eleventy site at [weekly.thingelstad.com](https://weekly.thingelstad.com): landing page, full archive,
 feeds, search, FAQ, ops report. This is the one app in this repo — weekly is a **render surface**;
-content is produced by **Studio** (`studio-thing`) and handed in. See [`../../README.md`](../../README.md).
+content is produced by **WT Builder** (`wt-builder`) and handed in; the topic graph comes from
+`librarian-thing`. See [`../../README.md`](../../README.md).
 
 > Operational memory for editing the site lives in [`CLAUDE.md`](CLAUDE.md).
 
@@ -27,17 +28,17 @@ apps/site/
 ├── CLAUDE.md             ← operational memory
 ├── eleventy.config.js    ← passthroughs, filters, collections, markdown setup
 ├── _data/                ← JSON + JS data files (see CLAUDE.md for source-of-truth per file)
-│   ├── emails.json       ← (pushed by Studio) lightweight issue index
-│   ├── status.json       ← (pushed by Studio) per-issue pipeline state for /ops/
+│   ├── emails.json       ← (pushed by WT Builder) lightweight issue index
+│   ├── status.json       ← frozen snapshot of the retired Studio pipeline (/ops/ pending rework)
 │   ├── stats.json        ← (fetched by weekly's CI) subscriber + Stripe figures
-│   ├── voiceSamples.json ← (refreshed via a Studio copy pipeline) home-page pull-quotes
+│   ├── voiceSamples.json ← home-page pull-quotes (its Studio refresh pipeline is retired)
 │   ├── site.js           ← (hand-authored) URL, author, social, Tinylytics UID
 │   ├── support.json      ← (hand-authored) current + past nonprofits
 │   ├── quotes.json, survey.json, faq.js, redirects.js, topics.js, assets.js
 │   ├── archiveStats.js   ← (computed at build) totals, records, streaks
 │   └── supportTotals.js  ← (computed at build) supporter program totals
 ├── _includes/            ← layouts/ + partials/
-├── archive/              ← {N}.md per issue — generated upstream, pushed in by Studio
+├── archive/              ← {N}.md per issue — generated upstream, pushed in by WT Builder
 ├── css/, img/
 ├── index.njk, about.njk, support.njk, search.njk, faq.njk, …
 ├── feed.njk, issue-links-feed.njk, podcast.njk
@@ -45,8 +46,9 @@ apps/site/
 └── CNAME, robots.txt, _nojekyll, favicon.svg
 ```
 
-**Don't hand-edit `apps/site/archive/*.md`** — they're generated in Studio and overwritten by the next
-handoff. Edit the canonical body in `studio-thing/data/issues/{N}/archive.md`.
+**Don't hand-edit `apps/site/archive/*.md`** — they're generated upstream and overwritten by the next
+handoff. Fix the issue in WT Builder and re-send; historical repairs go in
+`librarian-thing/data/issues/{N}/archive.md`.
 
 ## Pages
 
@@ -85,4 +87,5 @@ GitHub Actions → GitHub Pages on push to `main` (which is when Studio's handof
 
 - [`CLAUDE.md`](CLAUDE.md) — operational memory (`_data/` source-of-truth, subscribe-state, Pagefind)
 - [`../../README.md`](../../README.md) — this repo (the render surface)
-- `studio-thing/` — the producer: editorial source, agents, pipeline, the build that writes `archive/{N}.md`
+- `wt-builder/` — the producer: authors each issue and writes `archive/{N}.md` on send
+- `librarian-thing/` — the archive, corpus, and Librarian API; pushes the topic graph

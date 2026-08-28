@@ -1,11 +1,11 @@
 name: Build and Deploy
 
-# Render surface. Studio (studio-thing) owns production and commits the
+# Render surface. WT Builder (wt-builder) owns publishing and commits the
 # generated 11ty inputs into this repo (apps/site/archive/*.md,
-# apps/site/_data/{emails,status}.json, data/librarian/graph.json).
+# apps/site/_data/emails.json); librarian-thing pushes
+# data/librarian/graph.json on corpus rebuilds.
 # Weekly refreshes its own landing-page stats (subscriber/supporter numbers)
 # here, then builds with 11ty + Pagefind and deploys to Pages.
-# See studio-thing/PHASE_2.md.
 
 on:
   push:

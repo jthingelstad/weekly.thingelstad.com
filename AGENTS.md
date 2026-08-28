@@ -5,34 +5,40 @@ Operational notes for working in this repo. Human-facing overview lives in
 
 ## What this repo is — a render surface
 
-**Studio (`studio-thing`) is the brain; this repo renders.** The editorial source of truth
-(`data/issues/{N}/archive.md`), the authoring agents (`workshop_bot`), the Librarian/Thingy Lambda, the
-corpus, and the whole publishing pipeline live in Studio. This repo builds the 11ty site from inputs
-Studio generates and commits here, and deploys to GitHub Pages.
+**WT Builder (`wt-builder`) publishes; `librarian-thing` keeps the archive; this repo renders.**
+WT Builder authors each issue and commits the 11ty inputs here on send. The canonical issue store
+(`data/issues/{N}/archive.md`), the corpus, and the Librarian/Thingy Lambda live in `librarian-thing`
+(renamed from `studio-thing` 2026-08-28; the Studio application is retired). This repo builds the 11ty
+site from the committed inputs and deploys to GitHub Pages.
 
-Do not look for the pipeline, the agents, `data/issues`, or `librarian-core` here — they're gone (moved
-to Studio). The architecture model lives in `studio-thing/ALIGNMENT.md`; the producer workflow + handoff
-in `studio-thing/PHASE_1.md` and `pipeline/deploy/push_site_inputs.py` (in Studio).
+Do not look for the pipeline, `data/issues`, or `librarian-core` here — they're upstream. The
+architecture model lives in `librarian-thing/ALIGNMENT.md`; the website handoff in WT Builder's
+`src/server/publish.ts`.
 
-## The handoff — what Studio pushes in
+## The handoffs — what gets pushed in
 
-On each ship, Studio's CI builds and commits these to this repo as one atomic commit (which triggers the
-render below):
+WT Builder's website send commits these as one atomic commit (which triggers the render below):
 
 - `apps/site/archive/{N}.md` — generated issue pages.
 - `apps/site/_data/emails.json` — lightweight issue index.
-- `apps/site/_data/status.json` — pipeline state for `/ops/`.
+
+`librarian-thing` pushes one file on corpus rebuilds:
+
 - `data/librarian/graph.json` — topic graph for the topic pages.
 
-**Never edit `apps/site/archive/*.md` (or the pushed `_data` files) here.** They're regenerated upstream
-and overwritten by the next handoff. Editorial fixes go in `studio-thing/data/issues/{N}/archive.md`.
+`apps/site/_data/status.json` is a frozen snapshot of the retired Studio pipeline; `/ops/` reads it and
+is pending rework against WT Builder.
+
+**Never edit `apps/site/archive/*.md` (or the pushed files) here.** They're regenerated upstream and
+overwritten by the next handoff. Fix the issue in WT Builder and re-send; historical repairs go in
+`librarian-thing/data/issues/{N}/archive.md`.
 
 ## Data files in `apps/site/_data/`
 
-- **Pushed by Studio** (don't hand-edit): `emails.json`, `status.json` (and `data/librarian/graph.json`).
+- **Pushed in** (don't hand-edit): `emails.json` by WT Builder; `data/librarian/graph.json` by
+  `librarian-thing`. `status.json` is frozen (see above).
 - **Owned by this repo:** `stats.json` — subscriber + Stripe figures, fetched by *weekly's own CI* (a
-  landing-page presentation concern). Studio reads the same figures separately, for agent analysis — a
-  different concern, so both holding access is by design.
+  landing-page presentation concern).
 - **Hand-authored** (edit directly): `site.json`, `support.json`, `quotes.json`, `survey.json`,
   `faq.json`, `redirects.json`.
 
@@ -40,16 +46,16 @@ and overwritten by the next handoff. Editorial fixes go in `studio-thing/data/is
 
 ## GitHub Actions — `.github/workflows/deploy.yml`
 
-Render-only. Triggered by push to `main` (Studio's handoff commit) + manual `workflow_dispatch`. Steps:
+Render-only. Triggered by push to `main` (a handoff commit) + manual `workflow_dispatch`. Steps:
 `npm ci` → validate tracked documentation links → fetch landing-page stats → `npm run build` (11ty) →
 `npm run build:search` (Pagefind) → install Playwright Chromium → `npm run test:e2e` → upload + deploy
-to GitHub Pages. No Python, no Lambda, no corpus build — those run in Studio.
+to GitHub Pages. No Python, no Lambda, no corpus build — those run in `librarian-thing`.
 
 ## Secrets
 
 This repo holds only what its own concerns need — the credentials for the landing-page stats fetch.
-Production secrets (Buttondown publish, OpenAI, AWS, Librarian) live in Studio. Pages deploys with the
-default `GITHUB_TOKEN`.
+Publishing secrets live in WT Builder; corpus/Lambda secrets live in `librarian-thing`. Pages deploys
+with the default `GITHUB_TOKEN`.
 
 ## Conventions worth knowing (site-only)
 
@@ -57,14 +63,15 @@ default `GITHUB_TOKEN`.
   reindex.
 - **Tinylytics kudos** overwrites innerHTML — render heart/label via CSS `::before` so they survive.
 - **Don't hand-edit generated files** (`apps/site/archive/*.md`, the pushed `_data/*.json`,
-  `data/librarian/graph.json`) — fix upstream in Studio.
+  `data/librarian/graph.json`) — fix upstream in WT Builder or `librarian-thing`.
 - **e2e tests** (`tests/e2e/`) are Playwright specs against the rendered site + Thingy redirects. The
   deploy workflow installs Chromium and runs them before uploading the Pages artifact.
 - **Agent guide compatibility:** `AGENTS.md` is canonical and `CLAUDE.md` is its one-way symlink.
   `npm run test:docs` validates every tracked Markdown symlink and both root entry points.
 
-## Pointer to Studio
+## Pointers upstream
 
-Editorial process, the agents, the publishing eras + link-extraction rules, the Buttondown config, the
-Lambda runtime, and all production conventions now live in the **Studio** repo. Start at
-`studio-thing/README.md` and `studio-thing/CLAUDE.md`.
+Authoring and publishing: **WT Builder** — start at `wt-builder/README.md`. The archive, the
+era-specific link-extraction rules, and the Lambda runtime: **`librarian-thing`** — start at its
+`README.md`. The Studio application and its agents are retired; their history lives in
+`librarian-thing`'s git history.
