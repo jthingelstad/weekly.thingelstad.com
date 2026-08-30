@@ -32,7 +32,7 @@ layout: layouts/base.njk
               {% if it.links and it.links.length > 0 %}<span><strong>{{ it.links.length }}</strong> links</span>{% endif %}
               {% if it.word_count %}<span><strong>{{ (it.word_count / 1000) | round(1) }}k</strong> words</span>{% endif %}
               {% if it.audio_url %}<a href="{{ it.audio_url }}" class="archive-entry-action archive-entry-listen" data-audio-url="{{ it.audio_url }}" data-issue="{{ it.number }}" data-tinylytics-event="topic.listen" data-tinylytics-event-value="{{ it.number }}">▶️ Listen &rarr;</a>{% endif %}
-              <a href="{{ site.thingyUrl }}/chat/?prompt={{ ('Tell me about issue #' + it.number) | urlencode }}" class="archive-entry-action archive-entry-chat" data-tinylytics-event="topic.chat" data-tinylytics-event-value="{{ it.number }}">💬 Chat &rarr;</a>
+              <a href="{{ site.thingyUrl }}/chat/?issue={{ it.number }}" class="archive-entry-action archive-entry-chat" data-tinylytics-event="topic.chat" data-tinylytics-event-value="{{ it.number }}">💬 Chat &rarr;</a>
             </p>
           </div>
         </div>
@@ -64,7 +64,7 @@ layout: layouts/base.njk
   <aside class="topic-thingy">
     <p class="topic-thingy-lede">
       Want to go deeper on <em>{{ topic.name }}</em>?
-      <a class="topic-thingy-link" href="{{ site.thingyUrl }}/chat/?prompt={{ ('Tell me about ' + topic.name + ' in The Weekly Thing.') | urlencode }}" data-tinylytics-event="topic.thingy_nudge" data-tinylytics-event-value="{{ topic.slug }}">Ask Thingy →</a>
+      <a class="topic-thingy-link" href="{{ site.thingyUrl }}/chat/?prompt={{ ('Tell me about ' + topic.name + ' in The Weekly Thing.') | urlencode }}&from={{ (site.url + '/topics/' + topic.slug + '/') | urlencode }}" data-tinylytics-event="topic.thingy_nudge" data-tinylytics-event-value="{{ topic.slug }}">Ask Thingy →</a>
     </p>
   </aside>
 
