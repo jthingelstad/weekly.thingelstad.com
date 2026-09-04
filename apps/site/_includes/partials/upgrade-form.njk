@@ -215,6 +215,12 @@
         renderConfirmationPending(email);
         return;
       }
+      // Already live (e.g. a lapsed member whose record never left): the
+      // membership checkout is what they came for — go straight there.
+      if (result.ok && result.data && result.data.status === 'already_subscribed') {
+        redirectToStripe(email);
+        return;
+      }
       if (result.status === 429) {
         setStatus(escapeHtml((result.data && result.data.error) || 'Too many attempts. Please try again in a bit.'), 'error');
         return;
