@@ -32,7 +32,6 @@ module.exports = {
   librarianStreamUrl: envValue('LIBRARIAN_STREAM_URL') || 'https://jcvud66qqpq53frvno5stoqntm0zqntw.lambda-url.us-east-1.on.aws/',
   social: {
     mastodon: 'https://mastodon.social/@weeklything',
-    bluesky: 'https://bsky.app/profile/weekly.thingelstad.com',
-    reddit: 'https://www.reddit.com/r/weeklything/'
+    bluesky: 'https://bsky.app/profile/weekly.thingelstad.com'
   }
 };
