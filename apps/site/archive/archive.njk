@@ -14,6 +14,7 @@ permalink: /archive/
     <p class="archive-hero-lede">Every issue I&rsquo;ve sent, going back to May 2017. {{ latestNumber }} letters, {{ archiveStats.totalLinks | numberFormat }} links, {{ archiveStats.totalWords | numberFormat }} words. Browse by year, by topic, or just dip in &mdash; it&rsquo;s all searchable.</p>
     <div class="archive-hero-actions">
       <a href="/search/" class="btn btn-primary">Search the archive &rarr;</a>
+      <a href="{{ site.thingyUrl }}/chat/?from={{ (site.url + '/archive/') | urlencode }}" class="btn btn-secondary" data-tinylytics-event="archive.thingy">Ask Thingy &#128172;</a>
       <button type="button" class="btn btn-secondary" id="archive-random">Random issue &#10547;</button>
     </div>
   </div>

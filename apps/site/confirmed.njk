@@ -16,6 +16,7 @@ eleventyExcludeFromCollections: true
   <div class="confirmed-step">
     <h2>In the meantime</h2>
     <ul>
+      <li><a href="{{ site.thingyUrl }}/chat/?from={{ (site.url + '/confirmed/') | urlencode }}" data-tinylytics-event="confirmed.thingy">Meet Thingy</a> — the archive&rsquo;s librarian. Ask it anything from nine years of issues; your email now signs you in.</li>
       <li><a href="/archive/">Browse the archive</a> — {{ collections.issuesByDate[0].data.number }}+ issues going back to 2017</li>
       <li><a href="/search/">Search the archive</a> — find something specific</li>
       <li><a href="/members/">Become a Supporting Member</a> — 100% of fees go to a nonprofit each year</li>
