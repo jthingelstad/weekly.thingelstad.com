@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-09-05T10:49:55.030363Z",
+  "generated_at": "2026-09-05T13:11:26.140111Z",
   "extraction_model": "heuristic",
   "issue_count": 350,
   "issues": {
@@ -16182,7 +16182,6 @@
     "318": {
       "entities": [
         "Minnebar",
-        "Auto-generated",
         "Creative Commons",
         "LLM",
         "simonwillison.net",
@@ -16220,7 +16219,8 @@
         "ruk.ca",
         "utteranc.es",
         "API",
-        "Accessing LLM APIs"
+        "Accessing LLM APIs",
+        "Allen Pike"
       ],
       "tropes": [
         "open web and ownership",
@@ -16541,7 +16541,6 @@
         "MCP",
         "Platform",
         "Apple",
-        "Auto-generated",
         "Grandin",
         "Shortcuts",
         "Warp",
@@ -16576,7 +16575,8 @@
         "crazystupidtech.com",
         "creativecommons.org",
         "economist.com",
-        "fastcompany.com"
+        "fastcompany.com",
+        "fellerts.no"
       ],
       "tropes": [
         "open web and ownership",
@@ -35290,7 +35290,8 @@
       "164"
     ],
     "allen pike": [
-      "164"
+      "164",
+      "318"
     ],
     "begin": [
       "164"
@@ -46225,10 +46226,6 @@
     "curry-lang.org": [
       "317"
     ],
-    "auto-generated": [
-      "318",
-      "325"
-    ],
     "actually don't use generative llms": [
       "318"
     ],
@@ -46766,6 +46763,9 @@
       "325"
     ],
     "creativecommons.org": [
+      "325"
+    ],
+    "fellerts.no": [
       "325"
     ],
     "tempo": [
