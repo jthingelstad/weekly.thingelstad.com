@@ -5,7 +5,7 @@ feeds, search, FAQ, ops report. This is the one app in this repo — weekly is a
 content is produced by **WT Builder** (`wt-builder`) and handed in; the topic graph comes from
 `librarian-thing`. See [`../../README.md`](../../README.md).
 
-> Operational memory for editing the site lives in [`CLAUDE.md`](CLAUDE.md).
+> Operational memory for editing the site lives in [`AGENTS.md`](AGENTS.md).
 
 ## Run
 
@@ -25,9 +25,9 @@ Eleventy is invoked from the repo root with `--config apps/site/eleventy.config.
 ```
 apps/site/
 ├── README.md             ← this file
-├── CLAUDE.md             ← operational memory
+├── AGENTS.md             ← operational memory
 ├── eleventy.config.js    ← passthroughs, filters, collections, markdown setup
-├── _data/                ← JSON + JS data files (see CLAUDE.md for source-of-truth per file)
+├── _data/                ← JSON + JS data files (see AGENTS.md for source-of-truth per file)
 │   ├── emails.json       ← (pushed by WT Builder) lightweight issue index
 │   ├── stats.json        ← (fetched by weekly's CI) subscriber + Stripe figures
 │   ├── voiceSamples.json ← home-page pull-quotes (its Studio refresh pipeline is retired)
@@ -83,7 +83,7 @@ GitHub Actions → GitHub Pages on push to `main` (which is when Studio's handof
 
 ## Related reading
 
-- [`CLAUDE.md`](CLAUDE.md) — operational memory (`_data/` source-of-truth, subscribe-state, Pagefind)
+- [`AGENTS.md`](AGENTS.md) — operational memory (`_data/` source-of-truth, subscribe-state, Pagefind)
 - [`../../README.md`](../../README.md) — this repo (the render surface)
 - `wt-builder/` — the producer: authors each issue and writes `archive/{N}.md` on send
 - `librarian-thing/` — the archive, corpus, and Librarian API; pushes the topic graph

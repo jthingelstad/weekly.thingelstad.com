@@ -1,7 +1,7 @@
 # Repository guide — weekly.thingelstad.com
 
 Operational notes for working in this repo. Human-facing overview lives in
-[`README.md`](README.md). Site detail: [`apps/site/CLAUDE.md`](apps/site/CLAUDE.md).
+[`README.md`](README.md). Site detail: [`apps/site/AGENTS.md`](apps/site/AGENTS.md).
 
 ## What this repo is — a render surface
 
@@ -63,7 +63,8 @@ with the default `GITHUB_TOKEN`.
   `data/librarian/graph.json`) — fix upstream in WT Builder or `librarian-thing`.
 - **e2e tests** (`tests/e2e/`) are Playwright specs against the rendered site + Thingy redirects. The
   deploy workflow installs Chromium and runs them before uploading the Pages artifact.
-- **Agent guide compatibility:** `AGENTS.md` is canonical and `CLAUDE.md` is its one-way symlink.
+- **Agent guide compatibility:** `AGENTS.md` is canonical everywhere in this repo (root and
+  `apps/site/`) and each `CLAUDE.md` is a one-way symlink beside it.
   `npm run test:docs` validates every tracked Markdown symlink and both root entry points.
 
 ## Pointers upstream
