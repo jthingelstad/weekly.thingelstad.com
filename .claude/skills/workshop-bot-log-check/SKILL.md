@@ -11,7 +11,7 @@ allowed-tools:
 
 Look at the workshop_bot log file and report on what's been happening. The default window is **the last 2 hours** (matching the scheduled cadence) — if Jamie asks for a different window ("today", "since 12:00", "last 6h") interpret it and adjust.
 
-The log lives at `/Users/otto/Projects/weekly.thingelstad.com/apps/workshop_bot/logs/workshop.log`. It's a `tail`-friendly text file — never load the whole thing; always grep / awk a window.
+The log lives at `/Users/otto/Projects/thingelstad.com/weekly.thingelstad.com/apps/workshop_bot/logs/workshop.log`. It's a `tail`-friendly text file — never load the whole thing; always grep / awk a window.
 
 ## Procedure
 
@@ -21,7 +21,7 @@ Default window = last 2 hours. Compute the cutoff timestamp as `YYYY-MM-DD HH:MM
 
 ```bash
 CUTOFF=$(date -v-2H +"%Y-%m-%d %H:%M")
-LOG=/Users/otto/Projects/weekly.thingelstad.com/apps/workshop_bot/logs/workshop.log
+LOG=/Users/otto/Projects/thingelstad.com/weekly.thingelstad.com/apps/workshop_bot/logs/workshop.log
 awk -v c="$CUTOFF" '$0 >= c' "$LOG" > /tmp/wb_window.log
 ```
 
