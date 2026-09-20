@@ -1,9 +1,9 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-09-20T12:59:51.379628Z",
+  "generated_at": "2026-09-20T21:57:19.990157Z",
   "extraction_model": "heuristic",
-  "issue_count": 350,
+  "issue_count": 351,
   "issues": {
     "1": {
       "entities": [
@@ -17823,6 +17823,57 @@
         "durable archives"
       ],
       "similar_issues": []
+    },
+    "350": {
+      "entities": [
+        "Homebrew",
+        "macstories.net",
+        "MacStories",
+        "The MacStories Review",
+        "simonwillison.net",
+        "Building",
+        "Want",
+        "AI Free",
+        "Agents API",
+        "BrewUI",
+        "Claude",
+        "Don",
+        "Homebrew's",
+        "Interact With Stochastic Parrots",
+        "Kubb",
+        "OpenAI",
+        "Product",
+        "Seth's Blog",
+        "Software",
+        "WT350",
+        "claude.com",
+        "github.com",
+        "goldenhillsoftware.com",
+        "leadershipfreak.blog",
+        "newsletter.pragmaticengineer.com",
+        "openai.com",
+        "ploum.net",
+        "rubyhack.ai",
+        "seths.blog",
+        "thenextweb.com",
+        "theverge.com",
+        "vals.ai",
+        "youtube.com",
+        "Absolutely",
+        "Agent Studio",
+        "Agents",
+        "Ajeya Cotra",
+        "Along",
+        "Anthropic",
+        "Anthropic Claude Fable"
+      ],
+      "tropes": [
+        "open web and ownership",
+        "local community",
+        "ai as collaborator",
+        "durable archives"
+      ],
+      "similar_issues": []
     }
   },
   "entity_index": {
@@ -18140,7 +18191,8 @@
       "294",
       "299",
       "323",
-      "327"
+      "327",
+      "350"
     ],
     "macron": [
       "1"
@@ -18829,7 +18881,8 @@
       "341",
       "344",
       "345",
-      "349"
+      "349",
+      "350"
     ],
     "dungeon master": [
       "3"
@@ -19714,7 +19767,8 @@
       "341",
       "346",
       "348",
-      "349"
+      "349",
+      "350"
     ],
     "wired.com": [
       "6",
@@ -20353,7 +20407,8 @@
       "75",
       "77",
       "92",
-      "325"
+      "325",
+      "350"
     ],
     "mitch kapor": [
       "9"
@@ -21325,7 +21380,8 @@
       "295",
       "313",
       "346",
-      "347"
+      "347",
+      "350"
     ],
     "eureka": [
       "15",
@@ -21571,7 +21627,8 @@
       "340",
       "342",
       "343",
-      "345"
+      "345",
+      "350"
     ],
     "blame": [
       "17"
@@ -21835,7 +21892,8 @@
       "18",
       "245",
       "261",
-      "315"
+      "315",
+      "350"
     ],
     "push you": [
       "18"
@@ -22104,7 +22162,8 @@
       "263",
       "268",
       "294",
-      "327"
+      "327",
+      "350"
     ],
     "making maps": [
       "20"
@@ -22208,7 +22267,8 @@
       "316",
       "327",
       "339",
-      "341"
+      "341",
+      "350"
     ],
     "azure": [
       "21",
@@ -22687,7 +22747,8 @@
       "128",
       "133",
       "297",
-      "302"
+      "302",
+      "350"
     ],
     "based": [
       "24",
@@ -25823,7 +25884,8 @@
       "267",
       "272",
       "278",
-      "337"
+      "337",
+      "350"
     ],
     "edition": [
       "54",
@@ -25938,7 +26000,8 @@
       "314",
       "321",
       "327",
-      "333"
+      "333",
+      "350"
     ],
     "delivered": [
       "55"
@@ -27056,7 +27119,8 @@
       "289",
       "304",
       "326",
-      "336"
+      "336",
+      "350"
     ],
     "sloanreview.mit.edu": [
       "65"
@@ -27884,7 +27948,8 @@
       "329",
       "334",
       "335",
-      "345"
+      "345",
+      "350"
     ],
     "slate.com": [
       "74",
@@ -29442,7 +29507,8 @@
       "92"
     ],
     "homebrew": [
-      "92"
+      "92",
+      "350"
     ],
     "internet dupe": [
       "92"
@@ -33468,7 +33534,8 @@
       "235",
       "241",
       "272",
-      "339"
+      "339",
+      "350"
     ],
     "2harvest.org": [
       "140-special"
@@ -33529,7 +33596,8 @@
     ],
     "seth's blog": [
       "141",
-      "239"
+      "239",
+      "350"
     ],
     "you need": [
       "141"
@@ -35622,7 +35690,8 @@
       "168",
       "197",
       "232",
-      "236"
+      "236",
+      "350"
     ],
     "will patrick": [
       "168"
@@ -40815,7 +40884,8 @@
       "338",
       "340",
       "343",
-      "345"
+      "345",
+      "350"
     ],
     "protect me from what": [
       "236"
@@ -41118,7 +41188,8 @@
       "339",
       "340",
       "343",
-      "345"
+      "345",
+      "350"
     ],
     "wildebeest": [
       "241"
@@ -42421,7 +42492,8 @@
       "260"
     ],
     "ploum.net": [
-      "260"
+      "260",
+      "350"
     ],
     "rash-lang.org": [
       "260"
@@ -43148,7 +43220,8 @@
       "345",
       "346",
       "347",
-      "349"
+      "349",
+      "350"
     ],
     "federal charges": [
       "271"
@@ -44275,7 +44348,8 @@
       "338",
       "340",
       "342",
-      "346"
+      "346",
+      "350"
     ],
     "clematis": [
       "289"
@@ -45892,7 +45966,8 @@
     ],
     "absolutely": [
       "312",
-      "328"
+      "328",
+      "350"
     ],
     "allen pike trump": [
       "312"
@@ -46923,7 +46998,8 @@
       "328"
     ],
     "newsletter.pragmaticengineer.com": [
-      "328"
+      "328",
+      "350"
     ],
     "wasmer.io": [
       "328"
@@ -47440,7 +47516,8 @@
     ],
     "claude.com": [
       "337",
-      "349"
+      "349",
+      "350"
     ],
     "yearly thing": [
       "338",
@@ -48137,6 +48214,48 @@
     ],
     "timesofindia.indiatimes.com": [
       "349"
+    ],
+    "ai free": [
+      "350"
+    ],
+    "agents api": [
+      "350"
+    ],
+    "brewui": [
+      "350"
+    ],
+    "homebrew's": [
+      "350"
+    ],
+    "interact with stochastic parrots": [
+      "350"
+    ],
+    "wt350": [
+      "350"
+    ],
+    "goldenhillsoftware.com": [
+      "350"
+    ],
+    "rubyhack.ai": [
+      "350"
+    ],
+    "thenextweb.com": [
+      "350"
+    ],
+    "vals.ai": [
+      "350"
+    ],
+    "agent studio": [
+      "350"
+    ],
+    "ajeya cotra": [
+      "350"
+    ],
+    "along": [
+      "350"
+    ],
+    "anthropic claude fable": [
+      "350"
     ]
   },
   "trope_index": {
@@ -48478,7 +48597,8 @@
       "346",
       "347",
       "348",
-      "349"
+      "349",
+      "350"
     ],
     "tools for thought": [
       "1",
@@ -48902,7 +49022,8 @@
       "343",
       "347",
       "348",
-      "349"
+      "349",
+      "350"
     ],
     "ai as collaborator": [
       "1",
@@ -49130,7 +49251,8 @@
       "346",
       "347",
       "348",
-      "349"
+      "349",
+      "350"
     ],
     "durable archives": [
       "1",
@@ -49361,7 +49483,8 @@
       "346",
       "347",
       "348",
-      "349"
+      "349",
+      "350"
     ],
     "agency over convenience": [
       "6",
