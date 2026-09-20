@@ -3765,3 +3765,27 @@ th {
   font-size: 11px;
   color: var(--muted);
 }
+
+
+/* /podcast/ — the listening page */
+.podcast-app-list { list-style: none; margin: 8px 0 14px; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.podcast-app {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px;
+  text-decoration: none; color: var(--ink); background: var(--bg, #fff);
+  transition: border-color .15s ease, transform .15s ease;
+}
+.podcast-app:hover { border-color: var(--accent); transform: translateY(-1px); text-decoration: none; }
+.podcast-app-name { font-weight: 600; font-family: var(--sans); }
+.podcast-app-note { font-size: 13px; color: var(--ink-soft); font-family: var(--sans); word-break: break-all; }
+.podcast-feed-note { font-size: 14px; color: var(--ink-soft); }
+.podcast-feed-note code { font-family: var(--mono); font-size: 13px; }
+.podcast-episodes { list-style: none; margin: 8px 0 0; padding: 0; }
+.podcast-episode { padding: 14px 0; border-top: 1px solid var(--line-soft); }
+.podcast-episode:first-child { border-top: 0; }
+.podcast-episode-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; flex-wrap: wrap; margin-bottom: 8px; }
+.podcast-episode-title { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--ink); text-decoration: none; }
+.podcast-episode-title:hover { color: var(--accent); }
+.podcast-episode-meta { font-size: 13px; color: var(--ink-soft); font-family: var(--sans); white-space: nowrap; }
+.podcast-episode audio { width: 100%; }
+.podcast-about p { color: var(--ink-soft); }

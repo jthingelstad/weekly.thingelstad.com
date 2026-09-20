@@ -1,0 +1,58 @@
+---
+layout: layouts/base.njk
+pageTitle: Podcast
+description: Listen to the Weekly Thing as a podcast. Subscribe in Apple Podcasts, Overcast, Pocket Casts, Castro, or any app that takes an RSS feed.
+permalink: /podcast/
+---
+{#
+  The listening page. The feed itself is /podcast.xml (podcast.njk); this is
+  the page a person lands on to add it to their app. Directory ids are the
+  show's Apple Podcasts id — the other apps resolve from it.
+#}
+{% set appleId = "1895865769" %}
+{% set feedUrl = site.url + "/podcast.xml" %}
+{% set feedNoScheme = feedUrl | replace("https://", "") %}
+<section class="support-hero">
+  <div class="container-narrow">
+    <p class="eyebrow">Podcast</p>
+    <h1 class="support-hero-title">Read it, or <em>listen to it</em>.</h1>
+    <p class="support-hero-lede">Every issue of the Weekly Thing is also an audio episode &mdash; the same issue, read aloud, with Thingy stepping in for its own parts. Add it to the app you already use.</p>
+  </div>
+</section>
+
+<div class="support-page container-narrow podcast-page">
+  <section class="podcast-apps">
+    <p class="eyebrow">Subscribe</p>
+    <ul class="podcast-app-list">
+      <li><a class="podcast-app" href="https://podcasts.apple.com/us/podcast/weekly-thing/id{{ appleId }}" data-tinylytics-event="podcast.apple"><span class="podcast-app-name">Apple Podcasts</span><span class="podcast-app-note">iPhone, iPad, Mac</span></a></li>
+      <li><a class="podcast-app" href="https://overcast.fm/itunes{{ appleId }}/weekly-thing" data-tinylytics-event="podcast.overcast"><span class="podcast-app-name">Overcast</span><span class="podcast-app-note">iPhone</span></a></li>
+      <li><a class="podcast-app" href="https://pca.st/itunes/{{ appleId }}" data-tinylytics-event="podcast.pocketcasts"><span class="podcast-app-name">Pocket Casts</span><span class="podcast-app-note">Everywhere</span></a></li>
+      <li><a class="podcast-app" href="https://castro.fm/itunes/{{ appleId }}" data-tinylytics-event="podcast.castro"><span class="podcast-app-name">Castro</span><span class="podcast-app-note">iPhone</span></a></li>
+      <li><a class="podcast-app" href="podcast://{{ feedNoScheme }}" data-tinylytics-event="podcast.subscribe-url"><span class="podcast-app-name">Open in your default app</span><span class="podcast-app-note">podcast:// link</span></a></li>
+      <li><a class="podcast-app" href="{{ feedUrl }}" data-tinylytics-event="podcast.rss"><span class="podcast-app-name">RSS feed</span><span class="podcast-app-note">{{ feedNoScheme }}</span></a></li>
+    </ul>
+    <p class="podcast-feed-note">Any podcast app can take the feed URL directly: <code>{{ feedUrl }}</code></p>
+  </section>
+
+  {% if collections.podcastEpisodes and collections.podcastEpisodes.length > 0 %}
+  <section class="podcast-recent">
+    <p class="eyebrow">Recent episodes</p>
+    <ol class="podcast-episodes">
+      {% for issue in collections.podcastEpisodes | slice(0, 8) %}
+      <li class="podcast-episode">
+        <div class="podcast-episode-head">
+          <a class="podcast-episode-title" href="/archive/{{ issue.data.number }}/">{{ issue.data.subject }}</a>
+          <span class="podcast-episode-meta">{{ issue.data.publish_date | dateFormat }}{% if issue.data.audio_duration_seconds %} &middot; {{ issue.data.audio_duration_seconds | itunesDuration }}{% endif %}</span>
+        </div>
+        <audio controls preload="none" src="{{ issue.data.audio_url }}"></audio>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+  {% endif %}
+
+  <section class="podcast-about">
+    <p class="eyebrow">How it&rsquo;s made</p>
+    <p>The audio is generated from the written issue by <a href="/about/">WT Builder</a>, Jamie&rsquo;s publishing app, using text-to-speech &mdash; Jamie&rsquo;s sections in one voice, <a href="{{ site.thingyUrl }}/">Thingy</a>&rsquo;s in another. Links are read as their titles, and the photo is left for the page. Prefer reading? The <a href="/archive/">archive</a> has every issue.</p>
+  </section>
+</div>
