@@ -378,7 +378,10 @@ th {
   background: var(--accent-soft);
 }
 
-.site-nav a.is-external { display: inline-flex; align-items: center; gap: 4px; }
+/* Positioned so the link's screen-reader text (absolute) stays inside it: unpositioned,
+   the sr-only span escaped the nav's scroll container and widened the page at 320px
+   (the mobile-nav test caught it, 2026-09-20). */
+.site-nav a.is-external { display: inline-flex; align-items: center; gap: 4px; position: relative; }
 .site-nav .ext-glyph { opacity: .55; position: relative; top: -1px; }
 .site-nav a.is-external:hover .ext-glyph { opacity: 1; }
 .site-nav a.is-active {
