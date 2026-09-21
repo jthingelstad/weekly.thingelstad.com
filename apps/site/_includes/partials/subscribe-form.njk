@@ -264,11 +264,21 @@
         setStatus((result.data && result.data.error) || 'Too many attempts. Please try again in a bit.', 'error');
         return;
       }
-      if (result.status >= 500 || result.status === 0) {
-        fallbackSubmit('subscribe-' + result.status);
+      if (result.ok && result.data && result.data.status === 'needs_jamie') {
+        // Buttondown refused the address itself (suppressed from a past
+        // bounce or block). The Librarian has the address in its ledger and
+        // Jamie hears about it in the morning; say so, in words.
+        setStatus(result.data.error, 'info');
+        track('subscribe.needs_jamie', subscribeId);
         return;
       }
-      setStatus((result.data && (result.data.error || result.data.message)) || 'Could not add that email right now.', 'error');
+      // A 5xx from the Librarian is Buttondown refusing or timing out, and
+      // the address is already in the ledger. Re-posting the raw form to
+      // Buttondown only produced its dead-end "contact the author" page and
+      // hid the failure from us (2026-09-20) — so it is no longer the
+      // fallback for that; only for the Librarian being unreachable at all.
+      setStatus((result.data && (result.data.error || result.data.message)) || 'Could not add that email right now. Please try again in a minute.', 'error');
+      track('subscribe.failed', subscribeId + '.' + result.status);
     }, function() {
       fallbackSubmit('subscribe-network');
     });
