@@ -2277,6 +2277,12 @@ a.issue-chapter-title:hover { color: var(--accent); }
   margin: 14px 0 4px;
 }
 .issue-cue-thingy { font-family: var(--sans); }
+.issue-cue-avatar {
+  width: 22px;
+  height: 22px;
+  vertical-align: -6px;
+  margin-right: 6px;
+}
 .issue-transcript-foot { margin-top: 18px; font-size: 13px; color: var(--muted); }
 .issue-toc-discuss {
   display: block;

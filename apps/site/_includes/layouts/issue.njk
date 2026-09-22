@@ -259,7 +259,14 @@ ogType: article
             if (m[3] !== lastSpeaker) {
               var who = document.createElement('span');
               who.className = 'issue-cue-speaker';
-              who.textContent = m[3];
+              if (m[3] === 'Thingy') {
+                var avatar = document.createElement('img');
+                avatar.src = '/img/thingy.png';
+                avatar.alt = '';
+                avatar.className = 'issue-cue-avatar';
+                who.appendChild(avatar);
+              }
+              who.appendChild(document.createTextNode(m[3]));
               p.appendChild(who);
               lastSpeaker = m[3];
             }
