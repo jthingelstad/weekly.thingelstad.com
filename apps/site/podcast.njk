@@ -51,7 +51,14 @@ eleventyExcludeFromCollections: true
       <pubDate>{{- issue.data.publish_date | dateFormat('rfc822') -}}</pubDate>
       <description>{{- (issue.data.description or "") | xmlEscape -}}</description>
       <itunes:summary>{{- (issue.data.description or "") | xmlEscape -}}</itunes:summary>
-      <content:encoded><![CDATA[{%- if issue.data.description %}<p>{{ issue.data.description | xmlEscape }}</p>{% endif %}<p><a href="{{ issueUrl }}">Read this issue on the web →</a></p>]]></content:encoded>
+      {#- Show notes: the description, then every chapter with the minute it is
+          spoken at and its link. WT Builder stamps `audio_chapters` since WT350
+          (2026-09-21); older episodes have only the description. Every app
+          renders these, chapter support or not. -#}
+      <content:encoded><![CDATA[{%- if issue.data.description %}<p>{{ issue.data.description | xmlEscape }}</p>{% endif %}<p><a href="{{ issueUrl }}">Read this issue on the web →</a></p>
+      {%- if issue.data.audio_chapters and issue.data.audio_chapters.length %}<p><strong>In this episode</strong></p><ul>
+        {%- for chapter in issue.data.audio_chapters %}<li>{{ chapter.start | clock }} — {% if chapter.url and chapter.url != issueUrl %}<a href="{{ chapter.url | xmlEscape }}">{{ chapter.title | xmlEscape }}</a>{% else %}{{ chapter.title | xmlEscape }}{% endif %}</li>{% endfor %}
+      </ul>{% endif -%}]]></content:encoded>
       <itunes:author>Jamie Thingelstad</itunes:author>
       <itunes:explicit>false</itunes:explicit>
       <itunes:episode>{{- issue.data.number -}}</itunes:episode>
@@ -59,6 +66,16 @@ eleventyExcludeFromCollections: true
       <itunes:image href="{{ site.url }}/img/podcast-cover.png"/>
       <itunes:duration>{{- issue.data.audio_duration_seconds | itunesDuration -}}</itunes:duration>
       <enclosure url="{{ issue.data.audio_url }}" length="{{ issue.data.audio_byte_size or 0 }}" type="audio/mpeg"/>
+      {#- Podcasting 2.0: the chapter list (every link with its URL, photos as
+          art) and the transcript live beside the mp3 on the CDN. Apple Podcasts
+          and Pocket Casts read these; Overcast reads the same chapters from
+          inside the mp3. -#}
+      {%- if issue.data.audio_chapters_url %}
+      <podcast:chapters url="{{ issue.data.audio_chapters_url }}" type="application/json+chapters"/>
+      {%- endif %}
+      {%- if issue.data.audio_transcript_url %}
+      <podcast:transcript url="{{ issue.data.audio_transcript_url }}" type="text/vtt"/>
+      {%- endif %}
     </item>
     {%- endfor %}
   </channel>

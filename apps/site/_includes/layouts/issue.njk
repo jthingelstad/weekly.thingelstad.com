@@ -93,6 +93,26 @@ ogType: article
       </details>
       {% endif %}
 
+      {%- if audio_url and audio_chapters and audio_chapters.length > 0 -%}
+      {#- The audio edition's chapters, as WT Builder placed them: the time
+          seeks the player; a chapter that is a link goes to the link. -#}
+      <details class="issue-toc-section issue-chapters-section">
+        <summary class="eyebrow">Listen by chapter</summary>
+        <ol class="issue-chapter-list">
+          {%- for chapter in audio_chapters -%}
+          <li class="issue-chapter" data-start="{{ chapter.start }}">
+            <button type="button" class="issue-chapter-seek" data-start="{{ chapter.start }}" aria-label="Play from {{ chapter.start | clock }}">{{ chapter.start | clock }}</button>
+            {%- if chapter.url and chapter.url != (site.url + '/archive/' + (number | string) + '/') -%}
+            <a class="issue-chapter-title" href="{{ chapter.url }}" target="_blank" rel="noopener">{{ chapter.title }}</a>
+            {%- else -%}
+            <span class="issue-chapter-title">{{ chapter.title }}</span>
+            {%- endif -%}
+          </li>
+          {%- endfor -%}
+        </ol>
+      </details>
+      {%- endif -%}
+
       {%- set issueTopicSlugs = topics.byIssue[number | string] -%}
       {%- if issueTopicSlugs and issueTopicSlugs.length > 0 -%}
       <details class="issue-topics-section" open>
@@ -114,6 +134,17 @@ ogType: article
 
     <div class="issue-content">
       {{ content | safe }}
+
+      {%- if audio_url and audio_transcript_url -%}
+      {#- The spoken script, timed. Fetched from the CDN when opened; each cue
+          seeks the player and the one being spoken is highlighted. Speaker
+          labels come from the file — Thingy is attributed in text as in voice. -#}
+      <details class="issue-transcript" data-transcript-url="{{ audio_transcript_url }}">
+        <summary><span class="eyebrow">Transcript</span> <span class="issue-transcript-note">of the audio edition{% if audio_duration_seconds %} · {{ audio_duration_seconds | clock }}{% endif %}</span></summary>
+        <div class="issue-transcript-body" aria-live="polite"><p class="issue-transcript-loading">Loading…</p></div>
+        <p class="issue-transcript-foot"><a href="{{ audio_url }}">Download the MP3</a>{% if audio_chapters_url %} · <a href="{{ audio_chapters_url }}">Chapters</a>{% endif %} · <a href="{{ audio_transcript_url }}">WebVTT</a></p>
+      </details>
+      {%- endif -%}
     </div>
   </div>
 
@@ -174,6 +205,10 @@ ogType: article
       if (icon) icon.textContent = '⏸';
       if (label) label.textContent = 'Pause';
       listenButton.classList.add('is-playing');
+      // Closed by default — 36 chapters is a tall list — and open once
+      // someone is actually listening.
+      var chapterSection = document.querySelector('.issue-chapters-section');
+      if (chapterSection) chapterSection.open = true;
     });
     listenAudio.addEventListener('pause', function() {
       if (icon) icon.textContent = '▶';
@@ -184,6 +219,71 @@ ogType: article
       if (icon) icon.textContent = '▶';
       if (label) label.textContent = 'Listen';
       listenButton.classList.remove('is-playing');
+    });
+
+    var seekTo = function(seconds) {
+      var go = function() { listenAudio.currentTime = seconds; listenAudio.play(); };
+      if (listenAudio.readyState >= 1) go();
+      else { listenAudio.addEventListener('loadedmetadata', go, { once: true }); listenAudio.load(); }
+    };
+
+    // Chapters: the time seeks; the one playing is marked.
+    var chapters = Array.prototype.slice.call(document.querySelectorAll('.issue-chapter'));
+    chapters.forEach(function(li) {
+      var seek = li.querySelector('.issue-chapter-seek');
+      if (seek) seek.addEventListener('click', function() { seekTo(Number(li.dataset.start)); });
+    });
+
+    // Transcript: fetched once, when the reader opens it.
+    var transcript = document.querySelector('.issue-transcript');
+    var cues = [];
+    if (transcript) {
+      var loaded = false;
+      transcript.addEventListener('toggle', function() {
+        if (!transcript.open || loaded) return;
+        loaded = true;
+        var body = transcript.querySelector('.issue-transcript-body');
+        fetch(transcript.dataset.transcriptUrl).then(function(r) { return r.text(); }).then(function(vtt) {
+          body.innerHTML = '';
+          var toSeconds = function(t) {
+            var p = t.split(':'); return Number(p[0]) * 3600 + Number(p[1]) * 60 + Number(p[2]);
+          };
+          var lastSpeaker = null;
+          vtt.split(/\n\n+/).forEach(function(block) {
+            var m = /(\d\d:\d\d:\d\d\.\d{3}) --> (\d\d:\d\d:\d\d\.\d{3})\n<v ([^>]+)>([\s\S]*)/.exec(block);
+            if (!m) return;
+            var p = document.createElement('p');
+            p.className = 'issue-cue' + (m[3] === 'Thingy' ? ' issue-cue-thingy' : '');
+            p.dataset.start = String(toSeconds(m[1]));
+            p.dataset.end = String(toSeconds(m[2]));
+            if (m[3] !== lastSpeaker) {
+              var who = document.createElement('span');
+              who.className = 'issue-cue-speaker';
+              who.textContent = m[3];
+              p.appendChild(who);
+              lastSpeaker = m[3];
+            }
+            var text = document.createElement('span');
+            text.textContent = m[4].trim();
+            p.appendChild(text);
+            p.addEventListener('click', function() { seekTo(Number(p.dataset.start)); });
+            body.appendChild(p);
+            cues.push(p);
+          });
+        }).catch(function() {
+          body.innerHTML = '<p class="issue-transcript-loading">The transcript could not be loaded.</p>';
+        });
+      });
+    }
+
+    listenAudio.addEventListener('timeupdate', function() {
+      var t = listenAudio.currentTime;
+      var current = null;
+      chapters.forEach(function(li) { if (Number(li.dataset.start) <= t) current = li; });
+      chapters.forEach(function(li) { li.classList.toggle('is-current', li === current); });
+      cues.forEach(function(p) {
+        p.classList.toggle('is-current', Number(p.dataset.start) <= t && t < Number(p.dataset.end));
+      });
     });
   }
 })();

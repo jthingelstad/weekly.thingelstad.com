@@ -121,6 +121,16 @@ module.exports = function (eleventyConfig) {
     return [hours, minutes, secs].map((part) => String(part).padStart(2, "0")).join(":");
   });
 
+  // "12:34" or "1:02:03" — a chapter's start, as a listener reads it.
+  eleventyConfig.addFilter("clock", (seconds) => {
+    const total = Math.max(0, Math.floor(Number(seconds) || 0));
+    const hours = Math.floor(total / 3600);
+    const minutes = Math.floor((total % 3600) / 60);
+    const secs = total % 60;
+    const mm = hours ? String(minutes).padStart(2, "0") : String(minutes);
+    return `${hours ? `${hours}:` : ""}${mm}:${String(secs).padStart(2, "0")}`;
+  });
+
   // Current year (for copyright notices, etc.)
   eleventyConfig.addFilter("currentYear", () => new Date().getFullYear());
 

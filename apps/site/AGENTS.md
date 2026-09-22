@@ -15,7 +15,7 @@ scripts: `npm run build`, `npm run build:search`). The output dir `_site/` stays
 - **Markdown:** `markdown-it` with `markdown-it-anchor` for heading IDs (Pagefind needs them)
 - **Collections:** `issuesByNumber` (ascending), `issuesByDate` (newest first)
 - **Filters:** `dateFormat`, `dateShort`, `currentYear`, `numberFormat`, `year`, `slice`, `truncate`,
-  `issueNumberBase`, `xmlEscape`, `markdownify`, `extractToc`, `groupByYear`
+  `issueNumberBase`, `xmlEscape`, `markdownify`, `extractToc`, `groupByYear`, `itunesDuration`, `clock`
 - **Passthrough copy:** `img/`, `css/`, `CNAME`, `favicon.svg`, `_nojekyll`
 
 ## Where the content comes from — WT Builder, not here
@@ -57,6 +57,18 @@ pull-quotes, pulled verbatim from real issues. Infrequent, explicit, human-revie
 per-issue, `layout: archive`), `/archive/<slug>/` redirects (`redirects.njk` + `_data/redirects.js`),
 hand-written `/about/ /members/ /faq/ /search/`, `/feed.xml`, `/archive/N/links.xml`, `/podcast.xml`,
 
+
+## The audio edition on the page and in the feed
+
+WT Builder stamps `audio_url`, `audio_duration_seconds`, `audio_byte_size`, `audio_voice` and — since
+WT350's regeneration (2026-09-21) — `audio_chapters_url`, `audio_transcript_url`, and the `audio_chapters`
+list (`start`, `title`, `url?`, `image?`) into each issue page's front matter. `podcast.njk` prints the
+enclosure, `<podcast:chapters>` and `<podcast:transcript>` (Podcasting 2.0; Apple Podcasts and Pocket
+Casts read them, Overcast reads the same chapters from inside the mp3), and show notes listing every
+chapter with its minute and link. `layouts/issue.njk` adds a "Listen by chapter" sidebar section (closed
+until playback starts; the time seeks the hidden player) and a Transcript `<details>` under the article
+that fetches the WebVTT from the CDN when opened (CORS is open there) and highlights the cue being
+spoken. Every part is guarded on the fields existing — 349 issues have none of the new ones.
 
 ## Pagefind
 
