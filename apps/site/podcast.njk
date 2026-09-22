@@ -61,8 +61,14 @@ eleventyExcludeFromCollections: true
       </ul>{% endif -%}]]></content:encoded>
       <itunes:author>Jamie Thingelstad</itunes:author>
       <itunes:explicit>false</itunes:explicit>
+      {#- The episode number must be an integer; the one midweek special
+          (140-special) is a bonus episode without one. -#}
+      {%- if (issue.data.number | string) | int == (issue.data.number | string) %}
       <itunes:episode>{{- issue.data.number -}}</itunes:episode>
       <itunes:episodeType>full</itunes:episodeType>
+      {%- else %}
+      <itunes:episodeType>bonus</itunes:episodeType>
+      {%- endif %}
       <itunes:image href="{{ site.url }}/img/podcast-cover.png"/>
       <itunes:duration>{{- issue.data.audio_duration_seconds | itunesDuration -}}</itunes:duration>
       <enclosure url="{{ issue.data.audio_url }}" length="{{ issue.data.audio_byte_size or 0 }}" type="audio/mpeg"/>
