@@ -103045,12 +103045,12 @@
       }
     ],
     "word_count": 4132,
-    "audio_url": "https://files.thingelstad.com/weekly-thing/350/weekly-thing-350-79c8b081.mp3",
+    "audio_url": "https://files.thingelstad.com/weekly-thing/350/weekly-thing-350-85f86cc0.mp3",
     "audio_duration_seconds": 1586,
-    "audio_byte_size": 40694931,
+    "audio_byte_size": 40865219,
     "audio_voice": "openai-tts-1-hd:echo+nova",
-    "audio_chapters_url": "https://files.thingelstad.com/weekly-thing/350/weekly-thing-350-79c8b081.chapters.json",
-    "audio_transcript_url": "https://files.thingelstad.com/weekly-thing/350/weekly-thing-350-79c8b081.vtt",
+    "audio_chapters_url": "https://files.thingelstad.com/weekly-thing/350/weekly-thing-350-85f86cc0.chapters.json",
+    "audio_transcript_url": "https://files.thingelstad.com/weekly-thing/350/weekly-thing-350-85f86cc0.vtt",
     "audio_chapters": [
       {
         "title": "Welcome",
@@ -103219,6 +103219,7 @@
       {
         "title": "Supporting Membership",
         "url": "https://weekly.thingelstad.com/members/?ref=WT350-audio",
+        "image": "https://files.thingelstad.com/weekly-thing/350/chapters/6f25ad45db2e.jpg",
         "start": 1455.495
       },
       {
@@ -103231,6 +103232,7 @@
       },
       {
         "title": "Echoes",
+        "image": "https://files.thingelstad.com/weekly-thing/350/chapters/6f25ad45db2e.jpg",
         "start": 1518.28
       }
     ]
