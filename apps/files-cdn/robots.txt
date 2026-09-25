@@ -1,6 +1,7 @@
 # files.thingelstad.com — robots.txt
 #
-# The asset bucket fronted by CloudFront E3AEA6KRKI2B7E. Mixes public,
+# The asset bucket fronted by CloudFront EKUK431Y6SESK (both in the
+# files-thingelstad stack, jthingelstad/projects-sysadmin). Mixes public,
 # indexable assets (issue cover images, podcast MP3s, journal photos,
 # older personal uploads) with workshop in-progress files written by the
 # workshop_bot under the same `weekly-thing/<N>/` prefix as the shipped
@@ -13,8 +14,9 @@
 #   aws s3 cp apps/files-cdn/robots.txt s3://files.thingelstad.com/robots.txt \
 #       --content-type "text/plain; charset=utf-8" \
 #       --cache-control "max-age=300"
-#   aws cloudfront create-invalidation \
-#       --distribution-id E3AEA6KRKI2B7E --paths "/robots.txt"
+#
+# max-age=300 means CloudFront serves the edit within five minutes; no
+# invalidation is needed.
 
 User-agent: *
 
