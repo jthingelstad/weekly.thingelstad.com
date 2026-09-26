@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-09-26T20:03:06.845740Z",
+  "generated_at": "2026-09-26T20:04:33.493455Z",
   "extraction_model": "heuristic",
   "issue_count": 352,
   "issues": {
@@ -1631,7 +1631,8 @@
         "open web and ownership",
         "agency over convenience",
         "local community",
-        "ai as collaborator"
+        "ai as collaborator",
+        "durable archives"
       ],
       "similar_issues": []
     },
@@ -1680,7 +1681,8 @@
       ],
       "tropes": [
         "open web and ownership",
-        "local community"
+        "local community",
+        "durable archives"
       ],
       "similar_issues": []
     },
@@ -1713,6 +1715,7 @@
         "Become",
         "Best Picture",
         "Big Green Egg",
+        "Blog",
         "Box Brown It",
         "Business",
         "Cactus Blossoms",
@@ -1724,11 +1727,11 @@
         "Donate",
         "Donnie Berkholz",
         "Elf",
-        "Essays Quickly",
-        "Expertly"
+        "Essays Quickly"
       ],
       "tropes": [
-        "open web and ownership"
+        "open web and ownership",
+        "durable archives"
       ],
       "similar_issues": []
     },
@@ -1778,7 +1781,8 @@
       "tropes": [
         "open web and ownership",
         "local community",
-        "ai as collaborator"
+        "ai as collaborator",
+        "durable archives"
       ],
       "similar_issues": []
     },
@@ -1864,6 +1868,7 @@
         "Donate",
         "Enjoy",
         "Espresso",
+        "Featured App",
         "Feedbin",
         "Free",
         "Game-Winning Touchdown Over The Saints",
@@ -1873,8 +1878,7 @@
         "Handy",
         "Here's The Vikings' Unbelievable Last-Second",
         "Inc. We",
-        "JSON API. He's",
-        "James Clear"
+        "JSON API. He's"
       ],
       "tropes": [
         "open web and ownership",
@@ -1896,6 +1900,7 @@
         "Business Chat",
         "Health",
         "HomePod",
+        "Links",
         "Mac",
         "Never",
         "Stratechery",
@@ -1919,13 +1924,12 @@
         "Best HomePod",
         "BeyondCorp",
         "Big",
-        "Bon Thompson's",
+        "Blog",
         "Breaking",
         "Carcassonne",
         "Catan",
         "Coming",
-        "Coraline Ada Ehmke",
-        "DHH's"
+        "Coraline Ada Ehmke"
       ],
       "tropes": [
         "open web and ownership",
@@ -2833,6 +2837,7 @@
         "Follow",
         "How Scrum",
         "Internet",
+        "Its",
         "MailChimp",
         "Minnebar",
         "More Approachable",
@@ -2842,7 +2847,6 @@
         "Out",
         "Overcome Fear",
         "PagerDuty",
-        "Photo",
         "Powerful",
         "Probably Not Using But Should",
         "Releasing May",
@@ -15364,7 +15368,6 @@
         "Chess",
         "Home Depot Hacker",
         "Internet Really Slowing",
-        "Kieran Culkin",
         "Krebs",
         "Listen",
         "Minneapolis",
@@ -15392,7 +15395,8 @@
         "quantamagazine.org",
         "queue.acm.org",
         "rknight.me",
-        "simondobson.org"
+        "simondobson.org",
+        "slowperc.blogspot.com"
       ],
       "tropes": [
         "open web and ownership",
@@ -20566,7 +20570,9 @@
       "21",
       "26",
       "27",
+      "34",
       "35",
+      "38",
       "40",
       "42",
       "43",
@@ -20616,7 +20622,8 @@
       "10"
     ],
     "its": [
-      "10"
+      "10",
+      "56"
     ],
     "markdown-based": [
       "10"
@@ -24103,9 +24110,6 @@
     "essays quickly": [
       "34"
     ],
-    "expertly": [
-      "34"
-    ],
     "spamnesty": [
       "35"
     ],
@@ -24343,6 +24347,9 @@
       "37",
       "41"
     ],
+    "featured app": [
+      "37"
+    ],
     "free": [
       "37",
       "40",
@@ -24378,10 +24385,6 @@
     ],
     "json api. he's": [
       "37"
-    ],
-    "james clear": [
-      "37",
-      "123"
     ],
     "omnifocus": [
       "38",
@@ -24442,6 +24445,11 @@
       "148",
       "274",
       "299"
+    ],
+    "links": [
+      "38",
+      "51",
+      "288"
     ],
     "never": [
       "38",
@@ -24549,9 +24557,6 @@
       "93",
       "103"
     ],
-    "bon thompson's": [
-      "38"
-    ],
     "breaking": [
       "38"
     ],
@@ -24563,9 +24568,6 @@
     "catan": [
       "38",
       "50"
-    ],
-    "dhh's": [
-      "38"
     ],
     "chaos engineering": [
       "39"
@@ -25642,10 +25644,6 @@
     "buffet's berkshire hathaway": [
       "50"
     ],
-    "links": [
-      "51",
-      "288"
-    ],
     "moment": [
       "51",
       "210"
@@ -26211,9 +26209,6 @@
       "292"
     ],
     "overcome fear": [
-      "56"
-    ],
-    "photo": [
       "56"
     ],
     "powerful": [
@@ -32097,6 +32092,9 @@
     ],
     "lithub.com": [
       "122"
+    ],
+    "james clear": [
+      "123"
     ],
     "become comfortable being vulnerable": [
       "123"
@@ -45330,9 +45328,6 @@
     "internet really slowing": [
       "302"
     ],
-    "kieran culkin": [
-      "302"
-    ],
     "radio stations": [
       "302"
     ],
@@ -45386,6 +45381,9 @@
       "302"
     ],
     "simondobson.org": [
+      "302"
+    ],
+    "slowperc.blogspot.com": [
       "302"
     ],
     "bain": [
@@ -49413,6 +49411,10 @@
       "29",
       "30",
       "31",
+      "32",
+      "33",
+      "34",
+      "35",
       "36",
       "37",
       "38",
