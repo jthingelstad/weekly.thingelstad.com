@@ -1,9 +1,9 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-09-20T22:03:54.293585Z",
+  "generated_at": "2026-09-26T16:39:16.378031Z",
   "extraction_model": "heuristic",
-  "issue_count": 351,
+  "issue_count": 352,
   "issues": {
     "1": {
       "entities": [
@@ -17874,6 +17874,58 @@
         "durable archives"
       ],
       "similar_issues": []
+    },
+    "351": {
+      "entities": [
+        "Claude",
+        "WT Builder",
+        "AWS",
+        "Anthropic",
+        "Claude Code",
+        "Define",
+        "WT350",
+        "WT351",
+        "Attention",
+        "Better",
+        "Hello",
+        "LLM",
+        "Lake Harriet",
+        "LinkedIn",
+        "Local AI Agents",
+        "MacStories",
+        "Minnedemo42",
+        "MnTech",
+        "OpenAI's",
+        "Opus",
+        "Orchestrating Claude Code Agents",
+        "Presenters",
+        "Sun",
+        "The Chief",
+        "The Dream Mac",
+        "The Incumbents Are Coming",
+        "Your Browser",
+        "a16z.com",
+        "alicegg.tech",
+        "asyncdot.com",
+        "bcantrill.dtrace.org",
+        "borischerny.com",
+        "claude.com",
+        "macstories.net",
+        "minnestar.org",
+        "oneusefulthing.org",
+        "pagetable.com",
+        "startribune.com",
+        "theregister.com",
+        "thorstenball.com"
+      ],
+      "tropes": [
+        "open web and ownership",
+        "agency over convenience",
+        "tools for thought",
+        "ai as collaborator",
+        "durable archives"
+      ],
+      "similar_issues": []
     }
   },
   "entity_index": {
@@ -18192,7 +18244,8 @@
       "299",
       "323",
       "327",
-      "350"
+      "350",
+      "351"
     ],
     "macron": [
       "1"
@@ -18882,7 +18935,8 @@
       "344",
       "345",
       "349",
-      "350"
+      "350",
+      "351"
     ],
     "dungeon master": [
       "3"
@@ -19629,7 +19683,8 @@
       "58",
       "111",
       "276",
-      "295"
+      "295",
+      "351"
     ],
     "miami": [
       "5"
@@ -20470,7 +20525,8 @@
       "35",
       "48",
       "158",
-      "303"
+      "303",
+      "351"
     ],
     "internet archive": [
       "10",
@@ -20803,7 +20859,8 @@
       "264",
       "283",
       "331",
-      "332"
+      "332",
+      "351"
     ],
     "bitcoin": [
       "12",
@@ -21757,7 +21814,8 @@
       "280",
       "296",
       "334",
-      "339"
+      "339",
+      "351"
     ],
     "ethereum": [
       "18",
@@ -22793,7 +22851,8 @@
       "188",
       "249",
       "295",
-      "330"
+      "330",
+      "351"
     ],
     "minnesota cto": [
       "24"
@@ -23048,7 +23107,8 @@
     ],
     "mntech": [
       "26",
-      "146"
+      "146",
+      "351"
     ],
     "nintendo": [
       "26",
@@ -27571,7 +27631,8 @@
       "239",
       "257",
       "259",
-      "325"
+      "325",
+      "351"
     ],
     "auth0.com": [
       "70"
@@ -27795,7 +27856,8 @@
       "72"
     ],
     "sun": [
-      "72"
+      "72",
+      "351"
     ],
     "camille fournier": [
       "73",
@@ -30508,7 +30570,8 @@
       "104",
       "108",
       "244",
-      "308"
+      "308",
+      "351"
     ],
     "vox.com": [
       "104",
@@ -32805,7 +32868,8 @@
     "hello": [
       "132",
       "222",
-      "327"
+      "327",
+      "351"
     ],
     "here we go again": [
       "132"
@@ -36637,7 +36701,8 @@
       "227",
       "257",
       "307",
-      "338"
+      "338",
+      "351"
     ],
     "bay area": [
       "180"
@@ -41766,7 +41831,8 @@
       "343",
       "347",
       "348",
-      "349"
+      "349",
+      "351"
     ],
     "llms": [
       "250",
@@ -43174,7 +43240,8 @@
     ],
     "oneusefulthing.org": [
       "270",
-      "339"
+      "339",
+      "351"
     ],
     "altman": [
       "271"
@@ -43221,7 +43288,8 @@
       "346",
       "347",
       "349",
-      "350"
+      "350",
+      "351"
     ],
     "federal charges": [
       "271"
@@ -44110,7 +44178,8 @@
     ],
     "theregister.com": [
       "285",
-      "287"
+      "287",
+      "351"
     ],
     "vadimkravcenko.com": [
       "285"
@@ -44349,7 +44418,8 @@
       "340",
       "342",
       "346",
-      "350"
+      "350",
+      "351"
     ],
     "clematis": [
       "289"
@@ -46977,7 +47047,8 @@
       "345",
       "346",
       "347",
-      "349"
+      "349",
+      "351"
     ],
     "get some air": [
       "328"
@@ -47517,7 +47588,8 @@
     "claude.com": [
       "337",
       "349",
-      "350"
+      "350",
+      "351"
     ],
     "yearly thing": [
       "338",
@@ -48231,7 +48303,8 @@
       "350"
     ],
     "wt350": [
-      "350"
+      "350",
+      "351"
     ],
     "goldenhillsoftware.com": [
       "350"
@@ -48256,6 +48329,63 @@
     ],
     "anthropic claude fable": [
       "350"
+    ],
+    "wt builder": [
+      "351"
+    ],
+    "define": [
+      "351"
+    ],
+    "wt351": [
+      "351"
+    ],
+    "local ai agents": [
+      "351"
+    ],
+    "minnedemo42": [
+      "351"
+    ],
+    "openai's": [
+      "351"
+    ],
+    "opus": [
+      "351"
+    ],
+    "orchestrating claude code agents": [
+      "351"
+    ],
+    "presenters": [
+      "351"
+    ],
+    "the chief": [
+      "351"
+    ],
+    "the dream mac": [
+      "351"
+    ],
+    "the incumbents are coming": [
+      "351"
+    ],
+    "your browser": [
+      "351"
+    ],
+    "alicegg.tech": [
+      "351"
+    ],
+    "asyncdot.com": [
+      "351"
+    ],
+    "bcantrill.dtrace.org": [
+      "351"
+    ],
+    "borischerny.com": [
+      "351"
+    ],
+    "pagetable.com": [
+      "351"
+    ],
+    "thorstenball.com": [
+      "351"
     ]
   },
   "trope_index": {
@@ -48598,7 +48728,8 @@
       "347",
       "348",
       "349",
-      "350"
+      "350",
+      "351"
     ],
     "tools for thought": [
       "1",
@@ -48746,7 +48877,8 @@
       "344",
       "345",
       "348",
-      "349"
+      "349",
+      "351"
     ],
     "local community": [
       "1",
@@ -49252,7 +49384,8 @@
       "347",
       "348",
       "349",
-      "350"
+      "350",
+      "351"
     ],
     "durable archives": [
       "1",
@@ -49484,7 +49617,8 @@
       "347",
       "348",
       "349",
-      "350"
+      "350",
+      "351"
     ],
     "agency over convenience": [
       "6",
@@ -49664,7 +49798,8 @@
       "341",
       "343",
       "346",
-      "347"
+      "347",
+      "351"
     ]
   }
 }
