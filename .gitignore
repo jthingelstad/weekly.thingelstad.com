@@ -7,9 +7,11 @@ _site/
 # Local cache
 cache/
 
-# Environment variables
+# Environment variables (and their backups; the example stays tracked)
 .env
 .env-*
+.env.*
+!.env.example
 
 # OS files
 .DS_Store
@@ -29,13 +31,8 @@ _site/pagefind/
 # Local audit/working files
 tmp/
 
-# Generated librarian artifacts pushed in by Studio. Listed here so a
-# local rebuild (if someone wires one up) doesn't accidentally commit
-# rebuilt copies — the canonical versions are committed by Studio's
-# handoff via git-tree (which bypasses .gitignore).
+# Librarian corpus artifacts are built in librarian-thing and never belong
+# here. The one file librarian-thing does push in, data/librarian/graph.json,
+# is tracked and deliberately not ignored.
 data/librarian/corpus.json
-data/librarian/graph.json
 data/librarian/*.embedded.json
-
-# Generated pipeline status report pushed in by Studio. Same caveat as above.
-apps/site/_data/status.json
