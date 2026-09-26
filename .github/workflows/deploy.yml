@@ -36,7 +36,11 @@ jobs:
       - name: Validate documentation links
         run: npm run test:docs
 
+      # Advisory, not a gate: an upstream advisory landing overnight blocked
+      # publishing twice (2026-06-12, and ~44h on 2026-08-05). The step still
+      # runs so the log shows any high-severity findings for maintenance.
       - name: Audit dependencies
+        continue-on-error: true
         run: npm audit --audit-level=high
 
       # weekly owns its landing-page stats (subscriber + supporter numbers).
@@ -58,8 +62,21 @@ jobs:
       - name: Install browser test dependencies
         run: npx playwright install --with-deps chromium
 
+      # Real gate: serves the built _site (with its Pagefind index) exactly as
+      # it will deploy. A failure stops the deploy.
       - name: Run browser tests
         run: npm run test:e2e
+
+      - name: Upload browser test results
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-results
+          path: |
+            test-results/
+            playwright-report/
+          if-no-files-found: ignore
+          retention-days: 7
 
       - uses: actions/upload-pages-artifact@v5
         with:

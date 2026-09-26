@@ -19,8 +19,9 @@ serve:
 stats:
 	npm run refresh-stats
 
-# Playwright end-to-end tests against the built site + Thingy redirects.
-test:
+# Playwright end-to-end tests against the built site (served statically from
+# _site/, Pagefind index included) + Thingy redirects.
+test: build
 	npx playwright test
 
 # Remove build output + local test artifacts (and any leftover Python cruft

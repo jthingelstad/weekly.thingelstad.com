@@ -66,6 +66,7 @@ redirects readers to its chat surface.
 npm ci
 npm run build         # Eleventy
 npm run build:search  # Pagefind
+npm test              # build + Pagefind, then Playwright e2e against the built _site/
 ```
 
 **Working on issue content?** That's a WT Builder task, not a weekly one. The `apps/site/archive/*.md`

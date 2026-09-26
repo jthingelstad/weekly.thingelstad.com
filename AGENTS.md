@@ -44,9 +44,11 @@ overwritten by the next handoff. Fix the issue in WT Builder and re-send; histor
 ## GitHub Actions — `.github/workflows/deploy.yml`
 
 Render-only. Triggered by push to `main` (a handoff commit) + manual `workflow_dispatch`. Steps:
-`npm ci` → validate tracked documentation links → fetch landing-page stats → `npm run build` (11ty) →
-`npm run build:search` (Pagefind) → install Playwright Chromium → `npm run test:e2e` → upload + deploy
-to GitHub Pages. No Python, no Lambda, no corpus build — those run in `librarian-thing`.
+`npm ci` → validate tracked documentation links → `npm audit` (advisory: `continue-on-error`, so an
+upstream advisory never blocks publishing) → fetch landing-page stats → `npm run build` (11ty) →
+`npm run build:search` (Pagefind) → install Playwright Chromium → `npm run test:e2e` (the real gate;
+on failure `test-results/` + `playwright-report/` upload as a 7-day artifact) → upload + deploy to
+GitHub Pages. No Lambda, no corpus build — those run in `librarian-thing`.
 
 ## Secrets
 
@@ -61,8 +63,11 @@ with the default `GITHUB_TOKEN`.
 - **Tinylytics kudos** overwrites innerHTML — render heart/label via CSS `::before` so they survive.
 - **Don't hand-edit generated files** (`apps/site/archive/*.md`, the pushed `_data/*.json`,
   `data/librarian/graph.json`) — fix upstream in WT Builder or `librarian-thing`.
-- **e2e tests** (`tests/e2e/`) are Playwright specs against the rendered site + Thingy redirects. The
-  deploy workflow installs Chromium and runs them before uploading the Pages artifact.
+- **e2e tests** (`tests/e2e/`) are Playwright specs against the rendered site + Thingy redirects.
+  Playwright serves the already-built `_site/` (Pagefind index included) with `python3 -m http.server`
+  on :8080, so the tests see what deploys. Locally run `npm test` (builds, indexes, then tests); bare
+  `npm run test:e2e` expects `npm run build:all` first. The deploy workflow installs Chromium and runs
+  them before uploading the Pages artifact.
 - **Agent guide compatibility:** `AGENTS.md` is canonical everywhere in this repo (root and
   `apps/site/`) and each `CLAUDE.md` is a one-way symlink beside it.
   `npm run test:docs` validates every tracked Markdown symlink and both root entry points.
