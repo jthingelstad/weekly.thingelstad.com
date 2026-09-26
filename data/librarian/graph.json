@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-09-26T16:39:16.378031Z",
+  "generated_at": "2026-09-26T20:03:06.845740Z",
   "extraction_model": "heuristic",
   "issue_count": 352,
   "issues": {
@@ -2006,6 +2006,7 @@
         "Billy Mitchell's",
         "Billy Mitchell's Direct Feed Recordings",
         "Billy Mitchell. After",
+        "Blog",
         "Blogging",
         "Bowl LII",
         "Business",
@@ -2028,8 +2029,7 @@
         "Falcon Heavy Test Flight",
         "Forestry.io",
         "Free",
-        "From Doctorow",
-        "GTD"
+        "From Doctorow"
       ],
       "tropes": [
         "open web and ownership",
@@ -2731,7 +2731,6 @@
         "Important",
         "In My Day One",
         "Intelligence",
-        "Internet",
         "Know How",
         "Letter",
         "Mac",
@@ -2745,7 +2744,8 @@
         "Waste Time",
         "Why Curiosity",
         "Wild",
-        "Write"
+        "Write",
+        "artsy.github.io"
       ],
       "tropes": [
         "open web and ownership",
@@ -2886,7 +2886,6 @@
         "Kubernetes",
         "Lara Hogan",
         "Laziness Does Not Exist",
-        "Leadership",
         "Look",
         "Medium",
         "Mojave",
@@ -2900,7 +2899,8 @@
         "Price",
         "Serious Scrum",
         "Siri",
-        "Social Media"
+        "Social Media",
+        "Technology"
       ],
       "tropes": [
         "open web and ownership",
@@ -3284,6 +3284,7 @@
         "M. C. Escher",
         "Minneapolis",
         "OKRs",
+        "On This Day",
         "One-on-One Meeting As",
         "Prints",
         "Review Leadership Comms",
@@ -3308,8 +3309,7 @@
         "w3.org",
         "youtube.com",
         "AC Milan",
-        "AVC",
-        "AVC Mapstr"
+        "AVC"
       ],
       "tropes": [
         "open web and ownership",
@@ -3394,7 +3394,6 @@
         "Leaders",
         "Minnebar",
         "Pie Charts",
-        "Prometheus",
         "Rands",
         "Riot Games",
         "Son Volt",
@@ -3410,7 +3409,8 @@
         "adl.io",
         "arp242.net",
         "artsy.net",
-        "blog.mozilla.org"
+        "blog.mozilla.org",
+        "calnewport.com"
       ],
       "tropes": [
         "open web and ownership",
@@ -3898,7 +3898,6 @@
         "Mind",
         "Night Sight",
         "Office",
-        "Perl",
         "Phones Have Gone Too Far",
         "Python",
         "Rands",
@@ -3916,7 +3915,8 @@
         "WebPerl",
         "Wildlife Photographer",
         "Write",
-        "buzzfeednews.com"
+        "buzzfeednews.com",
+        "codewithoutrules.com"
       ],
       "tropes": [
         "open web and ownership",
@@ -4208,7 +4208,6 @@
         "New Documents Show That Facebook",
         "Rage",
         "Scaling Teams With Agency",
-        "ScanSnap",
         "Start Amazon FBA",
         "Taj",
         "The Golden Path",
@@ -4222,7 +4221,8 @@
         "economist.com",
         "eff.org",
         "fbaexperiment.com",
-        "feld.com"
+        "feld.com",
+        "gatesnotes.com"
       ],
       "tropes": [
         "open web and ownership",
@@ -4310,7 +4310,6 @@
         "Ant Encounters",
         "App Updates",
         "As Facebook Raised",
-        "Atlas",
         "AutoSleep",
         "Colorado Springs",
         "Darkroom For",
@@ -4319,11 +4318,12 @@
         "Disturbing Plan",
         "Donate",
         "Early Christmas",
-        "Effortless Sleep Tracking",
+        "Effortless Sleep Tracking More Accessible",
         "Eye",
         "FTW",
         "Facebook. That's",
-        "Family"
+        "Family",
+        "Faster. Easier. More Powerful"
       ],
       "tropes": [
         "open web and ownership",
@@ -4459,7 +4459,6 @@
         "GitHub",
         "Highly Available",
         "Hybrid Storage Solutions",
-        "List",
         "Location Data",
         "Microbilt",
         "MongoDB Compatibility",
@@ -4479,7 +4478,8 @@
         "aws.amazon.com",
         "blog.github.com",
         "emma.best",
-        "hicksdesign.co.uk"
+        "hicksdesign.co.uk",
+        "joshjahans.com"
       ],
       "tropes": [
         "open web and ownership",
@@ -5055,6 +5055,7 @@
         "Austin",
         "Cameron Park Zoo",
         "Magnolia Day",
+        "Mark Zuckerberg",
         "About Attention Management",
         "About Time Management. It",
         "AirPower",
@@ -5068,7 +5069,6 @@
         "Let",
         "Low-tech Magazine",
         "Magnolia Silos",
-        "Mark Zuckerberg",
         "Nothing",
         "Replaced Disqus",
         "Tesla",
@@ -5252,10 +5252,11 @@
       "entities": [
         "Minnebar",
         "Amazon",
-        "Home",
         "Action",
         "Anki",
         "Facebook",
+        "Google Cloud Run",
+        "Home",
         "How Autism Feels From",
         "Minnebar14 Recap",
         "Minnestar",
@@ -5281,7 +5282,6 @@
         "Burch",
         "Cardbox",
         "Cloud Guru",
-        "Cloud Run",
         "Cozmo",
         "Darling",
         "Data Stuff",
@@ -5893,10 +5893,10 @@
         "Apple Music",
         "Ars Technica",
         "Ars Technica Minimum Viable Bureaucracy",
-        "Art",
         "Berkeley",
         "Berkeley Software Distribution",
-        "California"
+        "California",
+        "Camera"
       ],
       "tropes": [
         "open web and ownership",
@@ -5918,6 +5918,7 @@
         "Pro",
         "Time",
         "Uber",
+        "Apple Arcade",
         "Ben Thompson",
         "Discipline",
         "Don",
@@ -5944,8 +5945,7 @@
         "Stratechery",
         "Systems Thinking",
         "Thor Mitchell",
-        "Trust Facebook With Your Love",
-        "Work"
+        "Trust Facebook With Your Love"
       ],
       "tropes": [
         "open web and ownership",
@@ -19593,7 +19593,6 @@
       "28",
       "29",
       "33",
-      "40",
       "58",
       "67",
       "86",
@@ -20496,6 +20495,7 @@
       "23",
       "24",
       "28",
+      "57",
       "62",
       "84",
       "107",
@@ -20567,6 +20567,7 @@
       "26",
       "27",
       "35",
+      "40",
       "42",
       "43",
       "47",
@@ -21051,7 +21052,6 @@
       "37",
       "40",
       "48",
-      "54",
       "56",
       "67",
       "69",
@@ -21403,7 +21403,6 @@
       "15",
       "23",
       "26",
-      "77",
       "336"
     ],
     "coldplay": [
@@ -23914,8 +23913,7 @@
       "32"
     ],
     "prometheus": [
-      "33",
-      "67"
+      "33"
     ],
     "equifinality": [
       "33"
@@ -25142,7 +25140,6 @@
       "46",
       "69",
       "88",
-      "116",
       "158"
     ],
     "aws documentation": [
@@ -26014,6 +26011,9 @@
       "139",
       "242"
     ],
+    "artsy.github.io": [
+      "54"
+    ],
     "detroit tigers": [
       "55"
     ],
@@ -26293,12 +26293,6 @@
     "laziness does not exist": [
       "57"
     ],
-    "leadership": [
-      "57",
-      "183",
-      "184",
-      "239"
-    ],
     "mojave": [
       "57",
       "60",
@@ -26520,7 +26514,6 @@
       "74",
       "82",
       "107",
-      "117",
       "129",
       "131",
       "153",
@@ -26556,6 +26549,7 @@
     ],
     "calnewport.com": [
       "59",
+      "67",
       "84",
       "87",
       "107",
@@ -27092,6 +27086,9 @@
     "m. c. escher": [
       "65"
     ],
+    "on this day": [
+      "65"
+    ],
     "one-on-one meeting as": [
       "65"
     ],
@@ -27197,9 +27194,6 @@
       "171",
       "177",
       "286"
-    ],
-    "avc mapstr": [
-      "65"
     ],
     "encrypt": [
       "66",
@@ -28231,6 +28225,7 @@
     ],
     "gatesnotes.com": [
       "76",
+      "83",
       "96",
       "147",
       "247",
@@ -28325,6 +28320,9 @@
       "179",
       "217",
       "248"
+    ],
+    "codewithoutrules.com": [
+      "77"
     ],
     "ibm": [
       "78",
@@ -28795,9 +28793,6 @@
     "scaling teams with agency": [
       "83"
     ],
-    "scansnap": [
-      "83"
-    ],
     "start amazon fba": [
       "83"
     ],
@@ -28968,9 +28963,6 @@
     "as facebook raised": [
       "85"
     ],
-    "atlas": [
-      "85"
-    ],
     "autosleep": [
       "85"
     ],
@@ -28994,7 +28986,7 @@
     "early christmas": [
       "85"
     ],
-    "effortless sleep tracking": [
+    "effortless sleep tracking more accessible": [
       "85"
     ],
     "eye": [
@@ -29004,6 +28996,9 @@
       "85"
     ],
     "facebook. that's": [
+      "85"
+    ],
+    "faster. easier. more powerful": [
       "85"
     ],
     "teens": [
@@ -29204,10 +29199,6 @@
     "hybrid storage solutions": [
       "88"
     ],
-    "list": [
-      "88",
-      "336"
-    ],
     "location data": [
       "88"
     ],
@@ -29255,6 +29246,9 @@
       "88"
     ],
     "hicksdesign.co.uk": [
+      "88"
+    ],
+    "joshjahans.com": [
       "88"
     ],
     "collection": [
@@ -30151,6 +30145,7 @@
     ],
     "apple arcade": [
       "99",
+      "117",
       "181"
     ],
     "apple media": [
@@ -30193,6 +30188,13 @@
     "magnolia day": [
       "100"
     ],
+    "mark zuckerberg": [
+      "100",
+      "129",
+      "152",
+      "175",
+      "210"
+    ],
     "about attention management": [
       "100"
     ],
@@ -30228,13 +30230,6 @@
     ],
     "magnolia silos": [
       "100"
-    ],
-    "mark zuckerberg": [
-      "100",
-      "129",
-      "152",
-      "175",
-      "210"
     ],
     "nothing": [
       "100"
@@ -30542,6 +30537,9 @@
       "104",
       "152"
     ],
+    "google cloud run": [
+      "104"
+    ],
     "how autism feels from": [
       "104"
     ],
@@ -30593,9 +30591,6 @@
       "104"
     ],
     "cloud guru": [
-      "104"
-    ],
-    "cloud run": [
       "104"
     ],
     "darling": [
@@ -31635,6 +31630,13 @@
     "berkeley software distribution": [
       "116"
     ],
+    "camera": [
+      "116",
+      "124",
+      "173",
+      "220",
+      "303"
+    ],
     "waltz": [
       "117"
     ],
@@ -32233,12 +32235,6 @@
     ],
     "by dave mangot": [
       "124"
-    ],
-    "camera": [
-      "124",
-      "173",
-      "220",
-      "303"
     ],
     "center letting you track": [
       "124"
@@ -36988,6 +36984,11 @@
     ],
     "high": [
       "183"
+    ],
+    "leadership": [
+      "183",
+      "184",
+      "239"
     ],
     "mille lacs lake": [
       "183"
@@ -47502,6 +47503,9 @@
       "336"
     ],
     "let's encrypt certificates": [
+      "336"
+    ],
+    "list": [
       "336"
     ],
     "retention": [
