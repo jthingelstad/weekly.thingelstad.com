@@ -3,7 +3,7 @@
 //
 // weekly owns its own stats: subscriber + premium counts (Buttondown) and the
 // amount raised (Stripe balance). These are surface metrics, fetched here, NOT
-// produced by Studio. Dependency-free (Node 20+ native fetch), so it fits
+// pushed in by WT Builder or librarian-thing. Dependency-free (Node 20+ native fetch), so it fits
 // weekly's render-only, Node-only CI.
 //
 // Best-effort: any API hiccup falls back to the committed stats.json value, so

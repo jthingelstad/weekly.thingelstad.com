@@ -36,11 +36,11 @@ Knowing which is which matters: hand-edits to non-authored files get clobbered.
 The topic graph `data/librarian/graph.json` is pushed too.
 
 **Fetched by weekly's own CI:** `stats.json` — subscriber + Stripe figures. This is a *presentation*
-concern (the landing-page numbers), so weekly owns it. Studio reads the same figures for agent analysis —
-a separate concern — so both holding access is by design, not duplication. Don't hand-edit `stats.json`.
+concern (the landing-page numbers), so weekly owns it. Don't hand-edit `stats.json`.
 
-**Refreshed via a Studio copy pipeline (then committed here):** `voiceSamples.json` — home-page
-pull-quotes, pulled verbatim from real issues. Infrequent, explicit, human-reviewed — not in CI.
+**Committed snapshot:** `voiceSamples.json` — home-page pull-quotes, pulled verbatim from real issues.
+Its Studio refresh pipeline retired with Studio (2026-08-28); any refresh is infrequent, explicit,
+human-reviewed — not in CI.
 
 **Hand-authored** (edit directly): `site.js`, `support.json`, `quotes.json`, `survey.json`, `topics.js`,
 `redirects.js`, `assets.js`, `faq.js`.
@@ -89,15 +89,17 @@ Logout / Sign out / Use different email).
 
 ## Deploy
 
-GitHub Actions → GitHub Pages, triggered by push to `main` (Studio's handoff commit, or a hand-authored
-change). Render-only: `npm ci` → fetch stats → `npm run build` → `npm run build:search` → install
-Playwright Chromium → `npm run test:e2e` → deploy. No Python, no Lambda — those run in Studio.
+GitHub Actions → GitHub Pages, triggered by push to `main` (a WT Builder handoff commit, a
+`librarian-thing` graph push, or a hand-authored change). Render-only: `npm ci` → fetch stats →
+`npm run build` → `npm run build:search` → install Playwright Chromium → `npm run test:e2e` → deploy.
+No Lambda or corpus build — those run in `librarian-thing`.
 
 ## Conventions
 
-- **Never edit `apps/site/archive/*.md` or the pushed `_data` files.** Fix upstream in Studio.
+- **Never edit `apps/site/archive/*.md` or the pushed `_data` files.** Fix upstream in WT Builder (or
+  `librarian-thing` for the topic graph).
 - **Tinylytics site UID** lives in `_data/site.js` — safe in the repo (it's a public identifier).
-- **CSS** lives in `apps/site/css/style.css`. (The Buttondown email CSS moved to Studio with the rest of
-  the newsletter config.)
+- **CSS** lives in `apps/site/css/style.css`. (Email styling is not here; WT Builder renders the email
+  edition.)
 - **`topics.js`** reads the pushed `data/librarian/graph.json`; a stale code comment may still mention
-  `librarian-core` (the generator), which now lives in Studio.
+  `librarian-core` (the generator), which now lives in `librarian-thing`.

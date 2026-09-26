@@ -78,7 +78,8 @@ JetBrains Mono for eyebrows and meta. `#fcfcfa` bg, `#1f6fd6` accent. Dark mode 
 
 ## Deploy
 
-GitHub Actions → GitHub Pages on push to `main` (which is when Studio's handoff lands new content). See
+GitHub Actions → GitHub Pages on push to `main` (a WT Builder handoff, a `librarian-thing` graph push, or
+a hand-authored change). See
 [`../../.github/workflows/deploy.yml`](../../.github/workflows/deploy.yml).
 
 ## Related reading

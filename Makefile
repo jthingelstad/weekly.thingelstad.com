@@ -1,9 +1,10 @@
 .PHONY: build serve stats test clean
 
-# weekly is a render surface. Content (issue archives, _data indexes, the topic
-# graph) is produced by Studio (studio-thing) and pushed in via the handoff.
-# These targets just build, preview, refresh weekly's own stats, and clean.
-# Production tooling (archive build, corpus, audio, Lambda, agents) lives in Studio.
+# weekly is a render surface. Issue pages and the emails.json index are
+# committed in by WT Builder (wt-builder); the topic graph is pushed in by
+# librarian-thing. These targets just build, preview, refresh weekly's own
+# stats, and clean. Publishing lives in WT Builder; the archive, corpus, and
+# Lambda live in librarian-thing.
 
 # Full production build → _site/  (Eleventy + Pagefind)
 build:
