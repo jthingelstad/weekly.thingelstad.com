@@ -1,7 +1,7 @@
 // Generate redirect data for old Buttondown slug-based URLs.
 // Only includes entries where the slug differs from the issue number.
-const emails = require("./emails.json");
+const issues = require("../lib/issueIndex.js");
 
-module.exports = emails.filter(
-  (email) => email.slug && email.slug !== String(email.number)
+module.exports = issues.filter(
+  (issue) => issue.slug && issue.slug !== String(issue.number)
 );

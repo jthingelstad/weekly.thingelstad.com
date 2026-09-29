@@ -28,7 +28,7 @@ apps/site/
 ├── AGENTS.md             ← operational memory
 ├── eleventy.config.js    ← passthroughs, filters, collections, markdown setup
 ├── _data/                ← JSON + JS data files (see AGENTS.md for source-of-truth per file)
-│   ├── emails.json       ← (pushed by WT Builder) lightweight issue index
+│   ├── emails.json       ← (pushed by WT Builder) old issue index, no longer read; see lib/
 │   ├── stats.json        ← (fetched by weekly's CI) subscriber + Stripe figures
 │   ├── voiceSamples.json ← home-page pull-quotes (its Studio refresh pipeline is retired)
 │   ├── site.js           ← (hand-authored) URL, author, social, Tinylytics UID

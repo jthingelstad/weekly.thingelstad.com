@@ -20,7 +20,8 @@ architecture model lives in `librarian-thing/ALIGNMENT.md`; the website handoff 
 WT Builder's website send commits these as one atomic commit (which triggers the render below):
 
 - `apps/site/archive/{N}.md` — generated issue pages.
-- `apps/site/_data/emails.json` — lightweight issue index.
+- `apps/site/_data/emails.json` — the old issue index. The build no longer reads it (the index is
+  derived from the pages, `apps/site/lib/issueIndex.js`); it is deleted once WT Builder stops writing it.
 
 `librarian-thing` pushes one file on corpus rebuilds:
 
@@ -39,7 +40,9 @@ overwritten by the next handoff. Fix the issue in WT Builder and re-send; histor
 - **Hand-authored** (edit directly): `site.json`, `support.json`, `quotes.json`, `survey.json`,
   `faq.json`, `redirects.json`.
 
-`archiveStats.js` computes stats at build time from `emails.json` (records, streaks, per-year breakdowns).
+`archiveStats.js` computes stats at build time from the issue pages' front matter (records, streaks,
+per-year breakdowns), read through `apps/site/lib/issueIndex.js`; `topics.js` and `redirects.js` read
+the same index.
 
 ## GitHub Actions — `.github/workflows/deploy.yml`
 

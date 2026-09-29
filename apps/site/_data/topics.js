@@ -11,7 +11,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const emails = require("./emails.json");
+const issues = require("../lib/issueIndex.js");
 
 const GRAPH_PATH = path.join(__dirname, "..", "..", "..", "data", "librarian", "graph.json");
 const AUDIO_MANIFEST_PATH = path.join(__dirname, "..", "..", "..", "data", "audio", "manifest.json");
@@ -53,13 +53,13 @@ module.exports = (() => {
   const graph = loadGraph();
   if (!graph || !graph.entity_index || !graph.issues) return emptyShape();
 
-  // Per-issue metadata from emails.json + audio manifest. The
+  // Per-issue metadata from the issue pages + audio manifest. The
   // expanded shape lets topic.njk render the same archive-entry
   // cards the main archive page uses (cover, description, links
   // count, word count, Listen action).
   const audioManifest = loadAudioManifest();
   const metaByNumber = {};
-  for (const e of emails) {
+  for (const e of issues) {
     if (typeof e.number === "number") {
       const audioRec = audioManifest[String(e.number)];
       metaByNumber[String(e.number)] = {

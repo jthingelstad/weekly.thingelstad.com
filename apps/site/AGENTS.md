@@ -46,7 +46,8 @@ human-reviewed — not in CI.
 `redirects.js`, `assets.js`, `faq.js`.
 
 **Computed at build time** (JS data files run during 11ty):
-- `archiveStats.js` — totals (links, words, domains), per-year breakdowns, records, streaks. Reads `emails.json`.
+- `archiveStats.js` — totals (links, words, domains), per-year breakdowns, records, streaks. Reads the
+  issue pages' front matter through `lib/issueIndex.js`, as `topics.js` and `redirects.js` do.
 - `supportTotals.js` — supporter program totals. Reads `support.json` + `stats.json`.
 - `faq.js` — self-contained FAQ page data (previously re-exported from the Librarian Lambda; that
   dependency was dropped so weekly carries no brain code).

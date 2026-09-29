@@ -1,6 +1,6 @@
-// Compute stats from emails.json for the landing page and FAQ.
+// Compute stats from the issue pages for the landing page and FAQ.
 // Link/domain analysis uses only curated links (Notable + Briefly sections).
-const emails = require("./emails.json");
+const issues = require("../lib/issueIndex.js");
 
 module.exports = (() => {
   const years = {};
@@ -16,7 +16,7 @@ module.exports = (() => {
   let maxWordsIssue = { count: 0 };
 
   // Sort by number ascending for streak calculation
-  const sorted = [...emails]
+  const sorted = [...issues]
     .filter((e) => typeof e.number === "number")
     .sort((a, b) => a.number - b.number);
 
@@ -28,8 +28,8 @@ module.exports = (() => {
 
   // Streak calculation: consecutive weeks published
   let prevDate = null;
-  for (const email of sorted) {
-    const d = new Date(email.publish_date);
+  for (const issue of sorted) {
+    const d = new Date(issue.publish_date);
     if (prevDate) {
       const gap = (d - prevDate) / (1000 * 60 * 60 * 24);
       if (gap <= 10) {
@@ -46,8 +46,8 @@ module.exports = (() => {
   longestStreak = Math.max(longestStreak, currentStreak);
 
   // Per-year stats + records
-  for (const email of emails) {
-    const yr = email.publish_date?.slice(0, 4);
+  for (const issue of issues) {
+    const yr = issue.publish_date?.slice(0, 4);
     if (!yr) continue;
 
     if (!years[yr]) {
@@ -62,11 +62,11 @@ module.exports = (() => {
     }
     years[yr].issues++;
 
-    const notableCount = (email.notable_links || []).length;
-    const brieflyCount = (email.briefly_links || []).length;
+    const notableCount = (issue.notable_links || []).length;
+    const brieflyCount = (issue.briefly_links || []).length;
     const linkCount = notableCount + brieflyCount;
-    const domainCount = (email.domains || []).length;
-    const wordCount = email.word_count || 0;
+    const domainCount = (issue.domains || []).length;
+    const wordCount = issue.word_count || 0;
 
     totalLinks += linkCount;
     totalNotable += notableCount;
@@ -78,7 +78,7 @@ module.exports = (() => {
     years[yr].links += linkCount;
     years[yr].words += wordCount;
 
-    for (const d of email.domains || []) {
+    for (const d of issue.domains || []) {
       years[yr].domains.add(d);
       domainCounts[d] = (domainCounts[d] || 0) + 1;
     }
@@ -86,22 +86,22 @@ module.exports = (() => {
     if (linkCount > maxLinksIssue.count) {
       maxLinksIssue = {
         count: linkCount,
-        number: email.number,
-        subject: email.subject,
+        number: issue.number,
+        subject: issue.subject,
       };
     }
     if (domainCount > maxDomainsIssue.count) {
       maxDomainsIssue = {
         count: domainCount,
-        number: email.number,
-        subject: email.subject,
+        number: issue.number,
+        subject: issue.subject,
       };
     }
     if (wordCount > maxWordsIssue.count) {
       maxWordsIssue = {
         count: wordCount,
-        number: email.number,
-        subject: email.subject,
+        number: issue.number,
+        subject: issue.subject,
       };
     }
   }
@@ -134,8 +134,8 @@ module.exports = (() => {
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
   ];
   const monthCounts = new Array(12).fill(0);
-  for (const email of sorted) {
-    const d = new Date(email.publish_date);
+  for (const issue of sorted) {
+    const d = new Date(issue.publish_date);
     monthCounts[d.getUTCMonth()]++;
   }
   const publishMonths = monthNames.map((name, i) => ({
@@ -153,7 +153,7 @@ module.exports = (() => {
     totalMonths > 0 ? (sorted.length / totalMonths).toFixed(1) : 0;
 
   return {
-    totalIssues: emails.length,
+    totalIssues: issues.length,
     regularIssues: sorted.length,
     totalLinks,
     totalNotable,
