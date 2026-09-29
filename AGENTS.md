@@ -17,11 +17,13 @@ architecture model lives in `librarian-thing/ALIGNMENT.md`; the website handoff 
 
 ## The handoffs — what gets pushed in
 
-WT Builder's website send commits these as one atomic commit (which triggers the render below):
+WT Builder's website send commits one file per issue (which triggers the render below):
 
-- `apps/site/archive/{N}.md` — generated issue pages.
-- `apps/site/_data/emails.json` — the old issue index. The build no longer reads it (the index is
-  derived from the pages, `apps/site/lib/issueIndex.js`); it is deleted once WT Builder stops writing it.
+- `apps/site/archive/{N}.md` — the generated issue page.
+
+There is no separate issue index. The build derives it from the pages' front matter
+(`apps/site/lib/issueIndex.js`); the `emails.json` WT Builder once merged into on every send was
+retired 2026-09-29.
 
 `librarian-thing` pushes one file on corpus rebuilds:
 
@@ -33,8 +35,7 @@ overwritten by the next handoff. Fix the issue in WT Builder and re-send; histor
 
 ## Data files in `apps/site/_data/`
 
-- **Pushed in** (don't hand-edit): `emails.json` by WT Builder; `data/librarian/graph.json` by
-  `librarian-thing`.
+- **Pushed in** (don't hand-edit): `data/librarian/graph.json` by `librarian-thing`.
 - **Owned by this repo:** `stats.json` — subscriber + Stripe figures, fetched by *weekly's own CI* (a
   landing-page presentation concern).
 - **Hand-authored** (edit directly): `site.json`, `support.json`, `quotes.json`, `survey.json`,

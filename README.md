@@ -39,7 +39,7 @@ Shortcuts workflow remains the fallback producer.)
 | [`apps/site/`](apps/site/) | The Eleventy static site — landing page, full archive, feeds. The only app here. |
 | [`apps/files-cdn/`](apps/files-cdn/) | `robots.txt` for the `files.thingelstad.com` public asset domain. |
 | `apps/site/archive/*.md` | **Generated, pushed in by WT Builder.** One page per issue. Do not edit here (the next handoff overwrites). |
-| `apps/site/_data/` | A mix: pushed by WT Builder (`emails.json`), fetched by this repo's CI (`stats.json`), and hand-authored (`site.json`, `support.json`, `quotes.json`, `faq.json`, …). |
+| `apps/site/_data/` | A mix: fetched by this repo's CI (`stats.json`), hand-authored (`site.json`, `support.json`, `quotes.json`, `faq.json`, …), and computed at build time from the issue pages (`archiveStats.js`, `topics.js`, `redirects.js`, through `apps/site/lib/issueIndex.js`). |
 | `data/librarian/graph.json` | Topic graph, pushed by `librarian-thing`; powers the site's topic pages. |
 | [`tests/e2e/`](tests/e2e/) | Playwright end-to-end tests for the rendered site + the legacy Thingy redirect. |
 
@@ -51,7 +51,7 @@ publishing live in **WT Builder**. Start at `wt-builder/README.md` and `libraria
 ## Architecture in one paragraph
 
 WT Builder produces, weekly renders. WT Builder holds the live issue, renders the editions, and on
-send commits the 11ty inputs here (`apps/site/archive/*.md`, `_data/emails.json`) and the canonical
+send commits the issue's 11ty page here (`apps/site/archive/{N}.md`) and the canonical
 text into `librarian-thing/data/issues/{N}/`. `librarian-thing` rebuilds the corpus from that and
 pushes `data/librarian/graph.json` here. This repo's CI
 runs Eleventy + Pagefind, fetches its own landing-page stats, and deploys to GitHub Pages. Thingy runs

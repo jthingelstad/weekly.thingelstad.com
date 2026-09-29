@@ -28,7 +28,6 @@ apps/site/
 ├── AGENTS.md             ← operational memory
 ├── eleventy.config.js    ← passthroughs, filters, collections, markdown setup
 ├── _data/                ← JSON + JS data files (see AGENTS.md for source-of-truth per file)
-│   ├── emails.json       ← (pushed by WT Builder) old issue index, no longer read; see lib/
 │   ├── stats.json        ← (fetched by weekly's CI) subscriber + Stripe figures
 │   ├── voiceSamples.json ← home-page pull-quotes (its Studio refresh pipeline is retired)
 │   ├── site.js           ← (hand-authored) URL, author, social, Tinylytics UID
@@ -38,6 +37,7 @@ apps/site/
 │   └── supportTotals.js  ← (computed at build) supporter program totals
 ├── _includes/            ← layouts/ + partials/
 ├── archive/              ← {N}.md per issue — generated upstream, pushed in by WT Builder
+├── lib/issueIndex.js     ← the issue index, read from archive/*.md front matter at build time
 ├── css/, img/
 ├── index.njk, about.njk, support.njk, search.njk, faq.njk, …
 ├── feed.njk, issue-links-feed.njk, podcast.njk
