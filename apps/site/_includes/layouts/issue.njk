@@ -248,6 +248,11 @@ ogType: article
           var toSeconds = function(t) {
             var p = t.split(':'); return Number(p[0]) * 3600 + Number(p[1]) * 60 + Number(p[2]);
           };
+          // Cue text carries WebVTT's escapes (&amp; &lt; &gt;). A detached
+          // textarea decodes them: its content parses as text, so no tag is
+          // ever made and nothing loads. The result is still set as text.
+          var decoder = document.createElement('textarea');
+          var decode = function(s) { decoder.innerHTML = s; return decoder.value; };
           var lastSpeaker = null;
           vtt.split(/\n\n+/).forEach(function(block) {
             var m = /(\d\d:\d\d:\d\d\.\d{3}) --> (\d\d:\d\d:\d\d\.\d{3})\n<v ([^>]+)>([\s\S]*)/.exec(block);
@@ -271,7 +276,7 @@ ogType: article
               lastSpeaker = m[3];
             }
             var text = document.createElement('span');
-            text.textContent = m[4].trim();
+            text.textContent = decode(m[4].trim());
             p.appendChild(text);
             p.addEventListener('click', function() { seekTo(Number(p.dataset.start)); });
             body.appendChild(p);

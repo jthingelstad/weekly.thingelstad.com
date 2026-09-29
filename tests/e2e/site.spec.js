@@ -80,3 +80,36 @@ test('issue text and RSS carry no generated-file notice', async ({ request }) =>
     expect(text, path).not.toContain('do not edit directly');
   }
 });
+
+test('the transcript panel shows WebVTT escapes as the characters they stand for, never as markup', async ({ page }) => {
+  // WT Builder writes cue text with the standard WebVTT escapes (&amp; &lt;
+  // &gt;); the panel decodes them and still sets each cue as text. Nothing
+  // leaves the machine: every request off 127.0.0.1 is refused, and the
+  // .vtt is served here.
+  const vtt = [
+    'WEBVTT',
+    '',
+    '00:00:00.000 --> 00:00:02.000',
+    '<v Jamie>Procter &amp; Gamble say 3 &lt; 4, and &lt;b&gt;this&lt;/b&gt; is not bold --&gt; ever.',
+    '',
+    '00:00:02.000 --> 00:00:03.000',
+    '<v Thingy>&lt;img src=x onerror="window.pwned=1"&gt; and &amp;amp; stays one escape.',
+    '',
+  ].join('\n');
+  await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
+  await page.route(/\.vtt$/, (route) =>
+    route.fulfill({ status: 200, contentType: 'text/vtt', headers: { 'Access-Control-Allow-Origin': '*' }, body: vtt }),
+  );
+
+  await page.goto('/archive/351/', { waitUntil: 'domcontentloaded' });
+  await page.locator('.issue-transcript summary').click();
+
+  const cues = page.locator('.issue-transcript-body .issue-cue > span:last-child');
+  await expect(cues).toHaveText([
+    'Procter & Gamble say 3 < 4, and <b>this</b> is not bold --> ever.',
+    '<img src=x onerror="window.pwned=1"> and &amp; stays one escape.',
+  ]);
+  await expect(page.locator('.issue-transcript-body b')).toHaveCount(0);
+  await expect(page.locator('.issue-transcript-body img[src="x"]')).toHaveCount(0);
+  expect(await page.evaluate(() => window.pwned)).toBeUndefined();
+});

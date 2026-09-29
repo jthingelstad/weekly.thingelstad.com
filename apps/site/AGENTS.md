@@ -68,7 +68,8 @@ Casts read them, Overcast reads the same chapters from inside the mp3), and show
 chapter with its minute and link. `layouts/issue.njk` adds a "Listen by chapter" sidebar section (closed
 until playback starts; the time seeks the hidden player) and a Transcript `<details>` under the article
 that fetches the WebVTT from the CDN when opened (CORS is open there) and highlights the cue being
-spoken. Every part is guarded on the fields existing — 349 issues have none of the new ones.
+spoken. Cue text carries WebVTT's escapes (`&amp;` `&lt;` `&gt;`); the panel decodes them in a detached
+textarea and sets each cue as `textContent`, never as HTML (2026-09-29). Every part is guarded on the fields existing — 349 issues have none of the new ones.
 
 ## Pagefind
 
