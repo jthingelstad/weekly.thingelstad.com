@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-09-26T20:04:33.493455Z",
+  "generated_at": "2026-09-30T00:26:43.006211Z",
   "extraction_model": "heuristic",
   "issue_count": 352,
   "issues": {
@@ -17889,6 +17889,7 @@
         "Define",
         "WT350",
         "WT351",
+        "AGENTS.md",
         "Attention",
         "Better",
         "Hello",
@@ -17919,8 +17920,7 @@
         "oneusefulthing.org",
         "pagetable.com",
         "startribune.com",
-        "theregister.com",
-        "thorstenball.com"
+        "theregister.com"
       ],
       "tropes": [
         "open web and ownership",
@@ -47820,7 +47820,8 @@
       "342"
     ],
     "agents.md": [
-      "342"
+      "342",
+      "351"
     ],
     "barcelona": [
       "342"
@@ -48384,9 +48385,6 @@
       "351"
     ],
     "pagetable.com": [
-      "351"
-    ],
-    "thorstenball.com": [
       "351"
     ]
   },
