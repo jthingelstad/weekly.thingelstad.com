@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-10-01T10:26:44.962335Z",
+  "generated_at": "2026-10-01T10:46:21.938805Z",
   "extraction_model": "heuristic",
   "issue_count": 352,
   "issues": {
@@ -58,27 +58,27 @@
       "similar_issues": [
         {
           "number": "2",
-          "score": 0.8161
+          "score": 0.8155
         },
         {
           "number": "52",
-          "score": 0.8044
+          "score": 0.8019
         },
         {
           "number": "6",
-          "score": 0.7699
+          "score": 0.7709
         },
         {
           "number": "4",
-          "score": 0.7315
+          "score": 0.7323
         },
         {
           "number": "3",
-          "score": 0.7226
+          "score": 0.7225
         },
         {
           "number": "43",
-          "score": 0.7211
+          "score": 0.7171
         }
       ]
     },
@@ -132,15 +132,15 @@
       "similar_issues": [
         {
           "number": "1",
-          "score": 0.8161
+          "score": 0.8155
         },
         {
           "number": "52",
-          "score": 0.7597
+          "score": 0.76
         },
         {
           "number": "6",
-          "score": 0.7428
+          "score": 0.7427
         },
         {
           "number": "7",
@@ -207,7 +207,7 @@
       "similar_issues": [
         {
           "number": "27",
-          "score": 0.7861
+          "score": 0.7847
         },
         {
           "number": "4",
@@ -219,15 +219,15 @@
         },
         {
           "number": "1",
-          "score": 0.7226
+          "score": 0.7225
         },
         {
           "number": "29",
-          "score": 0.7151
+          "score": 0.7152
         },
         {
           "number": "38",
-          "score": 0.7
+          "score": 0.7005
         }
       ]
     },
@@ -283,11 +283,11 @@
       "similar_issues": [
         {
           "number": "5",
-          "score": 0.8437
+          "score": 0.8436
         },
         {
           "number": "6",
-          "score": 0.8025
+          "score": 0.8026
         },
         {
           "number": "3",
@@ -295,15 +295,15 @@
         },
         {
           "number": "52",
-          "score": 0.7382
+          "score": 0.7384
         },
         {
           "number": "38",
-          "score": 0.7345
+          "score": 0.7342
         },
         {
           "number": "27",
-          "score": 0.7331
+          "score": 0.7329
         }
       ]
     },
@@ -360,23 +360,23 @@
       "similar_issues": [
         {
           "number": "4",
-          "score": 0.8437
+          "score": 0.8436
         },
         {
           "number": "6",
-          "score": 0.746
+          "score": 0.7464
         },
         {
           "number": "10",
-          "score": 0.7234
+          "score": 0.7226
         },
         {
           "number": "20",
-          "score": 0.7117
+          "score": 0.7125
         },
         {
           "number": "52",
-          "score": 0.7013
+          "score": 0.7018
         },
         {
           "number": "2",
@@ -406,7 +406,6 @@
         "Basement Tapes",
         "Beef",
         "Capella Tower",
-        "Cool",
         "Daisy",
         "Daughters",
         "Deal",
@@ -415,17 +414,18 @@
         "Drop",
         "Engineering Blog",
         "Everyday Life",
+        "Excited",
         "FNT",
         "Facebook Code",
         "Fun",
         "Future-Proof",
         "Introducing",
-        "Jeremy Messersmith",
         "Kubb",
         "Looking",
         "MacStories",
         "Minnehaha",
-        "Multitasking"
+        "Multitasking",
+        "NFLX"
       ],
       "tropes": [
         "agency over convenience",
@@ -436,27 +436,27 @@
       "similar_issues": [
         {
           "number": "4",
-          "score": 0.8025
+          "score": 0.8026
         },
         {
           "number": "1",
-          "score": 0.7699
+          "score": 0.7709
         },
         {
           "number": "52",
-          "score": 0.7683
+          "score": 0.7685
         },
         {
           "number": "105",
-          "score": 0.7595
+          "score": 0.7598
         },
         {
           "number": "38",
-          "score": 0.7535
+          "score": 0.7541
         },
         {
           "number": "5",
-          "score": 0.746
+          "score": 0.7464
         }
       ]
     },
@@ -539,13 +539,11 @@
     "8": {
       "entities": [
         "thingelstad.com",
-        "Lake Michigan",
         "jacquesmattheij.com",
+        "Lake Michigan",
         "Saugatuck",
         "Tammy",
         "Day One",
-        "Family",
-        "Grand Haven Room Escape",
         "Let's Encrypt",
         "Michigan",
         "Minnebar",
@@ -556,11 +554,12 @@
         "minnestar.org",
         "Affinity Photo",
         "Drafts",
+        "Family",
+        "Grand Haven Room Escape",
         "Minnesota",
         "American Eclipse",
         "And Other Laws",
         "Bechler Pottery",
-        "Cairns",
         "Code",
         "Community Supporter",
         "DHH",
@@ -571,13 +570,14 @@
         "Few Tips",
         "FotMob. Good",
         "Free SSL",
-        "Fun",
         "GPS",
         "GTD",
         "Going",
         "Got",
         "Grand Haven Beach",
-        "Heinemeier Hansson"
+        "Heinemeier Hansson",
+        "Intuitive",
+        "Lego"
       ],
       "tropes": [
         "open web and ownership",
@@ -587,36 +587,36 @@
       "similar_issues": [
         {
           "number": "9",
-          "score": 0.7775
+          "score": 0.7761
         },
         {
           "number": "11",
-          "score": 0.7207
+          "score": 0.7206
         },
         {
           "number": "14",
-          "score": 0.7036
+          "score": 0.7034
         },
         {
           "number": "10",
-          "score": 0.6972
+          "score": 0.6969
         },
         {
           "number": "12",
-          "score": 0.6801
+          "score": 0.6803
         },
         {
           "number": "48",
-          "score": 0.6672
+          "score": 0.6666
         }
       ]
     },
     "9": {
       "entities": [
         "thingelstad.com",
-        "Winnipeg Folk Festival",
         "Big Green Egg",
         "Facebook",
+        "Winnipeg Folk Festival",
         "medium.com",
         "Creative Commons",
         "App Store",
@@ -627,7 +627,6 @@
         "amazon.com",
         "creativecommons.org",
         "en.wikipedia.org",
-        "Brandi Carlile",
         "Dave McClure",
         "Happy",
         "Let's Encrypt",
@@ -637,7 +636,6 @@
         "1blocker.com",
         "Afghanistan",
         "Americans",
-        "An Optimist",
         "Ancient Russian",
         "Antisocial Coding",
         "Apple",
@@ -647,12 +645,14 @@
         "Big",
         "Big Blue",
         "Blake Watson",
+        "Brandi Carlile",
         "Bring",
-        "Bruce Cockburn",
-        "Bur Oak",
         "Bye",
         "Camper Van Beethoven",
-        "Chicago"
+        "Camping. Birds Hill Provincial Park",
+        "Chicago",
+        "Chicago. This",
+        "Coraline Ada Ehmke"
       ],
       "tropes": [
         "open web and ownership",
@@ -664,37 +664,36 @@
       "similar_issues": [
         {
           "number": "8",
-          "score": 0.7775
+          "score": 0.7761
         },
         {
           "number": "11",
-          "score": 0.7255
+          "score": 0.7251
         },
         {
           "number": "10",
-          "score": 0.6964
+          "score": 0.6978
         },
         {
           "number": "14",
-          "score": 0.6822
+          "score": 0.6815
         },
         {
           "number": "12",
-          "score": 0.6591
+          "score": 0.6589
         },
         {
           "number": "17",
-          "score": 0.6517
+          "score": 0.6511
         }
       ]
     },
     "10": {
       "entities": [
         "thingelstad.com",
+        "DRM",
         "Peter Yarrow",
         "Winnipeg Folk Festival",
-        "DRM",
-        "Puff",
         "Internet Archive",
         "archive.org",
         "minnestar.org",
@@ -702,12 +701,10 @@
         "Acorn",
         "Better",
         "Minnedemo",
+        "Puff",
         "Scheduling Everything",
-        "Awesome",
         "Blog",
-        "Blowin",
         "Brings",
-        "Cause",
         "Counterpart",
         "Developer",
         "Donate",
@@ -715,21 +712,24 @@
         "Eleven Experts Share The Secrets",
         "English",
         "Excited",
-        "Folk Fest",
         "Going",
         "Graphing",
         "Ind.ie",
         "Its",
-        "Kids",
-        "Little Stage",
         "Look",
         "Love",
         "MacStories",
-        "Magic Dragon",
-        "Magic Dragon. You",
         "Markdown-based",
-        "Mary",
-        "Mazie"
+        "Next Action Associates",
+        "Nice",
+        "OmniGroup",
+        "Operations",
+        "Pinboard Blog",
+        "Power",
+        "Signing",
+        "The HTTP",
+        "The Learning Water Meter",
+        "The School"
       ],
       "tropes": [
         "open web and ownership",
@@ -740,27 +740,27 @@
       "similar_issues": [
         {
           "number": "11",
-          "score": 0.7489
+          "score": 0.7483
         },
         {
           "number": "4",
-          "score": 0.727
+          "score": 0.7274
         },
         {
           "number": "5",
-          "score": 0.7234
+          "score": 0.7226
         },
         {
           "number": "14",
-          "score": 0.7194
+          "score": 0.7186
         },
         {
           "number": "6",
-          "score": 0.7048
+          "score": 0.7049
         },
         {
           "number": "12",
-          "score": 0.7018
+          "score": 0.7013
         }
       ]
     },
@@ -816,15 +816,15 @@
       "similar_issues": [
         {
           "number": "10",
-          "score": 0.7489
+          "score": 0.7483
         },
         {
           "number": "14",
-          "score": 0.7472
+          "score": 0.747
         },
         {
           "number": "9",
-          "score": 0.7255
+          "score": 0.7251
         },
         {
           "number": "12",
@@ -832,7 +832,7 @@
         },
         {
           "number": "8",
-          "score": 0.7207
+          "score": 0.7206
         },
         {
           "number": "110",
@@ -897,11 +897,11 @@
         },
         {
           "number": "14",
-          "score": 0.7039
+          "score": 0.7038
         },
         {
           "number": "10",
-          "score": 0.7018
+          "score": 0.7013
         },
         {
           "number": "4",
@@ -913,7 +913,7 @@
         },
         {
           "number": "52",
-          "score": 0.6907
+          "score": 0.6909
         }
       ]
     },
@@ -930,7 +930,6 @@
         "Kubernetes",
         "Python",
         "Tammy",
-        "Wine",
         "Apache Mesos",
         "Aziz Ansari",
         "Big Green Egg",
@@ -938,7 +937,6 @@
         "Chase",
         "Chippewa River",
         "Coworker.org",
-        "Danzinger Vineyards",
         "Docker",
         "Exist.io",
         "Final",
@@ -958,7 +956,9 @@
         "Master",
         "Mississippi River. Thanks Broken Paddle",
         "Monolith Monolithic",
-        "Nice"
+        "Nice",
+        "Our Phones. Tristan Harris Wants",
+        "PCRE"
       ],
       "tropes": [
         "open web and ownership"
@@ -966,27 +966,27 @@
       "similar_issues": [
         {
           "number": "14",
-          "score": 0.6807
+          "score": 0.6803
         },
         {
           "number": "21",
-          "score": 0.6441
+          "score": 0.6442
         },
         {
           "number": "15",
-          "score": 0.6405
+          "score": 0.6407
         },
         {
           "number": "11",
           "score": 0.6396
         },
         {
-          "number": "8",
-          "score": 0.6321
-        },
-        {
           "number": "17",
           "score": 0.6317
+        },
+        {
+          "number": "8",
+          "score": 0.6315
         }
       ]
     },
@@ -1041,35 +1041,35 @@
       "similar_issues": [
         {
           "number": "114",
-          "score": 0.7537
+          "score": 0.7536
         },
         {
           "number": "17",
-          "score": 0.7485
+          "score": 0.7483
         },
         {
           "number": "11",
-          "score": 0.7472
+          "score": 0.747
         },
         {
           "number": "57",
-          "score": 0.7421
+          "score": 0.7418
         },
         {
           "number": "10",
-          "score": 0.7194
+          "score": 0.7186
         },
         {
           "number": "1",
-          "score": 0.7163
+          "score": 0.7156
         }
       ]
     },
     "15": {
       "entities": [
         "thingelstad.com",
-        "Coldplay",
         "Perl",
+        "Coldplay",
         "Sarahah",
         "EFF",
         "Eureka",
@@ -1079,7 +1079,6 @@
         "medium.com",
         "theverge.com",
         "Just",
-        "Lasers",
         "React",
         "Touch ID",
         "AWS SAM Local",
@@ -1104,6 +1103,7 @@
         "Keeping",
         "Kubernetes",
         "Larry Page",
+        "Lasers",
         "Live",
         "Lotus Notes Sametime",
         "Medium"
@@ -1115,27 +1115,27 @@
       "similar_issues": [
         {
           "number": "16",
-          "score": 0.8266
+          "score": 0.8263
         },
         {
           "number": "14",
-          "score": 0.668
+          "score": 0.6678
         },
         {
           "number": "13",
-          "score": 0.6405
+          "score": 0.6407
         },
         {
           "number": "17",
-          "score": 0.6331
+          "score": 0.6332
         },
         {
           "number": "10",
-          "score": 0.6232
+          "score": 0.623
         },
         {
           "number": "155",
-          "score": 0.6195
+          "score": 0.62
         }
       ]
     },
@@ -1145,11 +1145,11 @@
         "Creative Commons",
         "creativecommons.org",
         "St. Louis",
-        "City Museum",
         "Halide",
         "TextTool",
         "macsparky.com",
         "AWS",
+        "City Museum",
         "Code42",
         "Just",
         "Montaigne",
@@ -1167,7 +1167,6 @@
         "Enterprise",
         "Eureka",
         "Family",
-        "Feeling",
         "Focus Exclusively",
         "Friendly API Service",
         "GCP",
@@ -1180,7 +1179,8 @@
         "Looking",
         "Python",
         "Rapidly Growing Business",
-        "Scale"
+        "Scale",
+        "Signal"
       ],
       "tropes": [
         "open web and ownership",
@@ -1191,15 +1191,15 @@
       "similar_issues": [
         {
           "number": "15",
-          "score": 0.8266
+          "score": 0.8263
         },
         {
           "number": "14",
-          "score": 0.5668
+          "score": 0.5664
         },
         {
           "number": "17",
-          "score": 0.5582
+          "score": 0.5583
         },
         {
           "number": "67",
@@ -1207,11 +1207,11 @@
         },
         {
           "number": "3",
-          "score": 0.5457
+          "score": 0.5451
         },
         {
           "number": "27",
-          "score": 0.5442
+          "score": 0.5451
         }
       ]
     },
@@ -1266,7 +1266,7 @@
       "similar_issues": [
         {
           "number": "14",
-          "score": 0.7485
+          "score": 0.7483
         },
         {
           "number": "161",
@@ -1282,7 +1282,7 @@
         },
         {
           "number": "19",
-          "score": 0.6995
+          "score": 0.6994
         },
         {
           "number": "122",
@@ -1298,7 +1298,6 @@
         "Jekyll",
         "Lake Pokegama",
         "Weather Atlas",
-        "Beck",
         "Facebook",
         "Mazie",
         "Pinboard",
@@ -1307,16 +1306,14 @@
         "creativecommons.org",
         "startribune.com",
         "Not",
-        "Big",
+        "Beck",
         "Bitcoin",
         "Campfire",
         "Carry On",
-        "Cell",
         "China",
         "Chinese Lantern",
         "Communication Looks Like",
         "Donate",
-        "Elevation",
         "Engineering Blog",
         "Ethereum",
         "Facebook Code",
@@ -1326,12 +1323,15 @@
         "How Apple Engineered Its Watch",
         "Howard Stern",
         "Husband's",
-        "Joshua Tree",
         "Keep Calm",
-        "Kids",
         "Letterman",
         "London Review",
-        "Minnesota Renaissance Festival"
+        "Perform",
+        "Plymouth",
+        "Pokegama Lake",
+        "Product",
+        "Push You",
+        "Relaxing"
       ],
       "tropes": [
         "open web and ownership",
@@ -1345,23 +1345,23 @@
         },
         {
           "number": "2",
-          "score": 0.6872
+          "score": 0.6856
         },
         {
           "number": "52",
-          "score": 0.685
+          "score": 0.683
         },
         {
           "number": "6",
-          "score": 0.6818
+          "score": 0.6805
         },
         {
           "number": "51",
-          "score": 0.6784
+          "score": 0.6764
         },
         {
           "number": "39",
-          "score": 0.676
+          "score": 0.675
         }
       ]
     },
@@ -1377,8 +1377,6 @@
         "Sometimes",
         "EFF",
         "Krebs",
-        "MN United",
-        "MNUFC",
         "Sublime Text",
         "arstechnica.com",
         "blog.cloudflare.com",
@@ -1388,6 +1386,7 @@
         "tidbits.com",
         "twitter.com",
         "Another",
+        "MNUFC",
         "Mozilla",
         "Phil Soran",
         "Series",
@@ -1406,7 +1405,8 @@
         "Equifax Breach",
         "Equifax Has My Data",
         "Fuller Soccer Earthquakes",
-        "GO MNUFC"
+        "Goes Cellular",
+        "Got"
       ],
       "tropes": [
         "open web and ownership",
@@ -1416,27 +1416,27 @@
       "similar_issues": [
         {
           "number": "17",
-          "score": 0.6995
+          "score": 0.6994
         },
         {
           "number": "21",
-          "score": 0.6743
+          "score": 0.6735
         },
         {
           "number": "18",
-          "score": 0.6671
+          "score": 0.665
         },
         {
           "number": "6",
-          "score": 0.6594
+          "score": 0.6587
         },
         {
           "number": "120",
-          "score": 0.6562
+          "score": 0.6554
         },
         {
-          "number": "52",
-          "score": 0.6483
+          "number": "117",
+          "score": 0.647
         }
       ]
     },
@@ -1457,7 +1457,6 @@
         "Apple World Today",
         "Dan Wilson",
         "Facebook",
-        "Just",
         "Making Maps",
         "Swift",
         "appleworld.today",
@@ -1472,6 +1471,7 @@
         "Austin Mann",
         "CEO",
         "Github Pages",
+        "Just",
         "All-in-one",
         "Anatomy",
         "Apple Music. Connect",
@@ -1481,7 +1481,7 @@
         "Big Green Egg",
         "Building Link Thing",
         "Campfire",
-        "Cannon Lake. Not"
+        "Clouds"
       ],
       "tropes": [
         "open web and ownership",
@@ -1492,27 +1492,27 @@
       "similar_issues": [
         {
           "number": "72",
-          "score": 0.7299
+          "score": 0.7302
         },
         {
           "number": "5",
-          "score": 0.7117
+          "score": 0.7125
         },
         {
           "number": "11",
-          "score": 0.7029
+          "score": 0.7033
         },
         {
           "number": "21",
-          "score": 0.7006
+          "score": 0.701
         },
         {
           "number": "196",
-          "score": 0.691
+          "score": 0.6914
         },
         {
           "number": "22",
-          "score": 0.6874
+          "score": 0.6876
         }
       ]
     },
@@ -1567,7 +1567,7 @@
       "similar_issues": [
         {
           "number": "29",
-          "score": 0.7377
+          "score": 0.7375
         },
         {
           "number": "17",
@@ -1575,11 +1575,11 @@
         },
         {
           "number": "20",
-          "score": 0.7006
+          "score": 0.701
         },
         {
           "number": "27",
-          "score": 0.6986
+          "score": 0.6987
         },
         {
           "number": "155",
@@ -1644,7 +1644,7 @@
       "similar_issues": [
         {
           "number": "20",
-          "score": 0.6874
+          "score": 0.6876
         },
         {
           "number": "72",
@@ -1719,27 +1719,27 @@
       "similar_issues": [
         {
           "number": "42",
-          "score": 0.7639
+          "score": 0.7629
         },
         {
           "number": "56",
-          "score": 0.7531
+          "score": 0.7521
         },
         {
           "number": "43",
-          "score": 0.7132
+          "score": 0.7115
         },
         {
           "number": "18",
-          "score": 0.6651
-        },
-        {
-          "number": "27",
-          "score": 0.6548
+          "score": 0.6638
         },
         {
           "number": "25",
-          "score": 0.6538
+          "score": 0.6539
+        },
+        {
+          "number": "27",
+          "score": 0.6539
         }
       ]
     },
@@ -1795,11 +1795,11 @@
       "similar_issues": [
         {
           "number": "21",
-          "score": 0.6691
+          "score": 0.6693
         },
         {
           "number": "11",
-          "score": 0.6684
+          "score": 0.6682
         },
         {
           "number": "77",
@@ -1807,15 +1807,15 @@
         },
         {
           "number": "29",
-          "score": 0.6611
+          "score": 0.6609
         },
         {
           "number": "25",
-          "score": 0.6517
+          "score": 0.6518
         },
         {
           "number": "71",
-          "score": 0.6505
+          "score": 0.6507
         }
       ]
     },
@@ -1871,23 +1871,23 @@
       "similar_issues": [
         {
           "number": "27",
-          "score": 0.7611
+          "score": 0.7606
         },
         {
           "number": "29",
-          "score": 0.7089
+          "score": 0.7087
         },
         {
           "number": "28",
-          "score": 0.6912
+          "score": 0.6909
         },
         {
           "number": "3",
-          "score": 0.6882
+          "score": 0.6883
         },
         {
           "number": "18",
-          "score": 0.6646
+          "score": 0.6627
         },
         {
           "number": "263",
@@ -1947,27 +1947,27 @@
       "similar_issues": [
         {
           "number": "29",
-          "score": 0.7886
+          "score": 0.7881
         },
         {
           "number": "27",
-          "score": 0.7483
+          "score": 0.749
         },
         {
           "number": "33",
-          "score": 0.6813
+          "score": 0.6819
         },
         {
           "number": "81",
-          "score": 0.6806
+          "score": 0.6804
         },
         {
           "number": "30",
-          "score": 0.6673
+          "score": 0.6677
         },
         {
           "number": "21",
-          "score": 0.6643
+          "score": 0.6638
         }
       ]
     },
@@ -2025,27 +2025,27 @@
       "similar_issues": [
         {
           "number": "29",
-          "score": 0.8139
+          "score": 0.8128
         },
         {
           "number": "3",
-          "score": 0.7861
+          "score": 0.7847
         },
         {
           "number": "38",
-          "score": 0.7624
+          "score": 0.7618
         },
         {
           "number": "25",
-          "score": 0.7611
+          "score": 0.7606
         },
         {
           "number": "26",
-          "score": 0.7483
+          "score": 0.749
         },
         {
           "number": "28",
-          "score": 0.7418
+          "score": 0.7432
         }
       ]
     },
@@ -2101,27 +2101,27 @@
       "similar_issues": [
         {
           "number": "27",
-          "score": 0.7418
+          "score": 0.7432
         },
         {
           "number": "25",
-          "score": 0.6912
+          "score": 0.6909
         },
         {
           "number": "29",
-          "score": 0.6654
+          "score": 0.6657
         },
         {
           "number": "3",
-          "score": 0.6431
+          "score": 0.6436
         },
         {
           "number": "26",
-          "score": 0.6247
+          "score": 0.624
         },
         {
           "number": "278",
-          "score": 0.6085
+          "score": 0.6079
         }
       ]
     },
@@ -2176,27 +2176,27 @@
       "similar_issues": [
         {
           "number": "27",
-          "score": 0.8139
+          "score": 0.8128
         },
         {
           "number": "26",
-          "score": 0.7886
+          "score": 0.7881
         },
         {
           "number": "38",
-          "score": 0.779
+          "score": 0.7788
         },
         {
           "number": "30",
-          "score": 0.7783
+          "score": 0.7767
         },
         {
           "number": "34",
-          "score": 0.7588
+          "score": 0.7587
         },
         {
           "number": "81",
-          "score": 0.7504
+          "score": 0.7501
         }
       ]
     },
@@ -2252,27 +2252,27 @@
       "similar_issues": [
         {
           "number": "31",
-          "score": 0.7886
+          "score": 0.7882
         },
         {
           "number": "29",
-          "score": 0.7783
-        },
-        {
-          "number": "34",
-          "score": 0.7715
+          "score": 0.7767
         },
         {
           "number": "33",
-          "score": 0.771
+          "score": 0.7712
         },
         {
-          "number": "38",
-          "score": 0.7049
+          "number": "34",
+          "score": 0.7698
         },
         {
           "number": "27",
-          "score": 0.7048
+          "score": 0.7051
+        },
+        {
+          "number": "38",
+          "score": 0.7045
         }
       ]
     },
@@ -2329,11 +2329,11 @@
       "similar_issues": [
         {
           "number": "30",
-          "score": 0.7886
+          "score": 0.7882
         },
         {
           "number": "29",
-          "score": 0.7298
+          "score": 0.7294
         },
         {
           "number": "34",
@@ -2341,15 +2341,15 @@
         },
         {
           "number": "33",
-          "score": 0.6992
+          "score": 0.7006
         },
         {
           "number": "27",
-          "score": 0.6818
+          "score": 0.6807
         },
         {
           "number": "38",
-          "score": 0.6725
+          "score": 0.6722
         }
       ]
     },
@@ -2409,11 +2409,11 @@
         },
         {
           "number": "29",
-          "score": 0.6114
+          "score": 0.6107
         },
         {
           "number": "38",
-          "score": 0.611
+          "score": 0.6104
         },
         {
           "number": "295",
@@ -2421,19 +2421,19 @@
         },
         {
           "number": "30",
-          "score": 0.6031
+          "score": 0.6016
         },
         {
           "number": "52",
-          "score": 0.583
+          "score": 0.5827
         }
       ]
     },
     "33": {
       "entities": [
         "thingelstad.com",
-        "Semisonic",
         "en.wikipedia.org",
+        "Semisonic",
         "Facebook",
         "Internet Archive",
         "Prometheus",
@@ -2447,7 +2447,6 @@
         "Apple",
         "Apps",
         "Babies' When They Get",
-        "Big Lake",
         "Big Step Up",
         "Christmas",
         "Companies Are Using Facebook",
@@ -2456,7 +2455,6 @@
         "Daniel Suarez",
         "Donate",
         "Edition",
-        "Excited",
         "Exclude Older",
         "Flu",
         "GTD",
@@ -2470,7 +2468,9 @@
         "Rhoneisms",
         "Signal",
         "Synology NAS",
-        "Technology"
+        "Technology",
+        "The Guardian",
+        "Tips"
       ],
       "tropes": [
         "open web and ownership",
@@ -2480,27 +2480,27 @@
       "similar_issues": [
         {
           "number": "34",
-          "score": 0.7748
+          "score": 0.7755
         },
         {
           "number": "30",
-          "score": 0.771
+          "score": 0.7712
         },
         {
           "number": "85",
-          "score": 0.762
+          "score": 0.7634
         },
         {
           "number": "29",
-          "score": 0.7182
+          "score": 0.7185
         },
         {
           "number": "86",
-          "score": 0.7018
+          "score": 0.7031
         },
         {
           "number": "31",
-          "score": 0.6992
+          "score": 0.7006
         }
       ]
     },
@@ -2554,19 +2554,19 @@
       "similar_issues": [
         {
           "number": "33",
-          "score": 0.7748
+          "score": 0.7755
         },
         {
           "number": "30",
-          "score": 0.7715
+          "score": 0.7698
         },
         {
           "number": "29",
-          "score": 0.7588
+          "score": 0.7587
         },
         {
           "number": "35",
-          "score": 0.7326
+          "score": 0.7318
         },
         {
           "number": "85",
@@ -2602,7 +2602,6 @@
         "California",
         "Checklist Manifesto",
         "Checklists",
-        "Clue",
         "Community Supporter",
         "Curated List",
         "Dan Harris Knows All Your",
@@ -2619,7 +2618,8 @@
         "Microsoft Azure",
         "Mrs. Peacock",
         "Not Meditating",
-        "Note"
+        "Note",
+        "Numbers"
       ],
       "tropes": [
         "open web and ownership",
@@ -2630,23 +2630,23 @@
       "similar_issues": [
         {
           "number": "36",
-          "score": 0.7713
+          "score": 0.7714
         },
         {
           "number": "38",
-          "score": 0.7693
+          "score": 0.7692
         },
         {
           "number": "34",
-          "score": 0.7326
+          "score": 0.7318
         },
         {
           "number": "39",
-          "score": 0.7175
+          "score": 0.7176
         },
         {
           "number": "41",
-          "score": 0.7102
+          "score": 0.7099
         },
         {
           "number": "52",
@@ -2706,11 +2706,11 @@
       "similar_issues": [
         {
           "number": "35",
-          "score": 0.7713
+          "score": 0.7714
         },
         {
           "number": "38",
-          "score": 0.7543
+          "score": 0.7538
         },
         {
           "number": "39",
@@ -2722,11 +2722,11 @@
         },
         {
           "number": "43",
-          "score": 0.6937
+          "score": 0.6929
         },
         {
           "number": "52",
-          "score": 0.6821
+          "score": 0.682
         }
       ]
     },
@@ -2758,10 +2758,8 @@
         "Nordic Waffles",
         "Pivotal Cloud Foundry",
         "Share",
-        "Stine Aasland",
         "Things' Dangerous Future",
         "Trailer",
-        "We Love Waffles",
         "applatix.com",
         "ardisson.org",
         "blog.getbootstrap.com",
@@ -2771,7 +2769,9 @@
         "heymeta.com",
         "itunes.apple.com",
         "kubernetes.io",
-        "labo.nintendo.com"
+        "labo.nintendo.com",
+        "medium.com",
+        "micro.blog"
       ],
       "tropes": [
         "open web and ownership",
@@ -2786,23 +2786,23 @@
         },
         {
           "number": "41",
-          "score": 0.6271
+          "score": 0.6272
         },
         {
           "number": "38",
-          "score": 0.6179
+          "score": 0.618
         },
         {
           "number": "43",
-          "score": 0.589
+          "score": 0.5872
         },
         {
           "number": "305",
-          "score": 0.5791
+          "score": 0.5793
         },
         {
           "number": "35",
-          "score": 0.5754
+          "score": 0.5756
         }
       ]
     },
@@ -2815,7 +2815,6 @@
         "Google",
         "Toggl",
         "Mac",
-        "Minneapolis",
         "OmniFocus",
         "Python",
         "Stratechery",
@@ -2826,6 +2825,7 @@
         "Big Ideas",
         "CES",
         "Meetings",
+        "Minneapolis",
         "Never",
         "The Atlantic",
         "Zstandard",
@@ -2860,27 +2860,27 @@
       "similar_issues": [
         {
           "number": "39",
-          "score": 0.844
+          "score": 0.8439
         },
         {
           "number": "29",
-          "score": 0.779
+          "score": 0.7788
         },
         {
           "number": "52",
-          "score": 0.7744
+          "score": 0.7749
         },
         {
           "number": "35",
-          "score": 0.7693
+          "score": 0.7692
         },
         {
           "number": "41",
-          "score": 0.7655
+          "score": 0.7654
         },
         {
           "number": "27",
-          "score": 0.7624
+          "score": 0.7618
         }
       ]
     },
@@ -2936,7 +2936,7 @@
       "similar_issues": [
         {
           "number": "38",
-          "score": 0.844
+          "score": 0.8439
         },
         {
           "number": "41",
@@ -2944,7 +2944,7 @@
         },
         {
           "number": "43",
-          "score": 0.7915
+          "score": 0.7912
         },
         {
           "number": "42",
@@ -2956,7 +2956,7 @@
         },
         {
           "number": "52",
-          "score": 0.7668
+          "score": 0.7674
         }
       ]
     },
@@ -3024,11 +3024,11 @@
         },
         {
           "number": "38",
-          "score": 0.7235
+          "score": 0.723
         },
         {
           "number": "43",
-          "score": 0.6921
+          "score": 0.6904
         },
         {
           "number": "49",
@@ -3089,11 +3089,11 @@
         },
         {
           "number": "38",
-          "score": 0.7655
+          "score": 0.7654
         },
         {
           "number": "43",
-          "score": 0.7584
+          "score": 0.7575
         },
         {
           "number": "42",
@@ -3105,7 +3105,7 @@
         },
         {
           "number": "52",
-          "score": 0.7329
+          "score": 0.7324
         }
       ]
     },
@@ -3162,11 +3162,11 @@
       "similar_issues": [
         {
           "number": "43",
-          "score": 0.8406
+          "score": 0.8399
         },
         {
           "number": "52",
-          "score": 0.7814
+          "score": 0.7824
         },
         {
           "number": "39",
@@ -3174,7 +3174,7 @@
         },
         {
           "number": "23",
-          "score": 0.7639
+          "score": 0.7629
         },
         {
           "number": "56",
@@ -3217,6 +3217,7 @@
         "Dan Wilson",
         "Differential Privacy",
         "Engineering Management",
+        "Feed My Starving Children",
         "Finding Pwned Passwords With",
         "HTML Parsing",
         "Honestly",
@@ -3226,8 +3227,7 @@
         "Largest Yet Recorded",
         "Minnesota Public Radio News",
         "Nassim Nicholas Taleb",
-        "Pwned Password",
-        "Python"
+        "Pwned Password"
       ],
       "tropes": [
         "open web and ownership",
@@ -3239,27 +3239,27 @@
       "similar_issues": [
         {
           "number": "42",
-          "score": 0.8406
+          "score": 0.8399
         },
         {
           "number": "52",
-          "score": 0.8016
+          "score": 0.8006
         },
         {
           "number": "39",
-          "score": 0.7915
+          "score": 0.7912
         },
         {
           "number": "41",
-          "score": 0.7584
+          "score": 0.7575
         },
         {
           "number": "38",
-          "score": 0.7573
+          "score": 0.7572
         },
         {
           "number": "50",
-          "score": 0.756
+          "score": 0.7543
         }
       ]
     },
@@ -3317,23 +3317,23 @@
         },
         {
           "number": "43",
-          "score": 0.675
+          "score": 0.6739
         },
         {
           "number": "48",
-          "score": 0.6593
-        },
-        {
-          "number": "47",
-          "score": 0.656
+          "score": 0.6583
         },
         {
           "number": "50",
+          "score": 0.6564
+        },
+        {
+          "number": "47",
           "score": 0.6559
         },
         {
           "number": "52",
-          "score": 0.6556
+          "score": 0.6559
         }
       ]
     },
@@ -3393,23 +3393,23 @@
         },
         {
           "number": "47",
-          "score": 0.6883
+          "score": 0.6885
         },
         {
           "number": "48",
-          "score": 0.6877
+          "score": 0.6872
         },
         {
           "number": "43",
-          "score": 0.6822
+          "score": 0.681
         },
         {
           "number": "41",
-          "score": 0.665
+          "score": 0.6652
         },
         {
           "number": "52",
-          "score": 0.6494
+          "score": 0.6489
         }
       ]
     },
@@ -3466,7 +3466,7 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.7443
+          "score": 0.7438
         },
         {
           "number": "49",
@@ -3474,19 +3474,19 @@
         },
         {
           "number": "48",
-          "score": 0.7405
+          "score": 0.7393
         },
         {
           "number": "47",
-          "score": 0.7276
+          "score": 0.7269
         },
         {
           "number": "43",
-          "score": 0.7238
+          "score": 0.7212
         },
         {
           "number": "39",
-          "score": 0.7137
+          "score": 0.7132
         }
       ]
     },
@@ -3542,19 +3542,19 @@
       "similar_issues": [
         {
           "number": "48",
-          "score": 0.8739
+          "score": 0.874
         },
         {
           "number": "46",
-          "score": 0.7276
+          "score": 0.7269
         },
         {
           "number": "43",
-          "score": 0.726
+          "score": 0.725
         },
         {
           "number": "52",
-          "score": 0.7203
+          "score": 0.7196
         },
         {
           "number": "99",
@@ -3562,7 +3562,7 @@
         },
         {
           "number": "50",
-          "score": 0.7009
+          "score": 0.701
         }
       ]
     },
@@ -3618,27 +3618,27 @@
       "similar_issues": [
         {
           "number": "47",
-          "score": 0.8739
+          "score": 0.874
         },
         {
           "number": "46",
-          "score": 0.7405
+          "score": 0.7393
         },
         {
           "number": "49",
-          "score": 0.7267
-        },
-        {
-          "number": "43",
-          "score": 0.7152
-        },
-        {
-          "number": "52",
-          "score": 0.7133
+          "score": 0.7263
         },
         {
           "number": "50",
           "score": 0.713
+        },
+        {
+          "number": "43",
+          "score": 0.7129
+        },
+        {
+          "number": "52",
+          "score": 0.7111
         }
       ]
     },
@@ -3695,7 +3695,7 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.751
+          "score": 0.7513
         },
         {
           "number": "46",
@@ -3703,11 +3703,11 @@
         },
         {
           "number": "50",
-          "score": 0.7392
+          "score": 0.7389
         },
         {
           "number": "43",
-          "score": 0.7349
+          "score": 0.7342
         },
         {
           "number": "39",
@@ -3715,7 +3715,7 @@
         },
         {
           "number": "48",
-          "score": 0.7267
+          "score": 0.7263
         }
       ]
     },
@@ -3771,27 +3771,27 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.8256
+          "score": 0.8251
         },
         {
           "number": "51",
-          "score": 0.7836
+          "score": 0.7831
         },
         {
           "number": "43",
-          "score": 0.756
+          "score": 0.7543
         },
         {
           "number": "38",
-          "score": 0.7516
+          "score": 0.7507
         },
         {
           "number": "39",
-          "score": 0.7454
+          "score": 0.7446
         },
         {
           "number": "49",
-          "score": 0.7392
+          "score": 0.7389
         }
       ]
     },
@@ -3848,15 +3848,15 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.8229
+          "score": 0.8223
         },
         {
           "number": "50",
-          "score": 0.7836
+          "score": 0.7831
         },
         {
           "number": "43",
-          "score": 0.741
+          "score": 0.7394
         },
         {
           "number": "42",
@@ -3925,27 +3925,27 @@
       "similar_issues": [
         {
           "number": "50",
-          "score": 0.8256
+          "score": 0.8251
         },
         {
           "number": "51",
-          "score": 0.8229
+          "score": 0.8223
         },
         {
           "number": "1",
-          "score": 0.8044
+          "score": 0.8019
         },
         {
           "number": "43",
-          "score": 0.8016
+          "score": 0.8006
         },
         {
           "number": "42",
-          "score": 0.7814
+          "score": 0.7824
         },
         {
           "number": "112",
-          "score": 0.7811
+          "score": 0.7814
         }
       ]
     },
@@ -3999,15 +3999,15 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.7564
+          "score": 0.7562
         },
         {
           "number": "43",
-          "score": 0.7286
+          "score": 0.7278
         },
         {
           "number": "50",
-          "score": 0.7121
+          "score": 0.7119
         },
         {
           "number": "42",
@@ -4076,11 +4076,11 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.7392
+          "score": 0.7388
         },
         {
           "number": "43",
-          "score": 0.7199
+          "score": 0.7171
         },
         {
           "number": "106",
@@ -4232,7 +4232,7 @@
         },
         {
           "number": "23",
-          "score": 0.7531
+          "score": 0.7521
         },
         {
           "number": "51",
@@ -4240,15 +4240,15 @@
         },
         {
           "number": "50",
-          "score": 0.7199
+          "score": 0.7198
         },
         {
           "number": "43",
-          "score": 0.6973
+          "score": 0.6964
         },
         {
           "number": "52",
-          "score": 0.6938
+          "score": 0.6933
         }
       ]
     },
@@ -4311,7 +4311,7 @@
         },
         {
           "number": "14",
-          "score": 0.7421
+          "score": 0.7418
         },
         {
           "number": "69",
@@ -4319,7 +4319,7 @@
         },
         {
           "number": "52",
-          "score": 0.7092
+          "score": 0.7084
         },
         {
           "number": "110",
@@ -4387,19 +4387,19 @@
         },
         {
           "number": "48",
-          "score": 0.6692
+          "score": 0.6687
         },
         {
           "number": "46",
-          "score": 0.6518
+          "score": 0.6515
         },
         {
           "number": "52",
-          "score": 0.6312
+          "score": 0.6299
         },
         {
           "number": "8",
-          "score": 0.6165
+          "score": 0.6161
         }
       ]
     },
@@ -4454,19 +4454,19 @@
       "similar_issues": [
         {
           "number": "43",
-          "score": 0.6954
+          "score": 0.6959
         },
         {
           "number": "60",
           "score": 0.6922
         },
         {
-          "number": "52",
-          "score": 0.6628
-        },
-        {
           "number": "42",
           "score": 0.6622
+        },
+        {
+          "number": "52",
+          "score": 0.662
         },
         {
           "number": "39",
@@ -4530,7 +4530,7 @@
       "similar_issues": [
         {
           "number": "38",
-          "score": 0.7288
+          "score": 0.7285
         },
         {
           "number": "120",
@@ -4549,8 +4549,8 @@
           "score": 0.714
         },
         {
-          "number": "52",
-          "score": 0.7098
+          "number": "6",
+          "score": 0.7094
         }
       ]
     },
@@ -4614,12 +4614,12 @@
           "score": 0.6234
         },
         {
-          "number": "52",
+          "number": "290",
           "score": 0.6208
         },
         {
-          "number": "290",
-          "score": 0.6208
+          "number": "52",
+          "score": 0.6204
         },
         {
           "number": "60",
@@ -4639,6 +4639,7 @@
         "Minnestar",
         "minnestar.org",
         "Currents",
+        "Drops",
         "MacBook Pro",
         "Minnebar",
         "Tools",
@@ -4655,7 +4656,6 @@
         "Cornfield",
         "Craft",
         "Disposable Straw Explains Modern Capitalism",
-        "Drops",
         "Episode",
         "Even For Introverts",
         "Fear",
@@ -4798,6 +4798,7 @@
         "minnestar.org",
         "missingpiecesmn.com",
         "Chris",
+        "Coffee",
         "LAFC",
         "Meetup",
         "Minnebar",
@@ -4811,7 +4812,6 @@
         "Become",
         "Boobs",
         "Built",
-        "Coffee",
         "Colter Reed",
         "Community Supporter",
         "Economist",
@@ -4846,7 +4846,7 @@
         },
         {
           "number": "52",
-          "score": 0.5959
+          "score": 0.5947
         },
         {
           "number": "111",
@@ -4916,11 +4916,11 @@
         },
         {
           "number": "48",
-          "score": 0.6389
+          "score": 0.638
         },
         {
           "number": "8",
-          "score": 0.6366
+          "score": 0.636
         },
         {
           "number": "75",
@@ -5000,7 +5000,7 @@
         },
         {
           "number": "48",
-          "score": 0.6161
+          "score": 0.6143
         },
         {
           "number": "61",
@@ -5067,15 +5067,15 @@
         },
         {
           "number": "48",
-          "score": 0.6438
-        },
-        {
-          "number": "9",
-          "score": 0.6237
+          "score": 0.6433
         },
         {
           "number": "96",
           "score": 0.6235
+        },
+        {
+          "number": "9",
+          "score": 0.6228
         },
         {
           "number": "57",
@@ -5137,7 +5137,7 @@
         },
         {
           "number": "29",
-          "score": 0.6195
+          "score": 0.6199
         },
         {
           "number": "110",
@@ -5145,7 +5145,7 @@
         },
         {
           "number": "43",
-          "score": 0.5836
+          "score": 0.5832
         },
         {
           "number": "62",
@@ -5366,7 +5366,7 @@
         },
         {
           "number": "24",
-          "score": 0.6505
+          "score": 0.6507
         },
         {
           "number": "73",
@@ -5433,7 +5433,7 @@
       "similar_issues": [
         {
           "number": "20",
-          "score": 0.7299
+          "score": 0.7302
         },
         {
           "number": "73",
@@ -5508,12 +5508,12 @@
       ],
       "similar_issues": [
         {
-          "number": "43",
-          "score": 0.6937
+          "number": "52",
+          "score": 0.6928
         },
         {
-          "number": "52",
-          "score": 0.6929
+          "number": "43",
+          "score": 0.692
         },
         {
           "number": "72",
@@ -5597,7 +5597,7 @@
         },
         {
           "number": "43",
-          "score": 0.6793
+          "score": 0.6787
         },
         {
           "number": "120",
@@ -5661,11 +5661,11 @@
       "similar_issues": [
         {
           "number": "247",
-          "score": 0.6862
+          "score": 0.6868
         },
         {
           "number": "253",
-          "score": 0.6861
+          "score": 0.6865
         },
         {
           "number": "65",
@@ -5737,24 +5737,24 @@
       ],
       "similar_issues": [
         {
-          "number": "43",
-          "score": 0.5724
-        },
-        {
           "number": "46",
           "score": 0.5723
+        },
+        {
+          "number": "43",
+          "score": 0.5711
         },
         {
           "number": "106",
           "score": 0.5697
         },
         {
-          "number": "48",
-          "score": 0.5695
-        },
-        {
           "number": "40",
           "score": 0.5689
+        },
+        {
+          "number": "48",
+          "score": 0.5679
         },
         {
           "number": "58",
@@ -5967,7 +5967,7 @@
       "similar_issues": [
         {
           "number": "43",
-          "score": 0.7108
+          "score": 0.7099
         },
         {
           "number": "39",
@@ -6122,7 +6122,7 @@
         },
         {
           "number": "29",
-          "score": 0.7504
+          "score": 0.7501
         },
         {
           "number": "235",
@@ -6138,7 +6138,7 @@
         },
         {
           "number": "26",
-          "score": 0.6806
+          "score": 0.6804
         }
       ]
     },
@@ -6169,6 +6169,7 @@
         "Data",
         "Democracies",
         "Do People Actually Want",
+        "Dow Jones",
         "Elf",
         "Ever Seen",
         "Extract Text",
@@ -6182,8 +6183,7 @@
         "Joining Mac Power Users",
         "Lustre",
         "MacBook Air",
-        "MacBook Pro",
-        "McSweeney's"
+        "MacBook Pro"
       ],
       "tropes": [
         "open web and ownership",
@@ -6194,7 +6194,7 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.6692
+          "score": 0.6687
         },
         {
           "number": "106",
@@ -6206,7 +6206,7 @@
         },
         {
           "number": "38",
-          "score": 0.621
+          "score": 0.6211
         },
         {
           "number": "236",
@@ -6284,7 +6284,7 @@
         },
         {
           "number": "52",
-          "score": 0.6321
+          "score": 0.6316
         },
         {
           "number": "86",
@@ -6424,7 +6424,7 @@
         },
         {
           "number": "33",
-          "score": 0.762
+          "score": 0.7634
         },
         {
           "number": "34",
@@ -6440,7 +6440,7 @@
         },
         {
           "number": "30",
-          "score": 0.6947
+          "score": 0.6942
         }
       ]
     },
@@ -6505,7 +6505,7 @@
         },
         {
           "number": "33",
-          "score": 0.7018
+          "score": 0.7031
         },
         {
           "number": "84",
@@ -6589,11 +6589,11 @@
         },
         {
           "number": "33",
-          "score": 0.6794
+          "score": 0.6798
         },
         {
           "number": "35",
-          "score": 0.6725
+          "score": 0.6716
         }
       ]
     },
@@ -6653,7 +6653,7 @@
         },
         {
           "number": "38",
-          "score": 0.7339
+          "score": 0.7342
         },
         {
           "number": "84",
@@ -6818,7 +6818,7 @@
         },
         {
           "number": "38",
-          "score": 0.6821
+          "score": 0.6816
         }
       ]
     },
@@ -7158,12 +7158,12 @@
         "MHTA Tech Talent",
         "Mac Introduces Cleaner Design",
         "MacStories",
+        "Matt Lewis",
         "Mike McNamara",
         "Minnesota Compass Project",
         "Morning Routine",
         "My Apple Watch",
-        "Need",
-        "Payday"
+        "Need"
       ],
       "tropes": [
         "open web and ownership",
@@ -7497,7 +7497,7 @@
         },
         {
           "number": "48",
-          "score": 0.6878
+          "score": 0.6871
         }
       ]
     },
@@ -7667,6 +7667,7 @@
         "eff.org",
         "nytimes.com",
         "rottentomatoes.com",
+        "Computing Awards",
         "Disney",
         "Internet",
         "Kubernetes",
@@ -7684,7 +7685,6 @@
         "Billion Loss",
         "CEO",
         "Company",
-        "Computing Awards",
         "Convenient Calorie Tracking",
         "Dark Mode",
         "Despite Its",
@@ -7827,7 +7827,9 @@
         "Perfectly Normal",
         "Refuse",
         "Ring",
+        "SPS Commerce",
         "Session",
+        "Sharon Kennedy Vickers",
         "Tammy",
         "The Wikimedia Foundation",
         "Vector",
@@ -7840,9 +7842,7 @@
         "copperhenkitchen.com",
         "darlinghq.org",
         "datastuff.tech",
-        "delta.io",
-        "donate.wikimedia.org",
-        "jobs.spscommerce.com"
+        "delta.io"
       ],
       "tropes": [
         "agency over convenience",
@@ -7888,6 +7888,7 @@
         "weekly.thingelstad.com",
         "Minneapolis",
         "1password.com",
+        "Badass Agile",
         "Beam",
         "Brings New Watch App",
         "But Still No Moore's Law",
@@ -7915,8 +7916,7 @@
         "Why It Matters",
         "Whys",
         "agiletortoise.com",
-        "badassagile.com",
-        "blog.chromium.org"
+        "badassagile.com"
       ],
       "tropes": [
         "open web and ownership",
@@ -8010,7 +8010,7 @@
         },
         {
           "number": "52",
-          "score": 0.7555
+          "score": 0.756
         },
         {
           "number": "110",
@@ -8040,6 +8040,7 @@
         "Tesla",
         "American Flag",
         "An End-to-End Speech-to-Speech Translation Model",
+        "Awesome",
         "But Because It Prevents Him",
         "Cal Newport",
         "Career",
@@ -8066,8 +8067,7 @@
         "Polish",
         "Privacy Badger",
         "Renato Sanches",
-        "Social Media Save Us",
-        "Study Hacks"
+        "Social Media Save Us"
       ],
       "tropes": [
         "open web and ownership",
@@ -8256,8 +8256,8 @@
     },
     "110": {
       "entities": [
-        "thingelstad.com",
         "Creative Commons",
+        "thingelstad.com",
         "Airbnb",
         "9to5mac.com",
         "creativecommons.org",
@@ -8479,7 +8479,7 @@
         },
         {
           "number": "52",
-          "score": 0.7811
+          "score": 0.7814
         }
       ]
     },
@@ -8623,7 +8623,7 @@
         },
         {
           "number": "14",
-          "score": 0.7537
+          "score": 0.7536
         },
         {
           "number": "110",
@@ -8836,7 +8836,7 @@
         },
         {
           "number": "19",
-          "score": 0.6471
+          "score": 0.647
         },
         {
           "number": "93",
@@ -8927,7 +8927,7 @@
         },
         {
           "number": "52",
-          "score": 0.688
+          "score": 0.6879
         }
       ]
     },
@@ -9131,27 +9131,27 @@
       "similar_issues": [
         {
           "number": "106",
-          "score": 0.6773
+          "score": 0.6774
         },
         {
           "number": "318",
-          "score": 0.6761
+          "score": 0.6762
         },
         {
           "number": "120",
-          "score": 0.673
+          "score": 0.6731
         },
         {
           "number": "122",
-          "score": 0.6681
+          "score": 0.6682
         },
         {
           "number": "129",
-          "score": 0.6553
+          "score": 0.6554
         },
         {
           "number": "52",
-          "score": 0.6533
+          "score": 0.6536
         }
       ]
     },
@@ -9670,7 +9670,7 @@
         },
         {
           "number": "29",
-          "score": 0.707
+          "score": 0.7065
         },
         {
           "number": "205",
@@ -9912,7 +9912,7 @@
         },
         {
           "number": "38",
-          "score": 0.6595
+          "score": 0.6593
         }
       ]
     },
@@ -10052,7 +10052,7 @@
         },
         {
           "number": "52",
-          "score": 0.6863
+          "score": 0.6867
         },
         {
           "number": "129",
@@ -10129,7 +10129,7 @@
         },
         {
           "number": "302",
-          "score": 0.5251
+          "score": 0.5248
         },
         {
           "number": "150",
@@ -10197,27 +10197,27 @@
       "similar_issues": [
         {
           "number": "41",
-          "score": 0.633
+          "score": 0.6329
         },
         {
           "number": "137",
-          "score": 0.6102
+          "score": 0.6098
         },
         {
           "number": "129",
-          "score": 0.6062
+          "score": 0.6066
         },
         {
           "number": "51",
-          "score": 0.5981
+          "score": 0.5985
         },
         {
           "number": "52",
-          "score": 0.5894
+          "score": 0.5898
         },
         {
           "number": "131",
-          "score": 0.5881
+          "score": 0.5887
         }
       ]
     },
@@ -10285,7 +10285,7 @@
         },
         {
           "number": "139",
-          "score": 0.5154
+          "score": 0.5155
         },
         {
           "number": "150",
@@ -10349,27 +10349,27 @@
       "similar_issues": [
         {
           "number": "288",
-          "score": 0.6504
+          "score": 0.6503
         },
         {
           "number": "130",
-          "score": 0.6419
+          "score": 0.642
         },
         {
           "number": "272",
-          "score": 0.6329
+          "score": 0.6321
         },
         {
           "number": "52",
-          "score": 0.632
+          "score": 0.6317
         },
         {
           "number": "319",
-          "score": 0.6276
+          "score": 0.627
         },
         {
-          "number": "133",
-          "score": 0.6246
+          "number": "169",
+          "score": 0.6242
         }
       ]
     },
@@ -10427,7 +10427,7 @@
       "similar_issues": [
         {
           "number": "139",
-          "score": 0.6628
+          "score": 0.6637
         },
         {
           "number": "150",
@@ -10503,27 +10503,27 @@
       "similar_issues": [
         {
           "number": "138",
-          "score": 0.6628
+          "score": 0.6637
         },
         {
           "number": "150",
-          "score": 0.6383
+          "score": 0.639
         },
         {
           "number": "157",
-          "score": 0.6369
+          "score": 0.6372
         },
         {
           "number": "120",
-          "score": 0.6196
+          "score": 0.6207
         },
         {
           "number": "155",
-          "score": 0.6095
+          "score": 0.61
         },
         {
           "number": "147",
-          "score": 0.6069
+          "score": 0.6076
         }
       ]
     },
@@ -11318,7 +11318,7 @@
         },
         {
           "number": "303",
-          "score": 0.5523
+          "score": 0.5531
         },
         {
           "number": "205",
@@ -11387,7 +11387,7 @@
         },
         {
           "number": "52",
-          "score": 0.7012
+          "score": 0.7007
         },
         {
           "number": "147",
@@ -11701,7 +11701,7 @@
         },
         {
           "number": "52",
-          "score": 0.6601
+          "score": 0.659
         },
         {
           "number": "133",
@@ -11767,12 +11767,12 @@
           "score": 0.7223
         },
         {
-          "number": "52",
-          "score": 0.6983
-        },
-        {
           "number": "21",
           "score": 0.6982
+        },
+        {
+          "number": "52",
+          "score": 0.698
         },
         {
           "number": "201",
@@ -11929,7 +11929,7 @@
         },
         {
           "number": "139",
-          "score": 0.6369
+          "score": 0.6372
         }
       ]
     },
@@ -12368,7 +12368,7 @@
         },
         {
           "number": "26",
-          "score": 0.6138
+          "score": 0.6136
         },
         {
           "number": "161",
@@ -12535,7 +12535,7 @@
         },
         {
           "number": "302",
-          "score": 0.6545
+          "score": 0.6546
         }
       ]
     },
@@ -12679,7 +12679,7 @@
         },
         {
           "number": "52",
-          "score": 0.6314
+          "score": 0.6311
         },
         {
           "number": "290",
@@ -12746,7 +12746,7 @@
         },
         {
           "number": "30",
-          "score": 0.6812
+          "score": 0.6817
         },
         {
           "number": "236",
@@ -12890,7 +12890,7 @@
       "similar_issues": [
         {
           "number": "38",
-          "score": 0.723
+          "score": 0.7228
         },
         {
           "number": "200",
@@ -12902,11 +12902,11 @@
         },
         {
           "number": "52",
-          "score": 0.706
+          "score": 0.7055
         },
         {
           "number": "6",
-          "score": 0.6988
+          "score": 0.6992
         },
         {
           "number": "263",
@@ -13063,7 +13063,7 @@
         },
         {
           "number": "253",
-          "score": 0.6808
+          "score": 0.6812
         }
       ]
     },
@@ -13212,7 +13212,7 @@
         },
         {
           "number": "43",
-          "score": 0.6484
+          "score": 0.6469
         }
       ]
     },
@@ -13587,8 +13587,8 @@
           "score": 0.624
         },
         {
-          "number": "43",
-          "score": 0.6218
+          "number": "170",
+          "score": 0.6216
         }
       ]
     },
@@ -13656,7 +13656,7 @@
         },
         {
           "number": "52",
-          "score": 0.5808
+          "score": 0.5792
         },
         {
           "number": "260",
@@ -14115,7 +14115,7 @@
         },
         {
           "number": "52",
-          "score": 0.6737
+          "score": 0.6736
         },
         {
           "number": "319",
@@ -14572,7 +14572,7 @@
         },
         {
           "number": "52",
-          "score": 0.7056
+          "score": 0.705
         },
         {
           "number": "261",
@@ -14876,7 +14876,7 @@
         },
         {
           "number": "20",
-          "score": 0.691
+          "score": 0.6914
         }
       ]
     },
@@ -15026,7 +15026,7 @@
         },
         {
           "number": "327",
-          "score": 0.6212
+          "score": 0.6211
         }
       ]
     },
@@ -15239,7 +15239,7 @@
         },
         {
           "number": "253",
-          "score": 0.7162
+          "score": 0.7164
         },
         {
           "number": "302",
@@ -15475,7 +15475,7 @@
         },
         {
           "number": "302",
-          "score": 0.6193
+          "score": 0.6196
         },
         {
           "number": "172",
@@ -16009,7 +16009,7 @@
         },
         {
           "number": "43",
-          "score": 0.6634
+          "score": 0.6627
         }
       ]
     },
@@ -16067,7 +16067,7 @@
         },
         {
           "number": "302",
-          "score": 0.6991
+          "score": 0.6996
         },
         {
           "number": "274",
@@ -16748,7 +16748,7 @@
         },
         {
           "number": "52",
-          "score": 0.6417
+          "score": 0.6412
         },
         {
           "number": "331",
@@ -17055,8 +17055,8 @@
           "score": 0.6851
         },
         {
-          "number": "52",
-          "score": 0.6845
+          "number": "200",
+          "score": 0.6838
         }
       ]
     },
@@ -17128,12 +17128,12 @@
           "score": 0.7183
         },
         {
-          "number": "52",
-          "score": 0.7153
-        },
-        {
           "number": "211",
           "score": 0.7151
+        },
+        {
+          "number": "52",
+          "score": 0.7144
         }
       ]
     },
@@ -18031,12 +18031,12 @@
           "score": 0.6868
         },
         {
-          "number": "52",
-          "score": 0.6845
-        },
-        {
           "number": "337",
           "score": 0.6844
+        },
+        {
+          "number": "52",
+          "score": 0.6834
         }
       ]
     },
@@ -18325,7 +18325,7 @@
         },
         {
           "number": "302",
-          "score": 0.677
+          "score": 0.6775
         },
         {
           "number": "237",
@@ -18696,27 +18696,27 @@
       "similar_issues": [
         {
           "number": "253",
-          "score": 0.7381
+          "score": 0.7394
         },
         {
           "number": "75",
-          "score": 0.6862
+          "score": 0.6868
         },
         {
           "number": "273",
-          "score": 0.6359
+          "score": 0.6363
         },
         {
           "number": "295",
-          "score": 0.6342
+          "score": 0.635
         },
         {
           "number": "319",
-          "score": 0.6201
+          "score": 0.6205
         },
         {
           "number": "260",
-          "score": 0.6166
+          "score": 0.6172
         }
       ]
     },
@@ -18775,7 +18775,7 @@
         },
         {
           "number": "253",
-          "score": 0.6928
+          "score": 0.6929
         },
         {
           "number": "261",
@@ -19087,7 +19087,7 @@
         },
         {
           "number": "253",
-          "score": 0.646
+          "score": 0.6463
         },
         {
           "number": "270",
@@ -19153,19 +19153,19 @@
       "similar_issues": [
         {
           "number": "247",
-          "score": 0.7381
+          "score": 0.7394
         },
         {
           "number": "260",
-          "score": 0.7353
+          "score": 0.7354
         },
         {
           "number": "273",
-          "score": 0.7329
+          "score": 0.7331
         },
         {
           "number": "278",
-          "score": 0.7243
+          "score": 0.7248
         },
         {
           "number": "274",
@@ -19173,7 +19173,7 @@
         },
         {
           "number": "272",
-          "score": 0.7235
+          "score": 0.7236
         }
       ]
     },
@@ -19315,7 +19315,7 @@
         },
         {
           "number": "52",
-          "score": 0.6353
+          "score": 0.6352
         },
         {
           "number": "287",
@@ -19629,7 +19629,7 @@
         },
         {
           "number": "327",
-          "score": 0.6336
+          "score": 0.6337
         }
       ]
     },
@@ -19687,7 +19687,7 @@
         },
         {
           "number": "253",
-          "score": 0.7353
+          "score": 0.7354
         },
         {
           "number": "272",
@@ -19771,7 +19771,7 @@
         },
         {
           "number": "253",
-          "score": 0.7185
+          "score": 0.7187
         },
         {
           "number": "201",
@@ -19838,7 +19838,7 @@
         },
         {
           "number": "327",
-          "score": 0.6943
+          "score": 0.6942
         },
         {
           "number": "265",
@@ -19922,7 +19922,7 @@
         },
         {
           "number": "52",
-          "score": 0.7584
+          "score": 0.7581
         },
         {
           "number": "319",
@@ -20389,7 +20389,7 @@
         },
         {
           "number": "327",
-          "score": 0.6929
+          "score": 0.6928
         }
       ]
     },
@@ -20537,7 +20537,7 @@
         },
         {
           "number": "29",
-          "score": 0.7183
+          "score": 0.7176
         },
         {
           "number": "273",
@@ -20545,7 +20545,7 @@
         },
         {
           "number": "303",
-          "score": 0.7109
+          "score": 0.7114
         }
       ]
     },
@@ -20614,7 +20614,7 @@
         },
         {
           "number": "302",
-          "score": 0.7496
+          "score": 0.7495
         },
         {
           "number": "281",
@@ -20774,7 +20774,7 @@
         },
         {
           "number": "302",
-          "score": 0.7356
+          "score": 0.7354
         },
         {
           "number": "285",
@@ -21238,7 +21238,7 @@
         },
         {
           "number": "45",
-          "score": 0.6335
+          "score": 0.6334
         }
       ]
     },
@@ -21836,7 +21836,7 @@
         },
         {
           "number": "52",
-          "score": 0.7361
+          "score": 0.7363
         },
         {
           "number": "347",
@@ -21844,7 +21844,7 @@
         },
         {
           "number": "6",
-          "score": 0.6971
+          "score": 0.6972
         },
         {
           "number": "348",
@@ -21994,7 +21994,7 @@
         },
         {
           "number": "302",
-          "score": 0.7347
+          "score": 0.7351
         },
         {
           "number": "296",
@@ -22597,7 +22597,7 @@
         },
         {
           "number": "302",
-          "score": 0.747
+          "score": 0.7474
         },
         {
           "number": "297",
@@ -22744,7 +22744,7 @@
       "similar_issues": [
         {
           "number": "302",
-          "score": 0.7786
+          "score": 0.7787
         },
         {
           "number": "301",
@@ -22821,7 +22821,7 @@
       "similar_issues": [
         {
           "number": "302",
-          "score": 0.7917
+          "score": 0.7921
         },
         {
           "number": "300",
@@ -22898,27 +22898,27 @@
       "similar_issues": [
         {
           "number": "301",
-          "score": 0.7917
+          "score": 0.7921
         },
         {
           "number": "300",
-          "score": 0.7786
+          "score": 0.7787
         },
         {
           "number": "272",
-          "score": 0.7496
+          "score": 0.7495
         },
         {
           "number": "298",
-          "score": 0.747
+          "score": 0.7474
         },
         {
           "number": "274",
-          "score": 0.7356
+          "score": 0.7354
         },
         {
           "number": "290",
-          "score": 0.7347
+          "score": 0.7351
         }
       ]
     },
@@ -22975,27 +22975,27 @@
       "similar_issues": [
         {
           "number": "302",
-          "score": 0.7218
+          "score": 0.7215
         },
         {
           "number": "334",
-          "score": 0.7167
+          "score": 0.7172
         },
         {
           "number": "304",
-          "score": 0.7161
+          "score": 0.716
         },
         {
           "number": "271",
-          "score": 0.7109
+          "score": 0.7114
         },
         {
           "number": "205",
-          "score": 0.7036
+          "score": 0.704
         },
         {
           "number": "301",
-          "score": 0.7026
+          "score": 0.7025
         }
       ]
     },
@@ -23060,7 +23060,7 @@
         },
         {
           "number": "302",
-          "score": 0.7338
+          "score": 0.7341
         },
         {
           "number": "238",
@@ -23367,7 +23367,7 @@
         },
         {
           "number": "302",
-          "score": 0.7168
+          "score": 0.717
         },
         {
           "number": "285",
@@ -23530,7 +23530,7 @@
         },
         {
           "number": "52",
-          "score": 0.7084
+          "score": 0.7078
         },
         {
           "number": "263",
@@ -23668,27 +23668,27 @@
       "similar_issues": [
         {
           "number": "331",
-          "score": 0.7051
+          "score": 0.705
         },
         {
           "number": "313",
-          "score": 0.6863
+          "score": 0.6861
         },
         {
           "number": "311",
-          "score": 0.6815
+          "score": 0.6816
         },
         {
           "number": "321",
-          "score": 0.6726
+          "score": 0.6727
         },
         {
           "number": "270",
-          "score": 0.6703
+          "score": 0.6706
         },
         {
           "number": "263",
-          "score": 0.6668
+          "score": 0.6671
         }
       ]
     },
@@ -23985,7 +23985,7 @@
         },
         {
           "number": "253",
-          "score": 0.6943
+          "score": 0.6945
         },
         {
           "number": "47",
@@ -24205,7 +24205,7 @@
         },
         {
           "number": "52",
-          "score": 0.7535
+          "score": 0.7522
         },
         {
           "number": "288",
@@ -24511,12 +24511,12 @@
           "score": 0.6545
         },
         {
-          "number": "52",
-          "score": 0.6521
-        },
-        {
           "number": "321",
           "score": 0.6518
+        },
+        {
+          "number": "52",
+          "score": 0.6516
         },
         {
           "number": "333",
@@ -24825,11 +24825,11 @@
         },
         {
           "number": "315",
-          "score": 0.714
+          "score": 0.7139
         },
         {
           "number": "329",
-          "score": 0.714
+          "score": 0.7139
         },
         {
           "number": "331",
@@ -24982,7 +24982,7 @@
         },
         {
           "number": "52",
-          "score": 0.7465
+          "score": 0.7457
         },
         {
           "number": "325",
@@ -25520,7 +25520,7 @@
         },
         {
           "number": "38",
-          "score": 0.708
+          "score": 0.7076
         },
         {
           "number": "305",
@@ -26357,7 +26357,7 @@
         },
         {
           "number": "52",
-          "score": 0.7207
+          "score": 0.7205
         },
         {
           "number": "288",
@@ -26445,7 +26445,7 @@
         },
         {
           "number": "52",
-          "score": 0.7164
+          "score": 0.7156
         }
       ]
     },
@@ -26517,7 +26517,7 @@
         },
         {
           "number": "52",
-          "score": 0.6877
+          "score": 0.6879
         },
         {
           "number": "325",
@@ -27286,6 +27286,7 @@
       "1",
       "4",
       "5",
+      "10",
       "12",
       "13",
       "24",
@@ -27713,6 +27714,7 @@
     "signal": [
       "2",
       "14",
+      "16",
       "26",
       "33",
       "90",
@@ -27933,6 +27935,7 @@
       "21",
       "24",
       "29",
+      "37",
       "42",
       "50",
       "53",
@@ -29003,21 +29006,6 @@
     "capella tower": [
       "6"
     ],
-    "cool": [
-      "6",
-      "7",
-      "14",
-      "28",
-      "44",
-      "62",
-      "112",
-      "149",
-      "200",
-      "239",
-      "249",
-      "301",
-      "332"
-    ],
     "daisy": [
       "6"
     ],
@@ -29042,6 +29030,12 @@
     "everyday life": [
       "6"
     ],
+    "excited": [
+      "6",
+      "10",
+      "24",
+      "340"
+    ],
     "fnt": [
       "6"
     ],
@@ -29052,7 +29046,6 @@
     "fun": [
       "6",
       "7",
-      "8",
       "34",
       "86",
       "141",
@@ -29076,9 +29069,6 @@
       "251",
       "334",
       "340"
-    ],
-    "jeremy messersmith": [
-      "6"
     ],
     "kubb": [
       "6",
@@ -29104,6 +29094,9 @@
       "6"
     ],
     "multitasking": [
+      "6"
+    ],
+    "nflx": [
       "6"
     ],
     "en.wikipedia.org": [
@@ -29290,7 +29283,6 @@
       "38",
       "39",
       "42",
-      "43",
       "50",
       "56",
       "63",
@@ -29389,6 +29381,20 @@
       "162",
       "261"
     ],
+    "cool": [
+      "7",
+      "14",
+      "28",
+      "44",
+      "62",
+      "112",
+      "149",
+      "200",
+      "239",
+      "249",
+      "301",
+      "332"
+    ],
     "dads": [
       "7",
       "201",
@@ -29442,7 +29448,6 @@
       "7",
       "11",
       "12",
-      "19",
       "23",
       "54",
       "119",
@@ -29470,10 +29475,10 @@
     "rad like dad": [
       "7"
     ],
-    "lake michigan": [
+    "jacquesmattheij.com": [
       "8"
     ],
-    "jacquesmattheij.com": [
+    "lake michigan": [
       "8"
     ],
     "saugatuck": [
@@ -29528,19 +29533,6 @@
       "55",
       "191",
       "241"
-    ],
-    "family": [
-      "8",
-      "16",
-      "36",
-      "135",
-      "166",
-      "203",
-      "260",
-      "292"
-    ],
-    "grand haven room escape": [
-      "8"
     ],
     "let's encrypt": [
       "8",
@@ -29621,6 +29613,19 @@
       "185",
       "263"
     ],
+    "family": [
+      "8",
+      "16",
+      "36",
+      "135",
+      "166",
+      "203",
+      "260",
+      "292"
+    ],
+    "grand haven room escape": [
+      "8"
+    ],
     "american eclipse": [
       "8"
     ],
@@ -29628,9 +29633,6 @@
       "8"
     ],
     "bechler pottery": [
-      "8"
-    ],
-    "cairns": [
       "8"
     ],
     "code": [
@@ -29683,6 +29685,7 @@
       "8",
       "11",
       "17",
+      "19",
       "58",
       "81"
     ],
@@ -29691,6 +29694,18 @@
     ],
     "heinemeier hansson": [
       "8"
+    ],
+    "intuitive": [
+      "8"
+    ],
+    "lego": [
+      "8",
+      "34",
+      "179",
+      "182",
+      "185",
+      "222",
+      "319"
     ],
     "winnipeg folk festival": [
       "9",
@@ -29736,22 +29751,6 @@
       "257",
       "349"
     ],
-    "brandi carlile": [
-      "9",
-      "32",
-      "58",
-      "59",
-      "93",
-      "116",
-      "135",
-      "157",
-      "160",
-      "180",
-      "226",
-      "255",
-      "293",
-      "331"
-    ],
     "dave mcclure": [
       "9"
     ],
@@ -29794,9 +29793,6 @@
       "304",
       "337"
     ],
-    "an optimist": [
-      "9"
-    ],
     "ancient russian": [
       "9"
     ],
@@ -29805,8 +29801,8 @@
     ],
     "awesome": [
       "9",
-      "10",
       "37",
+      "107",
       "162",
       "223"
     ],
@@ -29821,7 +29817,6 @@
     "big": [
       "9",
       "16",
-      "18",
       "103"
     ],
     "big blue": [
@@ -29830,19 +29825,32 @@
     "blake watson": [
       "9"
     ],
+    "brandi carlile": [
+      "9",
+      "32",
+      "58",
+      "59",
+      "93",
+      "116",
+      "135",
+      "157",
+      "160",
+      "180",
+      "226",
+      "255",
+      "293",
+      "331"
+    ],
     "bring": [
-      "9"
-    ],
-    "bruce cockburn": [
-      "9"
-    ],
-    "bur oak": [
       "9"
     ],
     "bye": [
       "9"
     ],
     "camper van beethoven": [
+      "9"
+    ],
+    "camping. birds hill provincial park": [
       "9"
     ],
     "chicago": [
@@ -29853,13 +29861,16 @@
       "224",
       "298"
     ],
-    "peter yarrow": [
-      "10"
+    "chicago. this": [
+      "9"
+    ],
+    "coraline ada ehmke": [
+      "9"
     ],
     "drm": [
       "10"
     ],
-    "puff": [
+    "peter yarrow": [
       "10"
     ],
     "internet archive": [
@@ -29946,6 +29957,9 @@
       "227",
       "294"
     ],
+    "puff": [
+      "10"
+    ],
     "scheduling everything": [
       "10"
     ],
@@ -29972,15 +29986,8 @@
       "247",
       "305"
     ],
-    "blowin": [
-      "10"
-    ],
     "brings": [
       "10"
-    ],
-    "cause": [
-      "10",
-      "53"
     ],
     "counterpart": [
       "10"
@@ -29998,15 +30005,6 @@
     "english": [
       "10"
     ],
-    "excited": [
-      "10",
-      "24",
-      "33",
-      "340"
-    ],
-    "folk fest": [
-      "10"
-    ],
     "graphing": [
       "10"
     ],
@@ -30014,13 +30012,6 @@
       "10"
     ],
     "its": [
-      "10"
-    ],
-    "kids": [
-      "10",
-      "18"
-    ],
-    "little stage": [
       "10"
     ],
     "love": [
@@ -30034,53 +30025,40 @@
       "308",
       "310"
     ],
-    "magic dragon": [
-      "10"
-    ],
-    "magic dragon. you": [
-      "10"
-    ],
     "markdown-based": [
       "10",
       "221"
     ],
-    "mary": [
+    "next action associates": [
       "10"
     ],
-    "mazie": [
+    "omnigroup": [
+      "10"
+    ],
+    "operations": [
       "10",
-      "18",
-      "61",
-      "75",
-      "140",
-      "156",
-      "166",
-      "170",
-      "184",
-      "194",
-      "199",
-      "206",
-      "213",
-      "223",
-      "224",
-      "235",
-      "244",
-      "246",
-      "258",
-      "259",
-      "261",
-      "270",
-      "281",
-      "286",
-      "289",
-      "293",
-      "296",
-      "299",
-      "301",
-      "317",
-      "324",
-      "347",
-      "349"
+      "217"
+    ],
+    "pinboard blog": [
+      "10"
+    ],
+    "power": [
+      "10",
+      "174"
+    ],
+    "signing": [
+      "10",
+      "250",
+      "252"
+    ],
+    "the http": [
+      "10"
+    ],
+    "the learning water meter": [
+      "10"
+    ],
+    "the school": [
+      "10"
     ],
     "ufc": [
       "11"
@@ -30542,9 +30520,6 @@
       "155",
       "184"
     ],
-    "wine": [
-      "13"
-    ],
     "apache mesos": [
       "13"
     ],
@@ -30564,9 +30539,6 @@
       "13"
     ],
     "coworker.org": [
-      "13"
-    ],
-    "danzinger vineyards": [
       "13"
     ],
     "docker": [
@@ -30703,6 +30675,12 @@
       "13"
     ],
     "monolith monolithic": [
+      "13"
+    ],
+    "our phones. tristan harris wants": [
+      "13"
+    ],
+    "pcre": [
       "13"
     ],
     "macsparky.com": [
@@ -30849,14 +30827,14 @@
     "patrick": [
       "14"
     ],
-    "coldplay": [
-      "15"
-    ],
     "perl": [
       "15",
       "23",
       "100",
       "336"
+    ],
+    "coldplay": [
+      "15"
     ],
     "sarahah": [
       "15"
@@ -30914,9 +30892,6 @@
       "321",
       "336",
       "345"
-    ],
-    "lasers": [
-      "15"
     ],
     "react": [
       "15"
@@ -31020,6 +30995,9 @@
     "larry page": [
       "15"
     ],
+    "lasers": [
+      "15"
+    ],
     "live": [
       "15",
       "34",
@@ -31030,10 +31008,10 @@
     "lotus notes sametime": [
       "15"
     ],
-    "city museum": [
+    "texttool": [
       "16"
     ],
-    "texttool": [
+    "city museum": [
       "16"
     ],
     "code42": [
@@ -31080,9 +31058,6 @@
     "enterprise": [
       "16",
       "88"
-    ],
-    "feeling": [
-      "16"
     ],
     "focus exclusively": [
       "16"
@@ -31319,8 +31294,39 @@
     "weather atlas": [
       "18"
     ],
-    "beck": [
-      "18"
+    "mazie": [
+      "18",
+      "61",
+      "75",
+      "140",
+      "156",
+      "166",
+      "170",
+      "184",
+      "194",
+      "199",
+      "206",
+      "213",
+      "223",
+      "224",
+      "235",
+      "244",
+      "246",
+      "258",
+      "259",
+      "261",
+      "270",
+      "281",
+      "286",
+      "289",
+      "293",
+      "296",
+      "299",
+      "301",
+      "317",
+      "324",
+      "347",
+      "349"
     ],
     "tyler": [
       "18",
@@ -31371,15 +31377,15 @@
       "222",
       "233"
     ],
+    "beck": [
+      "18"
+    ],
     "campfire": [
       "18",
       "20",
       "195"
     ],
     "carry on": [
-      "18"
-    ],
-    "cell": [
       "18"
     ],
     "china": [
@@ -31396,9 +31402,6 @@
       "18"
     ],
     "communication looks like": [
-      "18"
-    ],
-    "elevation": [
       "18"
     ],
     "ethereum": [
@@ -31467,10 +31470,6 @@
     "husband's": [
       "18"
     ],
-    "joshua tree": [
-      "18",
-      "174"
-    ],
     "keep calm": [
       "18"
     ],
@@ -31480,10 +31479,26 @@
     "london review": [
       "18"
     ],
-    "minnesota renaissance festival": [
+    "perform": [
+      "18"
+    ],
+    "plymouth": [
+      "18"
+    ],
+    "pokegama lake": [
+      "18"
+    ],
+    "product": [
       "18",
-      "70",
-      "116"
+      "261",
+      "315",
+      "350"
+    ],
+    "push you": [
+      "18"
+    ],
+    "relaxing": [
+      "18"
     ],
     "links.thingelstad.com": [
       "19",
@@ -31511,19 +31526,6 @@
     "sometimes": [
       "19",
       "211"
-    ],
-    "mnufc": [
-      "19",
-      "52",
-      "54",
-      "64",
-      "73",
-      "76",
-      "102",
-      "105",
-      "108",
-      "118",
-      "119"
     ],
     "sublime text": [
       "19",
@@ -31572,6 +31574,19 @@
       "294",
       "314",
       "333"
+    ],
+    "mnufc": [
+      "19",
+      "52",
+      "54",
+      "64",
+      "73",
+      "76",
+      "102",
+      "105",
+      "108",
+      "118",
+      "119"
     ],
     "mozilla": [
       "19"
@@ -31645,7 +31660,7 @@
     "fuller soccer earthquakes": [
       "19"
     ],
-    "go mnufc": [
+    "goes cellular": [
       "19"
     ],
     "hugo": [
@@ -31746,8 +31761,9 @@
     "building link thing": [
       "20"
     ],
-    "cannon lake. not": [
-      "20"
+    "clouds": [
+      "20",
+      "56"
     ],
     "skype": [
       "21"
@@ -32709,6 +32725,7 @@
     "sps commerce": [
       "28",
       "49",
+      "104",
       "105",
       "131",
       "159",
@@ -33248,9 +33265,6 @@
     "babies' when they get": [
       "33"
     ],
-    "big lake": [
-      "33"
-    ],
     "big step up": [
       "33"
     ],
@@ -33309,6 +33323,13 @@
     "synology nas": [
       "33"
     ],
+    "the guardian": [
+      "33",
+      "128"
+    ],
+    "tips": [
+      "33"
+    ],
     "tpt.org": [
       "34"
     ],
@@ -33362,14 +33383,6 @@
     ],
     "james shelley": [
       "34"
-    ],
-    "lego": [
-      "34",
-      "179",
-      "182",
-      "185",
-      "222",
-      "319"
     ],
     "learn": [
       "34",
@@ -33453,10 +33466,6 @@
       "35",
       "45"
     ],
-    "clue": [
-      "35",
-      "306"
-    ],
     "curated list": [
       "35"
     ],
@@ -33511,6 +33520,9 @@
     "note": [
       "35",
       "131"
+    ],
+    "numbers": [
+      "35"
     ],
     "headspace": [
       "36"
@@ -33658,16 +33670,10 @@
       "166",
       "308"
     ],
-    "stine aasland": [
-      "37"
-    ],
     "things' dangerous future": [
       "37"
     ],
     "trailer": [
-      "37"
-    ],
-    "we love waffles": [
       "37"
     ],
     "applatix.com": [
@@ -34275,6 +34281,9 @@
     "engineering management": [
       "43",
       "89"
+    ],
+    "feed my starving children": [
+      "43"
     ],
     "finding pwned passwords with": [
       "43"
@@ -35256,6 +35265,9 @@
       "107",
       "115"
     ],
+    "cause": [
+      "53"
+    ],
     "committed to an email-free morning": [
       "53"
     ],
@@ -35522,9 +35534,6 @@
       "151",
       "153",
       "155"
-    ],
-    "clouds": [
-      "56"
     ],
     "clowns": [
       "56"
@@ -36033,6 +36042,10 @@
     "currents": [
       "62"
     ],
+    "drops": [
+      "62",
+      "276"
+    ],
     "macbook pro": [
       "62",
       "82"
@@ -36077,10 +36090,6 @@
     ],
     "disposable straw explains modern capitalism": [
       "62"
-    ],
-    "drops": [
-      "62",
-      "276"
     ],
     "even for introverts": [
       "62"
@@ -36215,6 +36224,15 @@
     "chris": [
       "64"
     ],
+    "coffee": [
+      "64",
+      "191",
+      "200",
+      "201",
+      "278",
+      "319",
+      "330"
+    ],
     "lafc": [
       "64"
     ],
@@ -36249,15 +36267,6 @@
     ],
     "boobs": [
       "64"
-    ],
-    "coffee": [
-      "64",
-      "191",
-      "200",
-      "201",
-      "278",
-      "319",
-      "330"
     ],
     "colter reed": [
       "64"
@@ -36707,6 +36716,10 @@
     ],
     "fairy house": [
       "70"
+    ],
+    "minnesota renaissance festival": [
+      "70",
+      "116"
     ],
     "ruby": [
       "70",
@@ -37651,6 +37664,10 @@
     "do people actually want": [
       "82"
     ],
+    "dow jones": [
+      "82",
+      "201"
+    ],
     "ever seen": [
       "82"
     ],
@@ -37683,9 +37700,6 @@
       "82"
     ],
     "macbook air": [
-      "82"
-    ],
-    "mcsweeney's": [
       "82"
     ],
     "gatesnotes.com": [
@@ -38086,7 +38100,6 @@
     ],
     "study hacks": [
       "87",
-      "107",
       "123",
       "125",
       "144"
@@ -38696,6 +38709,9 @@
     "mac introduces cleaner design": [
       "95"
     ],
+    "matt lewis": [
+      "95"
+    ],
     "mike mcnamara": [
       "95"
     ],
@@ -38711,9 +38727,6 @@
     "need": [
       "95",
       "174"
-    ],
-    "payday": [
-      "95"
     ],
     "feld.com": [
       "96",
@@ -39259,6 +39272,9 @@
       "129",
       "177"
     ],
+    "computing awards": [
+      "102"
+    ],
     "disney": [
       "102",
       "156",
@@ -39297,9 +39313,6 @@
     "company": [
       "102",
       "312"
-    ],
-    "computing awards": [
-      "102"
     ],
     "convenient calorie tracking": [
       "102"
@@ -39424,6 +39437,9 @@
     "session": [
       "104"
     ],
+    "sharon kennedy vickers": [
+      "104"
+    ],
     "wikimedia": [
       "104",
       "272"
@@ -39446,13 +39462,10 @@
     "delta.io": [
       "104"
     ],
-    "donate.wikimedia.org": [
-      "104"
-    ],
-    "jobs.spscommerce.com": [
-      "104"
-    ],
     "tech jam": [
+      "105"
+    ],
+    "badass agile": [
       "105"
     ],
     "beam": [
@@ -39523,9 +39536,6 @@
       "105"
     ],
     "badassagile.com": [
-      "105"
-    ],
-    "blog.chromium.org": [
       "105"
     ],
     "php": [
@@ -41298,9 +41308,6 @@
       "128"
     ],
     "synchronization": [
-      "128"
-    ],
-    "the guardian": [
       "128"
     ],
     "amnesty international": [
@@ -44532,6 +44539,9 @@
     "java": [
       "174"
     ],
+    "joshua tree": [
+      "174"
+    ],
     "linux kernel": [
       "174"
     ],
@@ -44545,9 +44555,6 @@
       "174"
     ],
     "poor name": [
-      "174"
-    ],
-    "power": [
       "174"
     ],
     "purifoy": [
@@ -46504,9 +46511,6 @@
     "creating irl dinner clubs built": [
       "201"
     ],
-    "dow jones": [
-      "201"
-    ],
     "duty": [
       "201"
     ],
@@ -47510,9 +47514,6 @@
       "217"
     ],
     "niall ferguson": [
-      "217"
-    ],
-    "operations": [
       "217"
     ],
     "saturn": [
@@ -49674,10 +49675,6 @@
     "shanghai": [
       "250"
     ],
-    "signing": [
-      "250",
-      "252"
-    ],
     "alignment team lead": [
       "250"
     ],
@@ -50358,11 +50355,6 @@
     ],
     "kansas city": [
       "261"
-    ],
-    "product": [
-      "261",
-      "315",
-      "350"
     ],
     "scott patterson": [
       "261"
@@ -53007,6 +52999,9 @@
     "carplay": [
       "306",
       "333"
+    ],
+    "clue": [
+      "306"
     ],
     "cops": [
       "306"
