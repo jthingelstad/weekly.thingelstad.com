@@ -13,7 +13,7 @@
     "refresh-stats": "node scripts/refresh-stats.mjs",
     "test": "npm run test:unit && npm run build:all && npm run test:e2e",
     "test:docs": "node scripts/check-doc-symlinks.mjs",
-    "test:unit": "TZ=UTC node --test tests/unit/",
+    "test:unit": "TZ=UTC node --test 'tests/unit/*.test.mjs'",
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed"
   },
