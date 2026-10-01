@@ -8,7 +8,7 @@ layout: layouts/base.njk
     <p class="topic-stat">
       Mentioned in <strong>{{ topic.count | numberFormat }}</strong>
       {% if topic.count == 1 %}issue{% else %}issues{% endif %}{% if topic.firstDate and topic.lastDate %},
-      from {{ topic.firstDate | dateFormat('MMM yyyy') }} to {{ topic.lastDate | dateFormat('MMM yyyy') }}{% endif %}.
+      from {{ topic.firstDate | dateFormat('month-year') }} to {{ topic.lastDate | dateFormat('month-year') }}{% endif %}.
     </p>
   </header>
 

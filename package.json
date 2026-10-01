@@ -11,8 +11,9 @@
     "build:all": "npm run build && npm run build:search",
     "serve": "eleventy --serve --config apps/site/eleventy.config.js",
     "refresh-stats": "node scripts/refresh-stats.mjs",
-    "test": "npm run build:all && npm run test:e2e",
+    "test": "npm run test:unit && npm run build:all && npm run test:e2e",
     "test:docs": "node scripts/check-doc-symlinks.mjs",
+    "test:unit": "TZ=UTC node --test tests/unit/",
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed"
   },

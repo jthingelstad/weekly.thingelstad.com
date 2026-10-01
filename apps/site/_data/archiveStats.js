@@ -1,6 +1,7 @@
 // Compute stats from the issue pages for the landing page and FAQ.
 // Link/domain analysis uses only curated links (Notable + Briefly sections).
 const issues = require("../lib/issueIndex.js");
+const { siteDateParts } = require("../lib/siteTime.js");
 
 module.exports = (() => {
   const years = {};
@@ -23,8 +24,8 @@ module.exports = (() => {
   // First issue date and latest
   const firstDate = sorted[0]?.publish_date;
   const latestDate = sorted[sorted.length - 1]?.publish_date;
-  const firstYear = new Date(firstDate).getUTCFullYear();
-  const latestYear = new Date(latestDate).getUTCFullYear();
+  const firstYear = siteDateParts(firstDate).year;
+  const latestYear = siteDateParts(latestDate).year;
 
   // Streak calculation: consecutive weeks published
   let prevDate = null;
@@ -47,7 +48,8 @@ module.exports = (() => {
 
   // Per-year stats + records
   for (const issue of issues) {
-    const yr = issue.publish_date?.slice(0, 4);
+    // Years and months are Chicago ones, as the archive page shows them.
+    const yr = siteDateParts(issue.publish_date)?.year;
     if (!yr) continue;
 
     if (!years[yr]) {
@@ -135,8 +137,7 @@ module.exports = (() => {
   ];
   const monthCounts = new Array(12).fill(0);
   for (const issue of sorted) {
-    const d = new Date(issue.publish_date);
-    monthCounts[d.getUTCMonth()]++;
+    monthCounts[siteDateParts(issue.publish_date).month - 1]++;
   }
   const publishMonths = monthNames.map((name, i) => ({
     month: name,

@@ -1,6 +1,7 @@
 const fs = require("fs");
 const { runtime: nunjucksRuntime } = require("nunjucks");
 const markdownItAnchor = require("markdown-it-anchor");
+const dateFilters = require("./lib/dateFilters.js");
 
 module.exports = function (eleventyConfig) {
   // Operational docs live inside the Eleventy input tree for humans and agents,
@@ -64,54 +65,10 @@ module.exports = function (eleventyConfig) {
 
   // --- Filters ---
 
-  // Format a date string
-  eleventyConfig.addFilter("dateFormat", (dateStr, format) => {
-    if (!dateStr) return "";
-    const d = new Date(dateStr);
-    if (isNaN(d.getTime())) return String(dateStr);
-    if (format === "iso") return d.toISOString();
-    if (format === "rfc822") return d.toUTCString();
-    // Default: "March 15, 2026"
-    return d.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      timeZone: "UTC",
-    });
-  });
-
-  // Short date: "Mar 15, 2026"
-  eleventyConfig.addFilter("dateShort", (dateStr) => {
-    if (!dateStr) return "";
-    const d = new Date(dateStr);
-    if (isNaN(d.getTime())) return String(dateStr);
-    return d.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      timeZone: "UTC",
-    });
-  });
-
-  // Short date + time UTC: "Mar 15, 2026 14:32 UTC"
-  eleventyConfig.addFilter("dateTimeShort", (dateStr) => {
-    if (!dateStr) return "";
-    const d = new Date(dateStr);
-    if (isNaN(d.getTime())) return String(dateStr);
-    const date = d.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      timeZone: "UTC",
-    });
-    const time = d.toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-      timeZone: "UTC",
-    });
-    return `${date} ${time} UTC`;
-  });
+  // Reader-facing dates are Chicago days; see lib/dateFilters.js.
+  eleventyConfig.addFilter("dateFormat", dateFilters.dateFormat);
+  eleventyConfig.addFilter("dateShort", dateFilters.dateShort);
+  eleventyConfig.addFilter("dateTimeShort", dateFilters.dateTimeShort);
 
   eleventyConfig.addFilter("itunesDuration", (seconds) => {
     const total = Math.max(0, Number(seconds) || 0);
@@ -149,13 +106,8 @@ module.exports = function (eleventyConfig) {
     });
   });
 
-  // Year from date
-  eleventyConfig.addFilter("year", (dateStr) => {
-    if (!dateStr) return "";
-    const d = new Date(dateStr);
-    if (isNaN(d.getTime())) return "";
-    return d.getUTCFullYear();
-  });
+  // Year from date, in Chicago
+  eleventyConfig.addFilter("year", dateFilters.year);
 
   // Array slice (Nunjucks built-in slice works differently)
   eleventyConfig.addFilter("slice", (arr, start, end) => {
@@ -296,7 +248,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("groupByYear", (issues) => {
     const years = {};
     for (const issue of issues) {
-      const year = new Date(issue.data.publish_date).getUTCFullYear();
+      const year = dateFilters.year(issue.data.publish_date);
       if (!years[year]) years[year] = [];
       years[year].push(issue);
     }

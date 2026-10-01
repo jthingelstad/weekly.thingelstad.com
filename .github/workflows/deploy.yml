@@ -22,6 +22,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    # Reader-facing dates are Chicago days computed in code; building in UTC
+    # means the runner's zone can never hide a date that slices UTC.
+    env:
+      TZ: UTC
     steps:
       - uses: actions/checkout@v7
 
@@ -34,6 +38,9 @@ jobs:
 
       - name: Validate documentation links
         run: npm run test:docs
+
+      - name: Unit tests
+        run: npm run test:unit
 
       # Advisory, not a gate: an upstream advisory landing overnight blocked
       # publishing twice (2026-06-12, and ~44h on 2026-08-05). The step still

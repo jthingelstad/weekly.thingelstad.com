@@ -16,6 +16,10 @@ scripts: `npm run build`, `npm run build:search`). The output dir `_site/` stays
 - **Collections:** `issuesByNumber` (ascending), `issuesByDate` (newest first)
 - **Filters:** `dateFormat`, `dateShort`, `currentYear`, `numberFormat`, `year`, `slice`, `truncate`,
   `issueNumberBase`, `xmlEscape`, `markdownify`, `extractToc`, `groupByYear`, `itunesDuration`, `clock`
+- **Dates are Chicago days.** `dateFormat` (default and `month-year`), `dateShort`, `dateTimeShort`,
+  `year`, `groupByYear` and `archiveStats` read the day in America/Chicago through `lib/siteTime.js`;
+  `dateFormat('iso')` and `('rfc822')` stay UTC instants for feeds and the sitemap. Never slice a UTC
+  date for a reader (`tests/unit/date-filters.test.mjs`, run in CI with `TZ=UTC`).
 - **Passthrough copy:** `img/`, `css/`, `CNAME`, `favicon.svg`, `_nojekyll`
 
 ## Where the content comes from — WT Builder, not here
