@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-10-06T12:09:22.478778Z",
+  "generated_at": "2026-10-06T12:37:15.498818Z",
   "extraction_model": "heuristic",
   "issue_count": 353,
   "issues": {
@@ -2488,7 +2488,7 @@
         },
         {
           "number": "85",
-          "score": 0.764
+          "score": 0.7642
         },
         {
           "number": "29",
@@ -2570,7 +2570,7 @@
         },
         {
           "number": "85",
-          "score": 0.7062
+          "score": 0.706
         },
         {
           "number": "31",
@@ -3255,7 +3255,7 @@
         },
         {
           "number": "50",
-          "score": 0.7557
+          "score": 0.7552
         },
         {
           "number": "41",
@@ -3325,7 +3325,7 @@
         },
         {
           "number": "50",
-          "score": 0.6607
+          "score": 0.6604
         },
         {
           "number": "52",
@@ -3562,7 +3562,7 @@
         },
         {
           "number": "50",
-          "score": 0.7026
+          "score": 0.7025
         }
       ]
     },
@@ -3630,7 +3630,7 @@
         },
         {
           "number": "50",
-          "score": 0.7149
+          "score": 0.7148
         },
         {
           "number": "43",
@@ -3703,7 +3703,7 @@
         },
         {
           "number": "50",
-          "score": 0.7408
+          "score": 0.7404
         },
         {
           "number": "43",
@@ -3771,23 +3771,23 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.8254
+          "score": 0.8249
         },
         {
           "number": "51",
-          "score": 0.7843
+          "score": 0.784
         },
         {
           "number": "43",
-          "score": 0.7557
+          "score": 0.7552
         },
         {
           "number": "38",
-          "score": 0.7505
+          "score": 0.7509
         },
         {
           "number": "49",
-          "score": 0.7408
+          "score": 0.7404
         },
         {
           "number": "39",
@@ -3852,7 +3852,7 @@
         },
         {
           "number": "50",
-          "score": 0.7843
+          "score": 0.784
         },
         {
           "number": "43",
@@ -3925,7 +3925,7 @@
       "similar_issues": [
         {
           "number": "50",
-          "score": 0.8254
+          "score": 0.8249
         },
         {
           "number": "51",
@@ -4007,7 +4007,7 @@
         },
         {
           "number": "50",
-          "score": 0.7121
+          "score": 0.7117
         },
         {
           "number": "42",
@@ -4240,7 +4240,7 @@
         },
         {
           "number": "50",
-          "score": 0.7203
+          "score": 0.7205
         },
         {
           "number": "43",
@@ -6272,7 +6272,7 @@
         },
         {
           "number": "85",
-          "score": 0.633
+          "score": 0.6332
         },
         {
           "number": "93",
@@ -6360,7 +6360,7 @@
         },
         {
           "number": "85",
-          "score": 0.7027
+          "score": 0.7028
         },
         {
           "number": "86",
@@ -6420,27 +6420,27 @@
       "similar_issues": [
         {
           "number": "86",
-          "score": 0.8058
+          "score": 0.8061
         },
         {
           "number": "33",
-          "score": 0.764
+          "score": 0.7642
         },
         {
           "number": "34",
-          "score": 0.7062
+          "score": 0.706
         },
         {
           "number": "84",
-          "score": 0.7027
+          "score": 0.7028
         },
         {
           "number": "87",
-          "score": 0.7022
+          "score": 0.7021
         },
         {
           "number": "30",
-          "score": 0.6942
+          "score": 0.6944
         }
       ]
     },
@@ -6497,7 +6497,7 @@
       "similar_issues": [
         {
           "number": "85",
-          "score": 0.8058
+          "score": 0.8061
         },
         {
           "number": "87",
@@ -6577,7 +6577,7 @@
         },
         {
           "number": "85",
-          "score": 0.7022
+          "score": 0.7021
         },
         {
           "number": "88",
@@ -16138,7 +16138,7 @@
         },
         {
           "number": "214",
-          "score": 0.7671
+          "score": 0.7668
         },
         {
           "number": "80",
@@ -16207,27 +16207,27 @@
       "similar_issues": [
         {
           "number": "217",
-          "score": 0.8396
+          "score": 0.8397
         },
         {
           "number": "215",
-          "score": 0.8226
+          "score": 0.8232
         },
         {
           "number": "213",
-          "score": 0.7671
+          "score": 0.7668
         },
         {
           "number": "245",
-          "score": 0.7491
+          "score": 0.7489
         },
         {
           "number": "243",
-          "score": 0.7357
+          "score": 0.7361
         },
         {
           "number": "244",
-          "score": 0.7033
+          "score": 0.7035
         }
       ]
     },
@@ -16282,7 +16282,7 @@
       "similar_issues": [
         {
           "number": "214",
-          "score": 0.8226
+          "score": 0.8232
         },
         {
           "number": "217",
@@ -16431,7 +16431,7 @@
       "similar_issues": [
         {
           "number": "214",
-          "score": 0.8396
+          "score": 0.8397
         },
         {
           "number": "215",
@@ -16511,7 +16511,7 @@
         },
         {
           "number": "214",
-          "score": 0.6931
+          "score": 0.6933
         },
         {
           "number": "316",
@@ -18325,7 +18325,7 @@
         },
         {
           "number": "302",
-          "score": 0.6775
+          "score": 0.6774
         },
         {
           "number": "237",
@@ -18397,7 +18397,7 @@
         },
         {
           "number": "214",
-          "score": 0.7357
+          "score": 0.7361
         },
         {
           "number": "215",
@@ -18481,7 +18481,7 @@
         },
         {
           "number": "214",
-          "score": 0.7033
+          "score": 0.7035
         },
         {
           "number": "215",
@@ -18545,7 +18545,7 @@
       "similar_issues": [
         {
           "number": "214",
-          "score": 0.7491
+          "score": 0.7489
         },
         {
           "number": "217",
@@ -21994,7 +21994,7 @@
         },
         {
           "number": "302",
-          "score": 0.7351
+          "score": 0.7352
         },
         {
           "number": "296",
@@ -22597,7 +22597,7 @@
         },
         {
           "number": "302",
-          "score": 0.7474
+          "score": 0.7473
         },
         {
           "number": "297",
@@ -22910,7 +22910,7 @@
         },
         {
           "number": "298",
-          "score": 0.7474
+          "score": 0.7473
         },
         {
           "number": "274",
@@ -22918,7 +22918,7 @@
         },
         {
           "number": "290",
-          "score": 0.7351
+          "score": 0.7352
         }
       ]
     },
