@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-10-06T16:03:49.514864Z",
+  "generated_at": "2026-10-06T20:29:56.418569Z",
   "extraction_model": "heuristic",
   "issue_count": 353,
   "issues": {
@@ -223,7 +223,7 @@
         },
         {
           "number": "29",
-          "score": 0.7131
+          "score": 0.713
         },
         {
           "number": "38",
@@ -1557,7 +1557,7 @@
       "similar_issues": [
         {
           "number": "29",
-          "score": 0.7344
+          "score": 0.7345
         },
         {
           "number": "17",
@@ -1797,7 +1797,7 @@
         },
         {
           "number": "29",
-          "score": 0.6621
+          "score": 0.6625
         },
         {
           "number": "25",
@@ -1863,7 +1863,7 @@
         },
         {
           "number": "29",
-          "score": 0.7061
+          "score": 0.7059
         },
         {
           "number": "28",
@@ -1934,7 +1934,7 @@
       "similar_issues": [
         {
           "number": "29",
-          "score": 0.7872
+          "score": 0.7873
         },
         {
           "number": "27",
@@ -2012,7 +2012,7 @@
       "similar_issues": [
         {
           "number": "29",
-          "score": 0.8123
+          "score": 0.8125
         },
         {
           "number": "3",
@@ -2095,7 +2095,7 @@
         },
         {
           "number": "29",
-          "score": 0.6642
+          "score": 0.6644
         },
         {
           "number": "3",
@@ -2162,27 +2162,27 @@
       "similar_issues": [
         {
           "number": "27",
-          "score": 0.8123
+          "score": 0.8125
         },
         {
           "number": "26",
-          "score": 0.7872
+          "score": 0.7873
         },
         {
           "number": "30",
-          "score": 0.7778
+          "score": 0.7782
         },
         {
           "number": "38",
-          "score": 0.7773
+          "score": 0.7778
         },
         {
           "number": "34",
-          "score": 0.761
+          "score": 0.7609
         },
         {
           "number": "81",
-          "score": 0.7474
+          "score": 0.7476
         }
       ]
     },
@@ -2242,7 +2242,7 @@
         },
         {
           "number": "29",
-          "score": 0.7778
+          "score": 0.7782
         },
         {
           "number": "34",
@@ -2318,7 +2318,7 @@
         },
         {
           "number": "29",
-          "score": 0.7292
+          "score": 0.7293
         },
         {
           "number": "34",
@@ -2398,7 +2398,7 @@
         },
         {
           "number": "29",
-          "score": 0.6085
+          "score": 0.6084
         },
         {
           "number": "295",
@@ -2476,7 +2476,7 @@
         },
         {
           "number": "29",
-          "score": 0.7196
+          "score": 0.7197
         },
         {
           "number": "31",
@@ -2545,7 +2545,7 @@
         },
         {
           "number": "29",
-          "score": 0.761
+          "score": 0.7609
         },
         {
           "number": "35",
@@ -2845,7 +2845,7 @@
         },
         {
           "number": "29",
-          "score": 0.7773
+          "score": 0.7778
         },
         {
           "number": "35",
@@ -5112,7 +5112,7 @@
         },
         {
           "number": "29",
-          "score": 0.6162
+          "score": 0.6157
         },
         {
           "number": "43",
@@ -6093,7 +6093,7 @@
         },
         {
           "number": "29",
-          "score": 0.7474
+          "score": 0.7476
         },
         {
           "number": "235",
@@ -9631,7 +9631,7 @@
         },
         {
           "number": "29",
-          "score": 0.7064
+          "score": 0.7066
         },
         {
           "number": "205",
@@ -20498,7 +20498,7 @@
         },
         {
           "number": "29",
-          "score": 0.7174
+          "score": 0.7175
         },
         {
           "number": "273",
