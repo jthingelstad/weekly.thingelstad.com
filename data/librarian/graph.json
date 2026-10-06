@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-10-06T12:37:15.498818Z",
+  "generated_at": "2026-10-06T12:53:40.774872Z",
   "extraction_model": "heuristic",
   "issue_count": 353,
   "issues": {
@@ -13117,27 +13117,27 @@
       "similar_issues": [
         {
           "number": "174",
-          "score": 0.6705
+          "score": 0.6696
         },
         {
           "number": "177",
-          "score": 0.6413
+          "score": 0.641
         },
         {
           "number": "175",
-          "score": 0.6357
+          "score": 0.6352
         },
         {
           "number": "316",
-          "score": 0.6276
+          "score": 0.6273
         },
         {
           "number": "200",
-          "score": 0.6251
+          "score": 0.6247
         },
         {
           "number": "278",
-          "score": 0.6248
+          "score": 0.6244
         }
       ]
     },
@@ -13192,7 +13192,7 @@
       "similar_issues": [
         {
           "number": "173",
-          "score": 0.6705
+          "score": 0.6696
         },
         {
           "number": "161",
@@ -13280,7 +13280,7 @@
         },
         {
           "number": "173",
-          "score": 0.6357
+          "score": 0.6352
         },
         {
           "number": "330",
@@ -13584,7 +13584,7 @@
         },
         {
           "number": "173",
-          "score": 0.624
+          "score": 0.6234
         },
         {
           "number": "43",
@@ -24448,7 +24448,7 @@
         },
         {
           "number": "173",
-          "score": 0.5286
+          "score": 0.5285
         }
       ]
     },
