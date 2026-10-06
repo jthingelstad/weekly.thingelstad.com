@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-10-06T08:14:11.288298Z",
+  "generated_at": "2026-10-06T11:41:05.942156Z",
   "extraction_model": "heuristic",
   "issue_count": 353,
   "issues": {
@@ -62,7 +62,7 @@
         },
         {
           "number": "52",
-          "score": 0.802
+          "score": 0.8019
         },
         {
           "number": "6",
@@ -78,7 +78,7 @@
         },
         {
           "number": "43",
-          "score": 0.7174
+          "score": 0.717
         }
       ]
     },
@@ -136,7 +136,7 @@
         },
         {
           "number": "52",
-          "score": 0.7634
+          "score": 0.7631
         },
         {
           "number": "6",
@@ -207,7 +207,7 @@
       "similar_issues": [
         {
           "number": "27",
-          "score": 0.7847
+          "score": 0.7848
         },
         {
           "number": "4",
@@ -223,11 +223,11 @@
         },
         {
           "number": "29",
-          "score": 0.7152
+          "score": 0.715
         },
         {
           "number": "38",
-          "score": 0.7005
+          "score": 0.7
         }
       ]
     },
@@ -295,15 +295,15 @@
         },
         {
           "number": "52",
-          "score": 0.7384
+          "score": 0.7383
         },
         {
           "number": "38",
-          "score": 0.7342
+          "score": 0.7332
         },
         {
           "number": "27",
-          "score": 0.7329
+          "score": 0.7327
         }
       ]
     },
@@ -444,15 +444,15 @@
         },
         {
           "number": "52",
-          "score": 0.7685
+          "score": 0.7681
         },
         {
           "number": "105",
-          "score": 0.7598
+          "score": 0.7595
         },
         {
           "number": "38",
-          "score": 0.7541
+          "score": 0.7524
         },
         {
           "number": "5",
@@ -532,7 +532,7 @@
         },
         {
           "number": "39",
-          "score": 0.6834
+          "score": 0.6815
         }
       ]
     },
@@ -607,7 +607,7 @@
         },
         {
           "number": "48",
-          "score": 0.6666
+          "score": 0.6665
         }
       ]
     },
@@ -836,7 +836,7 @@
         },
         {
           "number": "110",
-          "score": 0.7131
+          "score": 0.713
         }
       ]
     },
@@ -913,7 +913,7 @@
         },
         {
           "number": "52",
-          "score": 0.6909
+          "score": 0.691
         }
       ]
     },
@@ -1041,7 +1041,7 @@
       "similar_issues": [
         {
           "number": "114",
-          "score": 0.7536
+          "score": 0.7537
         },
         {
           "number": "17",
@@ -1206,11 +1206,11 @@
           "score": 0.5508
         },
         {
-          "number": "3",
-          "score": 0.5451
+          "number": "27",
+          "score": 0.5452
         },
         {
-          "number": "27",
+          "number": "3",
           "score": 0.5451
         }
       ]
@@ -1286,7 +1286,7 @@
         },
         {
           "number": "122",
-          "score": 0.6902
+          "score": 0.6905
         }
       ]
     },
@@ -1349,7 +1349,7 @@
         },
         {
           "number": "52",
-          "score": 0.6828
+          "score": 0.6827
         },
         {
           "number": "6",
@@ -1357,11 +1357,11 @@
         },
         {
           "number": "51",
-          "score": 0.6764
+          "score": 0.6762
         },
         {
           "number": "39",
-          "score": 0.6749
+          "score": 0.673
         }
       ]
     },
@@ -1432,11 +1432,11 @@
         },
         {
           "number": "120",
-          "score": 0.6553
+          "score": 0.6554
         },
         {
           "number": "117",
-          "score": 0.6471
+          "score": 0.6473
         }
       ]
     },
@@ -1492,7 +1492,7 @@
       "similar_issues": [
         {
           "number": "72",
-          "score": 0.7306
+          "score": 0.7302
         },
         {
           "number": "5",
@@ -1567,7 +1567,7 @@
       "similar_issues": [
         {
           "number": "29",
-          "score": 0.7372
+          "score": 0.737
         },
         {
           "number": "17",
@@ -1579,7 +1579,7 @@
         },
         {
           "number": "27",
-          "score": 0.6982
+          "score": 0.6981
         },
         {
           "number": "155",
@@ -1648,11 +1648,11 @@
         },
         {
           "number": "72",
-          "score": 0.6566
+          "score": 0.6563
         },
         {
           "number": "24",
-          "score": 0.6487
+          "score": 0.6489
         },
         {
           "number": "11",
@@ -1719,15 +1719,15 @@
       "similar_issues": [
         {
           "number": "42",
-          "score": 0.7629
+          "score": 0.7623
         },
         {
           "number": "56",
-          "score": 0.7521
+          "score": 0.7519
         },
         {
           "number": "43",
-          "score": 0.7115
+          "score": 0.7118
         },
         {
           "number": "18",
@@ -1735,11 +1735,11 @@
         },
         {
           "number": "25",
-          "score": 0.6539
+          "score": 0.6536
         },
         {
           "number": "27",
-          "score": 0.6539
+          "score": 0.6535
         }
       ]
     },
@@ -1795,23 +1795,23 @@
       "similar_issues": [
         {
           "number": "21",
-          "score": 0.6692
+          "score": 0.6698
         },
         {
           "number": "11",
-          "score": 0.6684
+          "score": 0.6685
         },
         {
           "number": "77",
-          "score": 0.6674
+          "score": 0.6669
         },
         {
           "number": "29",
-          "score": 0.6609
+          "score": 0.6607
         },
         {
           "number": "25",
-          "score": 0.6518
+          "score": 0.6517
         },
         {
           "number": "71",
@@ -1871,27 +1871,27 @@
       "similar_issues": [
         {
           "number": "27",
-          "score": 0.7606
+          "score": 0.7604
         },
         {
           "number": "29",
-          "score": 0.7087
+          "score": 0.7086
         },
         {
           "number": "28",
-          "score": 0.6909
+          "score": 0.6908
         },
         {
           "number": "3",
-          "score": 0.6883
-        },
-        {
-          "number": "263",
-          "score": 0.6627
+          "score": 0.6881
         },
         {
           "number": "18",
-          "score": 0.6626
+          "score": 0.6625
+        },
+        {
+          "number": "263",
+          "score": 0.6624
         }
       ]
     },
@@ -1947,7 +1947,7 @@
       "similar_issues": [
         {
           "number": "29",
-          "score": 0.7881
+          "score": 0.7882
         },
         {
           "number": "27",
@@ -1959,11 +1959,11 @@
         },
         {
           "number": "81",
-          "score": 0.6804
+          "score": 0.6802
         },
         {
           "number": "30",
-          "score": 0.6677
+          "score": 0.6675
         },
         {
           "number": "21",
@@ -2025,19 +2025,19 @@
       "similar_issues": [
         {
           "number": "29",
-          "score": 0.8128
+          "score": 0.8125
         },
         {
           "number": "3",
-          "score": 0.7847
+          "score": 0.7848
         },
         {
           "number": "38",
-          "score": 0.7618
+          "score": 0.7612
         },
         {
           "number": "25",
-          "score": 0.7606
+          "score": 0.7604
         },
         {
           "number": "26",
@@ -2045,7 +2045,7 @@
         },
         {
           "number": "28",
-          "score": 0.7432
+          "score": 0.7433
         }
       ]
     },
@@ -2101,15 +2101,15 @@
       "similar_issues": [
         {
           "number": "27",
-          "score": 0.7432
+          "score": 0.7433
         },
         {
           "number": "25",
-          "score": 0.6909
+          "score": 0.6908
         },
         {
           "number": "29",
-          "score": 0.6657
+          "score": 0.6655
         },
         {
           "number": "3",
@@ -2150,6 +2150,7 @@
         "APIs",
         "Add",
         "As We Know It",
+        "CEO",
         "CEOs Don",
         "CFO Thought Leader",
         "CaringBridge",
@@ -2165,8 +2166,7 @@
         "Eero Plus",
         "Elf",
         "Every Occasion",
-        "Evidence",
-        "Fix Things"
+        "Evidence"
       ],
       "tropes": [
         "open web and ownership",
@@ -2176,27 +2176,27 @@
       "similar_issues": [
         {
           "number": "27",
-          "score": 0.8128
+          "score": 0.8125
         },
         {
           "number": "26",
-          "score": 0.7881
+          "score": 0.7882
         },
         {
           "number": "38",
-          "score": 0.7788
+          "score": 0.778
         },
         {
           "number": "30",
-          "score": 0.7767
+          "score": 0.7764
         },
         {
           "number": "34",
-          "score": 0.7587
+          "score": 0.7583
         },
         {
           "number": "81",
-          "score": 0.7501
+          "score": 0.7498
         }
       ]
     },
@@ -2256,7 +2256,7 @@
         },
         {
           "number": "29",
-          "score": 0.7767
+          "score": 0.7764
         },
         {
           "number": "33",
@@ -2264,15 +2264,15 @@
         },
         {
           "number": "34",
-          "score": 0.7698
+          "score": 0.7699
         },
         {
           "number": "27",
-          "score": 0.7051
+          "score": 0.7047
         },
         {
           "number": "38",
-          "score": 0.7045
+          "score": 0.7041
         }
       ]
     },
@@ -2337,7 +2337,7 @@
         },
         {
           "number": "34",
-          "score": 0.7027
+          "score": 0.7028
         },
         {
           "number": "33",
@@ -2345,11 +2345,11 @@
         },
         {
           "number": "27",
-          "score": 0.6807
+          "score": 0.6805
         },
         {
           "number": "38",
-          "score": 0.6722
+          "score": 0.6729
         }
       ]
     },
@@ -2408,12 +2408,12 @@
           "score": 0.6662
         },
         {
-          "number": "29",
-          "score": 0.6107
+          "number": "38",
+          "score": 0.611
         },
         {
-          "number": "38",
-          "score": 0.6104
+          "number": "29",
+          "score": 0.6106
         },
         {
           "number": "295",
@@ -2425,7 +2425,7 @@
         },
         {
           "number": "52",
-          "score": 0.5827
+          "score": 0.5826
         }
       ]
     },
@@ -2480,7 +2480,7 @@
       "similar_issues": [
         {
           "number": "34",
-          "score": 0.7755
+          "score": 0.7757
         },
         {
           "number": "30",
@@ -2492,7 +2492,7 @@
         },
         {
           "number": "29",
-          "score": 0.7185
+          "score": 0.7184
         },
         {
           "number": "86",
@@ -2554,19 +2554,19 @@
       "similar_issues": [
         {
           "number": "33",
-          "score": 0.7755
+          "score": 0.7757
         },
         {
           "number": "30",
-          "score": 0.7698
+          "score": 0.7699
         },
         {
           "number": "29",
-          "score": 0.7587
+          "score": 0.7583
         },
         {
           "number": "35",
-          "score": 0.7318
+          "score": 0.732
         },
         {
           "number": "85",
@@ -2574,7 +2574,7 @@
         },
         {
           "number": "31",
-          "score": 0.7027
+          "score": 0.7028
         }
       ]
     },
@@ -2630,23 +2630,23 @@
       "similar_issues": [
         {
           "number": "36",
-          "score": 0.7714
+          "score": 0.7716
         },
         {
           "number": "38",
-          "score": 0.7692
+          "score": 0.7701
         },
         {
           "number": "34",
-          "score": 0.7318
+          "score": 0.732
         },
         {
           "number": "39",
-          "score": 0.7176
+          "score": 0.7173
         },
         {
           "number": "41",
-          "score": 0.7099
+          "score": 0.7103
         },
         {
           "number": "52",
@@ -2706,7 +2706,7 @@
       "similar_issues": [
         {
           "number": "35",
-          "score": 0.7714
+          "score": 0.7716
         },
         {
           "number": "38",
@@ -2714,19 +2714,19 @@
         },
         {
           "number": "39",
-          "score": 0.7472
+          "score": 0.7465
         },
         {
           "number": "41",
-          "score": 0.7136
+          "score": 0.7133
         },
         {
           "number": "43",
-          "score": 0.6929
+          "score": 0.6918
         },
         {
           "number": "52",
-          "score": 0.682
+          "score": 0.6814
         }
       ]
     },
@@ -2782,15 +2782,15 @@
       "similar_issues": [
         {
           "number": "40",
-          "score": 0.7416
+          "score": 0.7406
         },
         {
           "number": "41",
-          "score": 0.6272
+          "score": 0.6269
         },
         {
           "number": "38",
-          "score": 0.618
+          "score": 0.6179
         },
         {
           "number": "43",
@@ -2802,7 +2802,7 @@
         },
         {
           "number": "35",
-          "score": 0.5756
+          "score": 0.576
         }
       ]
     },
@@ -2860,27 +2860,27 @@
       "similar_issues": [
         {
           "number": "39",
-          "score": 0.8439
+          "score": 0.8429
         },
         {
           "number": "29",
-          "score": 0.7788
+          "score": 0.778
         },
         {
           "number": "52",
-          "score": 0.7749
+          "score": 0.7742
         },
         {
           "number": "35",
-          "score": 0.7692
+          "score": 0.7701
         },
         {
           "number": "41",
-          "score": 0.7654
+          "score": 0.7651
         },
         {
           "number": "27",
-          "score": 0.7618
+          "score": 0.7612
         }
       ]
     },
@@ -2936,27 +2936,27 @@
       "similar_issues": [
         {
           "number": "38",
-          "score": 0.8439
+          "score": 0.8429
         },
         {
           "number": "41",
-          "score": 0.8078
+          "score": 0.8075
         },
         {
           "number": "43",
-          "score": 0.7912
+          "score": 0.7891
         },
         {
           "number": "42",
-          "score": 0.7775
+          "score": 0.7764
         },
         {
           "number": "95",
-          "score": 0.771
+          "score": 0.7702
         },
         {
           "number": "52",
-          "score": 0.7674
+          "score": 0.7661
         }
       ]
     },
@@ -3012,23 +3012,23 @@
       "similar_issues": [
         {
           "number": "39",
-          "score": 0.7547
+          "score": 0.7556
         },
         {
           "number": "41",
-          "score": 0.7443
+          "score": 0.7446
         },
         {
           "number": "37",
-          "score": 0.7416
+          "score": 0.7406
         },
         {
           "number": "38",
-          "score": 0.723
+          "score": 0.7224
         },
         {
           "number": "43",
-          "score": 0.6904
+          "score": 0.6896
         },
         {
           "number": "49",
@@ -3085,27 +3085,27 @@
       "similar_issues": [
         {
           "number": "39",
-          "score": 0.8078
+          "score": 0.8075
         },
         {
           "number": "38",
-          "score": 0.7654
+          "score": 0.7651
         },
         {
           "number": "43",
-          "score": 0.7575
+          "score": 0.7563
         },
         {
           "number": "42",
-          "score": 0.7511
+          "score": 0.7514
         },
         {
           "number": "40",
-          "score": 0.7443
+          "score": 0.7446
         },
         {
           "number": "52",
-          "score": 0.7324
+          "score": 0.7321
         }
       ]
     },
@@ -3162,27 +3162,27 @@
       "similar_issues": [
         {
           "number": "43",
-          "score": 0.8399
+          "score": 0.8401
         },
         {
           "number": "52",
-          "score": 0.7824
+          "score": 0.7828
         },
         {
           "number": "39",
-          "score": 0.7775
+          "score": 0.7764
         },
         {
           "number": "23",
-          "score": 0.7629
+          "score": 0.7623
         },
         {
           "number": "56",
-          "score": 0.7545
+          "score": 0.7542
         },
         {
           "number": "41",
-          "score": 0.7511
+          "score": 0.7514
         }
       ]
     },
@@ -3239,27 +3239,27 @@
       "similar_issues": [
         {
           "number": "42",
-          "score": 0.8399
+          "score": 0.8401
         },
         {
           "number": "52",
-          "score": 0.8006
+          "score": 0.8
         },
         {
           "number": "39",
-          "score": 0.7912
+          "score": 0.7891
         },
         {
           "number": "41",
-          "score": 0.7575
+          "score": 0.7563
         },
         {
           "number": "38",
-          "score": 0.7572
+          "score": 0.7562
         },
         {
           "number": "50",
-          "score": 0.7543
+          "score": 0.7544
         }
       ]
     },
@@ -3313,27 +3313,27 @@
       "similar_issues": [
         {
           "number": "45",
-          "score": 0.7475
+          "score": 0.7481
         },
         {
           "number": "43",
-          "score": 0.6739
+          "score": 0.6749
         },
         {
           "number": "48",
-          "score": 0.6583
+          "score": 0.6596
         },
         {
           "number": "50",
-          "score": 0.6564
-        },
-        {
-          "number": "47",
-          "score": 0.6559
+          "score": 0.6577
         },
         {
           "number": "52",
-          "score": 0.6559
+          "score": 0.6577
+        },
+        {
+          "number": "47",
+          "score": 0.6568
         }
       ]
     },
@@ -3389,27 +3389,27 @@
       "similar_issues": [
         {
           "number": "44",
-          "score": 0.7475
+          "score": 0.7481
         },
         {
           "number": "47",
-          "score": 0.6885
+          "score": 0.6878
         },
         {
           "number": "48",
-          "score": 0.6872
+          "score": 0.6867
         },
         {
           "number": "43",
-          "score": 0.681
+          "score": 0.6793
         },
         {
           "number": "41",
-          "score": 0.6652
+          "score": 0.6645
         },
         {
           "number": "52",
-          "score": 0.6489
+          "score": 0.6481
         }
       ]
     },
@@ -3466,19 +3466,19 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.7438
+          "score": 0.7439
         },
         {
           "number": "49",
-          "score": 0.7426
+          "score": 0.7435
         },
         {
           "number": "48",
-          "score": 0.7393
+          "score": 0.7408
         },
         {
           "number": "47",
-          "score": 0.7269
+          "score": 0.7276
         },
         {
           "number": "43",
@@ -3546,11 +3546,11 @@
         },
         {
           "number": "46",
-          "score": 0.7269
+          "score": 0.7276
         },
         {
           "number": "43",
-          "score": 0.725
+          "score": 0.7245
         },
         {
           "number": "52",
@@ -3558,11 +3558,11 @@
         },
         {
           "number": "99",
-          "score": 0.7181
+          "score": 0.7185
         },
         {
           "number": "50",
-          "score": 0.701
+          "score": 0.7013
         }
       ]
     },
@@ -3622,23 +3622,23 @@
         },
         {
           "number": "46",
-          "score": 0.7393
+          "score": 0.7408
         },
         {
           "number": "49",
-          "score": 0.7263
+          "score": 0.7264
         },
         {
           "number": "50",
-          "score": 0.713
+          "score": 0.7137
         },
         {
           "number": "43",
-          "score": 0.7129
+          "score": 0.7126
         },
         {
           "number": "52",
-          "score": 0.7111
+          "score": 0.7113
         }
       ]
     },
@@ -3695,27 +3695,27 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.7513
+          "score": 0.7511
         },
         {
           "number": "46",
-          "score": 0.7426
+          "score": 0.7435
         },
         {
           "number": "50",
-          "score": 0.7389
+          "score": 0.7392
         },
         {
           "number": "43",
-          "score": 0.7342
+          "score": 0.7334
         },
         {
           "number": "39",
-          "score": 0.7302
+          "score": 0.7299
         },
         {
           "number": "48",
-          "score": 0.7263
+          "score": 0.7264
         }
       ]
     },
@@ -3771,27 +3771,27 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.8251
+          "score": 0.8258
         },
         {
           "number": "51",
-          "score": 0.7831
+          "score": 0.7833
         },
         {
           "number": "43",
-          "score": 0.7543
+          "score": 0.7544
         },
         {
           "number": "38",
-          "score": 0.7507
+          "score": 0.7501
         },
         {
           "number": "39",
-          "score": 0.7446
+          "score": 0.7438
         },
         {
           "number": "49",
-          "score": 0.7389
+          "score": 0.7392
         }
       ]
     },
@@ -3848,27 +3848,27 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.8223
+          "score": 0.8225
         },
         {
           "number": "50",
-          "score": 0.7831
+          "score": 0.7833
         },
         {
           "number": "43",
-          "score": 0.7394
+          "score": 0.7387
         },
         {
           "number": "42",
-          "score": 0.7363
+          "score": 0.7361
         },
         {
           "number": "56",
-          "score": 0.7319
+          "score": 0.7313
         },
         {
           "number": "39",
-          "score": 0.7237
+          "score": 0.7226
         }
       ]
     },
@@ -3925,23 +3925,23 @@
       "similar_issues": [
         {
           "number": "50",
-          "score": 0.8251
+          "score": 0.8258
         },
         {
           "number": "51",
-          "score": 0.8223
+          "score": 0.8225
         },
         {
           "number": "1",
-          "score": 0.802
+          "score": 0.8019
         },
         {
           "number": "43",
-          "score": 0.8006
+          "score": 0.8
         },
         {
           "number": "42",
-          "score": 0.7824
+          "score": 0.7828
         },
         {
           "number": "112",
@@ -3999,27 +3999,27 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.7562
+          "score": 0.756
         },
         {
           "number": "43",
-          "score": 0.7278
+          "score": 0.7273
         },
         {
           "number": "50",
-          "score": 0.7119
+          "score": 0.7121
         },
         {
           "number": "42",
-          "score": 0.7018
+          "score": 0.7017
         },
         {
           "number": "51",
-          "score": 0.6763
+          "score": 0.6762
         },
         {
           "number": "112",
-          "score": 0.6741
+          "score": 0.6743
         }
       ]
     },
@@ -4079,16 +4079,16 @@
           "score": 0.7388
         },
         {
-          "number": "43",
-          "score": 0.7171
+          "number": "106",
+          "score": 0.7163
         },
         {
-          "number": "106",
-          "score": 0.7161
+          "number": "43",
+          "score": 0.7162
         },
         {
           "number": "55",
-          "score": 0.715
+          "score": 0.7151
         },
         {
           "number": "41",
@@ -4156,23 +4156,23 @@
         },
         {
           "number": "107",
-          "score": 0.7489
+          "score": 0.749
         },
         {
           "number": "54",
-          "score": 0.715
+          "score": 0.7151
         },
         {
           "number": "349",
-          "score": 0.6993
+          "score": 0.6992
         },
         {
           "number": "62",
-          "score": 0.6852
+          "score": 0.6847
         },
         {
           "number": "114",
-          "score": 0.6807
+          "score": 0.6808
         }
       ]
     },
@@ -4228,27 +4228,27 @@
       "similar_issues": [
         {
           "number": "42",
-          "score": 0.7545
+          "score": 0.7542
         },
         {
           "number": "23",
-          "score": 0.7521
+          "score": 0.7519
         },
         {
           "number": "51",
-          "score": 0.7319
+          "score": 0.7313
         },
         {
           "number": "50",
-          "score": 0.7198
+          "score": 0.7203
         },
         {
           "number": "43",
-          "score": 0.6964
+          "score": 0.6967
         },
         {
           "number": "52",
-          "score": 0.6933
+          "score": 0.6939
         }
       ]
     },
@@ -4303,7 +4303,7 @@
       "similar_issues": [
         {
           "number": "114",
-          "score": 0.7573
+          "score": 0.7572
         },
         {
           "number": "55",
@@ -4319,11 +4319,11 @@
         },
         {
           "number": "52",
-          "score": 0.7084
+          "score": 0.709
         },
         {
           "number": "110",
-          "score": 0.6996
+          "score": 0.6995
         }
       ]
     },
@@ -4379,27 +4379,27 @@
       "similar_issues": [
         {
           "number": "71",
-          "score": 0.6754
+          "score": 0.676
         },
         {
           "number": "47",
-          "score": 0.6695
+          "score": 0.6699
         },
         {
           "number": "48",
-          "score": 0.6687
+          "score": 0.6695
         },
         {
           "number": "46",
-          "score": 0.6515
+          "score": 0.6522
         },
         {
           "number": "52",
-          "score": 0.6299
+          "score": 0.6306
         },
         {
           "number": "8",
-          "score": 0.6161
+          "score": 0.6168
         }
       ]
     },
@@ -4454,27 +4454,27 @@
       "similar_issues": [
         {
           "number": "43",
-          "score": 0.6959
+          "score": 0.6956
         },
         {
           "number": "60",
-          "score": 0.6922
+          "score": 0.6926
         },
         {
           "number": "42",
-          "score": 0.6622
+          "score": 0.6619
         },
         {
           "number": "52",
-          "score": 0.662
-        },
-        {
-          "number": "39",
-          "score": 0.657
+          "score": 0.6619
         },
         {
           "number": "54",
-          "score": 0.6566
+          "score": 0.6563
+        },
+        {
+          "number": "39",
+          "score": 0.6557
         }
       ]
     },
@@ -4530,19 +4530,19 @@
       "similar_issues": [
         {
           "number": "38",
-          "score": 0.7285
+          "score": 0.7278
         },
         {
           "number": "120",
-          "score": 0.7202
+          "score": 0.7204
         },
         {
           "number": "39",
-          "score": 0.7175
+          "score": 0.7166
         },
         {
           "number": "62",
-          "score": 0.7153
+          "score": 0.7156
         },
         {
           "number": "54",
@@ -4550,7 +4550,7 @@
         },
         {
           "number": "6",
-          "score": 0.7094
+          "score": 0.7092
         }
       ]
     },
@@ -4607,7 +4607,7 @@
       "similar_issues": [
         {
           "number": "62",
-          "score": 0.6255
+          "score": 0.6257
         },
         {
           "number": "11",
@@ -4615,19 +4615,19 @@
         },
         {
           "number": "290",
-          "score": 0.6208
+          "score": 0.6209
+        },
+        {
+          "number": "60",
+          "score": 0.6205
         },
         {
           "number": "52",
           "score": 0.6204
         },
         {
-          "number": "60",
-          "score": 0.6201
-        },
-        {
           "number": "106",
-          "score": 0.6138
+          "score": 0.6128
         }
       ]
     },
@@ -4683,27 +4683,27 @@
       "similar_issues": [
         {
           "number": "106",
-          "score": 0.7411
+          "score": 0.7405
         },
         {
           "number": "60",
-          "score": 0.7153
+          "score": 0.7156
         },
         {
           "number": "54",
-          "score": 0.6985
+          "score": 0.698
         },
         {
           "number": "120",
-          "score": 0.6976
+          "score": 0.6972
         },
         {
           "number": "39",
-          "score": 0.6892
+          "score": 0.6881
         },
         {
           "number": "55",
-          "score": 0.6852
+          "score": 0.6847
         }
       ]
     },
@@ -4758,27 +4758,27 @@
       "similar_issues": [
         {
           "number": "62",
-          "score": 0.6481
+          "score": 0.6483
         },
         {
           "number": "248",
-          "score": 0.6352
+          "score": 0.6354
         },
         {
           "number": "60",
-          "score": 0.6128
+          "score": 0.6132
         },
         {
           "number": "39",
-          "score": 0.6033
+          "score": 0.6027
         },
         {
           "number": "36",
-          "score": 0.6002
+          "score": 0.6004
         },
         {
           "number": "67",
-          "score": 0.5994
+          "score": 0.5999
         }
       ]
     },
@@ -4834,11 +4834,11 @@
       "similar_issues": [
         {
           "number": "71",
-          "score": 0.6059
+          "score": 0.606
         },
         {
           "number": "319",
-          "score": 0.6008
+          "score": 0.6006
         },
         {
           "number": "84",
@@ -4846,15 +4846,15 @@
         },
         {
           "number": "52",
-          "score": 0.5947
+          "score": 0.5942
         },
         {
           "number": "111",
-          "score": 0.585
+          "score": 0.5855
         },
         {
           "number": "93",
-          "score": 0.5833
+          "score": 0.5831
         }
       ]
     },
@@ -4908,7 +4908,7 @@
       "similar_issues": [
         {
           "number": "66",
-          "score": 0.8201
+          "score": 0.8198
         },
         {
           "number": "67",
@@ -4916,19 +4916,19 @@
         },
         {
           "number": "48",
-          "score": 0.638
+          "score": 0.6381
         },
         {
           "number": "8",
-          "score": 0.636
+          "score": 0.6359
         },
         {
           "number": "75",
-          "score": 0.6355
+          "score": 0.6352
         },
         {
           "number": "47",
-          "score": 0.6293
+          "score": 0.6291
         }
       ]
     },
@@ -4984,19 +4984,19 @@
       "similar_issues": [
         {
           "number": "65",
-          "score": 0.8201
+          "score": 0.8198
         },
         {
           "number": "67",
-          "score": 0.6858
+          "score": 0.6859
         },
         {
           "number": "74",
-          "score": 0.625
+          "score": 0.6254
         },
         {
           "number": "75",
-          "score": 0.6195
+          "score": 0.6191
         },
         {
           "number": "48",
@@ -5004,7 +5004,7 @@
         },
         {
           "number": "61",
-          "score": 0.611
+          "score": 0.6113
         }
       ]
     },
@@ -5063,7 +5063,7 @@
         },
         {
           "number": "66",
-          "score": 0.6858
+          "score": 0.6859
         },
         {
           "number": "48",
@@ -5071,7 +5071,7 @@
         },
         {
           "number": "96",
-          "score": 0.6235
+          "score": 0.6237
         },
         {
           "number": "9",
@@ -5079,7 +5079,7 @@
         },
         {
           "number": "57",
-          "score": 0.6225
+          "score": 0.6227
         }
       ]
     },
@@ -5137,23 +5137,23 @@
         },
         {
           "number": "29",
-          "score": 0.6199
+          "score": 0.6194
         },
         {
           "number": "110",
-          "score": 0.5861
+          "score": 0.5858
         },
         {
           "number": "43",
-          "score": 0.5832
-        },
-        {
-          "number": "62",
-          "score": 0.5818
+          "score": 0.5823
         },
         {
           "number": "60",
-          "score": 0.5812
+          "score": 0.5814
+        },
+        {
+          "number": "62",
+          "score": 0.5814
         }
       ]
     },
@@ -5213,11 +5213,11 @@
         },
         {
           "number": "17",
-          "score": 0.6654
+          "score": 0.6655
         },
         {
           "number": "55",
-          "score": 0.6641
+          "score": 0.6639
         },
         {
           "number": "109",
@@ -5225,11 +5225,11 @@
         },
         {
           "number": "349",
-          "score": 0.6195
+          "score": 0.6193
         },
         {
           "number": "115",
-          "score": 0.6176
+          "score": 0.6173
         }
       ]
     },
@@ -5283,23 +5283,23 @@
       "similar_issues": [
         {
           "number": "73",
-          "score": 0.592
+          "score": 0.5919
         },
         {
           "number": "74",
-          "score": 0.5767
+          "score": 0.5773
         },
         {
           "number": "120",
-          "score": 0.5694
+          "score": 0.5695
         },
         {
           "number": "301",
-          "score": 0.5499
+          "score": 0.55
         },
         {
           "number": "60",
-          "score": 0.5488
+          "score": 0.5489
         },
         {
           "number": "290",
@@ -5358,11 +5358,11 @@
       "similar_issues": [
         {
           "number": "58",
-          "score": 0.6754
+          "score": 0.676
         },
         {
           "number": "77",
-          "score": 0.6511
+          "score": 0.6509
         },
         {
           "number": "24",
@@ -5370,15 +5370,15 @@
         },
         {
           "number": "73",
-          "score": 0.6498
+          "score": 0.6499
         },
         {
           "number": "101",
-          "score": 0.6237
+          "score": 0.6239
         },
         {
           "number": "114",
-          "score": 0.6209
+          "score": 0.6208
         }
       ]
     },
@@ -5433,27 +5433,27 @@
       "similar_issues": [
         {
           "number": "20",
-          "score": 0.7306
+          "score": 0.7302
         },
         {
           "number": "73",
-          "score": 0.6901
+          "score": 0.6894
         },
         {
           "number": "22",
-          "score": 0.6566
+          "score": 0.6563
         },
         {
           "number": "4",
-          "score": 0.6512
+          "score": 0.6504
         },
         {
           "number": "327",
-          "score": 0.6482
+          "score": 0.6478
         },
         {
           "number": "41",
-          "score": 0.6455
+          "score": 0.6445
         }
       ]
     },
@@ -5509,15 +5509,15 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.6928
+          "score": 0.6927
         },
         {
           "number": "43",
-          "score": 0.692
+          "score": 0.6914
         },
         {
           "number": "72",
-          "score": 0.6901
+          "score": 0.6894
         },
         {
           "number": "68",
@@ -5525,11 +5525,11 @@
         },
         {
           "number": "106",
-          "score": 0.6746
+          "score": 0.6737
         },
         {
           "number": "263",
-          "score": 0.6737
+          "score": 0.6734
         }
       ]
     },
@@ -5585,27 +5585,27 @@
       "similar_issues": [
         {
           "number": "114",
-          "score": 0.69
+          "score": 0.6909
         },
         {
           "number": "122",
-          "score": 0.6848
+          "score": 0.6853
         },
         {
           "number": "17",
-          "score": 0.6808
+          "score": 0.6812
         },
         {
           "number": "43",
-          "score": 0.6787
+          "score": 0.6789
         },
         {
           "number": "120",
-          "score": 0.672
+          "score": 0.6732
         },
         {
           "number": "161",
-          "score": 0.671
+          "score": 0.6717
         }
       ]
     },
@@ -5661,27 +5661,27 @@
       "similar_issues": [
         {
           "number": "247",
-          "score": 0.6868
+          "score": 0.6866
         },
         {
           "number": "253",
-          "score": 0.6865
+          "score": 0.6863
         },
         {
           "number": "65",
-          "score": 0.6355
+          "score": 0.6352
         },
         {
           "number": "111",
-          "score": 0.6336
+          "score": 0.6343
         },
         {
           "number": "109",
-          "score": 0.6316
+          "score": 0.6308
         },
         {
           "number": "120",
-          "score": 0.6291
+          "score": 0.6288
         }
       ]
     },
@@ -5738,19 +5738,19 @@
       "similar_issues": [
         {
           "number": "46",
-          "score": 0.5723
+          "score": 0.5717
         },
         {
           "number": "43",
-          "score": 0.5711
+          "score": 0.5707
         },
         {
           "number": "106",
-          "score": 0.5697
+          "score": 0.5691
         },
         {
           "number": "40",
-          "score": 0.5689
+          "score": 0.5681
         },
         {
           "number": "48",
@@ -5758,7 +5758,7 @@
         },
         {
           "number": "58",
-          "score": 0.566
+          "score": 0.567
         }
       ]
     },
@@ -5815,27 +5815,27 @@
       "similar_issues": [
         {
           "number": "84",
-          "score": 0.7588
+          "score": 0.758
         },
         {
           "number": "78",
-          "score": 0.7468
+          "score": 0.7463
         },
         {
           "number": "89",
-          "score": 0.6986
+          "score": 0.6974
         },
         {
           "number": "88",
-          "score": 0.6926
+          "score": 0.6917
         },
         {
           "number": "103",
-          "score": 0.6801
+          "score": 0.6797
         },
         {
           "number": "73",
-          "score": 0.6686
+          "score": 0.6675
         }
       ]
     },
@@ -5890,11 +5890,11 @@
       "similar_issues": [
         {
           "number": "77",
-          "score": 0.7468
+          "score": 0.7463
         },
         {
           "number": "89",
-          "score": 0.7301
+          "score": 0.7303
         },
         {
           "number": "84",
@@ -5902,15 +5902,15 @@
         },
         {
           "number": "103",
-          "score": 0.6846
+          "score": 0.685
         },
         {
           "number": "88",
-          "score": 0.6652
+          "score": 0.665
         },
         {
           "number": "73",
-          "score": 0.6392
+          "score": 0.6394
         }
       ]
     },
@@ -5967,27 +5967,27 @@
       "similar_issues": [
         {
           "number": "43",
-          "score": 0.7099
+          "score": 0.7089
         },
         {
           "number": "39",
-          "score": 0.6993
+          "score": 0.6975
         },
         {
           "number": "324",
-          "score": 0.6894
+          "score": 0.6892
         },
         {
           "number": "81",
-          "score": 0.6857
+          "score": 0.6855
         },
         {
           "number": "196",
-          "score": 0.6851
+          "score": 0.6845
         },
         {
           "number": "42",
-          "score": 0.6837
+          "score": 0.6836
         }
       ]
     },
@@ -6042,27 +6042,27 @@
       "similar_issues": [
         {
           "number": "127",
-          "score": 0.8191
+          "score": 0.8192
         },
         {
           "number": "213",
-          "score": 0.7149
+          "score": 0.7146
         },
         {
           "number": "217",
-          "score": 0.6724
+          "score": 0.6723
         },
         {
           "number": "101",
-          "score": 0.6441
+          "score": 0.6438
         },
         {
           "number": "81",
-          "score": 0.6341
+          "score": 0.6338
         },
         {
           "number": "133",
-          "score": 0.6267
+          "score": 0.6265
         }
       ]
     },
@@ -6118,27 +6118,27 @@
       "similar_issues": [
         {
           "number": "128",
-          "score": 0.8004
+          "score": 0.8005
         },
         {
           "number": "29",
-          "score": 0.7501
+          "score": 0.7498
         },
         {
           "number": "235",
-          "score": 0.6947
+          "score": 0.6944
         },
         {
           "number": "205",
-          "score": 0.6932
+          "score": 0.6931
         },
         {
           "number": "79",
-          "score": 0.6857
+          "score": 0.6855
         },
         {
           "number": "26",
-          "score": 0.6804
+          "score": 0.6802
         }
       ]
     },
@@ -6198,19 +6198,19 @@
         },
         {
           "number": "106",
-          "score": 0.6606
+          "score": 0.6587
         },
         {
           "number": "39",
-          "score": 0.6236
+          "score": 0.6224
         },
         {
           "number": "38",
-          "score": 0.6211
+          "score": 0.621
         },
         {
           "number": "236",
-          "score": 0.6194
+          "score": 0.6193
         },
         {
           "number": "228",
@@ -6268,14 +6268,14 @@
       "similar_issues": [
         {
           "number": "84",
-          "score": 0.6481
-        },
-        {
-          "number": "93",
-          "score": 0.6331
+          "score": 0.6484
         },
         {
           "number": "85",
+          "score": 0.633
+        },
+        {
+          "number": "93",
           "score": 0.6328
         },
         {
@@ -6284,7 +6284,7 @@
         },
         {
           "number": "52",
-          "score": 0.6316
+          "score": 0.6315
         },
         {
           "number": "86",
@@ -6344,15 +6344,15 @@
       "similar_issues": [
         {
           "number": "77",
-          "score": 0.7588
+          "score": 0.758
         },
         {
           "number": "89",
-          "score": 0.7556
+          "score": 0.7551
         },
         {
           "number": "88",
-          "score": 0.7335
+          "score": 0.7331
         },
         {
           "number": "78",
@@ -6360,11 +6360,11 @@
         },
         {
           "number": "85",
-          "score": 0.7026
+          "score": 0.7027
         },
         {
           "number": "86",
-          "score": 0.6962
+          "score": 0.696
         }
       ]
     },
@@ -6420,7 +6420,7 @@
       "similar_issues": [
         {
           "number": "86",
-          "score": 0.8056
+          "score": 0.8058
         },
         {
           "number": "33",
@@ -6432,15 +6432,15 @@
         },
         {
           "number": "84",
-          "score": 0.7026
+          "score": 0.7027
         },
         {
           "number": "87",
-          "score": 0.7021
+          "score": 0.7022
         },
         {
           "number": "30",
-          "score": 0.6942
+          "score": 0.694
         }
       ]
     },
@@ -6497,11 +6497,11 @@
       "similar_issues": [
         {
           "number": "85",
-          "score": 0.8056
+          "score": 0.8058
         },
         {
           "number": "87",
-          "score": 0.706
+          "score": 0.7057
         },
         {
           "number": "33",
@@ -6509,15 +6509,15 @@
         },
         {
           "number": "84",
-          "score": 0.6962
+          "score": 0.696
         },
         {
           "number": "34",
-          "score": 0.6928
+          "score": 0.6929
         },
         {
           "number": "88",
-          "score": 0.6925
+          "score": 0.6923
         }
       ]
     },
@@ -6573,27 +6573,27 @@
       "similar_issues": [
         {
           "number": "86",
-          "score": 0.706
+          "score": 0.7057
         },
         {
           "number": "85",
-          "score": 0.7021
+          "score": 0.7022
         },
         {
           "number": "88",
-          "score": 0.6946
+          "score": 0.6947
         },
         {
           "number": "84",
-          "score": 0.6937
+          "score": 0.6934
         },
         {
           "number": "33",
-          "score": 0.6798
+          "score": 0.6794
         },
         {
           "number": "35",
-          "score": 0.6716
+          "score": 0.6718
         }
       ]
     },
@@ -6649,27 +6649,27 @@
       "similar_issues": [
         {
           "number": "89",
-          "score": 0.7801
+          "score": 0.7796
         },
         {
           "number": "38",
-          "score": 0.7342
+          "score": 0.734
         },
         {
           "number": "84",
-          "score": 0.7335
+          "score": 0.7331
         },
         {
           "number": "95",
-          "score": 0.7318
+          "score": 0.7312
         },
         {
           "number": "39",
-          "score": 0.7277
+          "score": 0.7269
         },
         {
           "number": "93",
-          "score": 0.7155
+          "score": 0.7152
         }
       ]
     },
@@ -6723,27 +6723,27 @@
       "similar_issues": [
         {
           "number": "88",
-          "score": 0.7801
+          "score": 0.7796
         },
         {
           "number": "84",
-          "score": 0.7556
-        },
-        {
-          "number": "78",
-          "score": 0.7301
+          "score": 0.7551
         },
         {
           "number": "103",
-          "score": 0.73
+          "score": 0.7306
+        },
+        {
+          "number": "78",
+          "score": 0.7303
         },
         {
           "number": "95",
-          "score": 0.7168
+          "score": 0.7161
         },
         {
           "number": "93",
-          "score": 0.7115
+          "score": 0.7112
         }
       ]
     },
@@ -6798,27 +6798,27 @@
       "similar_issues": [
         {
           "number": "93",
-          "score": 0.7456
+          "score": 0.746
         },
         {
           "number": "95",
-          "score": 0.7145
+          "score": 0.7142
         },
         {
           "number": "88",
-          "score": 0.703
-        },
-        {
-          "number": "106",
-          "score": 0.6827
+          "score": 0.7031
         },
         {
           "number": "89",
-          "score": 0.6824
+          "score": 0.6825
+        },
+        {
+          "number": "106",
+          "score": 0.682
         },
         {
           "number": "38",
-          "score": 0.6816
+          "score": 0.6819
         }
       ]
     },
@@ -6873,27 +6873,27 @@
       "similar_issues": [
         {
           "number": "94",
-          "score": 0.6493
+          "score": 0.6495
         },
         {
           "number": "90",
-          "score": 0.636
+          "score": 0.6365
         },
         {
           "number": "126",
-          "score": 0.6254
+          "score": 0.6253
         },
         {
           "number": "103",
-          "score": 0.6146
+          "score": 0.615
         },
         {
           "number": "49",
-          "score": 0.6048
+          "score": 0.605
         },
         {
           "number": "174",
-          "score": 0.6027
+          "score": 0.6028
         }
       ]
     },
@@ -6948,27 +6948,27 @@
       "similar_issues": [
         {
           "number": "93",
-          "score": 0.7692
+          "score": 0.7699
         },
         {
           "number": "95",
-          "score": 0.768
+          "score": 0.7681
         },
         {
           "number": "39",
-          "score": 0.7373
+          "score": 0.7382
         },
         {
           "number": "96",
-          "score": 0.6935
+          "score": 0.6942
         },
         {
           "number": "106",
-          "score": 0.6857
+          "score": 0.6858
         },
         {
           "number": "105",
-          "score": 0.6751
+          "score": 0.6758
         }
       ]
     },
@@ -7022,27 +7022,27 @@
       "similar_issues": [
         {
           "number": "100",
-          "score": 0.8811
+          "score": 0.8814
         },
         {
           "number": "95",
-          "score": 0.8259
+          "score": 0.8251
         },
         {
           "number": "105",
-          "score": 0.8205
+          "score": 0.8202
         },
         {
           "number": "120",
-          "score": 0.7786
+          "score": 0.7785
         },
         {
           "number": "112",
-          "score": 0.7705
+          "score": 0.7704
         },
         {
           "number": "92",
-          "score": 0.7692
+          "score": 0.7699
         }
       ]
     },
@@ -7098,27 +7098,27 @@
       "similar_issues": [
         {
           "number": "93",
-          "score": 0.6623
+          "score": 0.6625
         },
         {
           "number": "91",
-          "score": 0.6493
+          "score": 0.6495
         },
         {
           "number": "40",
-          "score": 0.6431
+          "score": 0.6428
         },
         {
           "number": "103",
-          "score": 0.6377
+          "score": 0.6376
         },
         {
           "number": "95",
-          "score": 0.6286
+          "score": 0.6283
         },
         {
           "number": "90",
-          "score": 0.6148
+          "score": 0.6153
         }
       ]
     },
@@ -7173,27 +7173,27 @@
       "similar_issues": [
         {
           "number": "93",
-          "score": 0.8259
+          "score": 0.8251
         },
         {
           "number": "105",
-          "score": 0.7937
+          "score": 0.7929
         },
         {
           "number": "39",
-          "score": 0.771
+          "score": 0.7702
         },
         {
           "number": "92",
-          "score": 0.768
+          "score": 0.7681
         },
         {
           "number": "100",
-          "score": 0.756
+          "score": 0.7554
         },
         {
           "number": "120",
-          "score": 0.7492
+          "score": 0.7483
         }
       ]
     },
@@ -7250,19 +7250,19 @@
       "similar_issues": [
         {
           "number": "99",
-          "score": 0.8067
+          "score": 0.8074
         },
         {
           "number": "95",
-          "score": 0.7454
+          "score": 0.7451
         },
         {
           "number": "106",
-          "score": 0.7327
+          "score": 0.7326
         },
         {
           "number": "101",
-          "score": 0.7187
+          "score": 0.7189
         },
         {
           "number": "93",
@@ -7270,7 +7270,7 @@
         },
         {
           "number": "92",
-          "score": 0.6935
+          "score": 0.6942
         }
       ]
     },
@@ -7326,7 +7326,7 @@
       "similar_issues": [
         {
           "number": "95",
-          "score": 0.6402
+          "score": 0.6393
         },
         {
           "number": "93",
@@ -7334,7 +7334,7 @@
         },
         {
           "number": "185",
-          "score": 0.6131
+          "score": 0.613
         },
         {
           "number": "156",
@@ -7342,11 +7342,11 @@
         },
         {
           "number": "96",
-          "score": 0.6006
+          "score": 0.6008
         },
         {
           "number": "120",
-          "score": 0.5952
+          "score": 0.5948
         }
       ]
     },
@@ -7402,19 +7402,19 @@
       "similar_issues": [
         {
           "number": "96",
-          "score": 0.6797
+          "score": 0.6798
         },
         {
           "number": "99",
-          "score": 0.6396
+          "score": 0.64
         },
         {
           "number": "95",
-          "score": 0.6345
+          "score": 0.6338
         },
         {
           "number": "101",
-          "score": 0.6286
+          "score": 0.6281
         },
         {
           "number": "93",
@@ -7422,7 +7422,7 @@
         },
         {
           "number": "106",
-          "score": 0.6163
+          "score": 0.615
         }
       ]
     },
@@ -7477,27 +7477,27 @@
       "similar_issues": [
         {
           "number": "96",
-          "score": 0.8067
+          "score": 0.8074
         },
         {
           "number": "101",
-          "score": 0.7463
+          "score": 0.7474
         },
         {
           "number": "47",
-          "score": 0.7181
+          "score": 0.7185
         },
         {
           "number": "100",
-          "score": 0.7016
+          "score": 0.7026
         },
         {
           "number": "95",
-          "score": 0.6917
+          "score": 0.6922
         },
         {
           "number": "48",
-          "score": 0.6871
+          "score": 0.6876
         }
       ]
     },
@@ -7551,27 +7551,27 @@
       "similar_issues": [
         {
           "number": "93",
-          "score": 0.8811
+          "score": 0.8814
         },
         {
           "number": "105",
-          "score": 0.8139
+          "score": 0.8138
         },
         {
           "number": "112",
-          "score": 0.7718
+          "score": 0.772
         },
         {
           "number": "101",
-          "score": 0.7583
+          "score": 0.7581
         },
         {
           "number": "120",
-          "score": 0.7574
+          "score": 0.7573
         },
         {
           "number": "95",
-          "score": 0.756
+          "score": 0.7554
         }
       ]
     },
@@ -7627,27 +7627,27 @@
       "similar_issues": [
         {
           "number": "100",
-          "score": 0.7583
-        },
-        {
-          "number": "102",
-          "score": 0.7468
+          "score": 0.7581
         },
         {
           "number": "99",
-          "score": 0.7463
+          "score": 0.7474
+        },
+        {
+          "number": "102",
+          "score": 0.7464
         },
         {
           "number": "93",
-          "score": 0.7323
+          "score": 0.7322
         },
         {
           "number": "106",
-          "score": 0.7235
+          "score": 0.7225
         },
         {
           "number": "114",
-          "score": 0.7213
+          "score": 0.7206
         }
       ]
     },
@@ -7703,27 +7703,27 @@
       "similar_issues": [
         {
           "number": "101",
-          "score": 0.7468
+          "score": 0.7464
         },
         {
           "number": "95",
-          "score": 0.711
+          "score": 0.7105
         },
         {
           "number": "100",
-          "score": 0.7099
+          "score": 0.7101
         },
         {
           "number": "93",
-          "score": 0.7069
+          "score": 0.7071
         },
         {
           "number": "114",
-          "score": 0.6984
+          "score": 0.6986
         },
         {
           "number": "106",
-          "score": 0.6952
+          "score": 0.6944
         }
       ]
     },
@@ -7777,23 +7777,23 @@
       "similar_issues": [
         {
           "number": "89",
-          "score": 0.73
+          "score": 0.7306
         },
         {
           "number": "84",
-          "score": 0.6876
+          "score": 0.6878
         },
         {
           "number": "78",
-          "score": 0.6846
+          "score": 0.685
         },
         {
           "number": "77",
-          "score": 0.6801
+          "score": 0.6797
         },
         {
           "number": "49",
-          "score": 0.6561
+          "score": 0.656
         },
         {
           "number": "88",
@@ -7851,27 +7851,27 @@
       "similar_issues": [
         {
           "number": "105",
-          "score": 0.7262
+          "score": 0.7266
         },
         {
           "number": "106",
-          "score": 0.7192
+          "score": 0.7182
         },
         {
           "number": "110",
-          "score": 0.7052
+          "score": 0.705
         },
         {
           "number": "93",
-          "score": 0.6988
+          "score": 0.699
         },
         {
           "number": "112",
-          "score": 0.6876
+          "score": 0.6877
         },
         {
           "number": "95",
-          "score": 0.6803
+          "score": 0.6797
         }
       ]
     },
@@ -7891,32 +7891,32 @@
         "Badass Agile",
         "Beam",
         "Brings New Watch App",
-        "But Still No Moore's Law",
         "Chris Williams",
         "Chromium Blog",
-        "Create",
         "Distributed Knowledge Graph Store",
         "EDI",
-        "Great Team Culture",
         "Handoff Support",
         "Homegrown",
         "House",
         "Improving",
         "Instant Search",
         "Journalism",
-        "LIDAR. Yet",
         "LookUp",
         "Looking",
         "One-on-ones",
-        "Organizational Design",
         "SPS Commerce",
         "SPS Tech Jam",
         "Thank",
         "Today Lists",
-        "Why It Matters",
-        "Whys",
         "agiletortoise.com",
-        "badassagile.com"
+        "badassagile.com",
+        "blog.chromium.org",
+        "ebayinc.com",
+        "kellanem.com",
+        "linkedin.com",
+        "macstories.net",
+        "medium.com",
+        "members.onepeloton.com"
       ],
       "tropes": [
         "open web and ownership",
@@ -7926,23 +7926,23 @@
       "similar_issues": [
         {
           "number": "112",
-          "score": 0.8374
+          "score": 0.8376
         },
         {
           "number": "93",
-          "score": 0.8205
+          "score": 0.8202
         },
         {
           "number": "100",
-          "score": 0.8139
+          "score": 0.8138
         },
         {
           "number": "95",
-          "score": 0.7937
+          "score": 0.7929
         },
         {
           "number": "120",
-          "score": 0.7766
+          "score": 0.7765
         },
         {
           "number": "106",
@@ -8002,7 +8002,7 @@
       "similar_issues": [
         {
           "number": "112",
-          "score": 0.7832
+          "score": 0.7827
         },
         {
           "number": "105",
@@ -8010,19 +8010,19 @@
         },
         {
           "number": "52",
-          "score": 0.756
+          "score": 0.7546
         },
         {
           "number": "110",
-          "score": 0.7471
-        },
-        {
-          "number": "62",
-          "score": 0.7411
+          "score": 0.7467
         },
         {
           "number": "93",
-          "score": 0.7409
+          "score": 0.7407
+        },
+        {
+          "number": "62",
+          "score": 0.7405
         }
       ]
     },
@@ -8078,27 +8078,27 @@
       "similar_issues": [
         {
           "number": "55",
-          "score": 0.7489
+          "score": 0.749
         },
         {
           "number": "349",
-          "score": 0.74
+          "score": 0.7398
         },
         {
           "number": "320",
-          "score": 0.6614
+          "score": 0.6613
         },
         {
           "number": "102",
-          "score": 0.6588
+          "score": 0.6592
         },
         {
           "number": "114",
-          "score": 0.6481
+          "score": 0.649
         },
         {
           "number": "106",
-          "score": 0.647
+          "score": 0.6465
         }
       ]
     },
@@ -8154,27 +8154,27 @@
       "similar_issues": [
         {
           "number": "125",
-          "score": 0.7362
+          "score": 0.7361
         },
         {
           "number": "93",
-          "score": 0.6492
+          "score": 0.6493
         },
         {
           "number": "136",
-          "score": 0.6394
+          "score": 0.6393
         },
         {
           "number": "100",
-          "score": 0.6321
+          "score": 0.6322
         },
         {
           "number": "112",
-          "score": 0.6202
+          "score": 0.6199
         },
         {
           "number": "275",
-          "score": 0.6124
+          "score": 0.6122
         }
       ]
     },
@@ -8230,15 +8230,15 @@
       "similar_issues": [
         {
           "number": "110",
-          "score": 0.7092
+          "score": 0.7085
         },
         {
           "number": "57",
-          "score": 0.6882
+          "score": 0.6878
         },
         {
           "number": "114",
-          "score": 0.6713
+          "score": 0.6707
         },
         {
           "number": "111",
@@ -8246,11 +8246,11 @@
         },
         {
           "number": "115",
-          "score": 0.6616
+          "score": 0.6597
         },
         {
           "number": "106",
-          "score": 0.6608
+          "score": 0.6593
         }
       ]
     },
@@ -8307,11 +8307,11 @@
       "similar_issues": [
         {
           "number": "111",
-          "score": 0.7733
+          "score": 0.7734
         },
         {
           "number": "112",
-          "score": 0.7544
+          "score": 0.7546
         },
         {
           "number": "120",
@@ -8319,15 +8319,15 @@
         },
         {
           "number": "106",
-          "score": 0.7471
+          "score": 0.7467
         },
         {
           "number": "114",
-          "score": 0.7438
+          "score": 0.7439
         },
         {
           "number": "105",
-          "score": 0.7396
+          "score": 0.7394
         }
       ]
     },
@@ -8384,27 +8384,27 @@
       "similar_issues": [
         {
           "number": "110",
-          "score": 0.7733
+          "score": 0.7734
         },
         {
           "number": "112",
-          "score": 0.73
+          "score": 0.7301
         },
         {
           "number": "114",
-          "score": 0.7037
+          "score": 0.7042
         },
         {
           "number": "11",
-          "score": 0.6848
+          "score": 0.6854
         },
         {
           "number": "106",
-          "score": 0.6815
+          "score": 0.6808
         },
         {
           "number": "101",
-          "score": 0.6798
+          "score": 0.6807
         }
       ]
     },
@@ -8459,23 +8459,23 @@
       "similar_issues": [
         {
           "number": "105",
-          "score": 0.8374
+          "score": 0.8376
         },
         {
           "number": "120",
-          "score": 0.811
+          "score": 0.8109
         },
         {
           "number": "114",
-          "score": 0.7931
+          "score": 0.7933
         },
         {
           "number": "113",
-          "score": 0.7874
+          "score": 0.7886
         },
         {
           "number": "106",
-          "score": 0.7832
+          "score": 0.7827
         },
         {
           "number": "52",
@@ -8533,27 +8533,27 @@
       "similar_issues": [
         {
           "number": "112",
-          "score": 0.7874
+          "score": 0.7886
         },
         {
           "number": "130",
-          "score": 0.7101
+          "score": 0.7106
         },
         {
           "number": "114",
-          "score": 0.6978
+          "score": 0.699
         },
         {
           "number": "110",
-          "score": 0.6876
+          "score": 0.6884
         },
         {
           "number": "106",
-          "score": 0.6849
+          "score": 0.6851
         },
         {
           "number": "120",
-          "score": 0.6758
+          "score": 0.6765
         }
       ]
     },
@@ -8607,7 +8607,7 @@
       "similar_issues": [
         {
           "number": "112",
-          "score": 0.7931
+          "score": 0.7933
         },
         {
           "number": "120",
@@ -8615,19 +8615,19 @@
         },
         {
           "number": "57",
-          "score": 0.7573
+          "score": 0.7572
         },
         {
           "number": "115",
-          "score": 0.7557
+          "score": 0.7544
         },
         {
           "number": "14",
-          "score": 0.7536
+          "score": 0.7537
         },
         {
           "number": "110",
-          "score": 0.7438
+          "score": 0.7439
         }
       ]
     },
@@ -8682,27 +8682,27 @@
       "similar_issues": [
         {
           "number": "114",
-          "score": 0.7557
+          "score": 0.7544
         },
         {
           "number": "110",
-          "score": 0.6942
+          "score": 0.6929
         },
         {
           "number": "57",
-          "score": 0.6774
+          "score": 0.676
         },
         {
           "number": "120",
-          "score": 0.667
+          "score": 0.6652
         },
         {
           "number": "109",
-          "score": 0.6616
+          "score": 0.6597
         },
         {
           "number": "112",
-          "score": 0.6562
+          "score": 0.6539
         }
       ]
     },
@@ -8756,27 +8756,27 @@
       "similar_issues": [
         {
           "number": "114",
-          "score": 0.6678
+          "score": 0.6682
         },
         {
           "number": "112",
-          "score": 0.6491
+          "score": 0.6486
         },
         {
           "number": "110",
-          "score": 0.6471
+          "score": 0.6472
         },
         {
           "number": "120",
-          "score": 0.6394
+          "score": 0.6393
         },
         {
           "number": "115",
-          "score": 0.6279
+          "score": 0.6275
         },
         {
           "number": "122",
-          "score": 0.6209
+          "score": 0.6204
         }
       ]
     },
@@ -8832,11 +8832,11 @@
       "similar_issues": [
         {
           "number": "120",
-          "score": 0.7002
+          "score": 0.7008
         },
         {
           "number": "19",
-          "score": 0.6471
+          "score": 0.6473
         },
         {
           "number": "93",
@@ -8844,15 +8844,15 @@
         },
         {
           "number": "112",
-          "score": 0.6463
+          "score": 0.6465
         },
         {
           "number": "114",
-          "score": 0.6449
+          "score": 0.6451
         },
         {
           "number": "95",
-          "score": 0.6409
+          "score": 0.64
         }
       ]
     },
@@ -8907,11 +8907,11 @@
       "similar_issues": [
         {
           "number": "112",
-          "score": 0.7562
+          "score": 0.7567
         },
         {
           "number": "120",
-          "score": 0.7243
+          "score": 0.7249
         },
         {
           "number": "105",
@@ -8919,15 +8919,15 @@
         },
         {
           "number": "93",
-          "score": 0.7072
+          "score": 0.7071
         },
         {
           "number": "106",
-          "score": 0.6906
+          "score": 0.6908
         },
         {
           "number": "52",
-          "score": 0.6879
+          "score": 0.6882
         }
       ]
     },
@@ -8982,27 +8982,27 @@
       "similar_issues": [
         {
           "number": "36",
-          "score": 0.6458
+          "score": 0.6456
         },
         {
           "number": "125",
-          "score": 0.6313
+          "score": 0.6322
         },
         {
           "number": "120",
-          "score": 0.6113
+          "score": 0.6126
         },
         {
           "number": "112",
-          "score": 0.5985
+          "score": 0.5998
         },
         {
           "number": "108",
-          "score": 0.5933
+          "score": 0.5937
         },
         {
-          "number": "106",
-          "score": 0.5906
+          "number": "118",
+          "score": 0.5913
         }
       ]
     },
@@ -9055,7 +9055,7 @@
       "similar_issues": [
         {
           "number": "112",
-          "score": 0.811
+          "score": 0.8109
         },
         {
           "number": "130",
@@ -9067,15 +9067,15 @@
         },
         {
           "number": "93",
-          "score": 0.7786
+          "score": 0.7785
         },
         {
           "number": "105",
-          "score": 0.7766
+          "score": 0.7765
         },
         {
           "number": "100",
-          "score": 0.7574
+          "score": 0.7573
         }
       ]
     },
@@ -9130,28 +9130,28 @@
       ],
       "similar_issues": [
         {
-          "number": "106",
-          "score": 0.6774
+          "number": "318",
+          "score": 0.6761
         },
         {
-          "number": "318",
-          "score": 0.6762
+          "number": "106",
+          "score": 0.675
         },
         {
           "number": "120",
-          "score": 0.6731
+          "score": 0.6732
         },
         {
           "number": "122",
-          "score": 0.6682
+          "score": 0.6678
         },
         {
           "number": "129",
-          "score": 0.6554
+          "score": 0.6553
         },
         {
           "number": "52",
-          "score": 0.6536
+          "score": 0.6532
         }
       ]
     },
@@ -9208,27 +9208,27 @@
       "similar_issues": [
         {
           "number": "120",
-          "score": 0.7382
+          "score": 0.7386
         },
         {
           "number": "161",
-          "score": 0.7107
+          "score": 0.7106
         },
         {
           "number": "123",
-          "score": 0.6945
+          "score": 0.6946
         },
         {
           "number": "17",
-          "score": 0.6902
+          "score": 0.6905
         },
         {
           "number": "130",
-          "score": 0.6889
+          "score": 0.6886
         },
         {
           "number": "74",
-          "score": 0.6848
+          "score": 0.6853
         }
       ]
     },
@@ -9283,11 +9283,11 @@
       "similar_issues": [
         {
           "number": "120",
-          "score": 0.7059
+          "score": 0.7057
         },
         {
           "number": "122",
-          "score": 0.6945
+          "score": 0.6946
         },
         {
           "number": "124",
@@ -9299,11 +9299,11 @@
         },
         {
           "number": "57",
-          "score": 0.6397
+          "score": 0.6396
         },
         {
           "number": "103",
-          "score": 0.6346
+          "score": 0.6348
         }
       ]
     },
@@ -9358,27 +9358,27 @@
       "similar_issues": [
         {
           "number": "120",
-          "score": 0.724
+          "score": 0.7238
         },
         {
           "number": "129",
-          "score": 0.697
+          "score": 0.6969
         },
         {
           "number": "123",
           "score": 0.6789
         },
         {
-          "number": "106",
-          "score": 0.6572
+          "number": "128",
+          "score": 0.6563
         },
         {
           "number": "130",
-          "score": 0.6566
+          "score": 0.6561
         },
         {
-          "number": "128",
-          "score": 0.6561
+          "number": "106",
+          "score": 0.656
         }
       ]
     },
@@ -9435,27 +9435,27 @@
       "similar_issues": [
         {
           "number": "108",
-          "score": 0.7362
+          "score": 0.7361
         },
         {
           "number": "275",
-          "score": 0.6503
+          "score": 0.6504
         },
         {
           "number": "136",
-          "score": 0.6497
+          "score": 0.6495
         },
         {
           "number": "120",
-          "score": 0.6433
+          "score": 0.6432
         },
         {
           "number": "119",
-          "score": 0.6313
+          "score": 0.6322
         },
         {
           "number": "130",
-          "score": 0.612
+          "score": 0.6124
         }
       ]
     },
@@ -9510,27 +9510,27 @@
       "similar_issues": [
         {
           "number": "91",
-          "score": 0.6254
+          "score": 0.6253
         },
         {
           "number": "122",
-          "score": 0.611
+          "score": 0.6106
         },
         {
           "number": "120",
-          "score": 0.6077
-        },
-        {
-          "number": "130",
           "score": 0.6071
         },
         {
+          "number": "130",
+          "score": 0.6068
+        },
+        {
           "number": "161",
-          "score": 0.6027
+          "score": 0.6026
         },
         {
           "number": "49",
-          "score": 0.6007
+          "score": 0.6009
         }
       ]
     },
@@ -9586,27 +9586,27 @@
       "similar_issues": [
         {
           "number": "80",
-          "score": 0.8191
+          "score": 0.8192
         },
         {
           "number": "213",
-          "score": 0.7139
+          "score": 0.7133
         },
         {
           "number": "217",
-          "score": 0.673
+          "score": 0.6728
         },
         {
           "number": "96",
-          "score": 0.6356
+          "score": 0.6363
         },
         {
           "number": "243",
-          "score": 0.6337
+          "score": 0.634
         },
         {
           "number": "133",
-          "score": 0.6333
+          "score": 0.6338
         }
       ]
     },
@@ -9662,23 +9662,23 @@
       "similar_issues": [
         {
           "number": "81",
-          "score": 0.8004
+          "score": 0.8005
         },
         {
           "number": "235",
-          "score": 0.7079
+          "score": 0.7074
         },
         {
           "number": "29",
-          "score": 0.7065
+          "score": 0.7064
         },
         {
           "number": "205",
-          "score": 0.7038
+          "score": 0.7035
         },
         {
           "number": "129",
-          "score": 0.7008
+          "score": 0.7012
         },
         {
           "number": "112",
@@ -9738,15 +9738,15 @@
       "similar_issues": [
         {
           "number": "130",
-          "score": 0.7564
+          "score": 0.7566
         },
         {
           "number": "112",
-          "score": 0.7311
+          "score": 0.7314
         },
         {
           "number": "120",
-          "score": 0.7308
+          "score": 0.731
         },
         {
           "number": "93",
@@ -9754,11 +9754,11 @@
         },
         {
           "number": "106",
-          "score": 0.7062
+          "score": 0.7048
         },
         {
-          "number": "100",
-          "score": 0.7011
+          "number": "128",
+          "score": 0.7012
         }
       ]
     },
@@ -9818,23 +9818,23 @@
         },
         {
           "number": "112",
-          "score": 0.7734
+          "score": 0.7733
         },
         {
           "number": "129",
-          "score": 0.7564
+          "score": 0.7566
         },
         {
           "number": "105",
-          "score": 0.7551
+          "score": 0.7548
         },
         {
           "number": "169",
-          "score": 0.7407
+          "score": 0.7408
         },
         {
           "number": "131",
-          "score": 0.74
+          "score": 0.7401
         }
       ]
     },
@@ -9892,7 +9892,7 @@
       "similar_issues": [
         {
           "number": "130",
-          "score": 0.74
+          "score": 0.7401
         },
         {
           "number": "169",
@@ -9900,7 +9900,7 @@
         },
         {
           "number": "112",
-          "score": 0.6768
+          "score": 0.6767
         },
         {
           "number": "133",
@@ -9908,11 +9908,11 @@
         },
         {
           "number": "120",
-          "score": 0.6699
+          "score": 0.6696
         },
         {
           "number": "38",
-          "score": 0.6593
+          "score": 0.6588
         }
       ]
     },
@@ -9975,7 +9975,7 @@
         },
         {
           "number": "51",
-          "score": 0.6226
+          "score": 0.6224
         },
         {
           "number": "313",
@@ -10044,27 +10044,27 @@
       "similar_issues": [
         {
           "number": "120",
-          "score": 0.6938
+          "score": 0.6939
         },
         {
           "number": "130",
-          "score": 0.6928
+          "score": 0.6929
         },
         {
           "number": "52",
-          "score": 0.6867
+          "score": 0.6866
         },
         {
           "number": "129",
           "score": 0.6846
         },
         {
-          "number": "51",
-          "score": 0.6783
+          "number": "105",
+          "score": 0.6779
         },
         {
           "number": "93",
-          "score": 0.6779
+          "score": 0.6777
         }
       ]
     },
@@ -10125,7 +10125,7 @@
         },
         {
           "number": "125",
-          "score": 0.5271
+          "score": 0.5273
         },
         {
           "number": "302",
@@ -10197,7 +10197,7 @@
       "similar_issues": [
         {
           "number": "41",
-          "score": 0.6329
+          "score": 0.6331
         },
         {
           "number": "137",
@@ -10205,15 +10205,15 @@
         },
         {
           "number": "129",
-          "score": 0.6066
+          "score": 0.6068
         },
         {
           "number": "51",
-          "score": 0.5985
+          "score": 0.5986
         },
         {
           "number": "52",
-          "score": 0.5898
+          "score": 0.5896
         },
         {
           "number": "131",
@@ -10273,11 +10273,11 @@
       "similar_issues": [
         {
           "number": "125",
-          "score": 0.6497
+          "score": 0.6495
         },
         {
           "number": "108",
-          "score": 0.6394
+          "score": 0.6393
         },
         {
           "number": "275",
@@ -10353,7 +10353,7 @@
         },
         {
           "number": "130",
-          "score": 0.642
+          "score": 0.6418
         },
         {
           "number": "272",
@@ -10361,7 +10361,7 @@
         },
         {
           "number": "52",
-          "score": 0.6317
+          "score": 0.6314
         },
         {
           "number": "319",
@@ -10443,10 +10443,10 @@
         },
         {
           "number": "130",
-          "score": 0.6004
+          "score": 0.6003
         },
         {
-          "number": "95",
+          "number": "338",
           "score": 0.5987
         }
       ]
@@ -10515,7 +10515,7 @@
         },
         {
           "number": "120",
-          "score": 0.6207
+          "score": 0.6206
         },
         {
           "number": "155",
@@ -10796,7 +10796,7 @@
         },
         {
           "number": "73",
-          "score": 0.5812
+          "score": 0.581
         },
         {
           "number": "287",
@@ -11021,12 +11021,12 @@
           "score": 0.6018
         },
         {
-          "number": "106",
-          "score": 0.5996
+          "number": "69",
+          "score": 0.5992
         },
         {
-          "number": "69",
-          "score": 0.5995
+          "number": "147",
+          "score": 0.5989
         }
       ]
     },
@@ -11164,7 +11164,7 @@
         },
         {
           "number": "52",
-          "score": 0.6784
+          "score": 0.6781
         },
         {
           "number": "157",
@@ -11310,7 +11310,7 @@
         },
         {
           "number": "128",
-          "score": 0.5769
+          "score": 0.5765
         },
         {
           "number": "235",
@@ -11387,7 +11387,7 @@
         },
         {
           "number": "52",
-          "score": 0.7007
+          "score": 0.7005
         },
         {
           "number": "147",
@@ -11693,7 +11693,7 @@
         },
         {
           "number": "51",
-          "score": 0.6744
+          "score": 0.6733
         },
         {
           "number": "196",
@@ -11701,7 +11701,7 @@
         },
         {
           "number": "52",
-          "score": 0.659
+          "score": 0.6591
         },
         {
           "number": "133",
@@ -11772,7 +11772,7 @@
         },
         {
           "number": "52",
-          "score": 0.698
+          "score": 0.6979
         },
         {
           "number": "201",
@@ -11839,7 +11839,7 @@
         },
         {
           "number": "115",
-          "score": 0.6543
+          "score": 0.6528
         },
         {
           "number": "155",
@@ -12224,7 +12224,7 @@
         },
         {
           "number": "122",
-          "score": 0.7107
+          "score": 0.7106
         },
         {
           "number": "290",
@@ -12295,7 +12295,7 @@
         },
         {
           "number": "74",
-          "score": 0.6515
+          "score": 0.6519
         },
         {
           "number": "229",
@@ -12675,11 +12675,11 @@
         },
         {
           "number": "106",
-          "score": 0.6406
+          "score": 0.6399
         },
         {
           "number": "52",
-          "score": 0.6311
+          "score": 0.6309
         },
         {
           "number": "290",
@@ -12746,7 +12746,7 @@
         },
         {
           "number": "30",
-          "score": 0.6817
+          "score": 0.6816
         },
         {
           "number": "236",
@@ -12816,7 +12816,7 @@
       "similar_issues": [
         {
           "number": "130",
-          "score": 0.7407
+          "score": 0.7408
         },
         {
           "number": "131",
@@ -12890,7 +12890,7 @@
       "similar_issues": [
         {
           "number": "38",
-          "score": 0.7228
+          "score": 0.7224
         },
         {
           "number": "200",
@@ -12902,7 +12902,7 @@
         },
         {
           "number": "52",
-          "score": 0.7055
+          "score": 0.7051
         },
         {
           "number": "6",
@@ -13208,7 +13208,7 @@
         },
         {
           "number": "39",
-          "score": 0.6508
+          "score": 0.65
         },
         {
           "number": "43",
@@ -13656,7 +13656,7 @@
         },
         {
           "number": "52",
-          "score": 0.5792
+          "score": 0.579
         },
         {
           "number": "260",
@@ -13956,7 +13956,7 @@
         },
         {
           "number": "106",
-          "score": 0.6396
+          "score": 0.6391
         },
         {
           "number": "319",
@@ -14115,7 +14115,7 @@
         },
         {
           "number": "52",
-          "score": 0.6736
+          "score": 0.6732
         },
         {
           "number": "319",
@@ -14189,7 +14189,7 @@
         },
         {
           "number": "51",
-          "score": 0.6796
+          "score": 0.6793
         },
         {
           "number": "287",
@@ -14572,7 +14572,7 @@
         },
         {
           "number": "52",
-          "score": 0.705
+          "score": 0.7047
         },
         {
           "number": "261",
@@ -14720,7 +14720,7 @@
         },
         {
           "number": "122",
-          "score": 0.6801
+          "score": 0.6804
         },
         {
           "number": "296",
@@ -15018,7 +15018,7 @@
         },
         {
           "number": "72",
-          "score": 0.6285
+          "score": 0.6283
         },
         {
           "number": "197",
@@ -16008,8 +16008,8 @@
           "score": 0.6809
         },
         {
-          "number": "43",
-          "score": 0.6627
+          "number": "228",
+          "score": 0.6626
         }
       ]
     },
@@ -16075,7 +16075,7 @@
         },
         {
           "number": "52",
-          "score": 0.6915
+          "score": 0.6914
         },
         {
           "number": "211",
@@ -16142,11 +16142,11 @@
         },
         {
           "number": "80",
-          "score": 0.7149
+          "score": 0.7146
         },
         {
           "number": "127",
-          "score": 0.7139
+          "score": 0.7133
         },
         {
           "number": "243",
@@ -16748,7 +16748,7 @@
         },
         {
           "number": "52",
-          "score": 0.6412
+          "score": 0.641
         },
         {
           "number": "331",
@@ -17133,7 +17133,7 @@
         },
         {
           "number": "52",
-          "score": 0.7144
+          "score": 0.7143
         }
       ]
     },
@@ -17798,11 +17798,11 @@
         },
         {
           "number": "128",
-          "score": 0.7079
+          "score": 0.7074
         },
         {
           "number": "81",
-          "score": 0.6947
+          "score": 0.6944
         },
         {
           "number": "274",
@@ -18036,7 +18036,7 @@
         },
         {
           "number": "52",
-          "score": 0.6834
+          "score": 0.6837
         }
       ]
     },
@@ -18700,7 +18700,7 @@
         },
         {
           "number": "75",
-          "score": 0.6868
+          "score": 0.6866
         },
         {
           "number": "273",
@@ -19315,7 +19315,7 @@
         },
         {
           "number": "52",
-          "score": 0.6352
+          "score": 0.635
         },
         {
           "number": "287",
@@ -20537,7 +20537,7 @@
         },
         {
           "number": "29",
-          "score": 0.7176
+          "score": 0.7178
         },
         {
           "number": "273",
@@ -21237,8 +21237,8 @@
           "score": 0.6354
         },
         {
-          "number": "45",
-          "score": 0.6334
+          "number": "298",
+          "score": 0.6326
         }
       ]
     },
@@ -21836,7 +21836,7 @@
         },
         {
           "number": "52",
-          "score": 0.7363
+          "score": 0.7361
         },
         {
           "number": "347",
@@ -23530,7 +23530,7 @@
         },
         {
           "number": "52",
-          "score": 0.7078
+          "score": 0.708
         },
         {
           "number": "263",
@@ -23610,7 +23610,7 @@
         },
         {
           "number": "51",
-          "score": 0.7162
+          "score": 0.7167
         }
       ]
     },
@@ -23989,7 +23989,7 @@
         },
         {
           "number": "47",
-          "score": 0.6875
+          "score": 0.6876
         },
         {
           "number": "273",
@@ -24436,7 +24436,7 @@
         },
         {
           "number": "67",
-          "score": 0.5392
+          "score": 0.5393
         },
         {
           "number": "278",
@@ -24511,12 +24511,12 @@
           "score": 0.6545
         },
         {
-          "number": "321",
-          "score": 0.6518
+          "number": "52",
+          "score": 0.652
         },
         {
-          "number": "52",
-          "score": 0.6516
+          "number": "321",
+          "score": 0.6518
         },
         {
           "number": "333",
@@ -24981,12 +24981,12 @@
           "score": 0.7477
         },
         {
-          "number": "52",
-          "score": 0.7457
-        },
-        {
           "number": "325",
           "score": 0.7456
+        },
+        {
+          "number": "52",
+          "score": 0.7455
         }
       ]
     },
@@ -25520,7 +25520,7 @@
         },
         {
           "number": "38",
-          "score": 0.7076
+          "score": 0.7082
         },
         {
           "number": "305",
@@ -26357,7 +26357,7 @@
         },
         {
           "number": "52",
-          "score": 0.7205
+          "score": 0.7203
         },
         {
           "number": "288",
@@ -26445,7 +26445,7 @@
         },
         {
           "number": "52",
-          "score": 0.7156
+          "score": 0.716
         }
       ]
     },
@@ -26505,11 +26505,11 @@
         },
         {
           "number": "107",
-          "score": 0.74
+          "score": 0.7398
         },
         {
           "number": "55",
-          "score": 0.6993
+          "score": 0.6992
         },
         {
           "number": "290",
@@ -26517,7 +26517,7 @@
         },
         {
           "number": "52",
-          "score": 0.6879
+          "score": 0.6881
         },
         {
           "number": "325",
@@ -28154,6 +28154,7 @@
       "82",
       "92",
       "95",
+      "105",
       "112",
       "113",
       "127",
@@ -28276,6 +28277,7 @@
       "86",
       "89",
       "93",
+      "105",
       "118",
       "119",
       "138",
@@ -28355,6 +28357,7 @@
       "95",
       "99",
       "102",
+      "105",
       "109",
       "111",
       "117",
@@ -30890,6 +30893,7 @@
       "12",
       "14",
       "20",
+      "29",
       "72",
       "73",
       "93",
@@ -33297,7 +33301,6 @@
       "26",
       "80",
       "95",
-      "105",
       "126",
       "144",
       "160",
@@ -33746,9 +33749,6 @@
     "evidence": [
       "29",
       "252"
-    ],
-    "fix things": [
-      "29"
     ],
     "mindnode": [
       "30",
@@ -40717,9 +40717,6 @@
     "brings new watch app": [
       "105"
     ],
-    "but still no moore's law": [
-      "105"
-    ],
     "chris williams": [
       "105"
     ],
@@ -40730,9 +40727,6 @@
       "105"
     ],
     "edi": [
-      "105"
-    ],
-    "great team culture": [
       "105"
     ],
     "handoff support": [
@@ -40751,16 +40745,10 @@
     "journalism": [
       "105"
     ],
-    "lidar. yet": [
-      "105"
-    ],
     "lookup": [
       "105"
     ],
     "one-on-ones": [
-      "105"
-    ],
-    "organizational design": [
       "105"
     ],
     "sps tech jam": [
@@ -40769,17 +40757,32 @@
     "today lists": [
       "105"
     ],
-    "why it matters": [
-      "105"
-    ],
-    "whys": [
-      "105"
-    ],
     "agiletortoise.com": [
       "105"
     ],
     "badassagile.com": [
       "105"
+    ],
+    "blog.chromium.org": [
+      "105"
+    ],
+    "ebayinc.com": [
+      "105"
+    ],
+    "kellanem.com": [
+      "105"
+    ],
+    "members.onepeloton.com": [
+      "105",
+      "107",
+      "142",
+      "144",
+      "146",
+      "148",
+      "150",
+      "153",
+      "159",
+      "177"
     ],
     "php": [
       "13",
@@ -40865,17 +40868,6 @@
     ],
     "alexdanco.com": [
       "106"
-    ],
-    "members.onepeloton.com": [
-      "107",
-      "142",
-      "144",
-      "146",
-      "148",
-      "150",
-      "153",
-      "159",
-      "177"
     ],
     "bayern": [
       "107",
