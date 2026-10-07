@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-10-07T15:20:13.354842Z",
+  "generated_at": "2026-10-07T15:56:18.649408Z",
   "extraction_model": "heuristic",
   "issue_count": 353,
   "issues": {
@@ -1427,7 +1427,7 @@
         },
         {
           "number": "117",
-          "score": 0.6474
+          "score": 0.6472
         }
       ]
     },
@@ -7322,11 +7322,10 @@
         "Carlton",
         "Footy",
         "Melbourne",
-        "Koala",
         "Richmond",
         "Australia",
         "Camacho",
-        "Healesville Sanctuary",
+        "Koala",
         "Magic",
         "Stadia",
         "TeamSPS",
@@ -7344,6 +7343,7 @@
         "Dumbass Home",
         "Event-Driven Architecture",
         "Fox News-dominated",
+        "Healesville Sanctuary",
         "Internet",
         "Kickstarter",
         "Krebs",
@@ -7366,27 +7366,27 @@
       "similar_issues": [
         {
           "number": "96",
-          "score": 0.6819
+          "score": 0.6818
         },
         {
           "number": "99",
-          "score": 0.6404
+          "score": 0.6402
         },
         {
           "number": "95",
-          "score": 0.6382
+          "score": 0.638
         },
         {
           "number": "101",
-          "score": 0.6278
+          "score": 0.6276
         },
         {
           "number": "93",
-          "score": 0.6226
+          "score": 0.6224
         },
         {
           "number": "100",
-          "score": 0.6154
+          "score": 0.6151
         }
       ]
     },
@@ -8440,7 +8440,7 @@
         },
         {
           "number": "130",
-          "score": 0.7733
+          "score": 0.7731
         }
       ]
     },
@@ -8498,7 +8498,7 @@
         },
         {
           "number": "130",
-          "score": 0.7097
+          "score": 0.7095
         },
         {
           "number": "114",
@@ -8793,27 +8793,27 @@
       "similar_issues": [
         {
           "number": "120",
-          "score": 0.7004
+          "score": 0.7
         },
         {
           "number": "19",
-          "score": 0.6474
+          "score": 0.6472
         },
         {
           "number": "112",
-          "score": 0.6474
+          "score": 0.647
         },
         {
           "number": "93",
-          "score": 0.6452
+          "score": 0.6449
         },
         {
           "number": "114",
-          "score": 0.6446
+          "score": 0.6443
         },
         {
           "number": "95",
-          "score": 0.6399
+          "score": 0.6394
         }
       ]
     },
@@ -9020,7 +9020,7 @@
         },
         {
           "number": "130",
-          "score": 0.7859
+          "score": 0.7858
         },
         {
           "number": "114",
@@ -9181,7 +9181,7 @@
         },
         {
           "number": "130",
-          "score": 0.6899
+          "score": 0.6897
         },
         {
           "number": "17",
@@ -9335,7 +9335,7 @@
         },
         {
           "number": "130",
-          "score": 0.6567
+          "score": 0.6565
         },
         {
           "number": "106",
@@ -9416,7 +9416,7 @@
         },
         {
           "number": "130",
-          "score": 0.613
+          "score": 0.6128
         }
       ]
     },
@@ -9479,7 +9479,7 @@
         },
         {
           "number": "130",
-          "score": 0.6084
+          "score": 0.6082
         },
         {
           "number": "120",
@@ -9643,7 +9643,7 @@
         },
         {
           "number": "130",
-          "score": 0.6839
+          "score": 0.6837
         }
       ]
     },
@@ -9699,7 +9699,7 @@
       "similar_issues": [
         {
           "number": "130",
-          "score": 0.757
+          "score": 0.7569
         },
         {
           "number": "120",
@@ -9754,7 +9754,6 @@
         "Holidazzle",
         "Internal Communication Strategies For Effective",
         "It's Action Time",
-        "Little KLM",
         "Mac",
         "MacStories",
         "Machine Learning Crash Course",
@@ -9764,7 +9763,8 @@
         "Politics",
         "Privacy Analysis",
         "Species Failure",
-        "The Blog"
+        "The Blog",
+        "Time"
       ],
       "tropes": [
         "open web and ownership",
@@ -9775,15 +9775,15 @@
       "similar_issues": [
         {
           "number": "120",
-          "score": 0.7859
+          "score": 0.7858
         },
         {
           "number": "112",
-          "score": 0.7733
+          "score": 0.7731
         },
         {
           "number": "129",
-          "score": 0.757
+          "score": 0.7569
         },
         {
           "number": "105",
@@ -10178,7 +10178,7 @@
         },
         {
           "number": "130",
-          "score": 0.5857
+          "score": 0.5855
         }
       ]
     },
@@ -10314,7 +10314,7 @@
         },
         {
           "number": "130",
-          "score": 0.6429
+          "score": 0.6427
         },
         {
           "number": "272",
@@ -40379,9 +40379,6 @@
     "melbourne": [
       "98"
     ],
-    "koala": [
-      "98"
-    ],
     "richmond": [
       "98"
     ],
@@ -40391,7 +40388,7 @@
     "camacho": [
       "98"
     ],
-    "healesville sanctuary": [
+    "koala": [
       "98"
     ],
     "stadia": [
@@ -40444,6 +40441,9 @@
       "98"
     ],
     "fox news-dominated": [
+      "98"
+    ],
+    "healesville sanctuary": [
       "98"
     ],
     "lax": [
@@ -43088,9 +43088,6 @@
       "130"
     ],
     "it's action time": [
-      "130"
-    ],
-    "little klm": [
       "130"
     ],
     "machine learning crash course": [
