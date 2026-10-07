@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-10-06T20:29:56.418569Z",
+  "generated_at": "2026-10-07T15:20:13.354842Z",
   "extraction_model": "heuristic",
   "issue_count": 353,
   "issues": {
@@ -62,7 +62,7 @@
         },
         {
           "number": "52",
-          "score": 0.8042
+          "score": 0.8
         },
         {
           "number": "6",
@@ -70,7 +70,7 @@
         },
         {
           "number": "4",
-          "score": 0.729
+          "score": 0.7274
         },
         {
           "number": "3",
@@ -136,7 +136,7 @@
         },
         {
           "number": "52",
-          "score": 0.7613
+          "score": 0.7585
         },
         {
           "number": "6",
@@ -152,7 +152,7 @@
         },
         {
           "number": "4",
-          "score": 0.7189
+          "score": 0.7172
         }
       ]
     },
@@ -207,11 +207,11 @@
       "similar_issues": [
         {
           "number": "27",
-          "score": 0.7847
+          "score": 0.7853
         },
         {
           "number": "4",
-          "score": 0.7528
+          "score": 0.7519
         },
         {
           "number": "2",
@@ -223,11 +223,11 @@
         },
         {
           "number": "29",
-          "score": 0.713
+          "score": 0.7129
         },
         {
           "number": "38",
-          "score": 0.6982
+          "score": 0.6981
         }
       ]
     },
@@ -282,27 +282,27 @@
       "similar_issues": [
         {
           "number": "5",
-          "score": 0.8411
+          "score": 0.84
         },
         {
           "number": "6",
-          "score": 0.7999
+          "score": 0.7987
         },
         {
           "number": "3",
-          "score": 0.7528
+          "score": 0.7519
         },
         {
           "number": "27",
-          "score": 0.7298
+          "score": 0.7299
         },
         {
           "number": "38",
-          "score": 0.7296
+          "score": 0.7283
         },
         {
           "number": "1",
-          "score": 0.729
+          "score": 0.7274
         }
       ]
     },
@@ -358,7 +358,7 @@
       "similar_issues": [
         {
           "number": "4",
-          "score": 0.8411
+          "score": 0.84
         },
         {
           "number": "6",
@@ -366,7 +366,7 @@
         },
         {
           "number": "10",
-          "score": 0.7195
+          "score": 0.7192
         },
         {
           "number": "20",
@@ -378,7 +378,7 @@
         },
         {
           "number": "52",
-          "score": 0.6918
+          "score": 0.688
         }
       ]
     },
@@ -433,23 +433,23 @@
       "similar_issues": [
         {
           "number": "4",
-          "score": 0.7999
+          "score": 0.7987
         },
         {
           "number": "1",
           "score": 0.7683
         },
         {
-          "number": "52",
-          "score": 0.7594
-        },
-        {
           "number": "105",
           "score": 0.755
         },
         {
+          "number": "52",
+          "score": 0.7523
+        },
+        {
           "number": "38",
-          "score": 0.7507
+          "score": 0.7505
         },
         {
           "number": "5",
@@ -508,7 +508,7 @@
       "similar_issues": [
         {
           "number": "18",
-          "score": 0.7834
+          "score": 0.7835
         },
         {
           "number": "2",
@@ -520,7 +520,7 @@
         },
         {
           "number": "4",
-          "score": 0.7076
+          "score": 0.7055
         },
         {
           "number": "288",
@@ -528,7 +528,7 @@
         },
         {
           "number": "39",
-          "score": 0.6768
+          "score": 0.6757
         }
       ]
     },
@@ -562,7 +562,6 @@
         "Free SSL",
         "GPS",
         "GTD",
-        "Going",
         "Got",
         "Grand Haven Beach",
         "Heinemeier Hansson",
@@ -573,7 +572,8 @@
         "Making Drafts",
         "Many Questions",
         "Million Certificates Issued",
-        "Minnebar"
+        "Minnebar",
+        "Minnesota"
       ],
       "tropes": [
         "open web and ownership",
@@ -582,27 +582,27 @@
       "similar_issues": [
         {
           "number": "9",
-          "score": 0.7737
+          "score": 0.7735
         },
         {
           "number": "11",
-          "score": 0.7166
+          "score": 0.7165
         },
         {
           "number": "14",
-          "score": 0.7011
+          "score": 0.7009
         },
         {
           "number": "10",
-          "score": 0.688
+          "score": 0.6882
         },
         {
           "number": "12",
-          "score": 0.6762
+          "score": 0.6755
         },
         {
           "number": "48",
-          "score": 0.6623
+          "score": 0.6625
         }
       ]
     },
@@ -658,27 +658,27 @@
       "similar_issues": [
         {
           "number": "8",
-          "score": 0.7737
+          "score": 0.7735
         },
         {
           "number": "11",
-          "score": 0.7224
+          "score": 0.7222
         },
         {
           "number": "10",
-          "score": 0.6956
+          "score": 0.6966
         },
         {
           "number": "14",
-          "score": 0.6788
+          "score": 0.6785
         },
         {
           "number": "12",
-          "score": 0.6547
+          "score": 0.6537
         },
         {
           "number": "17",
-          "score": 0.648
+          "score": 0.6479
         }
       ]
     },
@@ -702,7 +702,6 @@
         "Dropbox-enabled",
         "Eleven Experts Share The Secrets",
         "English",
-        "Excited",
         "Going",
         "Graphing",
         "Ind.ie",
@@ -723,7 +722,8 @@
         "The School",
         "Victory",
         "Web Server",
-        "Why We Need Them"
+        "Why We Need Them",
+        "Your Calendar"
       ],
       "tropes": [
         "open web and ownership",
@@ -734,27 +734,27 @@
       "similar_issues": [
         {
           "number": "11",
-          "score": 0.7444
+          "score": 0.7446
         },
         {
           "number": "5",
-          "score": 0.7195
+          "score": 0.7192
         },
         {
           "number": "4",
-          "score": 0.718
+          "score": 0.7159
         },
         {
           "number": "14",
-          "score": 0.7154
+          "score": 0.7158
         },
         {
           "number": "6",
-          "score": 0.7035
+          "score": 0.7036
         },
         {
           "number": "12",
-          "score": 0.6971
+          "score": 0.697
         }
       ]
     },
@@ -810,7 +810,7 @@
       "similar_issues": [
         {
           "number": "10",
-          "score": 0.7444
+          "score": 0.7446
         },
         {
           "number": "14",
@@ -818,19 +818,19 @@
         },
         {
           "number": "9",
-          "score": 0.7224
+          "score": 0.7222
         },
         {
           "number": "8",
-          "score": 0.7166
+          "score": 0.7165
         },
         {
           "number": "12",
-          "score": 0.7158
+          "score": 0.7149
         },
         {
           "number": "110",
-          "score": 0.7091
+          "score": 0.7089
         }
       ]
     },
@@ -843,7 +843,6 @@
         "GTD",
         "incognea.to",
         "Apple Notes",
-        "Huge",
         "Stripe",
         "AWS",
         "Apple",
@@ -858,24 +857,25 @@
         "GO Fest Chicago Update",
         "Gave",
         "Give Your Amazon Box New",
+        "Huge",
         "Humane",
         "Leadpages",
         "Life",
         "Look",
         "MN Humane Society. Hoping",
         "MN United",
-        "MSP. From",
         "Marketo's",
         "Nice",
         "Quest",
         "Region Provisioning",
         "SSL",
-        "Sad",
         "Space Center Houston",
         "Super",
         "Sustainability",
         "The Easiest Online Suggestion Box",
-        "Time"
+        "Time",
+        "Turning",
+        "What Google Learned From Its"
       ],
       "tropes": [
         "open web and ownership",
@@ -886,27 +886,27 @@
       "similar_issues": [
         {
           "number": "11",
-          "score": 0.7158
+          "score": 0.7149
         },
         {
           "number": "14",
-          "score": 0.7002
+          "score": 0.7
         },
         {
           "number": "10",
-          "score": 0.6971
-        },
-        {
-          "number": "4",
-          "score": 0.6886
+          "score": 0.697
         },
         {
           "number": "112",
           "score": 0.6873
         },
         {
+          "number": "4",
+          "score": 0.6851
+        },
+        {
           "number": "52",
-          "score": 0.6789
+          "score": 0.6809
         }
       ]
     },
@@ -963,11 +963,11 @@
         },
         {
           "number": "21",
-          "score": 0.6254
+          "score": 0.6259
         },
         {
           "number": "15",
-          "score": 0.6245
+          "score": 0.6235
         },
         {
           "number": "11",
@@ -979,7 +979,7 @@
         },
         {
           "number": "9",
-          "score": 0.6103
+          "score": 0.6104
         }
       ]
     },
@@ -1041,16 +1041,16 @@
           "score": 0.7455
         },
         {
+          "number": "57",
+          "score": 0.7428
+        },
+        {
           "number": "11",
           "score": 0.7427
         },
         {
-          "number": "57",
-          "score": 0.7422
-        },
-        {
           "number": "10",
-          "score": 0.7154
+          "score": 0.7158
         },
         {
           "number": "1",
@@ -1063,13 +1063,12 @@
         "thingelstad.com",
         "Perl",
         "Coldplay",
-        "Sarahah",
         "Eureka",
-        "GitHub",
+        "Sarahah",
         "St. Louis",
         "medium.com",
         "theverge.com",
-        "Just",
+        "GitHub",
         "React",
         "Touch ID",
         "AWS SAM Local",
@@ -1078,7 +1077,6 @@
         "Beta",
         "Brian Armstrong",
         "Build",
-        "Created",
         "David Lanham",
         "Day One",
         "Driving",
@@ -1091,6 +1089,7 @@
         "GitHub Engineering",
         "Gratitude Journal",
         "Homebrew Website Club",
+        "Just",
         "Keeping",
         "Kubernetes",
         "Larry Page",
@@ -1099,7 +1098,8 @@
         "Lotus Notes Sametime",
         "Medium",
         "Minneapolis",
-        "Minnestar Announces Maria Ploessl"
+        "Minnestar Announces Maria Ploessl",
+        "Monday's"
       ],
       "tropes": [
         "open web and ownership",
@@ -1108,27 +1108,27 @@
       "similar_issues": [
         {
           "number": "16",
-          "score": 0.824
+          "score": 0.8224
         },
         {
           "number": "14",
-          "score": 0.6637
+          "score": 0.663
         },
         {
           "number": "17",
-          "score": 0.6276
+          "score": 0.6257
         },
         {
           "number": "13",
-          "score": 0.6245
+          "score": 0.6235
         },
         {
           "number": "10",
-          "score": 0.6207
+          "score": 0.6203
         },
         {
           "number": "155",
-          "score": 0.6195
+          "score": 0.619
         }
       ]
     },
@@ -1183,7 +1183,7 @@
       "similar_issues": [
         {
           "number": "15",
-          "score": 0.824
+          "score": 0.8224
         },
         {
           "number": "14",
@@ -1198,12 +1198,12 @@
           "score": 0.5481
         },
         {
-          "number": "3",
-          "score": 0.5434
+          "number": "27",
+          "score": 0.544
         },
         {
-          "number": "27",
-          "score": 0.5429
+          "number": "3",
+          "score": 0.5434
         }
       ]
     },
@@ -1266,7 +1266,7 @@
         },
         {
           "number": "21",
-          "score": 0.7172
+          "score": 0.7175
         },
         {
           "number": "11",
@@ -1274,11 +1274,11 @@
         },
         {
           "number": "19",
-          "score": 0.6947
+          "score": 0.6932
         },
         {
           "number": "57",
-          "score": 0.6877
+          "score": 0.6887
         }
       ]
     },
@@ -1286,16 +1286,16 @@
       "entities": [
         "thingelstad.com",
         "en.wikipedia.org",
-        "Jekyll",
         "Lake Pokegama",
         "Weather Atlas",
         "Facebook",
+        "Jekyll",
         "Mazie",
-        "Pinboard",
         "Tyler",
         "bridgetkromhout.com",
         "startribune.com",
         "Not",
+        "Pinboard",
         "Beck",
         "Bitcoin",
         "Campfire",
@@ -1332,27 +1332,27 @@
       "similar_issues": [
         {
           "number": "7",
-          "score": 0.7834
+          "score": 0.7835
         },
         {
           "number": "2",
-          "score": 0.6818
+          "score": 0.6834
         },
         {
           "number": "51",
-          "score": 0.677
-        },
-        {
-          "number": "6",
-          "score": 0.6747
+          "score": 0.679
         },
         {
           "number": "52",
-          "score": 0.6737
+          "score": 0.678
         },
         {
           "number": "27",
-          "score": 0.6711
+          "score": 0.6762
+        },
+        {
+          "number": "6",
+          "score": 0.6756
         }
       ]
     },
@@ -1365,8 +1365,8 @@
         "Equifax",
         "Python",
         "Safari",
-        "Sometimes",
         "Krebs",
+        "Sometimes",
         "Sublime Text",
         "arstechnica.com",
         "blog.cloudflare.com",
@@ -1407,27 +1407,27 @@
       "similar_issues": [
         {
           "number": "17",
-          "score": 0.6947
+          "score": 0.6932
         },
         {
           "number": "21",
-          "score": 0.6693
+          "score": 0.6681
         },
         {
           "number": "18",
-          "score": 0.6633
+          "score": 0.6632
         },
         {
           "number": "6",
-          "score": 0.6577
+          "score": 0.6567
         },
         {
           "number": "120",
-          "score": 0.6563
+          "score": 0.6553
         },
         {
           "number": "117",
-          "score": 0.6471
+          "score": 0.6474
         }
       ]
     },
@@ -1440,13 +1440,13 @@
         "The MacStories Review",
         "daringfireball.net",
         "eff.org",
-        "Jekyll",
         "MacStories",
         "Netlify",
         "Siri",
         "Apple World Today",
         "Dan Wilson",
         "Facebook",
+        "Jekyll",
         "Making Maps",
         "Swift",
         "appleworld.today",
@@ -1465,14 +1465,14 @@
         "Just",
         "All-in-one",
         "Anatomy",
-        "Apple Music. Connect",
         "Apple Watch Series",
         "Ars Technica",
         "Beef",
         "Big Green Egg",
-        "Building Link Thing",
         "Campfire",
-        "Clouds"
+        "Clouds",
+        "Curious",
+        "DRM"
       ],
       "tropes": [
         "open web and ownership",
@@ -1490,19 +1490,19 @@
         },
         {
           "number": "11",
-          "score": 0.6992
+          "score": 0.6996
         },
         {
           "number": "21",
-          "score": 0.6966
+          "score": 0.6987
         },
         {
           "number": "196",
-          "score": 0.6899
+          "score": 0.69
         },
         {
           "number": "22",
-          "score": 0.6867
+          "score": 0.6871
         }
       ]
     },
@@ -1544,10 +1544,10 @@
         "Cribbage With Grandpas",
         "Days Timelapse",
         "Defiant One",
-        "Deleted Sarahah",
         "Facebook",
         "Family",
-        "Family Sharing"
+        "Family Sharing",
+        "Feels"
       ],
       "tropes": [
         "open web and ownership",
@@ -1557,27 +1557,27 @@
       "similar_issues": [
         {
           "number": "29",
-          "score": 0.7345
+          "score": 0.734
         },
         {
           "number": "17",
-          "score": 0.7172
+          "score": 0.7175
         },
         {
           "number": "27",
-          "score": 0.6973
-        },
-        {
-          "number": "155",
-          "score": 0.6971
+          "score": 0.7004
         },
         {
           "number": "20",
-          "score": 0.6966
+          "score": 0.6987
+        },
+        {
+          "number": "155",
+          "score": 0.6977
         },
         {
           "number": "11",
-          "score": 0.6919
+          "score": 0.6918
         }
       ]
     },
@@ -1620,9 +1620,9 @@
         "Ikea",
         "Internet Tendency",
         "Jennifer Doudna",
-        "Just",
-        "Kiva",
-        "Kubernetes"
+        "Kubernetes",
+        "LTE",
+        "Learn Wisdom You Can Practically"
       ],
       "tropes": [
         "open web and ownership",
@@ -1634,27 +1634,27 @@
       "similar_issues": [
         {
           "number": "20",
-          "score": 0.6867
+          "score": 0.6871
         },
         {
           "number": "72",
-          "score": 0.6553
+          "score": 0.6565
         },
         {
           "number": "24",
-          "score": 0.6486
+          "score": 0.6489
         },
         {
           "number": "11",
-          "score": 0.6406
+          "score": 0.6401
         },
         {
           "number": "21",
-          "score": 0.6377
+          "score": 0.6371
         },
         {
           "number": "51",
-          "score": 0.6258
+          "score": 0.6259
         }
       ]
     },
@@ -1677,7 +1677,6 @@
         "Change",
         "Circuit Breaker",
         "Geeki Tikis",
-        "Highlighting",
         "How They Work",
         "JavaScript",
         "Licensed Mugs From Star Wars",
@@ -1699,7 +1698,8 @@
         "Terminal",
         "Thank",
         "The Guardian",
-        "The Most Reliable Platform"
+        "The Most Reliable Platform",
+        "Thinking Time"
       ],
       "tropes": [
         "open web and ownership",
@@ -1709,27 +1709,27 @@
       "similar_issues": [
         {
           "number": "42",
-          "score": 0.7592
+          "score": 0.7596
         },
         {
           "number": "56",
-          "score": 0.7483
+          "score": 0.749
         },
         {
           "number": "43",
-          "score": 0.7106
+          "score": 0.7123
         },
         {
           "number": "18",
-          "score": 0.6637
+          "score": 0.664
         },
         {
           "number": "27",
-          "score": 0.6534
+          "score": 0.6572
         },
         {
           "number": "25",
-          "score": 0.6524
+          "score": 0.654
         }
       ]
     },
@@ -1750,9 +1750,7 @@
         "Hoonuit",
         "MacStories",
         "NextDraft",
-        "OWL",
         "Products",
-        "RDF",
         "Shivani Stumpf",
         "Software",
         "Based",
@@ -1767,14 +1765,16 @@
         "Early Facebook Employees Regret",
         "Excited",
         "Fall Festival",
-        "GRAKN.AI",
         "JSON",
         "Kitchen Soap",
         "Link Thing",
         "LinkedIn",
         "Minnesota CTO",
         "Monster They Created",
-        "More Great Shelf Apps"
+        "More Great Shelf Apps",
+        "Nicaboyne Lake",
+        "OWL",
+        "Open"
       ],
       "tropes": [
         "open web and ownership",
@@ -1785,27 +1785,27 @@
       "similar_issues": [
         {
           "number": "21",
-          "score": 0.6706
+          "score": 0.6714
         },
         {
           "number": "11",
-          "score": 0.6692
+          "score": 0.67
         },
         {
           "number": "77",
-          "score": 0.668
+          "score": 0.6683
         },
         {
           "number": "29",
-          "score": 0.6625
+          "score": 0.6626
         },
         {
           "number": "25",
-          "score": 0.6514
+          "score": 0.6523
         },
         {
           "number": "71",
-          "score": 0.6494
+          "score": 0.6511
         }
       ]
     },
@@ -1848,9 +1848,9 @@
         "Photo Tour",
         "Planet Kubb",
         "Reaching",
-        "Read",
         "The Download",
-        "The Uncanny Resurrection"
+        "The Uncanny Resurrection",
+        "blog.eero.com"
       ],
       "tropes": [
         "open web and ownership",
@@ -1859,27 +1859,27 @@
       "similar_issues": [
         {
           "number": "27",
-          "score": 0.7593
+          "score": 0.7606
         },
         {
           "number": "29",
-          "score": 0.7059
+          "score": 0.7074
         },
         {
           "number": "28",
-          "score": 0.6901
+          "score": 0.6899
         },
         {
           "number": "3",
-          "score": 0.6856
+          "score": 0.6862
         },
         {
           "number": "263",
-          "score": 0.6633
+          "score": 0.6648
         },
         {
-          "number": "26",
-          "score": 0.6611
+          "number": "18",
+          "score": 0.6633
         }
       ]
     },
@@ -1924,7 +1924,7 @@
         "Learn Twilio",
         "Love",
         "MNTech",
-        "Minnestar"
+        "Mixed-Up-Holiday"
       ],
       "tropes": [
         "open web and ownership",
@@ -1934,11 +1934,11 @@
       "similar_issues": [
         {
           "number": "29",
-          "score": 0.7873
+          "score": 0.7866
         },
         {
           "number": "27",
-          "score": 0.7491
+          "score": 0.7511
         },
         {
           "number": "33",
@@ -1946,15 +1946,15 @@
         },
         {
           "number": "81",
-          "score": 0.6778
+          "score": 0.6783
         },
         {
           "number": "30",
-          "score": 0.6671
+          "score": 0.6687
         },
         {
           "number": "34",
-          "score": 0.662
+          "score": 0.6636
         }
       ]
     },
@@ -2012,27 +2012,27 @@
       "similar_issues": [
         {
           "number": "29",
-          "score": 0.8125
+          "score": 0.815
         },
         {
           "number": "3",
-          "score": 0.7847
+          "score": 0.7853
         },
         {
           "number": "38",
-          "score": 0.7598
+          "score": 0.7629
         },
         {
           "number": "25",
-          "score": 0.7593
+          "score": 0.7606
         },
         {
           "number": "26",
-          "score": 0.7491
+          "score": 0.7511
         },
         {
           "number": "28",
-          "score": 0.7439
+          "score": 0.7446
         }
       ]
     },
@@ -2052,12 +2052,8 @@
         "Hugo",
         "Julia Evans",
         "SPS Commerce",
-        "Seasonal",
-        "Squares",
-        "Tasty",
         "Toronto",
         "Ukraine",
-        "Up Close",
         "Cool",
         "Daniel Kahneman",
         "Entering",
@@ -2071,13 +2067,17 @@
         "How Many Robots Does It",
         "Introducing",
         "Kickstarter",
-        "Liquid",
-        "Move",
         "Mozilla Hacks",
         "New Drip",
         "Photo Challenge Day",
         "Pragmatic Guide",
-        "Python"
+        "Python",
+        "Python Marathon",
+        "Quantum Era",
+        "Seasonal",
+        "Shadow",
+        "Simple",
+        "Squares"
       ],
       "tropes": [
         "open web and ownership",
@@ -2087,27 +2087,27 @@
       "similar_issues": [
         {
           "number": "27",
-          "score": 0.7439
+          "score": 0.7446
         },
         {
           "number": "25",
-          "score": 0.6901
+          "score": 0.6899
         },
         {
           "number": "29",
-          "score": 0.6644
+          "score": 0.6653
         },
         {
           "number": "3",
-          "score": 0.6428
+          "score": 0.6422
         },
         {
           "number": "26",
-          "score": 0.6246
+          "score": 0.6261
         },
         {
-          "number": "278",
-          "score": 0.6089
+          "number": "30",
+          "score": 0.6078
         }
       ]
     },
@@ -2141,7 +2141,6 @@
         "Christmas Catalog",
         "Christmas Tree",
         "Computational Culture",
-        "David Hussman",
         "Day After Day",
         "Decision",
         "Delete Stolen Data",
@@ -2152,7 +2151,8 @@
         "Fix Things",
         "Forest",
         "GitHub",
-        "How Your Systems Keep Running"
+        "How Your Systems Keep Running",
+        "Internet"
       ],
       "tropes": [
         "open web and ownership",
@@ -2162,27 +2162,27 @@
       "similar_issues": [
         {
           "number": "27",
-          "score": 0.8125
+          "score": 0.815
         },
         {
           "number": "26",
-          "score": 0.7873
+          "score": 0.7866
         },
         {
           "number": "30",
-          "score": 0.7782
+          "score": 0.78
         },
         {
           "number": "38",
-          "score": 0.7778
+          "score": 0.7793
         },
         {
           "number": "34",
-          "score": 0.7609
+          "score": 0.7626
         },
         {
           "number": "81",
-          "score": 0.7476
+          "score": 0.7457
         }
       ]
     },
@@ -2238,27 +2238,27 @@
       "similar_issues": [
         {
           "number": "31",
-          "score": 0.7847
+          "score": 0.7866
         },
         {
           "number": "29",
-          "score": 0.7782
+          "score": 0.78
         },
         {
           "number": "34",
-          "score": 0.7742
+          "score": 0.7769
         },
         {
           "number": "33",
-          "score": 0.7722
-        },
-        {
-          "number": "38",
-          "score": 0.7068
+          "score": 0.772
         },
         {
           "number": "27",
-          "score": 0.7065
+          "score": 0.7086
+        },
+        {
+          "number": "38",
+          "score": 0.7081
         }
       ]
     },
@@ -2314,37 +2314,37 @@
       "similar_issues": [
         {
           "number": "30",
-          "score": 0.7847
+          "score": 0.7866
         },
         {
           "number": "29",
-          "score": 0.7293
+          "score": 0.7321
         },
         {
           "number": "34",
-          "score": 0.7054
+          "score": 0.7096
         },
         {
           "number": "33",
-          "score": 0.7012
+          "score": 0.702
         },
         {
           "number": "27",
-          "score": 0.681
+          "score": 0.685
         },
         {
           "number": "38",
-          "score": 0.6756
+          "score": 0.6781
         }
       ]
     },
     "32": {
       "entities": [
-        "thingelstad.com",
         "Facebook",
         "Lua",
         "eff.org",
         "en.wikipedia.org",
+        "thingelstad.com",
         "EFF",
         "Coinbase",
         "Get",
@@ -2390,27 +2390,27 @@
       "similar_issues": [
         {
           "number": "31",
-          "score": 0.6666
+          "score": 0.6686
         },
         {
           "number": "38",
-          "score": 0.6106
+          "score": 0.6131
         },
         {
           "number": "29",
-          "score": 0.6084
+          "score": 0.6112
         },
         {
           "number": "295",
-          "score": 0.6043
+          "score": 0.6053
         },
         {
           "number": "30",
-          "score": 0.5988
+          "score": 0.5999
         },
         {
           "number": "331",
-          "score": 0.5776
+          "score": 0.5775
         }
       ]
     },
@@ -2464,11 +2464,11 @@
       "similar_issues": [
         {
           "number": "34",
-          "score": 0.7812
+          "score": 0.7831
         },
         {
           "number": "30",
-          "score": 0.7722
+          "score": 0.772
         },
         {
           "number": "85",
@@ -2476,11 +2476,11 @@
         },
         {
           "number": "29",
-          "score": 0.7197
+          "score": 0.719
         },
         {
           "number": "31",
-          "score": 0.7012
+          "score": 0.702
         },
         {
           "number": "86",
@@ -2517,7 +2517,6 @@
         "Google Maps",
         "Haven' Turns Your Phone Into",
         "Home Security System",
-        "James Shelley",
         "Just",
         "LEGO",
         "LEGO Technic RC Tracked Racer",
@@ -2529,7 +2528,8 @@
         "Okay",
         "One Year",
         "Plain Language",
-        "Playing Maze Racers"
+        "Playing Maze Racers",
+        "Playing Prime Climb"
       ],
       "tropes": [
         "open web and ownership"
@@ -2537,27 +2537,27 @@
       "similar_issues": [
         {
           "number": "33",
-          "score": 0.7812
+          "score": 0.7831
         },
         {
           "number": "30",
-          "score": 0.7742
+          "score": 0.7769
         },
         {
           "number": "29",
-          "score": 0.7609
+          "score": 0.7626
         },
         {
           "number": "35",
-          "score": 0.7331
-        },
-        {
-          "number": "85",
-          "score": 0.7064
+          "score": 0.7344
         },
         {
           "number": "31",
-          "score": 0.7054
+          "score": 0.7096
+        },
+        {
+          "number": "85",
+          "score": 0.7077
         }
       ]
     },
@@ -2612,27 +2612,27 @@
       "similar_issues": [
         {
           "number": "36",
-          "score": 0.7699
+          "score": 0.7726
         },
         {
           "number": "38",
-          "score": 0.7679
+          "score": 0.7681
         },
         {
           "number": "34",
-          "score": 0.7331
+          "score": 0.7344
         },
         {
           "number": "39",
-          "score": 0.7113
+          "score": 0.7112
         },
         {
           "number": "41",
-          "score": 0.7089
+          "score": 0.7078
         },
         {
           "number": "29",
-          "score": 0.6884
+          "score": 0.6885
         }
       ]
     },
@@ -2640,14 +2640,14 @@
       "entities": [
         "thingelstad.com",
         "en.wikipedia.org",
-        "Headspace",
         "Kubernetes",
+        "Happier",
+        "Headspace",
         "Privacy",
         "Pro",
         "feedbin.com",
         "idlewords.com",
         "Apple's",
-        "Happier",
         "Mac",
         "SPS Tower",
         "Snowden",
@@ -2666,18 +2666,18 @@
         "Desert Golf",
         "Documentation",
         "EEG",
+        "Edge",
         "Edward Snowden",
         "Emoji Meanings",
         "Emojipedia",
         "Everyone",
         "Feedbin",
         "Florida",
+        "Found Self-Help That Actually Works--A",
         "Fun",
         "Hear EFF",
         "Hole Quest",
-        "Home",
-        "Jimmy Wales",
-        "Joel"
+        "Home"
       ],
       "tropes": [
         "open web and ownership",
@@ -2688,42 +2688,41 @@
       "similar_issues": [
         {
           "number": "35",
-          "score": 0.7699
+          "score": 0.7726
         },
         {
           "number": "38",
-          "score": 0.7533
+          "score": 0.7579
         },
         {
           "number": "39",
-          "score": 0.7399
+          "score": 0.7438
         },
         {
           "number": "41",
-          "score": 0.7135
+          "score": 0.7155
         },
         {
           "number": "43",
-          "score": 0.6899
+          "score": 0.6943
         },
         {
-          "number": "52",
-          "score": 0.6692
+          "number": "50",
+          "score": 0.6743
         }
       ]
     },
     "37": {
       "entities": [
         "thingelstad.com",
-        "Vikings",
         "Micro.blog",
         "feedbin.com",
         "Bootstrap",
         "CSV",
         "Kubernetes",
-        "Nice",
         "Nordic Waffles",
         "Rise",
+        "Vikings",
         "Anki Cozmo",
         "Awesome",
         "Bruce Schneier",
@@ -2738,6 +2737,7 @@
         "Kids",
         "Minnesota Vikings",
         "My Raspberry Pi Kubernetes Cluster",
+        "Nice",
         "Nutrition",
         "Pivotal Cloud Foundry",
         "Pleased",
@@ -2764,27 +2764,27 @@
       "similar_issues": [
         {
           "number": "40",
-          "score": 0.7422
+          "score": 0.7424
         },
         {
           "number": "41",
-          "score": 0.6339
+          "score": 0.636
         },
         {
           "number": "38",
-          "score": 0.6177
+          "score": 0.6209
         },
         {
           "number": "43",
-          "score": 0.5801
+          "score": 0.5839
         },
         {
           "number": "305",
-          "score": 0.5801
+          "score": 0.5812
         },
         {
           "number": "337",
-          "score": 0.5735
+          "score": 0.5777
         }
       ]
     },
@@ -2841,43 +2841,39 @@
       "similar_issues": [
         {
           "number": "39",
-          "score": 0.8427
+          "score": 0.8424
         },
         {
           "number": "29",
-          "score": 0.7778
+          "score": 0.7793
         },
         {
           "number": "35",
-          "score": 0.7679
+          "score": 0.7681
         },
         {
           "number": "41",
-          "score": 0.7658
-        },
-        {
-          "number": "52",
-          "score": 0.7634
+          "score": 0.7653
         },
         {
           "number": "27",
-          "score": 0.7598
+          "score": 0.7629
+        },
+        {
+          "number": "52",
+          "score": 0.7616
         }
       ]
     },
     "39": {
       "entities": [
         "thingelstad.com",
-        "Kubb",
         "HTML",
-        "Kubbchucks",
-        "Loppet",
-        "Minnesota Kubb",
+        "Kubb",
         "Twitter",
-        "Winter Kubb",
         "Chaos Engineering",
         "JavaScript",
-        "Lake Calhoun",
+        "Kubbchucks",
         "Meditation",
         "Minnesota",
         "Python",
@@ -2889,24 +2885,28 @@
         "Bridge",
         "Cloud",
         "Different Network Effects",
-        "Eric Goplin",
-        "Excited",
         "Figured",
-        "Go Kubbchucks",
         "It Feels Great",
         "Kubernetes",
+        "Lake Calhoun",
+        "Loppet",
         "Mario Kart Tour",
-        "Nice",
+        "Minnesota Kubb",
         "Old School Management Techniques That",
         "Perfectly",
         "Philosophy",
         "Primer",
         "Quit Twitter",
         "Regexper",
-        "Ride",
         "Sous Vide",
         "Still Matter",
-        "Stimulus"
+        "Stimulus",
+        "The First Step",
+        "The Science",
+        "True",
+        "Turf Club. So",
+        "Twitter Quitter",
+        "Welcome"
       ],
       "tropes": [
         "open web and ownership",
@@ -2916,7 +2916,7 @@
       "similar_issues": [
         {
           "number": "38",
-          "score": 0.8427
+          "score": 0.8424
         },
         {
           "number": "41",
@@ -2924,19 +2924,19 @@
         },
         {
           "number": "43",
-          "score": 0.7844
+          "score": 0.7853
         },
         {
           "number": "42",
-          "score": 0.7733
+          "score": 0.7749
         },
         {
           "number": "95",
-          "score": 0.7698
+          "score": 0.7696
         },
         {
           "number": "93",
-          "score": 0.7563
+          "score": 0.7562
         }
       ]
     },
@@ -2954,6 +2954,7 @@
         "Falcon",
         "Fat Bike",
         "GraphQL",
+        "REST",
         "Barlow",
         "Cars",
         "Cyberspace",
@@ -2976,7 +2977,6 @@
         "Part",
         "Power Back",
         "Progressing",
-        "REST",
         "Revenge",
         "Snowshoes",
         "Snowy",
@@ -2992,27 +2992,27 @@
       "similar_issues": [
         {
           "number": "39",
-          "score": 0.7497
-        },
-        {
-          "number": "41",
-          "score": 0.7425
+          "score": 0.7495
         },
         {
           "number": "37",
-          "score": 0.7422
+          "score": 0.7424
+        },
+        {
+          "number": "41",
+          "score": 0.7417
         },
         {
           "number": "38",
-          "score": 0.7207
-        },
-        {
-          "number": "50",
-          "score": 0.683
+          "score": 0.722
         },
         {
           "number": "43",
-          "score": 0.6828
+          "score": 0.6839
+        },
+        {
+          "number": "50",
+          "score": 0.6837
         }
       ]
     },
@@ -3040,16 +3040,13 @@
         "Ethical",
         "Family Yearbook",
         "Feature",
-        "Fender Mini Amp",
         "Harvard",
         "Hosted Tyler",
         "How Jason Kottke",
-        "Huge",
         "Isle",
         "Let's Encrypt",
         "Lightroom",
         "Loog Pro Electric",
-        "Loog Pro Electric Red",
         "Looks",
         "MacStories",
         "Million Active Certificates",
@@ -3057,7 +3054,10 @@
         "Odyssey",
         "Others Want",
         "Protect",
-        "Rands"
+        "Rands",
+        "Revamp",
+        "Root Out Bugs",
+        "Saw"
       ],
       "tropes": [
         "open web and ownership"
@@ -3069,23 +3069,23 @@
         },
         {
           "number": "38",
-          "score": 0.7658
+          "score": 0.7653
         },
         {
           "number": "43",
-          "score": 0.7535
+          "score": 0.7534
         },
         {
           "number": "40",
-          "score": 0.7425
+          "score": 0.7417
         },
         {
           "number": "42",
-          "score": 0.7388
+          "score": 0.7401
         },
         {
-          "number": "95",
-          "score": 0.7159
+          "number": "36",
+          "score": 0.7155
         }
       ]
     },
@@ -3142,27 +3142,27 @@
       "similar_issues": [
         {
           "number": "43",
-          "score": 0.8332
+          "score": 0.8369
         },
         {
           "number": "52",
-          "score": 0.7742
+          "score": 0.7781
         },
         {
           "number": "39",
-          "score": 0.7733
+          "score": 0.7749
         },
         {
           "number": "23",
-          "score": 0.7592
+          "score": 0.7596
         },
         {
           "number": "56",
-          "score": 0.7524
+          "score": 0.7527
         },
         {
           "number": "38",
-          "score": 0.7421
+          "score": 0.7456
         }
       ]
     },
@@ -3219,27 +3219,27 @@
       "similar_issues": [
         {
           "number": "42",
-          "score": 0.8332
+          "score": 0.8369
         },
         {
           "number": "52",
-          "score": 0.7853
+          "score": 0.7887
         },
         {
           "number": "39",
-          "score": 0.7844
-        },
-        {
-          "number": "41",
-          "score": 0.7535
+          "score": 0.7853
         },
         {
           "number": "38",
-          "score": 0.7504
+          "score": 0.7537
+        },
+        {
+          "number": "41",
+          "score": 0.7534
         },
         {
           "number": "50",
-          "score": 0.7494
+          "score": 0.7527
         }
       ]
     },
@@ -3293,27 +3293,27 @@
       "similar_issues": [
         {
           "number": "45",
-          "score": 0.7405
-        },
-        {
-          "number": "43",
-          "score": 0.6548
+          "score": 0.744
         },
         {
           "number": "50",
-          "score": 0.6538
+          "score": 0.6574
+        },
+        {
+          "number": "43",
+          "score": 0.6561
         },
         {
           "number": "47",
-          "score": 0.65
+          "score": 0.6527
         },
         {
           "number": "48",
-          "score": 0.6481
+          "score": 0.6504
         },
         {
           "number": "52",
-          "score": 0.641
+          "score": 0.6439
         }
       ]
     },
@@ -3368,27 +3368,27 @@
       "similar_issues": [
         {
           "number": "44",
-          "score": 0.7405
+          "score": 0.744
         },
         {
           "number": "47",
-          "score": 0.6827
+          "score": 0.688
         },
         {
           "number": "48",
-          "score": 0.6794
+          "score": 0.6843
         },
         {
           "number": "43",
-          "score": 0.67
+          "score": 0.6759
         },
         {
           "number": "41",
-          "score": 0.6608
+          "score": 0.6622
         },
         {
-          "number": "101",
-          "score": 0.6358
+          "number": "316",
+          "score": 0.6401
         }
       ]
     },
@@ -3445,27 +3445,27 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.7427
+          "score": 0.75
         },
         {
           "number": "49",
-          "score": 0.7409
+          "score": 0.7496
         },
         {
           "number": "48",
-          "score": 0.7401
+          "score": 0.7444
         },
         {
           "number": "47",
-          "score": 0.7212
+          "score": 0.7269
         },
         {
           "number": "43",
-          "score": 0.7191
+          "score": 0.7266
         },
         {
-          "number": "39",
-          "score": 0.7035
+          "number": "51",
+          "score": 0.7063
         }
       ]
     },
@@ -3479,6 +3479,7 @@
         "Been Pwned",
         "Facebook",
         "Nice",
+        "Sleep",
         "Tetris",
         "Web",
         "Are There Any Tetris Games",
@@ -3493,24 +3494,23 @@
         "Mac Is Lit",
         "Medium",
         "Million MyFitnessPal Accounts Hacked",
+        "Power",
         "Privacy",
         "Run",
-        "Sleep",
         "Smashing Magazine",
         "The Blockchain Meets Kubb",
         "The Legitimisation",
         "Too",
+        "Unlocking",
         "Using Ethics In Web Design",
         "Video",
         "You Can Be",
-        "YouTube",
         "amazon.com",
         "blog.agilebits.com",
         "blog.intercom.com",
         "bloomberg.com",
         "broadwayinchicago.com",
-        "dakotacooks.com",
-        "dancohen.org"
+        "dakotacooks.com"
       ],
       "tropes": [
         "open web and ownership",
@@ -3521,27 +3521,27 @@
       "similar_issues": [
         {
           "number": "48",
-          "score": 0.8728
-        },
-        {
-          "number": "46",
-          "score": 0.7212
+          "score": 0.8734
         },
         {
           "number": "43",
-          "score": 0.7193
+          "score": 0.7274
         },
         {
-          "number": "99",
-          "score": 0.7161
+          "number": "46",
+          "score": 0.7269
         },
         {
           "number": "52",
-          "score": 0.714
+          "score": 0.721
+        },
+        {
+          "number": "99",
+          "score": 0.7153
         },
         {
           "number": "50",
-          "score": 0.7001
+          "score": 0.7073
         }
       ]
     },
@@ -3597,27 +3597,27 @@
       "similar_issues": [
         {
           "number": "47",
-          "score": 0.8728
+          "score": 0.8734
         },
         {
           "number": "46",
-          "score": 0.7401
+          "score": 0.7444
         },
         {
           "number": "49",
-          "score": 0.724
+          "score": 0.7299
         },
         {
           "number": "43",
-          "score": 0.715
+          "score": 0.7192
         },
         {
           "number": "50",
-          "score": 0.7135
+          "score": 0.7184
         },
         {
           "number": "52",
-          "score": 0.7065
+          "score": 0.7121
         }
       ]
     },
@@ -3646,8 +3646,10 @@
         "American Recordings Album Review",
         "Basics",
         "Blog",
+        "Bloomberg",
         "Cash",
         "Coffee Brewing Methods",
+        "Farewell Social Media",
         "Full",
         "Gear",
         "Highlights",
@@ -3660,9 +3662,7 @@
         "The Nintendo Switch's Parental Controls",
         "Tools",
         "Toronto",
-        "atom.io",
-        "barebones.com",
-        "blog.samaltman.com"
+        "atom.io"
       ],
       "tropes": [
         "open web and ownership",
@@ -3673,27 +3673,27 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.7472
+          "score": 0.755
         },
         {
           "number": "46",
-          "score": 0.7409
+          "score": 0.7496
         },
         {
           "number": "50",
-          "score": 0.7408
+          "score": 0.7454
         },
         {
           "number": "43",
-          "score": 0.7322
-        },
-        {
-          "number": "48",
-          "score": 0.724
+          "score": 0.7384
         },
         {
           "number": "51",
-          "score": 0.724
+          "score": 0.7302
+        },
+        {
+          "number": "48",
+          "score": 0.7299
         }
       ]
     },
@@ -3749,27 +3749,27 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.8207
+          "score": 0.8223
         },
         {
           "number": "51",
-          "score": 0.787
-        },
-        {
-          "number": "38",
-          "score": 0.7498
+          "score": 0.7897
         },
         {
           "number": "43",
-          "score": 0.7494
+          "score": 0.7527
+        },
+        {
+          "number": "38",
+          "score": 0.7506
         },
         {
           "number": "49",
-          "score": 0.7408
+          "score": 0.7454
         },
         {
-          "number": "39",
-          "score": 0.7381
+          "number": "42",
+          "score": 0.7408
         }
       ]
     },
@@ -3825,19 +3825,19 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.8128
+          "score": 0.8153
         },
         {
           "number": "50",
-          "score": 0.787
+          "score": 0.7897
         },
         {
           "number": "42",
-          "score": 0.7399
+          "score": 0.7424
         },
         {
           "number": "43",
-          "score": 0.7399
+          "score": 0.7424
         },
         {
           "number": "56",
@@ -3845,7 +3845,7 @@
         },
         {
           "number": "49",
-          "score": 0.724
+          "score": 0.7302
         }
       ]
     },
@@ -3902,27 +3902,27 @@
       "similar_issues": [
         {
           "number": "50",
-          "score": 0.8207
+          "score": 0.8223
         },
         {
           "number": "51",
-          "score": 0.8128
+          "score": 0.8153
         },
         {
           "number": "1",
-          "score": 0.8042
+          "score": 0.8
         },
         {
           "number": "43",
-          "score": 0.7853
+          "score": 0.7887
         },
         {
           "number": "42",
-          "score": 0.7742
+          "score": 0.7781
         },
         {
           "number": "112",
-          "score": 0.7731
+          "score": 0.7667
         }
       ]
     },
@@ -3931,18 +3931,17 @@
         "thingelstad.com",
         "Google",
         "Kubernetes",
+        "Radical Candor",
         "medium.com",
         "Google Duplex",
         "Ive",
         "Kim Scott",
-        "Radical Candor",
         "0xadada.pub",
         "Accomplishing Real-World Tasks Over",
         "An AI System",
         "Android",
         "Another",
         "Apple",
-        "AutoSleep Tracker",
         "Azure",
         "Borrowing Money",
         "Career",
@@ -3960,6 +3959,7 @@
         "Industry",
         "Influence",
         "Introducing Watchtower",
+        "Kick-Ass Boss Without Losing Your",
         "Learning By Shipping",
         "Like",
         "Maker",
@@ -3976,27 +3976,27 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.7489
+          "score": 0.7501
         },
         {
           "number": "43",
-          "score": 0.7225
+          "score": 0.7261
         },
         {
           "number": "50",
-          "score": 0.7076
+          "score": 0.7101
         },
         {
           "number": "42",
-          "score": 0.7007
+          "score": 0.7043
         },
         {
           "number": "51",
-          "score": 0.6782
+          "score": 0.6812
         },
         {
           "number": "112",
-          "score": 0.6721
+          "score": 0.6743
         }
       ]
     },
@@ -4012,12 +4012,10 @@
         "Coding",
         "Google Photos",
         "GraphQL",
-        "Kubb",
         "Morning Cup",
         "Ray Dalio",
         "Schneier",
         "Apple Photos",
-        "At SPS",
         "Best Practices",
         "Breath",
         "Computer Programmers",
@@ -4033,15 +4031,17 @@
         "In My Day One",
         "Intelligence",
         "Interpretation",
-        "Kelly Hamm",
         "Know How",
-        "Kube",
+        "Kubb",
         "Laurel Meme Comes From",
         "Letter",
         "MN United",
         "Mac",
         "Meet Surface Hub",
-        "Microsoft Devices BlogMicrosoft Devices Blog"
+        "Microsoft Devices BlogMicrosoft Devices Blog",
+        "Modern Enterprise",
+        "Nintendo Switch Online",
+        "Principles"
       ],
       "tropes": [
         "open web and ownership",
@@ -4053,7 +4053,7 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.74
+          "score": 0.7334
         },
         {
           "number": "55",
@@ -4061,7 +4061,7 @@
         },
         {
           "number": "43",
-          "score": 0.7138
+          "score": 0.7136
         },
         {
           "number": "106",
@@ -4069,11 +4069,11 @@
         },
         {
           "number": "41",
-          "score": 0.7121
+          "score": 0.7118
         },
         {
           "number": "60",
-          "score": 0.711
+          "score": 0.7111
         }
       ]
     },
@@ -4129,7 +4129,7 @@
       "similar_issues": [
         {
           "number": "57",
-          "score": 0.7507
+          "score": 0.7506
         },
         {
           "number": "107",
@@ -4145,7 +4145,7 @@
         },
         {
           "number": "62",
-          "score": 0.6797
+          "score": 0.6792
         },
         {
           "number": "114",
@@ -4205,11 +4205,11 @@
       "similar_issues": [
         {
           "number": "42",
-          "score": 0.7524
+          "score": 0.7527
         },
         {
           "number": "23",
-          "score": 0.7483
+          "score": 0.749
         },
         {
           "number": "51",
@@ -4217,11 +4217,11 @@
         },
         {
           "number": "50",
-          "score": 0.716
+          "score": 0.7178
         },
         {
           "number": "43",
-          "score": 0.6891
+          "score": 0.6898
         },
         {
           "number": "195",
@@ -4280,27 +4280,27 @@
       "similar_issues": [
         {
           "number": "114",
-          "score": 0.7567
+          "score": 0.756
         },
         {
           "number": "55",
-          "score": 0.7507
+          "score": 0.7506
         },
         {
           "number": "14",
-          "score": 0.7422
+          "score": 0.7428
         },
         {
           "number": "69",
-          "score": 0.7252
+          "score": 0.7263
         },
         {
           "number": "52",
-          "score": 0.7078
+          "score": 0.7058
         },
         {
           "number": "110",
-          "score": 0.6984
+          "score": 0.6992
         }
       ]
     },
@@ -4360,23 +4360,23 @@
         },
         {
           "number": "48",
-          "score": 0.6713
+          "score": 0.6717
         },
         {
           "number": "47",
-          "score": 0.6671
+          "score": 0.6687
         },
         {
           "number": "46",
-          "score": 0.6505
+          "score": 0.6502
         },
         {
           "number": "52",
-          "score": 0.6246
+          "score": 0.6241
         },
         {
           "number": "8",
-          "score": 0.6144
+          "score": 0.614
         }
       ]
     },
@@ -4431,27 +4431,27 @@
       "similar_issues": [
         {
           "number": "43",
-          "score": 0.6921
+          "score": 0.6917
         },
         {
           "number": "60",
-          "score": 0.6913
+          "score": 0.6914
         },
         {
           "number": "42",
-          "score": 0.6591
+          "score": 0.659
         },
         {
           "number": "39",
-          "score": 0.6554
-        },
-        {
-          "number": "52",
-          "score": 0.6553
+          "score": 0.6557
         },
         {
           "number": "54",
-          "score": 0.6545
+          "score": 0.6546
+        },
+        {
+          "number": "52",
+          "score": 0.6514
         }
       ]
     },
@@ -4486,7 +4486,6 @@
         "Delete",
         "Doodle Blog",
         "Facebook",
-        "Fairy",
         "Fear",
         "Find",
         "Formula",
@@ -4496,7 +4495,8 @@
         "Home",
         "How Atul Gawande",
         "In Formula",
-        "Instagram"
+        "Instagram",
+        "Integration"
       ],
       "tropes": [
         "open web and ownership",
@@ -4507,7 +4507,7 @@
       "similar_issues": [
         {
           "number": "38",
-          "score": 0.7255
+          "score": 0.7259
         },
         {
           "number": "120",
@@ -4515,15 +4515,15 @@
         },
         {
           "number": "39",
-          "score": 0.7162
-        },
-        {
-          "number": "62",
-          "score": 0.7118
+          "score": 0.716
         },
         {
           "number": "54",
-          "score": 0.711
+          "score": 0.7111
+        },
+        {
+          "number": "62",
+          "score": 0.7111
         },
         {
           "number": "6",
@@ -4588,11 +4588,11 @@
         },
         {
           "number": "62",
-          "score": 0.623
+          "score": 0.6217
         },
         {
           "number": "290",
-          "score": 0.6212
+          "score": 0.6211
         },
         {
           "number": "60",
@@ -4600,7 +4600,7 @@
         },
         {
           "number": "52",
-          "score": 0.6161
+          "score": 0.6166
         },
         {
           "number": "66",
@@ -4623,7 +4623,6 @@
         "Betamagic",
         "Concepts",
         "Cool",
-        "Cornfield",
         "Craft",
         "Disposable Straw Explains Modern Capitalism",
         "Drops",
@@ -4649,7 +4648,8 @@
         "SPS Brew-Off",
         "Shame",
         "Social Media Users",
-        "TeamSPS"
+        "TeamSPS",
+        "Technology"
       ],
       "tropes": [
         "open web and ownership",
@@ -4660,27 +4660,27 @@
       "similar_issues": [
         {
           "number": "106",
-          "score": 0.7333
+          "score": 0.733
         },
         {
           "number": "60",
-          "score": 0.7118
+          "score": 0.7111
         },
         {
           "number": "54",
-          "score": 0.694
+          "score": 0.6937
         },
         {
           "number": "120",
-          "score": 0.6938
+          "score": 0.6935
         },
         {
           "number": "39",
-          "score": 0.6824
+          "score": 0.682
         },
         {
           "number": "11",
-          "score": 0.6805
+          "score": 0.6803
         }
       ]
     },
@@ -4735,7 +4735,7 @@
       "similar_issues": [
         {
           "number": "62",
-          "score": 0.6464
+          "score": 0.6456
         },
         {
           "number": "248",
@@ -4747,7 +4747,7 @@
         },
         {
           "number": "36",
-          "score": 0.6004
+          "score": 0.6031
         },
         {
           "number": "67",
@@ -4755,7 +4755,7 @@
         },
         {
           "number": "39",
-          "score": 0.596
+          "score": 0.5953
         }
       ]
     },
@@ -4780,6 +4780,7 @@
         "Alphabet's Google",
         "An Introduction",
         "Avoid",
+        "Bono",
         "Boobs",
         "Built",
         "Chris",
@@ -4794,13 +4795,12 @@
         "Fairy Wings",
         "Fill Out OmniFocus Project Templates",
         "Frank's Compulsive Guide To Postal",
+        "Gates Foundation Rock",
         "Getting",
         "Guido",
         "Halfway Zone",
-        "How Women Can Succeed",
-        "Istio",
-        "John Doerr",
-        "Knative"
+        "How Google",
+        "How Women Can Succeed"
       ],
       "tropes": [
         "open web and ownership",
@@ -4819,11 +4819,11 @@
         },
         {
           "number": "84",
-          "score": 0.5985
+          "score": 0.5987
         },
         {
           "number": "52",
-          "score": 0.5836
+          "score": 0.5832
         },
         {
           "number": "111",
@@ -4831,7 +4831,7 @@
         },
         {
           "number": "93",
-          "score": 0.5803
+          "score": 0.5804
         }
       ]
     },
@@ -4892,20 +4892,20 @@
           "score": 0.7995
         },
         {
-          "number": "48",
-          "score": 0.6352
-        },
-        {
           "number": "75",
           "score": 0.6343
         },
         {
+          "number": "48",
+          "score": 0.6342
+        },
+        {
           "number": "8",
-          "score": 0.6333
+          "score": 0.6331
         },
         {
           "number": "47",
-          "score": 0.6283
+          "score": 0.6269
         }
       ]
     },
@@ -4968,7 +4968,7 @@
         },
         {
           "number": "74",
-          "score": 0.6247
+          "score": 0.6253
         },
         {
           "number": "75",
@@ -4976,7 +4976,7 @@
         },
         {
           "number": "48",
-          "score": 0.6158
+          "score": 0.6154
         },
         {
           "number": "61",
@@ -5043,19 +5043,19 @@
         },
         {
           "number": "48",
-          "score": 0.6417
+          "score": 0.6414
         },
         {
           "number": "96",
           "score": 0.6206
         },
         {
-          "number": "9",
-          "score": 0.6204
-        },
-        {
           "number": "57",
           "score": 0.6201
+        },
+        {
+          "number": "9",
+          "score": 0.62
         }
       ]
     },
@@ -5112,23 +5112,23 @@
         },
         {
           "number": "29",
-          "score": 0.6157
+          "score": 0.6153
         },
         {
           "number": "43",
-          "score": 0.5815
+          "score": 0.5822
         },
         {
           "number": "110",
-          "score": 0.5808
+          "score": 0.5804
         },
         {
           "number": "60",
-          "score": 0.5783
+          "score": 0.5784
         },
         {
           "number": "62",
-          "score": 0.5783
+          "score": 0.5777
         }
       ]
     },
@@ -5142,17 +5142,17 @@
         "Internet",
         "9to5mac.com",
         "Apple",
-        "Exclusive",
+        "Art",
         "Michael Franti",
+        "Zen",
         "linkedin.com",
         "medium.com",
         "theatlantic.com",
-        "Art",
-        "David Hussman",
+        "Exclusive",
         "Imagine",
         "Microsoft",
+        "Motorcycle Maintenance",
         "REST",
-        "Zen",
         "Antifragility",
         "Apple Watch Series",
         "Award-winning",
@@ -5172,8 +5172,8 @@
         "Margin",
         "Minifesto.org",
         "Minimalist Software Engineers",
-        "Motorcycle Maintenance",
-        "Not"
+        "Not",
+        "Paul Johnston"
       ],
       "tropes": [
         "open web and ownership",
@@ -5183,27 +5183,27 @@
       "similar_issues": [
         {
           "number": "57",
-          "score": 0.7252
+          "score": 0.7263
         },
         {
           "number": "55",
-          "score": 0.6644
+          "score": 0.6643
         },
         {
           "number": "17",
-          "score": 0.6616
+          "score": 0.6617
         },
         {
           "number": "109",
-          "score": 0.6364
+          "score": 0.6362
         },
         {
           "number": "349",
-          "score": 0.6199
+          "score": 0.6197
         },
         {
           "number": "115",
-          "score": 0.6159
+          "score": 0.6157
         }
       ]
     },
@@ -5214,11 +5214,11 @@
         "Helvetica",
         "medium.com",
         "BBQ",
-        "Fairy House",
         "Ruby",
         "AWS",
         "Arial",
         "Days To Avoid Integer Overflow",
+        "Fairy House",
         "Lean Startup Dead",
         "Libby",
         "Manage Your Mood",
@@ -5256,27 +5256,27 @@
       "similar_issues": [
         {
           "number": "73",
-          "score": 0.5877
+          "score": 0.5889
         },
         {
           "number": "74",
-          "score": 0.5702
+          "score": 0.5717
         },
         {
           "number": "120",
-          "score": 0.5659
+          "score": 0.567
         },
         {
           "number": "301",
-          "score": 0.5434
+          "score": 0.5452
         },
         {
           "number": "60",
-          "score": 0.5422
+          "score": 0.5435
         },
         {
           "number": "290",
-          "score": 0.5407
+          "score": 0.5427
         }
       ]
     },
@@ -5334,12 +5334,12 @@
           "score": 0.6764
         },
         {
-          "number": "77",
-          "score": 0.6498
+          "number": "24",
+          "score": 0.6511
         },
         {
-          "number": "24",
-          "score": 0.6494
+          "number": "77",
+          "score": 0.6498
         },
         {
           "number": "73",
@@ -5381,6 +5381,7 @@
         "Tammy",
         "Tim Cook",
         "Time",
+        "Addiction",
         "Amazon",
         "Android",
         "Ars Technica",
@@ -5389,14 +5390,13 @@
         "CEOs",
         "CGP Grey",
         "Chad Dickerson's",
+        "Change Your Mind",
         "Conduct",
         "Conflict",
         "Curve-Fitting",
-        "Dean Hager",
         "Decision Fatigue",
-        "Extends",
-        "Faces Are Made",
-        "GPU"
+        "Depression",
+        "Dying"
       ],
       "tropes": [
         "agency over convenience",
@@ -5410,23 +5410,23 @@
         },
         {
           "number": "73",
-          "score": 0.6899
+          "score": 0.6906
         },
         {
           "number": "22",
-          "score": 0.6553
+          "score": 0.6565
         },
         {
           "number": "4",
-          "score": 0.6481
+          "score": 0.6473
         },
         {
           "number": "327",
-          "score": 0.6454
+          "score": 0.6464
         },
         {
           "number": "41",
-          "score": 0.6431
+          "score": 0.6413
         }
       ]
     },
@@ -5481,15 +5481,15 @@
       "similar_issues": [
         {
           "number": "43",
-          "score": 0.6931
+          "score": 0.6935
         },
         {
           "number": "72",
-          "score": 0.6899
+          "score": 0.6906
         },
         {
           "number": "52",
-          "score": 0.6848
+          "score": 0.6821
         },
         {
           "number": "68",
@@ -5557,11 +5557,11 @@
       "similar_issues": [
         {
           "number": "114",
-          "score": 0.6913
+          "score": 0.6916
         },
         {
           "number": "122",
-          "score": 0.6859
+          "score": 0.6858
         },
         {
           "number": "17",
@@ -5569,15 +5569,15 @@
         },
         {
           "number": "120",
-          "score": 0.6735
-        },
-        {
-          "number": "161",
-          "score": 0.671
+          "score": 0.674
         },
         {
           "number": "43",
-          "score": 0.6709
+          "score": 0.6717
+        },
+        {
+          "number": "161",
+          "score": 0.6714
         }
       ]
     },
@@ -5710,27 +5710,27 @@
       "similar_issues": [
         {
           "number": "43",
-          "score": 0.5683
+          "score": 0.5699
         },
         {
           "number": "48",
-          "score": 0.5666
-        },
-        {
-          "number": "40",
-          "score": 0.5657
+          "score": 0.5678
         },
         {
           "number": "46",
-          "score": 0.5655
+          "score": 0.5656
+        },
+        {
+          "number": "40",
+          "score": 0.5654
         },
         {
           "number": "58",
-          "score": 0.5635
+          "score": 0.5634
         },
         {
           "number": "21",
-          "score": 0.5615
+          "score": 0.5618
         }
       ]
     },
@@ -5739,8 +5739,8 @@
         "thingelstad.com",
         "en.wikipedia.org",
         "theverge.com",
-        "Shortcuts",
         "Google",
+        "Shortcuts",
         "Redis",
         "The Verge",
         "arstechnica.com",
@@ -5754,6 +5754,7 @@
         "Android",
         "Apple",
         "Apple CEO",
+        "Big Data",
         "Cook",
         "During",
         "Electric",
@@ -5761,11 +5762,9 @@
         "Father",
         "Finder",
         "Fly",
-        "Fun",
         "George Gilder",
         "HTTP Service Framework",
         "Henry David Thoreau",
-        "How Google Protected Andy Rubin",
         "Jira Software Cloud",
         "Land",
         "Mind",
@@ -5775,7 +5774,8 @@
         "Phones Have Gone Too Far",
         "Python",
         "Rands",
-        "Redis Graph"
+        "Redis Graph",
+        "Redis Streams"
       ],
       "tropes": [
         "open web and ownership",
@@ -5787,11 +5787,11 @@
       "similar_issues": [
         {
           "number": "84",
-          "score": 0.757
+          "score": 0.7569
         },
         {
           "number": "78",
-          "score": 0.7461
+          "score": 0.7462
         },
         {
           "number": "89",
@@ -5807,7 +5807,7 @@
         },
         {
           "number": "24",
-          "score": 0.668
+          "score": 0.6683
         }
       ]
     },
@@ -5862,7 +5862,7 @@
       "similar_issues": [
         {
           "number": "77",
-          "score": 0.7461
+          "score": 0.7462
         },
         {
           "number": "89",
@@ -5939,15 +5939,15 @@
       "similar_issues": [
         {
           "number": "43",
-          "score": 0.706
+          "score": 0.7061
         },
         {
           "number": "39",
-          "score": 0.696
+          "score": 0.6962
         },
         {
           "number": "324",
-          "score": 0.6894
+          "score": 0.6885
         },
         {
           "number": "196",
@@ -5959,7 +5959,7 @@
         },
         {
           "number": "42",
-          "score": 0.6806
+          "score": 0.681
         }
       ]
     },
@@ -6089,11 +6089,11 @@
       "similar_issues": [
         {
           "number": "128",
-          "score": 0.7983
+          "score": 0.7985
         },
         {
           "number": "29",
-          "score": 0.7476
+          "score": 0.7457
         },
         {
           "number": "235",
@@ -6109,7 +6109,7 @@
         },
         {
           "number": "26",
-          "score": 0.6778
+          "score": 0.6783
         }
       ]
     },
@@ -6117,9 +6117,9 @@
       "entities": [
         "aws.amazon.com",
         "thingelstad.com",
-        "Invent",
         "AWS",
         "HTTP",
+        "Invent",
         "AWS News Blog",
         "Amazon",
         "Nice",
@@ -6133,7 +6133,6 @@
         "About Performance Ratings. The Seven",
         "Amazon Quantum Ledger Database",
         "Announce",
-        "Christmas",
         "Data",
         "Democracies",
         "Do People Actually Want",
@@ -6142,6 +6141,7 @@
         "Fast",
         "Firecracker",
         "Go Hands-On",
+        "Guardian Life Insurance Selects AWS",
         "Guess Who",
         "Holidays",
         "IntelliJ",
@@ -6165,27 +6165,27 @@
       "similar_issues": [
         {
           "number": "52",
-          "score": 0.6539
+          "score": 0.6562
         },
         {
           "number": "106",
-          "score": 0.6531
+          "score": 0.653
         },
         {
           "number": "38",
-          "score": 0.62
+          "score": 0.6224
         },
         {
           "number": "236",
-          "score": 0.616
+          "score": 0.6156
         },
         {
           "number": "39",
-          "score": 0.6131
+          "score": 0.6134
         },
         {
           "number": "228",
-          "score": 0.6106
+          "score": 0.6105
         }
       ]
     },
@@ -6239,7 +6239,7 @@
       "similar_issues": [
         {
           "number": "84",
-          "score": 0.6459
+          "score": 0.6458
         },
         {
           "number": "85",
@@ -6258,8 +6258,8 @@
           "score": 0.6283
         },
         {
-          "number": "52",
-          "score": 0.6216
+          "number": "38",
+          "score": 0.6185
         }
       ]
     },
@@ -6279,12 +6279,10 @@
         "Billion AOL-Yahoo Writedown",
         "Bird",
         "Break Your Inbox Dependence And",
-        "David Mamet",
         "Elf Motivation",
         "End",
         "Get Real Work Done",
         "GitHub Status Site",
-        "Glengarry Glen Ross",
         "Gorogoa",
         "Making",
         "Netflix TechBlog",
@@ -6304,7 +6302,9 @@
         "Technology",
         "The State",
         "The Time",
-        "Tools"
+        "Tools",
+        "Wild",
+        "Windows Experience BlogWindows Experience Blog"
       ],
       "tropes": [
         "open web and ownership",
@@ -6315,7 +6315,7 @@
       "similar_issues": [
         {
           "number": "77",
-          "score": 0.757
+          "score": 0.7569
         },
         {
           "number": "89",
@@ -6331,7 +6331,7 @@
         },
         {
           "number": "85",
-          "score": 0.6999
+          "score": 0.6998
         },
         {
           "number": "86",
@@ -6399,7 +6399,7 @@
         },
         {
           "number": "34",
-          "score": 0.7064
+          "score": 0.7077
         },
         {
           "number": "87",
@@ -6407,11 +6407,11 @@
         },
         {
           "number": "84",
-          "score": 0.6999
+          "score": 0.6998
         },
         {
           "number": "30",
-          "score": 0.693
+          "score": 0.6927
         }
       ]
     },
@@ -6479,12 +6479,12 @@
           "score": 0.7001
         },
         {
-          "number": "84",
-          "score": 0.6924
+          "number": "34",
+          "score": 0.6928
         },
         {
-          "number": "34",
-          "score": 0.6915
+          "number": "84",
+          "score": 0.6924
         },
         {
           "number": "88",
@@ -6555,7 +6555,7 @@
         },
         {
           "number": "84",
-          "score": 0.6893
+          "score": 0.6892
         },
         {
           "number": "33",
@@ -6563,7 +6563,7 @@
         },
         {
           "number": "35",
-          "score": 0.671
+          "score": 0.6712
         }
       ]
     },
@@ -6627,7 +6627,7 @@
         },
         {
           "number": "38",
-          "score": 0.732
+          "score": 0.7323
         },
         {
           "number": "95",
@@ -6635,7 +6635,7 @@
         },
         {
           "number": "39",
-          "score": 0.7236
+          "score": 0.7232
         },
         {
           "number": "93",
@@ -6705,7 +6705,7 @@
         },
         {
           "number": "103",
-          "score": 0.7266
+          "score": 0.7267
         },
         {
           "number": "95",
@@ -6778,7 +6778,7 @@
         },
         {
           "number": "38",
-          "score": 0.6816
+          "score": 0.6823
         },
         {
           "number": "89",
@@ -6853,15 +6853,15 @@
         },
         {
           "number": "103",
-          "score": 0.6127
-        },
-        {
-          "number": "49",
-          "score": 0.6077
+          "score": 0.6128
         },
         {
           "number": "174",
           "score": 0.6077
+        },
+        {
+          "number": "49",
+          "score": 0.6061
         }
       ]
     },
@@ -6924,7 +6924,7 @@
         },
         {
           "number": "39",
-          "score": 0.7334
+          "score": 0.7337
         },
         {
           "number": "96",
@@ -7073,11 +7073,11 @@
         },
         {
           "number": "40",
-          "score": 0.6367
+          "score": 0.6366
         },
         {
           "number": "103",
-          "score": 0.6355
+          "score": 0.6356
         },
         {
           "number": "95",
@@ -7147,7 +7147,7 @@
         },
         {
           "number": "39",
-          "score": 0.7698
+          "score": 0.7696
         },
         {
           "number": "92",
@@ -7250,7 +7250,6 @@
         "DuckDuckGo",
         "Buddhism",
         "Cult",
-        "Dreaming",
         "Email Verification Service",
         "Google",
         "IETF Standard",
@@ -7280,7 +7279,8 @@
         "politico.com",
         "rottentomatoes.com",
         "securitydiscovery.com",
-        "tempad.io"
+        "tempad.io",
+        "theatlantic.com"
       ],
       "tropes": [
         "open web and ownership",
@@ -7298,11 +7298,11 @@
         },
         {
           "number": "185",
-          "score": 0.6085
+          "score": 0.6083
         },
         {
           "number": "156",
-          "score": 0.6032
+          "score": 0.6029
         },
         {
           "number": "96",
@@ -7310,7 +7310,7 @@
         },
         {
           "number": "120",
-          "score": 0.5926
+          "score": 0.5924
         }
       ]
     },
@@ -7318,12 +7318,12 @@
       "entities": [
         "thingelstad.com",
         "en.wikipedia.org",
-        "Footy",
         "Facebook",
         "Carlton",
+        "Footy",
         "Melbourne",
-        "Richmond",
         "Koala",
+        "Richmond",
         "Australia",
         "Camacho",
         "Healesville Sanctuary",
@@ -7348,14 +7348,14 @@
         "Kickstarter",
         "Krebs",
         "LAX",
-        "Melbourne Cricket Grounds",
         "Meritocracy",
         "Millions",
         "More U.S. Cities Stop Recycling",
         "News Feed",
         "Nieman Journalism Lab",
         "One-third",
-        "Plain Text"
+        "Plain Text",
+        "Private Side"
       ],
       "tropes": [
         "open web and ownership",
@@ -7386,7 +7386,7 @@
         },
         {
           "number": "100",
-          "score": 0.6153
+          "score": 0.6154
         }
       ]
     },
@@ -7448,7 +7448,7 @@
         },
         {
           "number": "47",
-          "score": 0.7161
+          "score": 0.7153
         },
         {
           "number": "100",
@@ -7460,7 +7460,7 @@
         },
         {
           "number": "48",
-          "score": 0.6825
+          "score": 0.6824
         }
       ]
     },
@@ -7703,7 +7703,6 @@
         "Apple",
         "Ben Thompson",
         "Big",
-        "Bill Campbell",
         "Billion",
         "Cultural Assessment",
         "Evening",
@@ -7731,7 +7730,8 @@
         "Stratechery",
         "Suggestions",
         "Tech-Driven Value Creation",
-        "Technical"
+        "Technical",
+        "The Book"
       ],
       "tropes": [
         "local community",
@@ -7740,11 +7740,11 @@
       "similar_issues": [
         {
           "number": "89",
-          "score": 0.7266
+          "score": 0.7267
         },
         {
           "number": "84",
-          "score": 0.6833
+          "score": 0.6835
         },
         {
           "number": "78",
@@ -7756,7 +7756,7 @@
         },
         {
           "number": "49",
-          "score": 0.6509
+          "score": 0.6502
         },
         {
           "number": "88",
@@ -7822,7 +7822,7 @@
         },
         {
           "number": "110",
-          "score": 0.6987
+          "score": 0.6983
         },
         {
           "number": "93",
@@ -7973,11 +7973,11 @@
         },
         {
           "number": "110",
-          "score": 0.743
+          "score": 0.7426
         },
         {
           "number": "52",
-          "score": 0.7381
+          "score": 0.7389
         },
         {
           "number": "93",
@@ -8048,12 +8048,12 @@
           "score": 0.7397
         },
         {
-          "number": "320",
-          "score": 0.6604
-        },
-        {
           "number": "102",
           "score": 0.6582
+        },
+        {
+          "number": "320",
+          "score": 0.6526
         },
         {
           "number": "114",
@@ -8061,7 +8061,7 @@
         },
         {
           "number": "57",
-          "score": 0.6387
+          "score": 0.6396
         }
       ]
     },
@@ -8117,15 +8117,15 @@
       "similar_issues": [
         {
           "number": "125",
-          "score": 0.7339
+          "score": 0.7336
         },
         {
           "number": "93",
-          "score": 0.6462
+          "score": 0.6461
         },
         {
           "number": "136",
-          "score": 0.6379
+          "score": 0.6377
         },
         {
           "number": "100",
@@ -8133,11 +8133,11 @@
         },
         {
           "number": "112",
-          "score": 0.6171
+          "score": 0.617
         },
         {
           "number": "275",
-          "score": 0.6082
+          "score": 0.608
         }
       ]
     },
@@ -8193,7 +8193,7 @@
       "similar_issues": [
         {
           "number": "110",
-          "score": 0.708
+          "score": 0.7079
         },
         {
           "number": "57",
@@ -8224,22 +8224,22 @@
         "9to5mac.com",
         "nytimes.com",
         "techcrunch.com",
-        "Giant",
         "IPv6",
         "Internet Archive",
-        "Newton Sledding Hill",
         "Salesforce",
         "Went",
         "Bond",
         "Changes Big",
         "Drive",
         "Facebook",
+        "Giant",
         "Hands-On",
         "Inc.com",
         "Incomprehensible Disaster",
         "It Discovered",
         "Magazine",
         "Mary Meeker's Internet Trends",
+        "Newton Sledding Hill",
         "Opinion",
         "Post Death Internet Service",
         "Privacy Policies. They Were",
@@ -8273,11 +8273,11 @@
         },
         {
           "number": "120",
-          "score": 0.7536
+          "score": 0.7531
         },
         {
           "number": "112",
-          "score": 0.75
+          "score": 0.7496
         },
         {
           "number": "114",
@@ -8285,11 +8285,11 @@
         },
         {
           "number": "106",
-          "score": 0.743
+          "score": 0.7426
         },
         {
           "number": "105",
-          "score": 0.7355
+          "score": 0.7351
         }
       ]
     },
@@ -8506,7 +8506,7 @@
         },
         {
           "number": "110",
-          "score": 0.6852
+          "score": 0.685
         },
         {
           "number": "106",
@@ -8575,12 +8575,12 @@
           "score": 0.7815
         },
         {
-          "number": "57",
-          "score": 0.7567
-        },
-        {
           "number": "115",
           "score": 0.7562
+        },
+        {
+          "number": "57",
+          "score": 0.756
         },
         {
           "number": "14",
@@ -8647,11 +8647,11 @@
         },
         {
           "number": "110",
-          "score": 0.6951
+          "score": 0.695
         },
         {
           "number": "57",
-          "score": 0.6765
+          "score": 0.6772
         },
         {
           "number": "120",
@@ -8725,7 +8725,7 @@
         },
         {
           "number": "110",
-          "score": 0.6488
+          "score": 0.6486
         },
         {
           "number": "120",
@@ -8796,12 +8796,12 @@
           "score": 0.7004
         },
         {
-          "number": "112",
+          "number": "19",
           "score": 0.6474
         },
         {
-          "number": "19",
-          "score": 0.6471
+          "number": "112",
+          "score": 0.6474
         },
         {
           "number": "93",
@@ -8832,7 +8832,6 @@
         "stevenlevy.com",
         "wired.com",
         "Austin Mann",
-        "Free Software Foundation",
         "MINvRSL",
         "MNUFC",
         "Pro",
@@ -8843,12 +8842,10 @@
         "Always Punch Nazis",
         "Announcing",
         "App's Automation Capabilities",
-        "Appendix",
         "Apple",
         "Apple Watch Series",
         "Audi Concept Car",
         "CTA",
-        "CXL",
         "Camera Drone Follows Rollercoaster",
         "Clueless Nerd",
         "Daring Fireball",
@@ -8858,7 +8855,10 @@
         "Expanding",
         "Fall",
         "Features",
-        "Great Reckoning Head-On"
+        "Great Reckoning Head-On",
+        "Hawaiian",
+        "Here's Why",
+        "I've Built Multiple Growth Teams"
       ],
       "tropes": [
         "tools for thought",
@@ -8880,15 +8880,15 @@
         },
         {
           "number": "93",
-          "score": 0.7026
+          "score": 0.7025
         },
         {
           "number": "106",
-          "score": 0.6855
+          "score": 0.6854
         },
         {
           "number": "52",
-          "score": 0.6793
+          "score": 0.6774
         }
       ]
     },
@@ -8943,11 +8943,11 @@
       "similar_issues": [
         {
           "number": "36",
-          "score": 0.6461
+          "score": 0.6463
         },
         {
           "number": "125",
-          "score": 0.6327
+          "score": 0.6324
         },
         {
           "number": "120",
@@ -8959,7 +8959,7 @@
         },
         {
           "number": "108",
-          "score": 0.5914
+          "score": 0.5912
         },
         {
           "number": "118",
@@ -9092,7 +9092,7 @@
       "similar_issues": [
         {
           "number": "318",
-          "score": 0.6755
+          "score": 0.6754
         },
         {
           "number": "120",
@@ -9104,15 +9104,15 @@
         },
         {
           "number": "106",
-          "score": 0.6607
+          "score": 0.6606
         },
         {
           "number": "129",
-          "score": 0.6562
+          "score": 0.6561
         },
         {
-          "number": "118",
-          "score": 0.645
+          "number": "52",
+          "score": 0.648
         }
       ]
     },
@@ -9189,7 +9189,7 @@
         },
         {
           "number": "74",
-          "score": 0.6859
+          "score": 0.6858
         }
       ]
     },
@@ -9260,11 +9260,11 @@
         },
         {
           "number": "57",
-          "score": 0.6403
+          "score": 0.6402
         },
         {
           "number": "74",
-          "score": 0.6353
+          "score": 0.635
         }
       ]
     },
@@ -9276,14 +9276,13 @@
         "XML",
         "en.wikipedia.org",
         "AirPods Pro",
-        "Guido",
         "Tools",
         "AirPods",
         "Go's",
+        "Guido",
         "Halloween",
         "JSON",
         "Nationals",
-        "Python",
         "Skip",
         "Thank",
         "Tyler",
@@ -9292,8 +9291,6 @@
         "AirPods Pro First Impressions",
         "Alt",
         "Apple",
-        "BDFL",
-        "Benevolent Dictator",
         "By Dave Mangot",
         "Camera",
         "Center Letting You Track",
@@ -9307,9 +9304,12 @@
         "Fridays",
         "GTD",
         "Game",
-        "Jules Pieri",
-        "Life",
-        "List"
+        "List",
+        "Local",
+        "Mac Introduces New Features",
+        "Maple",
+        "Matt Wilson",
+        "Minneapolis"
       ],
       "tropes": [
         "open web and ownership",
@@ -9323,7 +9323,7 @@
         },
         {
           "number": "129",
-          "score": 0.6973
+          "score": 0.6972
         },
         {
           "number": "123",
@@ -9331,15 +9331,15 @@
         },
         {
           "number": "128",
-          "score": 0.6568
+          "score": 0.6569
         },
         {
           "number": "130",
-          "score": 0.6566
+          "score": 0.6567
         },
         {
           "number": "106",
-          "score": 0.6536
+          "score": 0.6537
         }
       ]
     },
@@ -9360,7 +9360,6 @@
         "City Like Amazon",
         "Cleans Toxins From",
         "Create RSS",
-        "Downtown Minneapolis",
         "During",
         "For Now",
         "HALO",
@@ -9384,7 +9383,8 @@
         "Web",
         "Wits Reunion",
         "archive.org",
-        "battingcagesofmn.com"
+        "battingcagesofmn.com",
+        "blog.acolyer.org"
       ],
       "tropes": [
         "open web and ownership",
@@ -9396,27 +9396,27 @@
       "similar_issues": [
         {
           "number": "108",
-          "score": 0.7339
+          "score": 0.7336
         },
         {
           "number": "275",
-          "score": 0.6503
-        },
-        {
-          "number": "136",
           "score": 0.6498
         },
         {
+          "number": "136",
+          "score": 0.6494
+        },
+        {
           "number": "120",
-          "score": 0.6431
+          "score": 0.6429
         },
         {
           "number": "119",
-          "score": 0.6327
+          "score": 0.6324
         },
         {
           "number": "130",
-          "score": 0.6132
+          "score": 0.613
         }
       ]
     },
@@ -9490,8 +9490,8 @@
           "score": 0.6025
         },
         {
-          "number": "49",
-          "score": 0.5994
+          "number": "129",
+          "score": 0.5993
         }
       ]
     },
@@ -9623,7 +9623,7 @@
       "similar_issues": [
         {
           "number": "81",
-          "score": 0.7983
+          "score": 0.7985
         },
         {
           "number": "235",
@@ -9631,7 +9631,7 @@
         },
         {
           "number": "29",
-          "score": 0.7066
+          "score": 0.7061
         },
         {
           "number": "205",
@@ -9639,11 +9639,11 @@
         },
         {
           "number": "129",
-          "score": 0.7011
+          "score": 0.7014
         },
         {
           "number": "130",
-          "score": 0.6837
+          "score": 0.6839
         }
       ]
     },
@@ -9719,7 +9719,7 @@
         },
         {
           "number": "128",
-          "score": 0.7011
+          "score": 0.7014
         }
       ]
     },
@@ -9873,7 +9873,7 @@
         },
         {
           "number": "38",
-          "score": 0.6587
+          "score": 0.6591
         }
       ]
     },
@@ -10021,7 +10021,7 @@
         },
         {
           "number": "52",
-          "score": 0.6802
+          "score": 0.6786
         },
         {
           "number": "196",
@@ -10086,11 +10086,15 @@
         },
         {
           "number": "125",
-          "score": 0.5278
+          "score": 0.5275
         },
         {
           "number": "302",
           "score": 0.5248
+        },
+        {
+          "number": "335",
+          "score": 0.5203
         },
         {
           "number": "150",
@@ -10099,10 +10103,6 @@
         {
           "number": "275",
           "score": 0.5185
-        },
-        {
-          "number": "209",
-          "score": 0.5178
         }
       ]
     },
@@ -10158,7 +10158,7 @@
       "similar_issues": [
         {
           "number": "41",
-          "score": 0.6286
+          "score": 0.627
         },
         {
           "number": "51",
@@ -10234,11 +10234,11 @@
       "similar_issues": [
         {
           "number": "125",
-          "score": 0.6498
+          "score": 0.6494
         },
         {
           "number": "108",
-          "score": 0.6379
+          "score": 0.6377
         },
         {
           "number": "275",
@@ -10253,8 +10253,8 @@
           "score": 0.4934
         },
         {
-          "number": "283",
-          "score": 0.4748
+          "number": "323",
+          "score": 0.4751
         }
       ]
     },
@@ -10403,12 +10403,12 @@
           "score": 0.6042
         },
         {
-          "number": "95",
-          "score": 0.6018
+          "number": "338",
+          "score": 0.6022
         },
         {
-          "number": "130",
-          "score": 0.6013
+          "number": "95",
+          "score": 0.6018
         }
       ]
     },
@@ -11125,7 +11125,7 @@
         },
         {
           "number": "52",
-          "score": 0.6747
+          "score": 0.6779
         },
         {
           "number": "157",
@@ -11267,7 +11267,7 @@
       "similar_issues": [
         {
           "number": "155",
-          "score": 0.5808
+          "score": 0.581
         },
         {
           "number": "128",
@@ -11279,15 +11279,15 @@
         },
         {
           "number": "303",
-          "score": 0.5531
+          "score": 0.5533
         },
         {
           "number": "205",
-          "score": 0.5513
+          "score": 0.5514
         },
         {
           "number": "148",
-          "score": 0.549
+          "score": 0.5491
         }
       ]
     },
@@ -11352,7 +11352,7 @@
         },
         {
           "number": "52",
-          "score": 0.6901
+          "score": 0.691
         },
         {
           "number": "120",
@@ -11729,11 +11729,11 @@
         },
         {
           "number": "21",
-          "score": 0.6971
+          "score": 0.6977
         },
         {
           "number": "52",
-          "score": 0.6941
+          "score": 0.6964
         },
         {
           "number": "201",
@@ -12256,7 +12256,7 @@
         },
         {
           "number": "74",
-          "score": 0.6528
+          "score": 0.654
         },
         {
           "number": "229",
@@ -12268,7 +12268,7 @@
         },
         {
           "number": "328",
-          "score": 0.6319
+          "score": 0.6324
         }
       ]
     },
@@ -12329,7 +12329,7 @@
         },
         {
           "number": "26",
-          "score": 0.6122
+          "score": 0.6137
         },
         {
           "number": "161",
@@ -12480,7 +12480,7 @@
         },
         {
           "number": "150",
-          "score": 0.673
+          "score": 0.6729
         },
         {
           "number": "265",
@@ -12488,7 +12488,7 @@
         },
         {
           "number": "105",
-          "score": 0.6693
+          "score": 0.6691
         },
         {
           "number": "161",
@@ -12496,7 +12496,7 @@
         },
         {
           "number": "302",
-          "score": 0.6546
+          "score": 0.6547
         }
       ]
     },
@@ -12568,7 +12568,7 @@
         },
         {
           "number": "165",
-          "score": 0.6077
+          "score": 0.6079
         },
         {
           "number": "150",
@@ -12648,7 +12648,7 @@
         },
         {
           "number": "52",
-          "score": 0.6217
+          "score": 0.6253
         }
       ]
     },
@@ -12703,7 +12703,7 @@
       "similar_issues": [
         {
           "number": "334",
-          "score": 0.6995
+          "score": 0.6991
         },
         {
           "number": "30",
@@ -12715,7 +12715,7 @@
         },
         {
           "number": "31",
-          "score": 0.6313
+          "score": 0.6323
         },
         {
           "number": "169",
@@ -12851,7 +12851,7 @@
       "similar_issues": [
         {
           "number": "38",
-          "score": 0.7214
+          "score": 0.7223
         },
         {
           "number": "200",
@@ -12863,7 +12863,7 @@
         },
         {
           "number": "52",
-          "score": 0.6988
+          "score": 0.6989
         },
         {
           "number": "6",
@@ -13090,7 +13090,7 @@
         },
         {
           "number": "316",
-          "score": 0.6273
+          "score": 0.6283
         },
         {
           "number": "200",
@@ -13169,7 +13169,7 @@
         },
         {
           "number": "43",
-          "score": 0.6454
+          "score": 0.646
         },
         {
           "number": "175",
@@ -13308,7 +13308,7 @@
         },
         {
           "number": "315",
-          "score": 0.6712
+          "score": 0.6743
         },
         {
           "number": "195",
@@ -13529,7 +13529,7 @@
       "similar_issues": [
         {
           "number": "279",
-          "score": 0.6579
+          "score": 0.6582
         },
         {
           "number": "287",
@@ -13545,7 +13545,7 @@
         },
         {
           "number": "43",
-          "score": 0.6242
+          "score": 0.6259
         },
         {
           "number": "173",
@@ -13775,8 +13775,8 @@
           "score": 0.6003
         },
         {
-          "number": "197",
-          "score": 0.5935
+          "number": "331",
+          "score": 0.5958
         }
       ]
     },
@@ -13913,7 +13913,7 @@
         },
         {
           "number": "325",
-          "score": 0.6435
+          "score": 0.6457
         },
         {
           "number": "319",
@@ -14749,7 +14749,7 @@
         },
         {
           "number": "334",
-          "score": 0.7185
+          "score": 0.7195
         },
         {
           "number": "287",
@@ -14761,7 +14761,7 @@
         },
         {
           "number": "331",
-          "score": 0.7108
+          "score": 0.712
         }
       ]
     },
@@ -14825,7 +14825,7 @@
         },
         {
           "number": "324",
-          "score": 0.6986
+          "score": 0.6993
         },
         {
           "number": "187",
@@ -14837,7 +14837,7 @@
         },
         {
           "number": "20",
-          "score": 0.6899
+          "score": 0.69
         }
       ]
     },
@@ -14899,7 +14899,7 @@
         },
         {
           "number": "324",
-          "score": 0.6936
+          "score": 0.6958
         },
         {
           "number": "263",
@@ -14978,12 +14978,12 @@
           "score": 0.6334
         },
         {
-          "number": "197",
-          "score": 0.6268
+          "number": "72",
+          "score": 0.6274
         },
         {
-          "number": "72",
-          "score": 0.626
+          "number": "197",
+          "score": 0.6268
         },
         {
           "number": "327",
@@ -15344,7 +15344,7 @@
       "similar_issues": [
         {
           "number": "332",
-          "score": 0.7325
+          "score": 0.732
         },
         {
           "number": "233",
@@ -15359,12 +15359,12 @@
           "score": 0.6995
         },
         {
-          "number": "301",
-          "score": 0.6712
+          "number": "333",
+          "score": 0.6732
         },
         {
-          "number": "333",
-          "score": 0.6686
+          "number": "301",
+          "score": 0.6712
         }
       ]
     },
@@ -15501,7 +15501,7 @@
         },
         {
           "number": "334",
-          "score": 0.7238
+          "score": 0.7248
         },
         {
           "number": "206",
@@ -15584,12 +15584,12 @@
           "score": 0.6796
         },
         {
-          "number": "237",
-          "score": 0.6546
+          "number": "331",
+          "score": 0.6552
         },
         {
-          "number": "331",
-          "score": 0.6543
+          "number": "237",
+          "score": 0.6546
         },
         {
           "number": "228",
@@ -15737,7 +15737,7 @@
         },
         {
           "number": "337",
-          "score": 0.6898
+          "score": 0.6931
         },
         {
           "number": "270",
@@ -15961,12 +15961,12 @@
           "score": 0.6904
         },
         {
-          "number": "340",
-          "score": 0.6834
-        },
-        {
           "number": "239",
           "score": 0.6809
+        },
+        {
+          "number": "340",
+          "score": 0.6808
         },
         {
           "number": "228",
@@ -16024,7 +16024,7 @@
       "similar_issues": [
         {
           "number": "267",
-          "score": 0.7102
+          "score": 0.7101
         },
         {
           "number": "302",
@@ -16040,7 +16040,7 @@
         },
         {
           "number": "52",
-          "score": 0.6883
+          "score": 0.6892
         },
         {
           "number": "272",
@@ -16476,7 +16476,7 @@
         },
         {
           "number": "316",
-          "score": 0.6758
+          "score": 0.6744
         },
         {
           "number": "215",
@@ -16709,7 +16709,7 @@
         },
         {
           "number": "331",
-          "score": 0.6403
+          "score": 0.6428
         },
         {
           "number": "228",
@@ -16774,7 +16774,7 @@
         },
         {
           "number": "317",
-          "score": 0.7116
+          "score": 0.7138
         },
         {
           "number": "219",
@@ -16782,11 +16782,11 @@
         },
         {
           "number": "331",
-          "score": 0.6962
+          "score": 0.6977
         },
         {
           "number": "340",
-          "score": 0.696
+          "score": 0.694
         },
         {
           "number": "286",
@@ -16997,7 +16997,7 @@
       "similar_issues": [
         {
           "number": "325",
-          "score": 0.718
+          "score": 0.7194
         },
         {
           "number": "192",
@@ -17223,12 +17223,12 @@
       ],
       "similar_issues": [
         {
-          "number": "287",
-          "score": 0.7274
+          "number": "331",
+          "score": 0.7288
         },
         {
-          "number": "331",
-          "score": 0.725
+          "number": "287",
+          "score": 0.7274
         },
         {
           "number": "233",
@@ -17457,7 +17457,7 @@
         },
         {
           "number": "331",
-          "score": 0.6109
+          "score": 0.6135
         },
         {
           "number": "229",
@@ -17535,7 +17535,7 @@
         },
         {
           "number": "331",
-          "score": 0.6926
+          "score": 0.6929
         },
         {
           "number": "274",
@@ -17598,7 +17598,7 @@
       "similar_issues": [
         {
           "number": "332",
-          "score": 0.7473
+          "score": 0.7485
         },
         {
           "number": "269",
@@ -17617,8 +17617,8 @@
           "score": 0.7161
         },
         {
-          "number": "301",
-          "score": 0.71
+          "number": "333",
+          "score": 0.7106
         }
       ]
     },
@@ -17677,7 +17677,7 @@
         },
         {
           "number": "331",
-          "score": 0.6589
+          "score": 0.6615
         },
         {
           "number": "186",
@@ -17688,12 +17688,12 @@
           "score": 0.6454
         },
         {
-          "number": "237",
-          "score": 0.6341
+          "number": "325",
+          "score": 0.6355
         },
         {
-          "number": "325",
-          "score": 0.6333
+          "number": "237",
+          "score": 0.6341
         }
       ]
     },
@@ -17755,7 +17755,7 @@
         },
         {
           "number": "334",
-          "score": 0.7105
+          "score": 0.7107
         },
         {
           "number": "128",
@@ -17827,19 +17827,19 @@
         },
         {
           "number": "332",
-          "score": 0.7192
+          "score": 0.7216
+        },
+        {
+          "number": "334",
+          "score": 0.7162
         },
         {
           "number": "233",
           "score": 0.7161
         },
         {
-          "number": "334",
-          "score": 0.7143
-        },
-        {
           "number": "331",
-          "score": 0.7054
+          "score": 0.7081
         },
         {
           "number": "228",
@@ -17984,20 +17984,20 @@
           "score": 0.7032
         },
         {
+          "number": "336",
+          "score": 0.6921
+        },
+        {
           "number": "236",
           "score": 0.6908
         },
         {
-          "number": "336",
-          "score": 0.6868
-        },
-        {
           "number": "337",
-          "score": 0.6844
+          "score": 0.6869
         },
         {
           "number": "38",
-          "score": 0.6814
+          "score": 0.6827
         }
       ]
     },
@@ -18138,16 +18138,16 @@
           "score": 0.6326
         },
         {
+          "number": "328",
+          "score": 0.6301
+        },
+        {
           "number": "318",
           "score": 0.6281
         },
         {
           "number": "347",
           "score": 0.626
-        },
-        {
-          "number": "328",
-          "score": 0.6258
         }
       ]
     },
@@ -18207,15 +18207,15 @@
         },
         {
           "number": "279",
-          "score": 0.7051
+          "score": 0.7052
+        },
+        {
+          "number": "337",
+          "score": 0.6863
         },
         {
           "number": "229",
           "score": 0.686
-        },
-        {
-          "number": "337",
-          "score": 0.6853
         },
         {
           "number": "264",
@@ -18744,7 +18744,7 @@
         },
         {
           "number": "285",
-          "score": 0.6838
+          "score": 0.6841
         },
         {
           "number": "226",
@@ -18812,11 +18812,11 @@
         },
         {
           "number": "331",
-          "score": 0.6892
+          "score": 0.6945
         },
         {
           "number": "332",
-          "score": 0.6872
+          "score": 0.6903
         },
         {
           "number": "311",
@@ -18884,15 +18884,15 @@
       "similar_issues": [
         {
           "number": "252",
-          "score": 0.7307
+          "score": 0.7315
+        },
+        {
+          "number": "324",
+          "score": 0.6747
         },
         {
           "number": "347",
           "score": 0.6724
-        },
-        {
-          "number": "324",
-          "score": 0.6709
         },
         {
           "number": "274",
@@ -18900,11 +18900,11 @@
         },
         {
           "number": "325",
-          "score": 0.6542
+          "score": 0.6587
         },
         {
-          "number": "249",
-          "score": 0.6475
+          "number": "321",
+          "score": 0.6495
         }
       ]
     },
@@ -18974,12 +18974,12 @@
           "score": 0.6252
         },
         {
-          "number": "340",
-          "score": 0.6152
+          "number": "321",
+          "score": 0.6148
         },
         {
-          "number": "321",
-          "score": 0.6139
+          "number": "340",
+          "score": 0.6148
         }
       ]
     },
@@ -19036,27 +19036,27 @@
       "similar_issues": [
         {
           "number": "250",
-          "score": 0.7307
+          "score": 0.7315
         },
         {
           "number": "313",
-          "score": 0.6628
+          "score": 0.6636
         },
         {
           "number": "315",
-          "score": 0.6503
+          "score": 0.6546
         },
         {
           "number": "253",
-          "score": 0.6463
+          "score": 0.6471
         },
         {
           "number": "270",
-          "score": 0.6447
+          "score": 0.6455
         },
         {
           "number": "319",
-          "score": 0.6442
+          "score": 0.6448
         }
       ]
     },
@@ -19190,7 +19190,7 @@
       "similar_issues": [
         {
           "number": "22",
-          "score": 0.6206
+          "score": 0.6199
         },
         {
           "number": "191",
@@ -19275,12 +19275,12 @@
           "score": 0.6402
         },
         {
-          "number": "287",
+          "number": "52",
           "score": 0.6306
         },
         {
-          "number": "52",
-          "score": 0.6267
+          "number": "287",
+          "score": 0.6306
         },
         {
           "number": "248",
@@ -19353,7 +19353,7 @@
         },
         {
           "number": "332",
-          "score": 0.5964
+          "score": 0.5978
         },
         {
           "number": "172",
@@ -19429,16 +19429,16 @@
           "score": 0.6476
         },
         {
+          "number": "332",
+          "score": 0.6472
+        },
+        {
           "number": "268",
           "score": 0.6471
         },
         {
           "number": "260",
           "score": 0.6467
-        },
-        {
-          "number": "274",
-          "score": 0.6456
         }
       ]
     },
@@ -19498,11 +19498,11 @@
         },
         {
           "number": "328",
-          "score": 0.7247
+          "score": 0.7281
         },
         {
           "number": "337",
-          "score": 0.7074
+          "score": 0.7073
         },
         {
           "number": "270",
@@ -19574,7 +19574,7 @@
         },
         {
           "number": "328",
-          "score": 0.646
+          "score": 0.6502
         },
         {
           "number": "297",
@@ -19883,7 +19883,7 @@
         },
         {
           "number": "52",
-          "score": 0.7481
+          "score": 0.7483
         },
         {
           "number": "319",
@@ -19968,7 +19968,7 @@
         },
         {
           "number": "328",
-          "score": 0.6983
+          "score": 0.7006
         }
       ]
     },
@@ -20177,15 +20177,15 @@
       "similar_issues": [
         {
           "number": "278",
-          "score": 0.7178
+          "score": 0.7177
         },
         {
           "number": "212",
-          "score": 0.7102
+          "score": 0.7101
         },
         {
           "number": "272",
-          "score": 0.6961
+          "score": 0.696
         },
         {
           "number": "274",
@@ -20193,11 +20193,11 @@
         },
         {
           "number": "340",
-          "score": 0.6894
+          "score": 0.6873
         },
         {
-          "number": "268",
-          "score": 0.6857
+          "number": "332",
+          "score": 0.686
         }
       ]
     },
@@ -20253,11 +20253,11 @@
       "similar_issues": [
         {
           "number": "332",
-          "score": 0.791
+          "score": 0.7927
         },
         {
           "number": "333",
-          "score": 0.7209
+          "score": 0.7251
         },
         {
           "number": "272",
@@ -20334,7 +20334,7 @@
         },
         {
           "number": "332",
-          "score": 0.7358
+          "score": 0.7365
         },
         {
           "number": "203",
@@ -20420,15 +20420,15 @@
         },
         {
           "number": "328",
-          "score": 0.7252
+          "score": 0.7316
         },
         {
           "number": "287",
           "score": 0.7188
         },
         {
-          "number": "273",
-          "score": 0.7173
+          "number": "337",
+          "score": 0.7178
         }
       ]
     },
@@ -20490,7 +20490,7 @@
         },
         {
           "number": "334",
-          "score": 0.7386
+          "score": 0.739
         },
         {
           "number": "235",
@@ -20498,7 +20498,7 @@
         },
         {
           "number": "29",
-          "score": 0.7175
+          "score": 0.7182
         },
         {
           "number": "273",
@@ -20583,7 +20583,7 @@
         },
         {
           "number": "285",
-          "score": 0.7453
+          "score": 0.7455
         }
       ]
     },
@@ -20653,7 +20653,7 @@
         },
         {
           "number": "285",
-          "score": 0.7459
+          "score": 0.7466
         },
         {
           "number": "276",
@@ -20739,7 +20739,7 @@
         },
         {
           "number": "285",
-          "score": 0.7287
+          "score": 0.729
         }
       ]
     },
@@ -20807,7 +20807,7 @@
         },
         {
           "number": "328",
-          "score": 0.6742
+          "score": 0.6765
         },
         {
           "number": "287",
@@ -20888,7 +20888,7 @@
         },
         {
           "number": "285",
-          "score": 0.7459
+          "score": 0.7464
         },
         {
           "number": "281",
@@ -20959,16 +20959,16 @@
           "score": 0.6926
         },
         {
+          "number": "334",
+          "score": 0.6819
+        },
+        {
           "number": "276",
           "score": 0.681
         },
         {
           "number": "295",
           "score": 0.6808
-        },
-        {
-          "number": "334",
-          "score": 0.6805
         }
       ]
     },
@@ -21033,7 +21033,7 @@
         },
         {
           "number": "285",
-          "score": 0.771
+          "score": 0.7708
         },
         {
           "number": "272",
@@ -21102,23 +21102,23 @@
       "similar_issues": [
         {
           "number": "287",
-          "score": 0.7248
+          "score": 0.7251
         },
         {
           "number": "278",
-          "score": 0.7079
+          "score": 0.7078
         },
         {
           "number": "241",
-          "score": 0.7051
+          "score": 0.7052
         },
         {
           "number": "229",
-          "score": 0.7026
+          "score": 0.7024
         },
         {
           "number": "290",
-          "score": 0.6868
+          "score": 0.6869
         },
         {
           "number": "330",
@@ -21179,27 +21179,27 @@
       "similar_issues": [
         {
           "number": "314",
-          "score": 0.7068
+          "score": 0.7064
         },
         {
           "number": "278",
-          "score": 0.6448
+          "score": 0.6442
         },
         {
           "number": "274",
-          "score": 0.6446
-        },
-        {
-          "number": "287",
-          "score": 0.6358
+          "score": 0.6441
         },
         {
           "number": "285",
           "score": 0.6354
         },
         {
+          "number": "287",
+          "score": 0.6354
+        },
+        {
           "number": "298",
-          "score": 0.6326
+          "score": 0.6322
         }
       ]
     },
@@ -21261,7 +21261,7 @@
         },
         {
           "number": "285",
-          "score": 0.7596
+          "score": 0.76
         },
         {
           "number": "272",
@@ -21506,7 +21506,7 @@
         },
         {
           "number": "285",
-          "score": 0.681
+          "score": 0.6813
         }
       ]
     },
@@ -21564,27 +21564,27 @@
       "similar_issues": [
         {
           "number": "278",
-          "score": 0.771
+          "score": 0.7708
         },
         {
           "number": "281",
-          "score": 0.7596
+          "score": 0.76
         },
         {
           "number": "298",
-          "score": 0.7537
+          "score": 0.7538
         },
         {
           "number": "287",
-          "score": 0.7469
+          "score": 0.747
         },
         {
           "number": "273",
-          "score": 0.7459
+          "score": 0.7466
         },
         {
           "number": "276",
-          "score": 0.7459
+          "score": 0.7464
         }
       ]
     },
@@ -21652,15 +21652,15 @@
         },
         {
           "number": "285",
-          "score": 0.7104
+          "score": 0.7107
+        },
+        {
+          "number": "317",
+          "score": 0.7101
         },
         {
           "number": "273",
           "score": 0.7085
-        },
-        {
-          "number": "317",
-          "score": 0.7074
         }
       ]
     },
@@ -21721,19 +21721,19 @@
         },
         {
           "number": "285",
-          "score": 0.7469
+          "score": 0.747
+        },
+        {
+          "number": "328",
+          "score": 0.7356
         },
         {
           "number": "278",
           "score": 0.734
         },
         {
-          "number": "328",
-          "score": 0.7326
-        },
-        {
           "number": "320",
-          "score": 0.7298
+          "score": 0.7317
         },
         {
           "number": "274",
@@ -21797,7 +21797,7 @@
         },
         {
           "number": "52",
-          "score": 0.7272
+          "score": 0.725
         },
         {
           "number": "347",
@@ -21887,7 +21887,7 @@
         },
         {
           "number": "285",
-          "score": 0.6825
+          "score": 0.6821
         },
         {
           "number": "287",
@@ -21958,12 +21958,12 @@
           "score": 0.7352
         },
         {
-          "number": "296",
-          "score": 0.7314
+          "number": "320",
+          "score": 0.7324
         },
         {
-          "number": "320",
-          "score": 0.7312
+          "number": "296",
+          "score": 0.7314
         },
         {
           "number": "310",
@@ -22101,11 +22101,11 @@
         },
         {
           "number": "324",
-          "score": 0.7148
+          "score": 0.7166
         },
         {
           "number": "325",
-          "score": 0.7098
+          "score": 0.7126
         },
         {
           "number": "298",
@@ -22187,12 +22187,12 @@
           "score": 0.6757
         },
         {
-          "number": "298",
-          "score": 0.6698
+          "number": "328",
+          "score": 0.6717
         },
         {
-          "number": "295",
-          "score": 0.6687
+          "number": "298",
+          "score": 0.6698
         }
       ]
     },
@@ -22253,7 +22253,7 @@
         },
         {
           "number": "329",
-          "score": 0.7264
+          "score": 0.7263
         },
         {
           "number": "298",
@@ -22265,7 +22265,7 @@
         },
         {
           "number": "278",
-          "score": 0.7171
+          "score": 0.717
         },
         {
           "number": "296",
@@ -22334,7 +22334,7 @@
         },
         {
           "number": "331",
-          "score": 0.7446
+          "score": 0.7461
         },
         {
           "number": "294",
@@ -22401,12 +22401,12 @@
       ],
       "similar_issues": [
         {
-          "number": "229",
-          "score": 0.7566
+          "number": "337",
+          "score": 0.7574
         },
         {
-          "number": "337",
-          "score": 0.7557
+          "number": "229",
+          "score": 0.7566
         },
         {
           "number": "330",
@@ -22554,7 +22554,7 @@
       "similar_issues": [
         {
           "number": "285",
-          "score": 0.7537
+          "score": 0.7538
         },
         {
           "number": "302",
@@ -22637,12 +22637,12 @@
           "score": 0.7287
         },
         {
-          "number": "301",
-          "score": 0.7235
+          "number": "332",
+          "score": 0.7239
         },
         {
-          "number": "332",
-          "score": 0.7228
+          "number": "301",
+          "score": 0.7235
         },
         {
           "number": "298",
@@ -22650,7 +22650,7 @@
         },
         {
           "number": "333",
-          "score": 0.7049
+          "score": 0.7078
         }
       ]
     },
@@ -22797,12 +22797,12 @@
           "score": 0.7351
         },
         {
-          "number": "299",
-          "score": 0.7235
+          "number": "333",
+          "score": 0.7265
         },
         {
-          "number": "333",
-          "score": 0.7228
+          "number": "299",
+          "score": 0.7235
         }
       ]
     },
@@ -22940,7 +22940,7 @@
         },
         {
           "number": "334",
-          "score": 0.7172
+          "score": 0.7186
         },
         {
           "number": "304",
@@ -23105,7 +23105,7 @@
         },
         {
           "number": "337",
-          "score": 0.7181
+          "score": 0.7203
         },
         {
           "number": "278",
@@ -23169,19 +23169,19 @@
         },
         {
           "number": "337",
-          "score": 0.757
+          "score": 0.7603
         },
         {
           "number": "329",
           "score": 0.7454
         },
         {
-          "number": "265",
-          "score": 0.7152
+          "number": "336",
+          "score": 0.7182
         },
         {
-          "number": "336",
-          "score": 0.7131
+          "number": "265",
+          "score": 0.7152
         },
         {
           "number": "273",
@@ -23254,15 +23254,15 @@
           "score": 0.6569
         },
         {
+          "number": "337",
+          "score": 0.6558
+        },
+        {
           "number": "329",
           "score": 0.6553
         },
         {
           "number": "287",
-          "score": 0.654
-        },
-        {
-          "number": "310",
           "score": 0.654
         }
       ]
@@ -23320,7 +23320,7 @@
       "similar_issues": [
         {
           "number": "315",
-          "score": 0.7382
+          "score": 0.7391
         },
         {
           "number": "311",
@@ -23332,15 +23332,15 @@
         },
         {
           "number": "285",
-          "score": 0.7165
+          "score": 0.7167
         },
         {
           "number": "310",
           "score": 0.7157
         },
         {
-          "number": "278",
-          "score": 0.7131
+          "number": "337",
+          "score": 0.715
         }
       ]
     },
@@ -23397,7 +23397,7 @@
       "similar_issues": [
         {
           "number": "331",
-          "score": 0.7021
+          "score": 0.7042
         },
         {
           "number": "313",
@@ -23408,12 +23408,12 @@
           "score": 0.6577
         },
         {
-          "number": "319",
-          "score": 0.6566
+          "number": "315",
+          "score": 0.6577
         },
         {
-          "number": "315",
-          "score": 0.6564
+          "number": "319",
+          "score": 0.6566
         },
         {
           "number": "308",
@@ -23551,7 +23551,7 @@
       "similar_issues": [
         {
           "number": "331",
-          "score": 0.7547
+          "score": 0.7587
         },
         {
           "number": "308",
@@ -23629,7 +23629,7 @@
       "similar_issues": [
         {
           "number": "331",
-          "score": 0.705
+          "score": 0.7106
         },
         {
           "number": "313",
@@ -23641,7 +23641,7 @@
         },
         {
           "number": "321",
-          "score": 0.6727
+          "score": 0.6751
         },
         {
           "number": "270",
@@ -23707,27 +23707,27 @@
       "similar_issues": [
         {
           "number": "315",
-          "score": 0.7502
+          "score": 0.7535
         },
         {
           "number": "331",
-          "score": 0.7463
+          "score": 0.7511
+        },
+        {
+          "number": "328",
+          "score": 0.7414
         },
         {
           "number": "329",
           "score": 0.7375
         },
         {
-          "number": "328",
-          "score": 0.736
-        },
-        {
           "number": "325",
-          "score": 0.7333
+          "score": 0.7372
         },
         {
-          "number": "311",
-          "score": 0.73
+          "number": "324",
+          "score": 0.7303
         }
       ]
     },
@@ -23783,11 +23783,11 @@
       "similar_issues": [
         {
           "number": "315",
-          "score": 0.721
+          "score": 0.7229
         },
         {
           "number": "324",
-          "score": 0.7156
+          "score": 0.7197
         },
         {
           "number": "313",
@@ -23795,11 +23795,11 @@
         },
         {
           "number": "280",
-          "score": 0.7068
+          "score": 0.7064
         },
         {
           "number": "331",
-          "score": 0.6947
+          "score": 0.7005
         },
         {
           "number": "263",
@@ -23859,27 +23859,27 @@
       "similar_issues": [
         {
           "number": "313",
-          "score": 0.7502
-        },
-        {
-          "number": "308",
-          "score": 0.7382
-        },
-        {
-          "number": "329",
-          "score": 0.736
+          "score": 0.7535
         },
         {
           "number": "331",
-          "score": 0.7349
+          "score": 0.7424
+        },
+        {
+          "number": "308",
+          "score": 0.7391
+        },
+        {
+          "number": "329",
+          "score": 0.7388
         },
         {
           "number": "319",
-          "score": 0.7345
+          "score": 0.737
         },
         {
           "number": "316",
-          "score": 0.7297
+          "score": 0.7364
         }
       ]
     },
@@ -23934,27 +23934,27 @@
       "similar_issues": [
         {
           "number": "315",
-          "score": 0.7297
+          "score": 0.7364
         },
         {
           "number": "261",
-          "score": 0.6997
+          "score": 0.7037
         },
         {
           "number": "308",
-          "score": 0.6977
+          "score": 0.7006
         },
         {
           "number": "253",
-          "score": 0.6945
+          "score": 0.6987
         },
         {
           "number": "47",
-          "score": 0.6864
+          "score": 0.6901
         },
         {
           "number": "273",
-          "score": 0.6845
+          "score": 0.6885
         }
       ]
     },
@@ -24010,27 +24010,27 @@
       "similar_issues": [
         {
           "number": "319",
-          "score": 0.7293
+          "score": 0.7326
         },
         {
           "number": "329",
-          "score": 0.7249
+          "score": 0.728
         },
         {
           "number": "222",
-          "score": 0.7116
+          "score": 0.7138
         },
         {
           "number": "286",
-          "score": 0.7074
+          "score": 0.7101
         },
         {
           "number": "315",
-          "score": 0.7021
+          "score": 0.7079
         },
         {
-          "number": "285",
-          "score": 0.6945
+          "number": "325",
+          "score": 0.6995
         }
       ]
     },
@@ -24085,11 +24085,11 @@
       "similar_issues": [
         {
           "number": "315",
-          "score": 0.7158
+          "score": 0.7191
         },
         {
           "number": "328",
-          "score": 0.7005
+          "score": 0.7052
         },
         {
           "number": "287",
@@ -24101,11 +24101,11 @@
         },
         {
           "number": "317",
-          "score": 0.6802
+          "score": 0.6831
         },
         {
-          "number": "270",
-          "score": 0.6779
+          "number": "320",
+          "score": 0.68
         }
       ]
     },
@@ -24174,15 +24174,15 @@
         },
         {
           "number": "52",
-          "score": 0.7427
+          "score": 0.7447
+        },
+        {
+          "number": "315",
+          "score": 0.737
         },
         {
           "number": "276",
           "score": 0.7346
-        },
-        {
-          "number": "315",
-          "score": 0.7345
         }
       ]
     },
@@ -24239,27 +24239,27 @@
       "similar_issues": [
         {
           "number": "325",
-          "score": 0.793
+          "score": 0.8008
         },
         {
           "number": "328",
-          "score": 0.7765
+          "score": 0.7828
         },
         {
           "number": "349",
-          "score": 0.755
-        },
-        {
-          "number": "285",
-          "score": 0.732
-        },
-        {
-          "number": "290",
-          "score": 0.7312
+          "score": 0.7535
         },
         {
           "number": "346",
-          "score": 0.7304
+          "score": 0.7352
+        },
+        {
+          "number": "285",
+          "score": 0.7331
+        },
+        {
+          "number": "290",
+          "score": 0.7324
         }
       ]
     },
@@ -24316,27 +24316,27 @@
       "similar_issues": [
         {
           "number": "324",
-          "score": 0.708
-        },
-        {
-          "number": "313",
-          "score": 0.7026
+          "score": 0.7151
         },
         {
           "number": "328",
-          "score": 0.7003
+          "score": 0.7107
         },
         {
-          "number": "319",
-          "score": 0.6967
-        },
-        {
-          "number": "329",
-          "score": 0.6962
+          "number": "313",
+          "score": 0.706
         },
         {
           "number": "331",
-          "score": 0.6928
+          "score": 0.7023
+        },
+        {
+          "number": "319",
+          "score": 0.6992
+        },
+        {
+          "number": "329",
+          "score": 0.699
         }
       ]
     },
@@ -24465,27 +24465,27 @@
       "similar_issues": [
         {
           "number": "324",
-          "score": 0.6619
-        },
-        {
-          "number": "313",
-          "score": 0.6545
+          "score": 0.6718
         },
         {
           "number": "321",
-          "score": 0.6518
+          "score": 0.6604
+        },
+        {
+          "number": "313",
+          "score": 0.6594
         },
         {
           "number": "333",
-          "score": 0.6497
+          "score": 0.6547
         },
         {
           "number": "276",
-          "score": 0.649
+          "score": 0.6528
         },
         {
-          "number": "310",
-          "score": 0.6469
+          "number": "335",
+          "score": 0.6528
         }
       ]
     },
@@ -24542,27 +24542,27 @@
       "similar_issues": [
         {
           "number": "325",
-          "score": 0.8035
+          "score": 0.809
         },
         {
           "number": "328",
-          "score": 0.7719
+          "score": 0.7788
         },
         {
           "number": "329",
-          "score": 0.7391
+          "score": 0.7424
+        },
+        {
+          "number": "331",
+          "score": 0.7343
         },
         {
           "number": "263",
-          "score": 0.7287
+          "score": 0.7308
         },
         {
-          "number": "313",
-          "score": 0.7268
-        },
-        {
-          "number": "342",
-          "score": 0.7262
+          "number": "320",
+          "score": 0.7304
         }
       ]
     },
@@ -24620,27 +24620,27 @@
       "similar_issues": [
         {
           "number": "324",
-          "score": 0.8035
+          "score": 0.809
         },
         {
           "number": "320",
-          "score": 0.793
+          "score": 0.8008
         },
         {
           "number": "328",
-          "score": 0.7703
+          "score": 0.7773
         },
         {
           "number": "329",
-          "score": 0.7456
+          "score": 0.7492
         },
         {
           "number": "346",
-          "score": 0.741
+          "score": 0.7444
         },
         {
-          "number": "313",
-          "score": 0.7333
+          "number": "331",
+          "score": 0.7404
         }
       ]
     },
@@ -24696,11 +24696,11 @@
       "similar_issues": [
         {
           "number": "325",
-          "score": 0.7267
+          "score": 0.7306
         },
         {
           "number": "328",
-          "score": 0.725
+          "score": 0.7286
         },
         {
           "number": "330",
@@ -24708,15 +24708,15 @@
         },
         {
           "number": "320",
-          "score": 0.6926
+          "score": 0.6957
+        },
+        {
+          "number": "337",
+          "score": 0.6889
         },
         {
           "number": "329",
           "score": 0.6867
-        },
-        {
-          "number": "287",
-          "score": 0.6854
         }
       ]
     },
@@ -24774,7 +24774,7 @@
       "similar_issues": [
         {
           "number": "328",
-          "score": 0.7451
+          "score": 0.7513
         },
         {
           "number": "293",
@@ -24786,15 +24786,15 @@
         },
         {
           "number": "315",
-          "score": 0.7139
+          "score": 0.7171
+        },
+        {
+          "number": "331",
+          "score": 0.7166
         },
         {
           "number": "329",
           "score": 0.7139
-        },
-        {
-          "number": "331",
-          "score": 0.7116
         }
       ]
     },
@@ -24850,27 +24850,27 @@
       "similar_issues": [
         {
           "number": "320",
-          "score": 0.7765
+          "score": 0.7828
         },
         {
           "number": "324",
-          "score": 0.7719
+          "score": 0.7788
         },
         {
           "number": "325",
-          "score": 0.7703
+          "score": 0.7773
         },
         {
           "number": "337",
-          "score": 0.7675
-        },
-        {
-          "number": "346",
-          "score": 0.7592
+          "score": 0.772
         },
         {
           "number": "331",
-          "score": 0.756
+          "score": 0.7647
+        },
+        {
+          "number": "346",
+          "score": 0.7634
         }
       ]
     },
@@ -24927,27 +24927,27 @@
       "similar_issues": [
         {
           "number": "331",
-          "score": 0.7673
+          "score": 0.7702
         },
         {
           "number": "328",
-          "score": 0.754
+          "score": 0.7586
+        },
+        {
+          "number": "336",
+          "score": 0.7509
         },
         {
           "number": "330",
           "score": 0.7508
         },
         {
+          "number": "325",
+          "score": 0.7492
+        },
+        {
           "number": "295",
           "score": 0.7477
-        },
-        {
-          "number": "325",
-          "score": 0.7456
-        },
-        {
-          "number": "306",
-          "score": 0.7454
         }
       ]
     },
@@ -25004,7 +25004,7 @@
       "similar_issues": [
         {
           "number": "328",
-          "score": 0.7555
+          "score": 0.7601
         },
         {
           "number": "329",
@@ -25023,8 +25023,8 @@
           "score": 0.7368
         },
         {
-          "number": "310",
-          "score": 0.7342
+          "number": "331",
+          "score": 0.7346
         }
       ]
     },
@@ -25081,27 +25081,27 @@
       "similar_issues": [
         {
           "number": "332",
-          "score": 0.7715
+          "score": 0.7772
         },
         {
           "number": "329",
-          "score": 0.7673
+          "score": 0.7702
         },
         {
           "number": "328",
-          "score": 0.756
+          "score": 0.7647
         },
         {
           "number": "311",
-          "score": 0.7547
+          "score": 0.7587
         },
         {
           "number": "313",
-          "score": 0.7463
+          "score": 0.7511
         },
         {
-          "number": "295",
-          "score": 0.7446
+          "number": "333",
+          "score": 0.7477
         }
       ]
     },
@@ -25158,27 +25158,27 @@
       "similar_issues": [
         {
           "number": "268",
-          "score": 0.791
+          "score": 0.7927
         },
         {
           "number": "333",
-          "score": 0.7761
+          "score": 0.7817
         },
         {
           "number": "331",
-          "score": 0.7715
+          "score": 0.7772
         },
         {
           "number": "233",
-          "score": 0.7473
+          "score": 0.7485
         },
         {
           "number": "269",
-          "score": 0.7358
+          "score": 0.7365
         },
         {
-          "number": "203",
-          "score": 0.7325
+          "number": "334",
+          "score": 0.7333
         }
       ]
     },
@@ -25236,27 +25236,27 @@
       "similar_issues": [
         {
           "number": "332",
-          "score": 0.7761
+          "score": 0.7817
         },
         {
           "number": "331",
-          "score": 0.7416
-        },
-        {
-          "number": "329",
-          "score": 0.7257
+          "score": 0.7477
         },
         {
           "number": "334",
-          "score": 0.7248
+          "score": 0.7303
+        },
+        {
+          "number": "329",
+          "score": 0.7281
+        },
+        {
+          "number": "337",
+          "score": 0.7275
         },
         {
           "number": "298",
-          "score": 0.7246
-        },
-        {
-          "number": "301",
-          "score": 0.7228
+          "score": 0.727
         }
       ]
     },
@@ -25312,27 +25312,27 @@
       "similar_issues": [
         {
           "number": "271",
-          "score": 0.7386
+          "score": 0.739
         },
         {
           "number": "332",
-          "score": 0.7285
+          "score": 0.7333
         },
         {
           "number": "333",
-          "score": 0.7248
-        },
-        {
-          "number": "205",
-          "score": 0.7238
+          "score": 0.7303
         },
         {
           "number": "331",
-          "score": 0.7227
+          "score": 0.7251
+        },
+        {
+          "number": "205",
+          "score": 0.7248
         },
         {
           "number": "195",
-          "score": 0.7185
+          "score": 0.7195
         }
       ]
     },
@@ -25388,27 +25388,27 @@
       "similar_issues": [
         {
           "number": "331",
-          "score": 0.7207
+          "score": 0.7314
         },
         {
           "number": "329",
-          "score": 0.7118
+          "score": 0.7171
         },
         {
           "number": "336",
-          "score": 0.699
-        },
-        {
-          "number": "272",
-          "score": 0.6955
-        },
-        {
-          "number": "263",
-          "score": 0.6952
+          "score": 0.7095
         },
         {
           "number": "325",
-          "score": 0.6949
+          "score": 0.7046
+        },
+        {
+          "number": "263",
+          "score": 0.7009
+        },
+        {
+          "number": "272",
+          "score": 0.6987
         }
       ]
     },
@@ -25465,27 +25465,27 @@
       "similar_issues": [
         {
           "number": "329",
-          "score": 0.7445
+          "score": 0.7509
         },
         {
           "number": "331",
-          "score": 0.7245
+          "score": 0.7323
         },
         {
           "number": "325",
-          "score": 0.7137
+          "score": 0.7232
         },
         {
           "number": "306",
-          "score": 0.7131
+          "score": 0.7182
         },
         {
           "number": "38",
-          "score": 0.7089
+          "score": 0.7143
         },
         {
           "number": "305",
-          "score": 0.7051
+          "score": 0.711
         }
       ]
     },
@@ -25543,27 +25543,27 @@
       "similar_issues": [
         {
           "number": "328",
-          "score": 0.7675
+          "score": 0.772
         },
         {
           "number": "306",
-          "score": 0.757
+          "score": 0.7603
         },
         {
           "number": "296",
-          "score": 0.7557
+          "score": 0.7574
         },
         {
           "number": "346",
-          "score": 0.7519
+          "score": 0.7557
         },
         {
           "number": "339",
-          "score": 0.7517
+          "score": 0.7481
         },
         {
           "number": "329",
-          "score": 0.7406
+          "score": 0.7447
         }
       ]
     },
@@ -25621,27 +25621,27 @@
       "similar_issues": [
         {
           "number": "328",
-          "score": 0.7105
+          "score": 0.7192
         },
         {
           "number": "337",
-          "score": 0.7032
+          "score": 0.7125
         },
         {
           "number": "336",
-          "score": 0.6918
+          "score": 0.7045
         },
         {
           "number": "290",
-          "score": 0.6878
+          "score": 0.6945
         },
         {
           "number": "287",
-          "score": 0.6862
+          "score": 0.6928
         },
         {
           "number": "229",
-          "score": 0.686
+          "score": 0.6917
         }
       ]
     },
@@ -25698,27 +25698,27 @@
       "similar_issues": [
         {
           "number": "337",
-          "score": 0.7517
+          "score": 0.7481
         },
         {
           "number": "328",
-          "score": 0.7308
+          "score": 0.7295
         },
         {
           "number": "340",
-          "score": 0.7155
+          "score": 0.7063
         },
         {
           "number": "329",
-          "score": 0.6964
+          "score": 0.6902
         },
         {
           "number": "346",
-          "score": 0.6956
+          "score": 0.6899
         },
         {
           "number": "342",
-          "score": 0.6833
+          "score": 0.6795
         }
       ]
     },
@@ -25774,28 +25774,28 @@
       ],
       "similar_issues": [
         {
-          "number": "346",
-          "score": 0.7416
+          "number": "331",
+          "score": 0.7381
         },
         {
-          "number": "331",
-          "score": 0.7377
+          "number": "346",
+          "score": 0.7379
         },
         {
           "number": "328",
-          "score": 0.7351
+          "score": 0.7372
         },
         {
           "number": "342",
-          "score": 0.7336
-        },
-        {
-          "number": "348",
-          "score": 0.7188
+          "score": 0.7306
         },
         {
           "number": "320",
-          "score": 0.7182
+          "score": 0.7192
+        },
+        {
+          "number": "348",
+          "score": 0.7155
         }
       ]
     },
@@ -25856,19 +25856,19 @@
         },
         {
           "number": "328",
-          "score": 0.6875
-        },
-        {
-          "number": "340",
-          "score": 0.6788
+          "score": 0.6925
         },
         {
           "number": "345",
           "score": 0.678
         },
         {
+          "number": "340",
+          "score": 0.676
+        },
+        {
           "number": "324",
-          "score": 0.668
+          "score": 0.6703
         },
         {
           "number": "313",
@@ -25929,15 +25929,15 @@
       "similar_issues": [
         {
           "number": "340",
-          "score": 0.7336
+          "score": 0.7306
         },
         {
           "number": "324",
-          "score": 0.7262
+          "score": 0.729
         },
         {
           "number": "328",
-          "score": 0.7223
+          "score": 0.7284
         },
         {
           "number": "346",
@@ -25945,7 +25945,7 @@
         },
         {
           "number": "331",
-          "score": 0.7086
+          "score": 0.7144
         },
         {
           "number": "352",
@@ -26010,7 +26010,7 @@
         },
         {
           "number": "337",
-          "score": 0.7014
+          "score": 0.7046
         },
         {
           "number": "342",
@@ -26018,15 +26018,15 @@
         },
         {
           "number": "340",
-          "score": 0.6752
+          "score": 0.6723
+        },
+        {
+          "number": "328",
+          "score": 0.6722
         },
         {
           "number": "346",
           "score": 0.6694
-        },
-        {
-          "number": "313",
-          "score": 0.6681
         }
       ]
     },
@@ -26092,16 +26092,16 @@
           "score": 0.676
         },
         {
-          "number": "310",
-          "score": 0.6695
-        },
-        {
           "number": "328",
-          "score": 0.6685
+          "score": 0.6742
         },
         {
           "number": "325",
-          "score": 0.6672
+          "score": 0.672
+        },
+        {
+          "number": "310",
+          "score": 0.6695
         }
       ]
     },
@@ -26157,7 +26157,7 @@
       "similar_issues": [
         {
           "number": "340",
-          "score": 0.7086
+          "score": 0.7064
         },
         {
           "number": "313",
@@ -26176,8 +26176,8 @@
           "score": 0.6799
         },
         {
-          "number": "341",
-          "score": 0.678
+          "number": "325",
+          "score": 0.6792
         }
       ]
     },
@@ -26233,27 +26233,27 @@
       "similar_issues": [
         {
           "number": "328",
-          "score": 0.7592
+          "score": 0.7634
         },
         {
           "number": "337",
-          "score": 0.7519
-        },
-        {
-          "number": "340",
-          "score": 0.7416
+          "score": 0.7557
         },
         {
           "number": "325",
-          "score": 0.741
+          "score": 0.7444
+        },
+        {
+          "number": "340",
+          "score": 0.7379
+        },
+        {
+          "number": "320",
+          "score": 0.7352
         },
         {
           "number": "263",
           "score": 0.7344
-        },
-        {
-          "number": "320",
-          "score": 0.7304
         }
       ]
     },
@@ -26317,12 +26317,12 @@
           "score": 0.7295
         },
         {
-          "number": "288",
-          "score": 0.7136
+          "number": "52",
+          "score": 0.7157
         },
         {
-          "number": "52",
-          "score": 0.7124
+          "number": "288",
+          "score": 0.7136
         },
         {
           "number": "273",
@@ -26402,7 +26402,7 @@
         },
         {
           "number": "340",
-          "score": 0.7188
+          "score": 0.7155
         },
         {
           "number": "273",
@@ -26462,7 +26462,7 @@
       "similar_issues": [
         {
           "number": "320",
-          "score": 0.755
+          "score": 0.7535
         },
         {
           "number": "107",
@@ -26478,11 +26478,11 @@
         },
         {
           "number": "52",
-          "score": 0.6896
+          "score": 0.6943
         },
         {
           "number": "325",
-          "score": 0.6754
+          "score": 0.6792
         }
       ]
     },
@@ -26539,11 +26539,11 @@
       "similar_issues": [
         {
           "number": "324",
-          "score": 0.712
+          "score": 0.7147
         },
         {
           "number": "325",
-          "score": 0.7072
+          "score": 0.7097
         },
         {
           "number": "351",
@@ -26559,7 +26559,7 @@
         },
         {
           "number": "328",
-          "score": 0.6807
+          "score": 0.6859
         }
       ]
     },
@@ -26618,12 +26618,12 @@
           "score": 0.7305
         },
         {
-          "number": "346",
-          "score": 0.7142
+          "number": "328",
+          "score": 0.718
         },
         {
-          "number": "328",
-          "score": 0.7125
+          "number": "346",
+          "score": 0.7142
         },
         {
           "number": "263",
@@ -26635,7 +26635,7 @@
         },
         {
           "number": "340",
-          "score": 0.7056
+          "score": 0.7025
         }
       ]
     },
@@ -26699,7 +26699,7 @@
         },
         {
           "number": "328",
-          "score": 0.7358
+          "score": 0.7387
         },
         {
           "number": "301",
@@ -27517,7 +27517,6 @@
       "29",
       "34",
       "37",
-      "39",
       "44",
       "47",
       "52",
@@ -27578,7 +27577,6 @@
     "twitter": [
       "2",
       "11",
-      "15",
       "24",
       "28",
       "39",
@@ -27877,6 +27875,7 @@
       "2",
       "9",
       "11",
+      "24",
       "28",
       "37",
       "39",
@@ -28291,6 +28290,7 @@
       "3",
       "37",
       "69",
+      "77",
       "288"
     ],
     "stack overflow": [
@@ -29170,9 +29170,7 @@
     ],
     "excited": [
       "6",
-      "10",
       "24",
-      "39",
       "340"
     ],
     "fnt": [
@@ -29188,7 +29186,6 @@
       "21",
       "34",
       "36",
-      "77",
       "86",
       "141",
       "146",
@@ -29929,16 +29926,6 @@
       "8",
       "208"
     ],
-    "going": [
-      "8",
-      "10",
-      "89",
-      "138",
-      "216",
-      "219",
-      "246",
-      "269"
-    ],
     "got": [
       "8",
       "11",
@@ -30177,7 +30164,8 @@
       "9"
     ],
     "drm": [
-      "10"
+      "10",
+      "20"
     ],
     "peter yarrow": [
       "10"
@@ -30290,6 +30278,15 @@
     "english": [
       "10"
     ],
+    "going": [
+      "10",
+      "89",
+      "138",
+      "216",
+      "219",
+      "246",
+      "269"
+    ],
     "graphing": [
       "10"
     ],
@@ -30333,7 +30330,12 @@
     ],
     "power": [
       "10",
-      "174"
+      "47",
+      "160",
+      "174",
+      "191",
+      "212",
+      "222"
     ],
     "signing": [
       "10",
@@ -30357,6 +30359,9 @@
       "10"
     ],
     "why we need them": [
+      "10"
+    ],
+    "your calendar": [
       "10"
     ],
     "ufc": [
@@ -30555,10 +30560,6 @@
       "12",
       "154"
     ],
-    "huge": [
-      "12",
-      "41"
-    ],
     "stripe": [
       "12",
       "133",
@@ -30722,6 +30723,9 @@
     "give your amazon box new": [
       "12"
     ],
+    "huge": [
+      "12"
+    ],
     "humane": [
       "12"
     ],
@@ -30735,7 +30739,6 @@
       "46",
       "109",
       "117",
-      "124",
       "131",
       "163",
       "251",
@@ -30743,9 +30746,6 @@
       "313"
     ],
     "mn humane society. hoping": [
-      "12"
-    ],
-    "msp. from": [
       "12"
     ],
     "marketo's": [
@@ -30761,9 +30761,6 @@
       "12",
       "31",
       "117"
-    ],
-    "sad": [
-      "12"
     ],
     "space center houston": [
       "12"
@@ -30786,6 +30783,12 @@
       "12"
     ],
     "the easiest online suggestion box": [
+      "12"
+    ],
+    "turning": [
+      "12"
+    ],
+    "what google learned from its": [
       "12"
     ],
     "inn": [
@@ -31143,12 +31146,12 @@
     "coldplay": [
       "15"
     ],
-    "sarahah": [
-      "15"
-    ],
     "eureka": [
       "15",
       "16"
+    ],
+    "sarahah": [
+      "15"
     ],
     "st. louis": [
       "15",
@@ -31173,39 +31176,6 @@
       "320",
       "321",
       "346"
-    ],
-    "just": [
-      "15",
-      "16",
-      "17",
-      "20",
-      "22",
-      "34",
-      "35",
-      "68",
-      "75",
-      "93",
-      "107",
-      "108",
-      "131",
-      "141",
-      "148",
-      "160",
-      "165",
-      "233",
-      "254",
-      "262",
-      "263",
-      "267",
-      "269",
-      "275",
-      "300",
-      "321",
-      "333",
-      "336",
-      "340",
-      "344",
-      "345"
     ],
     "react": [
       "15"
@@ -31263,9 +31233,6 @@
       "224",
       "238"
     ],
-    "created": [
-      "15"
-    ],
     "david lanham": [
       "15"
     ],
@@ -31307,6 +31274,38 @@
     "homebrew website club": [
       "15"
     ],
+    "just": [
+      "15",
+      "16",
+      "17",
+      "20",
+      "34",
+      "35",
+      "68",
+      "75",
+      "93",
+      "107",
+      "108",
+      "131",
+      "141",
+      "148",
+      "160",
+      "165",
+      "233",
+      "254",
+      "262",
+      "263",
+      "267",
+      "269",
+      "275",
+      "300",
+      "321",
+      "333",
+      "336",
+      "340",
+      "344",
+      "345"
+    ],
     "keeping": [
       "15",
       "138"
@@ -31333,6 +31332,9 @@
       "15"
     ],
     "minnestar announces maria ploessl": [
+      "15"
+    ],
+    "monday's": [
       "15"
     ],
     "texttool": [
@@ -31434,7 +31436,6 @@
     "jekyll": [
       "17",
       "18",
-      "19",
       "20",
       "26",
       "145",
@@ -31553,6 +31554,7 @@
     ],
     "how google": [
       "17",
+      "64",
       "65"
     ],
     "intimidation": [
@@ -31726,7 +31728,6 @@
       "22",
       "34",
       "35",
-      "41",
       "43",
       "60",
       "61",
@@ -32222,9 +32223,6 @@
       "20",
       "160"
     ],
-    "apple music. connect": [
-      "20"
-    ],
     "apple watch series": [
       "20",
       "21",
@@ -32236,12 +32234,12 @@
       "118",
       "199"
     ],
-    "building link thing": [
-      "20"
-    ],
     "clouds": [
       "20",
       "56"
+    ],
+    "curious": [
+      "20"
     ],
     "skype": [
       "21"
@@ -32383,10 +32381,8 @@
       "29",
       "31",
       "40",
-      "47",
       "60",
       "95",
-      "98",
       "112",
       "113",
       "143",
@@ -32481,12 +32477,12 @@
     "days timelapse": [
       "21"
     ],
-    "deleted sarahah": [
-      "21"
-    ],
     "family sharing": [
       "21",
       "114"
+    ],
+    "feels": [
+      "21"
     ],
     "zuckerberg": [
       "22",
@@ -32505,7 +32501,6 @@
     "wikipedia": [
       "9",
       "22",
-      "32",
       "33",
       "125",
       "136",
@@ -32599,9 +32594,11 @@
     "jennifer doudna": [
       "22"
     ],
-    "kiva": [
-      "22",
-      "237"
+    "lte": [
+      "22"
+    ],
+    "learn wisdom you can practically": [
+      "22"
     ],
     "mn ufc": [
       "23"
@@ -32630,9 +32627,6 @@
       "23"
     ],
     "geeki tikis": [
-      "23"
-    ],
-    "highlighting": [
       "23"
     ],
     "how they work": [
@@ -32763,6 +32757,9 @@
     "the most reliable platform": [
       "23"
     ],
+    "thinking time": [
+      "23"
+    ],
     "copied": [
       "24"
     ],
@@ -32781,15 +32778,9 @@
     "nextdraft": [
       "24"
     ],
-    "owl": [
-      "24"
-    ],
     "products": [
       "24",
       "159"
-    ],
-    "rdf": [
-      "24"
     ],
     "shivani stumpf": [
       "24"
@@ -32840,9 +32831,6 @@
     "fall festival": [
       "24"
     ],
-    "grakn.ai": [
-      "24"
-    ],
     "kitchen soap": [
       "24"
     ],
@@ -32881,6 +32869,16 @@
     ],
     "more great shelf apps": [
       "24"
+    ],
+    "nicaboyne lake": [
+      "24"
+    ],
+    "owl": [
+      "24"
+    ],
+    "open": [
+      "24",
+      "346"
     ],
     "blog.christianposta.com": [
       "25"
@@ -33019,25 +33017,13 @@
     "reaching": [
       "25"
     ],
-    "read": [
-      "25",
-      "46",
-      "123",
-      "129",
-      "131",
-      "161",
-      "166",
-      "176",
-      "196",
-      "287",
-      "318",
-      "337",
-      "347"
-    ],
     "the download": [
       "25"
     ],
     "the uncanny resurrection": [
+      "25"
+    ],
+    "blog.eero.com": [
       "25"
     ],
     "halloween": [
@@ -33201,20 +33187,8 @@
       "318",
       "333"
     ],
-    "minnestar": [
-      "26",
-      "38",
-      "104",
-      "108",
-      "146",
-      "147",
-      "177",
-      "236",
-      "242",
-      "244",
-      "275",
-      "285",
-      "308"
+    "mixed-up-holiday": [
+      "26"
     ],
     "chaos community day": [
       "27"
@@ -33365,15 +33339,6 @@
       "276",
       "342"
     ],
-    "seasonal": [
-      "28"
-    ],
-    "squares": [
-      "28"
-    ],
-    "tasty": [
-      "28"
-    ],
     "toronto": [
       "28",
       "49",
@@ -33424,9 +33389,6 @@
       "319",
       "321"
     ],
-    "up close": [
-      "28"
-    ],
     "daniel kahneman": [
       "28",
       "228"
@@ -33464,13 +33426,6 @@
     "how many robots does it": [
       "28"
     ],
-    "liquid": [
-      "28",
-      "350"
-    ],
-    "move": [
-      "28"
-    ],
     "mozilla hacks": [
       "28"
     ],
@@ -33483,6 +33438,32 @@
     "pragmatic guide": [
       "28",
       "221"
+    ],
+    "python marathon": [
+      "28"
+    ],
+    "quantum era": [
+      "28"
+    ],
+    "seasonal": [
+      "28"
+    ],
+    "shadow": [
+      "28"
+    ],
+    "simple": [
+      "28",
+      "46",
+      "52",
+      "102",
+      "153",
+      "154",
+      "205",
+      "264",
+      "325"
+    ],
+    "squares": [
+      "28"
     ],
     "john allspaw": [
       "29"
@@ -33554,7 +33535,6 @@
       "33",
       "34",
       "81",
-      "82",
       "85",
       "86",
       "130",
@@ -33573,12 +33553,6 @@
     ],
     "computational culture": [
       "29"
-    ],
-    "david hussman": [
-      "29",
-      "42",
-      "68",
-      "69"
     ],
     "day after day": [
       "29"
@@ -34017,7 +33991,6 @@
       "33"
     ],
     "let": [
-      "20",
       "33",
       "66",
       "100",
@@ -34116,9 +34089,6 @@
     "home security system": [
       "34"
     ],
-    "james shelley": [
-      "34"
-    ],
     "lego technic rc tracked racer": [
       "34"
     ],
@@ -34147,6 +34117,9 @@
       "34"
     ],
     "playing maze racers": [
+      "34"
+    ],
+    "playing prime climb": [
       "34"
     ],
     "pierrevincent.github.io": [
@@ -34246,16 +34219,16 @@
       "35",
       "126"
     ],
+    "happier": [
+      "36",
+      "220"
+    ],
     "headspace": [
       "36"
     ],
     "idlewords.com": [
       "36",
       "111"
-    ],
-    "happier": [
-      "36",
-      "220"
     ],
     "sps tower": [
       "36"
@@ -34309,6 +34282,10 @@
     "eeg": [
       "36"
     ],
+    "edge": [
+      "36",
+      "328"
+    ],
     "edward snowden": [
       "36",
       "118",
@@ -34337,6 +34314,9 @@
     "florida": [
       "36"
     ],
+    "found self-help that actually works--a": [
+      "36"
+    ],
     "hear eff": [
       "36"
     ],
@@ -34356,22 +34336,15 @@
       "184",
       "207"
     ],
-    "jimmy wales": [
-      "36"
-    ],
-    "joel": [
-      "36",
-      "210"
-    ],
-    "vikings": [
-      "37",
-      "304"
-    ],
     "bootstrap": [
       "37"
     ],
     "nordic waffles": [
       "37"
+    ],
+    "vikings": [
+      "37",
+      "304"
     ],
     "bruce schneier": [
       "37"
@@ -34561,6 +34534,7 @@
     "theatlantic.com": [
       "38",
       "69",
+      "97",
       "113",
       "139",
       "148",
@@ -34666,25 +34640,12 @@
     "happiest economic story": [
       "38"
     ],
-    "kubbchucks": [
-      "39",
-      "92"
-    ],
-    "loppet": [
-      "39"
-    ],
-    "minnesota kubb": [
-      "39",
-      "92"
-    ],
-    "winter kubb": [
-      "39"
-    ],
     "chaos engineering": [
       "39"
     ],
-    "lake calhoun": [
-      "39"
+    "kubbchucks": [
+      "39",
+      "92"
     ],
     "meditation": [
       "39",
@@ -34704,17 +34665,21 @@
     "different network effects": [
       "39"
     ],
-    "eric goplin": [
-      "39"
-    ],
-    "go kubbchucks": [
-      "39"
-    ],
     "it feels great": [
+      "39"
+    ],
+    "lake calhoun": [
+      "39"
+    ],
+    "loppet": [
       "39"
     ],
     "mario kart tour": [
       "39"
+    ],
+    "minnesota kubb": [
+      "39",
+      "92"
     ],
     "old school management techniques that": [
       "39"
@@ -34734,9 +34699,6 @@
     "regexper": [
       "39"
     ],
-    "ride": [
-      "39"
-    ],
     "sous vide": [
       "39",
       "148"
@@ -34745,6 +34707,24 @@
       "39"
     ],
     "stimulus": [
+      "39"
+    ],
+    "the first step": [
+      "39"
+    ],
+    "the science": [
+      "39"
+    ],
+    "true": [
+      "39"
+    ],
+    "turf club. so": [
+      "39"
+    ],
+    "twitter quitter": [
+      "39"
+    ],
+    "welcome": [
       "39"
     ],
     "super bowl lii": [
@@ -34770,6 +34750,18 @@
     ],
     "fat bike": [
       "40"
+    ],
+    "rest": [
+      "13",
+      "40",
+      "58",
+      "60",
+      "62",
+      "69",
+      "111",
+      "132",
+      "201",
+      "279"
     ],
     "barlow": [
       "40"
@@ -34841,18 +34833,6 @@
     "progressing": [
       "40"
     ],
-    "rest": [
-      "13",
-      "40",
-      "58",
-      "60",
-      "62",
-      "69",
-      "111",
-      "132",
-      "201",
-      "279"
-    ],
     "revenge": [
       "40"
     ],
@@ -34923,9 +34903,6 @@
     "family yearbook": [
       "41"
     ],
-    "fender mini amp": [
-      "41"
-    ],
     "harvard": [
       "41",
       "125"
@@ -34945,9 +34922,6 @@
       "164"
     ],
     "loog pro electric": [
-      "41"
-    ],
-    "loog pro electric red": [
       "41"
     ],
     "looks": [
@@ -34983,6 +34957,15 @@
       "256",
       "264",
       "314"
+    ],
+    "revamp": [
+      "41"
+    ],
+    "root out bugs": [
+      "41"
+    ],
+    "saw": [
+      "41"
     ],
     "alto": [
       "42"
@@ -35034,6 +35017,10 @@
     ],
     "cloudmapper": [
       "42"
+    ],
+    "david hussman": [
+      "42",
+      "68"
     ],
     "developing saas": [
       "42"
@@ -35535,6 +35522,20 @@
     "plot": [
       "46"
     ],
+    "read": [
+      "46",
+      "123",
+      "129",
+      "131",
+      "161",
+      "166",
+      "176",
+      "196",
+      "287",
+      "318",
+      "337",
+      "347"
+    ],
     "redisgraph": [
       "46"
     ],
@@ -35546,6 +35547,9 @@
       "47",
       "326",
       "337"
+    ],
+    "sleep": [
+      "47"
     ],
     "web": [
       "28",
@@ -35603,9 +35607,6 @@
       "47",
       "125"
     ],
-    "sleep": [
-      "47"
-    ],
     "smashing magazine": [
       "47"
     ],
@@ -35618,6 +35619,9 @@
     "too": [
       "47",
       "207"
+    ],
+    "unlocking": [
+      "47"
     ],
     "using ethics in web design": [
       "47"
@@ -35642,9 +35646,6 @@
       "99",
       "213",
       "282"
-    ],
-    "dancohen.org": [
-      "47"
     ],
     "darkroom": [
       "48",
@@ -35723,6 +35724,7 @@
     ],
     "bloomberg": [
       "48",
+      "49",
       "58",
       "60",
       "74",
@@ -35794,6 +35796,9 @@
     "coffee brewing methods": [
       "49"
     ],
+    "farewell social media": [
+      "49"
+    ],
     "full": [
       "49",
       "338"
@@ -35854,14 +35859,6 @@
     "atom.io": [
       "49"
     ],
-    "barebones.com": [
-      "49"
-    ],
-    "blog.samaltman.com": [
-      "49",
-      "91",
-      "179"
-    ],
     "thank you": [
       "50"
     ],
@@ -35906,7 +35903,8 @@
     ],
     "big data": [
       "50",
-      "52"
+      "52",
+      "77"
     ],
     "birthday note": [
       "50"
@@ -36237,6 +36235,9 @@
     "comprehensive kubernetes": [
       "52"
     ],
+    "radical candor": [
+      "53"
+    ],
     "google duplex": [
       "53"
     ],
@@ -36247,9 +36248,6 @@
     "kim scott": [
       "53"
     ],
-    "radical candor": [
-      "53"
-    ],
     "0xadada.pub": [
       "53"
     ],
@@ -36257,9 +36255,6 @@
       "53"
     ],
     "an ai system": [
-      "53"
-    ],
-    "autosleep tracker": [
       "53"
     ],
     "borrowing money": [
@@ -36327,6 +36322,9 @@
     "introducing watchtower": [
       "53"
     ],
+    "kick-ass boss without losing your": [
+      "53"
+    ],
     "learning by shipping": [
       "53"
     ],
@@ -36372,9 +36370,6 @@
       "54",
       "80"
     ],
-    "at sps": [
-      "54"
-    ],
     "best practices": [
       "54",
       "339"
@@ -36411,13 +36406,7 @@
     "interpretation": [
       "54"
     ],
-    "kelly hamm": [
-      "54"
-    ],
     "know how": [
-      "54"
-    ],
-    "kube": [
       "54"
     ],
     "laurel meme comes from": [
@@ -36428,6 +36417,20 @@
     ],
     "microsoft devices blogmicrosoft devices blog": [
       "54"
+    ],
+    "modern enterprise": [
+      "54"
+    ],
+    "nintendo switch online": [
+      "54"
+    ],
+    "principles": [
+      "19",
+      "36",
+      "54",
+      "134",
+      "234",
+      "276"
     ],
     "target field": [
       "55",
@@ -37031,9 +37034,6 @@
     "doodle blog": [
       "60"
     ],
-    "fairy": [
-      "60"
-    ],
     "fear": [
       "60",
       "62"
@@ -37063,6 +37063,9 @@
       "60"
     ],
     "in formula": [
+      "60"
+    ],
+    "integration": [
       "60"
     ],
     "svpg.com": [
@@ -37102,7 +37105,8 @@
       "61"
     ],
     "change your mind": [
-      "61"
+      "61",
+      "72"
     ],
     "maskmail": [
       "61"
@@ -37197,9 +37201,6 @@
       "62"
     ],
     "concepts": [
-      "62"
-    ],
-    "cornfield": [
       "62"
     ],
     "craft": [
@@ -37415,6 +37416,13 @@
       "203",
       "272"
     ],
+    "bono": [
+      "64",
+      "219",
+      "244",
+      "247",
+      "253"
+    ],
     "boobs": [
       "64"
     ],
@@ -37455,22 +37463,13 @@
     "frank's compulsive guide to postal": [
       "64"
     ],
+    "gates foundation rock": [
+      "64"
+    ],
     "halfway zone": [
       "64"
     ],
     "how women can succeed": [
-      "64"
-    ],
-    "istio": [
-      "64",
-      "65",
-      "86",
-      "228"
-    ],
-    "john doerr": [
-      "64"
-    ],
-    "knative": [
       "64"
     ],
     "okr": [
@@ -37479,6 +37478,12 @@
     "busy": [
       "65",
       "235"
+    ],
+    "istio": [
+      "64",
+      "65",
+      "86",
+      "228"
     ],
     "on this day": [
       "65"
@@ -37864,11 +37869,14 @@
       "69",
       "123"
     ],
+    "zen": [
+      "69"
+    ],
     "imagine": [
       "69",
       "203"
     ],
-    "zen": [
+    "motorcycle maintenance": [
       "69"
     ],
     "antifragility": [
@@ -37915,13 +37923,10 @@
     "minimalist software engineers": [
       "69"
     ],
-    "motorcycle maintenance": [
+    "paul johnston": [
       "69"
     ],
     "bbq": [
-      "70"
-    ],
-    "fairy house": [
       "70"
     ],
     "ruby": [
@@ -37933,6 +37938,9 @@
       "70"
     ],
     "days to avoid integer overflow": [
+      "70"
+    ],
+    "fairy house": [
       "70"
     ],
     "lean startup dead": [
@@ -38029,9 +38037,7 @@
     ],
     "gpu": [
       "71",
-      "72",
-      "257",
-      "297"
+      "257"
     ],
     "troy hunt": [
       "71"
@@ -38121,6 +38127,9 @@
       "72",
       "101"
     ],
+    "addiction": [
+      "72"
+    ],
     "attention": [
       "72",
       "180",
@@ -38147,16 +38156,13 @@
     "curve-fitting": [
       "72"
     ],
-    "dean hager": [
-      "72"
-    ],
     "decision fatigue": [
       "72"
     ],
-    "extends": [
+    "depression": [
       "72"
     ],
-    "faces are made": [
+    "dying": [
       "72"
     ],
     "chrome": [
@@ -38283,7 +38289,6 @@
     ],
     "thanks": [
       "9",
-      "32",
       "74",
       "134",
       "170",
@@ -38308,7 +38313,8 @@
       "74"
     ],
     "blog.acolyer.org": [
-      "74"
+      "74",
+      "125"
     ],
     "blog.halide.cam": [
       "74"
@@ -38573,9 +38579,6 @@
     "henry david thoreau": [
       "77"
     ],
-    "how google protected andy rubin": [
-      "77"
-    ],
     "jira software cloud": [
       "77"
     ],
@@ -38600,6 +38603,9 @@
       "77"
     ],
     "redis graph": [
+      "77"
+    ],
+    "redis streams": [
       "77"
     ],
     "ibm": [
@@ -39023,6 +39029,9 @@
     "go hands-on": [
       "82"
     ],
+    "guardian life insurance selects aws": [
+      "82"
+    ],
     "guess who": [
       "82"
     ],
@@ -39169,9 +39178,6 @@
     "break your inbox dependence and": [
       "84"
     ],
-    "david mamet": [
-      "84"
-    ],
     "elf motivation": [
       "84"
     ],
@@ -39184,9 +39190,6 @@
       "84"
     ],
     "github status site": [
-      "84"
-    ],
-    "glengarry glen ross": [
       "84"
     ],
     "gorogoa": [
@@ -39230,6 +39233,18 @@
       "84"
     ],
     "the time": [
+      "84"
+    ],
+    "wild": [
+      "54",
+      "84",
+      "96",
+      "126",
+      "195",
+      "325",
+      "329"
+    ],
+    "windows experience blogwindows experience blog": [
       "84"
     ],
     "tbray.org": [
@@ -39353,8 +39368,7 @@
       "328"
     ],
     "bdfl": [
-      "86",
-      "124"
+      "86"
     ],
     "bacon": [
       "86"
@@ -39807,6 +39821,10 @@
       "91",
       "113"
     ],
+    "blog.samaltman.com": [
+      "91",
+      "179"
+    ],
     "breville.com": [
       "91"
     ],
@@ -40162,15 +40180,6 @@
       "96",
       "135"
     ],
-    "wild": [
-      "54",
-      "84",
-      "96",
-      "126",
-      "195",
-      "325",
-      "329"
-    ],
     "apply the principles": [
       "96"
     ],
@@ -40268,9 +40277,6 @@
     "cult": [
       "97"
     ],
-    "dreaming": [
-      "97"
-    ],
     "email verification service": [
       "97"
     ],
@@ -40364,19 +40370,19 @@
     "tempad.io": [
       "97"
     ],
-    "footy": [
+    "carlton": [
       "98"
     ],
-    "carlton": [
+    "footy": [
       "98"
     ],
     "melbourne": [
       "98"
     ],
-    "richmond": [
+    "koala": [
       "98"
     ],
-    "koala": [
+    "richmond": [
       "98"
     ],
     "australia": [
@@ -40443,9 +40449,6 @@
     "lax": [
       "98"
     ],
-    "melbourne cricket grounds": [
-      "98"
-    ],
     "meritocracy": [
       "98"
     ],
@@ -40462,6 +40465,9 @@
       "98"
     ],
     "plain text": [
+      "98"
+    ],
+    "private side": [
       "98"
     ],
     "apple card": [
@@ -40709,7 +40715,6 @@
     ],
     "issue": [
       "101",
-      "118",
       "150",
       "173",
       "242",
@@ -40866,9 +40871,6 @@
     "skittles": [
       "103"
     ],
-    "bill campbell": [
-      "103"
-    ],
     "cultural assessment": [
       "103"
     ],
@@ -40926,6 +40928,9 @@
     "technical": [
       "103"
     ],
+    "the book": [
+      "103"
+    ],
     "google cloud run": [
       "104"
     ],
@@ -40953,6 +40958,20 @@
     ],
     "minnebar14 recap": [
       "104"
+    ],
+    "minnestar": [
+      "38",
+      "104",
+      "108",
+      "146",
+      "147",
+      "177",
+      "236",
+      "242",
+      "244",
+      "275",
+      "285",
+      "308"
     ],
     "perfectly normal": [
       "104"
@@ -41453,9 +41472,6 @@
       "109",
       "157"
     ],
-    "newton sledding hill": [
-      "110"
-    ],
     "bond": [
       "110"
     ],
@@ -41486,6 +41502,9 @@
       "110"
     ],
     "mary meeker's internet trends": [
+      "110"
+    ],
+    "newton sledding hill": [
       "110"
     ],
     "opinion": [
@@ -42082,9 +42101,6 @@
     "stevenlevy.com": [
       "118"
     ],
-    "free software foundation": [
-      "118"
-    ],
     "minvrsl": [
       "118"
     ],
@@ -42134,16 +42150,10 @@
     "app's automation capabilities": [
       "118"
     ],
-    "appendix": [
-      "118"
-    ],
     "audi concept car": [
       "118"
     ],
     "cta": [
-      "118"
-    ],
-    "cxl": [
       "118"
     ],
     "camera drone follows rollercoaster": [
@@ -42168,6 +42178,16 @@
       "118"
     ],
     "great reckoning head-on": [
+      "118"
+    ],
+    "hawaiian": [
+      "118"
+    ],
+    "here's why": [
+      "118",
+      "226"
+    ],
+    "i've built multiple growth teams": [
       "118"
     ],
     "street": [
@@ -42619,9 +42639,6 @@
       "124",
       "147"
     ],
-    "benevolent dictator": [
-      "124"
-    ],
     "by dave mangot": [
       "124"
     ],
@@ -42647,9 +42664,17 @@
       "124",
       "321"
     ],
-    "jules pieri": [
-      "124",
-      "161"
+    "local": [
+      "124"
+    ],
+    "mac introduces new features": [
+      "124"
+    ],
+    "maple": [
+      "124"
+    ],
+    "matt wilson": [
+      "124"
     ],
     "rem": [
       "125"
@@ -42680,9 +42705,6 @@
       "125"
     ],
     "create rss": [
-      "125"
-    ],
-    "downtown minneapolis": [
       "125"
     ],
     "for now": [
@@ -43383,10 +43405,6 @@
     ],
     "poetry": [
       "134"
-    ],
-    "principles": [
-      "134",
-      "234"
     ],
     "revolutionize your note-taking": [
       "134"
@@ -44700,10 +44718,6 @@
       "154",
       "260"
     ],
-    "simple": [
-      "153",
-      "264"
-    ],
     "a-series": [
       "153"
     ],
@@ -45291,6 +45305,9 @@
       "161"
     ],
     "guide for managers": [
+      "161"
+    ],
+    "jules pieri": [
       "161"
     ],
     "kaizen habits": [
@@ -46122,7 +46139,6 @@
       "173"
     ],
     "give": [
-      "21",
       "173",
       "174",
       "206",
@@ -48745,6 +48761,9 @@
     "excruciating anticipation": [
       "210"
     ],
+    "joel": [
+      "210"
+    ],
     "lock-in": [
       "210"
     ],
@@ -49367,12 +49386,6 @@
     "atlassian april": [
       "219"
     ],
-    "bono": [
-      "219",
-      "244",
-      "247",
-      "253"
-    ],
     "daniel stenberg": [
       "219"
     ],
@@ -49920,9 +49933,6 @@
       "226"
     ],
     "family checklist": [
-      "226"
-    ],
-    "here's why": [
       "226"
     ],
     "honoring peter eckersley": [
@@ -50685,6 +50695,9 @@
       "237"
     ],
     "jetbrains": [
+      "237"
+    ],
+    "kiva": [
       "237"
     ],
     "marsedit": [
@@ -56025,9 +56038,6 @@
     "annual founders": [
       "328"
     ],
-    "edge": [
-      "328"
-    ],
     "get some air": [
       "328"
     ],
@@ -56983,9 +56993,6 @@
     "left port": [
       "346"
     ],
-    "open": [
-      "346"
-    ],
     "open agentic coding": [
       "346"
     ],
@@ -57175,6 +57182,9 @@
       "350"
     ],
     "interact with stochastic parrots": [
+      "350"
+    ],
+    "liquid": [
       "350"
     ],
     "marc andreessen": [
