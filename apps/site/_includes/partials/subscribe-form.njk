@@ -286,9 +286,10 @@
         return;
       }
       if (result.ok && result.data && result.data.status === 'needs_jamie') {
-        // Buttondown refused the address itself (suppressed from a past
-        // bounce or block). The Librarian has the address in its ledger and
-        // Jamie hears about it in the morning; say so, in words.
+        // Buttondown refused the address (suppressed from a past bounce or
+        // block) or its firewall flagged it for review. The Librarian has the
+        // address in its ledger and Jamie hears about it in the morning; say
+        // so, in words.
         setStatus(result.data.error, 'info');
         track('subscribe.needs_jamie', subscribeId);
         return;
@@ -332,6 +333,13 @@
       }
       if (result.ok && data.status === 'unconfirmed') {
         renderUnconfirmed();
+        return;
+      }
+      if (result.status === 403 && data.status === 'inactive' && data.under_review) {
+        // Buttondown's firewall flagged it: recorded for Jamie's review, not
+        // subscribed, and a resubscribe would only say so again.
+        setStatus(data.error, 'info');
+        track('subscribe.under_review', subscribeId);
         return;
       }
       if (result.status === 403 && data.status === 'inactive') {

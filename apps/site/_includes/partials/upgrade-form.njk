@@ -243,6 +243,12 @@
         setStatus(escapeHtml((result.data && result.data.error) || 'Too many attempts. Please try again in a bit.'), 'error');
         return;
       }
+      if (result.ok && result.data && result.data.status === 'needs_jamie') {
+        setStatus(escapeHtml(result.data.error), 'info');
+        btn.hidden = true;
+        track('support.upgrade.needs_jamie');
+        return;
+      }
       setStatus(escapeHtml((result.data && (result.data.error || result.data.message)) || 'Could not add that email right now. Please try again.'), 'error');
     }, function() {
       setStatus('Network error. Please try again.', 'error');
@@ -279,6 +285,12 @@
       }
       if (result.ok && data.status === 'unconfirmed') {
         renderUnconfirmed(email);
+        return;
+      }
+      if (result.status === 403 && data.status === 'inactive' && data.under_review) {
+        setStatus(escapeHtml(data.error), 'info');
+        btn.hidden = true;
+        track('support.upgrade.under_review');
         return;
       }
       if (result.status === 403 && data.status === 'inactive') {

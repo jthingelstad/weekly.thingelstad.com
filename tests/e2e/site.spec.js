@@ -218,3 +218,27 @@ test('the transcript panel shows WebVTT escapes as the characters they stand for
   await expect(page.locator('.issue-transcript-body img[src="x"]')).toHaveCount(0);
   expect(await page.evaluate(() => window.pwned)).toBeUndefined();
 });
+
+test('a firewalled address is told it is under review, on subscribe and on check', async ({ page }) => {
+  await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
+  const review = 'This email address was flagged as suspicious and has been recorded for review. It isn’t subscribed yet.';
+  let checkAnswer = { status: 200, body: { status: 'not_found' } };
+  await page.route('https://librarian.thingelstad.com/auth', (route) => {
+    const { action } = route.request().postDataJSON();
+    const answer = action === 'check' ? checkAnswer : { status: 200, body: { status: 'needs_jamie', subscriber_status: 'blocked', error: review } };
+    return route.fulfill({ status: answer.status, contentType: 'application/json', body: JSON.stringify(answer.body) });
+  });
+  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  const form = page.locator('.subscribe-shell').first();
+  const status = form.locator('.subscribe-status');
+  await form.locator('input[type="email"]').fill('flagged@example.com');
+  await form.locator('button[type="submit"]').click();
+  await expect(status).toContainText('recorded for review');
+  await expect(status).not.toContainText('Check your inbox');
+
+  checkAnswer = { status: 403, body: { status: 'inactive', under_review: true, error: review } };
+  await form.locator('input[type="email"]').fill('flagged2@example.com');
+  await form.locator('button[type="submit"]').click();
+  await expect(status).toContainText('recorded for review');
+  await expect(form.getByRole('button', { name: 'Resubscribe' })).toHaveCount(0);
+});
