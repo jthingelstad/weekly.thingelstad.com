@@ -1581,6 +1581,7 @@ th {
   gap: 20px;
   margin-top: 16px;
 }
+.home-voice-grid > :nth-child(n+4) { display: none; }
 .home-voice-card {
   margin: 0;
   padding: 24px;

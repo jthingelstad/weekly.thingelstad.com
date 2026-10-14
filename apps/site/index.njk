@@ -122,13 +122,42 @@ permalink: /
       <div><strong>{{ survey.stats.longTimeReaders.value }}%</strong><span>{{ survey.stats.longTimeReaders.label }}</span></div>
     </div>
 
-    <div class="home-readers-quotes">
+    {# Every quote is in the page. CSS shows the first three: the featured
+       ones without JavaScript, a fresh draw on each visit with it. #}
+    <div class="home-readers-quotes" data-lead-min="90">
       {% for quote in quotes %}{% if quote.featured %}
       <blockquote class="home-q">
         <p>&ldquo;{{ quote.text }}&rdquo;</p>
       </blockquote>
       {% endif %}{% endfor %}
+      {% for quote in quotes %}{% if not quote.featured %}
+      <blockquote class="home-q">
+        <p>&ldquo;{{ quote.text }}&rdquo;</p>
+      </blockquote>
+      {% endif %}{% endfor %}
     </div>
+    {# Runs inline, before the section paints, so the draw never visibly swaps.
+       The lead slot is wide, so it draws from quotes of lead-min characters
+       or more; the other two draw from the rest. #}
+    <script>
+    window.weeklyThingRotate = function (box) {
+      if (!box) return;
+      var items = Array.prototype.slice.call(box.children);
+      for (var i = items.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = items[i]; items[i] = items[j]; items[j] = t;
+      }
+      var min = Number(box.dataset.leadMin || 0);
+      for (var k = 0; k < items.length; k++) {
+        if (items[k].textContent.trim().length >= min) {
+          items.unshift(items.splice(k, 1)[0]);
+          break;
+        }
+      }
+      items.forEach(function (el) { box.appendChild(el); });
+    };
+    window.weeklyThingRotate(document.currentScript.previousElementSibling);
+    </script>
 
     <div class="home-feelings">
       <p class="eyebrow">Readers say it makes them feel</p>
@@ -173,13 +202,14 @@ permalink: /
     <p class="eyebrow">How it sounds</p>
     <h2 class="home-h2">Pulled <em>verbatim</em> from real issues.</h2>
     <div class="home-voice-grid">
-      {% for sample in voiceSamples | slice(0, 3) %}
+      {% for sample in voiceSamples %}
       <blockquote class="home-voice-card">
         <p>&ldquo;{{ sample.text }}&rdquo;</p>
         <footer><a href="/archive/{{ sample.issueNumber }}/">{{ sample.issueTitle }}</a></footer>
       </blockquote>
       {% endfor %}
     </div>
+    <script>window.weeklyThingRotate && window.weeklyThingRotate(document.currentScript.previousElementSibling);</script>
   </div>
 </section>
 {% endif %}

@@ -242,3 +242,35 @@ test('a firewalled address is told it is under review, on subscribe and on check
   await expect(status).toContainText('recorded for review');
   await expect(form.getByRole('button', { name: 'Resubscribe' })).toHaveCount(0);
 });
+
+test('the home page draws three reader quotes and three issue excerpts on each visit', async ({ browser }) => {
+  const quotes = require('../../apps/site/_data/quotes.json');
+  const samples = require('../../apps/site/_data/voiceSamples.json');
+  const visibleTexts = (page, selector) => page.locator(selector).evaluateAll((els) =>
+    els.filter((el) => el.offsetParent !== null).map((el) => el.querySelector('p').textContent.trim()));
+
+  // Without JavaScript the featured quotes and the first excerpts show.
+  const noJs = await browser.newContext({ javaScriptEnabled: false });
+  const plain = await noJs.newPage();
+  await plain.goto('/', { waitUntil: 'domcontentloaded' });
+  const featured = quotes.filter((q) => q.featured).slice(0, 3).map((q) => `“${q.text}”`);
+  expect(await visibleTexts(plain, '.home-readers-quotes > .home-q')).toEqual(featured);
+  expect(await visibleTexts(plain, '.home-voice-grid > .home-voice-card'))
+    .toEqual(samples.slice(0, 3).map((s) => `“${s.text}”`));
+  await noJs.close();
+
+  // With it, every quote is in the page, three show, and the wide lead slot
+  // gets a long one. Pin Math.random so the draw is a known one.
+  const js = await browser.newContext();
+  const page = await js.newPage();
+  await page.addInitScript(() => { Math.random = () => 0; });
+  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  expect(await page.locator('.home-readers-quotes > .home-q').count()).toBe(quotes.length);
+  expect(await page.locator('.home-voice-grid > .home-voice-card').count()).toBe(samples.length);
+  const shown = await visibleTexts(page, '.home-readers-quotes > .home-q');
+  expect(shown).toHaveLength(3);
+  expect(shown[0].length).toBeGreaterThanOrEqual(90 + 2);
+  expect(shown).not.toEqual(featured);
+  expect(await visibleTexts(page, '.home-voice-grid > .home-voice-card')).toHaveLength(Math.min(3, samples.length));
+  await js.close();
+});

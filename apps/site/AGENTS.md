@@ -49,6 +49,11 @@ human-reviewed — not in CI.
 **Hand-authored** (edit directly): `site.js`, `support.json`, `quotes.json`, `survey.json`, `topics.js`,
 `redirects.js`, `assets.js`, `faq.js`.
 
+The home page puts every `quotes.json` quote and every `voiceSamples.json` excerpt in the HTML, and an
+inline script draws three of each on every visit (the wide lead slot only takes quotes of 90+
+characters). `featured` now means only the no-JavaScript fallback: the first three featured quotes,
+in file order. Adding a quote or an excerpt puts it in the rotation.
+
 **Computed at build time** (JS data files run during 11ty):
 - `archiveStats.js` — totals (links, words, domains), per-year breakdowns, records, streaks. Reads the
   issue pages' front matter through `lib/issueIndex.js`, as `topics.js` and `redirects.js` do.
