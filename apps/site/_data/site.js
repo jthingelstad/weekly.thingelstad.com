@@ -30,6 +30,10 @@ module.exports = {
   buttondownUsername: 'weekly-thing',
   librarianApiUrl: envValue('LIBRARIAN_API_URL') || 'https://librarian.thingelstad.com',
   librarianStreamUrl: envValue('LIBRARIAN_STREAM_URL') || 'https://librarian.thingelstad.com',
+  // Cloudflare Turnstile widget "thingelstad.com sign-in and subscribe"; the
+  // site key is public. The Librarian checks the token (librarian-thing
+  // apps/librarian/lambda/shared/turnstile.mts).
+  turnstileSiteKey: envValue('TURNSTILE_SITE_KEY') || '0x4AAAAAAFWqGqZVkNAWfIQn',
   social: {
     mastodon: 'https://mastodon.social/@weeklything',
     bluesky: 'https://bsky.app/profile/weekly.thingelstad.com'

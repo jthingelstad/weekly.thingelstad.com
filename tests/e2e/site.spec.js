@@ -31,6 +31,80 @@ test('subscription and membership forms use the native Librarian front door', as
   expect(actions).toEqual(['check', 'subscribe']);
 });
 
+test('the subscribe form sends a Turnstile token and never posts to Buttondown', async ({ page }) => {
+  await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
+  // A stand-in for Cloudflare's script: it hands out one token per render or
+  // reset, so a reused token and a fresh one can be told apart.
+  let scriptLoads = 0;
+  await page.route(/challenges\.cloudflare\.com\/turnstile\/v0\/api\.js/, async (route) => {
+    scriptLoads += 1;
+    await route.fulfill({
+      contentType: 'text/javascript',
+      body: `
+        (function() {
+          var issued = 0, widgets = [];
+          window.turnstile = {
+            render: function(el, opts) {
+              widgets.push(opts);
+              setTimeout(function() { opts.callback('token-' + (++issued)); }, 10);
+              return widgets.length - 1;
+            },
+            reset: function(id) {
+              setTimeout(function() { widgets[id].callback('token-' + (++issued)); }, 10);
+            }
+          };
+          setTimeout(function() { window.weeklyThingTurnstileLoaded(); }, 0);
+        })();`,
+    });
+  });
+  const calls = [];
+  await page.route('https://librarian.thingelstad.com/auth', async (route) => {
+    const body = route.request().postDataJSON();
+    calls.push({ action: body.action, email: body.email, token: body.turnstile_token });
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify(body.action === 'check' ? { status: 'not_found' } : { status: 'subscribed' }),
+    });
+  });
+
+  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  expect(scriptLoads, 'no Cloudflare script on a plain page view').toBe(0);
+  const form = page.locator('.subscribe-shell').first();
+  await expect(form.locator('form')).not.toHaveAttribute('action', /./);
+  await form.locator('input[type="email"]').fill('reader@example.com');
+  await form.locator('button[type="submit"]').click();
+  await expect(form.locator('.subscribe-status')).toContainText('Check your inbox');
+  expect(scriptLoads).toBe(1);
+  // One token covers check then subscribe for the same address.
+  expect(calls).toEqual([
+    { action: 'check', email: 'reader@example.com', token: 'token-1' },
+    { action: 'subscribe', email: 'reader@example.com', token: 'token-1' },
+  ]);
+
+  // A different address gets a fresh token: the Librarian binds a token to
+  // the first address it saw.
+  await form.locator('input[type="email"]').fill('other@example.com');
+  await form.locator('button[type="submit"]').click();
+  await expect.poll(() => calls.length).toBe(4);
+  expect(calls[2]).toEqual({ action: 'check', email: 'other@example.com', token: 'token-2' });
+});
+
+test('a Turnstile refusal is shown, not sent to Buttondown', async ({ page }) => {
+  await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
+  await page.route('https://librarian.thingelstad.com/auth', (route) => route.fulfill({
+    status: 403,
+    contentType: 'application/json',
+    body: JSON.stringify({ status: 'turnstile_failed', error: 'We couldn’t confirm this request came from a person.' }),
+  }));
+  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  const form = page.locator('.subscribe-shell').first();
+  await form.locator('input[type="email"]').fill('refused@example.com');
+  await form.locator('button[type="submit"]').click();
+  await expect(form.locator('.subscribe-status')).toContainText('confirm this request came from a person');
+  await expect(page).toHaveURL(/127\.0\.0\.1/);
+});
+
 test('main navigation stays on one row at mobile widths', async ({ page }) => {
   const sizes = [
     { width: 320, height: 568 },

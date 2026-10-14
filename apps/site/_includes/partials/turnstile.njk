@@ -1,0 +1,138 @@
+<script>
+// Cloudflare Turnstile for the forms that make the Librarian send mail
+// (subscribe, resend, check). Bots were typing real people's addresses into
+// the subscribe form so our confirmation mail landed in their inboxes; the
+// Librarian now checks a Turnstile token on those actions.
+//
+// Cloudflare's script loads only once someone starts on a form, never on a
+// plain page view. Most people never see a thing (interaction-only); a
+// doubtful browser gets a checkbox under the form. If the script cannot load
+// (a blocker, an outage) the form goes ahead without a token and the
+// Librarian decides.
+//
+// A token is single-use at Cloudflare, but the Librarian keeps its verdict
+// for five minutes and three uses, bound to the first address it was sent
+// with, so one token covers check then subscribe. A new address, a fourth
+// use or an old token gets a fresh one.
+(function() {
+  if (window.weeklyThingTurnstile) return;
+  var SITE_KEY = {{ site.turnstileSiteKey | dump | safe }};
+  var SCRIPT = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=weeklyThingTurnstileLoaded';
+  var QUIET_WAIT_MS = 5000;
+  var INTERACTIVE_WAIT_MS = 120000;
+  var MAX_USES = 3;
+  var MAX_AGE_MS = 270000;
+  var loading = null;
+
+  function loadScript() {
+    if (loading) return loading;
+    loading = new Promise(function(resolve, reject) {
+      if (window.turnstile) return resolve(window.turnstile);
+      window.weeklyThingTurnstileLoaded = function() { resolve(window.turnstile); };
+      var script = document.createElement('script');
+      script.src = SCRIPT;
+      script.async = true;
+      script.defer = true;
+      script.onerror = function() { reject(new Error('turnstile-unavailable')); };
+      document.head.appendChild(script);
+    });
+    return loading;
+  }
+
+  function attach(slot, action) {
+    var widgetId = null;
+    var token = '';
+    var issuedAt = 0;
+    var uses = 0;
+    var boundEmail = '';
+    var interactive = false;
+    var unavailable = false;
+    var waiters = [];
+
+    function settle() {
+      var pending = waiters;
+      waiters = [];
+      pending.forEach(function(done) { done(); });
+    }
+
+    function warm() {
+      if (widgetId !== null || unavailable || !SITE_KEY || !slot) return;
+      widgetId = 'pending';
+      loadScript().then(function(api) {
+        widgetId = api.render(slot, {
+          sitekey: SITE_KEY,
+          action: action,
+          appearance: 'interaction-only',
+          'refresh-expired': 'auto',
+          callback: function(value) {
+            token = value;
+            issuedAt = Date.now();
+            uses = 0;
+            boundEmail = '';
+            interactive = false;
+            settle();
+          },
+          'expired-callback': function() { token = ''; },
+          'before-interactive-callback': function() { interactive = true; },
+          'error-callback': function() {
+            token = '';
+            interactive = false;
+            settle();
+          }
+        });
+      }, function() {
+        unavailable = true;
+        widgetId = null;
+        settle();
+      });
+    }
+
+    function reset() {
+      token = '';
+      uses = 0;
+      boundEmail = '';
+      if (window.turnstile && widgetId !== null && widgetId !== 'pending') {
+        try { window.turnstile.reset(widgetId); } catch (err) { /* ignore */ }
+      }
+    }
+
+    function fresh(email) {
+      if (!token) return false;
+      if (uses >= MAX_USES || Date.now() - issuedAt > MAX_AGE_MS) return false;
+      return !boundEmail || boundEmail === email;
+    }
+
+    // Resolves to a token for this address, or '' when none came in time.
+    function tokenFor(rawEmail) {
+      var email = String(rawEmail || '').trim().toLowerCase();
+      warm();
+      if (token && !fresh(email)) reset();
+      return new Promise(function(resolve) {
+        var started = Date.now();
+        function finish() {
+          if (!token) return resolve('');
+          uses += 1;
+          boundEmail = email;
+          resolve(token);
+        }
+        function poll() {
+          if (token || unavailable || !SITE_KEY) return finish();
+          var limit = interactive ? INTERACTIVE_WAIT_MS : QUIET_WAIT_MS;
+          if (Date.now() - started >= limit) return finish();
+          var timer = window.setTimeout(function() {
+            waiters = waiters.filter(function(fn) { return fn !== wake; });
+            poll();
+          }, 250);
+          function wake() { window.clearTimeout(timer); poll(); }
+          waiters.push(wake);
+        }
+        poll();
+      });
+    }
+
+    return { warm: warm, tokenFor: tokenFor, reset: reset };
+  }
+
+  window.weeklyThingTurnstile = { attach: attach };
+})();
+</script>

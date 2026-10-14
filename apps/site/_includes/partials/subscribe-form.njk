@@ -1,9 +1,8 @@
 <div class="subscribe-shell" data-subscribe-id="{{ subscribeId or 'default' }}" data-api-base="{{ site.librarianApiUrl }}">
-  <form
-    action="https://buttondown.com/api/emails/embed-subscribe/{{ site.buttondownUsername }}"
-    method="post"
-    class="subscribe-form"
-  >
+  {#- No action: the form only talks to the Librarian. Posting straight to
+      Buttondown skipped the Turnstile check, and the advertised embed URL
+      is where the bulk bot signups go (2026-10-14). -#}
+  <form class="subscribe-form" novalidate>
     <label for="email-{{ subscribeId or 'default' }}" class="sr-only">Email address</label>
     <div class="subscribe-field">
       <input
@@ -18,10 +17,14 @@
       />
       <span class="subscribe-error" aria-live="polite"></span>
     </div>
-    <input type="hidden" value="1" name="embed" />
     <button type="submit" class="subscribe-button" data-default-label="Subscribe" data-tinylytics-event="subscribe.submit" data-tinylytics-event-value="{{ subscribeId or 'default' }}">Subscribe</button>
   </form>
+  <div class="turnstile-slot"></div>
   <p class="subscribe-status" role="status" aria-live="polite" hidden></p>
+  <noscript>
+    <style>.subscribe-form { display: none; }</style>
+    <p class="subscribe-status">Subscribing here needs JavaScript. You can also <a href="https://buttondown.com/{{ site.buttondownUsername }}">subscribe on Buttondown</a>.</p>
+  </noscript>
 </div>
 <script>
 (function() {
@@ -39,6 +42,10 @@
   var defaultButtonLabel = btn.getAttribute('data-default-label') || btn.textContent.trim();
   var emailRe = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
   var recognized = false;
+  var human = window.weeklyThingTurnstile
+    ? window.weeklyThingTurnstile.attach(shell.querySelector('.turnstile-slot'), 'subscribe')
+    : null;
+  var UNREACHABLE = 'Could not reach the subscription service. Please try again in a minute.';
 
   function track(name, value) {
     if (!name) return;
@@ -171,6 +178,20 @@
   function callAuth(payload) {
     if (!apiBase) return Promise.reject(new Error('no-api-base'));
     payload = withAttribution(payload);
+    var tokenReady = human ? human.tokenFor(payload.email) : Promise.resolve('');
+    return tokenReady.then(function(token) {
+      if (token) payload.turnstile_token = token;
+      return postAuth(payload);
+    }).then(function(result) {
+      if (result.status === 403 && result.data && result.data.status === 'turnstile_failed') {
+        if (human) human.reset();
+        track('subscribe.turnstile_failed', subscribeId + '.' + payload.action);
+      }
+      return result;
+    });
+  }
+
+  function postAuth(payload) {
     var controller = new AbortController();
     var timeout = window.setTimeout(function() { controller.abort(); }, 12000);
     return fetch(apiBase + '/auth', {
@@ -189,10 +210,10 @@
     });
   }
 
-  function fallbackSubmit(reason) {
-    track('subscribe.fallback_submit', subscribeId + '.' + (reason || 'unknown'));
+  function unreachable(reason) {
+    track('subscribe.unreachable', subscribeId + '.' + (reason || 'unknown'));
     setBusy(false);
-    form.submit();
+    setStatus(UNREACHABLE, 'error');
   }
 
   function persistTokenIfPresent(data, email) {
@@ -275,12 +296,12 @@
       // A 5xx from the Librarian is Buttondown refusing or timing out, and
       // the address is already in the ledger. Re-posting the raw form to
       // Buttondown only produced its dead-end "contact the author" page and
-      // hid the failure from us (2026-09-20) — so it is no longer the
-      // fallback for that; only for the Librarian being unreachable at all.
+      // hid the failure from us (2026-09-20); since 2026-10-14 there is no
+      // Buttondown fallback at all, not even for an unreachable Librarian.
       setStatus((result.data && (result.data.error || result.data.message)) || 'Could not add that email right now. Please try again in a minute.', 'error');
       track('subscribe.failed', subscribeId + '.' + result.status);
     }, function() {
-      fallbackSubmit('subscribe-network');
+      unreachable('subscribe-network');
     });
   }
 
@@ -294,8 +315,8 @@
       event.preventDefault();
       return;
     }
-    if (!apiBase) return;
     event.preventDefault();
+    if (!apiBase) return unreachable('no-api-base');
     clearStatus();
     setBusy(true, 'Checking…');
     callAuth({ email: input.value.trim(), action: 'check', source: subscribeId }).then(function(result) {
@@ -325,17 +346,24 @@
         setStatus(data.error || 'Please enter a valid email address.', 'error');
         return;
       }
-      fallbackSubmit('check-' + result.status);
+      if (result.status === 403 && data.status === 'turnstile_failed') {
+        setStatus(data.error, 'error');
+        return;
+      }
+      setStatus(data.error || UNREACHABLE, 'error');
+      track('subscribe.failed', subscribeId + '.check-' + result.status);
     }, function() {
-      fallbackSubmit('check-network');
+      unreachable('check-network');
     });
   }
 
   input.addEventListener('focus', function() {
     if (recognized) exitRecognizedState();
+    if (human) human.warm();
   });
   input.addEventListener('input', function() {
     if (recognized) exitRecognizedState();
+    if (human) human.warm();
     clearStatus();
     validate();
   });

@@ -19,6 +19,7 @@
     </div>
     <button type="submit" class="upgrade-button btn btn-primary" data-default-label="Become a Supporting Member" data-tinylytics-event="support.upgrade.submit">Become a Supporting Member</button>
   </form>
+  <div class="turnstile-slot"></div>
   <div class="upgrade-status" role="status" aria-live="polite" hidden></div>
 </div>
 <script>
@@ -34,6 +35,9 @@
   var tokenKey = 'weeklyThingLibrarianToken';
   var emailKey = 'weeklyThingSubscriberEmail';
   var defaultButtonLabel = btn.getAttribute('data-default-label') || btn.textContent.trim();
+  var human = window.weeklyThingTurnstile
+    ? window.weeklyThingTurnstile.attach(shell.querySelector('.turnstile-slot'), 'members')
+    : null;
   var emailRe = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
 
   function track(name, value) {
@@ -110,6 +114,20 @@
       var attribution = readAttribution();
       if (attribution) payload.attribution = attribution;
     }
+    var tokenReady = human ? human.tokenFor(payload.email) : Promise.resolve('');
+    return tokenReady.then(function(token) {
+      if (token) payload.turnstile_token = token;
+      return postAuth(payload);
+    }).then(function(result) {
+      if (result.status === 403 && result.data && result.data.status === 'turnstile_failed') {
+        if (human) human.reset();
+        track('support.upgrade.turnstile_failed', payload.action);
+      }
+      return result;
+    });
+  }
+
+  function postAuth(payload) {
     var controller = new AbortController();
     var timeout = window.setTimeout(function() { controller.abort(); }, 12000);
     return fetch(apiBase + '/auth', {
@@ -275,13 +293,21 @@
         setStatus(escapeHtml(data.error || 'Please enter a valid email address.'), 'error');
         return;
       }
+      if (result.status === 403 && data.status === 'turnstile_failed') {
+        setStatus(escapeHtml(data.error), 'error');
+        return;
+      }
       fallbackToStripe('check-' + result.status);
     }, function() {
       fallbackToStripe('check-network');
     });
   }
 
+  input.addEventListener('focus', function() {
+    if (human) human.warm();
+  });
   input.addEventListener('input', function() {
+    if (human) human.warm();
     clearStatus();
     btn.hidden = false;
     validate();
