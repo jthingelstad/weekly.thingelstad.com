@@ -1,5 +1,36 @@
 const { test, expect } = require('@playwright/test');
 
+test('subscription and membership forms use the native Librarian front door', async ({ page }) => {
+  // Intercept the signup flow so this exercises the rendered client without
+  // creating subscribers or sending confirmation mail.
+  await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
+  const actions = [];
+  await page.route('https://librarian.thingelstad.com/auth', async (route) => {
+    actions.push(route.request().postDataJSON().action);
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify(actions.at(-1) === 'check'
+        ? { status: 'not_found' }
+        : { status: 'subscribed' }),
+    });
+  });
+  for (const path of ['/', '/archive/353/', '/members/']) {
+    await page.goto(path, { waitUntil: 'domcontentloaded' });
+    const forms = page.locator('[data-api-base]');
+    expect(await forms.count(), path).toBeGreaterThan(0);
+    for (const form of await forms.all()) {
+      await expect(form).toHaveAttribute('data-api-base', 'https://librarian.thingelstad.com');
+    }
+  }
+  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  const form = page.locator('.subscribe-shell').first();
+  await form.locator('input[type="email"]').fill('native-routing@example.com');
+  await form.locator('button[type="submit"]').click();
+  await expect(form.locator('.subscribe-status')).toContainText('Check your inbox to confirm your subscription.');
+  expect(actions).toEqual(['check', 'subscribe']);
+});
+
 test('main navigation stays on one row at mobile widths', async ({ page }) => {
   const sizes = [
     { width: 320, height: 568 },
