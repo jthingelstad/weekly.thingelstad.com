@@ -136,5 +136,59 @@
     "source": 2025,
     "short": true,
     "tags": ["enthusiasm", "fun"]
+  },
+  {
+    "text": "So fortunate you do the Weekly Thing! I am a better person and leader because of it!",
+    "source": 2020,
+    "tags": ["leadership", "value", "enthusiasm"]
+  },
+  {
+    "text": "It's quickly become my Saturday morning routine.",
+    "source": 2020,
+    "short": true,
+    "tags": ["habit", "ritual"]
+  },
+  {
+    "text": "Digging this!",
+    "source": 2020,
+    "short": true,
+    "tags": ["enthusiasm"]
+  },
+  {
+    "text": "Love it!",
+    "source": 2020,
+    "short": true,
+    "tags": ["enthusiasm"]
+  },
+  {
+    "text": "Thank you so much for your expert content curation!",
+    "source": 2020,
+    "short": true,
+    "tags": ["curation", "expertise"]
+  },
+  {
+    "text": "If no one else subscribes, please keep this going for me! :)",
+    "source": 2020,
+    "tags": ["enthusiasm", "fun"]
+  },
+  {
+    "text": "I look forward to reading what you are digging.",
+    "source": 2020,
+    "tags": ["curation", "personal"]
+  },
+  {
+    "text": "I find the links you share both interesting and ones that I don't often come across from other sources! I look forward to getting the mail!",
+    "source": 2020,
+    "tags": ["curation", "breadth"]
+  },
+  {
+    "text": "Thanks so much for the Weekly Thing. I learn something immediately useful each time I read it!",
+    "source": 2020,
+    "tags": ["value", "professional"]
+  },
+  {
+    "text": "I very much enjoy the Weekly Thing, and especially like your succinct takes on the articles peppered in with your experiences. It's a perfect start to every Saturday!",
+    "source": 2020,
+    "tags": ["commentary", "personal", "ritual"]
   }
 ]
