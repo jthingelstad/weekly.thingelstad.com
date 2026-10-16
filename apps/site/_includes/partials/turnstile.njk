@@ -10,6 +10,14 @@
 // (a blocker, an outage) the form goes ahead without a token and the
 // Librarian decides.
 //
+// The form never waits on Turnstile for more than MAX_WAIT_MS. Until
+// 2026-10-16 a checkbox challenge held the post for up to two minutes, and
+// most readers whose check went through without a token never reached the
+// subscribe step after the 10-14 launch. On a timeout the form posts
+// without a token, which observe mode records as "missing". Once a wait has
+// run out, later posts from the same form go straight through until a token
+// arrives, so check then subscribe waits once.
+//
 // A token is single-use at Cloudflare, but the Librarian keeps its verdict
 // for five minutes and three uses, bound to the first address it was sent
 // with, so one token covers check then subscribe. A new address, a fourth
@@ -18,8 +26,7 @@
   if (window.weeklyThingTurnstile) return;
   var SITE_KEY = {{ site.turnstileSiteKey | dump | safe }};
   var SCRIPT = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=weeklyThingTurnstileLoaded';
-  var QUIET_WAIT_MS = 5000;
-  var INTERACTIVE_WAIT_MS = 120000;
+  var MAX_WAIT_MS = 3000;
   var MAX_USES = 3;
   var MAX_AGE_MS = 270000;
   var loading = null;
@@ -45,7 +52,7 @@
     var issuedAt = 0;
     var uses = 0;
     var boundEmail = '';
-    var interactive = false;
+    var timedOut = false;
     var unavailable = false;
     var waiters = [];
 
@@ -69,14 +76,12 @@
             issuedAt = Date.now();
             uses = 0;
             boundEmail = '';
-            interactive = false;
+            timedOut = false;
             settle();
           },
           'expired-callback': function() { token = ''; },
-          'before-interactive-callback': function() { interactive = true; },
           'error-callback': function() {
             token = '';
-            interactive = false;
             settle();
           }
         });
@@ -102,13 +107,15 @@
       return !boundEmail || boundEmail === email;
     }
 
-    // Resolves to a token for this address, or '' when none came in time.
+    // Resolves to a token for this address, or '' when none came within the
+    // bound.
     function tokenFor(rawEmail) {
       var email = String(rawEmail || '').trim().toLowerCase();
       warm();
       if (token && !fresh(email)) reset();
       return new Promise(function(resolve) {
         var started = Date.now();
+        var limit = timedOut ? 0 : MAX_WAIT_MS;
         function finish() {
           if (!token) return resolve('');
           uses += 1;
@@ -117,12 +124,15 @@
         }
         function poll() {
           if (token || unavailable || !SITE_KEY) return finish();
-          var limit = interactive ? INTERACTIVE_WAIT_MS : QUIET_WAIT_MS;
-          if (Date.now() - started >= limit) return finish();
+          var left = limit - (Date.now() - started);
+          if (left <= 0) {
+            timedOut = true;
+            return finish();
+          }
           var timer = window.setTimeout(function() {
             waiters = waiters.filter(function(fn) { return fn !== wake; });
             poll();
-          }, 250);
+          }, Math.min(250, left));
           function wake() { window.clearTimeout(timer); poll(); }
           waiters.push(wake);
         }

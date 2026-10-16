@@ -90,6 +90,57 @@ test('the subscribe form sends a Turnstile token and never posts to Buttondown',
   expect(calls[2]).toEqual({ action: 'check', email: 'other@example.com', token: 'token-2' });
 });
 
+// 2026-10-16: an interactive challenge held the post for up to two minutes
+// and readers left before subscribing. Observe mode must never hold a
+// reader: the form posts within a few seconds, without a token if none came.
+for (const [name, script] of [
+  [
+    'an interactive challenge nobody answers',
+    `(function() {
+      window.turnstile = {
+        render: function(el, opts) {
+          setTimeout(function() { opts['before-interactive-callback'] && opts['before-interactive-callback'](); }, 10);
+          return 0;
+        },
+        reset: function() {}
+      };
+      setTimeout(function() { window.weeklyThingTurnstileLoaded(); }, 0);
+    })();`,
+  ],
+  ['a Cloudflare script that never loads', null],
+]) {
+  test(`the subscribe form posts within the bound under ${name}`, async ({ page }) => {
+    await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
+    await page.route(/challenges\.cloudflare\.com\/turnstile\/v0\/api\.js/, async (route) => {
+      if (script) await route.fulfill({ contentType: 'text/javascript', body: script });
+      // else: never answer, like a stalled network
+    });
+    const calls = [];
+    await page.route('https://librarian.thingelstad.com/auth', async (route) => {
+      const body = route.request().postDataJSON();
+      calls.push({ action: body.action, token: body.turnstile_token, at: Date.now() });
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(body.action === 'check' ? { status: 'not_found' } : { status: 'subscribed' }),
+      });
+    });
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    const form = page.locator('.subscribe-shell').first();
+    await form.locator('input[type="email"]').fill('patient@example.com');
+    const clicked = Date.now();
+    await form.locator('button[type="submit"]').click();
+    await expect(form.locator('.subscribe-status')).toContainText('Check your inbox', { timeout: 8000 });
+    expect(calls.map((c) => [c.action, c.token])).toEqual([
+      ['check', undefined],
+      ['subscribe', undefined],
+    ]);
+    // One bounded wait (3 s) for the check; the subscribe right behind it.
+    expect(calls[0].at - clicked).toBeLessThan(4500);
+    expect(calls[1].at - calls[0].at).toBeLessThan(1000);
+  });
+}
+
 test('a Turnstile refusal is shown, not sent to Buttondown', async ({ page }) => {
   await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
   await page.route('https://librarian.thingelstad.com/auth', (route) => route.fulfill({
