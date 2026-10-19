@@ -1,9 +1,9 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-10-08T19:02:39.029878Z",
+  "generated_at": "2026-10-19T17:44:19.448002Z",
   "extraction_model": "heuristic",
-  "issue_count": 353,
+  "issue_count": 354,
   "issues": {
     "1": {
       "entities": [
@@ -13912,6 +13912,10 @@
           "score": 0.6749
         },
         {
+          "number": "353",
+          "score": 0.6595
+        },
+        {
           "number": "325",
           "score": 0.6457
         },
@@ -13926,10 +13930,6 @@
         {
           "number": "263",
           "score": 0.6358
-        },
-        {
-          "number": "228",
-          "score": 0.6304
         }
       ]
     },
@@ -18895,16 +18895,16 @@
           "score": 0.6724
         },
         {
+          "number": "353",
+          "score": 0.6719
+        },
+        {
           "number": "274",
           "score": 0.6631
         },
         {
           "number": "325",
           "score": 0.6587
-        },
-        {
-          "number": "321",
-          "score": 0.6495
         }
       ]
     },
@@ -23726,8 +23726,8 @@
           "score": 0.7372
         },
         {
-          "number": "324",
-          "score": 0.7303
+          "number": "353",
+          "score": 0.736
         }
       ]
     },
@@ -24553,16 +24553,16 @@
           "score": 0.7424
         },
         {
+          "number": "353",
+          "score": 0.7345
+        },
+        {
           "number": "331",
           "score": 0.7343
         },
         {
           "number": "263",
           "score": 0.7308
-        },
-        {
-          "number": "320",
-          "score": 0.7304
         }
       ]
     },
@@ -24934,6 +24934,10 @@
           "score": 0.7586
         },
         {
+          "number": "353",
+          "score": 0.7517
+        },
+        {
           "number": "336",
           "score": 0.7509
         },
@@ -24944,10 +24948,6 @@
         {
           "number": "325",
           "score": 0.7492
-        },
-        {
-          "number": "295",
-          "score": 0.7477
         }
       ]
     },
@@ -25774,6 +25774,10 @@
       ],
       "similar_issues": [
         {
+          "number": "353",
+          "score": 0.746
+        },
+        {
           "number": "331",
           "score": 0.7381
         },
@@ -25792,10 +25796,6 @@
         {
           "number": "320",
           "score": 0.7192
-        },
-        {
-          "number": "348",
-          "score": 0.7155
         }
       ]
     },
@@ -25940,16 +25940,16 @@
           "score": 0.7284
         },
         {
+          "number": "353",
+          "score": 0.7257
+        },
+        {
           "number": "346",
           "score": 0.7201
         },
         {
           "number": "331",
           "score": 0.7144
-        },
-        {
-          "number": "352",
-          "score": 0.699
         }
       ]
     },
@@ -26017,16 +26017,16 @@
           "score": 0.697
         },
         {
+          "number": "353",
+          "score": 0.6823
+        },
+        {
           "number": "340",
           "score": 0.6723
         },
         {
           "number": "328",
           "score": 0.6722
-        },
-        {
-          "number": "346",
-          "score": 0.6694
         }
       ]
     },
@@ -26160,6 +26160,10 @@
           "score": 0.7064
         },
         {
+          "number": "353",
+          "score": 0.7024
+        },
+        {
           "number": "313",
           "score": 0.694
         },
@@ -26174,10 +26178,6 @@
         {
           "number": "342",
           "score": 0.6799
-        },
-        {
-          "number": "325",
-          "score": 0.6792
         }
       ]
     },
@@ -26240,6 +26240,10 @@
           "score": 0.7557
         },
         {
+          "number": "353",
+          "score": 0.7549
+        },
+        {
           "number": "325",
           "score": 0.7444
         },
@@ -26250,10 +26254,6 @@
         {
           "number": "320",
           "score": 0.7352
-        },
-        {
-          "number": "263",
-          "score": 0.7344
         }
       ]
     },
@@ -26317,6 +26317,10 @@
           "score": 0.7295
         },
         {
+          "number": "353",
+          "score": 0.7279
+        },
+        {
           "number": "52",
           "score": 0.7157
         },
@@ -26327,10 +26331,6 @@
         {
           "number": "273",
           "score": 0.7047
-        },
-        {
-          "number": "263",
-          "score": 0.7005
         }
       ]
     },
@@ -26401,12 +26401,12 @@
           "score": 0.7255
         },
         {
-          "number": "340",
-          "score": 0.7155
+          "number": "353",
+          "score": 0.7194
         },
         {
-          "number": "273",
-          "score": 0.7135
+          "number": "340",
+          "score": 0.7155
         }
       ]
     },
@@ -26538,6 +26538,10 @@
       ],
       "similar_issues": [
         {
+          "number": "353",
+          "score": 0.7323
+        },
+        {
           "number": "324",
           "score": 0.7147
         },
@@ -26556,10 +26560,6 @@
         {
           "number": "346",
           "score": 0.6866
-        },
-        {
-          "number": "328",
-          "score": 0.6859
         }
       ]
     },
@@ -26622,6 +26622,10 @@
           "score": 0.718
         },
         {
+          "number": "353",
+          "score": 0.7147
+        },
+        {
           "number": "346",
           "score": 0.7142
         },
@@ -26632,10 +26636,6 @@
         {
           "number": "329",
           "score": 0.7061
-        },
-        {
-          "number": "340",
-          "score": 0.7025
         }
       ]
     },
@@ -26706,12 +26706,90 @@
           "score": 0.7103
         },
         {
-          "number": "342",
-          "score": 0.699
+          "number": "353",
+          "score": 0.702
         },
         {
-          "number": "264",
-          "score": 0.6916
+          "number": "342",
+          "score": 0.699
+        }
+      ]
+    },
+    "353": {
+      "entities": [
+        "thingelstad.com",
+        "weekly.thingelstad.com",
+        "Haiku",
+        "MCP",
+        "Apple",
+        "Claude",
+        "blog.ethereum.org",
+        "brew.sh",
+        "earendil.com",
+        "github.com",
+        "simonwillison.net",
+        "thingy.thingelstad.com",
+        "API",
+        "Cloudflare",
+        "Git",
+        "Introducing",
+        "Jev",
+        "Ahead",
+        "BRKTHROUGH",
+        "Bars",
+        "DKIM",
+        "DMARC",
+        "DuckDB",
+        "Homebrew",
+        "If You Understand These",
+        "In March",
+        "Life",
+        "Mandelnaut",
+        "Otto",
+        "Plain-English Conditions",
+        "Platform Engineering Terms",
+        "Rumored M8 Ultra AI Servers",
+        "SPF",
+        "SQL",
+        "Software Blogging",
+        "Sonnet",
+        "The Death",
+        "Tufte's Razor",
+        "Turn",
+        "Your Version Number"
+      ],
+      "tropes": [
+        "open web and ownership",
+        "agency over convenience",
+        "tools for thought",
+        "local community",
+        "ai as collaborator",
+        "durable archives"
+      ],
+      "similar_issues": [
+        {
+          "number": "346",
+          "score": 0.7549
+        },
+        {
+          "number": "329",
+          "score": 0.7517
+        },
+        {
+          "number": "340",
+          "score": 0.746
+        },
+        {
+          "number": "313",
+          "score": 0.736
+        },
+        {
+          "number": "324",
+          "score": 0.7345
+        },
+        {
+          "number": "331",
+          "score": 0.7327
         }
       ]
     }
@@ -27070,7 +27148,8 @@
       "349",
       "350",
       "351",
-      "352"
+      "352",
+      "353"
     ],
     "techjam": [
       "1"
@@ -27750,7 +27829,8 @@
       "337",
       "345",
       "348",
-      "349"
+      "349",
+      "353"
     ],
     "json": [
       "2",
@@ -28220,7 +28300,8 @@
       "152",
       "161",
       "330",
-      "332"
+      "332",
+      "353"
     ],
     "creation": [
       "3",
@@ -28804,7 +28885,8 @@
       "346",
       "349",
       "350",
-      "351"
+      "351",
+      "353"
     ],
     "appleworld.today": [
       "5",
@@ -29215,7 +29297,8 @@
       "333",
       "334",
       "340",
-      "352"
+      "352",
+      "353"
     ],
     "kubb": [
       "6",
@@ -30743,7 +30826,8 @@
       "163",
       "251",
       "274",
-      "313"
+      "313",
+      "353"
     ],
     "mn humane society. hoping": [
       "12"
@@ -32115,7 +32199,8 @@
       "333",
       "335",
       "344",
-      "346"
+      "346",
+      "353"
     ],
     "comcast": [
       "19",
@@ -32453,7 +32538,8 @@
       "328",
       "331",
       "342",
-      "343"
+      "343",
+      "353"
     ],
     "angry catfish": [
       "21"
@@ -36163,7 +36249,8 @@
       "347",
       "350",
       "351",
-      "352"
+      "352",
+      "353"
     ],
     "xkcd.com": [
       "52"
@@ -39836,7 +39923,9 @@
     ],
     "homebrew": [
       "92",
-      "350"
+      "333",
+      "350",
+      "353"
     ],
     "sales kickoff": [
       "92"
@@ -41359,8 +41448,12 @@
       "108"
     ],
     "sql": [
+      "22",
       "108",
-      "279"
+      "203",
+      "279",
+      "332",
+      "353"
     ],
     "some breathtaking soccer": [
       "108"
@@ -41929,8 +42022,10 @@
       "115"
     ],
     "turn": [
+      "92",
       "115",
-      "221"
+      "221",
+      "353"
     ],
     "type": [
       "115"
@@ -44598,7 +44693,8 @@
       "150"
     ],
     "duckdb": [
-      "150"
+      "150",
+      "353"
     ],
     "four years": [
       "150"
@@ -45614,7 +45710,8 @@
       "329",
       "330",
       "333",
-      "350"
+      "350",
+      "353"
     ],
     "boy scouts": [
       "166"
@@ -49895,7 +49992,8 @@
       "225"
     ],
     "spf": [
-      "226"
+      "226",
+      "353"
     ],
     "patagonia": [
       "226"
@@ -52068,7 +52166,8 @@
       "259"
     ],
     "bars": [
-      "259"
+      "259",
+      "353"
     ],
     "best chatgpt plugins you can": [
       "259"
@@ -52846,7 +52945,8 @@
       "348",
       "349",
       "350",
-      "351"
+      "351",
+      "353"
     ],
     "federal charges": [
       "271"
@@ -54665,7 +54765,8 @@
       "332",
       "337",
       "345",
-      "347"
+      "347",
+      "353"
     ],
     "martin fowler": [
       "303"
@@ -56736,7 +56837,8 @@
     "otto": [
       "342",
       "343",
-      "352"
+      "352",
+      "353"
     ],
     "elixir": [
       "342",
@@ -57001,13 +57103,15 @@
       "346"
     ],
     "your version number": [
-      "347"
+      "347",
+      "353"
     ],
     "nooneshappy.com": [
       "347"
     ],
     "thingy.thingelstad.com": [
-      "347"
+      "347",
+      "353"
     ],
     "mazie.thingelstad.com": [
       "347"
@@ -57288,6 +57392,63 @@
     ],
     "truth social's pay-to-see-posts-first scheme violates": [
       "352"
+    ],
+    "haiku": [
+      "353"
+    ],
+    "blog.ethereum.org": [
+      "353"
+    ],
+    "brew.sh": [
+      "353"
+    ],
+    "earendil.com": [
+      "353"
+    ],
+    "jev": [
+      "353"
+    ],
+    "ahead": [
+      "353"
+    ],
+    "brkthrough": [
+      "353"
+    ],
+    "dkim": [
+      "353"
+    ],
+    "dmarc": [
+      "353"
+    ],
+    "if you understand these": [
+      "353"
+    ],
+    "in march": [
+      "353"
+    ],
+    "mandelnaut": [
+      "353"
+    ],
+    "plain-english conditions": [
+      "353"
+    ],
+    "platform engineering terms": [
+      "353"
+    ],
+    "rumored m8 ultra ai servers": [
+      "353"
+    ],
+    "software blogging": [
+      "353"
+    ],
+    "sonnet": [
+      "353"
+    ],
+    "the death": [
+      "353"
+    ],
+    "tufte's razor": [
+      "353"
     ]
   },
   "entity_index_uncapped": true,
@@ -57620,7 +57781,8 @@
       "348",
       "349",
       "350",
-      "352"
+      "352",
+      "353"
     ],
     "tools for thought": [
       "1",
@@ -57760,7 +57922,8 @@
       "345",
       "348",
       "349",
-      "351"
+      "351",
+      "353"
     ],
     "local community": [
       "1",
@@ -58029,7 +58192,8 @@
       "347",
       "349",
       "350",
-      "352"
+      "352",
+      "353"
     ],
     "ai as collaborator": [
       "1",
@@ -58259,7 +58423,8 @@
       "349",
       "350",
       "351",
-      "352"
+      "352",
+      "353"
     ],
     "durable archives": [
       "1",
@@ -58429,7 +58594,8 @@
       "347",
       "348",
       "350",
-      "351"
+      "351",
+      "353"
     ],
     "agency over convenience": [
       "6",
@@ -58618,7 +58784,8 @@
       "347",
       "350",
       "351",
-      "352"
+      "352",
+      "353"
     ]
   }
 }
