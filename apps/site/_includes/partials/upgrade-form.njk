@@ -108,7 +108,15 @@
     return undefined;
   }
 
-  function callAuth(payload) {
+  function refusedAsBot(result) {
+    return result.status === 403 && result.data && result.data.status === 'turnstile_failed';
+  }
+  // The Librarian enforces Turnstile on this site (2026-10-20). The first
+  // post waits at most three seconds for a token; if it is refused, the form
+  // waits patiently for one (showing the checkbox if Cloudflare asks) and
+  // posts once more. Only a second refusal reaches the reader. The on-load
+  // check of a remembered address passes quiet: it never holds the page.
+  function callAuth(payload, quiet) {
     if (!apiBase) return Promise.reject(new Error('no-api-base'));
     if (payload.action === 'subscribe' || payload.action === 'resend_confirmation') {
       var attribution = readAttribution();
@@ -119,11 +127,24 @@
       if (token) payload.turnstile_token = token;
       return postAuth(payload);
     }).then(function(result) {
-      if (result.status === 403 && result.data && result.data.status === 'turnstile_failed') {
-        if (human) human.reset();
-        track('support.upgrade.turnstile_failed', payload.action);
-      }
-      return result;
+      if (!refusedAsBot(result)) return result;
+      if (!human || quiet) return result;
+      track('support.upgrade.turnstile_retry', payload.action);
+      human.reset();
+      setBusy(true, 'Confirming…');
+      setStatus('Confirming you’re a person…', 'info');
+      return human.tokenFor(payload.email, true).then(function(token) {
+        clearStatus();
+        if (!token) return result;
+        payload.turnstile_token = token;
+        return postAuth(payload);
+      }).then(function(retried) {
+        if (refusedAsBot(retried)) {
+          human.reset();
+          track('support.upgrade.turnstile_failed', payload.action);
+        }
+        return retried;
+      });
     });
   }
 
@@ -354,7 +375,7 @@
     if (fromQuery) track('support.upgrade.query_prefill');
     if (!apiBase) return;
     setBusy(true, 'Checking…');
-    callAuth({ email: seed, action: 'check', source: 'support' }).then(function(result) {
+    callAuth({ email: seed, action: 'check', source: 'support' }, true).then(function(result) {
       setBusy(false);
       var data = result.data || {};
       if (result.ok && data.status === 'premium') {

@@ -14,9 +14,15 @@
 // 2026-10-16 a checkbox challenge held the post for up to two minutes, and
 // most readers whose check went through without a token never reached the
 // subscribe step after the 10-14 launch. On a timeout the form posts
-// without a token, which observe mode records as "missing". Once a wait has
+// without a token, which the Librarian records as "missing". Once a wait has
 // run out, later posts from the same form go straight through until a token
 // arrives, so check then subscribe waits once.
+//
+// Since 2026-10-20 the Librarian enforces on this site: a post with no
+// token is refused (403 turnstile_failed). A refusal is not the end: the
+// form then waits patiently (PATIENT_WAIT_MS, with the checkbox showing if
+// Cloudflare wants one) and posts once more with the token. Only a second
+// refusal, or no token at all, is shown to the reader.
 //
 // A token is single-use at Cloudflare, but the Librarian keeps its verdict
 // for five minutes and three uses, bound to the first address it was sent
@@ -27,6 +33,7 @@
   var SITE_KEY = {{ site.turnstileSiteKey | dump | safe }};
   var SCRIPT = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=weeklyThingTurnstileLoaded';
   var MAX_WAIT_MS = 3000;
+  var PATIENT_WAIT_MS = 45000;
   var MAX_USES = 3;
   var MAX_AGE_MS = 270000;
   var loading = null;
@@ -108,14 +115,15 @@
     }
 
     // Resolves to a token for this address, or '' when none came within the
-    // bound.
-    function tokenFor(rawEmail) {
+    // bound. A patient call (after a refusal) waits PATIENT_WAIT_MS whatever
+    // happened before, and a token that arrives clears the earlier timeout.
+    function tokenFor(rawEmail, patient) {
       var email = String(rawEmail || '').trim().toLowerCase();
       warm();
       if (token && !fresh(email)) reset();
       return new Promise(function(resolve) {
         var started = Date.now();
-        var limit = timedOut ? 0 : MAX_WAIT_MS;
+        var limit = patient ? PATIENT_WAIT_MS : (timedOut ? 0 : MAX_WAIT_MS);
         function finish() {
           if (!token) return resolve('');
           uses += 1;
@@ -126,7 +134,7 @@
           if (token || unavailable || !SITE_KEY) return finish();
           var left = limit - (Date.now() - started);
           if (left <= 0) {
-            timedOut = true;
+            if (!patient) timedOut = true;
             return finish();
           }
           var timer = window.setTimeout(function() {

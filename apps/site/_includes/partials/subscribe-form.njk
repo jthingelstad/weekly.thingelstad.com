@@ -175,6 +175,13 @@
     return payload;
   }
 
+  function refusedAsBot(result) {
+    return result.status === 403 && result.data && result.data.status === 'turnstile_failed';
+  }
+  // The Librarian enforces Turnstile on this site (2026-10-20). The first
+  // post waits at most three seconds for a token; if it is refused, the form
+  // waits patiently for one (showing the checkbox if Cloudflare asks) and
+  // posts once more. Only a second refusal reaches the reader.
   function callAuth(payload) {
     if (!apiBase) return Promise.reject(new Error('no-api-base'));
     payload = withAttribution(payload);
@@ -183,11 +190,24 @@
       if (token) payload.turnstile_token = token;
       return postAuth(payload);
     }).then(function(result) {
-      if (result.status === 403 && result.data && result.data.status === 'turnstile_failed') {
-        if (human) human.reset();
-        track('subscribe.turnstile_failed', subscribeId + '.' + payload.action);
-      }
-      return result;
+      if (!refusedAsBot(result)) return result;
+      if (!human) return result;
+      track('subscribe.turnstile_retry', subscribeId + '.' + payload.action);
+      human.reset();
+      setBusy(true, 'Confirming…');
+      setStatus('Confirming you’re a person…', 'info');
+      return human.tokenFor(payload.email, true).then(function(token) {
+        clearStatus();
+        if (!token) return result;
+        payload.turnstile_token = token;
+        return postAuth(payload);
+      }).then(function(retried) {
+        if (refusedAsBot(retried)) {
+          human.reset();
+          track('subscribe.turnstile_failed', subscribeId + '.' + payload.action);
+        }
+        return retried;
+      });
     });
   }
 

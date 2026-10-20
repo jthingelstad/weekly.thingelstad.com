@@ -141,19 +141,87 @@ for (const [name, script] of [
   });
 }
 
-test('a Turnstile refusal is shown, not sent to Buttondown', async ({ page }) => {
+// 2026-10-20: the Librarian enforces on this site. A post that left without
+// a token (the three-second bound) is refused; the form then waits for the
+// token, however long the checkbox takes, and posts once more with it.
+test('a refused post waits for the token and is sent once more', async ({ page }) => {
   await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
-  await page.route('https://librarian.thingelstad.com/auth', (route) => route.fulfill({
-    status: 403,
-    contentType: 'application/json',
-    body: JSON.stringify({ status: 'turnstile_failed', error: 'We couldn’t confirm this request came from a person.' }),
-  }));
+  // Cloudflare's stand-in answers only after the first post has gone out
+  // token-less: five seconds, past the three-second bound.
+  await page.route(/challenges\.cloudflare\.com\/turnstile\/v0\/api\.js/, async (route) => {
+    await route.fulfill({
+      contentType: 'text/javascript',
+      body: `
+        (function() {
+          var issued = 0, widgets = [];
+          window.turnstile = {
+            render: function(el, opts) {
+              widgets.push(opts);
+              setTimeout(function() { opts.callback('late-' + (++issued)); }, 5000);
+              return widgets.length - 1;
+            },
+            reset: function(id) {
+              setTimeout(function() { widgets[id].callback('late-' + (++issued)); }, 500);
+            }
+          };
+          setTimeout(function() { window.weeklyThingTurnstileLoaded(); }, 0);
+        })();`,
+    });
+  });
+  const calls = [];
+  await page.route('https://librarian.thingelstad.com/auth', async (route) => {
+    const body = route.request().postDataJSON();
+    calls.push({ action: body.action, token: body.turnstile_token });
+    if (!body.turnstile_token) {
+      await route.fulfill({
+        status: 403,
+        contentType: 'application/json',
+        body: JSON.stringify({ status: 'turnstile_failed', error: 'We couldn’t confirm this request came from a person.' }),
+      });
+      return;
+    }
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify(body.action === 'check' ? { status: 'not_found' } : { status: 'subscribed' }),
+    });
+  });
+  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  const form = page.locator('.subscribe-shell').first();
+  await form.locator('input[type="email"]').fill('patient@example.com');
+  await form.locator('button[type="submit"]').click();
+  await expect(form.locator('.subscribe-status')).toContainText('Confirming you’re a person', { timeout: 6000 });
+  await expect(form.locator('.subscribe-status')).toContainText('Check your inbox', { timeout: 15000 });
+  // Refused once without a token, then sent again with the token the reset
+  // produced (the stand-in names tokens as they are issued, so the reset's
+  // comes first); the subscribe that follows reuses it and is not refused.
+  expect(calls).toEqual([
+    { action: 'check', token: undefined },
+    { action: 'check', token: 'late-1' },
+    { action: 'subscribe', token: 'late-1' },
+  ]);
+});
+
+test('a Turnstile refusal that stands is shown, not sent to Buttondown', async ({ page }) => {
+  await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
+  let posts = 0;
+  await page.route('https://librarian.thingelstad.com/auth', (route) => {
+    posts += 1;
+    return route.fulfill({
+      status: 403,
+      contentType: 'application/json',
+      body: JSON.stringify({ status: 'turnstile_failed', error: 'We couldn’t confirm this request came from a person.' }),
+    });
+  });
   await page.goto('/', { waitUntil: 'domcontentloaded' });
   const form = page.locator('.subscribe-shell').first();
   await form.locator('input[type="email"]').fill('refused@example.com');
   await form.locator('button[type="submit"]').click();
   await expect(form.locator('.subscribe-status')).toContainText('confirm this request came from a person');
   await expect(page).toHaveURL(/127\.0\.0\.1/);
+  // Cloudflare's script never loaded here, so there was no token to wait
+  // for and nothing to send again.
+  expect(posts).toBe(1);
 });
 
 test('main navigation stays on one row at mobile widths', async ({ page }) => {
