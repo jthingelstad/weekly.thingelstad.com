@@ -275,10 +275,12 @@ test("the Jamie's sites strip opens every page, with Weekly Thing marked current
     .map((s) => ({
       href: s.url,
       title: s.description,
-      text: s.id === 'weekly' ? s.short_name : s.name,
+      text: s.strip_label,
       current: s.id === 'weekly',
     }));
   expect(expected.filter((s) => s.current)).toHaveLength(1);
+  // One label per site everywhere: this site reads "Weekly Thing" here too, never "Newsletter".
+  expect(expected.find((s) => s.current).text).toBe('Weekly Thing');
 
   await page.setViewportSize({ width: 1280, height: 800 });
   for (const path of ['/', '/archive/', '/archive/351/', '/topics/', '/about/', '/search/']) {
