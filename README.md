@@ -39,7 +39,7 @@ Shortcuts workflow remains the fallback producer.)
 | [`apps/site/`](apps/site/) | The Eleventy static site — landing page, full archive, feeds. The only app here. |
 | [`apps/files-cdn/`](apps/files-cdn/) | `robots.txt` for the `files.thingelstad.com` public asset domain. |
 | `apps/site/archive/*.md` | **Generated, pushed in by WT Builder.** One page per issue. Do not edit here (the next handoff overwrites). |
-| `apps/site/_data/` | A mix: fetched by this repo's CI (`stats.json`), hand-authored (`site.json`, `support.json`, `quotes.json`, `faq.json`, …), vendored from the thingelstad.com `shared/sites.json` (`sites.json`, via `npm run sites:sync`), and computed at build time from the issue pages (`archiveStats.js`, `topics.js`, `redirects.js`, through `apps/site/lib/issueIndex.js`). |
+| `apps/site/_data/` | A mix: fetched by this repo's CI (`stats.json`), hand-authored (`site.js`, `support.json`, `quotes.json`, `faq.json`, …), vendored from the thingelstad.com `shared/sites.json` (`sites.json`, via `npm run sites:sync`), and computed at build time from the issue pages (`archiveStats.js`, `topics.js`, `redirects.js`, through `apps/site/lib/issueIndex.js`). |
 | `data/librarian/graph.json` | Topic graph, pushed by `librarian-thing`; powers the site's topic pages. |
 | [`tests/e2e/`](tests/e2e/) | Playwright end-to-end tests for the rendered site + the legacy Thingy redirect. |
 

@@ -38,8 +38,8 @@ overwritten by the next handoff. Fix the issue in WT Builder and re-send; histor
 - **Pushed in** (don't hand-edit): `data/librarian/graph.json` by `librarian-thing`.
 - **Owned by this repo:** `stats.json` — subscriber + Stripe figures, fetched by *weekly's own CI* (a
   landing-page presentation concern).
-- **Hand-authored** (edit directly): `site.json`, `support.json`, `quotes.json`, `survey.json`,
-  `faq.json`, `redirects.json`.
+- **Hand-authored** (edit directly): `site.js`, `support.json`, `quotes.json`, `survey.json`,
+  `faq.json`.
 - **Vendored** (don't hand-edit): `sites.json` — a byte-for-byte copy of the thingelstad.com
   `shared/sites.json`, the one list of Jamie's sites. Edit it there, then `npm run sites:sync` here
   and commit the copy (CI checks out only this repo). `npm run sites:check` fails on drift; `npm test`
