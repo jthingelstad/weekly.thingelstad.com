@@ -40,6 +40,11 @@ overwritten by the next handoff. Fix the issue in WT Builder and re-send; histor
   landing-page presentation concern).
 - **Hand-authored** (edit directly): `site.json`, `support.json`, `quotes.json`, `survey.json`,
   `faq.json`, `redirects.json`.
+- **Vendored** (don't hand-edit): `sites.json` — a byte-for-byte copy of the thingelstad.com
+  `shared/sites.json`, the one list of Jamie's sites. Edit it there, then `npm run sites:sync` here
+  and commit the copy (CI checks out only this repo). `npm run sites:check` fails on drift; `npm test`
+  runs it, the deploy workflow cannot (there is no sibling checkout in CI). It feeds the Jamie's sites
+  strip (see `apps/site/AGENTS.md`).
 
 `archiveStats.js` computes stats at build time from the issue pages' front matter (records, streaks,
 per-year breakdowns), read through `apps/site/lib/issueIndex.js`; `topics.js` and `redirects.js` read
@@ -69,7 +74,8 @@ with the default `GITHUB_TOKEN`.
   `data/librarian/graph.json`) — fix upstream in WT Builder or `librarian-thing`.
 - **e2e tests** (`tests/e2e/`) are Playwright specs against the rendered site + Thingy redirects.
   Playwright serves the already-built `_site/` (Pagefind index included) with `python3 -m http.server`
-  on :8080, so the tests see what deploys. Locally run `npm test` (builds, indexes, then tests); bare
+  on :8080, so the tests see what deploys. Locally run `npm test` (checks the vendored `sites.json`,
+  runs the unit tests, builds, indexes, then tests); bare
   `npm run test:e2e` expects `npm run build:all` first. The deploy workflow installs Chromium and runs
   them before uploading the Pages artifact.
 - **Agent guide compatibility:** `AGENTS.md` is canonical everywhere in this repo (root and

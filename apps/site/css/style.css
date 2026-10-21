@@ -390,6 +390,93 @@ th {
   font-weight: 600;
 }
 
+/* --- Jamie's sites strip ---
+   The same strip opens every one of Jamie's sites; its values are fixed by
+   the contract in thingelstad.com AGENTS.md ("The sites strip"), so they are
+   literal here rather than this site's tokens. Only the inner width and side
+   padding follow this site's frame (.container-wide, and the header's phone
+   padding). It scrolls away; the sticky header below it stays. */
+.sites-strip {
+  --strip-ground: #f3f3f5;
+  --strip-label: #5a5a66;
+  --strip-ink: #16161a;
+  --strip-weekly: #1a5eb6;
+  --strip-another: #c63a20;
+  --strip-thingy: #b5461a;
+  background: var(--strip-ground);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: normal;
+}
+
+.sites-strip__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 24px;
+  min-height: 40px;
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.sites-strip__label { color: var(--strip-label); }
+
+.sites-strip__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+}
+
+/* Each link takes its site's colour from --strip-link on its item; the
+   hover rule repeats it so the site-wide a:hover accent never shows here. */
+.sites-strip a,
+.sites-strip a:hover {
+  color: var(--strip-link, var(--strip-ink));
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.sites-strip a:hover { text-decoration-thickness: 2px; }
+.sites-strip a:focus-visible {
+  outline: 2px solid var(--strip-ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.sites-strip__item--current a,
+.sites-strip__item--current a:hover { text-decoration: none; }
+.sites-strip__item--weekly { --strip-link: var(--strip-weekly); }
+.sites-strip__item--another { --strip-link: var(--strip-another); }
+.sites-strip__item--thingy { --strip-link: var(--strip-thingy); }
+
+@media (max-width: 40rem) {
+  .sites-strip__inner {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 18px;
+    padding: 0 var(--space-md);
+  }
+  .sites-strip__label { display: none; }
+  .sites-strip__list { flex-wrap: nowrap; gap: 18px; }
+}
+
+@media (prefers-color-scheme: dark) {
+  .sites-strip {
+    --strip-ground: #1e1e23;
+    --strip-label: #9d9daa;
+    --strip-ink: #ececf0;
+    --strip-weekly: #78acf2;
+    --strip-another: #f08c76;
+    --strip-thingy: #f3a274;
+  }
+}
+
 /* --- Hero --- */
 .hero {
   text-align: center;

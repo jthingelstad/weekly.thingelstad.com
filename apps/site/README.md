@@ -32,6 +32,7 @@ apps/site/
 │   ├── voiceSamples.json ← home-page pull-quotes (its Studio refresh pipeline is retired)
 │   ├── site.js           ← (hand-authored) URL, author, social, Tinylytics UID
 │   ├── support.json      ← (hand-authored) current + past nonprofits
+│   ├── sites.json        ← (vendored, npm run sites:sync) Jamie's sites, for the sites strip
 │   ├── quotes.json, survey.json, faq.js, redirects.js, topics.js, assets.js
 │   ├── archiveStats.js   ← (computed at build) totals, records, streaks
 │   └── supportTotals.js  ← (computed at build) supporter program totals
@@ -69,7 +70,9 @@ handoff. Fix the issue in WT Builder and re-send; historical repairs go in
 
 Editorial, magazine-like. Source Serif 4 for display + italic accents, Source Sans 3 for body/UI,
 JetBrains Mono for eyebrows and meta. `#fcfcfa` bg, `#1f6fd6` accent. Dark mode via
-`prefers-color-scheme`. Mobile-first, accessible. No JS required for core reading.
+`prefers-color-scheme`. Mobile-first, accessible. No JS required for core reading. The "Jamie's sites"
+strip above the header is shared by all of Jamie's sites and follows their contract, not this site's
+palette (see `AGENTS.md`).
 
 ## Search
 

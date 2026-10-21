@@ -1,0 +1,23 @@
+{#- The "Jamie's sites" strip above the header: the same markup on every one of
+    Jamie's sites (contract: thingelstad.com AGENTS.md, "The sites strip").
+    Sites with in_sites_strip true, in the order of _data/sites.json, which is
+    vendored from thingelstad.com shared/sites.json (npm run sites:sync). This
+    site is the "weekly" entry: it shows its short name and is marked current. -#}
+{%- set currentSiteId = "weekly" -%}
+<nav class="sites-strip" aria-label="Jamie's sites">
+  <div class="sites-strip__inner">
+    <span class="sites-strip__label">Jamie's sites</span>
+    <ul class="sites-strip__list">
+      {%- for s in sites.sites %}{% if s.in_sites_strip %}
+      {%- set isCurrent = (s.id == currentSiteId) %}
+      <li class="sites-strip__item sites-strip__item--{{ s.id | e }}{% if isCurrent %} sites-strip__item--current{% endif %}">
+        {%- if isCurrent %}
+        <a href="{{ s.url | e }}" title="{{ s.description | e }}" aria-current="true">{{ (s.short_name or s.name) | e }}</a>
+        {%- else %}
+        <a href="{{ s.url | e }}" title="{{ s.description | e }}">{{ s.name | e }}</a>
+        {%- endif %}
+      </li>
+      {%- endif %}{% endfor %}
+    </ul>
+  </div>
+</nav>

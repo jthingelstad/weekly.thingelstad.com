@@ -264,6 +264,66 @@ test('main navigation stays on one row at mobile widths', async ({ page }) => {
   }
 });
 
+test("the Jamie's sites strip opens every page, with Weekly Thing marked current", async ({ page }) => {
+  // The strip is rendered at build time from the vendored shared/sites.json
+  // (npm run sites:sync). Nothing leaves the machine: every request off
+  // 127.0.0.1 (Tinylytics, Google Fonts) is refused.
+  await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
+  const { sites } = require('../../apps/site/_data/sites.json');
+  const expected = sites
+    .filter((s) => s.in_sites_strip)
+    .map((s) => ({
+      href: s.url,
+      title: s.description,
+      text: s.id === 'weekly' ? s.short_name : s.name,
+      current: s.id === 'weekly',
+    }));
+  expect(expected.filter((s) => s.current)).toHaveLength(1);
+
+  await page.setViewportSize({ width: 1280, height: 800 });
+  for (const path of ['/', '/archive/', '/archive/351/', '/topics/', '/about/', '/search/']) {
+    await page.goto(path, { waitUntil: 'domcontentloaded' });
+    // First thing in the body after the skip link, right above the header.
+    await expect(page.locator('body > .skip-link + nav.sites-strip + header.site-header'), path).toHaveCount(1);
+    const strip = page.getByRole('navigation', { name: "Jamie's sites" });
+    await expect(strip.locator('.sites-strip__label'), path).toHaveText("Jamie's sites");
+    await expect(strip.locator('.sites-strip__label'), path).toBeVisible();
+    const links = await strip.locator('.sites-strip__item > a').evaluateAll((els) =>
+      els.map((a) => ({
+        href: a.getAttribute('href'),
+        title: a.getAttribute('title'),
+        text: a.textContent.trim(),
+        current: a.getAttribute('aria-current') === 'true',
+      })));
+    expect(links, path).toEqual(expected);
+    await expect(strip.locator('.sites-strip__item--current'), path).toHaveCount(1);
+    await expect(strip.locator('.sites-strip__item--current'), path).toHaveClass(/sites-strip__item--weekly/);
+  }
+
+  // Phones: one row that scrolls sideways, no label, and the page stays put.
+  for (const width of [320, 390, 430]) {
+    await page.setViewportSize({ width, height: 800 });
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    const layout = await page.locator('.sites-strip').evaluate((strip) => {
+      const inner = strip.querySelector('.sites-strip__inner');
+      const tops = new Set(Array.from(strip.querySelectorAll('.sites-strip__item'))
+        .map((li) => Math.round(li.getBoundingClientRect().top)));
+      inner.scrollLeft = inner.scrollWidth;
+      const last = strip.querySelector('.sites-strip__item:last-child a').getBoundingClientRect();
+      return {
+        rows: tops.size,
+        labelShown: strip.querySelector('.sites-strip__label').offsetParent !== null,
+        lastRight: Math.round(last.right),
+        pageWidth: document.documentElement.scrollWidth,
+      };
+    });
+    expect(layout.rows, `${width}px strip rows`).toBe(1);
+    expect(layout.labelShown, `${width}px label`).toBe(false);
+    expect(layout.lastRight, `${width}px last site after scrolling`).toBeLessThanOrEqual(width);
+    expect(layout.pageWidth, `${width}px page width`).toBeLessThanOrEqual(width);
+  }
+});
+
 test('legacy Thingy URL redirects to standalone chat', async ({ page }) => {
   await page.route('https://thingy.thingelstad.com/chat/?prompt=RSS', async (route) => {
     await route.fulfill({

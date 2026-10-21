@@ -39,7 +39,7 @@ Shortcuts workflow remains the fallback producer.)
 | [`apps/site/`](apps/site/) | The Eleventy static site — landing page, full archive, feeds. The only app here. |
 | [`apps/files-cdn/`](apps/files-cdn/) | `robots.txt` for the `files.thingelstad.com` public asset domain. |
 | `apps/site/archive/*.md` | **Generated, pushed in by WT Builder.** One page per issue. Do not edit here (the next handoff overwrites). |
-| `apps/site/_data/` | A mix: fetched by this repo's CI (`stats.json`), hand-authored (`site.json`, `support.json`, `quotes.json`, `faq.json`, …), and computed at build time from the issue pages (`archiveStats.js`, `topics.js`, `redirects.js`, through `apps/site/lib/issueIndex.js`). |
+| `apps/site/_data/` | A mix: fetched by this repo's CI (`stats.json`), hand-authored (`site.json`, `support.json`, `quotes.json`, `faq.json`, …), vendored from the thingelstad.com `shared/sites.json` (`sites.json`, via `npm run sites:sync`), and computed at build time from the issue pages (`archiveStats.js`, `topics.js`, `redirects.js`, through `apps/site/lib/issueIndex.js`). |
 | `data/librarian/graph.json` | Topic graph, pushed by `librarian-thing`; powers the site's topic pages. |
 | [`tests/e2e/`](tests/e2e/) | Playwright end-to-end tests for the rendered site + the legacy Thingy redirect. |
 
@@ -110,7 +110,9 @@ Editorial, magazine-like. Source Serif 4 for display + italic accents, Source Sa
 JetBrains Mono for eyebrows and meta. Generous whitespace. `#fcfcfa` background, `#1f6fd6` accent (deep
 `#134d99`, soft `#e1edff`), dark mode via `prefers-color-scheme`. No JS required for core reading — JS
 only for the subscribe form, Pagefind search, archive year filter, Thingy handoffs, and Tinylytics.
-Mobile-first and accessible: heading hierarchy, alt text, color contrast, keyboard nav.
+Mobile-first and accessible: heading hierarchy, alt text, color contrast, keyboard nav. Every page opens
+with the "Jamie's sites" strip shared by all of Jamie's sites (Inter, its own fixed colours; the
+contract is in the thingelstad.com `AGENTS.md`), built from the vendored `_data/sites.json`.
 
 ---
 

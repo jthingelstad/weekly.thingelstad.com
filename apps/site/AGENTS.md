@@ -49,6 +49,11 @@ human-reviewed — not in CI.
 **Hand-authored** (edit directly): `site.js`, `support.json`, `quotes.json`, `survey.json`, `topics.js`,
 `redirects.js`, `assets.js`, `faq.js`.
 
+**Vendored from the thingelstad.com tree:** `sites.json` — a byte-for-byte copy of
+`../shared/sites.json`, the one list of Jamie's sites. Never hand-edit it: change the shared file, then
+`npm run sites:sync` (copy in) and commit; `npm run sites:check` fails when the copy is stale
+(`scripts/sync-sites.mjs`, `SITES_SOURCE` overrides the source path).
+
 The home page puts every `quotes.json` quote and every `voiceSamples.json` excerpt in the HTML, and an
 inline script draws three of each on every visit (the wide lead slot only takes quotes of 90+
 characters). `featured` now means only the no-JavaScript fallback: the first three featured quotes,
@@ -67,6 +72,19 @@ in file order. Adding a quote or an excerpt puts it in the rotation.
 per-issue, `layout: archive`), `/archive/<slug>/` redirects (`redirects.njk` + `_data/redirects.js`),
 hand-written `/about/ /members/ /faq/ /search/`, `/feed.xml`, `/archive/N/links.xml`, `/podcast.xml`,
 
+
+## The Jamie's sites strip
+
+Every page on `layouts/base.njk` opens (right after the skip link, above the sticky header) with the
+"Jamie's sites" strip that tops all of Jamie's sites (`partials/sites-strip.njk`, CSS under "Jamie's
+sites strip" in `css/style.css`). Its markup, class names, colours, sizes, phone behaviour and dark
+values are a shared contract — thingelstad.com `AGENTS.md`, "The sites strip" — so change them there
+first, never here alone; only the inner width (`--container-wide`) and side padding follow this site's
+frame. It is built from `_data/sites.json` (sites with `in_sites_strip`, in file order, no client
+JavaScript); this site is the `weekly` entry, marked current and shown by its `short_name`. The strip
+is set in Inter 400/600, which `base.njk` loads from Google Fonts for it alone. Redirect pages
+(`librarian*.njk`, `archive/redirects.njk`) have no layout and no strip. `tests/e2e/site.spec.js`
+pins the links, the current marker and the phone row.
 
 ## The audio edition on the page and in the feed
 
