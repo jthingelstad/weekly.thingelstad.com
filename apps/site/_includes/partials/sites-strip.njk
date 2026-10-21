@@ -3,7 +3,9 @@
     Sites with in_sites_strip true, in the order of _data/sites.json, which is
     vendored from thingelstad.com shared/sites.json (npm run sites:sync). This
     site is the "weekly" entry, marked current. Every site, this one included,
-    reads as its strip_label, so the strip says the same on every site. -#}
+    reads as its strip_label, so the strip says the same on every site. Every
+    link carries ?ref=sites-strip-weekly so Tinylytics' Sources report on the
+    destination shows the visits this strip sent. -#}
 {%- set currentSiteId = "weekly" -%}
 <nav class="sites-strip" aria-label="Jamie's sites">
   <div class="sites-strip__inner">
@@ -12,7 +14,7 @@
       {%- for s in sites.sites %}{% if s.in_sites_strip %}
       {%- set isCurrent = (s.id == currentSiteId) %}
       <li class="sites-strip__item sites-strip__item--{{ s.id | e }}{% if isCurrent %} sites-strip__item--current{% endif %}">
-        <a href="{{ s.url | e }}" title="{{ s.description | e }}"{% if isCurrent %} aria-current="true"{% endif %}>{{ s.strip_label | e }}</a>
+        <a href="{{ s.url | e }}?ref=sites-strip-{{ currentSiteId }}" title="{{ s.description | e }}"{% if isCurrent %} aria-current="true"{% endif %}>{{ s.strip_label | e }}</a>
       </li>
       {%- endif %}{% endfor %}
     </ul>

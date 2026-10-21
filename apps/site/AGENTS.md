@@ -82,7 +82,8 @@ values are a shared contract — thingelstad.com `AGENTS.md`, "The sites strip" 
 first, never here alone; only the inner width (`--container-wide`) and side padding follow this site's
 frame. It is built from `_data/sites.json` (sites with `in_sites_strip`, in file order, no client
 JavaScript); this site is the `weekly` entry, marked current; every site reads as its `strip_label`, this one
-included, so the wording matches every other site. The strip
+included, so the wording matches every other site, and every link carries `?ref=sites-strip-weekly`
+for Tinylytics. The strip
 is set in Inter 400/600, which `base.njk` loads from Google Fonts for it alone. Redirect pages
 (`librarian*.njk`, `archive/redirects.njk`) have no layout and no strip. `tests/e2e/site.spec.js`
 pins the links, the current marker and the phone row.

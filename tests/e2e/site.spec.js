@@ -273,7 +273,7 @@ test("the Jamie's sites strip opens every page, with Weekly Thing marked current
   const expected = sites
     .filter((s) => s.in_sites_strip)
     .map((s) => ({
-      href: s.url,
+      href: `${s.url}?ref=sites-strip-weekly`,
       title: s.description,
       text: s.strip_label,
       current: s.id === 'weekly',
