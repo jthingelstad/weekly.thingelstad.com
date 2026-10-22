@@ -2077,6 +2077,8 @@ th {
   font-size: 15px;
   color: var(--ink);
 }
+.issue-byline-name a { color: inherit; text-decoration: none; }
+.issue-byline-name a:hover { text-decoration: underline; }
 .issue-byline-meta {
   font-family: var(--mono);
   font-size: 12px;
@@ -3429,6 +3431,21 @@ a.issue-chapter-title:hover { color: var(--accent); }
   font-size: 13px;
   grid-column: 1 / -1;
 }
+
+/* Jamie's h-card (thingelstad.com AGENTS.md, "Jamie on every site"). */
+.footer-byline .h-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  vertical-align: middle;
+}
+.footer-byline .h-card .u-photo {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.footer-byline .h-card .p-note { display: none; }
 
 .footer-links {
   display: flex;

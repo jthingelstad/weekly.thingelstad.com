@@ -15,12 +15,13 @@ scripts: `npm run build`, `npm run build:search`). The output dir `_site/` stays
 - **Markdown:** `markdown-it` with `markdown-it-anchor` for heading IDs (Pagefind needs them)
 - **Collections:** `issuesByNumber` (ascending), `issuesByDate` (newest first)
 - **Filters:** `dateFormat`, `dateShort`, `currentYear`, `numberFormat`, `year`, `slice`, `truncate`,
-  `issueNumberBase`, `xmlEscape`, `markdownify`, `extractToc`, `groupByYear`, `itunesDuration`, `clock`
+  `issueNumberBase`, `xmlEscape`, `markdownify`, `extractToc`, `groupByYear`, `itunesDuration`, `clock`,
+  `siteById` (one entry of `sites.json` by its id)
 - **Dates are Chicago days.** `dateFormat` (default and `month-year`), `dateShort`, `dateTimeShort`,
   `year`, `groupByYear` and `archiveStats` read the day in America/Chicago through `lib/siteTime.js`;
   `dateFormat('iso')` and `('rfc822')` stay UTC instants for feeds and the sitemap. Never slice a UTC
   date for a reader (`tests/unit/date-filters.test.mjs`, run in CI with `TZ=UTC`).
-- **Passthrough copy:** `img/`, `css/`, `CNAME`, `favicon.svg`, `_nojekyll`
+- **Passthrough copy:** `img/`, `css/`, `CNAME`, `favicon.svg`, `apple-touch-icon.png`, `_nojekyll`
 
 ## Where the content comes from — WT Builder, not here
 
@@ -87,6 +88,20 @@ for Tinylytics. The strip
 is set in Inter 400/600, which `base.njk` loads from Google Fonts for it alone. Redirect pages
 (`librarian*.njk`, `archive/redirects.njk`) have no layout and no strip. `tests/e2e/site.spec.js`
 pins the links, the current marker and the phone row.
+
+## Jamie, and links to his other sites
+
+The conventions are thingelstad.com `AGENTS.md`, "Jamie on every site" and "Links between the sites".
+The footer carries Jamie's h-card and `base.njk` a `<link rel="me">` for every `owner.rel_me`, both
+from `_data/sites.json`; identity links never carry a ref. Photos are the bird-on-the-hat picture:
+`owner.avatar` at 64px or less (issue byline, footer), `img/jamie-bird.jpg` (a copy of
+`shared/jamie.jpg`) larger (home About, `/about/`). Every template link to another of Jamie's sites
+carries `?ref=weekly-<placement>` (`&ref=` after Thingy's `?prompt=`/`?issue=`/`?from=`): nav, footer,
+byline, issue, archive, topic, card, search, 404, about, podcast, members, confirmed, subscribed.
+Issue content, `_data/faq.json` (hand-synced with librarian-thing) and the `/thingy/` and
+`/librarian/` redirects carry none. The favicon is the header's logo mark (accent circle, Source Serif 4
+bold italic W as a path); `favicon.svg` and `apple-touch-icon.png` load with `?v=<hash>` from
+`_data/assets.js`.
 
 ## The audio edition on the page and in the feed
 

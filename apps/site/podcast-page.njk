@@ -53,6 +53,14 @@ permalink: /podcast/
 
   <section class="podcast-about">
     <p class="eyebrow">How it&rsquo;s made</p>
-    <p>The audio is generated from the written issue by <a href="/about/">WT Builder</a>, Jamie&rsquo;s publishing app, using text-to-speech &mdash; Jamie&rsquo;s sections in one voice, <a href="{{ site.thingyUrl }}/">Thingy</a>&rsquo;s in another. Links are read as their titles, and the photo is left for the page. Prefer reading? The <a href="/archive/">archive</a> has every issue.</p>
+    <p>The audio is generated from the written issue by <a href="/about/">WT Builder</a>, Jamie&rsquo;s publishing app, using text-to-speech &mdash; Jamie&rsquo;s sections in one voice, <a href="{{ site.thingyUrl }}/?ref=weekly-podcast">Thingy</a>&rsquo;s in another. Links are read as their titles, and the photo is left for the page. Prefer reading? The <a href="/archive/">archive</a> has every issue.</p>
   </section>
+
+  {%- set another = sites.sites | siteById("another") %}
+  {% if another %}
+  <section class="podcast-about">
+    <p class="eyebrow">Jamie&rsquo;s other podcast</p>
+    <p><a href="{{ another.url }}?ref=weekly-podcast" data-tinylytics-event="podcast.another">{{ another.name }}</a>. {{ another.description }}</p>
+  </section>
+  {% endif %}
 </div>

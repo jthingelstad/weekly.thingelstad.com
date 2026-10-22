@@ -15,6 +15,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("apps/site/css");
   eleventyConfig.addPassthroughCopy("apps/site/CNAME");
   eleventyConfig.addPassthroughCopy("apps/site/favicon.svg");
+  eleventyConfig.addPassthroughCopy("apps/site/apple-touch-icon.png");
   eleventyConfig.addPassthroughCopy("apps/site/robots.txt");
   // Prevent GitHub Pages from running Jekyll
   eleventyConfig.addPassthroughCopy({ "apps/site/_nojekyll": ".nojekyll" });
@@ -131,6 +132,11 @@ module.exports = function (eleventyConfig) {
 
   // JSON stringify for embedding data in templates
   eleventyConfig.addFilter("jsonify", (obj) => JSON.stringify(obj));
+
+  // One of Jamie's sites from the vendored _data/sites.json, by its id
+  // ("www", "another", "thingy", "xyz", ...).
+  eleventyConfig.addFilter("siteById", (sites, id) =>
+    (sites || []).find((s) => s.id === id));
 
   // Mark top-level navigation items active for their page or section.
   eleventyConfig.addFilter("isActiveNav", (pageUrl, navUrl) => {

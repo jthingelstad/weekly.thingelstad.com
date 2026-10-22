@@ -22,4 +22,6 @@ function fileHash(relativePath) {
 
 module.exports = {
   cssVersion: fileHash("css/style.css"),
+  faviconVersion: fileHash("favicon.svg"),
+  touchIconVersion: fileHash("apple-touch-icon.png"),
 };

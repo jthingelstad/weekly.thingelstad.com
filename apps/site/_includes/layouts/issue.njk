@@ -47,16 +47,16 @@ ogType: article
       <p class="issue-dek">{{ description }}</p>
       {% endif %}
       <div class="issue-byline">
-        <img src="/img/jamie-thingelstad.jpg" alt="" class="issue-byline-avatar" loading="lazy" width="44" height="44">
+        <img src="{{ sites.owner.avatar }}" alt="" class="issue-byline-avatar" loading="lazy" width="44" height="44">
         <div>
-          <div class="issue-byline-name">Jamie Thingelstad</div>
+          <div class="issue-byline-name"><a href="{{ sites.owner.url }}?ref=weekly-byline">Jamie Thingelstad</a></div>
           <div class="issue-byline-meta">
             {% if word_count %}{{ word_count | numberFormat }} words{% if readMinutes > 0 %} &middot; ~{{ readMinutes }} min read{% endif %}{% endif %}{% if listenSeconds > 0 %} &middot; {{ listenMinutes }}:{% if listenSecondsRem < 10 %}0{% endif %}{{ listenSecondsRem }} listen{% endif %}
           </div>
         </div>
         <div class="issue-byline-actions">
           <button class="tinylytics_kudos issue-action issue-action-kudos" data-path="/archive/{{ number }}/" aria-label="Kudos"></button>
-          <a class="issue-action issue-action-explore" target="_blank" rel="noopener" href="{{ site.thingyUrl }}/chat/?issue={{ number }}" data-tinylytics-event="issue.explore" data-tinylytics-event-value="{{ number }}">
+          <a class="issue-action issue-action-explore" target="_blank" rel="noopener" href="{{ site.thingyUrl }}/chat/?issue={{ number }}&ref=weekly-issue" data-tinylytics-event="issue.explore" data-tinylytics-event-value="{{ number }}">
             <span aria-hidden="true">&#10024;</span>
             <span>Explore with Thingy</span>
           </a>

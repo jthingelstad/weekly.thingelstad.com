@@ -25,7 +25,12 @@
   {% endif %}
 
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.svg?v={{ assets.faviconVersion }}" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v={{ assets.touchIconVersion }}">
+  {# Jamie's identity links, the same on every one of his sites (sites.json owner.rel_me). #}
+  {% for meUrl in sites.owner.rel_me %}
+  <link rel="me" href="{{ meUrl }}">
+  {% endfor %}
   <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
   <link rel="webmention" href="https://tinylytics.app/webmention/{{ site.tinylyticsId }}">
 

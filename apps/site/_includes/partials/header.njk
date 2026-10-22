@@ -14,7 +14,7 @@
         { href: "/search/", label: "Search" },
         { href: "/about/", label: "About" },
         { href: "/members/", label: "Members" },
-        { href: site.thingyUrl + "/", label: "Thingy", external: true }
+        { href: site.thingyUrl + "/?ref=weekly-nav", label: "Thingy", external: true }
       ] %}
       {% for item in navItems %}
       {% set isActive = (not item.external) and (page.url | isActiveNav(item.href)) %}

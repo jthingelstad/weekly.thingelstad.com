@@ -53,7 +53,7 @@ permalink: /members/
   <section class="support-current">
     <p class="eyebrow">{{ support.current.year_label or support.current.year }} &middot; The Supporting Member nonprofit pick</p>
     <h2>{{ support.current.nonprofit }}</h2>
-    <p>{{ support.current.description }} <a href="{{ site.thingyUrl }}/chat/?prompt={{ ('Tell me about ' + (support.current.short_name or support.current.nonprofit)) | urlencode }}" data-tinylytics-event="support.thingy_handoff">Chat with Thingy about {{ support.current.short_name or support.current.nonprofit }} &rarr;</a></p>
+    <p>{{ support.current.description }} <a href="{{ site.thingyUrl }}/chat/?prompt={{ ('Tell me about ' + (support.current.short_name or support.current.nonprofit)) | urlencode }}&ref=weekly-members" data-tinylytics-event="support.thingy_handoff">Chat with Thingy about {{ support.current.short_name or support.current.nonprofit }} &rarr;</a></p>
     <div class="support-current-action">
       <a href="{{ support.current.url }}" class="btn btn-secondary">Visit {{ support.current.short_name or support.current.nonprofit }} &rarr;</a>
       {% if support.current.logo %}
@@ -91,7 +91,7 @@ permalink: /members/
     <div class="support-benefits-grid">
       <div class="support-benefit">
         <h3>Thingy, upgraded</h3>
-        <p><a href="{{ site.thingyUrl }}/">Thingy</a>, the agent that knows every issue of the Weekly Thing, every blog post, and every episode of Another Thing, is available to all subscribers. Supporting Members get the strongest model answering their questions and double the daily allowance for conversations and archive tools.</p>
+        <p><a href="{{ site.thingyUrl }}/?ref=weekly-members">Thingy</a>, the agent that knows every issue of the Weekly Thing, every blog post, and every episode of <a href="{{ (sites.sites | siteById('another')).url }}?ref=weekly-members">Another Thing</a>, is available to all subscribers. Supporting Members get the strongest model answering their questions and double the daily allowance for conversations and archive tools.</p>
       </div>
     </div>
   </section>

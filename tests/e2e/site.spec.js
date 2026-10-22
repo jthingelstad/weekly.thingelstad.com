@@ -326,6 +326,44 @@ test("the Jamie's sites strip opens every page, with Weekly Thing marked current
   }
 });
 
+test("Jamie's h-card, rel=me and the ref on every link to his other sites", async ({ page }) => {
+  // Conventions: thingelstad.com AGENTS.md, "Jamie on every site" and
+  // "Links between the sites". Built pages only; nothing leaves the machine.
+  await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
+  const { owner } = require('../../apps/site/_data/sites.json');
+
+  for (const path of ['/', '/archive/', '/archive/353/', '/about/', '/podcast/', '/members/', '/search/', '/topics/']) {
+    await page.goto(path, { waitUntil: 'domcontentloaded' });
+    const me = await page.locator('head link[rel="me"]').evaluateAll((els) => els.map((l) => l.getAttribute('href')));
+    expect(me, path).toEqual(owner.rel_me);
+    const card = page.locator('.site-footer a.h-card');
+    await expect(card, path).toHaveCount(1);
+    await expect(card, path).toHaveAttribute('href', owner.url); // identity link: no ref
+    await expect(card, path).toHaveAttribute('rel', 'me author');
+    await expect(card.locator('img.u-photo'), path).toHaveAttribute('src', owner.avatar);
+    await expect(card.locator('.p-name'), path).toHaveText(owner.name);
+    await expect(card.locator('data.p-note'), path).toHaveAttribute('value', owner.note);
+    // Template links to Jamie's other sites carry a weekly ref (the strip keeps
+    // its own sites-strip-weekly). Issue text and its audio chapters are content
+    // and are left as written.
+    const bare = await page.locator('a[href*=".thingelstad.com"]').evaluateAll((els) => els
+      .filter((a) => !a.closest('.issue-content, .issue-chapters-section, .faq-page'))
+      .filter((a) => !a.classList.contains('h-card'))
+      .map((a) => a.getAttribute('href'))
+      .filter((href) => /^https:\/\/(www|thingy|another)\.thingelstad\.com/.test(href))
+      .filter((href) => !/[?&]ref=(weekly|sites-strip-weekly)\b/.test(href)));
+    expect(bare, path).toEqual([]);
+  }
+
+  await page.goto('/archive/353/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('.issue-byline-name a')).toHaveAttribute('href', `${owner.url}?ref=weekly-byline`);
+  await expect(page.locator('.issue-byline-avatar')).toHaveAttribute('src', owner.avatar);
+  await expect(page.locator('.issue-action-explore')).toHaveAttribute('href', /\/chat\/\?issue=353&ref=weekly-issue$/);
+  await expect(page.locator('.site-nav a.is-external')).toHaveAttribute('href', /\/\?ref=weekly-nav$/);
+  await page.goto('/podcast/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('a[href="https://another.thingelstad.com/?ref=weekly-podcast"]')).toHaveCount(1);
+});
+
 test('legacy Thingy URL redirects to standalone chat', async ({ page }) => {
   await page.route('https://thingy.thingelstad.com/chat/?prompt=RSS', async (route) => {
     await route.fulfill({
