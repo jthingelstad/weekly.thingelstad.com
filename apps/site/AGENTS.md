@@ -97,7 +97,7 @@ The footer carries Jamie's h-card and `base.njk` a `<link rel="me">` for every `
 from `_data/sites.json`; identity links never carry a ref. Photos are the bird-on-the-hat picture:
 `owner.avatar` at 64px or less (issue byline, footer), `img/jamie-bird.jpg` (a copy of
 `shared/jamie.jpg`) larger (home About, `/about/`). Every template link to another of Jamie's sites
-carries `?ref=weekly-<placement>` (`&ref=` after Thingy's `?prompt=`/`?issue=`/`?from=`): nav, footer,
+carries `?ref=weekly-<placement>` (`&ref=` after Thingy's `?prompt=`/`?issue=`/`?from=`): footer,
 byline, issue, archive, topic, card, search, 404, about, podcast, members, confirmed, subscribed.
 Issue content, `_data/faq.json` (hand-synced with librarian-thing) and the `/thingy/` and
 `/librarian/` redirects carry none. The favicon is the header's logo mark (accent circle, Source Serif 4
@@ -161,3 +161,9 @@ byte-for-byte copy of thingelstad.com `shared/tokens.css` and `shared/fonts/`, v
 shared 1120px frame. `style.css` names faces by role (`--font-heading`, `--font-body`, `--font-ui`,
 `--font-label`, `--font-code`); never reintroduce a face by name. The serif lives on only in the W
 mark, an SVG path (the favicon's), so no serif font loads.
+
+No italics in the design (Jamie, 2026-10-22: "I really dislike italics with san serif fonts … I
+like the color and I like using font weight with san serif"). Heading accents are the accent
+colour at the heading's own weight, upright; quotes, captions and stamps stand upright too. Only the
+base `em, i` rule slants, for emphasis inside an issue's text. `tests/unit/no-design-italics.test.mjs`
+fails on any other italic rule. The header nav has no Thingy link: the sites strip carries it.

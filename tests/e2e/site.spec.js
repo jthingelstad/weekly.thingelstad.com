@@ -374,7 +374,8 @@ test("Jamie's h-card, rel=me and the ref on every link to his other sites", asyn
   await expect(page.locator('.issue-byline-name a')).toHaveAttribute('href', `${owner.url}?ref=weekly-byline`);
   await expect(page.locator('.issue-byline-avatar')).toHaveAttribute('src', owner.avatar);
   await expect(page.locator('.issue-action-explore')).toHaveAttribute('href', /\/chat\/\?issue=353&ref=weekly-issue$/);
-  await expect(page.locator('.site-nav a.is-external')).toHaveAttribute('href', /\/\?ref=weekly-nav$/);
+  // Thingy is in the sites strip, so the header nav no longer links it (Jamie, 2026-10-22).
+  await expect(page.locator('.site-nav a[href*="thingy"]')).toHaveCount(0);
   await page.goto('/podcast/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('a[href="https://another.thingelstad.com/?ref=weekly-podcast"]')).toHaveCount(1);
 });
