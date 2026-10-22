@@ -85,7 +85,7 @@ frame. It is built from `_data/sites.json` (sites with `in_sites_strip`, in file
 JavaScript); this site is the `weekly` entry, marked current; every site reads as its `strip_label`, this one
 included, so the wording matches every other site, and every link carries `?ref=sites-strip-weekly`
 for Tinylytics. The strip
-is set in Inter 400/600, which `base.njk` loads from Google Fonts for it alone. Redirect pages
+is set in Inter, the site's own face since it moved onto the shared type (`css/shared/`). Redirect pages
 (`librarian*.njk`, `archive/redirects.njk`) have no layout and no strip. `tests/e2e/site.spec.js`
 pins the links, the current marker, the phone row, and the Another Thing crimson and Things I've built
 green marks, light and dark.
@@ -150,3 +150,14 @@ No Lambda or corpus build — those run in `librarian-thing`.
   edition.)
 - **`topics.js`** reads the pushed `data/librarian/graph.json`; a stale code comment may still mention
   `librarian-core` (the generator), which now lives in `librarian-thing`.
+
+## The shared type
+
+The site is set in the type all of Jamie's sites share: `css/shared/tokens.css` and its fonts, a
+byte-for-byte copy of thingelstad.com `shared/tokens.css` and `shared/fonts/`, vendored with
+`sites.json` by `npm run sites:sync` and checked by `npm run sites:check`. Headings are Inter Tight
+800, reading text, labels and controls Inter, code a system mono; sizes follow the blog's scale
+(`--jt-size-base` 19px body, 18px on phones, nothing below 14px) and `--container-wide` is the
+shared 1120px frame. `style.css` names faces by role (`--font-heading`, `--font-body`, `--font-ui`,
+`--font-label`, `--font-code`); never reintroduce a face by name. The serif lives on only in the W
+mark, an SVG path (the favicon's), so no serif font loads.

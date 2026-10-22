@@ -68,8 +68,10 @@ handoff. Fix the issue in WT Builder and re-send; historical repairs go in
 
 ## Design
 
-Editorial, magazine-like. Source Serif 4 for display + italic accents, Source Sans 3 for body/UI,
-JetBrains Mono for eyebrows and meta. `#fcfcfa` bg, `#1f6fd6` accent. Dark mode via
+Editorial, magazine-like, on the type all of Jamie's sites share (`css/shared/tokens.css`, vendored
+from thingelstad.com `shared/tokens.css` by `npm run sites:sync`): Inter Tight for headings, Inter for
+reading text, labels and UI, a system mono for code, on the blog's size scale (19px body, nothing below
+14px) and its 1120px frame. The serif survives only in the W mark. `#fcfcfa` bg, `#1f6fd6` accent. Dark mode via
 `prefers-color-scheme`. Mobile-first, accessible. No JS required for core reading. The "Jamie's sites"
 strip above the header is shared by all of Jamie's sites and follows their contract, not this site's
 palette (see `AGENTS.md`).

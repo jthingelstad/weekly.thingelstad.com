@@ -44,7 +44,8 @@ overwritten by the next handoff. Fix the issue in WT Builder and re-send; histor
   `shared/sites.json`, the one list of Jamie's sites. Edit it there, then `npm run sites:sync` here
   and commit the copy (CI checks out only this repo). `npm run sites:check` fails on drift; `npm test`
   runs it, the deploy workflow cannot (there is no sibling checkout in CI). It feeds the Jamie's sites
-  strip (see `apps/site/AGENTS.md`).
+  strip (see `apps/site/AGENTS.md`). The same sync copies the shared type (`shared/tokens.css` and
+  `shared/fonts/`) into `apps/site/css/shared/`, and the check covers it too.
 
 `archiveStats.js` computes stats at build time from the issue pages' front matter (records, streaks,
 per-year breakdowns), read through `apps/site/lib/issueIndex.js`; `topics.js` and `redirects.js` read
