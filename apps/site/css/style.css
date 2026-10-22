@@ -401,8 +401,9 @@ th {
   --strip-label: #5a5a66;
   --strip-ink: #16161a;
   --strip-weekly: #1a5eb6;
-  --strip-another: #c63a20;
+  --strip-another: #b3123f;
   --strip-thingy: #b5461a;
+  --strip-xyz: #1d7348;
   background: var(--strip-ground);
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   font-size: 14px;
@@ -453,6 +454,7 @@ th {
 .sites-strip__item--weekly { --strip-link: var(--strip-weekly); }
 .sites-strip__item--another { --strip-link: var(--strip-another); }
 .sites-strip__item--thingy { --strip-link: var(--strip-thingy); }
+.sites-strip__item--xyz { --strip-link: var(--strip-xyz); }
 
 @media (max-width: 40rem) {
   .sites-strip__inner {
@@ -472,8 +474,9 @@ th {
     --strip-label: #9d9daa;
     --strip-ink: #ececf0;
     --strip-weekly: #78acf2;
-    --strip-another: #f08c76;
+    --strip-another: #f58aa3;
     --strip-thingy: #f3a274;
+    --strip-xyz: #74d3a0;
   }
 }
 

@@ -302,6 +302,21 @@ test("the Jamie's sites strip opens every page, with Weekly Thing marked current
     await expect(strip.locator('.sites-strip__item--current'), path).toHaveClass(/sites-strip__item--weekly/);
   }
 
+  // Colour marks from the contract: Another Thing crimson (#b3123f / dark #f58aa3)
+  // and Things I've built green (#1d7348 / dark #74d3a0), since 2026-10-22.
+  const marks = {};
+  for (const scheme of ['light', 'dark']) {
+    await page.emulateMedia({ colorScheme: scheme });
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    marks[scheme] = await page.locator('.sites-strip').evaluate((strip) => Object.fromEntries(
+      ['another', 'xyz'].map((id) => [id, getComputedStyle(strip.querySelector(`.sites-strip__item--${id} a`)).color])));
+  }
+  await page.emulateMedia({ colorScheme: 'light' });
+  expect(marks).toEqual({
+    light: { another: 'rgb(179, 18, 63)', xyz: 'rgb(29, 115, 72)' },
+    dark: { another: 'rgb(245, 138, 163)', xyz: 'rgb(116, 211, 160)' },
+  });
+
   // Phones: one row that scrolls sideways, no label, and the page stays put.
   for (const width of [320, 390, 430]) {
     await page.setViewportSize({ width, height: 800 });

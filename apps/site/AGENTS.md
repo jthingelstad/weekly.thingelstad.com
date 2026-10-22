@@ -87,7 +87,8 @@ included, so the wording matches every other site, and every link carries `?ref=
 for Tinylytics. The strip
 is set in Inter 400/600, which `base.njk` loads from Google Fonts for it alone. Redirect pages
 (`librarian*.njk`, `archive/redirects.njk`) have no layout and no strip. `tests/e2e/site.spec.js`
-pins the links, the current marker and the phone row.
+pins the links, the current marker, the phone row, and the Another Thing crimson and Things I've built
+green marks, light and dark.
 
 ## Jamie, and links to his other sites
 
