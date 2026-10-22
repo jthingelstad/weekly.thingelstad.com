@@ -46,7 +46,7 @@
   --code-bg: var(--color-code-bg);
 
   /* Typography: the type every one of Jamie's sites shares
-     (css/shared-tokens.css, vendored from thingelstad.com shared/tokens.css):
+     (css/shared/tokens.css, vendored from thingelstad.com shared/tokens.css):
      Inter Tight for headings, Inter for reading, labels and controls, a
      system mono for code. The serif lives on only in the W mark. */
   --font-heading: var(--jt-font-heading);
