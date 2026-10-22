@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-10-22T21:44:06.695713Z",
+  "generated_at": "2026-10-22T22:05:49.794342Z",
   "extraction_model": "heuristic",
   "issue_count": 354,
   "issues": {
