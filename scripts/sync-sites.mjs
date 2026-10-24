@@ -1,6 +1,6 @@
 // Vendors the canonical list of Jamie's sites (thingelstad.com
 // shared/sites.json) into apps/site/_data/sites.json, which the base layout
-// renders as the "Jamie's sites" strip above the header
+// renders as the sites strip above the header
 // (apps/site/_includes/partials/sites-strip.njk), and the type and colours
 // the sites share (shared/tokens.css and shared/fonts/) into
 // apps/site/css/shared/. Mirrors Thingy's web/scripts/sync-sites.mjs:

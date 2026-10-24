@@ -264,7 +264,7 @@ test('main navigation stays on one row at mobile widths', async ({ page }) => {
   }
 });
 
-test("the Jamie's sites strip opens every page, with Weekly Thing marked current", async ({ page }) => {
+test("the sites strip opens every page, with Weekly Thing marked current", async ({ page }) => {
   // The strip is rendered at build time from the vendored shared/sites.json
   // (npm run sites:sync). Nothing leaves the machine: every request off
   // 127.0.0.1 (Tinylytics, Google Fonts) is refused.
@@ -279,16 +279,16 @@ test("the Jamie's sites strip opens every page, with Weekly Thing marked current
       current: s.id === 'weekly',
     }));
   expect(expected.filter((s) => s.current)).toHaveLength(1);
-  // One label per site everywhere: this site reads "Weekly Thing" here too, never "Newsletter".
-  expect(expected.find((s) => s.current).text).toBe('Weekly Thing');
+  // One label per site everywhere: this site reads "Newsletter" here too, as on every other site.
+  expect(expected.find((s) => s.current).text).toBe('Newsletter');
 
   await page.setViewportSize({ width: 1280, height: 800 });
   for (const path of ['/', '/archive/', '/archive/351/', '/topics/', '/about/', '/search/']) {
     await page.goto(path, { waitUntil: 'domcontentloaded' });
     // First thing in the body after the skip link, right above the header.
     await expect(page.locator('body > .skip-link + nav.sites-strip + header.site-header'), path).toHaveCount(1);
-    const strip = page.getByRole('navigation', { name: "Jamie's sites" });
-    await expect(strip.locator('.sites-strip__label'), path).toHaveText("Jamie's sites");
+    const strip = page.getByRole('navigation', { name: "Jamie Thingelstad" });
+    await expect(strip.locator('.sites-strip__label'), path).toHaveText("Jamie Thingelstad");
     await expect(strip.locator('.sites-strip__label'), path).toBeVisible();
     const links = await strip.locator('.sites-strip__item > a').evaluateAll((els) =>
       els.map((a) => ({

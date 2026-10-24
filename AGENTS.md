@@ -43,7 +43,7 @@ overwritten by the next handoff. Fix the issue in WT Builder and re-send; histor
 - **Vendored** (don't hand-edit): `sites.json` — a byte-for-byte copy of the thingelstad.com
   `shared/sites.json`, the one list of Jamie's sites. Edit it there, then `npm run sites:sync` here
   and commit the copy (CI checks out only this repo). `npm run sites:check` fails on drift; `npm test`
-  runs it, the deploy workflow cannot (there is no sibling checkout in CI). It feeds the Jamie's sites
+  runs it, the deploy workflow cannot (there is no sibling checkout in CI). It feeds the sites
   strip (see `apps/site/AGENTS.md`). The same sync copies the shared type (`shared/tokens.css` and
   `shared/fonts/`) into `apps/site/css/shared/`, and the check covers it too.
 

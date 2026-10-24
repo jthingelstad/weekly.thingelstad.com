@@ -74,10 +74,10 @@ per-issue, `layout: archive`), `/archive/<slug>/` redirects (`redirects.njk` + `
 hand-written `/about/ /members/ /faq/ /search/`, `/feed.xml`, `/archive/N/links.xml`, `/podcast.xml`,
 
 
-## The Jamie's sites strip
+## The sites strip
 
 Every page on `layouts/base.njk` opens (right after the skip link, above the sticky header) with the
-"Jamie's sites" strip that tops all of Jamie's sites (`partials/sites-strip.njk`, CSS under "Jamie's
+sites strip that tops all of Jamie's sites (`partials/sites-strip.njk`, CSS under "The
 sites strip" in `css/style.css`). Its markup, class names, colours, sizes, phone behaviour and dark
 values are a shared contract — thingelstad.com `AGENTS.md`, "The sites strip" — so change them there
 first, never here alone; only the inner width (`--container-wide`) and side padding follow this site's

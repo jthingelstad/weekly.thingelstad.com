@@ -111,7 +111,7 @@ JetBrains Mono for eyebrows and meta. Generous whitespace. `#fcfcfa` background,
 `#134d99`, soft `#e1edff`), dark mode via `prefers-color-scheme`. No JS required for core reading — JS
 only for the subscribe form, Pagefind search, archive year filter, Thingy handoffs, and Tinylytics.
 Mobile-first and accessible: heading hierarchy, alt text, color contrast, keyboard nav. Every page opens
-with the "Jamie's sites" strip shared by all of Jamie's sites (Inter, its own fixed colours; the
+with the sites strip shared by all of Jamie's sites (Inter, its own fixed colours; the
 contract is in the thingelstad.com `AGENTS.md`), built from the vendored `_data/sites.json`.
 
 ---
