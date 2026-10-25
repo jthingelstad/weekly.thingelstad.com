@@ -22,7 +22,7 @@ ogType: article
   <link rel="alternate" type="application/atom+xml" title="Links from WT{{ number }}" href="/archive/{{ number }}/links.xml">
 {% endblock %}
 
-<article class="issue" data-pagefind-body>
+<article class="issue h-entry" data-pagefind-body>
   {# Top issue chrome — Archive crumb + arrow pager #}
   <div class="issue-bar">
     <div class="container-wide">
@@ -39,12 +39,19 @@ ogType: article
 
   <header class="issue-hero">
     <div class="container-narrow">
-      <p class="eyebrow">Weekly Thing <span data-pagefind-meta="issue">{{ number }}</span> &middot; <time datetime="{{ publish_date | dateFormat('iso') }}" data-pagefind-meta="date">{{ publish_date | dateFormat }}</time></p>
+      <p class="eyebrow">Weekly Thing <span data-pagefind-meta="issue">{{ number }}</span> &middot; <time class="dt-published" datetime="{{ publish_date | dateFormat('iso') }}" data-pagefind-meta="date">{{ publish_date | dateFormat }}</time></p>
       {%- set displayTitle = subject -%}
       {%- if " — " in displayTitle -%}{%- set displayTitle = displayTitle | split(" — ") | last -%}{%- elif " / " in displayTitle -%}{%- set displayTitle = displayTitle | split(" / ") | last -%}{%- endif -%}
-      <h1 class="issue-title" data-pagefind-meta="title">{{ displayTitle }}</h1>
+      <h1 class="issue-title p-name" data-pagefind-meta="title">{{ displayTitle }}</h1>
+      {#- The issue as an h-entry (IndieWeb): its address, cover and counts of
+          links and journal entries, for readers like the card maker
+          (cards.thingelstad.com), which draws its share card from them. #}
+      <data class="u-url" value="{{ site.url }}/archive/{{ number }}/"></data>
+      {%- if image %}<data class="u-featured" value="{{ image }}"></data>{% endif %}
+      <data class="p-link-count" value="{{ (links or []) | length }}"></data>
+      <data class="p-journal-count" value="{{ toc | journalCount }}"></data>
       {% if description %}
-      <p class="issue-dek">{{ description }}</p>
+      <p class="issue-dek p-summary">{{ description }}</p>
       {% endif %}
       <div class="issue-byline">
         <img src="{{ sites.owner.avatar }}" alt="" class="issue-byline-avatar" loading="lazy" width="44" height="44">
@@ -132,7 +139,7 @@ ogType: article
 
     </aside>
 
-    <div class="issue-content">
+    <div class="issue-content e-content">
       {{ content | safe }}
 
       {%- if audio_url and audio_transcript_url -%}

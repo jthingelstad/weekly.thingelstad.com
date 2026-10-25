@@ -67,6 +67,10 @@ module.exports = function (eleventyConfig) {
   // --- Filters ---
 
   // Reader-facing dates are Chicago days; see lib/dateFilters.js.
+  // ?v= for an issue's share card: a short hash of what the card shows.
+  eleventyConfig.addFilter("cardVersion", (parts) =>
+    require("crypto").createHash("sha256").update(JSON.stringify(parts)).digest("hex").slice(0, 10),
+  );
   eleventyConfig.addFilter("dateFormat", dateFilters.dateFormat);
   eleventyConfig.addFilter("dateShort", dateFilters.dateShort);
   eleventyConfig.addFilter("dateTimeShort", dateFilters.dateTimeShort);
@@ -195,6 +199,18 @@ module.exports = function (eleventyConfig) {
       }
     }
     return headings;
+  });
+
+  // How many journal entries an issue has: the h3 days under its "Journal"
+  // h2, from extractToc's headings. 0 when it has no Journal section.
+  eleventyConfig.addFilter("journalCount", (toc) => {
+    let inJournal = false;
+    let count = 0;
+    for (const heading of toc || []) {
+      if (heading.level === 2) inJournal = heading.text === "Journal";
+      else if (inJournal && heading.level === 3) count += 1;
+    }
+    return count;
   });
 
   // Read the generated archive markdown body of an issue file, stripping YAML

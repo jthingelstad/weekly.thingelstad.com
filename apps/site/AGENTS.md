@@ -16,7 +16,7 @@ scripts: `npm run build`, `npm run build:search`). The output dir `_site/` stays
 - **Collections:** `issuesByNumber` (ascending), `issuesByDate` (newest first)
 - **Filters:** `dateFormat`, `dateShort`, `currentYear`, `numberFormat`, `year`, `slice`, `truncate`,
   `issueNumberBase`, `xmlEscape`, `markdownify`, `extractToc`, `groupByYear`, `itunesDuration`, `clock`,
-  `siteById` (one entry of `sites.json` by its id)
+  `siteById` (one entry of `sites.json` by its id), `cardVersion` and `journalCount` (Share images)
 - **Dates are Chicago days.** `dateFormat` (default and `month-year`), `dateShort`, `dateTimeShort`,
   `year`, `groupByYear` and `archiveStats` read the day in America/Chicago through `lib/siteTime.js`;
   `dateFormat('iso')` and `('rfc822')` stay UTC instants for feeds and the sitemap. Never slice a UTC
@@ -73,6 +73,24 @@ in file order. Adding a quote or an excerpt puts it in the rotation.
 per-issue, `layout: archive`), `/archive/<slug>/` redirects (`redirects.njk` + `_data/redirects.js`),
 hand-written `/about/ /members/ /faq/ /search/`, `/feed.xml`, `/feed.json`, `/archive/N/links.xml`, `/podcast.xml`,
 
+
+## Share images
+
+`layouts/base.njk` sets `og:image` and a large Twitter card on every page. An issue shares its own
+card from cards.thingelstad.com (2026-10-25; Jamie: "Weekly Thing and Another Thing issues should get
+custom share images with cards.thingelstad.com solution", then "text overlaid on the issue image with
+the subtitle/dek included. Counts of links and journal entries?"):
+`https://cards.thingelstad.com/weekly/archive/<n>.png?v=<hash>`, where `v` is the `cardVersion` hash
+of what the card shows (subject, date, dek, cover, link count, word count), so an issue re-sent with
+new words gets a new card. A topic page shares its newest cover (`topics.js` `image`); any other page
+the newest issue's cover (`_data/defaultShareImage.js`, the photo the home stamp shows).
+
+The card maker reads only the page, so `layouts/issue.njk` is an h-entry: `p-name` (the subject),
+`dt-published`, `p-summary` (the dek), `e-content`, `u-url`, `u-featured` (the cover, when there is
+one) and two counts as `<data>`: `p-link-count` (the front matter's `links`) and `p-journal-count`
+(the `journalCount` filter: the level-3 headings under the TOC's "Journal"). Keep those class names:
+cards.thingelstad.com's `src/post.mjs` reads them. `tests/e2e/site.spec.js` pins the card URLs and the
+h-entry.
 
 ## The sites strip
 
