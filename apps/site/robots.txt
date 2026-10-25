@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /thingy/?
 
 Sitemap: https://weekly.thingelstad.com/sitemap.xml

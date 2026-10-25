@@ -357,6 +357,8 @@ test("Jamie's h-card, rel=me and the ref on every link to his other sites", asyn
     await expect(card, path).toHaveAttribute('rel', 'me author');
     await expect(card.locator('img.u-photo'), path).toHaveAttribute('src', owner.avatar);
     await expect(card.locator('.p-name'), path).toHaveText(owner.name);
+    // An explicit url: u-photo turns off the url mf2 would imply from the href.
+    await expect(card.locator('data.u-url'), path).toHaveAttribute('value', owner.url);
     await expect(card.locator('data.p-note'), path).toHaveAttribute('value', owner.note);
     // Template links to Jamie's other sites carry a weekly ref (the strip keeps
     // its own sites-strip-weekly). Issue text and its audio chapters are content
