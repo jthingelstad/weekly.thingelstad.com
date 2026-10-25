@@ -1,0 +1,38 @@
+---
+permalink: /feed.json
+eleventyExcludeFromCollections: true
+---
+{#- JSON Feed 1.1 twin of /feed.xml: every issue, the same ids, summaries and
+    per-issue Tinylytics pixel (counted per issue at /feed/N/, never per reader). -#}
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": {{ site.title | dump | safe }},
+  "description": {{ site.description | dump | safe }},
+  "home_page_url": {{ (site.url + "/") | dump | safe }},
+  "feed_url": {{ (site.url + "/feed.json") | dump | safe }},
+  "icon": {{ (site.url + "/img/podcast-cover.png") | dump | safe }},
+  "favicon": {{ (site.url + "/favicon.svg") | dump | safe }},
+  "language": "en",
+  "authors": [{ "name": {{ site.author | dump | safe }}, "url": {{ site.authorUrl | dump | safe }} }],
+  "items": [
+    {%- for issue in collections.issuesByDate %}
+    {%- set issueUrl = site.url + "/archive/" + (issue.data.number | string) + "/" %}
+    {
+      "id": {{ issueUrl | dump | safe }},
+      "url": {{ issueUrl | dump | safe }},
+      "title": {{ issue.data.subject | dump | safe }},
+      {%- if issue.data.description %}
+      "summary": {{ issue.data.description | dump | safe }},
+      "content_html": {{ ("<p>" + (issue.data.description | xmlEscape) + "</p><img src=\"https://tinylytics.app/pixel/" + site.tinylyticsId + ".gif?path=/feed/" + (issue.data.number | string) + "/\" alt=\"\" width=\"1\" height=\"1\" style=\"border:0\" />") | dump | safe }},
+      {%- else %}
+      "content_text": {{ issue.data.subject | dump | safe }},
+      {%- endif %}
+      {%- if issue.data.image %}
+      "image": {{ issue.data.image | dump | safe }},
+      {%- endif %}
+      "date_published": {{ issue.data.publish_date | dateFormat('iso') | dump | safe }},
+      "date_modified": {{ issue.data.publish_date | dateFormat('iso') | dump | safe }}
+    }{%- if not loop.last %},{% endif %}
+    {%- endfor %}
+  ]
+}
