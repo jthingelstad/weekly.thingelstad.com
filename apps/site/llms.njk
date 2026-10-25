@@ -27,7 +27,27 @@ Archive stats:
 - Latest issue: {{ archiveStats.latestDate | dateFormat }}
 - Years active: {{ archiveStats.yearsActive }}
 
+{#- llmstxt.org: everything under a "##" heading is a list of "- [name](url): note"
+    items, one link per line. The reference parser fails on the whole file at
+    one line without a link, so prose about the lists lives here, above the
+    first "##". tests/e2e/site.spec.js pins the shape. -#}
 {% set latestIssue = collections.issuesByDate[0] %}
+{#- One issue as an llmstxt.org item. A subject or dek is WT Builder's text, so
+    it is kept on one line, and a square bracket in a subject (the parser ends a
+    name at the first "]") becomes a parenthesis. #}
+{%- macro issueItem(issue) -%}
+{%- set name = issue.data.subject if issue.data.subject.startsWith("WT") else "#" + issue.data.number + " — " + issue.data.subject -%}
+{%- set note = issue.data.publish_date | dateShort -%}
+{%- if issue.data.description %}{% set note = note + "; " + issue.data.description %}{% endif -%}
+- [{{ name | replace(r/\[/g, "(") | replace(r/\]/g, ")") | replace(r/\s+/g, " ") | trim | safe }}]({{ site.url }}/archive/{{ issue.data.number }}.txt): {{ note | replace(r/\s+/g, " ") | trim | safe }}
+{%- endmacro %}
+
+Use `/archive/N/` for per-issue HTML, `/archive/N.txt` for clean per-issue markdown, and `/archive/N/links.xml` for the Atom feed of curated links from one issue. Replace `N` with an issue number such as `{{ latestIssue.data.number }}`. Some special issues use suffixed identifiers such as `140-special`.
+
+The issue lists below:
+
+- **Recent Issues** — newest issues, with clean markdown links.
+- **Optional** — every issue, newest first. Each link points to a clean markdown version.
 
 ## Core Files
 
@@ -36,18 +56,15 @@ Archive stats:
 - [Human archive index]({{ site.url }}/archive/): Browser-facing archive grouped by year.
 - [Latest issue markdown]({{ site.url }}/archive/{{ latestIssue.data.number }}.txt): Clean markdown for the most recent issue, without site chrome.
 - [Latest issue HTML]({{ site.url }}/archive/{{ latestIssue.data.number }}/): Browser-facing version of the most recent issue.
-- [Atom feed]({{ site.url }}/feed.xml) and [JSON Feed]({{ site.url }}/feed.json): Feeds of all issues.
+- [Atom feed]({{ site.url }}/feed.xml): Atom feed of all issues.
+- [JSON Feed]({{ site.url }}/feed.json): JSON Feed of all issues.
 - [Podcast feed]({{ site.url }}/podcast.xml): RSS feed of the audio edition, each issue read aloud, with chapters and a WebVTT transcript per episode.
 - [Full-text search]({{ site.url }}/search/): Browser-facing search powered by Pagefind.
 
-Use `/archive/N/` for per-issue HTML, `/archive/N.txt` for clean per-issue markdown, and `/archive/N/links.xml` for the Atom feed of curated links from one issue. Replace `N` with an issue number such as `{{ latestIssue.data.number }}`. Some special issues use suffixed identifiers such as `140-special`.
-
 ## Recent Issues
 
-Newest issues, with clean markdown links.
-
 {% for issue in collections.issuesByDate | slice(0, 12) -%}
-- [{% if issue.data.subject.startsWith("WT") %}{{ issue.data.subject | safe }}{% else %}#{{ issue.data.number }} — {{ issue.data.subject | safe }}{% endif %}]({{ site.url }}/archive/{{ issue.data.number }}.txt): {{ issue.data.publish_date | dateShort }}{% if issue.data.description %}; {{ issue.data.description | safe }}{% endif %}
+{{ issueItem(issue) }}
 {% endfor %}
 
 ## Site Pages
@@ -60,10 +77,8 @@ Newest issues, with clean markdown links.
 
 ## Optional
 
-Every issue, newest first. Each link points to a clean markdown version.
-
 {% for group in collections.issuesByDate | groupByYear -%}
 {% for issue in group.issues -%}
-- [{% if issue.data.subject.startsWith("WT") %}{{ issue.data.subject | safe }}{% else %}#{{ issue.data.number }} — {{ issue.data.subject | safe }}{% endif %}]({{ site.url }}/archive/{{ issue.data.number }}.txt): {{ issue.data.publish_date | dateShort }}{% if issue.data.description %}; {{ issue.data.description | safe }}{% endif %}
+{{ issueItem(issue) }}
 {% endfor %}
 {% endfor %}

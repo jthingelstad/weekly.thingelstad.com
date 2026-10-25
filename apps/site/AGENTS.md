@@ -191,6 +191,12 @@ No Lambda or corpus build — those run in `librarian-thing`.
   "D&D" is `D&amp;amp;D` in the file). Plain-text elements (Atom `type="text"`, titles, `itunes:summary`)
   take `xmlEscape` alone; CDATA (`content:encoded`) takes one HTML escape. `/archive.json` is listed in
   llms.txt and not in the head: `application/json` is JSON Feed 1.0's discovery type.
+- **llms.txt keeps the llmstxt.org shape** (`llms.njk`): under every `##` heading (`###` starts a
+  section too) each non-empty line is one `- [name](url): note` item, one link, no `[` or `]` in the
+  name, and prose goes above the first `##`, because the reference parser (`llms-txt`) fails the whole
+  file on one line without a link. The e2e test `llms.txt reads in the llmstxt.org reference parser`
+  pins it; issue items go through the `issueItem` macro, and `## Optional` keeps its llmstxt.org name
+  (links a reader may skip).
 - **Tinylytics site UID** lives in `_data/site.js` — safe in the repo (it's a public identifier).
 - **CSS** lives in `apps/site/css/style.css`. (Email styling is not here; WT Builder renders the email
   edition.)
