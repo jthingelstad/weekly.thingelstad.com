@@ -526,7 +526,7 @@ test('the home page draws three reader quotes and three issue excerpts on each v
   await js.close();
 });
 
-test('an issue shares its own card; every other page an issue cover', async ({ request }) => {
+test('an issue shares its own card, a topic its cover, every other page the newsletter card', async ({ request }) => {
   const shared = async (path) => {
     const html = await (await request.get(path)).text();
     return {
@@ -535,7 +535,7 @@ test('an issue shares its own card; every other page an issue cover', async ({ r
     };
   };
   const home = await shared('/');
-  expect(home.image).toMatch(/^https:\/\/files\.thingelstad\.com\//);
+  expect(home.image).toMatch(/^https:\/\/cards\.thingelstad\.com\/weekly\/index\.png\?v=[0-9a-f]{10}$/);
   expect(home.card).toBe('summary_large_image');
   for (const path of ['/about/', '/faq/', '/members/', '/topics/']) {
     expect(await shared(path), path).toEqual(home);
@@ -568,4 +568,20 @@ test('an issue page is an h-entry the card maker can read', async ({ page }) => 
   await page.goto('/archive/1/');
   await expect(page.locator('.h-entry .u-featured')).toHaveCount(0);
   await expect(page.locator('.h-entry .p-link-count')).toHaveAttribute('value', /^[1-9]\d*$/);
+});
+
+test('the front page is an h-feed the card maker can read', async ({ page }) => {
+  await page.goto('/');
+  const feed = page.locator('.h-feed');
+  await expect(feed).toHaveCount(1);
+  await expect(feed.locator('data.p-name')).toHaveAttribute('value', 'Weekly Thing');
+  await expect(feed.locator('.p-kicker')).toHaveText(/\S/);
+  // The hero line keeps its breaks and its accent: the card draws both.
+  await expect(feed.locator('.e-summary br')).not.toHaveCount(0);
+  await expect(feed.locator('.e-summary em')).not.toHaveCount(0);
+  await expect(feed.locator('.u-featured')).toHaveAttribute('value', /^https:\/\/files\.thingelstad\.com\/weekly-thing\/\d+\/cover\.jpg$/);
+  await expect(feed.locator('.p-issue-count')).toHaveAttribute('value', /^[1-9]\d*$/);
+  await expect(feed.locator('.p-link-count')).toHaveAttribute('value', /^[1-9]\d*$/);
+  // No h-entry inside it: the card maker reads the feed's own properties.
+  await expect(feed.locator('.h-entry')).toHaveCount(0);
 });
