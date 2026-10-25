@@ -2697,6 +2697,13 @@ a.issue-chapter-title:hover { color: var(--accent); }
   color: var(--ink-soft);
   margin-bottom: 12px;
 }
+/* A name linked to the blog is a link, not the Journal's muted timestamp,
+   which matches any paragraph opening with a thingelstad.com link. */
+.issue-content p.pull-quote-by > a[href] {
+  color: var(--accent);
+  text-decoration: underline;
+  font-variant-numeric: normal;
+}
 @media (max-width: 600px) {
   .issue-content .pull-quote blockquote p { font-size: 23px; }
 }
