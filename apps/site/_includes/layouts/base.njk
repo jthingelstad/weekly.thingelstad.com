@@ -20,7 +20,7 @@
      hero line, the newest cover and the archive's size), its ?v= a hash of
      the same. #}
   {% if number %}
-  {% set shareImage = "https://cards.thingelstad.com/weekly/archive/" + number + ".png?v=" + ([subject, publish_date, description, image, (links or []) | length, word_count] | cardVersion) %}
+  {% set shareImage = { number: number, subject: subject, publish_date: publish_date, description: description, image: image, links: links, word_count: word_count } | issueCard %}
   {% elif topic.image %}
   {% set shareImage = topic.image %}
   {% else %}
