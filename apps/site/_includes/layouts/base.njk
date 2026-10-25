@@ -12,11 +12,16 @@
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:type" content="{{ ogType or 'website' }}">
   <meta property="og:site_name" content="{{ site.title }}">
-  {# An issue's own image; else a topic's newest cover; else, on a page
-     that isn't an issue, the newest issue's cover (_data/defaultShareImage.js).
-     An issue with no cover of its own (49 early ones) shares none, rather
-     than another issue's. #}
-  {% set shareImage = image or topic.image or (defaultShareImage if not number) %}
+  {# An issue shares its card from cards.thingelstad.com, drawn from the
+     page's h-entry (its title, date, dek, cover and counts); ?v= changes when
+     those do (the word count stands in for the journal), so an edited issue
+     gets a new card. A topic page shares its
+     newest cover, any other page the newest issue's (_data/defaultShareImage.js). #}
+  {% if number %}
+  {% set shareImage = "https://cards.thingelstad.com/weekly/archive/" + number + ".png?v=" + ([subject, publish_date, description, image, (links or []) | length, word_count] | cardVersion) %}
+  {% else %}
+  {% set shareImage = topic.image or defaultShareImage %}
+  {% endif %}
   {% if shareImage %}
   <meta property="og:image" content="{{ shareImage }}">
   <meta name="twitter:image" content="{{ shareImage }}">

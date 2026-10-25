@@ -526,7 +526,7 @@ test('the home page draws three reader quotes and three issue excerpts on each v
   await js.close();
 });
 
-test('every page shares an issue cover, and an issue only its own', async ({ request }) => {
+test('an issue shares its own card; every other page an issue cover', async ({ request }) => {
   const shared = async (path) => {
     const html = await (await request.get(path)).text();
     return {
@@ -544,7 +544,28 @@ test('every page shares an issue cover, and an issue only its own', async ({ req
   const topics = await (await request.get('/topics/')).text();
   const topic = topics.match(/href="(\/topics\/[^"/]+\/)"/)[1];
   expect((await shared(topic)).image, topic).toMatch(/^https:\/\/files\.thingelstad\.com\//);
-  expect((await shared('/archive/351/')).image).toBe('https://files.thingelstad.com/weekly-thing/351/cover.jpg');
-  // WT1 has no cover, so it shares none rather than another issue's.
-  expect(await shared('/archive/1/')).toEqual({ image: undefined, card: 'summary' });
+  // Every issue, cover or not, shares its card from cards.thingelstad.com,
+  // which reads the page's h-entry below.
+  for (const n of [351, 1]) {
+    const issue = await shared(`/archive/${n}/`);
+    expect(issue.image, `WT${n}`).toMatch(new RegExp(`^https://cards\\.thingelstad\\.com/weekly/archive/${n}\\.png\\?v=[0-9a-f]{10}$`));
+    expect(issue.card, `WT${n}`).toBe('summary_large_image');
+  }
+});
+
+test('an issue page is an h-entry the card maker can read', async ({ page }) => {
+  await page.goto('/archive/351/');
+  const entry = page.locator('.h-entry');
+  await expect(entry).toHaveCount(1);
+  await expect(entry.locator('.p-name')).toHaveText(/\S/);
+  await expect(entry.locator('.dt-published')).toHaveAttribute('datetime', /^\d{4}-\d{2}-\d{2}/);
+  await expect(entry.locator('.p-summary')).toHaveText(/\S/);
+  await expect(entry.locator('.u-url')).toHaveAttribute('value', 'https://weekly.thingelstad.com/archive/351/');
+  await expect(entry.locator('.u-featured')).toHaveAttribute('value', 'https://files.thingelstad.com/weekly-thing/351/cover.jpg');
+  await expect(entry.locator('.p-link-count')).toHaveAttribute('value', /^[1-9]\d*$/);
+  await expect(entry.locator('.p-journal-count')).toHaveAttribute('value', /^\d+$/);
+  // WT1 has no cover: no u-featured, so its card is the plain one.
+  await page.goto('/archive/1/');
+  await expect(page.locator('.h-entry .u-featured')).toHaveCount(0);
+  await expect(page.locator('.h-entry .p-link-count')).toHaveAttribute('value', /^[1-9]\d*$/);
 });
