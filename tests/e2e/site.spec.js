@@ -520,6 +520,41 @@ test('the podcast page and feed are in the sitemap and in llms.txt', async ({ re
   expect(llms).toMatch(/^- \[Podcast\]\(https:\/\/weekly\.thingelstad\.com\/podcast\/\): \S/m);
 });
 
+test('llms.txt reads in the llmstxt.org reference parser: one link per line under every heading', async ({ request }) => {
+  // The reference parser (llms-txt's parse_llms_file) starts a section at every
+  // line beginning "##" and reads each non-empty line under it as
+  // "- [name](url): note". One line without a link fails the whole file, a
+  // second link on a line is dropped, and a name ends at its first "]". Prose
+  // goes above the first "##", under the title and summary (2026-10-25).
+  const llms = await (await request.get('/llms.txt')).text();
+  const lines = llms.split('\n');
+  const first = lines.findIndex((line) => line.startsWith('##'));
+  expect(first).toBeGreaterThan(0);
+  expect(lines[0]).toMatch(/^# \S/);
+  expect(lines.slice(1, first).filter((line) => line.startsWith('#')), 'headings above the first ##').toEqual([]);
+  const sections = {};
+  const bad = [];
+  let current;
+  for (const line of lines.slice(first)) {
+    if (line.startsWith('#')) {
+      if (!/^## \S/.test(line)) bad.push(line);
+      current = line.replace(/^#+\s*/, '');
+      sections[current] = 0;
+    } else if (line.trim()) {
+      if (/^- \[[^[\]]+\]\(https?:[^)\s]+\)(: \S.*)?$/.test(line) && line.split('](').length === 2) {
+        sections[current] += 1;
+      } else {
+        bad.push(line);
+      }
+    }
+  }
+  expect(bad, 'lines under a heading that are not one "- [name](url): note" item').toEqual([]);
+  expect(Object.keys(sections)).toEqual(['Core Files', 'Recent Issues', 'Site Pages', 'Optional']);
+  expect(sections['Recent Issues']).toBe(12);
+  const archive = await (await request.get('/archive.json')).json();
+  expect(sections.Optional).toBe(archive.total_issues);
+});
+
 test('the transcript panel shows WebVTT escapes as the characters they stand for, never as markup', async ({ page }) => {
   // WT Builder writes cue text with the standard WebVTT escapes (&amp; &lt;
   // &gt;); the panel decodes them and still sets each cue as text. Nothing
