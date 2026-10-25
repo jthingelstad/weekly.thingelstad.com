@@ -62,6 +62,7 @@ handoff. Fix the issue in WT Builder and re-send; historical repairs go in
 | `/search/` | `search.njk` | Pagefind search |
 | `/faq/` | `faq.njk` | FAQ |
 | `/feed.xml` | `feed.njk` | Atom feed |
+| `/feed.json` | `feed-json.njk` | JSON Feed, the same issues as `/feed.xml` |
 | `/archive/N/links.xml` | `issue-links-feed.njk` | Per-issue links feed |
 | `/podcast.xml` | `podcast.njk` | Podcast RSS |
 | `/thingy/` | `librarian.njk` | Redirect to standalone Thingy chat at thingy.thingelstad.com |

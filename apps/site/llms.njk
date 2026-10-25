@@ -36,7 +36,7 @@ Archive stats:
 - [Human archive index]({{ site.url }}/archive/): Browser-facing archive grouped by year.
 - [Latest issue markdown]({{ site.url }}/archive/{{ latestIssue.data.number }}.txt): Clean markdown for the most recent issue, without site chrome.
 - [Latest issue HTML]({{ site.url }}/archive/{{ latestIssue.data.number }}/): Browser-facing version of the most recent issue.
-- [Atom feed]({{ site.url }}/feed.xml): Feed of all issues.
+- [Atom feed]({{ site.url }}/feed.xml) and [JSON Feed]({{ site.url }}/feed.json): Feeds of all issues.
 - [Full-text search]({{ site.url }}/search/): Browser-facing search powered by Pagefind.
 
 Use `/archive/N/` for per-issue HTML, `/archive/N.txt` for clean per-issue markdown, and `/archive/N/links.xml` for the Atom feed of curated links from one issue. Replace `N` with an issue number such as `{{ latestIssue.data.number }}`. Some special issues use suffixed identifiers such as `140-special`.

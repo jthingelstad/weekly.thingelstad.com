@@ -421,6 +421,22 @@ test('issue text and RSS carry no generated-file notice', async ({ request }) =>
   }
 });
 
+test('the JSON Feed carries every issue the Atom feed does', async ({ request }) => {
+  const feed = await (await request.get('/feed.json')).json();
+  const atom = await (await request.get('/feed.xml')).text();
+  const atomIds = [...atom.matchAll(/<id>([^<]+\/archive\/[^<]+)<\/id>/g)].map((match) => match[1]);
+  expect(feed.version).toBe('https://jsonfeed.org/version/1.1');
+  expect(feed.feed_url).toBe('https://weekly.thingelstad.com/feed.json');
+  expect(feed.items.map((item) => item.id)).toEqual(atomIds);
+  const archive = await (await request.get('/archive.json')).json();
+  expect(feed.items).toHaveLength(archive.total_issues);
+  for (const item of feed.items) {
+    expect(item.url, item.id).toBe(item.id);
+    expect(Date.parse(item.date_published), item.id).not.toBeNaN();
+    if (item.content_html) expect(item.content_html, item.id).toContain('/feed/');
+  }
+});
+
 test('the transcript panel shows WebVTT escapes as the characters they stand for, never as markup', async ({ page }) => {
   // WT Builder writes cue text with the standard WebVTT escapes (&amp; &lt;
   // &gt;); the panel decodes them and still sets each cue as text. Nothing

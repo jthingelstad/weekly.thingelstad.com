@@ -15,6 +15,7 @@ eleventyExcludeFromCollections: true
   "latest_issue_date": {{ archiveStats.latestDate | dump | safe }},
   "llms_txt": {{ (base + "/llms.txt") | dump | safe }},
   "feed": {{ (base + "/feed.xml") | dump | safe }},
+  "json_feed": {{ (base + "/feed.json") | dump | safe }},
   "search": {{ (base + "/search/") | dump | safe }},
   "issues": [
     {%- for issue in collections.issuesByDate %}

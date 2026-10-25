@@ -71,7 +71,7 @@ in file order. Adding a quote or an excerpt puts it in the rotation.
 
 `/` (hand-written landing), `/archive/` (year-grouped from `issuesByDate`), `/archive/N/` (generated
 per-issue, `layout: archive`), `/archive/<slug>/` redirects (`redirects.njk` + `_data/redirects.js`),
-hand-written `/about/ /members/ /faq/ /search/`, `/feed.xml`, `/archive/N/links.xml`, `/podcast.xml`,
+hand-written `/about/ /members/ /faq/ /search/`, `/feed.xml`, `/feed.json`, `/archive/N/links.xml`, `/podcast.xml`,
 
 
 ## The sites strip
