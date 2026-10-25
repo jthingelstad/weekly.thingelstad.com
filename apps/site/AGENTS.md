@@ -82,15 +82,24 @@ custom share images with cards.thingelstad.com solution", then "text overlaid on
 the subtitle/dek included. Counts of links and journal entries?"):
 `https://cards.thingelstad.com/weekly/archive/<n>.png?v=<hash>`, where `v` is the `cardVersion` hash
 of what the card shows (subject, date, dek, cover, link count, word count), so an issue re-sent with
-new words gets a new card. A topic page shares its newest cover (`topics.js` `image`); any other page
-the newest issue's cover (`_data/defaultShareImage.js`, the photo the home stamp shows).
+new words gets a new card. A topic page shares its newest cover (`topics.js` `image`). Any other page
+(the home page, About, the FAQ, the archive, a topic with no cover) shares the newsletter's own card,
+`https://cards.thingelstad.com/weekly/index.png?v=<hash>` (2026-10-25; Jamie: "make it rich and
+inviting and equal to the quality of the thing it is previewing"): the hero line over the newest
+cover, with the archive's size.
+
+The front page's hero is an h-feed for it: `p-name` (`site.title`), `p-kicker` (the eyebrow),
+`e-summary` (the hero line; its `<br>` and `<em>` are the card's lines and accent), `u-featured`
+(`_data/defaultShareImage.js`, the newest cover) and `p-issue-count` / `p-link-count`
+(`archiveStats.regularIssues` and `totalLinks`, the numbers the home page shows). The eyebrow and hero
+line live in `_data/homeHero.js`, so the hero and the card's `v` read the same words.
 
 The card maker reads only the page, so `layouts/issue.njk` is an h-entry: `p-name` (the subject),
 `dt-published`, `p-summary` (the dek), `e-content`, `u-url`, `u-featured` (the cover, when there is
 one) and two counts as `<data>`: `p-link-count` (the front matter's `links`) and `p-journal-count`
 (the `journalCount` filter: the level-3 headings under the TOC's "Journal"). Keep those class names:
-cards.thingelstad.com's `src/post.mjs` reads them. `tests/e2e/site.spec.js` pins the card URLs and the
-h-entry.
+cards.thingelstad.com's `src/post.mjs` reads them. `tests/e2e/site.spec.js` pins the card URLs, the
+h-entry and the front page's h-feed.
 
 ## The sites strip
 
