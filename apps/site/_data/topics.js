@@ -136,7 +136,7 @@ module.exports = (() => {
       );
     rec.issues = sorted; // now full archive-shaped issue records
     // The share image: the newest of this topic's issues with a cover photo.
-    rec.image = sorted.find((it) => it.image.includes("files.thingelstad.com"))?.image || "";
+    rec.image = sorted.find((it) => String(it.image).startsWith("https://files.thingelstad.com/"))?.image || "";
     rec.lastNumber = sorted[0]?.number || null;
     rec.firstNumber = sorted[sorted.length - 1]?.number || null;
     rec.lastDate = sorted[0]?.publish_date || null;
