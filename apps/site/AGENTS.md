@@ -15,7 +15,7 @@ scripts: `npm run build`, `npm run build:search`). The output dir `_site/` stays
 - **Markdown:** `markdown-it` with `markdown-it-anchor` for heading IDs (Pagefind needs them)
 - **Collections:** `issuesByNumber` (ascending), `issuesByDate` (newest first)
 - **Filters:** `dateFormat`, `dateShort`, `currentYear`, `numberFormat`, `year`, `slice`, `truncate`,
-  `issueNumberBase`, `xmlEscape`, `markdownify`, `extractToc`, `groupByYear`, `itunesDuration`, `clock`,
+  `issueNumberBase`, `xmlEscape`, `htmlEscape`, `markdownify`, `extractToc`, `groupByYear`, `itunesDuration`, `clock`,
   `siteById` (one entry of `sites.json` by its id), `cardVersion` and `journalCount` (Share images)
 - **Dates are Chicago days.** `dateFormat` (default and `month-year`), `dateShort`, `dateTimeShort`,
   `year`, `groupByYear` and `archiveStats` read the day in America/Chicago through `lib/siteTime.js`;
@@ -101,6 +101,12 @@ one) and two counts as `<data>`: `p-link-count` (the front matter's `links`) and
 cards.thingelstad.com's `src/post.mjs` reads them. `tests/e2e/site.spec.js` pins the card URLs, the
 h-entry and the front page's h-feed.
 
+The issue lists are h-feeds too, for IndieWeb readers and parsers, not the card maker (it reads only the
+front page's h-feed and the issue pages): `/archive/` (named by a `<data>` p-name) and each topic page
+(named by its h1), with an h-entry per issue row (`p-name` and `u-url` on the title link,
+`dt-published` on the date, `p-summary` on the dek). Classes on the markup already there, so nothing
+readers see changes. Leave the front page's hero h-feed as it is.
+
 The front page shows the newest issue as its card, with Read, Listen and Chat under it (2026-10-25;
 Jamie: "The new share cards for weekly thing issues are so nice I think they would be better for the
 current issue on the front page. The controls can go under it."). The `issueCard` filter builds an
@@ -148,7 +154,9 @@ chapter with its minute and link. `layouts/issue.njk` adds a "Listen by chapter"
 until playback starts; the time seeks the hidden player) and a Transcript `<details>` under the article
 that fetches the WebVTT from the CDN when opened (CORS is open there) and highlights the cue being
 spoken. Cue text carries WebVTT's escapes (`&amp;` `&lt;` `&gt;`); the panel decodes them in a detached
-textarea and sets each cue as `textContent`, never as HTML (2026-09-29). Every part is guarded on the fields existing — 349 issues have none of the new ones.
+textarea and sets each cue as `textContent`, never as HTML (2026-09-29). Every part is guarded on the fields existing,
+though the back catalogue's audio is done: on 2026-10-25 all 354 issue pages (WT1 to WT353 and 140-special) carry
+every one of them, a chapter list included.
 
 ## Pagefind
 
@@ -178,6 +186,11 @@ No Lambda or corpus build — those run in `librarian-thing`.
 
 - **Never edit `apps/site/archive/*.md` or the pushed `_data` files.** Fix upstream in WT Builder (or
   `librarian-thing` for the topic graph).
+- **Feeds escape text twice inside HTML content.** A reader XML-decodes Atom `type="html"` content and RSS
+  `<description>`, then reads it as HTML, so text set there goes through `htmlEscape | xmlEscape` (WT3's
+  "D&D" is `D&amp;amp;D` in the file). Plain-text elements (Atom `type="text"`, titles, `itunes:summary`)
+  take `xmlEscape` alone; CDATA (`content:encoded`) takes one HTML escape. `/archive.json` is listed in
+  llms.txt and not in the head: `application/json` is JSON Feed 1.0's discovery type.
 - **Tinylytics site UID** lives in `_data/site.js` — safe in the repo (it's a public identifier).
 - **CSS** lives in `apps/site/css/style.css`. (Email styling is not here; WT Builder renders the email
   edition.)

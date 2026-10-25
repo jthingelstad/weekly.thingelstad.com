@@ -41,7 +41,11 @@ permalink: /archive/
   </div>
 </section>
 
-<section class="archive-list-wrap">
+{# The list is an h-feed with an h-entry per issue (IndieWeb readers and
+   microformats parsers), marked on the elements already here; only the
+   feed's name is an invisible <data>. Classes only: nothing readers see. #}
+<section class="archive-list-wrap h-feed">
+  <data class="p-name" value="{{ pageTitle }} — {{ site.title }}"></data>
   <div class="container-wide archive-container">
     {% for group in grouped %}
     {% set yearStat = (archiveStats.yearlyStats | slice(0, 99)) %}
@@ -63,19 +67,19 @@ permalink: /archive/
       </header>
       <ol class="archive-list">
         {% for issue in group.issues %}
-        <li class="archive-entry">
+        <li class="archive-entry h-entry">
           <div class="archive-entry-link">
             {% set hasCover = issue.data.image and ("files.thingelstad.com" in issue.data.image) %}
             <div class="archive-entry-cover" aria-hidden="true"{% if hasCover %} style="background-image: linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.45)), url('{{ issue.data.image }}'); background-size: cover; background-position: center;"{% else %} data-fallback="{{ issue.data.number }}"{% endif %}>
               <span class="archive-entry-cover-num">WT{{ issue.data.number }}</span>
             </div>
             <div class="archive-entry-body">
-              <h3 class="archive-entry-title"><a href="/archive/{{ issue.data.number }}/" class="archive-entry-stretched">{{ issue.data.subject }}</a></h3>
+              <h3 class="archive-entry-title"><a href="/archive/{{ issue.data.number }}/" class="archive-entry-stretched u-url p-name">{{ issue.data.subject }}</a></h3>
               {% if issue.data.description %}
-              <p class="archive-entry-description">{{ issue.data.description }}</p>
+              <p class="archive-entry-description p-summary">{{ issue.data.description }}</p>
               {% endif %}
               <p class="archive-entry-foot">
-                <time datetime="{{ issue.data.publish_date | dateFormat('iso') }}">{{ issue.data.publish_date | dateShort }}</time>
+                <time class="dt-published" datetime="{{ issue.data.publish_date | dateFormat('iso') }}">{{ issue.data.publish_date | dateShort }}</time>
                 {% if issue.data.links and issue.data.links.length > 0 %}<span><strong>{{ issue.data.links.length }}</strong> links</span>{% endif %}
                 {% if issue.data.word_count %}<span><strong>{{ (issue.data.word_count / 1000) | round(1) }}k</strong> words</span>{% endif %}
                 {% if issue.data.audio_url %}<a href="{{ issue.data.audio_url }}" class="archive-entry-action archive-entry-listen" data-audio-url="{{ issue.data.audio_url }}" data-issue="{{ issue.data.number }}" data-tinylytics-event="archive.listen" data-tinylytics-event-value="{{ issue.data.number }}">▶️ Listen &rarr;</a>{% endif %}

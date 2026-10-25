@@ -169,6 +169,23 @@ module.exports = function (eleventyConfig) {
     return new nunjucksRuntime.SafeString(escaped);
   });
 
+  // HTML-escape text that a feed sets inside HTML content (Atom
+  // `type="html"`, RSS `<description>`), then pipe it through xmlEscape: a
+  // reader XML-decodes the element and reads what is left as HTML, so the
+  // text is escaped twice. WT3's "Gary Gygax D&D" is `D&amp;amp;D` in the
+  // file and `D&amp;D` in the HTML the reader gets. Plain-text elements
+  // (an Atom `type="text"` summary, `itunes:summary`) take xmlEscape alone.
+  eleventyConfig.addFilter("htmlEscape", (str) => {
+    if (!str) return new nunjucksRuntime.SafeString("");
+    const escaped = String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+    return new nunjucksRuntime.SafeString(escaped);
+  });
+
   // Render markdown string to HTML (for use in templates)
   eleventyConfig.addFilter("markdownify", (str) => {
     if (!str) return "";

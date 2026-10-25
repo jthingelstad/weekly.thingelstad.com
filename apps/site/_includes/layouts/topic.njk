@@ -1,10 +1,12 @@
 ---
 layout: layouts/base.njk
 ---
-<article class="topic">
+{# The topic is an h-feed named by its heading, with an h-entry per issue,
+   marked on the elements already here. Classes only: nothing readers see. #}
+<article class="topic h-feed">
   <header class="topic-header">
     <p class="eyebrow">Topic</p>
-    <h1>{{ topic.name }}</h1>
+    <h1 class="p-name">{{ topic.name }}</h1>
     <p class="topic-stat">
       Mentioned in <strong>{{ topic.count | numberFormat }}</strong>
       {% if topic.count == 1 %}issue{% else %}issues{% endif %}{% if topic.firstDate and topic.lastDate %},
@@ -16,19 +18,19 @@ layout: layouts/base.njk
     <h2 class="eyebrow">Issues</h2>
     <ol class="archive-list">
       {%- for it in topic.issues -%}
-      <li class="archive-entry">
+      <li class="archive-entry h-entry">
         <div class="archive-entry-link">
           {% set hasCover = it.image and ("files.thingelstad.com" in it.image) %}
           <div class="archive-entry-cover" aria-hidden="true"{% if hasCover %} style="background-image: linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.45)), url('{{ it.image }}'); background-size: cover; background-position: center;"{% else %} data-fallback="{{ it.number }}"{% endif %}>
             <span class="archive-entry-cover-num">WT{{ it.number }}</span>
           </div>
           <div class="archive-entry-body">
-            <h3 class="archive-entry-title"><a href="/archive/{{ it.number }}/" class="archive-entry-stretched">{{ it.subject }}</a></h3>
+            <h3 class="archive-entry-title"><a href="/archive/{{ it.number }}/" class="archive-entry-stretched u-url p-name">{{ it.subject }}</a></h3>
             {% if it.description %}
-            <p class="archive-entry-description">{{ it.description }}</p>
+            <p class="archive-entry-description p-summary">{{ it.description }}</p>
             {% endif %}
             <p class="archive-entry-foot">
-              <time datetime="{{ it.publish_date | dateFormat('iso') }}">{{ it.publish_date | dateShort }}</time>
+              <time class="dt-published" datetime="{{ it.publish_date | dateFormat('iso') }}">{{ it.publish_date | dateShort }}</time>
               {% if it.links and it.links.length > 0 %}<span><strong>{{ it.links.length }}</strong> links</span>{% endif %}
               {% if it.word_count %}<span><strong>{{ (it.word_count / 1000) | round(1) }}k</strong> words</span>{% endif %}
               {% if it.audio_url %}<a href="{{ it.audio_url }}" class="archive-entry-action archive-entry-listen" data-audio-url="{{ it.audio_url }}" data-issue="{{ it.number }}" data-tinylytics-event="topic.listen" data-tinylytics-event-value="{{ it.number }}">▶️ Listen &rarr;</a>{% endif %}

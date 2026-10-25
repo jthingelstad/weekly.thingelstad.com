@@ -49,7 +49,9 @@ eleventyExcludeFromCollections: true
       <link>{{- issueUrl -}}</link>
       <guid isPermaLink="false">weekly-thing-{{ issue.data.number }}-audio</guid>
       <pubDate>{{- issue.data.publish_date | dateFormat('rfc822') -}}</pubDate>
-      <description>{{- (issue.data.description or "") | xmlEscape -}}</description>
+      {#- RSS <description> is HTML, so the text is escaped twice (htmlEscape,
+          then xmlEscape); itunes:summary is plain text and is escaped once. -#}
+      <description>{{- (issue.data.description or "") | htmlEscape | xmlEscape -}}</description>
       <itunes:summary>{{- (issue.data.description or "") | xmlEscape -}}</itunes:summary>
       {#- Show notes: the description, then every chapter with the minute it is
           spoken at and its link. WT Builder stamps `audio_chapters` since WT350
