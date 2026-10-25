@@ -439,6 +439,87 @@ test('the JSON Feed carries every issue the Atom feed does', async ({ request })
   }
 });
 
+test('feeds escape text twice inside HTML content, once where it is plain text', async ({ page, request }) => {
+  // A reader XML-decodes Atom type="html" content and RSS <description>, then
+  // reads what is left as HTML, so WT3's "Gary Gygax D&D" must decode to
+  // D&amp;D there (open-web audit G5, 2026-10-25). Atom type="text"
+  // summaries and itunes:summary are plain text and decode to D&D.
+  const paths = ['/feed.xml', '/podcast.xml', '/archive/101/links.xml', '/archive/103/links.xml', '/archive/105/links.xml', '/archive/134/links.xml'];
+  const xml = [];
+  for (const path of paths) {
+    const res = await request.get(path);
+    expect(res.ok(), path).toBeTruthy();
+    xml.push(await res.text());
+  }
+  const got = await page.evaluate((sources) => {
+    const docs = sources.map((s) => new DOMParser().parseFromString(s, 'application/xml'));
+    const tag = (el, name) => el.getElementsByTagName(name)[0];
+    // Text left bare once the HTML is read: an & that starts no character
+    // reference, or a < that starts no tag.
+    const bare = (html) => /&(?![A-Za-z][A-Za-z0-9]*;|#\d+;|#x[0-9A-Fa-f]+;)|<(?![A-Za-z/!])/.test(html);
+    const text = (html) => new DOMParser().parseFromString(html, 'text/html').body.textContent;
+    const [atom, podcast, ...links] = docs;
+    const htmlContent = [atom, ...links].flatMap((d) => [...d.getElementsByTagName('content')]
+      .filter((c) => c.getAttribute('type') === 'html').map((c) => c.textContent));
+    const descriptions = [...podcast.getElementsByTagName('item')].map((i) => tag(i, 'description').textContent);
+    const wt3 = [...atom.getElementsByTagName('entry')].find((e) => tag(e, 'id').textContent.endsWith('/archive/3/'));
+    const item3 = [...podcast.getElementsByTagName('item')].find((i) => tag(i, 'link').textContent.endsWith('/archive/3/'));
+    const lidar = htmlContent.find((c) => c.includes('Crappy Range Imaging'));
+    return {
+      parseErrors: docs.map((d) => d.getElementsByTagName('parsererror').length),
+      htmlCount: htmlContent.length + descriptions.length,
+      bare: [...htmlContent, ...descriptions].filter(bare),
+      atomContent: tag(wt3, 'content').textContent,
+      atomContentText: text(tag(wt3, 'content').textContent),
+      atomSummary: tag(wt3, 'summary').textContent,
+      podcastDescription: tag(item3, 'description').textContent,
+      podcastDescriptionText: text(tag(item3, 'description').textContent),
+      itunesSummary: item3.getElementsByTagNameNS('http://www.itunes.com/dtds/podcast-1.0.dtd', 'summary')[0].textContent,
+      lidar,
+      lidarText: text(lidar),
+    };
+  }, xml);
+  expect(got.parseErrors).toEqual(paths.map(() => 0));
+  expect(got.htmlCount).toBeGreaterThan(700);
+  expect(got.bare).toEqual([]);
+  expect(got.atomContent).toContain('Gary Gygax D&amp;D,');
+  expect(got.atomContentText).toContain('Gary Gygax D&D,');
+  expect(got.atomSummary).toContain('Gary Gygax D&D,');
+  expect(got.podcastDescription).toContain('Gary Gygax D&amp;D,');
+  expect(got.podcastDescriptionText).toContain('Gary Gygax D&D,');
+  expect(got.itunesSummary).toContain('Gary Gygax D&D,');
+  expect(got.lidar).toContain('for &lt; $175');
+  expect(got.lidarText).toContain("for < $175, But Still No Moore's Law");
+});
+
+test('archive.json is listed in llms.txt, never advertised as a feed', async ({ request }) => {
+  // application/json is JSON Feed 1.0's discovery type, so a head link let a
+  // reader offer the archive index as a feed (open-web audit G4, 2026-10-25).
+  for (const path of ['/', '/archive/', '/archive/353/', '/podcast/', '/topics/']) {
+    const head = (await (await request.get(path)).text()).split('</head>')[0];
+    expect(head, path).not.toContain('/archive.json');
+    expect(head, path).not.toMatch(/<link rel="alternate" type="application\/json"/);
+    expect(head, path).toContain('<link rel="alternate" type="application/feed+json" title="Weekly Thing" href="/feed.json">');
+  }
+  const llms = await (await request.get('/llms.txt')).text();
+  expect(llms).toMatch(/^- \[[^\]]+\]\(https:\/\/weekly\.thingelstad\.com\/archive\.json\): \S/m);
+});
+
+test('the podcast page and feed are in the sitemap and in llms.txt', async ({ request }) => {
+  // Open-web audit G6 and G7, 2026-10-25: /podcast/ is indexable, and was in
+  // neither file.
+  const sitemap = await (await request.get('/sitemap.xml')).text();
+  const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  for (const path of ['/', '/archive/', '/topics/', '/about/', '/members/', '/search/', '/faq/', '/podcast/']) {
+    expect(locs, path).toContain(`https://weekly.thingelstad.com${path}`);
+  }
+  expect(await (await request.get('/podcast/')).text()).not.toContain('name="robots"');
+  // llmstxt.org list items: [name](url): note
+  const llms = await (await request.get('/llms.txt')).text();
+  expect(llms).toMatch(/^- \[Podcast feed\]\(https:\/\/weekly\.thingelstad\.com\/podcast\.xml\): \S/m);
+  expect(llms).toMatch(/^- \[Podcast\]\(https:\/\/weekly\.thingelstad\.com\/podcast\/\): \S/m);
+});
+
 test('the transcript panel shows WebVTT escapes as the characters they stand for, never as markup', async ({ page }) => {
   // WT Builder writes cue text with the standard WebVTT escapes (&amp; &lt;
   // &gt;); the panel decodes them and still sets each cue as text. Nothing
@@ -599,4 +680,46 @@ test('the front page is an h-feed the card maker can read', async ({ page }) => 
   await expect(feed.locator('.p-link-count')).toHaveAttribute('value', /^[1-9]\d*$/);
   // No h-entry inside it: the card maker reads the feed's own properties.
   await expect(feed.locator('.h-entry')).toHaveCount(0);
+});
+
+test('the archive and each topic page are h-feeds with an h-entry per issue', async ({ page, request }) => {
+  // Open-web audit G8, 2026-10-25: classes on the rows already there, so
+  // IndieWeb readers can follow the lists. Nothing readers see changes.
+  const rowsOf = (feed) => feed.locator('.h-entry').evaluateAll((els) => els.map((el) => ({
+    name: el.querySelector('a.u-url.p-name')?.textContent.trim(),
+    url: el.querySelector('a.u-url.p-name')?.getAttribute('href'),
+    published: el.querySelector('time.dt-published')?.getAttribute('datetime'),
+    summary: el.querySelectorAll('.p-summary').length,
+    nested: el.querySelectorAll('.h-entry, .h-feed, .h-card').length,
+  })));
+  const expectRows = (rows) => {
+    expect(rows.length).toBeGreaterThan(0);
+    for (const row of rows) {
+      expect(row.name, row.url).toMatch(/\S/);
+      expect(row.url).toMatch(/^\/archive\/[^/]+\/$/);
+      expect(row.published, row.url).toMatch(/^\d{4}-\d{2}-\d{2}T/);
+      expect(row.nested, row.url).toBe(0);
+    }
+  };
+
+  const archive = await (await request.get('/archive.json')).json();
+  await page.goto('/archive/', { waitUntil: 'domcontentloaded' });
+  const feed = page.locator('.h-feed');
+  await expect(feed).toHaveCount(1);
+  await expect(feed.locator(':scope > data.p-name')).toHaveAttribute('value', 'Archive — Weekly Thing');
+  const rows = await rowsOf(feed);
+  expectRows(rows);
+  // Every issue, newest first, each with its dek when it has one.
+  expect(rows.map((row) => `${archive.url}${row.url}`)).toEqual(archive.issues.map((issue) => issue.url));
+  expect(rows.map((row) => row.summary)).toEqual(archive.issues.map((issue) => (issue.description ? 1 : 0)));
+
+  const topics = await (await request.get('/topics/')).text();
+  const topic = topics.match(/href="(\/topics\/[^"/]+\/)"/)[1];
+  await page.goto(topic, { waitUntil: 'domcontentloaded' });
+  const topicFeed = page.locator('.h-feed');
+  await expect(topicFeed, topic).toHaveCount(1);
+  await expect(topicFeed.locator('h1.p-name'), topic).toHaveText(/\S/);
+  const topicRows = await rowsOf(topicFeed);
+  expectRows(topicRows);
+  expect(topicRows, topic).toHaveLength(await page.locator('.archive-entry').count());
 });
