@@ -74,6 +74,13 @@ per-issue, `layout: archive`), `/archive/<slug>/` redirects (`redirects.njk` + `
 hand-written `/about/ /members/ /faq/ /search/`, `/feed.xml`, `/feed.json`, `/archive/N/links.xml`, `/podcast.xml`,
 
 
+## Share images
+
+`layouts/base.njk` sets `og:image` and a large Twitter card on every page that has a cover to show:
+an issue's own `image`; a topic page's newest cover (`topics.js` `image`); any other page the newest
+issue's cover (`_data/defaultShareImage.js`, the photo the home stamp shows). An issue with no cover of
+its own (the early ones) shares none rather than another issue's. `tests/e2e/site.spec.js` pins it.
+
 ## The sites strip
 
 Every page on `layouts/base.njk` opens (right after the skip link, above the sticky header) with the

@@ -12,11 +12,16 @@
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:type" content="{{ ogType or 'website' }}">
   <meta property="og:site_name" content="{{ site.title }}">
-  {% if image %}
-  <meta property="og:image" content="{{ image }}">
-  <meta name="twitter:image" content="{{ image }}">
+  {# An issue's own image; else a topic's newest cover; else, on a page
+     that isn't an issue, the newest issue's cover (_data/defaultShareImage.js).
+     An issue with no cover of its own (49 early ones) shares none, rather
+     than another issue's. #}
+  {% set shareImage = image or topic.image or (defaultShareImage if not number) %}
+  {% if shareImage %}
+  <meta property="og:image" content="{{ shareImage }}">
+  <meta name="twitter:image" content="{{ shareImage }}">
   {% endif %}
-  <meta name="twitter:card" content="{{ 'summary_large_image' if image else 'summary' }}">
+  <meta name="twitter:card" content="{{ 'summary_large_image' if shareImage else 'summary' }}">
   <meta name="twitter:title" content="{{ subject or pageTitle or title or site.title }}">
   <meta name="twitter:description" content="{{ description or site.description }}">
   {% if publish_date %}

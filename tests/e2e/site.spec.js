@@ -525,3 +525,26 @@ test('the home page draws three reader quotes and three issue excerpts on each v
   expect(await visibleTexts(page, '.home-voice-grid > .home-voice-card')).toHaveLength(Math.min(3, samples.length));
   await js.close();
 });
+
+test('every page shares an issue cover, and an issue only its own', async ({ request }) => {
+  const shared = async (path) => {
+    const html = await (await request.get(path)).text();
+    return {
+      image: html.match(/<meta property="og:image" content="([^"]*)"/)?.[1],
+      card: html.match(/<meta name="twitter:card" content="([^"]*)"/)?.[1],
+    };
+  };
+  const home = await shared('/');
+  expect(home.image).toMatch(/^https:\/\/files\.thingelstad\.com\//);
+  expect(home.card).toBe('summary_large_image');
+  for (const path of ['/about/', '/faq/', '/members/', '/topics/']) {
+    expect(await shared(path), path).toEqual(home);
+  }
+  // A topic page shows its own newest cover; WT351 carries its own.
+  const topics = await (await request.get('/topics/')).text();
+  const topic = topics.match(/href="(\/topics\/[^"/]+\/)"/)[1];
+  expect((await shared(topic)).image, topic).toMatch(/^https:\/\/files\.thingelstad\.com\//);
+  expect((await shared('/archive/351/')).image).toBe('https://files.thingelstad.com/weekly-thing/351/cover.jpg');
+  // WT1 has no cover, so it shares none rather than another issue's.
+  expect(await shared('/archive/1/')).toEqual({ image: undefined, card: 'summary' });
+});
