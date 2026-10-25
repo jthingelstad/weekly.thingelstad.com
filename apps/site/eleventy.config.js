@@ -68,9 +68,18 @@ module.exports = function (eleventyConfig) {
 
   // Reader-facing dates are Chicago days; see lib/dateFilters.js.
   // ?v= for an issue's share card: a short hash of what the card shows.
-  eleventyConfig.addFilter("cardVersion", (parts) =>
-    require("crypto").createHash("sha256").update(JSON.stringify(parts)).digest("hex").slice(0, 10),
-  );
+  const cardVersion = (parts) =>
+    require("crypto").createHash("sha256").update(JSON.stringify(parts)).digest("hex").slice(0, 10);
+  eleventyConfig.addFilter("cardVersion", cardVersion);
+  // An issue's card at cards.thingelstad.com: ?v= hashes what the card shows
+  // (subject, date, dek, cover, link count, and the word count standing in for
+  // the journal), so an edited issue gets a new card. The issue page names it
+  // as its og:image and the front page shows the newest one; the card maker
+  // draws only the URL the issue page names, so both build it here.
+  eleventyConfig.addFilter("issueCard", (issue) => {
+    const parts = [issue.subject, issue.publish_date, issue.description, issue.image, (issue.links || []).length, issue.word_count];
+    return `https://cards.thingelstad.com/weekly/archive/${issue.number}.png?v=${cardVersion(parts)}`;
+  });
   eleventyConfig.addFilter("dateFormat", dateFilters.dateFormat);
   eleventyConfig.addFilter("dateShort", dateFilters.dateShort);
   eleventyConfig.addFilter("dateTimeShort", dateFilters.dateTimeShort);
