@@ -29,27 +29,20 @@ permalink: /
         <p class="home-hero-proof">Free, every weekend &middot; No tracking, no ads &middot; Unsubscribe anytime</p>
       </div>
       <aside class="home-hero-side">
-        <div class="home-stamp">
-          <div class="home-stamp-head">
-            <div class="home-stamp-ident">
-              <span class="home-stamp-issue">WT{{ latest.data.number }}</span>
-              <span class="home-stamp-date">{{ latest.data.publish_date | dateShort }}</span>
-            </div>
-            {% if latest.data.image %}
-            <div class="home-stamp-cover" aria-hidden="true" style="background-image: url('{{ latest.data.image }}');"></div>
-            {% endif %}
-          </div>
-          <hr>
-          <p class="home-stamp-subject"><a href="/archive/{{ latest.data.number }}/" class="home-stamp-stretched">{{ latest.data.subject }}</a></p>
-          {% if latest.data.description %}
-          <p class="home-stamp-desc">{{ latest.data.description }}</p>
-          {% endif %}
-          <p class="home-stamp-actions">
-            <a href="/archive/{{ latest.data.number }}/" class="home-stamp-action home-stamp-action-read">📄 Read &rarr;</a>
+        {#- The newest issue as its card from cards.thingelstad.com, the same
+            image the issue shares (Jamie, 2026-10-25: "The new share cards for
+            weekly thing issues are so nice I think they would be better for the
+            current issue on the front page"), with its controls under it. #}
+        <div class="home-issue">
+          <a href="/archive/{{ latest.data.number }}/" class="home-issue-card">
+            <img src="{{ latest.data | issueCard }}" width="1200" height="630" alt="{{ latest.data.subject }}, {{ latest.data.publish_date | dateFormat }}.{% if latest.data.description %} {{ latest.data.description }}{% endif %}" fetchpriority="high">
+          </a>
+          <p class="home-issue-actions">
+            <a href="/archive/{{ latest.data.number }}/" class="home-issue-action home-issue-action-read">📄 Read &rarr;</a>
             {% if latest.data.audio_url %}
-            <a href="{{ latest.data.audio_url }}" class="home-stamp-action home-stamp-action-listen" data-audio-url="{{ latest.data.audio_url }}" data-tinylytics-event="home.listen" data-tinylytics-event-value="{{ latest.data.number }}">▶️ Listen &rarr;</a>
+            <a href="{{ latest.data.audio_url }}" class="home-issue-action home-issue-action-listen" data-audio-url="{{ latest.data.audio_url }}" data-tinylytics-event="home.listen" data-tinylytics-event-value="{{ latest.data.number }}">▶️ Listen &rarr;</a>
             {% endif %}
-            <a href="{{ site.thingyUrl }}/chat/?prompt={{ ('Tell me about issue #' + latest.data.number) | urlencode }}&ref=weekly-card" class="home-stamp-action home-stamp-action-chat" data-tinylytics-event="home.chat" data-tinylytics-event-value="{{ latest.data.number }}">💬 Chat &rarr;</a>
+            <a href="{{ site.thingyUrl }}/chat/?prompt={{ ('Tell me about issue #' + latest.data.number) | urlencode }}&ref=weekly-card" class="home-issue-action home-issue-action-chat" data-tinylytics-event="home.chat" data-tinylytics-event-value="{{ latest.data.number }}">💬 Chat &rarr;</a>
           </p>
         </div>
         {# Next-issue badge. The inline script below fetches the live
@@ -274,10 +267,10 @@ permalink: /
 })();
 </script>
 
-{# ── Inline Listen handler for the latest-issue stamp ── #}
+{# ── Inline Listen handler for the latest issue ── #}
 <script>
 (function() {
-  var btn = document.querySelector('.home-stamp-action-listen');
+  var btn = document.querySelector('.home-issue-action-listen');
   if (!btn) return;
   var audio = null;
   function reset() {

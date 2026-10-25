@@ -101,6 +101,12 @@ one) and two counts as `<data>`: `p-link-count` (the front matter's `links`) and
 cards.thingelstad.com's `src/post.mjs` reads them. `tests/e2e/site.spec.js` pins the card URLs, the
 h-entry and the front page's h-feed.
 
+The front page shows the newest issue as its card, with Read, Listen and Chat under it (2026-10-25;
+Jamie: "The new share cards for weekly thing issues are so nice I think they would be better for the
+current issue on the front page. The controls can go under it."). The `issueCard` filter builds an
+issue's card URL for both that image and the issue page's `og:image`, so they stay one URL: the card
+maker draws only the `v` the issue page names, and any other would cost a redirect.
+
 ## The sites strip
 
 Every page on `layouts/base.njk` opens (right after the skip link, above the sticky header) with the

@@ -1225,8 +1225,10 @@ th {
 }
 .home-hero-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 64px;
+  /* The card column is wide enough to read the card's dek, about the size a
+     social app shows it. */
+  grid-template-columns: 1fr 1.12fr;
+  gap: 56px;
   align-items: start;
 }
 .home-hero-title {
@@ -1256,92 +1258,45 @@ th {
   margin-top: 14px;
   font-family: var(--font-label);
 }
-.home-hero-side { align-self: start; }
-.home-stamp {
+.home-hero-side { align-self: start; margin-top: 30px; }
+/* The newest issue as its share card, linked to the issue, with its
+   controls under it. */
+.home-issue-card {
   display: block;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  padding: 28px;
-  position: relative;
-  box-shadow: 0 1px 0 var(--line-soft), 0 12px 32px -16px rgba(40, 30, 20, 0.12);
-  color: var(--ink);
-  text-decoration: none;
-  transition: border-color 140ms ease, transform 140ms ease;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #16161a;
+  box-shadow: 0 1px 2px rgba(20, 24, 31, 0.10), 0 22px 44px -22px rgba(20, 24, 31, 0.45);
+  transition: transform 140ms ease, box-shadow 140ms ease;
 }
-.home-stamp:hover {
-  border-color: var(--accent);
-  transform: translateY(-1px);
-  text-decoration: none;
+.home-issue-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1px 2px rgba(20, 24, 31, 0.12), 0 28px 52px -22px rgba(20, 24, 31, 0.55);
 }
-.home-stamp::before {
-  content: '';
-  position: absolute;
-  inset: 8px;
-  border: 1px solid var(--line-soft);
-  border-radius: 2px;
-  pointer-events: none;
+.home-issue-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
-.home-stamp-head {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 16px;
-}
-.home-stamp-ident { min-width: 0; }
-.home-stamp-cover {
-  width: 96px;
-  height: 96px;
-  border-radius: 4px;
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0 1px 2px rgba(20, 24, 31, 0.08), 0 6px 16px rgba(20, 24, 31, 0.06);
-}
-.home-stamp-issue {
+.home-issue-card img {
   display: block;
-  font-family: var(--font-heading);
-  font-size: 32px;
-  color: var(--accent);
-  font-weight: var(--weight-heading);
-  line-height: 1;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 630;
 }
-.home-stamp-date {
-  display: block;
-  font-family: var(--font-label);
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--muted);
-  margin-top: 6px;
-  letter-spacing: var(--jt-tracking-label);
-  text-transform: uppercase;
-}
-.home-stamp-subject a,
-.home-stamp-subject a:hover {
-  color: inherit;
-  text-decoration: none;
-}
-.home-stamp-stretched::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-.home-stamp-actions {
+.home-issue-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin: 4px 0 0;
+  gap: 8px 22px;
+  margin: 18px 2px 0;
   font-size: 17px;
 }
-.home-stamp-action {
-  position: relative;
-  z-index: 2;
+.home-issue-action {
   text-decoration: none;
   font-weight: 600;
   color: var(--accent);
 }
-.home-stamp-action:hover { text-decoration: underline; color: var(--accent-deep); }
-.home-stamp-action-listen.is-playing { color: var(--accent-deep); }
+.home-issue-action:hover { text-decoration: underline; color: var(--accent-deep); }
+.home-issue-action-listen.is-playing { color: var(--accent-deep); }
 .home-next-issue {
   margin: 16px 4px 0;
   padding: 0;
@@ -1353,44 +1308,6 @@ th {
 }
 .home-next-issue-text {
   font-weight: 600;
-}
-.home-stamp hr {
-  border: none;
-  border-top: 1px solid var(--line);
-  margin: 18px 0;
-}
-.home-stamp-subject {
-  font-family: var(--font-body);
-  font-size: var(--size-base);
-  line-height: 1.3;
-  margin: 0 0 12px;
-  color: var(--ink);
-}
-.home-stamp-desc {
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--ink-soft);
-  margin: 0 0 16px;
-}
-.home-stamp-toc {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.home-stamp-toc li {
-  font-family: var(--font-label);
-  font-size: 14px;
-  color: var(--ink-soft);
-  background: var(--surface-2);
-  padding: 4px 8px;
-  border-radius: 3px;
-}
-.home-stamp-toc li.home-stamp-toc-more {
-  background: transparent;
-  color: var(--muted);
 }
 
 /* Numbers */
@@ -1719,6 +1636,7 @@ th {
     grid-template-columns: 1fr;
     gap: 40px;
   }
+  .home-hero-side { margin-top: 0; }
   .home-numbers-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;

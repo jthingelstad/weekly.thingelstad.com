@@ -570,6 +570,19 @@ test('an issue page is an h-entry the card maker can read', async ({ page }) => 
   await expect(page.locator('.h-entry .p-link-count')).toHaveAttribute('value', /^[1-9]\d*$/);
 });
 
+test('the front page shows the newest issue as the card it shares, its controls under it', async ({ request }) => {
+  const home = await (await request.get('/')).text();
+  const [, href, src] = home.match(/<a href="(\/archive\/\d+\/)" class="home-issue-card">\s*<img src="([^"]*)"/);
+  const issue = await (await request.get(href)).text();
+  // The same URL the issue names, so the card maker draws it once for both.
+  expect(src).toBe(issue.match(/<meta property="og:image" content="([^"]*)"/)[1]);
+  expect(src).toMatch(/^https:\/\/cards\.thingelstad\.com\/weekly\/archive\/\d+\.png\?v=[0-9a-f]{10}$/);
+  expect(home).toMatch(/<img src="https:\/\/cards[^"]*" width="1200" height="630" alt="WT\d+[^"]+"/);
+  const actions = home.match(/<p class="home-issue-actions">([\s\S]*?)<\/p>/)[1];
+  expect(actions).toContain('home-issue-action-read');
+  expect(actions).toContain('home-issue-action-chat');
+});
+
 test('the front page is an h-feed the card maker can read', async ({ page }) => {
   await page.goto('/');
   const feed = page.locator('.h-feed');
