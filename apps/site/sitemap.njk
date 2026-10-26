@@ -39,15 +39,11 @@ eleventyExcludeFromCollections: true
   {% for issue in collections.issuesByDate %}
   <url>
     <loc>{{ site.url }}/archive/{{ issue.data.number }}/</loc>
-    <lastmod>{{ issue.data.publish_date | dateFormat('iso') }}</lastmod>
+    <lastmod>{{ issueEdited[issue.page.fileSlug] or (issue.data.publish_date | dateFormat('iso')) }}</lastmod>
     <priority>0.7</priority>
   </url>
   {% endfor %}
-  {% for topic in topics.all %}
-  <url>
-    <loc>{{ site.url }}/topics/{{ topic.slug }}/</loc>
-    {% if topic.lastDate %}<lastmod>{{ topic.lastDate | dateFormat('iso') }}</lastmod>{% endif %}
-    <priority>0.6</priority>
-  </url>
-  {% endfor %}
+  {#- Topic pages are for readers, not search (Jamie, 2026-10-26: "They are
+      for people, should we even include them in the sitemap?"). Google left
+      most of them unindexed and spent its crawl on them, not the issues. -#}
 </urlset>

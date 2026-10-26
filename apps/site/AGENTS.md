@@ -73,6 +73,12 @@ in file order. Adding a quote or an excerpt puts it in the rotation.
 per-issue, `layout: archive`), `/archive/<slug>/` redirects (`redirects.njk` + `_data/redirects.js`),
 hand-written `/about/ /members/ /faq/ /search/`, `/feed.xml`, `/feed.json`, `/archive/N/links.xml`, `/podcast.xml`,
 
+The sitemap lists the pages and every issue, not the topic pages (2026-10-26; Jamie: "They are for
+people, should we even include them in the sitemap?"). An issue's `<lastmod>` is its page's last
+commit (`_data/issueEdited.js`, so CI checks out full history), falling back to the publish date.
+The topics themselves are `graph.topics`, named upstream in `librarian-thing`
+(`librarian_core.graph.site_topics`); `topics.js` only renders them.
+
 
 ## Share images
 
