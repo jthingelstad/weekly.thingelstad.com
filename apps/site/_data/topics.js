@@ -92,9 +92,25 @@ module.exports = (() => {
     return Object.entries(bucket).sort((a, b) => b[1] - a[1])[0][0];
   };
 
-  // Build qualified records, slugified, with collisions merged.
+  // Build qualified records, slugified, with collisions merged. Since
+  // 2026-10-26 the graph names the topics itself (graph.topics, from
+  // librarian_core.graph.site_topics): names, not words, with twins folded
+  // and 5 issues each, the same list Thingy's list_topics reads. A graph
+  // without it falls back to every entity in MIN_ISSUES issues.
   const bySlug = {};
-  for (const [lower, issues] of Object.entries(graph.entity_index)) {
+  const lowerToSlug = {};
+  const named = Array.isArray(graph.topics) ? graph.topics : null;
+  for (const topic of named || []) {
+    if (!topic.slug || !Array.isArray(topic.issues) || !topic.issues.length) continue;
+    bySlug[topic.slug] = {
+      slug: topic.slug,
+      name: topic.name || topic.slug,
+      issues: topic.issues.map(String),
+      count: topic.issues.length,
+    };
+    for (const key of topic.keys || []) lowerToSlug[String(key)] = topic.slug;
+  }
+  for (const [lower, issues] of named ? [] : Object.entries(graph.entity_index)) {
     if (!Array.isArray(issues) || issues.length < MIN_ISSUES) continue;
     const name = displayName(lower);
     const slug = slugify(name);
@@ -145,8 +161,7 @@ module.exports = (() => {
 
   // Related topics: count co-mentions per issue. Faster than NxN
   // intersection; ~347 issues × C(k,2) per issue.
-  const lowerToSlug = {};
-  for (const [lower, _] of Object.entries(graph.entity_index)) {
+  for (const lower of named ? [] : Object.keys(graph.entity_index)) {
     const name = displayName(lower);
     const s = slugify(name);
     if (s && bySlug[s]) lowerToSlug[lower] = s;

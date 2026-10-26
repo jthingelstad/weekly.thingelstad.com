@@ -27,7 +27,12 @@ jobs:
     env:
       TZ: UTC
     steps:
+      # Full history: the sitemap dates each issue by its last commit
+      # (apps/site/_data/issueEdited.js), and a shallow clone would date them
+      # all today.
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v7
         with:
