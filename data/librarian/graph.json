@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-10-26T19:17:27.227006Z",
+  "generated_at": "2026-10-26T20:07:33.430883Z",
   "extraction_model": "heuristic",
   "issue_count": 355,
   "issues": {
@@ -61363,6 +61363,38 @@
       ]
     },
     {
+      "slug": "minnesota-united",
+      "name": "Minnesota United",
+      "keys": [
+        "minnesota united",
+        "mn united",
+        "mnufc"
+      ],
+      "issues": [
+        "7",
+        "8",
+        "11",
+        "12",
+        "19",
+        "23",
+        "52",
+        "54",
+        "61",
+        "63",
+        "64",
+        "73",
+        "76",
+        "102",
+        "105",
+        "108",
+        "118",
+        "119",
+        "128",
+        "178",
+        "230"
+      ]
+    },
+    {
       "slug": "the-verge",
       "name": "The Verge",
       "keys": [
@@ -61595,34 +61627,6 @@
         "298",
         "309",
         "339"
-      ]
-    },
-    {
-      "slug": "minnesota-united",
-      "name": "Minnesota United",
-      "keys": [
-        "minnesota united",
-        "mn united"
-      ],
-      "issues": [
-        "7",
-        "8",
-        "11",
-        "12",
-        "19",
-        "23",
-        "52",
-        "54",
-        "61",
-        "63",
-        "64",
-        "102",
-        "108",
-        "118",
-        "119",
-        "128",
-        "178",
-        "230"
       ]
     },
     {
