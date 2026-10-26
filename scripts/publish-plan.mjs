@@ -1,11 +1,11 @@
 // What a deploy to S3 publishes, and how each file is served: its content type and Cache-Control.
-// This is the control GitHub Pages never gave the site (it typed files by extension, so /rss went out
-// as application/octet-stream, and cached everything ten minutes).
+// This is the control GitHub Pages, the host until 2026-10-26, never gave the site (it typed files by
+// extension, so /rss went out as application/octet-stream, and cached everything ten minutes).
 import { readdirSync, readFileSync } from 'node:fs';
 import { extname, join, relative, sep } from 'node:path';
 
-// Pages-only files, and the redirect map, which goes to the key value store instead.
-export const NOT_PUBLISHED = new Set(['CNAME', '.nojekyll', '_redirects.json']);
+// The redirect map goes to the key value store instead.
+export const NOT_PUBLISHED = new Set(['_redirects.json']);
 
 const TYPES = {
   '.html': 'text/html; charset=utf-8',

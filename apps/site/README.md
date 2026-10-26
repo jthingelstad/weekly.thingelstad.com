@@ -43,7 +43,7 @@ apps/site/
 ├── index.njk, about.njk, support.njk, search.njk, faq.njk, …
 ├── feed.njk, issue-links-feed.njk, podcast.njk
 ├── librarian.njk, redirects.njk
-└── CNAME, robots.txt, _nojekyll, favicon.svg
+└── robots.txt, favicon.svg
 ```
 
 **Don't hand-edit `apps/site/archive/*.md`** — they're generated upstream and overwritten by the next
@@ -84,7 +84,7 @@ palette (see `AGENTS.md`).
 
 ## Deploy
 
-GitHub Actions → GitHub Pages on push to `main` (a WT Builder handoff, a `librarian-thing` graph push, or
+GitHub Actions → S3 and CloudFront on push to `main` (a WT Builder handoff, a `librarian-thing` graph push, or
 a hand-authored change). See
 [`../../.github/workflows/deploy.yml`](../../.github/workflows/deploy.yml).
 

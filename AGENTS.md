@@ -9,8 +9,8 @@ Operational notes for working in this repo. Human-facing overview lives in
 WT Builder authors each issue and commits the 11ty inputs here on send. The canonical issue store
 (`data/issues/{N}/archive.md`), the corpus, and the Librarian/Thingy Lambda live in `librarian-thing`
 (renamed from `studio-thing` 2026-08-28; the Studio application is retired). This repo builds the 11ty
-site from the committed inputs and deploys to GitHub Pages and, beside it until DNS moves, S3 and
-CloudFront.
+site from the committed inputs and publishes it to S3 behind CloudFront (GitHub Pages until
+2026-10-26).
 
 Do not look for the pipeline, `data/issues`, or `librarian-core` here — they're upstream. The
 architecture model lives in `librarian-thing/ALIGNMENT.md`; the website handoff in WT Builder's
@@ -58,14 +58,14 @@ Render-only. Triggered by push to `main` (a handoff commit) + manual `workflow_d
 `npm ci` → validate tracked documentation links → `npm audit` (advisory: `continue-on-error`, so an
 upstream advisory never blocks publishing) → fetch landing-page stats → `npm run build` (11ty) →
 `npm run build:search` (Pagefind) → install Playwright Chromium → `npm run test:e2e` (the real gate;
-on failure `test-results/` + `playwright-report/` upload as a 7-day artifact) → upload + deploy to
-GitHub Pages. No Lambda, no corpus build — those run in `librarian-thing`.
+on failure `test-results/` + `playwright-report/` upload as a 7-day artifact) → upload the build as the
+`site` artifact. The `deploy` job (main only) then runs `npm run deploy:aws` as the delivery role. No
+Lambda, no corpus build — those run in `librarian-thing`.
 
-A second job, `deploy-aws`, publishes the same tested build to S3 behind CloudFront
-(2026-10-26; Jamie: "Approved: move weekly.thingelstad.com to S3 and CloudFront with real 301
-redirects, Pages kept until DNS cutover"). It runs beside Pages, so a failure there never holds up
-Pages, until `weekly.thingelstad.com` moves to the distribution; then Pages retires. See "S3 and
-CloudFront" below.
+The site moved from GitHub Pages to S3 and CloudFront on 2026-10-26 (Jamie: "Approved: move
+weekly.thingelstad.com to S3 and CloudFront with real 301 redirects, Pages kept until DNS cutover").
+Both deployed until the DNS moved the same day; then the Pages job, `CNAME` and `.nojekyll` went. See
+"S3 and CloudFront" below.
 
 ## S3 and CloudFront
 
@@ -75,7 +75,12 @@ identity** with `npm run infra -- certificate|site|delivery` (`--plan` prints th
 stops). `infra/deployment.json` records their names, tags and outputs.
 
 - `weekly-certificate`: the ACM certificate, validated by a CNAME at Namecheap. DNS is Jamie's to edit.
-  Keep the validation record: renewal needs it.
+  Keep the validation record: renewal needs it. The `weekly` record is a CNAME to the distribution's
+  `cloudfront.net` name. ACM checks CAA along that CNAME chain: while `weekly` was a CNAME to
+  `jthingelstad.github.io`, GitHub's CAA (DigiCert, Let's Encrypt, Sectigo) refused Amazon and the
+  first certificate FAILED. Pointing `weekly` at GitHub's A records for the hour of validation let the
+  check fall through to `thingelstad.com`'s CAA, which allows `amazon.com`. Any other site moving off
+  Pages hits the same wall.
 - `weekly-site`: a private, versioned bucket (old versions kept 90 days) behind CloudFront with origin
   access control; AWS's CachingOptimized policy (no query string in the key, so `?ref=` variants share
   one copy); security headers plus `Access-Control-Allow-Origin: *` as Pages sent; 403/404 serve
@@ -89,8 +94,8 @@ redirect page, path to target). Each deploy copies it into the distribution's Cl
 and the viewer-request function (`infra/viewer-request.mjs`) answers those paths with a 301 that keeps
 the query string. The same function sends a bare path to its slash form and serves `index.html` for
 directory URLs; the extensionless files it passes through are listed in its `FILES` (an e2e test keeps
-the map equal to the redirect pages and `FILES` equal to the build). The redirect pages themselves stay
-for Pages and are never reached on CloudFront.
+the map equal to the redirect pages and `FILES` equal to the build). The meta-refresh redirect pages are
+still built (the map is read from them) but never reached on CloudFront.
 
 **Content types and caching** are set per file by `scripts/publish-plan.mjs`: `/rss` and the Atom
 feeds go out as `application/xml` (CloudFront does not compress `application/atom+xml`, and `/feed.xml`
@@ -107,8 +112,8 @@ through the CloudFront domain (the front page as built, `/rss`'s type, a redirec
 ## Secrets
 
 This repo holds only what its own concerns need — the credentials for the landing-page stats fetch.
-Publishing secrets live in WT Builder; corpus/Lambda secrets live in `librarian-thing`. Pages deploys
-with the default `GITHUB_TOKEN`.
+Publishing secrets live in WT Builder; corpus/Lambda secrets live in `librarian-thing`. The deploy
+assumes the delivery role through GitHub's OIDC token; no AWS keys are stored.
 
 ## Conventions worth knowing (site-only)
 
@@ -122,7 +127,7 @@ with the default `GITHUB_TOKEN`.
   on :8080, so the tests see what deploys. Locally run `npm test` (checks the vendored `sites.json`,
   runs the unit tests, builds, indexes, then tests); bare
   `npm run test:e2e` expects `npm run build:all` first. The deploy workflow installs Chromium and runs
-  them before uploading the Pages artifact.
+  them before uploading the `site` artifact the deploy publishes.
 - **Agent guide compatibility:** `AGENTS.md` is canonical everywhere in this repo (root and
   `apps/site/`) and each `CLAUDE.md` is a one-way symlink beside it.
   `npm run test:docs` validates every tracked Markdown symlink and both root entry points.
