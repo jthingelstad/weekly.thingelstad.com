@@ -1,9 +1,9 @@
 {
   "version": 1,
   "source": "data/librarian/corpus.json",
-  "generated_at": "2026-10-25T16:37:48.672497Z",
+  "generated_at": "2026-10-26T18:55:43.001471Z",
   "extraction_model": "heuristic",
-  "issue_count": 354,
+  "issue_count": 355,
   "issues": {
     "1": {
       "entities": [
@@ -14680,12 +14680,12 @@
           "score": 0.6828
         },
         {
-          "number": "122",
-          "score": 0.6804
+          "number": "354",
+          "score": 0.6815
         },
         {
-          "number": "296",
-          "score": 0.6787
+          "number": "122",
+          "score": 0.6804
         }
       ]
     },
@@ -26477,12 +26477,12 @@
           "score": 0.698
         },
         {
-          "number": "52",
-          "score": 0.6943
+          "number": "354",
+          "score": 0.6956
         },
         {
-          "number": "325",
-          "score": 0.6792
+          "number": "52",
+          "score": 0.6943
         }
       ]
     },
@@ -26706,12 +26706,12 @@
           "score": 0.7103
         },
         {
-          "number": "353",
-          "score": 0.702
+          "number": "354",
+          "score": 0.7028
         },
         {
-          "number": "342",
-          "score": 0.699
+          "number": "353",
+          "score": 0.702
         }
       ]
     },
@@ -26790,6 +26790,84 @@
         {
           "number": "331",
           "score": 0.7327
+        }
+      ]
+    },
+    "354": {
+      "entities": [
+        "thingelstad.com",
+        "Claude",
+        "Building",
+        "Walls",
+        "Whitman",
+        "lennysnewsletter.com",
+        "links.thingelstad.xyz",
+        "thingelstad.xyz",
+        "youtube.com",
+        "Dot",
+        "Mermaid",
+        "Safari",
+        "Steve Sutherland",
+        "Tammy",
+        "404media.co",
+        "512pixels.net",
+        "Announcing AWS Lambda Web Functions",
+        "Another",
+        "Anthropic",
+        "Apollo",
+        "Apple Shows How Powerful Its",
+        "Better Dictation",
+        "Cards",
+        "Chat",
+        "Chat Console",
+        "ChatGPT",
+        "Clock",
+        "Deciphering Glyph",
+        "Decision Model",
+        "Drafts",
+        "Drum Kit",
+        "Grandpa Don",
+        "John Munson",
+        "Leaked",
+        "Linking Things",
+        "Maclock",
+        "Made It Too Easy",
+        "Mini Macintosh-Style Retro Desk Alarm",
+        "Minneapolis",
+        "Minnedemo42"
+      ],
+      "tropes": [
+        "open web and ownership",
+        "agency over convenience",
+        "tools for thought",
+        "local community",
+        "ai as collaborator",
+        "durable archives"
+      ],
+      "similar_issues": [
+        {
+          "number": "278",
+          "score": 0.7221
+        },
+        {
+          "number": "337",
+          "score": 0.718
+        },
+        {
+          "number": "330",
+          "score": 0.7139
+        },
+        {
+          "number": "328",
+          "score": 0.7135
+        },
+        {
+          "number": "200",
+          "score": 0.7094
+        },
+        {
+          "number": "353",
+          "score": 0.7052
         }
       ]
     }
@@ -27149,7 +27227,8 @@
       "350",
       "351",
       "352",
-      "353"
+      "353",
+      "354"
     ],
     "techjam": [
       "1"
@@ -29139,7 +29218,8 @@
       "339",
       "340",
       "350",
-      "351"
+      "351",
+      "354"
     ],
     "withings": [
       "6"
@@ -29863,7 +29943,8 @@
       "346",
       "348",
       "350",
-      "352"
+      "352",
+      "354"
     ],
     "day one": [
       "8",
@@ -29933,7 +30014,8 @@
       "179",
       "185",
       "263",
-      "264"
+      "264",
+      "354"
     ],
     "family": [
       "8",
@@ -32078,7 +32160,8 @@
       "201",
       "260",
       "262",
-      "315"
+      "315",
+      "354"
     ],
     "sometimes": [
       "19",
@@ -32130,7 +32213,8 @@
       "249",
       "294",
       "314",
-      "333"
+      "333",
+      "354"
     ],
     "mnufc": [
       "19",
@@ -32370,7 +32454,8 @@
       "327",
       "339",
       "341",
-      "342"
+      "342",
+      "354"
     ],
     "azure": [
       "21",
@@ -32514,7 +32599,8 @@
       "26",
       "82",
       "127",
-      "271"
+      "271",
+      "354"
     ],
     "api": [
       "21",
@@ -36567,7 +36653,8 @@
       "327",
       "333",
       "350",
-      "352"
+      "352",
+      "354"
     ],
     "delivered": [
       "55"
@@ -38935,7 +39022,8 @@
       "312",
       "314",
       "316",
-      "342"
+      "342",
+      "354"
     ],
     "practical strategy to achieve career": [
       "80"
@@ -47607,7 +47695,8 @@
     ],
     "dot": [
       "191",
-      "212"
+      "212",
+      "354"
     ],
     "darnella frazier": [
       "191"
@@ -48975,7 +49064,8 @@
       "267",
       "268",
       "269",
-      "270"
+      "270",
+      "354"
     ],
     "github.blog": [
       "212"
@@ -50669,7 +50759,8 @@
       "334",
       "335",
       "338",
-      "350"
+      "350",
+      "354"
     ],
     "bray": [
       "236",
@@ -51114,7 +51205,8 @@
       "243"
     ],
     "chat": [
-      "243"
+      "243",
+      "354"
     ],
     "coaching someone": [
       "243"
@@ -52719,7 +52811,8 @@
     ],
     "cards": [
       "268",
-      "326"
+      "326",
+      "354"
     ],
     "chad collins": [
       "268",
@@ -52900,7 +52993,8 @@
       "301",
       "306",
       "320",
-      "341"
+      "341",
+      "354"
     ],
     "ai king": [
       "271"
@@ -52946,7 +53040,8 @@
       "349",
       "350",
       "351",
-      "353"
+      "353",
+      "354"
     ],
     "federal charges": [
       "271"
@@ -53921,7 +54016,8 @@
       "345",
       "346",
       "350",
-      "351"
+      "351",
+      "354"
     ],
     "count": [
       "289"
@@ -57316,7 +57412,8 @@
       "351"
     ],
     "minnedemo42": [
-      "351"
+      "351",
+      "354"
     ],
     "openai's": [
       "351"
@@ -57449,6 +57546,72 @@
     ],
     "tufte's razor": [
       "353"
+    ],
+    "walls": [
+      "354"
+    ],
+    "whitman": [
+      "354"
+    ],
+    "lennysnewsletter.com": [
+      "354"
+    ],
+    "links.thingelstad.xyz": [
+      "354"
+    ],
+    "thingelstad.xyz": [
+      "354"
+    ],
+    "steve sutherland": [
+      "354"
+    ],
+    "announcing aws lambda web functions": [
+      "354"
+    ],
+    "apollo": [
+      "354"
+    ],
+    "apple shows how powerful its": [
+      "354"
+    ],
+    "better dictation": [
+      "354"
+    ],
+    "chat console": [
+      "354"
+    ],
+    "clock": [
+      "354"
+    ],
+    "deciphering glyph": [
+      "354"
+    ],
+    "decision model": [
+      "354"
+    ],
+    "drum kit": [
+      "354"
+    ],
+    "grandpa don": [
+      "354"
+    ],
+    "john munson": [
+      "354"
+    ],
+    "leaked": [
+      "354"
+    ],
+    "linking things": [
+      "354"
+    ],
+    "maclock": [
+      "354"
+    ],
+    "made it too easy": [
+      "354"
+    ],
+    "mini macintosh-style retro desk alarm": [
+      "354"
     ]
   },
   "entity_index_uncapped": true,
@@ -57782,7 +57945,8 @@
       "349",
       "350",
       "352",
-      "353"
+      "353",
+      "354"
     ],
     "tools for thought": [
       "1",
@@ -57923,7 +58087,8 @@
       "348",
       "349",
       "351",
-      "353"
+      "353",
+      "354"
     ],
     "local community": [
       "1",
@@ -58193,7 +58358,8 @@
       "349",
       "350",
       "352",
-      "353"
+      "353",
+      "354"
     ],
     "ai as collaborator": [
       "1",
@@ -58424,7 +58590,8 @@
       "350",
       "351",
       "352",
-      "353"
+      "353",
+      "354"
     ],
     "durable archives": [
       "1",
@@ -58595,7 +58762,8 @@
       "348",
       "350",
       "351",
-      "353"
+      "353",
+      "354"
     ],
     "agency over convenience": [
       "6",
@@ -58785,7 +58953,8 @@
       "350",
       "351",
       "352",
-      "353"
+      "353",
+      "354"
     ]
   }
 }
