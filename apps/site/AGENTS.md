@@ -78,6 +78,10 @@ people, should we even include them in the sitemap?"). An issue's `<lastmod>` is
 commit (`_data/issueEdited.js`, so CI checks out full history), falling back to the publish date.
 The topics themselves are `graph.topics`, named upstream in `librarian-thing`
 (`librarian_core.graph.site_topics`); `topics.js` only renders them.
+Topic pages carry `<meta name="robots" content="noindex, follow">` (the `robots` front matter in
+`topics/topic.njk`, printed by `base.njk`; Jamie, 2026-10-26: "Approved: add noindex, follow to Weekly
+Thing topic pages"), so search engines skip them and still follow their links to the issues. The
+`/topics/` index stays indexed.
 
 
 ## Share images

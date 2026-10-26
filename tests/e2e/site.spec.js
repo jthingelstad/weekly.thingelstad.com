@@ -758,3 +758,13 @@ test('the archive and each topic page are h-feeds with an h-entry per issue', as
   expectRows(topicRows);
   expect(topicRows, topic).toHaveLength(await page.locator('.archive-entry').count());
 });
+
+test('topic pages are for people: noindex, follow; the index and issues stay indexed', async ({ request }) => {
+  const robots = async (path) => (await (await request.get(path)).text()).match(/<meta name="robots" content="([^"]*)">/)?.[1];
+  const topics = await (await request.get('/topics/')).text();
+  const topic = topics.match(/href="(\/topics\/[^"/]+\/)"/)[1];
+  expect(await robots(topic), topic).toBe('noindex, follow');
+  for (const path of ['/', '/topics/', '/archive/', '/archive/351/']) {
+    expect(await robots(path), path).toBeUndefined();
+  }
+});
