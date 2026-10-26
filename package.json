@@ -17,7 +17,10 @@
     "test:docs": "node scripts/check-doc-symlinks.mjs",
     "test:unit": "TZ=UTC node --test 'tests/unit/*.test.mjs'",
     "test:e2e": "playwright test",
-    "test:e2e:headed": "playwright test --headed"
+    "test:e2e:headed": "playwright test --headed",
+    "infra:generate": "node infra/templates.mjs",
+    "infra": "node scripts/infra.mjs",
+    "deploy:aws": "node scripts/deploy-aws.mjs"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",
@@ -25,6 +28,11 @@
     "pagefind": "^1.3.0"
   },
   "devDependencies": {
+    "@aws-sdk/client-acm": "^3.1157.0",
+    "@aws-sdk/client-cloudformation": "^3.1157.0",
+    "@aws-sdk/client-cloudfront": "^3.1157.0",
+    "@aws-sdk/client-s3": "^3.1157.0",
+    "@aws-sdk/client-sts": "^3.1157.0",
     "@playwright/test": "^1.61.1"
   },
   "overrides": {

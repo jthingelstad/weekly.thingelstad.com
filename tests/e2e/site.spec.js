@@ -768,3 +768,25 @@ test('topic pages are for people: noindex, follow; the index and issues stay ind
     expect(await robots(path), path).toBeUndefined();
   }
 });
+
+test('the redirect map names every redirect page, and the function knows every extensionless file', async () => {
+  // On CloudFront these paths are 301s from the key value store, so the map the deploy copies there
+  // must be exactly the redirect pages GitHub Pages serves (infra/viewer-request.mjs).
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? walk(path.join(dir, e.name)) : [path.join(dir, e.name)]);
+  const files = walk('_site').map((f) => '/' + path.relative('_site', f).split(path.sep).join('/'));
+  const pages = {};
+  for (const file of files.filter((f) => f.endsWith('/index.html'))) {
+    const html = fs.readFileSync(path.join('_site', file), 'utf8');
+    const target = html.match(/<meta http-equiv="refresh" content="0; url=([^"]+)">/);
+    if (target) pages[file.replace(/index\.html$/, '')] = target[1];
+  }
+  const map = JSON.parse(fs.readFileSync('_site/_redirects.json', 'utf8'));
+  expect(Object.keys(pages).length).toBeGreaterThan(200);
+  expect(map).toEqual(pages);
+  const { FILES } = await import('../../infra/viewer-request.mjs');
+  const bare = files.filter((f) => !f.split('/').pop().includes('.') && f !== '/CNAME');
+  expect(bare.sort()).toEqual([...FILES].sort());
+});

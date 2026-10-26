@@ -1,0 +1,16 @@
+---
+permalink: /_redirects.json
+eleventyExcludeFromCollections: true
+---
+{#- Every redirect page this build writes, path to target: the old Buttondown slugs
+    (archive/redirects.njk), /thingy/ and /librarian/. The pages serve GitHub Pages; on
+    CloudFront each deploy copies this map into the distribution's key value store and the
+    viewer-request function answers these paths with a 301 (infra/viewer-request.mjs). The
+    deploy does not publish this file, and an e2e test keeps it equal to the pages. -#}
+{
+{%- for email in redirects %}
+  {{ ("/archive/" + email.slug + "/") | jsonify | safe }}: {{ ("/archive/" + email.number + "/") | jsonify | safe }},
+{%- endfor %}
+  "/thingy/": {{ (site.thingyUrl + "/chat/") | jsonify | safe }},
+  "/librarian/": {{ (site.thingyUrl + "/chat/") | jsonify | safe }}
+}

@@ -106,3 +106,43 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v5
+
+  # S3 and CloudFront (infra/, scripts/deploy-aws.mjs), beside Pages until weekly.thingelstad.com's
+  # DNS moves to the distribution. A separate job, so a failure here never holds up Pages; it
+  # publishes the same tested build the Pages job does.
+  deploy-aws:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    concurrency:
+      group: aws
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - uses: actions/download-artifact@v7
+        with:
+          name: github-pages
+          path: .pages
+
+      - name: Unpack the build
+        run: mkdir _site && tar -xf .pages/artifact.tar -C _site
+
+      - uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Publish to S3 and CloudFront
+        run: npm run deploy:aws

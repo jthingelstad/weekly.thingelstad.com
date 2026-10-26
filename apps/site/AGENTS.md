@@ -192,6 +192,11 @@ GitHub Actions → GitHub Pages, triggered by push to `main` (a WT Builder hando
 `npm run build` → `npm run build:search` → install Playwright Chromium → `npm run test:e2e` → deploy.
 No Lambda or corpus build — those run in `librarian-thing`.
 
+The same build also goes to S3 and CloudFront (the `deploy-aws` job) until DNS moves there; the
+repo-root `AGENTS.md` has the stacks, the 301 redirects and the per-file content types. A new redirect
+page needs nothing more: the build's `_redirects.json` (`redirects-map.njk`) carries it to CloudFront,
+as long as the template that writes the page adds it to the map too (the e2e test fails until it does).
+
 ## Conventions
 
 - **Never edit `apps/site/archive/*.md` or the pushed `_data` files.** Fix upstream in WT Builder (or
