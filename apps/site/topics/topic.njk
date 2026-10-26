@@ -8,5 +8,9 @@ layout: layouts/topic.njk
 eleventyComputed:
   pageTitle: "{{ topic.name }}"
   description: "{{ topic.count }} issue{% if topic.count != 1 %}s{% endif %} of The Weekly Thing mention{% if topic.count == 1 %}s{% endif %} {{ topic.name }}{% if topic.firstDate and topic.lastDate %}, from {{ topic.firstDate | dateFormat('month-year') }} to {{ topic.lastDate | dateFormat('month-year') }}{% endif %}."
+# Topic pages are for people, not search (Jamie, 2026-10-26: "Approved:
+# add noindex, follow to Weekly Thing topic pages"). Google skips them and
+# still follows their links to the issues. The /topics/ index stays indexed.
+robots: noindex, follow
 eleventyExcludeFromCollections: true
 ---
