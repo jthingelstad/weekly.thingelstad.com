@@ -51,7 +51,7 @@ test("feeds are typed by what they are, and Atom stays compressible", () => {
   const rss = '<?xml version="1.0"?>\n<rss version="2.0"';
   assert.equal(contentTypeFor("rss", atom), "application/xml; charset=utf-8");
   assert.equal(contentTypeFor("feed.xml", atom), "application/xml; charset=utf-8");
-  assert.equal(contentTypeFor("CNAME", "weekly.thingelstad.com"), "application/octet-stream");
+  assert.equal(contentTypeFor("robots", "User-agent: *"), "application/octet-stream");
   assert.match(contentTypeFor("podcast.xml", rss), /^application\/rss\+xml/);
   assert.match(contentTypeFor("sitemap.xml", '<?xml version="1.0"?>\n<urlset'), /^application\/xml/);
   assert.match(contentTypeFor("archive/351/index.html"), /^text\/html; charset=utf-8/);

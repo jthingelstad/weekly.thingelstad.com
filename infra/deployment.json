@@ -14,7 +14,7 @@
     "ManagedBy": "cloudformation",
     "Environment": "production"
   },
-  "certificateArn": "arn:aws:acm:us-east-1:999153317627:certificate/67320ce9-75bd-4f71-b069-fded16293a65",
+  "certificateArn": "arn:aws:acm:us-east-1:999153317627:certificate/db75df28-5c85-4538-8ad4-ee552cb21a68",
   "siteBucket": "weekly-site-sitebucket-wt8pjun3pwdb",
   "distributionId": "E2YK2DKFRSGFBN",
   "cloudfrontDomain": "d1guh5t1w07bus.cloudfront.net",

@@ -771,7 +771,7 @@ test('topic pages are for people: noindex, follow; the index and issues stay ind
 
 test('the redirect map names every redirect page, and the function knows every extensionless file', async () => {
   // On CloudFront these paths are 301s from the key value store, so the map the deploy copies there
-  // must be exactly the redirect pages GitHub Pages serves (infra/viewer-request.mjs).
+  // must be exactly the redirect pages the build writes (infra/viewer-request.mjs).
   const fs = require('node:fs');
   const path = require('node:path');
   const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
@@ -787,6 +787,6 @@ test('the redirect map names every redirect page, and the function knows every e
   expect(Object.keys(pages).length).toBeGreaterThan(200);
   expect(map).toEqual(pages);
   const { FILES } = await import('../../infra/viewer-request.mjs');
-  const bare = files.filter((f) => !f.split('/').pop().includes('.') && f !== '/CNAME');
+  const bare = files.filter((f) => !f.split('/').pop().includes('.'));
   expect(bare.sort()).toEqual([...FILES].sort());
 });

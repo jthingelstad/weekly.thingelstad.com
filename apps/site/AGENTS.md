@@ -21,7 +21,7 @@ scripts: `npm run build`, `npm run build:search`). The output dir `_site/` stays
   `year`, `groupByYear` and `archiveStats` read the day in America/Chicago through `lib/siteTime.js`;
   `dateFormat('iso')` and `('rfc822')` stay UTC instants for feeds and the sitemap. Never slice a UTC
   date for a reader (`tests/unit/date-filters.test.mjs`, run in CI with `TZ=UTC`).
-- **Passthrough copy:** `img/`, `css/`, `CNAME`, `favicon.svg`, `apple-touch-icon.png`, `_nojekyll`
+- **Passthrough copy:** `img/`, `css/`, `favicon.svg`, `apple-touch-icon.png`, `robots.txt`
 
 ## Where the content comes from — WT Builder, not here
 
@@ -187,13 +187,12 @@ Logout / Sign out / Use different email).
 
 ## Deploy
 
-GitHub Actions → GitHub Pages, triggered by push to `main` (a WT Builder handoff commit, a
+GitHub Actions → S3 and CloudFront, triggered by push to `main` (a WT Builder handoff commit, a
 `librarian-thing` graph push, or a hand-authored change). Render-only: `npm ci` → fetch stats →
-`npm run build` → `npm run build:search` → install Playwright Chromium → `npm run test:e2e` → deploy.
-No Lambda or corpus build — those run in `librarian-thing`.
-
-The same build also goes to S3 and CloudFront (the `deploy-aws` job) until DNS moves there; the
-repo-root `AGENTS.md` has the stacks, the 301 redirects and the per-file content types. A new redirect
+`npm run build` → `npm run build:search` → install Playwright Chromium → `npm run test:e2e` →
+`npm run deploy:aws`. No Lambda or corpus build — those run in `librarian-thing`. GitHub Pages hosted
+the site until 2026-10-26; the repo-root `AGENTS.md` has the stacks, the 301 redirects and the per-file
+content types. A new redirect
 page needs nothing more: the build's `_redirects.json` (`redirects-map.njk`) carries it to CloudFront,
 as long as the template that writes the page adds it to the map too (the e2e test fails until it does).
 

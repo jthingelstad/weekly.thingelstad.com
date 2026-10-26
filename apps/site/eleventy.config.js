@@ -13,15 +13,12 @@ module.exports = function (eleventyConfig) {
   // --- Passthrough copy ---
   eleventyConfig.addPassthroughCopy("apps/site/img");
   eleventyConfig.addPassthroughCopy("apps/site/css");
-  eleventyConfig.addPassthroughCopy("apps/site/CNAME");
   eleventyConfig.addPassthroughCopy("apps/site/favicon.svg");
   eleventyConfig.addPassthroughCopy("apps/site/apple-touch-icon.png");
   eleventyConfig.addPassthroughCopy("apps/site/robots.txt");
-  // Prevent GitHub Pages from running Jekyll
-  eleventyConfig.addPassthroughCopy({ "apps/site/_nojekyll": ".nojekyll" });
 
-  // Ensure dev server sends UTF-8 charset for .txt files (GitHub Pages does
-  // this automatically in production, but the local dev server does not).
+  // Ensure dev server sends UTF-8 charset for .txt files (S3 does
+  // this in production: scripts/publish-plan.mjs types each file, but the local dev server does not).
   eleventyConfig.setServerOptions({
     middleware: [
       (req, res, next) => {

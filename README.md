@@ -7,7 +7,7 @@ live in **WT Builder** (`wt-builder`); the canonical issue archive, corpus, and 
 
 **Live URL:** `weekly.thingelstad.com`
 **Site generator:** Eleventy 3.x with Nunjucks templates
-**Hosting:** GitHub Pages, moving to S3 + CloudFront (both deploy until the DNS cutover; see `AGENTS.md`)
+**Hosting:** S3 + CloudFront, with real 301 redirects (GitHub Pages until 2026-10-26; see `AGENTS.md`)
 **Search:** Pagefind (static, runs post-build)
 **Analytics:** Tinylytics (privacy-focused, cookie-free)
 
@@ -17,7 +17,7 @@ live in **WT Builder** (`wt-builder`); the canonical issue archive, corpus, and 
 
 A **pure render surface, plus its own landing-page stats**:
 
-- It renders the 11ty site from generated inputs and deploys to GitHub Pages.
+- It renders the 11ty site from generated inputs and publishes it to S3 behind CloudFront.
 - It fetches its *own* landing-page numbers (subscriber/supporter stats) in CI — a presentation concern
   that belongs to the site.
 - It does **not** hold the editorial source, the publishing pipeline, the Librarian Lambda, or the
@@ -54,7 +54,7 @@ WT Builder produces, weekly renders. WT Builder holds the live issue, renders th
 send commits the issue's 11ty page here (`apps/site/archive/{N}.md`) and the canonical
 text into `librarian-thing/data/issues/{N}/`. `librarian-thing` rebuilds the corpus from that and
 pushes `data/librarian/graph.json` here. This repo's CI
-runs Eleventy + Pagefind, fetches its own landing-page stats, and deploys to GitHub Pages. Thingy runs
+runs Eleventy + Pagefind, fetches its own landing-page stats, and publishes to S3 and CloudFront. Thingy runs
 as a standalone app at [`thingy.thingelstad.com`](https://thingy.thingelstad.com); this site links and
 redirects readers to its chat surface.
 
@@ -82,7 +82,7 @@ Weekly holds only the credentials its **own** concerns require — currently the
 TTS, AWS, GitHub handoff) live in WT Builder, and the corpus/Lambda deploy secrets live in
 `librarian-thing`.
 
-GitHub Pages deploys with the default `GITHUB_TOKEN`.
+The deploy assumes an AWS role through GitHub's OIDC token (`vars.AWS_DEPLOY_ROLE_ARN`); no AWS keys are stored.
 
 ---
 
