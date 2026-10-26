@@ -62,7 +62,13 @@ if (name === 'delivery') {
   }).map(([ParameterKey, ParameterValue]) => ({ ParameterKey, ParameterValue }));
 }
 
-const existing = await describe(StackName);
+// A plan run against a stack that does not exist yet leaves a REVIEW_IN_PROGRESS placeholder, which
+// only a CREATE change set can use. A first create that failed leaves ROLLBACK_COMPLETE, which nothing
+// can update: the stack has to be deleted first.
+const found = await describe(StackName);
+if (found?.StackStatus === 'ROLLBACK_COMPLETE')
+  throw new Error(`${StackName} is ROLLBACK_COMPLETE from a failed first create. Delete the stack, then rerun.`);
+const existing = found?.StackStatus === 'REVIEW_IN_PROGRESS' ? undefined : found;
 const ChangeSetName = `cloud-engineer-${Date.now()}`;
 await cfn.send(
   new CreateChangeSetCommand({
