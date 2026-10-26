@@ -7,7 +7,7 @@ live in **WT Builder** (`wt-builder`); the canonical issue archive, corpus, and 
 
 **Live URL:** `weekly.thingelstad.com`
 **Site generator:** Eleventy 3.x with Nunjucks templates
-**Hosting:** GitHub Pages
+**Hosting:** GitHub Pages, moving to S3 + CloudFront (both deploy until the DNS cutover; see `AGENTS.md`)
 **Search:** Pagefind (static, runs post-build)
 **Analytics:** Tinylytics (privacy-focused, cookie-free)
 

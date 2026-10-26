@@ -1,0 +1,23 @@
+{
+  "account": "999153317627",
+  "region": "us-east-1",
+  "domain": "weekly.thingelstad.com",
+  "stacks": {
+    "certificate": "weekly-certificate",
+    "site": "weekly-site",
+    "delivery": "weekly-delivery"
+  },
+  "stackTags": {
+    "Application": "Thingelstad",
+    "Project": "weekly",
+    "Repository": "jthingelstad/weekly.thingelstad.com",
+    "ManagedBy": "cloudformation",
+    "Environment": "production"
+  },
+  "certificateArn": "arn:aws:acm:us-east-1:999153317627:certificate/67320ce9-75bd-4f71-b069-fded16293a65",
+  "siteBucket": "weekly-site-sitebucket-wt8pjun3pwdb",
+  "distributionId": "E2YK2DKFRSGFBN",
+  "cloudfrontDomain": "d1guh5t1w07bus.cloudfront.net",
+  "redirectStoreArn": "arn:aws:cloudfront::999153317627:key-value-store/5d86547e-06a8-4028-80ef-60973d8f888b",
+  "deploymentRoleArn": "arn:aws:iam::999153317627:role/weekly-delivery-DeploymentRole-dLCiAvp9GOIr"
+}
