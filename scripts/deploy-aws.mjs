@@ -19,6 +19,7 @@ import { readFileSync } from 'node:fs';
 import { isDeepStrictEqual } from 'node:util';
 import { setTimeout as delay } from 'node:timers/promises';
 import { publishPlan } from './publish-plan.mjs';
+import { readPublicFeed, reportIssueArrival } from './sync-receipt.mjs';
 
 const ROOT = '_site';
 const deployment = JSON.parse(readFileSync('infra/deployment.json', 'utf8'));
@@ -40,6 +41,8 @@ if (!isDeepStrictEqual(JSON.parse(live), JSON.parse(readFileSync('infra/generate
 const out = Object.fromEntries(stack.Outputs.map((o) => [o.OutputKey, o.OutputValue]));
 const bucket = out.SiteBucket;
 const preview = `https://${out.CloudFrontDomain}`;
+const syncBus = process.env.SYNC_RECEIVED_BUS;
+const syncBefore = syncBus ? await readPublicFeed(`${preview}/feed.json`) : null;
 
 // A build missing its core files, or most of its pages, is not published.
 const plan = publishPlan(ROOT);
@@ -172,3 +175,9 @@ for (let attempt = 0; attempt < 8; attempt++) {
 }
 if (failures.length) throw new Error(`Published site check failed: ${failures.join('; ')}`);
 console.log(`Verified ${process.env.GITHUB_SHA ?? 'local build'} at ${preview}`);
+if (syncBus) {
+  try {
+    const built = JSON.parse(readFileSync(`${ROOT}/feed.json`, 'utf8'));
+    console.log(`Sync receipt: ${await reportIssueArrival({ bus: syncBus, region, before: syncBefore, built, preview })}`);
+  } catch { console.warn('::warning::The sync feed could not be verified; the site is deployed.'); }
+}
