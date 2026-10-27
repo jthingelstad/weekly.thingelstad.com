@@ -112,6 +112,14 @@ through the CloudFront domain (the front page as built, `/rss`'s type, a redirec
 
 ## Secrets
 
+The optional sync receipt (`scripts/sync-receipt.mjs`) reports a new issue
+only after the deploy's public checks and a matching `/feed.json` read-back.
+It compares the known pre-deploy identity; an unchanged build or unknown
+baseline announces nothing. `vars.SYNC_RECEIVED_BUS` starts empty. The scoped
+bus grant lives in the sync stack's companion PR; apply it before setting
+the variable. A failed receipt warns and leaves polling as the backstop.
+No topic arrival is guessed without a producer-defined topic identity.
+
 This repo holds only what its own concerns need — the credentials for the landing-page stats fetch.
 Publishing secrets live in WT Builder; corpus/Lambda secrets live in `librarian-thing`. The deploy
 assumes the delivery role through GitHub's OIDC token; no AWS keys are stored.
