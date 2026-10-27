@@ -14,12 +14,9 @@ An announcement failure warns after the healthy deployment; polling remains
 the backstop. It is best effort, with no claim of durable delivery or a
 synthetic arrival to prove the permission.
 
-This PR is prepared only: no merge, infrastructure apply, deployment or bus
-test is performed. Before activation, Jamie merges/applies the sync stack's
-companion grant for the existing delivery role, scoped to
-`thingelstad-publishing`, source `weekly`, types `received` and `ping`.
-Then set the repository Actions variable `SYNC_RECEIVED_BUS` to
-`thingelstad-publishing`. Empty is off. Let the next natural send exercise it;
+Merged 2026-10-27; inert until the sync stack lists this repository's
+deploy role in `ReceiverRoles` and the repository Actions variable
+`SYNC_RECEIVED_BUS` is set to `thingelstad-publishing`. Empty is off. Let the next natural send exercise it;
 a fixture is the rehearsal, never a test `published` or `received` event.
 
 Hop 17 still needs a producer-defined topic identity before a topic arrival
