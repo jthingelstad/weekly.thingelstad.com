@@ -321,6 +321,65 @@
           }
         ]
       }
+    },
+    "AccessLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/weekly/web-access",
+        "RetentionInDays": 14
+      }
+    },
+    "AccessLogSource": {
+      "Type": "AWS::Logs::DeliverySource",
+      "Properties": {
+        "Name": "weekly-web-access",
+        "LogType": "ACCESS_LOGS",
+        "ResourceArn": {
+          "Fn::Sub": "arn:${AWS::Partition}:cloudfront::${AWS::AccountId}:distribution/${Distribution}"
+        }
+      }
+    },
+    "AccessLogDestination": {
+      "Type": "AWS::Logs::DeliveryDestination",
+      "Properties": {
+        "Name": "weekly-web-access",
+        "DestinationResourceArn": {
+          "Fn::GetAtt": [
+            "AccessLogGroup",
+            "Arn"
+          ]
+        },
+        "OutputFormat": "json"
+      }
+    },
+    "AccessLogDelivery": {
+      "Type": "AWS::Logs::Delivery",
+      "DependsOn": "AccessLogSource",
+      "Properties": {
+        "DeliverySourceName": "weekly-web-access",
+        "DeliveryDestinationArn": {
+          "Fn::GetAtt": [
+            "AccessLogDestination",
+            "Arn"
+          ]
+        },
+        "RecordFields": [
+          "timestamp(ms)",
+          "cs-method",
+          "cs-uri-stem",
+          "sc-status",
+          "sc-bytes",
+          "sc-range-start",
+          "sc-range-end",
+          "time-taken",
+          "time-to-first-byte",
+          "x-edge-result-type",
+          "x-edge-detailed-result-type",
+          "x-edge-location",
+          "cs-protocol",
+          "cs(User-Agent)"
+        ]
+      }
     }
   },
   "Outputs": {
