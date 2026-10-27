@@ -205,6 +205,52 @@ export const site = template(
         TreatMissingData: 'notBreaching',
         AlarmActions: [alarmTopic]
       }
+    },
+    // Access logs, the same shape as the other sites' (/links/web-access and its siblings): CloudFront's
+    // standard logging into CloudWatch Logs, kept 14 days, with no client IP and no query string.
+    AccessLogGroup: {
+      Type: 'AWS::Logs::LogGroup',
+      Properties: { LogGroupName: '/weekly/web-access', RetentionInDays: 14 }
+    },
+    AccessLogSource: {
+      Type: 'AWS::Logs::DeliverySource',
+      Properties: {
+        Name: 'weekly-web-access',
+        LogType: 'ACCESS_LOGS',
+        ResourceArn: sub('arn:${AWS::Partition}:cloudfront::${AWS::AccountId}:distribution/${Distribution}')
+      }
+    },
+    AccessLogDestination: {
+      Type: 'AWS::Logs::DeliveryDestination',
+      Properties: {
+        Name: 'weekly-web-access',
+        DestinationResourceArn: get('AccessLogGroup', 'Arn'),
+        OutputFormat: 'json'
+      }
+    },
+    AccessLogDelivery: {
+      Type: 'AWS::Logs::Delivery',
+      DependsOn: 'AccessLogSource',
+      Properties: {
+        DeliverySourceName: 'weekly-web-access',
+        DeliveryDestinationArn: get('AccessLogDestination', 'Arn'),
+        RecordFields: [
+          'timestamp(ms)',
+          'cs-method',
+          'cs-uri-stem',
+          'sc-status',
+          'sc-bytes',
+          'sc-range-start',
+          'sc-range-end',
+          'time-taken',
+          'time-to-first-byte',
+          'x-edge-result-type',
+          'x-edge-detailed-result-type',
+          'x-edge-location',
+          'cs-protocol',
+          'cs(User-Agent)'
+        ]
+      }
     }
   },
   {
