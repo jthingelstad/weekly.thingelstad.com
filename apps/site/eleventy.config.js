@@ -84,6 +84,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("dateShort", dateFilters.dateShort);
   eleventyConfig.addFilter("dateTimeShort", dateFilters.dateTimeShort);
   eleventyConfig.addFilter("latestDate", dateFilters.latestDate);
+  eleventyConfig.addFilter("issuesLatestDate", dateFilters.issuesLatestDate);
 
   eleventyConfig.addFilter("itunesDuration", (seconds) => {
     const total = Math.max(0, Number(seconds) || 0);

@@ -58,4 +58,11 @@ function latestDate(...values) {
   return newest ? newest.toISOString() : "";
 }
 
-module.exports = { dateFormat, dateShort, dateTimeShort, year, latestDate };
+// The newest edit among the issues a listing shows: each issue's last commit
+// (issueEdited, keyed by file name) or else its send date. A listing renders
+// every issue's title and dek, so an edit to any of them changes the page.
+function issuesLatestDate(issues, edited = {}) {
+  return latestDate((issues || []).map((issue) => [edited[issue.page.fileSlug], issue.data.publish_date]));
+}
+
+module.exports = { dateFormat, dateShort, dateTimeShort, year, latestDate, issuesLatestDate };
