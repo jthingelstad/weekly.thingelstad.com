@@ -4,36 +4,55 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {#- A page's <lastmod> is when what it shows last changed: the last commit
+      to its own sources (_data/pageEdited.js) or the newest issue it shows,
+      whichever is newer. The front page and the archive show the newest
+      issue itself, so they take its edit date; About, Search and the FAQ
+      only count issues, so they take its send date. Never the build time. -#}
+  {%- macro lastmod(dates) -%}{%- set d = dates | latestDate -%}{%- if d %}<lastmod>{{ d }}</lastmod>{% endif -%}{%- endmacro -%}
+  {%- set newest = collections.issuesByDate[0] -%}
+  {%- set newestSent = newest.data.publish_date -%}
+  {%- set newestIssue = [issueEdited[newest.page.fileSlug], newestSent] | latestDate -%}
+  {%- set episode = collections.podcastEpisodes[0] -%}
+  {%- set newestEpisode = [issueEdited[episode.page.fileSlug], episode.data.publish_date] | latestDate if episode else "" %}
   <url>
     <loc>{{ site.url }}/</loc>
+    {{ lastmod([pageEdited['/'], newestIssue]) }}
     <priority>1.0</priority>
   </url>
   <url>
     <loc>{{ site.url }}/archive/</loc>
+    {{ lastmod([pageEdited['/archive/'], newestIssue]) }}
     <priority>0.8</priority>
   </url>
   <url>
     <loc>{{ site.url }}/topics/</loc>
+    {{ lastmod([pageEdited['/topics/'], topics.newestDate]) }}
     <priority>0.7</priority>
   </url>
   <url>
     <loc>{{ site.url }}/about/</loc>
+    {{ lastmod([pageEdited['/about/'], newestSent]) }}
     <priority>0.6</priority>
   </url>
   <url>
     <loc>{{ site.url }}/members/</loc>
+    {{ lastmod([pageEdited['/members/']]) }}
     <priority>0.5</priority>
   </url>
   <url>
     <loc>{{ site.url }}/search/</loc>
+    {{ lastmod([pageEdited['/search/'], newestSent]) }}
     <priority>0.5</priority>
   </url>
   <url>
     <loc>{{ site.url }}/podcast/</loc>
+    {{ lastmod([pageEdited['/podcast/'], newestEpisode]) }}
     <priority>0.5</priority>
   </url>
-<url>
+  <url>
     <loc>{{ site.url }}/faq/</loc>
+    {{ lastmod([pageEdited['/faq/'], newestSent]) }}
     <priority>0.5</priority>
   </url>
   {% for issue in collections.issuesByDate %}

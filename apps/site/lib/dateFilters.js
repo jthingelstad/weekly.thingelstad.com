@@ -46,4 +46,16 @@ function year(value) {
   return parts ? parts.year : "";
 }
 
-module.exports = { dateFormat, dateShort, dateTimeShort, year };
+// The newest of several dates, as a UTC instant ("2026-10-25T10:24:47.000Z"),
+// for a sitemap <lastmod>. Arrays are flattened; empty and unreadable values
+// are skipped. "" when none is a date, so a page never gets a made-up date.
+function latestDate(...values) {
+  let newest = null;
+  for (const value of values.flat(Infinity)) {
+    const d = value ? toDate(value) : null;
+    if (d && (!newest || d > newest)) newest = d;
+  }
+  return newest ? newest.toISOString() : "";
+}
+
+module.exports = { dateFormat, dateShort, dateTimeShort, year, latestDate };

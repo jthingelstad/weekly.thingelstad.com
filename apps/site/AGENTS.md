@@ -76,6 +76,11 @@ hand-written `/about/ /members/ /faq/ /search/`, `/feed.xml`, `/feed.json`, `/ar
 The sitemap lists the pages and every issue, not the topic pages (2026-10-26; Jamie: "They are for
 people, should we even include them in the sitemap?"). An issue's `<lastmod>` is its page's last
 commit (`_data/issueEdited.js`, so CI checks out full history), falling back to the publish date.
+Every other page's `<lastmod>` is the newer of its own sources' last commit (template, partials and
+hand-authored data, listed in `_data/pageEdited.js`; layouts and CSS left out) and the newest issue it
+shows: the front page and the archive take that issue's edit date, About, Search and the FAQ its send
+date, `/podcast/` the newest episode's, `/topics/` the newest topic's (2026-10-28). Never the build
+time; `tests/e2e/site.spec.js` fails on a url without a valid one.
 The topics themselves are `graph.topics`, named upstream in `librarian-thing`
 (`librarian_core.graph.site_topics`); `topics.js` only renders them.
 Topic pages carry `<meta name="robots" content="noindex, follow">` (the `robots` front matter in
