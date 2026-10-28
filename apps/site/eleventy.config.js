@@ -16,6 +16,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("apps/site/favicon.svg");
   eleventyConfig.addPassthroughCopy("apps/site/apple-touch-icon.png");
   eleventyConfig.addPassthroughCopy("apps/site/robots.txt");
+  // The IndexNow key file (scripts/indexnow.mjs): its body is exactly the key. A passthrough copy is in
+  // no collection, so it stays out of the sitemap and the feeds, and Pagefind indexes only HTML.
+  eleventyConfig.addPassthroughCopy("apps/site/79f379d18599eeec9bebf34c9a2a5deb.txt");
 
   // Ensure dev server sends UTF-8 charset for .txt files (S3 does
   // this in production: scripts/publish-plan.mjs types each file, but the local dev server does not).

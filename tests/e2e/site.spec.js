@@ -520,6 +520,16 @@ test('the podcast page and feed are in the sitemap and in llms.txt', async ({ re
   expect(llms).toMatch(/^- \[Podcast\]\(https:\/\/weekly\.thingelstad\.com\/podcast\/\): \S/m);
 });
 
+test('the IndexNow key file is served as the bare key and listed nowhere', async ({ request }) => {
+  const { KEY } = await import('../../scripts/indexnow.mjs');
+  const keyFile = await request.get(`/${KEY}.txt`);
+  expect(keyFile.status()).toBe(200);
+  expect(await keyFile.text()).toBe(KEY);
+  for (const path of ['/sitemap.xml', '/llms.txt', '/feed.xml', '/feed.json', '/rss', '/pagefind/pagefind-entry.json']) {
+    expect(await (await request.get(path)).text(), path).not.toContain(KEY);
+  }
+});
+
 test('llms.txt reads in the llmstxt.org reference parser: one link per line under every heading', async ({ request }) => {
   // The reference parser (llms-txt's parse_llms_file) starts a section at every
   // line beginning "##" and reads each non-empty line under it as

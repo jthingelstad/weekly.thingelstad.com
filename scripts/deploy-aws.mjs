@@ -9,6 +9,9 @@
 //
 //   node scripts/deploy-aws.mjs          upload what changed (by MD5) and remove what is gone
 //   node scripts/deploy-aws.mjs --all    upload every file, after a change to publish-plan.mjs
+//
+// Once the result reads back, the pages whose bytes changed go to IndexNow (scripts/indexnow.mjs); a
+// failed ping is logged and never fails the deploy.
 import { CloudFormationClient, DescribeStacksCommand, GetTemplateCommand } from '@aws-sdk/client-cloudformation';
 import { CloudFrontClient, CreateInvalidationCommand, waitUntilInvalidationCompleted } from '@aws-sdk/client-cloudfront';
 import { DeleteObjectsCommand, ListObjectsV2Command, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
@@ -20,6 +23,7 @@ import { isDeepStrictEqual } from 'node:util';
 import { setTimeout as delay } from 'node:timers/promises';
 import { publishPlan } from './publish-plan.mjs';
 import { readPublicFeed, reportIssueArrival } from './sync-receipt.mjs';
+import { changedPageUrls, pingIndexNow } from './indexnow.mjs';
 
 const ROOT = '_site';
 const deployment = JSON.parse(readFileSync('infra/deployment.json', 'utf8'));
@@ -64,7 +68,8 @@ do {
   token = page.IsTruncated ? page.NextContinuationToken : undefined;
 } while (token);
 const md5 = (path) => createHash('md5').update(readFileSync(path)).digest('hex');
-const changed = plan.filter((file) => all || existing.get(file.key) !== md5(file.path));
+const fresh = plan.filter((file) => existing.get(file.key) !== md5(file.path));
+const changed = all ? plan : fresh;
 // Files before pages and the front page last (publishPlan's order), a batch at a time.
 for (let i = 0; i < changed.length; i += 16) {
   await Promise.all(
@@ -181,3 +186,8 @@ if (syncBus) {
     console.log(`Sync receipt: ${await reportIssueArrival({ bus: syncBus, region, before: syncBefore, built, preview })}`);
   } catch { console.warn('::warning::The sync feed could not be verified; the site is deployed.'); }
 }
+// Only the pages whose bytes changed (by MD5, even under --all), and only those in the sitemap.
+try {
+  const urls = changedPageUrls(fresh.map((file) => file.key), readFileSync(`${ROOT}/sitemap.xml`, 'utf8'));
+  console.log(await pingIndexNow(urls));
+} catch (error) { console.warn(`::warning::IndexNow was skipped (${error.message}); the site is deployed.`); }

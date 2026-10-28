@@ -111,6 +111,13 @@ redirect store, deletes what the build no longer writes, clears the cache, and r
 through the CloudFront domain (the front page as built, `/rss`'s type, a redirect, the slash form, a
 404). Tinylytics refuses the `cloudfront.net` host, so analytics only count on the real domain.
 
+**IndexNow** (`scripts/indexnow.mjs`, 2026-10-28, part of the Search Console and Bing Webmaster
+cleanup): after the read-back, the deploy POSTs to `api.indexnow.org` the pages whose bytes changed (by
+MD5, even under `--all`) that the built `sitemap.xml` lists, so assets, Pagefind, feeds, redirects, the
+404 page and the noindex topic pages are never sent. Nothing changed, nothing sent; a failed ping only
+warns. The key is public by design and shared with Jamie's other sites; `apps/site/<key>.txt` serves it
+(its body exactly the key). `node scripts/indexnow.mjs <built file keys>` prints what would be sent.
+
 ## Secrets
 
 The optional sync receipt (`scripts/sync-receipt.mjs`) reports a new issue
