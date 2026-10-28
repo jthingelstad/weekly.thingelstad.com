@@ -85,8 +85,9 @@ stops). `infra/deployment.json` records their names, tags and outputs.
   access control; AWS's CachingOptimized policy (no query string in the key, so `?ref=` variants share
   one copy); security headers plus `Access-Control-Allow-Origin: *` as Pages sent; 403/404 serve
   `/404.html`; a 5xx alarm to `weekly-thing-librarian-alarms`; access logs to the CloudWatch log group
-  `/weekly/web-access`, kept 14 days, with no client IP or query string (the other sites' shape). The
-  alias and certificate attach only once the certificate is ISSUED (rerun `npm run infra -- site`).
+  `/weekly/web-access`, kept 24 months (731 days), with no client IP or query string (the other sites'
+  shape). The alias and certificate attach only once the certificate is ISSUED (rerun
+  `npm run infra -- site`).
 - `weekly-delivery`: the role GitHub Actions assumes (`vars.AWS_DEPLOY_ROLE_ARN`), `main` only. It can
   publish into the bucket, update the redirect store and clear the cache; it cannot change the stacks.
 
