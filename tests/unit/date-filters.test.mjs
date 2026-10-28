@@ -6,7 +6,7 @@ import assert from "node:assert/strict";
 import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
-const { dateFormat, dateShort, dateTimeShort, year } = require("../../apps/site/lib/dateFilters.js");
+const { dateFormat, dateShort, dateTimeShort, year, latestDate, issuesLatestDate } = require("../../apps/site/lib/dateFilters.js");
 const { siteDateParts } = require("../../apps/site/lib/siteTime.js");
 
 test("an evening send in Chicago shows its Chicago day", () => {
@@ -50,4 +50,28 @@ test("empty and unparseable values pass through", () => {
   assert.equal(dateFormat(null), "");
   assert.equal(dateFormat("not a date"), "not a date");
   assert.equal(year(""), "");
+});
+
+test("latestDate picks the newest date as a UTC instant and skips blanks", () => {
+  // The sitemap's hub pages (sitemap.njk): a commit date with an offset, a
+  // bare send date (noon UTC) and a missing value.
+  assert.equal(latestDate(["2026-10-25T05:24:47-05:00", "2026-10-24", undefined]), "2026-10-25T10:24:47.000Z");
+  assert.equal(latestDate(["2026-10-21T21:49:37-05:00", "2026-10-24"]), "2026-10-24T12:00:00.000Z");
+  assert.equal(latestDate([null, ""]), "");
+});
+
+test("every source a sitemap page dates itself by exists", async () => {
+  const { existsSync } = await import("node:fs");
+  const { SOURCES } = require("../../apps/site/_data/pageEdited.js");
+  for (const [page, files] of Object.entries(SOURCES)) {
+    for (const file of files) assert.ok(existsSync(new URL(`../../${file}`, import.meta.url)), `${page}: ${file}`);
+  }
+});
+
+test("issuesLatestDate takes the newest edit among the issues a listing shows", () => {
+  const issue = (slug, sent) => ({ page: { fileSlug: slug }, data: { publish_date: sent } });
+  const issues = [issue("354", "2026-10-24"), issue("12", "2017-08-05")];
+  // An old issue repaired last is the newest change on the archive page.
+  assert.equal(issuesLatestDate(issues, { 12: "2026-10-26T09:00:00-05:00" }), "2026-10-26T14:00:00.000Z");
+  assert.equal(issuesLatestDate(issues, {}), "2026-10-24T12:00:00.000Z");
 });

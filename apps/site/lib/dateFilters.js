@@ -46,4 +46,23 @@ function year(value) {
   return parts ? parts.year : "";
 }
 
-module.exports = { dateFormat, dateShort, dateTimeShort, year };
+// The newest of several dates, as a UTC instant ("2026-10-25T10:24:47.000Z"),
+// for a sitemap <lastmod>. Arrays are flattened; empty and unreadable values
+// are skipped. "" when none is a date, so a page never gets a made-up date.
+function latestDate(...values) {
+  let newest = null;
+  for (const value of values.flat(Infinity)) {
+    const d = value ? toDate(value) : null;
+    if (d && (!newest || d > newest)) newest = d;
+  }
+  return newest ? newest.toISOString() : "";
+}
+
+// The newest edit among the issues a listing shows: each issue's last commit
+// (issueEdited, keyed by file name) or else its send date. A listing renders
+// every issue's title and dek, so an edit to any of them changes the page.
+function issuesLatestDate(issues, edited = {}) {
+  return latestDate((issues || []).map((issue) => [edited[issue.page.fileSlug], issue.data.publish_date]));
+}
+
+module.exports = { dateFormat, dateShort, dateTimeShort, year, latestDate, issuesLatestDate };

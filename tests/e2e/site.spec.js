@@ -520,6 +520,30 @@ test('the podcast page and feed are in the sitemap and in llms.txt', async ({ re
   expect(llms).toMatch(/^- \[Podcast\]\(https:\/\/weekly\.thingelstad\.com\/podcast\/\): \S/m);
 });
 
+test('every sitemap url has a W3C lastmod from the content, never the build time', async ({ request }) => {
+  // Google reads <lastmod> only where it is accurate (2026-10-28): issues
+  // carry their page's last commit, the hand-written pages their sources'
+  // last commit or the newest issue they show (_data/pageEdited.js).
+  const sitemap = await (await request.get('/sitemap.xml')).text();
+  const urls = [...sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((match) => match[1]);
+  expect(urls.length).toBeGreaterThan(300);
+  const w3c = /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:\d{2}))?$/;
+  const now = Date.now();
+  const stamps = new Set();
+  for (const url of urls) {
+    const loc = /<loc>([^<]+)<\/loc>/.exec(url)?.[1];
+    const lastmod = /<lastmod>([^<]+)<\/lastmod>/.exec(url)?.[1];
+    expect(lastmod, loc).toMatch(w3c);
+    const time = Date.parse(lastmod);
+    expect(time, loc).toBeLessThanOrEqual(now);
+    expect(time, loc).toBeGreaterThan(Date.parse('2017-05-01'));
+    stamps.add(lastmod);
+  }
+  // A build-time stamp would make them all one value. Repair rounds commit
+  // many issues at once, so the archive holds a few dozen distinct dates.
+  expect(stamps.size).toBeGreaterThan(10);
+});
+
 test('the IndexNow key file is served as the bare key and listed nowhere', async ({ request }) => {
   const { KEY } = await import('../../scripts/indexnow.mjs');
   const keyFile = await request.get(`/${KEY}.txt`);

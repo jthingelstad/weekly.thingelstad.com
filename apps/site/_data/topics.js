@@ -216,5 +216,9 @@ module.exports = (() => {
     (byLetter[key] = byLetter[key] || []).push(rec);
   }
 
-  return { all, bySlug, byIssue, byLetter };
+  // The newest issue any listed topic comes from: the /topics/ index's
+  // <lastmod> in the sitemap.
+  const newestDate = all.reduce((max, rec) => (rec.lastDate && (!max || rec.lastDate > max) ? rec.lastDate : max), null);
+
+  return { all, bySlug, byIssue, byLetter, newestDate };
 })();
