@@ -30,5 +30,49 @@
       "amount_raised": 623.87,
       "logo": "/img/logos/creative-commons.png"
     }
+  ],
+  "benefits": [
+    {
+      "id": "newsletter",
+      "for": "everyone",
+      "name": "The Weekly Thing, read or heard",
+      "line": "Every issue arrives by email and on the website, and each one has an audio edition you can play in any podcast app.",
+      "url": "https://weekly.thingelstad.com/podcast/"
+    },
+    {
+      "id": "thingy",
+      "for": "everyone",
+      "name": "Thingy",
+      "line": "An agent that knows every issue of the Weekly Thing, every blog post, and every episode of Another Thing. Ask it anything about the archive.",
+      "url": "https://thingy.thingelstad.com/"
+    },
+    {
+      "id": "release-notes",
+      "for": "everyone",
+      "name": "Release Notes",
+      "line": "A journal that comes to you. Each morning an email arrives with today’s number as the subject, and your reply is the entry: a line or a page, photos, a voice memo. Any stretch of days can become a book to read or print.",
+      "url": "https://notes.yourversionnumber.com/"
+    },
+    {
+      "id": "thingy-upgraded",
+      "for": "members",
+      "name": "Thingy, upgraded",
+      "line": "Supporting Members get Claude Opus, the strongest model, answering their questions, and double the daily allowance for conversations and archive tools.",
+      "url": "https://thingy.thingelstad.com/"
+    },
+    {
+      "id": "book-commentary",
+      "for": "members",
+      "name": "Commentary in your Release Notes books",
+      "line": "When you make a book in Release Notes, Claude can read the notes and add commentary and annotation alongside them, for up to ten books a year.",
+      "url": "https://notes.yourversionnumber.com/"
+    },
+    {
+      "id": "giving-badge",
+      "for": "members",
+      "name": "A giving badge in Release Notes",
+      "line": "Release Notes marks each year you give with a badge naming that year’s nonprofit, and your birthday email thanks you for it.",
+      "url": "https://notes.yourversionnumber.com/"
+    }
   ]
 }
