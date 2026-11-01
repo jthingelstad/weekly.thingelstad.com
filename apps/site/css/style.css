@@ -3105,6 +3105,14 @@ a.issue-chapter-title:hover { color: var(--accent); }
 .support-benefit h3 {
   margin-top: 0;
 }
+.support-benefits h2.support-benefits-members {
+  margin-top: var(--space-2xl);
+}
+@media (min-width: 720px) {
+  .support-benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 .support-table-org {
   display: inline-flex;
   align-items: center;

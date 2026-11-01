@@ -83,16 +83,31 @@ permalink: /members/
   </section>
   {% endif %}
 
-  <section class="support-benefits">
-    <p class="eyebrow">Member extras</p>
-    <h2>A useful perk, too</h2>
-    <p>The main reason to become a Supporting Member is still the giving program: 100% of membership fees go to the nonprofit selected each year. Supporting Members also get an extra on top.</p>
-
+  {# The benefits come from one list, support.benefits in _data/support.json.
+     WT Builder's Membership drafts read the same list, so a benefit added
+     there reaches the page and the newsletter's call to action together. #}
+  <section class="support-benefits" id="benefits">
+    <p class="eyebrow">What comes with it</p>
+    <h2>Free for every subscriber</h2>
+    <p>Subscribing to the Weekly Thing costs nothing, and it comes with more than the newsletter.</p>
     <div class="support-benefits-grid">
-      <div class="support-benefit">
-        <h3>Thingy, upgraded</h3>
-        <p><a href="{{ site.thingyUrl }}/?ref=weekly-members">Thingy</a>, the agent that knows every issue of the Weekly Thing, every blog post, and every episode of <a href="{{ (sites.sites | siteById('another')).url }}?ref=weekly-members">Another Thing</a>, is available to all subscribers. Supporting Members get the strongest model answering their questions and double the daily allowance for conversations and archive tools.</p>
+      {% for b in support.benefits %}{% if b.for == "everyone" %}
+      <div class="support-benefit" id="benefit-{{ b.id }}">
+        <h3><a href="{{ b.url }}?ref=weekly-members">{{ b.name }}</a></h3>
+        <p>{{ b.line }}</p>
       </div>
+      {% endif %}{% endfor %}
+    </div>
+
+    <h2 class="support-benefits-members">Supporting Members also get</h2>
+    <p>The reason to become a Supporting Member is the giving: 100% of membership fees go to the nonprofit selected each year, {{ support.current.short_name or support.current.nonprofit }} this year. None of it pays for these. They are a thank-you on top.</p>
+    <div class="support-benefits-grid">
+      {% for b in support.benefits %}{% if b.for == "members" %}
+      <div class="support-benefit" id="benefit-{{ b.id }}">
+        <h3><a href="{{ b.url }}?ref=weekly-members">{{ b.name }}</a></h3>
+        <p>{{ b.line }}</p>
+      </div>
+      {% endif %}{% endfor %}
     </div>
   </section>
 
