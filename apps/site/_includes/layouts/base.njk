@@ -90,7 +90,10 @@
       if (['localhost', '127.0.0.1', '::1'].includes(window.location.hostname)) return;
       var script = document.createElement('script');
       script.defer = true;
-      script.src = 'https://tinylytics.app/embed/{{ site.tinylyticsId }}.js?kudos=custom&hits&countries&events&beacon';
+      // One tag for every site; kudos, hits, countries, events and beacon
+      // are set in the Tinylytics dashboard, not in the URL.
+      script.src = 'https://tinylytics.app/js/script.js';
+      script.dataset.site = '{{ site.tinylyticsId }}';
       document.body.appendChild(script);
     })();
   </script>

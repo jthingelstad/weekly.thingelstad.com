@@ -138,6 +138,12 @@ assumes the delivery role through GitHub's OIDC token; no AWS keys are stored.
 - **Pagefind UI** reset blocks CSS overrides — use `!important`. `data-pagefind-filter` survives until
   reindex.
 - **Tinylytics kudos** overwrites innerHTML — render heart/label via CSS `::before` so they survive.
+- **Tinylytics tag** (2026-11): `base.njk` appends `https://tinylytics.app/js/script.js` with
+  `data-site` only. Kudos, hits, countries, events and beacon are the site's Tinylytics settings, not
+  URL params; the old `embed/<id>.js?...` must not come back (`tests/unit/tinylytics-embed.test.mjs`).
+  The script counts a view on each `pushState`/`replaceState` to a new URL, so the archive year filter
+  counts one; the search box syncs `?q=` with the browser's own `replaceState`, captured before the
+  script loads, so typing is not a view per letter.
 - **Don't hand-edit generated files** (`apps/site/archive/*.md`, the pushed `_data/*.json`,
   `data/librarian/graph.json`) — fix upstream in WT Builder or `librarian-thing`.
 - **e2e tests** (`tests/e2e/`) are Playwright specs against the rendered site + Thingy redirects.
