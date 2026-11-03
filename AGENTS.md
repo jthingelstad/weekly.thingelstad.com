@@ -84,7 +84,7 @@ stops). `infra/deployment.json` records their names, tags and outputs.
 - `weekly-site`: a private, versioned bucket (old versions kept 90 days) behind CloudFront with origin
   access control; AWS's CachingOptimized policy (no query string in the key, so `?ref=` variants share
   one copy); security headers plus `Access-Control-Allow-Origin: *` as Pages sent; 403/404 serve
-  `/404.html`; a 5xx alarm to `weekly-thing-librarian-alarms`; access logs to the CloudWatch log group
+  `/404.html`; no CloudWatch alarm (the 5xx alarm was retired 2026-11-03); access logs to the CloudWatch log group
   `/weekly/web-access`, kept 24 months (731 days), with no client IP or query string (the other sites'
   shape). The alias and certificate attach only once the certificate is ISSUED (rerun
   `npm run infra -- site`). The distribution uses the shared `edge` web ACL (projects-sysadmin
