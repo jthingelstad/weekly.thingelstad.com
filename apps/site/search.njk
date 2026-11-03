@@ -71,6 +71,12 @@ permalink: /search/
 <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
 <script src="/pagefind/pagefind-ui.js"></script>
 <script>
+  // Tinylytics' script counts a page view on every history.replaceState to a
+  // new URL. The search box syncs ?q= on each keystroke, which would count a
+  // view per letter typed. This inline script runs before the deferred
+  // Tinylytics script wraps history, so keep the browser's own replaceState
+  // for the query sync: one search page load stays one view, as before.
+  const syncSearchUrl = History.prototype.replaceState.bind(history, null, '');
   window.addEventListener('DOMContentLoaded', () => {
     const pf = new PagefindUI({
       element: "#search",
@@ -118,7 +124,7 @@ permalink: /search/
         if (input) input.value = q;
         const url = new URL(window.location);
         url.searchParams.set('q', q);
-        history.replaceState(null, '', url);
+        syncSearchUrl(url);
         hideSuggestions();
         updateThingyNudge(q);
       });
@@ -146,7 +152,7 @@ permalink: /search/
           url.searchParams.delete('q');
           showSuggestions();
         }
-        history.replaceState(null, '', url);
+        syncSearchUrl(url);
         updateThingyNudge(val);
       });
     }
