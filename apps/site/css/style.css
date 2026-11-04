@@ -2637,10 +2637,11 @@ a.issue-chapter-title:hover { color: var(--accent); }
 .issue-content blockquote p:last-child { margin-bottom: 0; }
 
 /*
- * From Thingy — Jamie's agentic librarian, showing up in the content from
- * time to time (Membership, Echoes). WT Builder emits the div; the different
- * font is the identity here: the issue reads in the serif, Thingy speaks in
- * the sans. Not a blockquote on purpose.
+ * From Thingy — Jamie's agent sidekick, showing up in the content from time
+ * to time (Membership, Echoes). WT Builder emits the div and its label ("From
+ * Thingy, my agent sidekick" from 2026-11-03; "my agentic librarian" before).
+ * The issue and the frame share one typeface, so the tinted panel and the
+ * uppercase label are the identity here. Not a blockquote on purpose.
  */
 .issue-content .from-thingy {
   margin: 28px 0 32px;
