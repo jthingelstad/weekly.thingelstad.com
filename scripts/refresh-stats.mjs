@@ -65,7 +65,11 @@ let subscriber_count, premium_subscriber_count;
 try {
   console.log("Fetching subscriber stats from Buttondown…");
   subscriber_count = await buttondownCount({ page_size: "1" });
-  premium_subscriber_count = await buttondownCount({ type: "premium", page_size: "1" });
+  // A gifted subscriber is a Supporting Member too (Jamie, 2026-11-04: "gifted
+  // should be treated the same as premium").
+  premium_subscriber_count =
+    (await buttondownCount({ type: "premium", page_size: "1" })) +
+    (await buttondownCount({ type: "gifted", page_size: "1" }));
 } catch (err) {
   console.warn(`  Warning: subscriber stats failed, keeping committed values: ${err.message}`);
   subscriber_count = existing.subscriber_count ?? 0;
