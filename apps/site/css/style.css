@@ -2267,11 +2267,13 @@ a.issue-chapter-title:hover { color: var(--accent); }
   margin: 14px 0 4px;
 }
 .issue-cue-thingy { font-family: var(--font-ui); }
-.issue-cue-avatar {
+/* Beats .issue-content img, whose 18px margin lifted him off his name. */
+.issue-content .issue-cue-avatar {
   width: 22px;
   height: 22px;
   vertical-align: -6px;
-  margin-right: 6px;
+  margin: 0 6px 0 0;
+  border-radius: 0;
 }
 .issue-transcript-foot { margin-top: 18px; font-size: 14px; color: var(--muted); }
 .issue-toc-discuss {

@@ -622,6 +622,46 @@ test('the transcript panel shows WebVTT escapes as the characters they stand for
   expect(await page.evaluate(() => window.pwned)).toBeUndefined();
 });
 
+test('Thingy wears his concert outfit on the Membership lines of a transcript, and only there', async ({ page }) => {
+  // WT354's chapters: Supporting Membership runs 636.563 to 673.002. A hand-off
+  // from Jamie opens the chapter, and Echoes later is Thingy in his usual self.
+  const vtt = [
+    'WEBVTT',
+    '',
+    '00:10:36.563 --> 00:10:39.020',
+    '<v Jamie>Next, a word about membership, from Thingy.',
+    '',
+    '00:10:39.620 --> 00:10:40.678',
+    '<v Thingy>Hello, this is Thingy.',
+    '',
+    '00:10:41.178 --> 00:11:11.602',
+    '<v Thingy>A word about membership.',
+    '',
+    '00:11:13.002 --> 00:11:14.442',
+    '<v Jamie>Now, the Journal section.',
+    '',
+    '00:18:33.900 --> 00:18:37.500',
+    '<v Thingy>Echoes from the archive.',
+    '',
+  ].join('\n');
+  await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
+  await page.route(/\.vtt$/, (route) =>
+    route.fulfill({ status: 200, contentType: 'text/vtt', headers: { 'Access-Control-Allow-Origin': '*' }, body: vtt }),
+  );
+
+  await page.goto('/archive/354/', { waitUntil: 'domcontentloaded' });
+  await page.locator('.issue-transcript summary').click();
+
+  await expect(page.locator('.issue-transcript-body .issue-cue')).toHaveCount(5);
+  // One label for the run of two Membership lines, then Echoes gets its own.
+  const avatars = page.locator('.issue-transcript-body .issue-cue-avatar');
+  await expect(avatars).toHaveCount(2);
+  await expect(avatars.nth(0)).toHaveAttribute('src', '/img/thingy-concert-avatar.png');
+  await expect(avatars.nth(1)).toHaveAttribute('src', '/img/thingy.png');
+  const loaded = await avatars.nth(0).evaluate((img) => img.decode().then(() => img.naturalWidth));
+  expect(loaded).toBeGreaterThan(0);
+});
+
 test('a firewalled address is told it is under review, on subscribe and on check', async ({ page }) => {
   await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
   const review = 'This email address was flagged as suspicious and has been recorded for review. It isn’t subscribed yet.';
