@@ -30,9 +30,10 @@ retired 2026-09-29.
 
 - `data/librarian/graph.json` — topic graph for the topic pages.
 
-**Never edit `apps/site/archive/*.md` (or the pushed files) here.** They're regenerated upstream and
-overwritten by the next handoff. Fix the issue in WT Builder and re-send; historical repairs go in
-`librarian-thing/data/issues/{N}/archive.md`.
+**This repo is the source of authority for past issues.** A repair to a sent issue is an edit to its
+`apps/site/archive/{N}.md` here (since 2026-10-22; `rerender:archive` is retired), and the library
+pulls it. Keep what WT Builder wrote (`audio_*`, `buttondown_id`). Fix an unsent issue in WT Builder,
+whose send overwrites the page. Never edit the pushed files here.
 
 ## Data files in `apps/site/_data/`
 
@@ -144,8 +145,8 @@ assumes the delivery role through GitHub's OIDC token; no AWS keys are stored.
   The script counts a view on each `pushState`/`replaceState` to a new URL, so the archive year filter
   counts one; the search box syncs `?q=` with the browser's own `replaceState`, captured before the
   script loads, so typing is not a view per letter.
-- **Don't hand-edit generated files** (`apps/site/archive/*.md`, the pushed `_data/*.json`,
-  `data/librarian/graph.json`) — fix upstream in WT Builder or `librarian-thing`.
+- **Don't hand-edit generated files** (the pushed `_data/*.json`, `data/librarian/graph.json`) — fix
+  upstream in WT Builder or `librarian-thing`. Past issue pages are the exception, see above.
 - **e2e tests** (`tests/e2e/`) are Playwright specs against the rendered site + Thingy redirects.
   Playwright serves the already-built `_site/` (Pagefind index included) with `python3 -m http.server`
   on :8080, so the tests see what deploys. Locally run `npm test` (checks the vendored `sites.json`,

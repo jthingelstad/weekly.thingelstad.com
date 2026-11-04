@@ -31,8 +31,9 @@ built in this repo. WT Builder renders the 11ty-shaped `{N}.md` (front matter: l
 issue's canonical text is committed to `librarian-thing/data/issues/{N}/` for the corpus.
 
 Every generated file carries an inline notice (`<!-- Generated … do not edit directly. -->`).
-**Editorial fixes go upstream in WT Builder**, never in `apps/site/archive/` here — the next handoff
-overwrites local edits.
+**Fix an unsent issue in WT Builder**, whose send overwrites the page. **A repair to a sent issue is an
+edit to its page here** (since 2026-10-22, when weekly became the source of authority for past issues),
+and the library pulls it. Keep what WT Builder wrote (`audio_*`, `buttondown_id`).
 
 ## `_data/` files — source of truth
 
@@ -204,8 +205,8 @@ as long as the template that writes the page adds it to the map too (the e2e tes
 
 ## Conventions
 
-- **Never edit `apps/site/archive/*.md` or the pushed `_data` files.** Fix upstream in WT Builder (or
-  `librarian-thing` for the topic graph).
+- **Never edit the pushed `_data` files.** Fix upstream in WT Builder (or `librarian-thing` for the
+  topic graph). Edit `apps/site/archive/*.md` only to repair a sent issue.
 - **Feeds escape text twice inside HTML content.** A reader XML-decodes Atom `type="html"` content and RSS
   `<description>`, then reads it as HTML, so text set there goes through `htmlEscape | xmlEscape` (WT3's
   "D&D" is `D&amp;amp;D` in the file). Plain-text elements (Atom `type="text"`, titles, `itunes:summary`)
