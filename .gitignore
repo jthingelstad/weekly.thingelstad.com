@@ -12,6 +12,7 @@ cache/
 .env-*
 .env.*
 !.env.example
+!.env.tpl
 
 # OS files
 .DS_Store
