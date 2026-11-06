@@ -9,6 +9,7 @@
 //
 //   node scripts/deploy-aws.mjs          upload what changed (by MD5) and remove what is gone
 //   node scripts/deploy-aws.mjs --all    upload every file, after a change to publish-plan.mjs
+//   node scripts/deploy-aws.mjs --sync-redirects    read and correct the redirect store even if the map is unchanged
 //
 // Once the result reads back, the pages whose bytes changed go to IndexNow (scripts/indexnow.mjs); a
 // failed ping is logged and never fails the deploy.
@@ -22,6 +23,7 @@ import { readFileSync } from 'node:fs';
 import { isDeepStrictEqual } from 'node:util';
 import { setTimeout as delay } from 'node:timers/promises';
 import { publishPlan } from './publish-plan.mjs';
+import { staleKeys, syncRedirectsIfChanged } from './redirect-record.mjs';
 import { readPublicFeed, reportIssueArrival } from './sync-receipt.mjs';
 import { changedPageUrls, pingIndexNow } from './indexnow.mjs';
 
@@ -88,39 +90,50 @@ for (let i = 0; i < changed.length; i += 16) {
 }
 console.log(`Uploaded ${changed.length} of ${plan.length} files.`);
 
-// The redirect map. The key value store API signs with SigV4A, which the AWS CLI does natively, so it
-// goes through the CLI; UpdateKeys takes 50 changes a call, each call naming the store's current ETag.
+// The redirect map, when it has changed since the last sync that finished (redirect-record.mjs). The
+// key value store API signs with SigV4A, which the AWS CLI does natively, so it goes through the CLI;
+// UpdateKeys takes 50 changes a call, each call naming the store's current ETag.
 const cli = (...args) =>
   JSON.parse(execFileSync('aws', ['cloudfront-keyvaluestore', ...args, '--region', region, '--output', 'json'], { encoding: 'utf8' }));
 const store = out.RedirectStoreArn;
-let etag = cli('describe-key-value-store', '--kvs-arn', store).ETag;
-const current = new Map();
-let next;
-do {
-  const page = cli('list-keys', '--kvs-arn', store, ...(next ? ['--next-token', next] : []));
-  for (const item of page.Items ?? []) current.set(item.Key, item.Value);
-  next = page.NextToken;
-} while (next);
-const changes = [
-  ...Object.entries(redirects)
-    .filter(([from, to]) => current.get(from) !== to)
-    .map(([Key, Value]) => ({ put: { Key, Value } })),
-  ...[...current.keys()].filter((key) => !(key in redirects)).map((Key) => ({ delete: { Key } }))
-];
-for (let i = 0; i < changes.length; i += 50) {
-  const batch = changes.slice(i, i + 50);
-  const puts = batch.flatMap((c) => (c.put ? [c.put] : []));
-  const deletes = batch.flatMap((c) => (c.delete ? [c.delete] : []));
-  etag = cli(
-    'update-keys', '--kvs-arn', store, '--if-match', etag,
-    ...(puts.length ? ['--puts', JSON.stringify(puts)] : []),
-    ...(deletes.length ? ['--deletes', JSON.stringify(deletes)] : [])
-  ).ETag;
-}
-console.log(`Redirects: ${Object.keys(redirects).length}, ${changes.length} changed.`);
+await syncRedirectsIfChanged({
+  s3,
+  bucket,
+  store,
+  redirects,
+  force: process.argv.includes('--sync-redirects'),
+  commit: process.env.GITHUB_SHA,
+  sync: () => {
+    let etag = cli('describe-key-value-store', '--kvs-arn', store).ETag;
+    const current = new Map();
+    let next;
+    do {
+      const page = cli('list-keys', '--kvs-arn', store, ...(next ? ['--next-token', next] : []));
+      for (const item of page.Items ?? []) current.set(item.Key, item.Value);
+      next = page.NextToken;
+    } while (next);
+    const changes = [
+      ...Object.entries(redirects)
+        .filter(([from, to]) => current.get(from) !== to)
+        .map(([Key, Value]) => ({ put: { Key, Value } })),
+      ...[...current.keys()].filter((key) => !(key in redirects)).map((Key) => ({ delete: { Key } }))
+    ];
+    for (let i = 0; i < changes.length; i += 50) {
+      const batch = changes.slice(i, i + 50);
+      const puts = batch.flatMap((c) => (c.put ? [c.put] : []));
+      const deletes = batch.flatMap((c) => (c.delete ? [c.delete] : []));
+      etag = cli(
+        'update-keys', '--kvs-arn', store, '--if-match', etag,
+        ...(puts.length ? ['--puts', JSON.stringify(puts)] : []),
+        ...(deletes.length ? ['--deletes', JSON.stringify(deletes)] : [])
+      ).ETag;
+    }
+    return changes.length;
+  }
+});
 
 // Remove what the build no longer writes. The bucket keeps old versions for 90 days.
-const stale = [...existing.keys()].filter((key) => !keys.has(key));
+const stale = staleKeys(existing.keys(), keys);
 for (let i = 0; i < stale.length; i += 1000) {
   await s3.send(
     new DeleteObjectsCommand({

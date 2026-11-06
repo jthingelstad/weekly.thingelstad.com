@@ -112,6 +112,7 @@ MD5 changed (`--all` re-uploads everything, needed after a `publish-plan.mjs` ch
 redirect store, deletes what the build no longer writes, clears the cache, and reads the result back
 through the CloudFront domain (the front page as built, `/rss`'s type, a redirect, the slash form, a
 404). Tinylytics refuses the `cloudfront.net` host, so analytics only count on the real domain.
+The redirect store is read and written only when `_redirects.json` differs from the record of the last finished sync (`scripts/redirect-record.mjs`, at `_deploy/redirects-synced` in the bucket, unreachable through the distribution); `npm run deploy:aws -- --sync-redirects` forces a full sync, which is what corrects a hand edit to the store.
 
 **IndexNow** (`scripts/indexnow.mjs`, 2026-10-28, part of the Search Console and Bing Webmaster
 cleanup): after the read-back, the deploy POSTs to `api.indexnow.org` the pages whose bytes changed (by
