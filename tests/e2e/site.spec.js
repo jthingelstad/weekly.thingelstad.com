@@ -506,11 +506,12 @@ test('archive.json is listed in llms.txt, never advertised as a feed', async ({ 
 });
 
 test('what the site says about the newsletter is true', async ({ page, request }) => {
-  // The content audit's facts table, 2026-11-06. A year is a full year, an issue
-  // does not come every weekend, and the sections are the ones issues have now.
+  // The content audit's facts table, 2026-11-06. A year is a full year, and the
+  // sections are the ones issues have now. "Every weekend" and "this weekend" stay
+  // on purpose (Jamie, 2026-11-06: "breaks are exceptions").
   await page.goto('/');
   const home = await page.locator('main').innerText();
-  expect(home).not.toMatch(/unbroken|every weekend|sources read/i);
+  expect(home).not.toMatch(/unbroken|sources read/i);
   const { fullYearsBetween } = require('../../apps/site/lib/siteTime.js');
   const newestIssue = (await (await request.get('/feed.json')).json()).items[0];
   const years = fullYearsBetween('2017-05-13', newestIssue.date_published);
@@ -521,11 +522,7 @@ test('what the site says about the newsletter is true', async ({ page, request }
   await expect(page.locator('.home-prop-list')).not.toContainText(/Featured|a dozen|\d.\d stories/i);
 
   await page.goto('/about/');
-  await expect(page.locator('main')).not.toContainText(/every weekend/i);
   await expect(page.locator('.about-lede')).toContainText(`${years} years`);
-
-  await page.goto('/confirmed/');
-  await expect(page.locator('main')).not.toContainText(/this weekend/i);
 
   await page.goto('/search/');
   await expect(page.locator('.search-tip-cta')).toContainText('You can ask Thingy');
