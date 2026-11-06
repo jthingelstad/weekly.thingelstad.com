@@ -64,6 +64,7 @@ layout: layouts/base.njk
   </script>
 
   <aside class="topic-thingy">
+    <span class="thingy-head" aria-hidden="true"></span>
     <p class="topic-thingy-lede">
       Want to go deeper on <em>{{ topic.name }}</em>?
       <a class="topic-thingy-link" target="_blank" rel="noopener" href="{{ site.thingyUrl }}/chat/?prompt={{ ('Tell me about ' + topic.name + ' in The Weekly Thing.') | urlencode }}&from={{ (site.url + '/topics/' + topic.slug + '/') | urlencode }}&ref=weekly-topic" data-tinylytics-event="topic.thingy_nudge" data-tinylytics-event-value="{{ topic.slug }}">Ask Thingy →</a>

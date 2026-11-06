@@ -662,6 +662,44 @@ test('Thingy wears his concert outfit on the Membership lines of a transcript, a
   expect(loaded).toBeGreaterThan(0);
 });
 
+test('Thingy appears where he has a job, follows his home, and stays off Jamie\'s pages', async ({ page }) => {
+  await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
+  const support = require('../../apps/site/_data/support.json');
+
+  // He hosts the Members page, from the Concert, with figures from their owner.
+  await page.goto('/members/', { waitUntil: 'domcontentloaded' });
+  const host = page.locator('.thingy-host');
+  await expect(host.locator('img')).toHaveAttribute('src', /\/character\/latest\/poses\/concert-present\.webp$/);
+  await expect(host.locator('h1')).toContainText(`$${support.yearly_price} a year`);
+  await expect(host.locator('h1')).toContainText(`all of it goes to ${support.current.short_name}`);
+  await expect(host).toContainText('I’m Thingy');
+  await expect(host.locator('a[href="#join"]')).toHaveCount(1);
+  await expect(page.locator('#join .support-how-grid')).toHaveCount(1);
+  const record = page.locator('.support-table');
+  for (const org of support.past.filter((o) => o.amount_raised)) {
+    const raised = org.amount_raised.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    await expect(record.locator('tr', { hasText: org.nonprofit })).toContainText(`$${raised}`);
+    await expect(record.locator('tr', { hasText: org.nonprofit })).toContainText(`${org.year}`);
+  }
+  // A why is Jamie's own words, set apart and linked.
+  await expect(page.locator('.thingy-quote').first()).toHaveText(support.current.why.quote);
+  await expect(page.locator(`.thingy-quote-source a[href="${support.current.why.url}"]`)).toHaveCount(1);
+
+  // An issue's two boxes are his two jobs: Membership the Concert, Echoes the Library.
+  await page.goto('/archive/354/', { waitUntil: 'domcontentloaded' });
+  const faces = await page.locator('.issue-content .from-thingy-label').evaluateAll((labels) =>
+    labels.map((label) => getComputedStyle(label, '::before').backgroundImage));
+  expect(faces).toHaveLength(2);
+  expect(faces[0]).toContain('/character/latest/poses/concert-present.webp');
+  expect(faces[1]).toContain('/character/latest/poses/library-hello-idle.webp');
+
+  // The front page and About are Jamie's, in his words and with his face.
+  for (const path of ['/', '/about/']) {
+    await page.goto(path, { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('.thingy-head, .thingy-figure, .thingy-host')).toHaveCount(0);
+  }
+});
+
 test('a firewalled address is told it is under review, on subscribe and on check', async ({ page }) => {
   await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
   const review = 'This email address was flagged as suspicious and has been recorded for review. It isn’t subscribed yet.';

@@ -34,6 +34,7 @@ const SOURCES = {
     "apps/site/_data/support.json",
     "apps/site/_data/supportTotals.js",
     "apps/site/_includes/partials/upgrade-form.njk",
+    "apps/site/_includes/partials/thingy-members.njk",
   ],
   "/search/": ["apps/site/search.njk"],
   "/podcast/": ["apps/site/podcast-page.njk"],

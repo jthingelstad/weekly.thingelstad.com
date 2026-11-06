@@ -2416,6 +2416,9 @@ a.issue-chapter-title:hover { color: var(--accent); }
   margin-left: 4px;
 }
 .topic-thingy {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin-top: 40px;
   padding: 16px 20px;
   background: var(--accent-soft);
@@ -2668,6 +2671,73 @@ a.issue-chapter-title:hover { color: var(--accent); }
 }
 .issue-content .from-thingy-label a { color: var(--accent-deep); text-decoration: none; font-weight: 600; }
 .issue-content .from-thingy-label a:hover { text-decoration: underline; }
+
+/* Thingy's face (docs/THINGY.md). His stills come from his home and follow the
+   newest model; no copy is kept here. WT Builder prints the same frame for his
+   two jobs in an issue, so Echoes, the one that follows its own heading, is the
+   Library and the Membership box is the Concert. The ivory ground is there
+   because the kit's warning is true of this site's dark mode: his charcoal
+   limbs and headphones sink into it. The label stays if his host is down. */
+:root {
+  --thingy-ground: #efeadf;
+  --thingy-library: url("https://thingy.thingelstad.xyz/character/latest/poses/library-hello-idle.webp");
+  --thingy-concert: url("https://thingy.thingelstad.xyz/character/latest/poses/concert-present.webp");
+}
+.thingy-head,
+.issue-content .from-thingy-label::before {
+  display: inline-block;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  vertical-align: middle;
+  background: var(--thingy-ground) var(--thingy-library) -11px -4px / 54px 54px no-repeat;
+}
+.issue-content .from-thingy-label::before {
+  content: "";
+  margin-right: 10px;
+  background-image: var(--thingy-concert);
+}
+.issue-content h2#echoes + .from-thingy .from-thingy-label::before {
+  background-image: var(--thingy-library);
+}
+@media (prefers-color-scheme: dark) {
+  .thingy-figure { background: var(--thingy-ground); border-radius: 12px; }
+  /* The nonprofits' logos are dark ink, and the record now sits high on the page. */
+  .support-current-logo,
+  .support-table-logo { background: #fff; padding: 3px 5px; border-radius: 4px; box-sizing: content-box; }
+}
+
+/* Thingy hosts /members/: his face and first words open the page, and his
+   lines further down are set apart only where he hands over to Jamie's words. */
+.thingy-host-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 32px;
+  align-items: center;
+}
+.thingy-host-figure { display: block; width: 240px; height: 240px; }
+.thingy-host .eyebrow a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.thingy-host-cta { margin: 20px 0 0; }
+.thingy-says { margin: 20px 0 8px; font-weight: 600; }
+.thingy-quote {
+  margin: 0;
+  padding-left: 18px;
+  border-left: 3px solid var(--accent);
+  color: var(--ink-soft);
+}
+.thingy-credit { margin: 0 0 32px; font-size: var(--size-sm); color: var(--ink-soft); }
+.thingy-quote-source {
+  margin: 6px 0 20px;
+  padding-left: 21px;
+  font-size: var(--size-sm);
+  color: var(--ink-soft);
+}
+@media (max-width: 720px) {
+  .thingy-host-inner { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .thingy-host-figure { order: -1; width: 150px; height: 150px; }
+}
+.error-thingy { display: block; margin: 0 auto var(--space-md); }
 
 /*
  * Pull quote — a Quote section from WT Builder (WT354 on): the words large in
@@ -3030,34 +3100,11 @@ a.issue-chapter-title:hover { color: var(--accent); }
   margin-bottom: var(--space-2xl);
 }
 
-.support-stats {
-  display: flex;
-  gap: var(--space-2xl);
-  margin: var(--space-xl) 0;
-}
-
-.support-stat {
-  text-align: center;
-}
-
-.stat-value {
-  display: block;
-  font-size: var(--size-3xl);
-  font-weight: var(--weight-heading);
-  color: var(--color-accent);
-  font-family: var(--font-heading);
-}
-
-.stat-label {
-  display: block;
-  font-family: var(--font-ui);
-  font-size: var(--size-sm);
-  color: var(--color-text-muted);
-}
-
 .support-table {
   max-width: 32rem;
+  margin-top: 20px;
 }
+.support-table td:last-child { white-space: nowrap; }
 .support-impact .eyebrow {
   margin-bottom: 8px;
 }
@@ -3499,11 +3546,6 @@ a.issue-chapter-title:hover { color: var(--accent); }
 
   .issue-nav-next {
     text-align: left;
-  }
-
-  .support-stats {
-    flex-direction: column;
-    gap: var(--space-lg);
   }
 }
 
