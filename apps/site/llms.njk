@@ -10,16 +10,20 @@ The Weekly Thing is written and curated by {{ site.author }} ({{ site.authorUrl 
 
 Each issue includes several recurring sections:
 
+- **Currently** — what Jamie has been up to.
 - **Notable** — a small number of editorially selected links, each with commentary.
+- **Journal** — Jamie's blog posts from the week, syndicated.
 - **Briefly** — shorter items, usually a bolded link plus a sentence of context.
-- **Microposts / Microblog updates** — short notes, photos, and personal updates from the week.
-- **Featured** — occasional longer features or essays.
+- **Haiku** — a haiku, near the end of the issue.
+- **Echoes** — threads from the archive to this week's issue, written by Thingy, Jamie's agent sidekick.
 
-Only links inside dedicated editorial sections (Notable, Briefly, Featured, etc.) are counted in the archive's link and domain stats. Inline links in commentary and microposts are intentionally excluded.
+Older issues carry sections that have since ended: **Featured**, occasional longer features or essays (WT23 to WT309), and **Microposts**, short notes and photos (WT53 to WT130).
+
+Only links inside dedicated editorial sections (Notable, Briefly, and Featured in older issues) are counted in the archive's link and domain stats. Inline links in commentary, the Journal and microposts are intentionally excluded.
 
 Archive stats:
 
-- Total issues: {{ archiveStats.totalIssues | numberFormat }}
+- Total issues: {{ archiveStats.regularIssues | numberFormat }}
 - Total curated links: {{ archiveStats.totalLinks | numberFormat }}
 - Unique domains: {{ archiveStats.uniqueDomainsTotal | numberFormat }}
 - Total words: {{ archiveStats.totalWords | numberFormat }}

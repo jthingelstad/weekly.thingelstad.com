@@ -505,6 +505,56 @@ test('archive.json is listed in llms.txt, never advertised as a feed', async ({ 
   expect(llms).toMatch(/^- \[[^\]]+\]\(https:\/\/weekly\.thingelstad\.com\/archive\.json\): \S/m);
 });
 
+test('what the site says about the newsletter is true', async ({ page, request }) => {
+  // The content audit's facts table, 2026-11-06. A year is a full year, an issue
+  // does not come every weekend, and the sections are the ones issues have now.
+  await page.goto('/');
+  const home = await page.locator('main').innerText();
+  expect(home).not.toMatch(/unbroken|every weekend|sources read/i);
+  const { fullYearsBetween } = require('../../apps/site/lib/siteTime.js');
+  const newestIssue = (await (await request.get('/feed.json')).json()).items[0];
+  const years = fullYearsBetween('2017-05-13', newestIssue.date_published);
+  const issueCount = await page.locator('.p-issue-count').getAttribute('value');
+  const yearsCard = page.locator('.home-num', { hasText: 'years running' });
+  await expect(yearsCard.locator('.home-num-value')).toHaveText(String(years));
+  await expect(page.locator('.home-prop-tag')).toHaveText(['Currently', 'Notable', 'Journal', 'Briefly', 'Haiku', 'Echoes']);
+  await expect(page.locator('.home-prop-list')).not.toContainText(/Featured|a dozen|\d.\d stories/i);
+
+  await page.goto('/about/');
+  await expect(page.locator('main')).not.toContainText(/every weekend/i);
+  await expect(page.locator('.about-lede')).toContainText(`${years} years`);
+
+  await page.goto('/confirmed/');
+  await expect(page.locator('main')).not.toContainText(/this weekend/i);
+
+  await page.goto('/search/');
+  await expect(page.locator('.search-tip-cta')).toContainText('You can ask Thingy');
+  await expect(page.locator('.search-title')).toContainText(`${years} years`);
+
+  await page.goto('/archive/');
+  await expect(page.locator('.archive-hero-title')).toContainText(`${years} years`);
+
+  await page.goto('/faq/');
+  const faq = await page.locator('main').innerText();
+  expect(faq).not.toMatch(/Selected issues|bidirectionally|Just Jamie|digital citizenship/);
+  expect(faq).toContain(`over ${years} years`);
+  expect(faq).toContain('Every issue has a Listen control');
+  expect(faq).toContain('writes the Supporting Membership section and Echoes');
+
+  await page.goto('/topics/');
+  const lede = await page.locator('.topics-index-lede').innerText();
+  expect(lede).toContain(`${years} years`);
+  const fewest = Number(lede.match(/appears in (\d+) or more issues/)[1]);
+  const graph = require('../../data/librarian/graph.json');
+  expect(fewest).toBe(Math.min(...graph.topics.map((topic) => topic.issues.length)));
+
+  const llms = await (await request.get('/llms.txt')).text();
+  expect(llms).toContain(`- Years active: ${years}`);
+  expect(llms).toContain(`- Total issues: ${issueCount}`);
+  expect(llms).toContain('- **Echoes**');
+  expect(llms).toMatch(/\*\*Featured\*\*.*WT309/);
+});
+
 test('the podcast page and feed are in the sitemap and in llms.txt', async ({ request }) => {
   // Open-web audit G6 and G7, 2026-10-25: /podcast/ is indexable, and was in
   // neither file.
