@@ -24,6 +24,8 @@ module.exports = {
   description: 'A weekly collection of interesting links, ideas, and observations from across the internet, curated by Jamie Thingelstad.',
   url: 'https://weekly.thingelstad.com',
   thingyUrl: 'https://thingy.thingelstad.com',
+  // His stills, from his home, following the newest model (docs/THINGY.md).
+  thingyStills: 'https://thingy.thingelstad.xyz/character/latest/poses',
   author: 'Jamie Thingelstad',
   authorUrl: 'https://www.thingelstad.com',
   tinylyticsId: envValue('TINYLYTICS_SITE_UID') || (/^\d+$/.test(envValue('TINYLYTICS_SITE_ID')) ? '' : envValue('TINYLYTICS_SITE_ID')) || 'a2YQr3ZMqkySNYSwz4uF',

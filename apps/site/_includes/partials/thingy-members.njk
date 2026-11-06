@@ -1,0 +1,76 @@
+{#
+  Everything Thingy says on /members/, which he hosts (Jamie, 2026-11-06). His
+  persona rules these words: https://thingy.thingelstad.xyz/persona.md. Read it
+  before changing one. See docs/THINGY.md.
+
+  The file is apart from support.njk because the Librarian's corpus reads that
+  template's source as a reference passage, and Thingy's words never enter the
+  corpus. A "why" here is only Jamie's words, quoted exactly and linked. Figures
+  are read from their owners at build time, never typed.
+#}
+
+{% macro open() %}
+{% set cause = support.current.short_name or support.current.nonprofit %}
+<section class="support-hero thingy-host">
+  <div class="container-narrow thingy-host-inner">
+    <div>
+      <p class="eyebrow">Supporting Membership &middot; hosted by <a href="https://thingy.thingelstad.xyz/?ref=weekly-members">Thingy</a></p>
+      <h1 class="support-hero-title">${{ support.yearly_price }} a year, and <em>all of it goes to {{ cause }}</em>.</h1>
+      <p class="support-hero-lede">I&rsquo;m Thingy, Jamie&rsquo;s agent sidekick, and I host Supporting Membership. Think of this page as a benefit show, an old and good way to ask for a cause.</p>
+      <p class="support-hero-lede">The Weekly Thing is free for everyone. Membership is a way to give through the newsletter. The fees pay for nothing else.</p>
+      <p class="thingy-host-cta"><a href="#join" class="btn btn-primary">Join as a Supporting Member</a></p>
+    </div>
+    <img class="thingy-figure thingy-host-figure" src="{{ site.thingyStills }}/concert-present.webp" alt="Thingy in his concert outfit and over-ear headphones, with one hand raised" width="240" height="240">
+  </div>
+</section>
+{% endmacro %}
+
+{% macro thanks() %}
+{% set cause = support.current.short_name or support.current.nonprofit %}
+<div id="support-thanks" class="support-thanks" hidden>
+  <p><strong>Thank you.</strong> That&rsquo;s headed to {{ cause }}. The total on this page catches up the next time the site builds.</p>
+</div>
+<script>
+  if (new URLSearchParams(location.search).get('thanks') === '1') {
+    document.getElementById('support-thanks').hidden = false;
+  }
+</script>
+{% endmacro %}
+
+{% macro why() %}
+{% set cause = support.current.short_name or support.current.nonprofit %}
+{% if support.current.why %}
+<p class="thingy-says">Why {{ cause }}? I&rsquo;ll let Jamie answer that one.</p>
+<blockquote class="thingy-quote">{{ support.current.why.quote }}</blockquote>
+<p class="thingy-quote-source">Jamie, in <a href="{{ support.current.why.url }}">{{ support.current.why.source }}</a></p>
+{% endif %}
+<p class="thingy-says"><a href="{{ site.thingyUrl }}/chat/?prompt={{ ('Tell me about ' + cause) | urlencode }}&ref=weekly-members" data-tinylytics-event="support.thingy_handoff">Ask me about {{ cause }} &rarr;</a></p>
+{% endmacro %}
+
+{% macro record() %}
+<p class="eyebrow">The record</p>
+<p class="support-impact-figure">${{ supportTotals.totalRaised | currency }}</p>
+<p class="support-impact-caption">raised since {{ supportTotals.sinceYear }}{% if stats.premium_subscriber_count > 0 %}, with {{ stats.premium_subscriber_count }} Supporting Members this year{% endif %}. Here is where it went.</p>
+{% endmacro %}
+
+{% macro ask() %}
+{% set cause = support.current.short_name or support.current.nonprofit %}
+<p class="eyebrow">The ask</p>
+<h2>Join as a Supporting Member.</h2>
+<p>There are two ways in. Either way, 100% goes to {{ cause }}.</p>
+{% endmacro %}
+
+{% macro getYou() %}
+<p class="thingy-says">Jamie took the obvious question in 2024.</p>
+<blockquote class="thingy-quote">What does it get you? Nothing. 😊 Well, that isn't true. It will make you feel great.</blockquote>
+<p class="thingy-quote-source">Jamie, <a href="https://www.thingelstad.com/2024/11/17/weekly-thing-supporting.html?ref=weekly-members">on Supporting Memberships</a></p>
+{% endmacro %}
+
+{# The credit his kit asks for. The footer's CC BY-SA covers the site's words, not him. #}
+{% macro credit() %}
+<p class="thingy-credit"><a href="https://thingy.thingelstad.xyz/?ref=weekly-members">Thingy</a> by <a href="https://www.thingelstad.com/?ref=weekly-members">Jamie Thingelstad</a>, <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></p>
+{% endmacro %}
+
+{# His own two rows in the benefits list. support.json keeps them in the third
+   person, because WT Builder and other pages read those lines. #}
+{% macro benefit(b) %}{% if b.id == "thingy" %}That&rsquo;s me. I know every issue of the Weekly Thing, every blog post and every episode of Another Thing. Ask me anything about the archive.{% elif b.id == "thingy-upgraded" %}Supporting Members get Claude Opus answering as me, with double the daily allowance for conversations and archive tools.{% else %}{{ b.line }}{% endif %}{% endmacro %}

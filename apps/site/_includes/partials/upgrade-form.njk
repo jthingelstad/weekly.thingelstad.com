@@ -186,13 +186,13 @@
   }
 
   function renderAlreadyPremium() {
-    setStatus('<strong>You’re already a Supporting Member \u{1F31F}</strong> Thank you for your support.', 'success');
+    setStatus('<strong>You’re already a Supporting Member.</strong> Thank you.', 'success');
     btn.hidden = true;
     track('support.upgrade.already_premium');
   }
 
   function renderUnconfirmed(email) {
-    setStatus('We sent a confirmation email to <strong>' + escapeHtml(email) + '</strong> when you signed up. Confirm it first, then come back to upgrade. <button type="button" class="subscribe-action-link" data-action="resend">Resend confirmation</button>', 'info');
+    setStatus('A confirmation email went to <strong>' + escapeHtml(email) + '</strong> when you signed up. Confirm it first, then come back to upgrade. <button type="button" class="subscribe-action-link" data-action="resend">Resend confirmation</button>', 'info');
     var resend = status.querySelector('[data-action="resend"]');
     if (resend) resend.addEventListener('click', function() {
       resend.disabled = true;

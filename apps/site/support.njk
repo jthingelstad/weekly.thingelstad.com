@@ -1,120 +1,33 @@
 ---
 layout: layouts/base.njk
 pageTitle: Supporting Membership
-description: Support the Weekly Thing and help fund a nonprofit each year.
+description: A way to give through the Weekly Thing. 100% of membership fees go to that year's nonprofit.
 permalink: /members/
 ---
-<section class="support-hero">
-  <div class="container-narrow">
-    <p class="eyebrow">Membership</p>
-    <h1 class="support-hero-title">Free for everyone. <em>Members fund a nonprofit</em>.</h1>
-    <p class="support-hero-lede">The Weekly Thing is free for everyone, always. Supporting Members contribute to a community giving program where <strong>100% of membership fees go directly to a nonprofit</strong> selected each year.</p>
-  </div>
-</section>
+{% import "partials/thingy-members.njk" as thingy with context %}
+{{ thingy.open() }}
 
 <div class="support-page container-narrow">
-  <div id="support-thanks" class="support-thanks" hidden>
-    <p><strong>Thank you for your gift.</strong> 100% goes to {{ support.current.short_name or support.current.nonprofit }}. The amount-raised stat updates on the next site build.</p>
-  </div>
-  <script>
-    if (new URLSearchParams(location.search).get('thanks') === '1') {
-      document.getElementById('support-thanks').hidden = false;
-    }
-  </script>
-
-  {% if supportTotals.totalRaised > 0 %}
-  <section class="support-impact">
-    <p class="eyebrow">Total impact</p>
-    <p class="support-impact-figure">${{ supportTotals.totalRaised | currency }}</p>
-    <p class="support-impact-caption">raised for great digital nonprofits since {{ supportTotals.sinceYear }}.</p>
-  </section>
-  {% endif %}
-
-  <section class="support-how">
-    <p class="eyebrow">Become a member</p>
-    <h2>Two ways to give</h2>
-    <div class="support-how-grid">
-      <div class="support-how-col">
-        <h3>Recurring &middot; ${{ support.yearly_price }}/year</h3>
-        <p>If the Weekly Thing has earned a place in your week, become a Supporting Member. It&rsquo;s ${{ support.yearly_price }} a year &mdash; less than a coffee a month &mdash; and every dollar funds a nonprofit doing meaningful work for the open web. Cancel anytime.</p>
-        {% include "partials/upgrade-form.njk" %}
-      </div>
-      {% if support.current.stripe_donate_url %}
-      <div class="support-how-col">
-        <h3>One-Time &middot; Any amount</h3>
-        <p>Not ready to commit annually? A single gift in any amount keeps the program going and funds the cause. ${{ support.yearly_price }} matches a year of membership, but anything you&rsquo;d like to give is welcome.</p>
-        <p><a href="{{ support.current.stripe_donate_url }}" class="btn btn-primary" data-tinylytics-event="support.donate">Make a One-Time Gift</a></p>
-      </div>
-      {% endif %}
-    </div>
-  </section>
+  {{ thingy.thanks() }}
 
   {% if support.current %}
   <section class="support-current">
-    <p class="eyebrow">{{ support.current.year_label or support.current.year }} &middot; The Supporting Member nonprofit pick</p>
+    <p class="eyebrow">This year&rsquo;s nonprofit</p>
     <h2>{{ support.current.nonprofit }}</h2>
-    <p>{{ support.current.description }} <a href="{{ site.thingyUrl }}/chat/?prompt={{ ('Tell me about ' + (support.current.short_name or support.current.nonprofit)) | urlencode }}&ref=weekly-members" data-tinylytics-event="support.thingy_handoff">Chat with Thingy about {{ support.current.short_name or support.current.nonprofit }} &rarr;</a></p>
+    <p>{{ support.current.description }}</p>
+    {{ thingy.why() }}
     <div class="support-current-action">
       <a href="{{ support.current.url }}" class="btn btn-secondary">Visit {{ support.current.short_name or support.current.nonprofit }} &rarr;</a>
       {% if support.current.logo %}
       <img src="{{ support.current.logo }}" alt="{{ support.current.nonprofit }} logo" class="support-current-logo">
       {% endif %}
     </div>
-
-    <div class="support-stats">
-      {% if support.current.amount_raised %}
-      <div class="support-stat">
-        <span class="stat-value">${{ support.current.amount_raised | currency }}</span>
-        <span class="stat-label">donated to {{ support.current.short_name or support.current.nonprofit }}</span>
-      </div>
-      {% elif stats.amount_raised > 0 %}
-      <div class="support-stat">
-        <span class="stat-value">${{ stats.amount_raised | currency }}</span>
-        <span class="stat-label">raised for {{ support.current.short_name or support.current.nonprofit }} so far</span>
-      </div>
-      {% endif %}
-      {% if stats.premium_subscriber_count > 0 %}
-      <div class="support-stat">
-        <span class="stat-value">{{ stats.premium_subscriber_count }}</span>
-        <span class="stat-label">supporting members</span>
-      </div>
-      {% endif %}
-    </div>
   </section>
   {% endif %}
 
-  {# The benefits come from one list, support.benefits in _data/support.json.
-     WT Builder's Membership drafts read the same list, so a benefit added
-     there reaches the page and the newsletter's call to action together. #}
-  <section class="support-benefits" id="benefits">
-    <p class="eyebrow">What comes with it</p>
-    <h2>Free for every subscriber</h2>
-    <p>Subscribing to the Weekly Thing costs nothing, and it comes with more than the newsletter.</p>
-    <div class="support-benefits-grid">
-      {% for b in support.benefits %}{% if b.for == "everyone" %}
-      <div class="support-benefit" id="benefit-{{ b.id }}">
-        <h3><a href="{{ b.url }}?ref=weekly-members">{{ b.name }}</a></h3>
-        <p>{{ b.line }}</p>
-      </div>
-      {% endif %}{% endfor %}
-    </div>
-
-    <h2 class="support-benefits-members">Supporting Members also get</h2>
-    <p>The reason to become a Supporting Member is the giving: 100% of membership fees go to the nonprofit selected each year, {{ support.current.short_name or support.current.nonprofit }} this year. None of it pays for these. They are a thank-you on top.</p>
-    <div class="support-benefits-grid">
-      {% for b in support.benefits %}{% if b.for == "members" %}
-      <div class="support-benefit" id="benefit-{{ b.id }}">
-        <h3><a href="{{ b.url }}?ref=weekly-members">{{ b.name }}</a></h3>
-        <p>{{ b.line }}</p>
-      </div>
-      {% endif %}{% endfor %}
-    </div>
-  </section>
-
-  {% if support.past.length > 0 %}
-  <section class="support-history">
-    <p class="eyebrow">History</p>
-    <h2>Past nonprofits supported</h2>
+  {% if supportTotals.totalRaised > 0 %}
+  <section class="support-impact">
+    {{ thingy.record() }}
     <table class="support-table">
       <thead>
         <tr>
@@ -124,9 +37,23 @@ permalink: /members/
         </tr>
       </thead>
       <tbody>
+        {% if support.current and stats.amount_raised > 0 %}
+        <tr>
+          <td>{{ support.current.year }}</td>
+          <td>
+            <a href="{{ support.current.url }}" class="support-table-org">
+              {% if support.current.logo %}
+              <img src="{{ support.current.logo }}" alt="{{ support.current.nonprofit }} logo" class="support-table-logo">
+              {% endif %}
+              <span>{{ support.current.nonprofit }}</span>
+            </a>
+          </td>
+          <td>${{ stats.amount_raised | currency }} so far</td>
+        </tr>
+        {% endif %}
         {% for org in support.past %}
         <tr>
-          <td>{{ org.year_label or org.year }}</td>
+          <td>{{ org.year }}</td>
           <td>
             <a href="{{ org.url }}" class="support-table-org">
               {% if org.logo %}
@@ -142,4 +69,50 @@ permalink: /members/
     </table>
   </section>
   {% endif %}
+
+  <section class="support-how" id="join">
+    {{ thingy.ask() }}
+    <div class="support-how-grid">
+      <div class="support-how-col">
+        <h3>Recurring &middot; ${{ support.yearly_price }}/year</h3>
+        <p>A year of Supporting Membership is ${{ support.yearly_price }}, recurring. 100% of membership fees go to the nonprofit selected that year. Cancel anytime.</p>
+        {% include "partials/upgrade-form.njk" %}
+      </div>
+      {% if support.current.stripe_donate_url %}
+      <div class="support-how-col">
+        <h3>One-Time &middot; Any amount</h3>
+        <p>A single gift in any amount, with no recurring charge. 100% goes to the nonprofit selected that year. ${{ support.yearly_price }} matches a year of membership.</p>
+        <p><a href="{{ support.current.stripe_donate_url }}" class="btn btn-primary" data-tinylytics-event="support.donate">Make a One-Time Gift</a></p>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="support-benefits" id="benefits">
+    <p class="eyebrow">What comes with it</p>
+    <h2>Free for every subscriber</h2>
+    <p>Subscribing to the Weekly Thing costs nothing, and it comes with more than the newsletter.</p>
+    <div class="support-benefits-grid">
+      {% for b in support.benefits %}{% if b.for == "everyone" %}
+      <div class="support-benefit" id="benefit-{{ b.id }}">
+        <h3><a href="{{ b.url }}?ref=weekly-members">{{ b.name }}</a></h3>
+        <p>{{ thingy.benefit(b) }}</p>
+      </div>
+      {% endif %}{% endfor %}
+    </div>
+
+    <h2 class="support-benefits-members">Supporting Members also get</h2>
+    {{ thingy.getYou() }}
+    <p>The reason to join is the giving: 100% of membership fees go to the nonprofit selected each year. None of it pays for these. They are a thank-you on top.</p>
+    <div class="support-benefits-grid">
+      {% for b in support.benefits %}{% if b.for == "members" %}
+      <div class="support-benefit" id="benefit-{{ b.id }}">
+        <h3><a href="{{ b.url }}?ref=weekly-members">{{ b.name }}</a></h3>
+        <p>{{ thingy.benefit(b) }}</p>
+      </div>
+      {% endif %}{% endfor %}
+    </div>
+  </section>
+
+  {{ thingy.credit() }}
 </div>

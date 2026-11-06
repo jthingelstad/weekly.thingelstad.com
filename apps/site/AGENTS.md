@@ -160,6 +160,13 @@ Issue content, `_data/faq.json` (hand-synced with librarian-thing) and the `/thi
 bold italic W as a path); `favicon.svg` and `apple-touch-icon.png` load with `?v=<hash>` from
 `_data/assets.js`.
 
+## Thingy
+
+Thingy's jobs here (host of `/members/` and of Supporting Membership, librarian), his stills, and whose words go
+where are in [`docs/THINGY.md`](../../docs/THINGY.md). All he says on `/members/` is in
+`_includes/partials/thingy-members.njk`, never in `support.njk`, which the corpus reads. The front page and `/about/`
+are Jamie's and carry no Thingy.
+
 ## The audio edition on the page and in the feed
 
 WT Builder stamps `audio_url`, `audio_duration_seconds`, `audio_byte_size`, `audio_voice` and — since
