@@ -7,7 +7,7 @@ import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
 const { dateFormat, dateShort, dateTimeShort, year, latestDate, issuesLatestDate } = require("../../apps/site/lib/dateFilters.js");
-const { siteDateParts } = require("../../apps/site/lib/siteTime.js");
+const { siteDateParts, fullYearsBetween } = require("../../apps/site/lib/siteTime.js");
 
 test("an evening send in Chicago shows its Chicago day", () => {
   // WT35: subject "Weekly Thing for January 6, 2018".
@@ -74,4 +74,14 @@ test("issuesLatestDate takes the newest edit among the issues a listing shows", 
   // An old issue repaired last is the newest change on the archive page.
   assert.equal(issuesLatestDate(issues, { 12: "2026-10-26T09:00:00-05:00" }), "2026-10-26T14:00:00.000Z");
   assert.equal(issuesLatestDate(issues, {}), "2026-10-24T12:00:00.000Z");
+});
+
+test("years running counts full years, not calendar years touched", () => {
+  const first = "2017-05-13T12:00:00Z";
+  assert.equal(fullYearsBetween(first, "2026-10-25T12:00:00Z"), 9);
+  assert.equal(fullYearsBetween(first, "2027-05-12T12:00:00Z"), 9);
+  assert.equal(fullYearsBetween(first, "2027-05-13T12:00:00Z"), 10);
+  // The anniversary is a Chicago day: this send is still May 12 there.
+  assert.equal(fullYearsBetween(first, "2027-05-13T01:00:00Z"), 9);
+  assert.equal(fullYearsBetween(null, first), 0);
 });

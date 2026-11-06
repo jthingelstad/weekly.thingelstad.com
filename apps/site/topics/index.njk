@@ -5,9 +5,6 @@ pageTitle: Topics
 description: "Browse every topic mentioned across the archive of The Weekly Thing."
 ---
 {%- set letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','#'] -%}
-{%- set firstYear = 2017 -%}{# The Weekly Thing started May 2017 #}
-{%- set thisYear = '' | currentYear -%}
-{%- set yearSpan = thisYear - firstYear + 1 -%}
 
 <article class="topics-index">
   <header class="topics-index-header">
@@ -15,8 +12,8 @@ description: "Browse every topic mentioned across the archive of The Weekly Thin
     <h1>Topics</h1>
     <p class="topics-index-lede">
       <strong>{{ topics.all.length | numberFormat }}</strong> topics across
-      <strong>{{ yearSpan }}</strong> years of The Weekly Thing. Each topic
-      appears in three or more issues.
+      <strong>{{ archiveStats.yearsActive }}</strong> years of The Weekly Thing. Each topic
+      appears in {{ topics.fewestIssues }} or more issues.
     </p>
   </header>
 

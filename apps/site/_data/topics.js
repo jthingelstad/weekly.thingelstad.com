@@ -20,7 +20,7 @@ const PER_ISSUE_CHIPS = 8;
 const RELATED_LIMIT = 8;
 
 function emptyShape() {
-  return { all: [], bySlug: {}, byIssue: {}, byLetter: {} };
+  return { all: [], bySlug: {}, byIssue: {}, byLetter: {}, fewestIssues: 0 };
 }
 
 function slugify(name) {
@@ -220,5 +220,8 @@ module.exports = (() => {
   // <lastmod> in the sitemap.
   const newestDate = all.reduce((max, rec) => (rec.lastDate && (!max || rec.lastDate > max) ? rec.lastDate : max), null);
 
-  return { all, bySlug, byIssue, byLetter, newestDate };
+  // How few issues a listed topic can have, which the /topics/ index states.
+  const fewestIssues = all.reduce((min, rec) => Math.min(min, rec.count), Infinity);
+
+  return { all, bySlug, byIssue, byLetter, newestDate, fewestIssues: all.length ? fewestIssues : 0 };
 })();

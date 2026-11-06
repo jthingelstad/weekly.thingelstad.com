@@ -49,4 +49,15 @@ function formatSiteTime(value, options) {
   return d.toLocaleTimeString("en-US", { ...options, timeZone: SITE_TIME_ZONE });
 }
 
-module.exports = { SITE_TIME_ZONE, toDate, siteDateParts, formatSiteDate, formatSiteTime };
+// Full years from one date to a later one, on Chicago days. May 2017 to October
+// 2026 is nine years, though it touches ten calendar years.
+function fullYearsBetween(from, to) {
+  const start = siteDateParts(from);
+  const end = siteDateParts(to);
+  if (!start || !end) return 0;
+  const reachedAnniversary =
+    end.month > start.month || (end.month === start.month && end.day >= start.day);
+  return end.year - start.year - (reachedAnniversary ? 0 : 1);
+}
+
+module.exports = { SITE_TIME_ZONE, toDate, siteDateParts, formatSiteDate, formatSiteTime, fullYearsBetween };
