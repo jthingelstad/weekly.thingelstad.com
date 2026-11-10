@@ -37,6 +37,13 @@ async function syncSites({ check = false } = {}) {
   const content = await readFile(source, 'utf8');
   const data = JSON.parse(content);
   if (!Array.isArray(data.sites) || data.sites.length === 0) throw new Error(`${source} has no sites list.`);
+  // All Things, the link that ends the sites strip after the list.
+  const all = data.strip_all;
+  if (!all || typeof all !== 'object') throw new Error(`${source} has no strip_all.`);
+  for (const field of ['label', 'url', 'description']) {
+    if (typeof all[field] !== 'string' || !all[field]) throw new Error(`${source}: strip_all has no ${field}.`);
+  }
+  if (!all.url.startsWith('https://')) throw new Error(`${source}: strip_all's url must be HTTPS.`);
 
   const typeFiles = await sharedTypeFiles(dirname(source));
 

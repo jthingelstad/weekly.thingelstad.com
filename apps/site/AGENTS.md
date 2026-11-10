@@ -140,10 +140,12 @@ first, never here alone; only the inner width (`--container-wide`) and side padd
 frame. It is built from `_data/sites.json` (sites with `in_sites_strip`, in file order, no client
 JavaScript); this site is the `weekly` entry, marked current; every site reads as its `strip_label`, this one
 included, so the wording matches every other site, and every link carries `?ref=sites-strip-weekly`
-for Tinylytics. The strip
+for Tinylytics. All Things (`strip_all` in `sites.json`, to `thingelstad.xyz/all/`) ends the strip,
+after the list, with the same ref and the ink colour, never current here; on phones the list scrolls
+under it so it stays in view (`npm run sites:check` refuses a `sites.json` without it). The strip
 is set in Inter, the site's own face since it moved onto the shared type (`css/shared/`). Redirect pages
 (`librarian*.njk`, `archive/redirects.njk`) have no layout and no strip. `tests/e2e/site.spec.js`
-pins the links, the current marker, the phone row, and the Another Thing crimson and Things I've built
+pins the links, the current marker, All Things, the phone row, and the Another Thing crimson and Things I've built
 green marks, light and dark.
 
 ## Jamie, and links to his other sites

@@ -5,7 +5,9 @@
     site is the "weekly" entry, marked current. Every site, this one included,
     reads as its strip_label, so the strip says the same on every site. Every
     link carries ?ref=sites-strip-weekly so Tinylytics' Sources report on the
-    destination shows the visits this strip sent. -#}
+    destination shows the visits this strip sent. All Things (strip_all) ends
+    the strip, after the list and outside it, with the same ref; it is no
+    site, so it has no mark and is never current here. -#}
 {%- set currentSiteId = "weekly" -%}
 <nav class="sites-strip" aria-label="Jamie Thingelstad">
   <div class="sites-strip__inner">
@@ -18,5 +20,6 @@
       </li>
       {%- endif %}{% endfor %}
     </ul>
+    <a class="sites-strip__all" href="{{ sites.strip_all.url | e }}?ref=sites-strip-{{ currentSiteId }}" title="{{ sites.strip_all.description | e }}">{{ sites.strip_all.label | e }}</a>
   </div>
 </nav>

@@ -443,16 +443,28 @@ th {
 .sites-strip__item--thingy { --strip-link: var(--strip-thingy); }
 .sites-strip__item--xyz { --strip-link: var(--strip-xyz); }
 
+/* Phones: one row, without its label. The list scrolls sideways inside it,
+   and All Things stays put at its right end, so it is never scrolled out of
+   sight. The list's padding, taken back by its margin, keeps the focus ring
+   inside the scrolling box, where it is not cut off. */
 @media (max-width: 40rem) {
   .sites-strip__inner {
     flex-wrap: nowrap;
-    overflow-x: auto;
     white-space: nowrap;
     gap: 18px;
     padding: 0 var(--space-md);
   }
   .sites-strip__label { display: none; }
-  .sites-strip__list { flex-wrap: nowrap; gap: 18px; }
+  .sites-strip__list {
+    flex-wrap: nowrap;
+    gap: 18px;
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: -6px;
+    padding: 6px;
+    overflow-x: auto;
+  }
+  .sites-strip__all { flex: none; }
 }
 
 @media (prefers-color-scheme: dark) {
