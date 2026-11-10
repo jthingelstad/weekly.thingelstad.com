@@ -269,7 +269,8 @@ test("the sites strip opens every page, with Weekly Thing marked current", async
   // (npm run sites:sync). Nothing leaves the machine: every request off
   // 127.0.0.1 (Tinylytics, Google Fonts) is refused.
   await page.route((url) => url.hostname !== '127.0.0.1', (route) => route.abort());
-  const { sites } = require('../../apps/site/_data/sites.json');
+  const { sites, strip_all: stripAll } = require('../../apps/site/_data/sites.json');
+  expect(stripAll.label).toBe('All Things');
   const expected = sites
     .filter((s) => s.in_sites_strip)
     .map((s) => ({
@@ -300,6 +301,16 @@ test("the sites strip opens every page, with Weekly Thing marked current", async
     expect(links, path).toEqual(expected);
     await expect(strip.locator('.sites-strip__item--current'), path).toHaveCount(1);
     await expect(strip.locator('.sites-strip__item--current'), path).toHaveClass(/sites-strip__item--weekly/);
+    // All Things ends the strip, after the list and outside it, in ink, never current here.
+    await expect(strip.getByRole('link'), path).toHaveCount(expected.length + 1);
+    const all = strip.locator('.sites-strip__list + a.sites-strip__all');
+    await expect(all, path).toHaveText(stripAll.label);
+    await expect(all, path).toHaveAttribute('href', 'https://thingelstad.xyz/all/?ref=sites-strip-weekly');
+    await expect(all, path).toHaveAttribute('title', stripAll.description);
+    await expect(all, path).not.toHaveAttribute('aria-current');
+    await expect(all, path).toHaveCSS('color', 'rgb(22, 22, 26)');
+    await expect(all, path).toHaveCSS('font-weight', '600');
+    await expect(all, path).toHaveCSS('text-decoration-line', 'underline');
   }
 
   // Colour marks from the contract: Another Thing crimson (#b3123f / dark #f58aa3)
@@ -308,35 +319,50 @@ test("the sites strip opens every page, with Weekly Thing marked current", async
   for (const scheme of ['light', 'dark']) {
     await page.emulateMedia({ colorScheme: scheme });
     await page.goto('/', { waitUntil: 'domcontentloaded' });
-    marks[scheme] = await page.locator('.sites-strip').evaluate((strip) => Object.fromEntries(
-      ['another', 'xyz'].map((id) => [id, getComputedStyle(strip.querySelector(`.sites-strip__item--${id} a`)).color])));
+    marks[scheme] = await page.locator('.sites-strip').evaluate((strip) => ({
+      ...Object.fromEntries(['another', 'xyz'].map((id) =>
+        [id, getComputedStyle(strip.querySelector(`.sites-strip__item--${id} a`)).color])),
+      all: getComputedStyle(strip.querySelector('.sites-strip__all')).color,
+    }));
   }
   await page.emulateMedia({ colorScheme: 'light' });
   expect(marks).toEqual({
-    light: { another: 'rgb(179, 18, 63)', xyz: 'rgb(29, 115, 72)' },
-    dark: { another: 'rgb(245, 138, 163)', xyz: 'rgb(116, 211, 160)' },
+    light: { another: 'rgb(179, 18, 63)', xyz: 'rgb(29, 115, 72)', all: 'rgb(22, 22, 26)' },
+    dark: { another: 'rgb(245, 138, 163)', xyz: 'rgb(116, 211, 160)', all: 'rgb(236, 236, 240)' },
   });
 
-  // Phones: one row that scrolls sideways, no label, and the page stays put.
+  // Phones: one row, no label, and the page stays put. The list scrolls
+  // sideways under All Things, which stays in view at the row's right end.
   for (const width of [320, 390, 430]) {
     await page.setViewportSize({ width, height: 800 });
     await page.goto('/', { waitUntil: 'domcontentloaded' });
     const layout = await page.locator('.sites-strip').evaluate((strip) => {
-      const inner = strip.querySelector('.sites-strip__inner');
-      const tops = new Set(Array.from(strip.querySelectorAll('.sites-strip__item'))
-        .map((li) => Math.round(li.getBoundingClientRect().top)));
-      inner.scrollLeft = inner.scrollWidth;
+      const list = strip.querySelector('.sites-strip__list');
+      const all = strip.querySelector('.sites-strip__all');
+      const tops = new Set([...strip.querySelectorAll('.sites-strip__item'), all]
+        .map((el) => Math.round(el.getBoundingClientRect().top)));
+      list.scrollLeft = list.scrollWidth;
       const last = strip.querySelector('.sites-strip__item:last-child a').getBoundingClientRect();
+      const listBox = list.getBoundingClientRect();
+      const allBox = all.getBoundingClientRect();
       return {
         rows: tops.size,
         labelShown: strip.querySelector('.sites-strip__label').offsetParent !== null,
+        listScrolls: list.scrollLeft > 0,
         lastRight: Math.round(last.right),
+        listRight: Math.round(listBox.right),
+        allLeft: Math.round(allBox.left),
+        allRight: Math.round(allBox.right),
         pageWidth: document.documentElement.scrollWidth,
       };
     });
     expect(layout.rows, `${width}px strip rows`).toBe(1);
     expect(layout.labelShown, `${width}px label`).toBe(false);
-    expect(layout.lastRight, `${width}px last site after scrolling`).toBeLessThanOrEqual(width);
+    expect(layout.listScrolls, `${width}px the list scrolls`).toBe(true);
+    expect(layout.lastRight, `${width}px last site after scrolling`).toBeLessThanOrEqual(layout.listRight);
+    expect(layout.allLeft, `${width}px All Things after the list`).toBeGreaterThanOrEqual(layout.listRight - 7);
+    expect(layout.allRight, `${width}px All Things in view`).toBeLessThanOrEqual(width);
+    await expect(page.locator('.sites-strip__all'), `${width}px All Things`).toBeInViewport({ ratio: 1 });
     expect(layout.pageWidth, `${width}px page width`).toBeLessThanOrEqual(width);
   }
 });
