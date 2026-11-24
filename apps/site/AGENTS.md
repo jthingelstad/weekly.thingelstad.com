@@ -16,7 +16,8 @@ scripts: `npm run build`, `npm run build:search`). The output dir `_site/` stays
 - **Collections:** `issuesByNumber` (ascending), `issuesByDate` (newest first)
 - **Filters:** `dateFormat`, `dateShort`, `currentYear`, `numberFormat`, `year`, `slice`, `truncate`,
   `issueNumberBase`, `xmlEscape`, `htmlEscape`, `markdownify`, `extractToc`, `groupByYear`, `itunesDuration`, `clock`,
-  `siteById` (one entry of `sites.json` by its id), `cardVersion` and `journalCount` (Share images)
+  `siteById` (one entry of `sites.json` by its id), `cardVersion` and `journalCount` (Share images),
+  `headingText` and `headingUrl` (the per-issue links feed)
 - **Dates are Chicago days.** `dateFormat` (default and `month-year`), `dateShort`, `dateTimeShort`,
   `year`, `groupByYear` and `archiveStats` read the day in America/Chicago through `lib/siteTime.js`;
   `dateFormat('iso')` and `('rfc822')` stay UTC instants for feeds and the sitemap. Never slice a UTC
@@ -216,6 +217,16 @@ as long as the template that writes the page adds it to the map too (the e2e tes
 
 - **Never edit the pushed `_data` files.** Fix upstream in WT Builder (or `librarian-thing` for the
   topic graph). Edit `apps/site/archive/*.md` only to repair a sent issue.
+- **The per-issue links feed is for programs** (`/archive/N/links.xml`, `issue-links-feed.njk`): one
+  entry per link in the issue, in the issue's order, each entry's `<link>` the outside page. Jamie,
+  2026-11-23: "a convenient way for a bot or program to get a list of all the links in an issue of
+  the newsletter. we could also use it to automate syndication". Its ids are `tag:` URIs
+  (`tag:weekly.thingelstad.com,2026:wt<N>-links` for the feed, `…:wt<N>-link-<M>` for the Mth link),
+  never addresses: until 2026-11-23 they were `/archive/N/links/M`, which is no page, and crawlers
+  that read the feed fetched each one (about 6,000 404s a day). The host and the year in an id are
+  fixed; never build one from `site.url`. A link's `heading_context` is Markdown source
+  (`[Title](url)`), so the "From" line reads it through `headingText` / `headingUrl`
+  (`lib/headingLink.js`) and never prints it raw.
 - **Feeds escape text twice inside HTML content.** A reader XML-decodes Atom `type="html"` content and RSS
   `<description>`, then reads it as HTML, so text set there goes through `htmlEscape | xmlEscape` (WT3's
   "D&D" is `D&amp;amp;D` in the file). Plain-text elements (Atom `type="text"`, titles, `itunes:summary`)
