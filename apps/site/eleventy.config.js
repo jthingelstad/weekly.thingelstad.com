@@ -2,6 +2,7 @@ const fs = require("fs");
 const { runtime: nunjucksRuntime } = require("nunjucks");
 const markdownItAnchor = require("markdown-it-anchor");
 const dateFilters = require("./lib/dateFilters.js");
+const { headingLink } = require("./lib/headingLink.js");
 
 module.exports = function (eleventyConfig) {
   // Operational docs live inside the Eleventy input tree for humans and agents,
@@ -187,6 +188,11 @@ module.exports = function (eleventyConfig) {
       .replace(/'/g, "&#39;");
     return new nunjucksRuntime.SafeString(escaped);
   });
+
+  // The heading an issue link sat under, read from its Markdown source
+  // (lib/headingLink.js): the title for plain text, the address for a link.
+  eleventyConfig.addFilter("headingText", (str) => headingLink(str).text);
+  eleventyConfig.addFilter("headingUrl", (str) => headingLink(str).url || "");
 
   // Render markdown string to HTML (for use in templates)
   eleventyConfig.addFilter("markdownify", (str) => {

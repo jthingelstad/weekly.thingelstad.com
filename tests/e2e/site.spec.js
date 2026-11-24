@@ -518,6 +518,29 @@ test('feeds escape text twice inside HTML content, once where it is plain text',
   expect(got.lidarText).toContain("for < $175, But Still No Moore's Law");
 });
 
+test('an issue\'s links feed names entries by tag: ids and prints headings as text', async ({ request }) => {
+  // The ids were addresses under /archive/N/links/, which is no page, so
+  // crawlers that read the feed fetched each one: about 6,000 404s a day by
+  // 2026-11-23. The "From" line printed the heading's Markdown source.
+  const res = await request.get('/archive/346/links.xml');
+  expect(res.ok()).toBeTruthy();
+  const xml = await res.text();
+  const ids = [...xml.matchAll(/<id>([^<]+)<\/id>/g)].map((match) => match[1]);
+  const entries = xml.split('<entry>').length - 1;
+  expect(entries).toBeGreaterThan(10);
+  expect(ids[0]).toBe('tag:weekly.thingelstad.com,2026:wt346-links');
+  expect(ids.slice(1)).toEqual(Array.from({ length: entries }, (_, i) => `tag:weekly.thingelstad.com,2026:wt346-link-${i + 1}`));
+  expect(xml).not.toMatch(/archive\/346\/links\//);
+  expect(xml).toContain('<summary type="text">From "The Other Reasons Why Podcasting is Hot" in Weekly Thing 346');
+  expect(xml).toContain('From "&lt;a href="https://doc.searls.com/2026/04/24/the-other-reasons-why-podcasting-is-hot/"&gt;The Other Reasons Why Podcasting is Hot&lt;/a&gt;" in');
+  expect(xml).not.toContain('](');
+  // The feed is still what a program reads for an issue's links: each entry's
+  // own link is the outside page, and the issue page still advertises it.
+  expect(xml).toContain('<link href="https://doc.searls.com/2026/04/24/the-other-reasons-why-podcasting-is-hot/"/>');
+  const page = await (await request.get('/archive/346/')).text();
+  expect(page).toContain('<link rel="alternate" type="application/atom+xml" title="Links from WT346" href="/archive/346/links.xml">');
+});
+
 test('archive.json is listed in llms.txt, never advertised as a feed', async ({ request }) => {
   // application/json is JSON Feed 1.0's discovery type, so a head link let a
   // reader offer the archive index as a feed (open-web audit G4, 2026-10-25).
