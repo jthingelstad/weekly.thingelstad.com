@@ -141,6 +141,9 @@ for (const [name, script] of [
   });
 }
 
+// The Librarian's Turnstile refusal (2026-11-28), which the forms print as sent.
+const REFUSED = 'We couldn’t confirm you’re not a bot. Reload the page and try again, or email jamie@thingelstad.com.';
+
 // 2026-10-20: the Librarian enforces on this site. A post that left without
 // a token (the three-second bound) is refused; the form then waits for the
 // token, however long the checkbox takes, and posts once more with it.
@@ -176,7 +179,7 @@ test('a refused post waits for the token and is sent once more', async ({ page }
       await route.fulfill({
         status: 403,
         contentType: 'application/json',
-        body: JSON.stringify({ status: 'turnstile_failed', error: 'We couldn’t confirm this request came from a person.' }),
+        body: JSON.stringify({ status: 'turnstile_failed', error: REFUSED }),
       });
       return;
     }
@@ -210,14 +213,14 @@ test('a Turnstile refusal that stands is shown, not sent to Buttondown', async (
     return route.fulfill({
       status: 403,
       contentType: 'application/json',
-      body: JSON.stringify({ status: 'turnstile_failed', error: 'We couldn’t confirm this request came from a person.' }),
+      body: JSON.stringify({ status: 'turnstile_failed', error: REFUSED }),
     });
   });
   await page.goto('/', { waitUntil: 'domcontentloaded' });
   const form = page.locator('.subscribe-shell').first();
   await form.locator('input[type="email"]').fill('refused@example.com');
   await form.locator('button[type="submit"]').click();
-  await expect(form.locator('.subscribe-status')).toContainText('confirm this request came from a person');
+  await expect(form.locator('.subscribe-status')).toHaveText(REFUSED);
   await expect(page).toHaveURL(/127\.0\.0\.1/);
   // Cloudflare's script never loaded here, so there was no token to wait
   // for and nothing to send again.
